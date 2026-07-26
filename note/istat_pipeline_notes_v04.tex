@@ -1,0 +1,321 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Scommentare in locale se la texlive li include:
+%\usepackage[italian]{babel}
+%\usepackage{lmodern}
+%\usepackage{microtype}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\hypersetup{colorlinks=true, linkcolor=blue!50!black, urlcolor=blue!50!black}
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize, breaklines=true, frame=single,
+  framerule=0.2pt, backgroundcolor=\color{gray!6}, showstringspaces=false
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\flow}[1]{\texttt{\small #1}}
+
+\title{\textbf{Pipeline SDMX--ISTAT per popolazioni sintetiche comunali e sub-comunali}\\[2mm]
+\large Note tecniche --- v0.4}
+\author{M.~Degli Esposti}
+\date{19 luglio 2026 \quad (v0.1--v0.3: 18--19 luglio 2026)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Pipeline riproducibile dai dati pubblici ISTAT alla popolazione sintetica
+MaxEnt con quartieri: Brescia K7C, $198\,259$ individui $\times$ 11 attributi
+(\code{popolazione\_K7C\_naz.csv}). In v0.4: (xi) nazionalit\`a two-stage
+gerarchica --- area UE/extra-UE condizionata a (zona, sesso) dalle sezioni,
+paese condizionato a (area, sesso) dal comunale, allocazione esatta
+largest-remainder; doppia contabilit\`a comunale$\leftrightarrow$sezioni
+verificata a $\sim3$\textperthousand; mappa quartiere$\times$paese-top
+qualitativamente corretta (Fiumicello/Chiesanuova a trazione Pakistan,
+Primo Maggio/Don Bosco a trazione Romania); (xii) ricettario di esecuzione
+end-to-end della pipeline (\S\ref{sec:recipe}). Risultati precedenti:
+identit\`a esatte della base riconciliata (5$\times$); regole di feasibility
+(completamento a partizione; consistenza di tutti i margini sovrapposti + IPF
+come armonizzatore); formula del pavimento stocastico PCD replicata 3 volte;
+stimatore-pool vs distribuzione appresa.
+\end{abstract}
+
+\tableofcontents
+
+%=======================================================================
+\section{Scopo e contesto}
+Dato un codice comune ISTAT, produrre il miglior constraint set dai dati
+pubblici e la popolazione MaxEnt corrispondente; caso guida Brescia (SIN
+Caffaro) con zona a 33 quartieri. Esecuzione locale (WSL2, env \code{ml});
+solver dal repo \code{maxent-popsynth-pcd}.
+
+%=======================================================================
+\section{Endpoint SDMX \code{esploradati}: comportamenti non documentati}
+\label{sec:quirks}
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item limite $\sim$260 char/segmento URL (http.sys) $\Rightarrow$ wildcard nel KEY;
+  \item \code{startPeriod}/\code{endPeriod} ignorati $\Rightarrow$ filtro client-side
+  (serie storiche complete gratis);
+  \item SDMX-CSV via \code{Accept: application/vnd.sdmx.data+csv;version=1.0.0};
+  \item rate limit $\sim$5/min: throttling 13\,s, retry con backoff;
+  \item stime censuarie comunali \emph{non arrotondate} (decimali, additive).
+\end{enumerate}
+
+%=======================================================================
+\section{Le fonti: tre laghi pi\`u uno}
+\label{sec:laghi}
+Anagrafe (\flow{DCIS\_*}, singolo anno d'et\`a); censimento permanente
+comunale (\flow{DF\_DCSS\_*}, ipercubo unico, granularit\`a nel suffisso);
+indagini campionarie (solo regionali $\to$ condizionali two-stage); canale
+sub-comunale:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item ASC aggregate via SDMX (\flow{DF\_BULK\_SUBCOM*}): solo capoluoghi
+  Citt\`a Metropolitane;
+  \item \textbf{sezioni di censimento}, tutti i comuni: bulk
+  \code{Dati\_regionali\_<anno>.zip} (xlsx per regione + tracciato) su
+  \code{esploradati.istat.it/databrowser/DWL/PERMPOP/SUBCOM/}; edizioni 2021
+  e 2023 (rilascio annuale a regime);
+  \item scoperta chiave: \code{COM\_ASC1/2/3} nel file sezioni --- i codici
+  delle aree sub-comunali sono gi\`a assegnati sezione per sezione per tutti
+  i comuni partizionati (Brescia: 33 valori $=$ quartieri; spatial join
+  superfluo).
+\end{itemize}
+Variabili del tracciato: sesso$\times$et\`a quinquennale, istruzione a 5
+livelli per sesso (9+), occupati 15--64 per sesso, ITA/stranieri per
+sesso$\times$macro-et\`a, \textbf{UE/extra-UE per sesso} (ST16--21),
+background migratorio, famiglie, abitazioni.
+
+%=======================================================================
+\section{Brescia: sezioni, quartieri, audit}
+1\,822 sezioni, 33 quartieri; sezione fittizia 888888x (549 senza fissa
+dimora) tenuta nel quartiere assegnato \code{17029004} (opzione a).
+\textbf{Quinta identit\`a esatta}: sezioni $\equiv$ censimento comunale 2023
+$\equiv$ anagrafe 1/1/2024 $= 198\,259$ (stranieri $37\,478$); additivit\`a
+interna piena. Sezioni in interi (RBI$\leftrightarrow$RSBL), comunale in
+stime decimali: scarti di unit\`a assorbiti dal disegno condizionale.
+Ancoraggio K7C: \code{--anno 2024}. Sanity: top-5 quota stranieri $=$
+Fiumicello (0.371), Centro Storico Nord, Primo Maggio, Don Bosco,
+Chiesanuova --- l'orbita SIN Caffaro.
+
+%=======================================================================
+\section{K7C: blocchi di zona, feasibility, IPF}
+\label{sec:k7c}
+\code{zona} in testa a \code{VAR\_ORDER}; $|X| = 33\times5\,376 = 177\,408$;
+ariet\`a piena dove il dato la sostiene (Z2:
+zona$\times$sesso$\times$et\`a$\times$cittadinanza). Principio: ogni tabella
+di zona entra come $P(\text{zona}\mid\text{gruppo})\times$conteggi comunali.
+Assunzioni (2) quota di zona costante entro quinquennale/macro-classe;
+(3) $P(\text{zona}\mid\text{sesso},\text{occ})$ costante sui bin 15--64.
+
+\medskip\noindent\textbf{Regola di consistenza generalizzata} (dal collasso
+discesa$\to$risalita del primo fit): con vincoli di uguaglianza devono
+coincidere numericamente \emph{tutti} i margini impliciti sovrapposti tra
+blocchi, non solo quelli verso la spine. \textbf{Fix: IPF come armonizzatore
+di tabelle} (righe da Z1, colonne dal blocco comunale, per gruppo); Z4 con
+cap su Z1 e ridistribuzione. Audit post: Z-vs-Z $\sim10^{-11}$,
+Z-vs-comunale $=0$.
+
+%=======================================================================
+\section{Fit K7C e caratterizzazione GibbsPCD}
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & \textbf{MRE}$_{\alpha>0}$ & \textbf{H (nat)} & \textbf{supporto} & \textbf{KL vs exact} & \textbf{tempo}\\
+\midrule
+Esatto (L-BFGS) & $3.6\cdot10^{-4}$ & 9.157 & 130\,161/177\,408 & --- & 351\,s\\
+GibbsPCD ($N{=}2\cdot10^5$, numba) & $3.1\cdot10^{-2}$ & 9.592 & 171\,864 & $1.2\cdot10^{-1}$ & 1\,070\,s\\
+\bottomrule
+\end{tabular}
+\end{center}
+Esclusioni ($\alpha=0$) fuori dai solver, post-hoc sul supporto (5\,544
+celle). \textbf{Pavimento stocastico replicato} (terzo punto):
+predetto $0.0650$, osservato $0.0634$ ($N=2\cdot10^5$); formula
+$\text{MRE}_{\min}\approx m^{-1}\sum_j\sqrt{(1-\alpha_j)/(\alpha_j N)}$
+calcolabile dal solo CS. \textbf{Stimatore-pool vs distribuzione appresa}:
+MRE su frequenze del pool $0.063$ (al pavimento), MRE su $p_\lambda$
+$0.031$: i $\lambda$ mediati da Adam battono il pavimento del singolo
+snapshot di $\sim2\times$. Decisione di produzione: esatto anche a K7C
+($100\times$ pi\`u preciso, $1/3$ del tempo); GibbsPCD per domini non
+enumerabili, $N$ dalla formula.
+
+%=======================================================================
+\section{Nazionalit\`a two-stage (livello 1)}
+\label{sec:naz}
+La nazionalit\`a (143 paesi) resta fuori dal MaxEnt (nessun incrocio
+vincolabile; $|X|$ esploderebbe) ed entra come assegnazione gerarchica sul
+campione (\code{assign\_nationality.py}):
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item[(2a)] area $\in$ \{UE, EXTRA\_UE\} $\sim P(\text{area}\mid
+  \text{zona},\text{sesso})$ dalle sezioni (ST17/18/20/21; UE$+$extraUE
+  $=$ ST1 esatto, apolidi assorbiti in extra-UE);
+  \item[(2b)] paese $\sim P(\text{paese}\mid\text{area},\text{sesso})$ dal
+  comunale (\flow{DF\_DCSS\_POP\_DEMCITMIG\_TV\_3}, 2023, GENDER
+  conservato); classificazione UE label-driven (23 paesi UE presenti a
+  Brescia; Cechia/Lussemburgo/Malta assenti dal dato, non errori di match).
+\end{enumerate}
+Allocazione \textbf{esatta} (largest remainder) a entrambi i livelli, shuffle
+seedato entro gruppo. \textbf{Assunzione (4)}: paese $\perp$ zona $\mid$
+(area, sesso) --- la struttura territoriale entra al livello area; il limite
+\`e visibile (dentro l'extra-UE stesso mix in tutti i quartieri).
+
+\medskip\noindent\textbf{Validazione}: doppia contabilit\`a
+comunale$\leftrightarrow$sezioni per area$\times$sesso coincide a
+$\sim3$\textperthousand\ (canali indipendenti); top-10 campione $=$
+Romania, Pakistan, Ucraina, India, Egitto, Cina, Albania, Moldova, Sri
+Lanka, Filippine (ordine reale, Ucraina con asimmetria F via
+condizionamento per sesso); paese-top per quartiere: Fiumicello e
+Chiesanuova $\to$ Pakistan, Primo Maggio e Don Bosco $\to$ Romania ---
+differenziazione emergente da $P(\text{area}\mid\text{zona},\text{sesso})$.
+
+%=======================================================================
+\section{Sintesi dei livelli e deliverable}
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & \textbf{anno} & $|X|$ & $m$ & \textbf{MRE esatto} & \textbf{H (nat)}\\
+\midrule
+K6C & 1/1/2025 & 5\,376 & 269 & $5.0\cdot10^{-4}$ & 5.842\\
+K7C & 1/1/2024 & 177\,408 & 2\,513 & $3.6\cdot10^{-4}$ & 9.157\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent\textbf{Deliverable}: \code{popolazione\_K7C\_naz.csv} ---
+$198\,259$ individui $\times$ 11 attributi (zona, quartiere, sesso, eta,
+stato\_civile, cittadinanza, istruzione, condizione, area, paese; ITL $\to$
+paese Italia), ancorati all'1/1/2024, con 4 assunzioni dichiarate e
+numerate.
+
+%=======================================================================
+\section{Ricettario: esecuzione della pipeline}
+\label{sec:recipe}
+Sequenza completa da zero a \code{popolazione\_K7C\_naz.csv}. Prerequisiti:
+env \code{ml} attivo; repo \code{maxent-popsynth-pcd} clonato in
+\code{\textasciitilde/progetti/}; \code{pip install lxml openpyxl}. Script
+in \code{\textasciitilde/progetti/gsp/scripts/}. Le fasi 0--4 sono
+\textbf{generiche per qualunque comune} (parametro \code{<codice>},
+ITTER107); le fasi 5--8 sono generiche nel disegno ma gli script attuali
+hanno tre punti parametrizzati su Brescia, elencati in
+\S\ref{sec:adapt}.
+
+\medskip\noindent\textbf{Fase 0 --- catalogo (una tantum, riusabile).}
+\begin{lstlisting}
+python istat_catalog.py                 # scarica e indicizza 4884 dataflow
+python istat_catalog.py istruzione      # esempio di grep esplorativa
+\end{lstlisting}
+
+\noindent\textbf{Fase 1 --- tavole comunali} (esplorazione staged, poi fetch;
+$\sim$3 min per il throttling).
+\begin{lstlisting}
+python fetch_comune.py <codice> --explore    # strutture: dimensioni, territorio
+python fetch_comune.py <codice>              # 7 tavole -> data/comuni/<codice>/
+\end{lstlisting}
+
+\noindent\textbf{Fase 2 --- tavole-vincolo comunali} (per ogni ancoraggio che
+serve; K7C usa \code{--anno 2024}).
+\begin{lstlisting}
+python build_constraints.py <codice> --anno 2024
+python build_constraints.py <codice> --anno 2025    # opzionale, K6C recente
+\end{lstlisting}
+Verificare nel log: pop totale plausibile; report.md con MAE del raccordo
+(atteso $\approx0$ post-2018).
+
+\medskip\noindent\textbf{Fase 3 --- ConstraintSet K6C e fit} (opzionale ma
+consigliato come regressione).
+\begin{lstlisting}
+python cs_build.py <codice> --anno 2025
+python fit_cs.py <codice> --anno 2025 --eps 1e-8 --min-alpha 2e-4 --no-gibbs
+\end{lstlisting}
+
+\noindent\textbf{Fase 4 --- sezioni di censimento} (bulk, nessun rate limit).
+\begin{lstlisting}
+mkdir -p ~/progetti/gsp/data/submun && cd ~/progetti/gsp/data/submun
+wget https://esploradati.istat.it/databrowser/DWL/PERMPOP/SUBCOM/Dati_regionali_2023.zip
+unzip Dati_regionali_2023.zip "Dati_regionali_2023/R<NN>_<Regione>_2023_sezioni.xlsx" \
+      "Dati_regionali_2023/TRACCIATO FILE REGIONALI.xlsx"
+\end{lstlisting}
+Estrarre il comune dal file regionale (filtro \code{PROCOM}, xlsx $\to$
+csv) e verificare: n.\ sezioni, \code{COM\_ASC1} popolata e con quante zone,
+sezioni fittizie 888888x, P1 vs popolazione attesa.
+
+\medskip\noindent\textbf{Fase 5 --- tabelle di quartiere.}
+\begin{lstlisting}
+python build_zona_tables.py     # Z1-Z4 + zona_nomi -> data/comuni/<codice>/zona_2023/
+\end{lstlisting}
+Audit stampati: totali $=$ comunale, quota stranieri per quartiere (sanity
+qualitativa).
+
+\medskip\noindent\textbf{Fase 6 --- ConstraintSet K7C e fit.}
+\begin{lstlisting}
+python cs_build.py <codice> --anno 2024 --livello K7C
+python fit_cs.py <codice> --anno 2024 --livello K7C --eps 1e-8 \
+                --min-alpha 2e-4 --no-gibbs
+\end{lstlisting}
+Nel build verificare: somme blocchi (Z1--Z3 $=1.0000$), audit Z-vs-Z
+$\sim10^{-11}$ e Z-vs-comunale $=0$. Nel fit: MRE$_{\alpha>0}$ attesa
+$\sim10^{-4}$--$10^{-3}$; se compare discesa$\to$risalita, c'\`e un margine
+sovrapposto non armonizzato (\S\ref{sec:k7c}). Output:
+\code{popolazione\_K7C.csv}.
+(Facoltativo, caratterizzazione GibbsPCD: stesso comando senza
+\code{--no-gibbs}, con \code{--pool} dimensionato dalla formula del
+pavimento e \code{--numba}.)
+
+\medskip\noindent\textbf{Fase 7 --- nazionalit\`a two-stage.}
+\begin{lstlisting}
+python assign_nationality.py <codice> --anno 2024
+\end{lstlisting}
+Verificare: classificazione UE stampata; doppia contabilit\`a
+comunale$\leftrightarrow$sezioni; top paesi e paese-top per quartiere.
+Output finale: \code{popolazione\_K7C\_naz.csv}.
+
+\subsection{Adattamento a un comune diverso da Brescia}
+\label{sec:adapt}
+Tre punti oggi parametrizzati su Brescia, da generalizzare (candidati per una
+v3 degli script):
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item \textbf{estrazione sezioni}: il filtro \code{PROCOM} dal file
+  regionale \`e un one-liner manuale; \code{build\_zona\_tables.py} e
+  \code{assign\_nationality.py} leggono il path hardcoded
+  \code{brescia\_sezioni\_2023.csv};
+  \item \textbf{mappa nomi ASC} (\code{ASC\_NOMI}): fornita a mano per
+  Brescia; per altri comuni va reperita dal comune stesso (i codici
+  \code{COM\_ASC1} sono nel dato, i nomi no) e l'\code{assert len==33}
+  parametrizzato;
+  \item \textbf{presenza delle ASC}: verificare che \code{COM\_ASC1} sia
+  popolata per il comune scelto; se il comune non ha partizioni
+  amministrative dichiarate, la zona va costruita per aggregazione
+  spaziale delle sezioni (basi territoriali 2021 + confini scelti).
+\end{enumerate}
+Con questi tre punti resi parametrici, la pipeline \`e end-to-end generica:
+\code{<codice>} $\to$ \code{popolazione\_K7C\_naz.csv}.
+
+%=======================================================================
+\section{Da fare / prossimi passi}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item[$\boxtimes$] Nazionalit\`a two-stage livello 1 --- v0.4.
+  \item[$\square$] Generalizzazione multi-comune degli script sub-comunali
+  (\S\ref{sec:adapt}) $+$ run di regressione su Torino 001272.
+  \item[$\square$] Run B (pool $=$ popolazione, $\lambda$ caldi): misura
+  diretta del pavimento stazionario; richiede warm start (subclass del
+  solver) --- da ridiscutere prima.
+  \item[$\square$] Via/civico entro quartiere (macchinario geografico v3).
+  \item[$\square$] Seed esplicito nel kernel Numba.
+  \item[$\square$] Variante Caffaro: esclusione sezione fittizia (549) con
+  riscalatura.
+  \item[$\square$] $\sigma$ campionarie del censimento; UE/extra-UE come
+  raffinamento della cittadinanza nel CS; famiglie e background migratorio.
+  \item[$\square$] Aggiornamento annuale: sub-comunale 2024 al rilascio.
+\end{itemize}
+
+\end{document}

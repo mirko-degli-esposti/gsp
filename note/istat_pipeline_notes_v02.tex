@@ -1,0 +1,325 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Scommentare in locale se la texlive li include (nel sandbox di compilazione mancavano):
+\usepackage[italian]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\hypersetup{colorlinks=true, linkcolor=blue!50!black, urlcolor=blue!50!black}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  framerule=0.2pt,
+  backgroundcolor=\color{gray!6},
+  keywordstyle=\color{blue!60!black},
+  commentstyle=\color{green!40!black},
+  showstringspaces=false,
+  language=Python
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\flow}[1]{\texttt{\small #1}}
+
+\title{\textbf{Pipeline SDMX--ISTAT per popolazioni sintetiche comunali}\\[2mm]
+\large Note tecniche --- v0.2}
+\author{M.~Degli Esposti}
+\date{19 luglio 2026 \quad (v0.1: 18 luglio 2026)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Queste note documentano la costruzione e la validazione di una pipeline automatica
+per l'estrazione di vincoli demografici e socio-economici a livello comunale dal
+web service SDMX di ISTAT (\code{esploradati.istat.it}) e --- da v0.2 --- la loro
+trasformazione in un ConstraintSet MaxEnt e il fit con i solver del repo
+\code{maxent-popsynth-pcd} (esatto e GibbsPCD). Validazione completa sul caso
+Brescia (017029, ancoraggio 1/1/2025, $|X|=5\,376$, $m\simeq 250$). Risultati
+metodologici principali: (i) anagrafe post-censuaria e censimento permanente
+coincidono esattamente cella per cella su sesso$\times$et\`a (MAE $=0$) e le
+stime censuarie SDMX sono non arrotondate; (ii) i blocchi di vincoli definiti su
+un sotto-universo vanno completati a partizione dell'universo del CS, pena
+infattibilit\`a e collasso del duale; (iii) le esclusioni strutturali
+($\alpha=0$) vanno applicate post-hoc sul supporto, non come vincoli;
+(iv) su CS reali con $\alpha$ su tre ordini di grandezza, la precisione di
+GibbsPCD \`e limitata da un pavimento stocastico \emph{predicibile}
+$\overline{\sqrt{(1-\alpha)/(\alpha N)}}$, verificato empiricamente
+(predetto $0.060$, osservato $0.051$--$0.074$); (v) il kernel Numba (lookup
+CSR) \`e semanticamente equivalente e $12\times$ pi\`u veloce.
+\end{abstract}
+
+\tableofcontents
+
+%=======================================================================
+\section{Scopo e contesto}
+Obiettivo: una pipeline riproducibile che, dato un codice comune ISTAT, produca il
+miglior constraint set ottenibile dai dati pubblici per la sintesi di una
+popolazione individuale (attributi: sesso, et\`a, stato civile,
+cittadinanza, istruzione, condizione professionale, nazionalit\`a) e la
+popolazione MaxEnt corrispondente. Caso guida: Brescia (SIN Caffaro), con
+estensione prevista all'attributo di zona sub-comunale (33 quartieri).
+Esecuzione locale (WSL2 Ubuntu, conda env \code{ml}, storage in
+\code{\textasciitilde/progetti/}); sostituisce il flusso Colab.
+
+%=======================================================================
+\section{Endpoint SDMX \code{esploradati}: comportamenti non documentati}
+\label{sec:quirks}
+Lezioni operative, incorporate come guardie nel modulo \code{istat\_sdmx.py}:
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Limite $\sim$260 caratteri per segmento URL} (frontend http.sys):
+  \code{400 Bad Request -- Invalid URL} prima che la richiesta raggiunga il WS;
+  il query builder del sito genera URL che lo violano. Soluzione: wildcard nel
+  KEY e filtro degli aggregati a valle.
+  \item \textbf{\code{startPeriod}/\code{endPeriod} ignorati} su dataflow
+  annuali: filtro client-side su \code{TIME\_PERIOD}; effetto collaterale
+  positivo, serie storiche complete (anagrafe 2019--2025, censimento 2018--2024).
+  \item \textbf{SDMX-CSV via content negotiation}
+  (\code{Accept: application/vnd.sdmx.data+csv;version=1.0.0}).
+  \item \textbf{Rate limit} $\sim$5 query/min: throttling 13\,s; retry con
+  backoff sui timeout sporadici.
+  \item \textbf{Stime censuarie non arrotondate}: il canale SDMX serve le stime
+  con i decimali, internamente additive ($\sigma_{\text{arrotondamento}}=0$).
+\end{enumerate}
+
+%=======================================================================
+\section{I tre ``laghi'' del datalake ISTAT}
+\label{sec:laghi}
+\begin{center}
+\begin{tabular}{@{}p{3.1cm}p{4.6cm}p{2.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Fonte} & \textbf{Contenuto comunale} & \textbf{Et\`a} & \textbf{Natura}\\
+\midrule
+Anagrafe / ANPR (\flow{DCIS\_*}) & sesso, et\`a, stato civile; stranieri; paese di cittadinanza & singolo anno & conteggi amministrativi, riconciliati col censimento\\
+\addlinespace
+Censimento permanente (\flow{DF\_DCSS\_*}) & istruzione, condizione professionale, cittadinanza, famiglie, background migratorio, pendolarismo & singolo anno o classi & stime (campione + amm.), annuali dal 2018\\
+\addlinespace
+Indagini campionarie (AVQ, EHIS, \dots) & --- (solo regionale/prov.) & classi & stime campionarie\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Architettura conseguente: \emph{spine} anagrafica + \emph{strato}
+censuario a livello comune; salute/stili di vita come condizionali regionali
+(two-stage).
+
+%=======================================================================
+\section{Catalogo dataflow: ricerca sistematica}
+Elenco completo dei dataflow (\code{/dataflow/IT1}: 4\,884 voci) scaricato una
+volta e greppato in locale (\code{istat\_catalog.py}). Le tavole censuarie non
+contengono ``censimento'' nel nome: prefisso \flow{DF\_DCSS\_*}; granularit\`a
+nel suffisso (\flow{- comuni}, \flow{\_GC}, \flow{>20.000 ab.}).
+
+%=======================================================================
+\section{Architettura della pipeline}
+Sei script in \code{\textasciitilde/progetti/gsp/scripts/}:
+\begin{center}
+\begin{tabular}{@{}lp{9.6cm}@{}}
+\toprule
+\textbf{Script} & \textbf{Funzione}\\
+\midrule
+\code{istat\_catalog.py} & catalogo dataflow + \code{grep\_catalog(pattern)}\\
+\code{istat\_sdmx.py} & modulo generico: cache strutture, dimensioni dal DSD, \code{build\_key} con wildcard, fetch SDMX-CSV, decodifica via mapping DSD, throttling e retry\\
+\code{fetch\_comune.py} & rosa dei fondamentali per codice comune; territorio auto-rilevato; \code{--explore} / fetch / \code{--only}; cache dei CSV\\
+\code{build\_constraints\_v1.py} & dai CSV decodificati alle tavole-vincolo C1--C6 + nazionalit\`a; report di consistenza\\
+\code{cs\_build.py} & dalle tavole-vincolo al ConstraintSet (\S\ref{sec:csbuild})\\
+\code{fit\_k6c.py} & fit esatto + GibbsPCD, diagnostiche, campione sintetico (\S\ref{sec:fit})\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Scelte di design: KEY guidato dal DSD (ordine dimensioni mai
+hardcodato); decodifica via mapping dimensione$\to$codelist dichiarato (non
+euristica); territorio auto-rilevato; esecuzione staged (explore $\to$ smoke
+test $\to$ run).
+
+%=======================================================================
+\section{L'ipercubo DCSS}
+Tutte le tavole censuarie comunali condividono un unico DSD ($\sim$10
+dimensioni); ogni tavola \`e una fetta con le dimensioni non pertinenti al
+codice totale. Cardinalit\`a delle codelist non indicative (le determina il
+ContentConstraint); molte colonne costanti nei CSV; wildcard su singolo comune
+$\Rightarrow$ risposte piccole.
+
+%=======================================================================
+\section{Rosa dei fondamentali e semantica dei codici}
+Tavole per comune (righe: Brescia, tutte le annualit\`a):
+\begin{center}
+\small
+\begin{tabular}{@{}llllr@{}}
+\toprule
+\textbf{Nome} & \textbf{Dataflow} & \textbf{Incrocio} & \textbf{Et\`a} & \textbf{Righe}\\
+\midrule
+anag\_sesso\_eta\_statociv & \flow{22\_289\_DF\_DCIS\_POPRES1\_26} & S$\times$E$\times$SC & singola & 8\,568\\
+cens\_sesso\_eta\_cittadinanza & \flow{DF\_DCSS\_POP\_DEMCITMIG\_SETA\_1} & S$\times$E$\times$C & singola & 3\,658\\
+cens\_istruzione\_eta & \flow{DF\_DCSS\_ISTR\_LAV\_PEN\_2\_TV\_1} & S$\times$E$\times$I & 4 classi & 819\\
+cens\_istruzione\_cittadinanza & \flow{DF\_DCSS\_ISTR\_LAV\_PEN\_2\_TV\_2} & C$\times$I & tot.\ (9+) & 441\\
+cens\_condprof\_eta & \flow{DF\_DCSS\_ISTR\_LAV\_PEN\_2\_TV\_3} & S$\times$E$\times$P & 4 classi & 819\\
+cens\_condprof\_cittadinanza & \flow{DF\_DCSS\_ISTR\_LAV\_PEN\_2\_TV\_4} & C$\times$P & tot.\ (15+) & 486\\
+cens\_stranieri\_paesi & \flow{DF\_DCSS\_POP\_DEMCITMIG\_TV\_3} & paese & --- & 2\,454\\
+\bottomrule
+\end{tabular}
+\end{center}
+Semantica verificata sul dato: stranieri = \code{FRGAPO} (normalizzato a
+\code{FRG}; fallback \code{TOTAL}$-$\code{ITL}); gerarchia condprof additiva al
+centesimo: $22 = 1+12$, $23 = 4+5+7+24$ (aggregati scartati solo se il
+dettaglio \`e presente); classi d'et\`a elementari per regola di contenimento.
+
+%=======================================================================
+\section{Tavole-vincolo (Brescia 017029, ancoraggio 1/1/2025)}
+Filosofia: censimento come distribuzione condizionale applicata ai conteggi
+anagrafici; marginali demografici esatti per costruzione.
+Collassi: stato civile $7\to4$ (unioni civili assimilate); istruzione $10\to6$
+(label-driven); condprof 6 modalit\`a elementari; nazionalit\`a
+$P(\text{paese}\mid\text{FRG})$, 143 paesi, stranieri $38\,228$ ($19{,}1\%$),
+top-5 Romania, Pakistan, Ucraina, Egitto, India.
+
+\medskip\noindent\textbf{Risultato chiave (v0.1).} Raccordo anagrafe
+1/1/2025 $\leftrightarrow$ censimento 2024 su sesso$\times$et\`a:
+MAE $=0.0$, scarto totale $=0$ su $199\,853$. Le due fonti sono la stessa base
+riconciliata; i vincoli demografici sono tutti hard; il carattere soft residuo
+delle variabili socio-economiche \`e il solo errore campionario documentato da
+ISTAT.
+
+%=======================================================================
+\section{Dal constraint set al ConstraintSet: \code{cs\_build.py}}
+\label{sec:csbuild}
+Livello \textbf{K6C}: sesso, eta, stato\_civile, cittadinanza, istruzione,
+condizione; $|X| = 2\times8\times4\times2\times6\times7 = 5\,376$
+(la settima modalit\`a di condizione \`e \code{non\_applicabile}, v.\ sotto).
+Bin d'et\`a: \code{0-8, 9-14, 15-24, 25-34, 35-49, 50-64, 65-74, 75+} ---
+raffinano entrambe le famiglie di classi censuarie; unica spezzatura interna
+25--49 $\to$ 25--34/35--49. Universo default: popolazione intera
+(\code{--min-age} per restringere).
+
+\medskip\noindent Tre primitive modulari:
+\begin{itemize}[leftmargin=*]
+  \item \code{block\_exact}: tavola gi\`a alla granularit\`a del CS (C1, C2;
+  domani i blocchi zona da SUB\_MUN);
+  \item \code{block\_from\_class}: attributo$\times$(sesso, classe censuaria)
+  $\to$ bin, con allocazione pesata sull'anagrafe a singolo anno. Unica
+  assunzione dichiarata della pipeline: \emph{distribuzione dell'attributo
+  costante entro la classe censuaria};
+  \item \code{block\_conditional}: quote esterne (regionali/nazionali)
+  $\times$ conteggi comunali --- gancio per le fonti two-stage.
+\end{itemize}
+Copertura strutturale sotto l'et\`a minima delle tavole: istruzione
+$=$ \code{nessun\_titolo} sotto i 9 anni; condizione $=$ \code{non\_applicabile}
+sotto i 15. Blocchi risultanti: A (S$\times$E$\times$SC, anagrafe),
+B (S$\times$E$\times$C), C (S$\times$E$\times$I), D (S$\times$E$\times$P),
+E (C$\times$I), F (C$\times$P), S$_i$/S$_c$ strutturali; $m=269$;
+verifica somme: A $=$ B $=$ E $=$ F $= 1.0000$;
+C$+$S$_i$ $=$ D$+$S$_c$ $= 1.0000$ esatti.
+
+\medskip\noindent\textbf{Lezione di infattibilit\`a (E/F).} Nella prima
+versione E ed F usavano i target censuari del solo universo 9+/15+: con
+l'universo del CS a popolazione intera, il vincolo di uguaglianza \`e
+infattibile (es.\ la cella (ITL, nessun\_titolo) deve contenere anche tutti i
+bambini italiani under-9: $\mathbb{E}[f] \ge \alpha_E + 0.06$ sempre)
+$\Rightarrow$ duale illimitato, $\lambda$ in fuga, collasso della soluzione su
+una cella ($H=0$, supporto $1/|X|$), MRE bloccata su plateau. Regola generale:
+\emph{con vincoli di uguaglianza, ogni blocco definito su un sotto-universo va
+completato a partizione dell'universo del CS (aggiungendo la massa
+complementare) oppure dichiarato parziale}. Il completamento usa la
+ripartizione esatta per cittadinanza degli under-soglia da C2.
+
+%=======================================================================
+\section{Fit: solver esatto e GibbsPCD}
+\label{sec:fit}
+Setup: \code{fit\_k6c.py}, pruning \code{--min-alpha 2e-4} (21 vincoli
+droppati; costo informativo nullo: $H$ della soluzione invariata alla terza
+cifra), $m=246$ vincoli effettivi, $\alpha \in [2\cdot10^{-4},\, 0.37]$.
+
+\subsection{Esclusioni strutturali ($\alpha=0$)}
+Due vincoli a zero (vedovi 15--24, M e F): zeri anagrafici genuini. Un modello
+log-lineare non pu\`o rappresentare massa nulla con $\lambda$ finito:
+\begin{itemize}[leftmargin=*]
+  \item come vincoli ($\alpha=0$ o floored a $\varepsilon=10^{-8}$)
+  avvelenano il duale (direzioni rigide, oscillazioni L-BFGS) e dominano la
+  MRE del solver ($|\hat\alpha - \varepsilon|/\varepsilon = O(10)$ anche a fit
+  perfetto), falsando pure il criterio di stop;
+  \item soluzione adottata: \textbf{esclusioni fuori dai solver, applicate
+  post-hoc sul supporto} ($p[\text{celle escluse}]=0$, rinormalizzazione).
+  L'esclusione \`e una definizione del dominio, non un'aspettazione da matchare.
+\end{itemize}
+Massa spontanea del Gibbs sulle celle escluse (misurata pre-azzeramento):
+$\sim 3\cdot10^{-3}$ ($\approx 560$ individui su 200k) --- azzerata a costo
+zero dal post-hoc.
+
+\subsection{Risultati}
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & \textbf{MRE}$_{\alpha>0}$ & \textbf{H (nat)} & \textbf{supporto} & \textbf{KL vs exact} & \textbf{tempo}\\
+\midrule
+Esatto (L-BFGS) & $5.0\cdot10^{-4}$ & 5.842 & 4\,181/5\,376 & --- & 27\,s\\
+GibbsPCD ($N{=}50$k, no-numba) & $5.1\cdot10^{-2}$ & 6.142 & 5\,208 & $7.6\cdot10^{-2}$ & 485\,s\\
+GibbsPCD ($N{=}50$k, numba) & $7.4\cdot10^{-2}$ & 6.254 & 5\,208 & $1.1\cdot10^{-1}$ & 40\,s\\
+\bottomrule
+\end{tabular}
+\end{center}
+Campione sintetico $n=199\,853$ generato dal modello esatto
+(\code{popolazione\_K6C.csv}) --- bozza Brescia v4 senza zona e nazionalit\`a.
+
+\subsection{Pavimento stocastico di GibbsPCD (finding)}
+Il gradiente PCD stima ogni $\alpha_j$ dal pool: deviazione relativa per sweep
+$\sqrt{(1-\alpha_j)/(\alpha_j N)}$. Pavimento MRE predetto:
+\[
+\text{MRE}_{\min} \approx \frac{1}{m}\sum_j \sqrt{\frac{1-\alpha_j}{\alpha_j N}}
+ = 0.0597 \quad (N=5\cdot10^4),
+\]
+osservato $0.051$ e $0.074$ su due run indipendenti: \textbf{il fit \`e
+noise-limited, non sottoallenato}, e il pavimento \`e calcolabile
+\emph{a priori}. Regola di dimensionamento: $N \gtrsim 100/\alpha_{\min}$ per
+$\sim$10\% di rumore sul vincolo pi\`u piccolo; per una MRE target $\tau$,
+$N \approx \overline{1/\alpha}\,/\tau^2$. Nota di contesto: i benchmark
+A0/A1 usano $\alpha \ge 1/n$ da \code{add\_from\_data}; il regime
+$\alpha \ll 1/N_{\text{pool}}$ dei CS reali non era coperto.
+
+\subsection{Kernel Numba (fix CSR)}
+Il lookup dict-of-tuples (non tipabile in nopython) \`e appiattito in array CSR
+\code{int64}; kernel \code{@njit(parallel=True)} con prange sugli individui
+(catene indipendenti: parallelizzazione corretta per costruzione). Traiettoria
+MRE sovrapponibile al path NumPy entro il rumore stocastico; \textbf{speedup
+$12\times$} (485\,s $\to$ 40\,s, Ryzen AI 9 HX 375, 24 thread). RNG del kernel
+non seedato e distinto dal path NumPy: riproducibilit\`a tra backend non
+garantita (da sistemare per gli esperimenti da pubblicazione).
+
+\subsection{Decisione di produzione}
+A livello comunale ($|X| \sim 5\cdot10^3$) il solver esatto domina:
+$100\times$ pi\`u preciso, tempi comparabili. Con la zona (33 quartieri,
+$|X| \approx 1.8\cdot10^5$) l'esatto resta praticabile; GibbsPCD \`e lo
+strumento per domini non enumerabili, con $N$ dimensionato dalla formula del
+pavimento. Ruolo attuale del Gibbs: validazione incrociata e caratterizzazione
+dello strumento (linea ``controllability first'').
+
+%=======================================================================
+\section{Da fare / prossimi passi}
+\begin{itemize}[leftmargin=*]
+  \item[$\boxtimes$] Adattatore ConstraintSet (\code{cs\_build.py}) + fit
+  (\code{fit\_k6c.py}) --- v0.2.
+  \item[$\square$] \textbf{Livello sub-comunale}: fetch \flow{SUB\_MUN\_DATA}
+  (tema \code{censpop}) per le 33 aree sub-comunali di Brescia; variabile
+  \code{zona} in testa a \code{VAR\_ORDER}, blocchi esatti; K7C.
+  \item[$\square$] Nazionalit\`a two-stage sul campione
+  (\code{nationality\_conditional.csv}).
+  \item[$\square$] Seed esplicito nel kernel Numba (riproducibilit\`a).
+  \item[$\square$] $\sigma$ campionarie del censimento permanente per i
+  vincoli soft.
+  \item[$\square$] Secondo comune (es.\ Torino 001272): robustezza dei
+  collassi label-driven e della gerarchia condprof.
+  \item[$\square$] Tavole aggiuntive: famiglie, background migratorio,
+  pendolarismo.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,26 @@
+# dati e output di run
+data/
+regress/
+*.csv
+*.npz
+
+# python
+__pycache__/
+*.py[cod]
+
+# artefatti di compilazione LaTeX
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.out
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+note/*.log
+
+# editor
+.vscode/

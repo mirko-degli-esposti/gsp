@@ -1,0 +1,298 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Scommentare in locale se la texlive li include:
+%\usepackage[italian]{babel}
+%\usepackage{lmodern}
+%\usepackage{microtype}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\hypersetup{colorlinks=true, linkcolor=blue!50!black, urlcolor=blue!50!black}
+
+\lstset{
+  basicstyle=\ttfamily\small, breaklines=true, frame=single, framerule=0.2pt,
+  backgroundcolor=\color{gray!6}, showstringspaces=false, language=Python
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\flow}[1]{\texttt{\small #1}}
+
+\title{\textbf{Pipeline SDMX--ISTAT per popolazioni sintetiche comunali e sub-comunali}\\[2mm]
+\large Note tecniche --- v0.3}
+\author{M.~Degli Esposti}
+\date{19 luglio 2026 \quad (v0.1--v0.2: 18--19 luglio 2026)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Pipeline riproducibile dai dati pubblici ISTAT alla popolazione sintetica
+MaxEnt, ora estesa al livello \emph{sub-comunale}: Brescia K7C con variabile
+zona a 33 quartieri ($|X|=177\,408$, $m\simeq2\,500$), da sezioni di
+censimento 2023. Risultati principali aggiunti in v0.3:
+(vi) le sezioni di censimento portano i codici delle aree sub-comunali
+(\code{COM\_ASC1}) per tutti i comuni partizionati --- niente spatial join;
+(vii) quinta identit\`a esatta della base riconciliata: sezioni $\equiv$
+censimento comunale 2023 $\equiv$ anagrafe 1/1/2024 $=198\,259$ alla persona;
+(viii) \textbf{lezione di consistenza generalizzata}: con vincoli di
+uguaglianza devono coincidere \emph{tutti} i margini impliciti sovrapposti tra
+blocchi, non solo quelli verso la spine --- violarla produce collasso del
+duale; l'IPF entra come \emph{armonizzatore di tabelle} a monte del MaxEnt
+(non come solver); (ix) terza verifica della formula del pavimento stocastico
+PCD (predetto $0.0650$, osservato $0.0634$, $N=2\cdot10^5$): da osservazione a
+risultato replicato; (x) il pavimento limita lo \emph{stimatore-pool}, non la
+distribuzione appresa: la MRE dei $\lambda$ mediati da Adam batte il pavimento
+di $\sim2\times$.
+\end{abstract}
+
+\tableofcontents
+
+%=======================================================================
+\section{Scopo e contesto}
+Obiettivo: dato un codice comune ISTAT, produrre il miglior constraint set dai
+dati pubblici e la popolazione MaxEnt corrispondente; caso guida Brescia (SIN
+Caffaro), ora con attributo di zona a 33 quartieri. Esecuzione locale (WSL2,
+env \code{ml}); solver dal repo \code{maxent-popsynth-pcd} (esatto L-BFGS,
+GibbsPCD con kernel Numba CSR).
+
+%=======================================================================
+\section{Endpoint SDMX \code{esploradati}: comportamenti non documentati}
+\label{sec:quirks}
+(v0.1, invariata) \begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item limite $\sim$260 char/segmento URL (http.sys) $\Rightarrow$ wildcard;
+  \item \code{startPeriod}/\code{endPeriod} ignorati $\Rightarrow$ filtro
+  client-side; serie storiche complete gratis;
+  \item SDMX-CSV via \code{Accept: application/vnd.sdmx.data+csv;version=1.0.0};
+  \item rate limit $\sim$5/min, throttling 13\,s, retry;
+  \item stime censuarie comunali \emph{non arrotondate} (decimali, additive).
+\end{enumerate}
+
+%=======================================================================
+\section{Le fonti: tre laghi pi\`u uno}
+\label{sec:laghi}
+Ai tre laghi di v0.1 (anagrafe \flow{DCIS\_*}; censimento permanente
+\flow{DF\_DCSS\_*}; indagini campionarie, solo regionali) si aggiunge il
+canale \textbf{sub-comunale}:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item le \emph{aree sub-comunali} (ASC) aggregate via SDMX
+  (\flow{DF\_BULK\_SUBCOM2021/2023}) coprono \textbf{solo i capoluoghi delle
+  Citt\`a Metropolitane}: Brescia esclusa;
+  \item le \emph{sezioni di censimento} coprono tutti i comuni: bulk download
+  (niente SDMX, niente rate limit)
+  \code{Dati\_regionali\_2023.zip} su
+  \code{esploradati.istat.it/databrowser/DWL/PERMPOP/SUBCOM/} --- un xlsx per
+  regione + \code{TRACCIATO FILE REGIONALI.xlsx}; edizione censimento
+  31-12-2023 (agg.\ 5/3/2026: pi\`u variabili, +59 comuni); disponibile anche
+  il 2021;
+  \item \textbf{scoperta chiave}: il file sezioni contiene le colonne
+  \code{COM\_ASC1/2/3} --- i codici delle aree sub-comunali sono assegnati
+  sezione per sezione \emph{per tutti i comuni partizionati}. Per Brescia
+  \code{COM\_ASC1} ha 33 valori (\code{17029001}--\code{17029033}) $=$ i 33
+  quartieri: lo spatial join sezioni$\to$quartieri \`e superfluo, basta un
+  groupby.
+\end{itemize}
+Variabili del tracciato utili: sesso$\times$et\`a quinquennale (P30--45,
+P67--82), istruzione a 5 livelli per sesso (P86--100, universo 9+), occupati
+15--64 per sesso (P101--103), italiani/stranieri per sesso$\times$macro-et\`a
+(IT1--12, ST22--33), UE/extra-UE, background migratorio (EM1--6), famiglie
+(PF), abitazioni.
+
+%=======================================================================
+\section{Brescia: sezioni, quartieri, audit}
+\label{sec:submun}
+1\,822 sezioni, 33 quartieri; 1 sezione fittizia (888888x, senza fissa
+dimora): 549 persone, assegnate da ISTAT al quartiere \code{17029004} ---
+\textbf{tenute} (opzione a: coerenza contabile con i totali ufficiali;
+esclusione con riscalatura come variante documentata per l'analisi di
+esposizione Caffaro).
+
+\medskip\noindent\textbf{Quinta identit\`a esatta della base riconciliata:}
+\[
+\text{sezioni 2023} \;\equiv\; \text{censimento comunale 2023} \;\equiv\;
+\text{anagrafe 1/1/2024} \;=\; 198\,259 \ \text{(alla persona; stranieri
+} 37\,478\text{)}.
+\]
+Additivit\`a interna piena (classi et\`a $\to$ P1; istruzione $\to$ P83).
+Differenza di convenzione: le sezioni sono in \emph{interi} (allocazione
+RBI$\leftrightarrow$RSBL di individui interi), il canale SDMX comunale in
+stime decimali --- scarti di unit\`a possibili sui sotto-totali, assorbiti dal
+disegno condizionale (\S\ref{sec:k7c}).
+
+\medskip\noindent Ancoraggio temporale K7C: \code{--anno 2024}
+(anagrafe 1/1/2024 $\equiv$ censimento 31-12-2023 $\equiv$ sezioni), tutto
+sulla stessa data. Tabelle di quartiere (\code{build\_zona\_tables.py}):
+Z1 zona$\times$sesso$\times$et\`a5 (1\,056 righe), Z2
+zona$\times$sesso$\times$macro-et\`a$\times$ITL/FRG (396), Z3
+zona$\times$sesso$\times$istruzione5 (330), Z4
+zona$\times$sesso$\times$occupato/non (132, 15--64). Sanity qualitativa:
+top-5 quota stranieri = Fiumicello (0.371), Centro Storico Nord (0.303),
+Primo Maggio (0.285), Don Bosco (0.276), Chiesanuova (0.259) --- la geografia
+sociale dell'orbita SIN Caffaro.
+
+%=======================================================================
+\section{K7C: disegno dei blocchi di zona}
+\label{sec:k7c}
+Livello \textbf{K7C}: \code{zona} in testa a \code{VAR\_ORDER};
+$|X| = 33\times5\,376 = 177\,408$. Scelta di ariet\`a: \emph{piena} dove il
+dato la sostiene (Z2 a ariet\`a 4: zona$\times$sesso$\times$et\`a$\times$
+cittadinanza cattura direttamente ``dentro Fiumicello gli stranieri sono
+giovani'', non solo i due fatti separati).
+
+\medskip\noindent\textbf{Principio}: ogni tabella di zona entra come
+$P(\text{zona}\mid\text{gruppo})\times$ conteggi comunali del gruppo, mai come
+conteggi grezzi: i margini sommati sulle zone coincidono coi blocchi comunali
+per costruzione. Assunzioni aggiuntive dichiarate: (2) quota di zona costante
+entro la classe quinquennale (Z1) e la macro-classe (Z2); (3)
+$P(\text{zona}\mid\text{sesso}, \text{occupato})$ costante sui bin 15--64
+(Z4, che vincola il solo lato occupato).
+
+\subsection{Lezione di consistenza generalizzata (e collasso istruttivo)}
+\label{sec:lesson}
+Il primo fit K7C \`e collassato con firma nuova: discesa (MRE
+$0.26\to0.06$ in 40 iter), poi \emph{risalita} fino a plateau ($3.4$).
+Causa: i blocchi Z definivano gli stessi pattern impliciti attraverso
+decomposizioni condizionali diverse --- es.\ sul bin 15--24 il totale
+(zona, sesso, et\`a) secondo Z1 usa le quote quinquennali 15--19/20--24,
+secondo Z2 (sommato sulle cittadinanze) la quota piatta della macro-classe
+15--64: due valori diversi per lo stesso pattern $\Rightarrow$ vincoli di
+uguaglianza contraddittori $\Rightarrow$ duale illimitato.
+
+\medskip\noindent\textbf{Regola generalizzata} (estende la lezione E/F di
+v0.2): \emph{con vincoli di uguaglianza devono coincidere numericamente
+TUTTI i margini impliciti sovrapposti tra blocchi --- non solo quelli verso
+la spine; l'audit deve verificarli tutti prima del fit.}
+
+\medskip\noindent\textbf{Fix: IPF come armonizzatore di tabelle} (non come
+solver). Per ogni (sesso, bin): IPF sulla matrice 33$\times$2
+zona$\times$cittadinanza con margini-riga $=$ Z1 e margini-colonna $=$ blocco
+comunale B (Z2); per sesso: zona$\times$istruzione con righe Z1 e colonne
+totali comunali (Z3); Z4 con cap cellwise su Z1 e ridistribuzione (34 celle
+cappate su Brescia). Audit post-armonizzazione: Z2-vs-Z1 e Z3-vs-Z1
+$\max|\Delta| \sim 10^{-11}$; Z-vs-comunale $=0$. Ruolo concettuale: il
+raking, perdente come solver (AISTAT), \`e lo strumento giusto per rendere
+mutuamente consistenti tabelle sovrapposte \emph{a monte} del MaxEnt.
+
+%=======================================================================
+\section{Fit K7C}
+\label{sec:fitk7c}
+Setup: \code{fit\_cs.py} (generalizza \code{fit\_k6c.py}; firme dei blocchi
+per nome variabile, robuste allo shift di indici della zona), pruning
+\code{--min-alpha 2e-4}, $m=2\,216$ effettivi su $2\,513$; esclusioni
+$\alpha=0$ fuori dai solver, post-hoc sul supporto (5\,544 celle:
+$2\times33\times2\times6\times7$). Matrice indicatrice $F$: 3.15\,GB,
+costruita in 4\,s.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & \textbf{MRE}$_{\alpha>0}$ & \textbf{H (nat)} & \textbf{supporto} & \textbf{KL vs exact} & \textbf{tempo}\\
+\midrule
+Esatto (L-BFGS) & $3.6\cdot10^{-4}$ & 9.157 & 130\,161/177\,408 & --- & 351\,s\\
+GibbsPCD ($N{=}2\cdot10^5$, numba) & $3.1\cdot10^{-2}$ & 9.592 & 171\,864 & $1.2\cdot10^{-1}$ & 1\,070\,s\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Nota su H: se la zona fosse indipendente dagli attributi,
+$H \approx H_{K6C} + H(\text{zona}) \approx 5.84 + 3.4$; il deficit misura
+l'informazione mutua zona$\leftrightarrow$attributi catturata dal CS.
+Campione $n=198\,259$ dal modello esatto (\code{popolazione\_K7C.csv}, con
+colonna quartiere); marginali di zona e quote stranieri per quartiere
+riprodotti (check sostanziale superato).
+
+\subsection{Pavimento stocastico: terza verifica (risultato replicato)}
+\[
+\text{MRE}_{\min} \approx \frac{1}{m}\sum_j
+\sqrt{\frac{1-\alpha_j}{\alpha_j N}}:
+\qquad
+\begin{array}{lll}
+\text{K6C},\ N{=}5\cdot10^4: & \text{pred.\ }0.0597, & \text{oss.\ }0.051/0.074;\\
+\text{K7C},\ N{=}2\cdot10^5: & \text{pred.\ }0.0650, & \text{oss.\ }0.0634.
+\end{array}
+\]
+Su un CS $9\times$ pi\`u grande e con spettro di $\alpha$ diverso, la
+predizione a priori sbaglia del 2\%: il pavimento \`e calcolabile dal solo
+constraint set, prima di ogni run. Regole di dimensionamento:
+$N \gtrsim 100/\alpha_{\min}$; per MRE target $\tau$:
+$N \approx \overline{1/\alpha}/\tau^2$.
+
+\subsection{Stimatore-pool vs distribuzione appresa (finding)}
+\label{sec:estimator}
+A convergenza, MRE calcolata sulle \emph{frequenze empiriche del pool}
+$=0.063$ (al pavimento); MRE calcolata sulla \emph{distribuzione implicata
+dai $\lambda$} (via matrice indicatrice) $=0.031$: fattore $\sim2$. I
+$\lambda$ sono mediati nel tempo da Adam lungo centinaia di outer e integrano
+l'informazione di molti pool successivi: \textbf{il pavimento stocastico
+limita lo stimatore-pool (singolo snapshot), non la distribuzione appresa}.
+Corollario: se il deliverable \`e $p_\lambda$ (o un campione da essa) anzich\'e
+il pool finale, la precisione effettiva \`e migliore del pavimento nominale.
+
+\subsection{Decisione di produzione (ribadita)}
+Anche a $|X|=1.8\cdot10^5$ il solver esatto domina: $100\times$ pi\`u preciso
+a un terzo del tempo. GibbsPCD: strumento per domini non enumerabili,
+con $N$ dimensionato dalla formula; ruolo attuale, caratterizzazione dello
+strumento (``controllability first'').
+
+%=======================================================================
+\section{Architettura aggiornata della pipeline}
+\begin{center}
+\begin{tabular}{@{}lp{9.4cm}@{}}
+\toprule
+\textbf{Script} & \textbf{Funzione}\\
+\midrule
+\code{istat\_catalog.py} & catalogo 4\,884 dataflow + grep\\
+\code{istat\_sdmx.py} & modulo SDMX generico (KEY dal DSD, CSV, cache, retry)\\
+\code{fetch\_comune.py} & rosa dei fondamentali comunali per codice comune\\
+\code{build\_constraints.py} & tavole comunali $\to$ vincoli C1--C6 + nazionalit\`a\\
+\code{build\_zona\_tables.py} & sezioni $\to$ tabelle di quartiere Z1--Z4 + audit\\
+\code{cs\_build.py} (v2) & vincoli $\to$ ConstraintSet; livelli K6C/K7C; IPF di armonizzazione\\
+\code{fit\_cs.py} & fit esatto + GibbsPCD (K6C/K7C), diagnostiche, popolazione\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%=======================================================================
+\section{Sintesi dei livelli}
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & \textbf{anno} & $|X|$ & $m$ & \textbf{MRE esatto} & \textbf{H (nat)}\\
+\midrule
+K6C & 1/1/2025 & 5\,376 & 269 & $5.0\cdot10^{-4}$ & 5.842\\
+K7C & 1/1/2024 & 177\,408 & 2\,513 & $3.6\cdot10^{-4}$ & 9.157\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%=======================================================================
+\section{Da fare / prossimi passi}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item[$\boxtimes$] Livello sub-comunale K7C (sezioni $\to$ 33 quartieri,
+  IPF, fit) --- v0.3.
+  \item[$\square$] \textbf{Run B} (pool $=$ popolazione $+$ $\lambda$ caldi
+  dall'esatto): misura diretta della fluttuazione stazionaria $=$ pavimento
+  isolato dal transiente; richiede warm start nel GibbsPCDSolver (subclass).
+  \item[$\square$] Nazionalit\`a two-stage sul campione K7C
+  (\code{nationality\_conditional.csv}); poi via/civico entro quartiere
+  (macchinario v3).
+  \item[$\square$] Seed esplicito nel kernel Numba (riproducibilit\`a tra
+  backend e tra run).
+  \item[$\square$] Variante Caffaro: esclusione sezione fittizia (549) con
+  riscalatura, per l'analisi di esposizione.
+  \item[$\square$] $\sigma$ campionarie del censimento permanente; secondo
+  comune (Torino 001272); tavole aggiuntive (famiglie, background
+  migratorio, UE/extra-UE come raffinamento cittadinanza).
+  \item[$\square$] Aggiornamento periodico: sub-comunale 2024 quando
+  rilasciato (piano ISTAT: annuale) $\to$ riallineamento in avanti.
+\end{itemize}
+
+\end{document}

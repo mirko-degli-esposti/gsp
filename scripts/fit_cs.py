@@ -338,8 +338,10 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
     if not NO_GIBBS:
         t0 = time.time()
         gibbs = GibbsPCDSolver(cs_g, use_numba=use_numba)
-        gibbs.fit(N_pool=pool, n_outer=outer, tol=TOL,
-                  pool_init=pool_init, lambdas_init=lam_init)
+        gibbs.fit(N_pool=pool, n_outer=outer, n_gibbs_sweeps=SWEEPS, tol=TOL,
+                  lr=LR, lr_tau=LR_TAU, verbose_every=10,
+                  pool_init=pool_init, lambdas_init=lam_init,
+                  anneal_steps=ANNEAL)
         t_gibbs = time.time() - t0
         print(f"[gibbs] fit in {t_gibbs:.1f}s | "
               f"final_mre(repo)={getattr(gibbs, 'final_mre', float('nan')):.4f}")
@@ -416,6 +418,8 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
                              else (lam_prev if reused else None)),
            "lambdas_gibbs": [float(x) for x in np.asarray(gibbs.lambdas).ravel()]
            if (gibbs is not None and getattr(gibbs, "lambdas", None) is not None) else None,
+           "gibbs_mre_curve": ([float(h["mre"]) for h in gibbs.history]
+                               if gibbs is not None else None),
            "vars": spec["vars"],
            "domain_sizes": spec["domain_sizes"],
            "kept_sig_exact": [[a, v] for a, v in kept_sig_g]}
@@ -429,7 +433,8 @@ if __name__ == "__main__":
     if not args:
         sys.exit("Uso: python fit_cs.py <comune> [--anno 2025] [--livello K6C|K7C|K8C|K9C] "
                  "[--eps 0] [--pool 20000] [--outer 500] [--numba] [--sparse] "
-                 "[--min-alpha 0] [--blocks A,B,Z1,...] [--no-gibbs] [--no-exact] [--tol 0.02]")
+                 "[--min-alpha 0] [--blocks A,B,Z1,...] [--no-gibbs] [--no-exact] "
+                 "[--tol 0.02] [--warm-from K9C] [--anneal 0]")
     comune = args[0]
     getf = lambda k, d: float(args[args.index(k) + 1]) if k in args else d
     geti = lambda k, d: int(args[args.index(k) + 1]) if k in args else d
@@ -440,6 +445,10 @@ if __name__ == "__main__":
     NO_EXACT = "--no-exact" in args
     TOL = getf("--tol", 0.02)
     WARM_FROM = args[args.index("--warm-from") + 1] if "--warm-from" in args else None
+    ANNEAL = geti("--anneal", 0)
+    SWEEPS = geti("--sweeps", 5)
+    LR     = getf("--lr", 0.01)
+    LR_TAU = getf("--lr-tau", 0.0)
     main(comune, geti("--anno", 2025), livello, getf("--eps", 0.0),
          geti("--pool", 20000), geti("--outer", 500), "--numba" in args, "--sparse" in args)
 

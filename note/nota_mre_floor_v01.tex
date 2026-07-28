@@ -1,0 +1,529 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian,english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.6cm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{listings}
+\usepackage{enumitem}
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!50},
+  backgroundcolor=\color{gray!5},
+  columns=fullflexible,
+}
+
+\newcommand{\MRE}{\mathrm{MRE}}
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\newcommand{\OPEN}[1]{\textcolor{orange!80!black}{\textbf{[APERTO: #1]}}}
+
+\title{\textbf{Il pavimento di rumore dell'MRE in GibbsPCD:\\
+diagnosi di un errore in arXiv:2603.27312}}
+\author{Nota tecnica interna --- GSP / UrbIA}
+\date{27 luglio 2026 \quad --- \quad versione 0.1}
+
+\begin{document}
+\selectlanguage{italian}
+\maketitle
+
+\begin{abstract}
+\noindent
+Il paper GibbsPCD (arXiv:2603.27312, sottomesso ad ACM TKDD) enuncia il
+pavimento di rumore dell'errore relativo medio come $\MRE_{\min}\approx
+1/(2\sqrt{N})$. Questa espressione è il \emph{massimo errore assoluto}
+di una proporzione stimata su $N$ estrazioni, non un pavimento
+dell'errore \emph{relativo}: essendo gli $\alpha_j$ dei vincoli
+censuari tipicamente $\ll 1/2$, il pavimento corretto risulta una o due
+decadi più alto. Si documenta la derivazione corretta, comprensiva del
+fattore $\sqrt{2/\pi}$ di conversione fra deviazione standard e scarto
+assoluto medio, e la sua validazione empirica su due popolazioni
+sintetiche indipendenti (accordo entro l'1--2\%). Si delimita l'impatto
+sul paper: le affermazioni sul \emph{tasso} $O(1/\sqrt{N})$ restano
+valide, cade invece il potere discriminante del test ``$\MRE$ osservato
+sopra il pavimento $\Rightarrow$ domina il mixing bias''.
+Lo stato è \textbf{diagnosi completata, correzione non ancora decisa}:
+si attende il referee report.
+\end{abstract}
+
+\tableofcontents
+
+% ======================================================================
+\section{Stato e contesto}
+
+\paragraph{Origine.} Sessione di lavoro del 27 luglio 2026 sulla
+generalizzazione della pipeline GSP a nuovi comuni (Parma, 034027). Il
+fit K7C su Parma ha prodotto una coppia di diagnostiche
+(esatto + Gibbs sullo stesso constraint set) che ha permesso, per la
+prima volta, di confrontare direttamente il pavimento predetto con
+l'errore misurato su un campione i.i.d.\ estratto dal modello esatto.
+
+\paragraph{Documento di riferimento.}
+\texttt{maxent\_pcd\_paper\_5\_arxiv.tex}, 2455 righe. I numeri di riga
+citati in questa nota si riferiscono a quella versione.
+
+\paragraph{Stato.} Il referee report di ACM TKDD non è ancora
+pervenuto. Nessuna correzione è stata applicata al sorgente. Questa
+nota registra la diagnosi e prepara il materiale di correzione, da
+attivare quando si deciderà come procedere.
+
+\paragraph{Co-autori.} La questione riguarda un lavoro co-firmato con
+F.~Pachet e J.-D.~Zucker. Va comunicata prima di qualunque
+risottomissione. \OPEN{predisporre versione inglese di questa nota}
+
+% ======================================================================
+\section{Definizione di MRE nel paper}
+
+Il paper definisce (riga 791--792):
+\begin{equation}
+  \MRE_t \;=\; \frac{1}{m}\sum_{j=1}^{m}
+  \frac{\bigl|\hat\alpha_j^{\,t}-\alpha_j\bigr|}{\alpha_j},
+  \label{eq:mre}
+\end{equation}
+cioè la media degli errori \textbf{relativi in valore assoluto} sugli
+$m$ vincoli di training. La definizione è esplicita e non ambigua; è
+questa la quantità rispetto alla quale va confrontato qualunque
+pavimento.
+
+% ======================================================================
+\section{L'errore}
+
+\subsection{Cosa dice il paper}
+
+Il pavimento è enunciato come
+\begin{equation}
+  \MRE_{\min} \;\approx\; \frac{1}{2\sqrt{N}} ,
+  \label{eq:floor_paper}
+\end{equation}
+senza derivazione, nei seguenti punti:
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Riga & Contesto \\
+\midrule
+827        & Tabella \texttt{tab:guidelines}, colonna ``Rationale'' \\
+1011--1012 & Didascalia figura: retta di riferimento $1/\sqrt{N}$ \\
+1677       & ``adaptive rule before reaching the variance floor'' \\
+1717--1721 & Didascalia \texttt{A\_ISTAT\_3\_pareto}: retta punteggiata \\
+1858--1860 & Paragrafo \emph{Approximate convergence} \\
+1872       & Stesso paragrafo, ``acceptable cost'' \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+La formula $\alpha$-dipendente corretta \textbf{non compare in alcun
+punto del paper}.
+
+\subsection{Perché è sbagliata}
+
+Sia $\hat\alpha_j$ la frazione empirica del vincolo $j$ su un campione
+i.i.d.\ di taglia $N$, cosicché $N\hat\alpha_j\sim
+\mathrm{Bin}(N,\alpha_j)$. L'errore standard \emph{assoluto} è
+\begin{equation}
+  \sigma_j \;=\; \sqrt{\frac{\alpha_j(1-\alpha_j)}{N}} ,
+\end{equation}
+il cui massimo su $\alpha_j$ si ha in $\alpha_j=1/2$ e vale
+\begin{equation}
+  \max_{\alpha}\sigma \;=\; \frac{1}{2\sqrt{N}} .
+\end{equation}
+
+L'espressione \eqref{eq:floor_paper} è dunque il \textbf{massimo errore
+assoluto}. L'MRE di \eqref{eq:mre} divide invece per $\alpha_j$: si
+tratta di un errore relativo, e le due quantità coincidono solo se
+$\alpha_j\approx 1$. Per vincoli rari ($\alpha_j\ll 1/2$) la divisione
+per $\alpha_j$ \emph{alza} il pavimento, anziché lasciarlo invariato.
+
+Si tratta quindi di una confusione fra errore assoluto ed errore
+relativo, non di un'approssimazione grossolana.
+
+\subsection{Derivazione corretta}
+
+Per $N\alpha_j\gtrsim 10$ vale l'approssimazione normale
+$\hat\alpha_j\sim\mathcal{N}(\alpha_j,\sigma_j^2)$. Lo scarto assoluto
+medio di una gaussiana è
+\begin{equation}
+  \mathbb{E}\bigl|\hat\alpha_j-\alpha_j\bigr|
+  \;=\; \sqrt{\tfrac{2}{\pi}}\;\sigma_j ,
+\end{equation}
+da cui il contributo del singolo vincolo all'MRE
+\begin{equation}
+  \mathbb{E}\frac{|\hat\alpha_j-\alpha_j|}{\alpha_j}
+  \;=\; \sqrt{\tfrac{2}{\pi}}\;
+  \sqrt{\frac{1-\alpha_j}{\alpha_j N}} ,
+\end{equation}
+e infine il pavimento
+\begin{empheq}[box=\fbox]{equation}
+  \MRE_{\min}(N)
+  \;=\; \sqrt{\tfrac{2}{\pi}}\;
+  \frac{1}{m}\sum_{j=1}^{m}\sqrt{\frac{1-\alpha_j}{\alpha_j N}} .
+  \label{eq:floor_ok}
+\end{empheq}
+
+\paragraph{Due osservazioni.}
+\begin{enumerate}[leftmargin=*]
+\item Il fattore $\sqrt{2/\pi}=0.797885$ è la conversione fra
+  deviazione standard e scarto assoluto medio. È necessario perché
+  \eqref{eq:mre} è definita con il valore assoluto e non in forma
+  quadratica. Se in una versione precedente della formula lo si era
+  omesso, la predizione risultava sovrastimata di un fattore $1.253$.
+\item Il rapporto fra i due pavimenti è
+  \begin{equation}
+    \frac{\MRE_{\min}}{1/(2\sqrt{N})}
+    \;=\; 2\sqrt{\tfrac{2}{\pi}}\;
+    \frac{1}{m}\sum_j \sqrt{\frac{1-\alpha_j}{\alpha_j}}
+    \;\approx\; 1.596\;\overline{\alpha^{-1/2}} ,
+  \end{equation}
+  indipendente da $N$. Dipende solo dalla distribuzione degli
+  $\alpha_j$, cioè dalla rarità tipica dei vincoli.
+\end{enumerate}
+
+\paragraph{Condizione di validità.} L'approssimazione normale richiede
+$N\alpha_j\gtrsim 10$. Con \texttt{--min-alpha 2e-4} e $N=10^5$ si ha
+$N\alpha_{\min}\approx 21$: al limite ma accettabile. Per pool più
+piccoli o soglie più basse la \eqref{eq:floor_ok} va usata con
+cautela, o sostituita dallo scarto assoluto medio binomiale esatto.
+
+% ======================================================================
+\section{Validazione empirica}
+
+Il test usa campioni i.i.d.\ di taglia $n$ estratti dal
+\emph{modello esatto} (non dal pool PCD), su cui si misura l'MRE
+rispetto ai target $\alpha_j$ e lo si confronta con
+\eqref{eq:floor_ok}.
+
+\begin{table}[h]
+\centering
+\caption{Pavimento predetto contro MRE misurato su campione i.i.d.\
+dal modello esatto. Entrambe le popolazioni sono generate dalla
+pipeline GSP; i due constraint set sono indipendenti per comune,
+livello e cardinalità.}
+\begin{tabular}{lrrrrrr}
+\toprule
+Dataset & $n$ & $m$ & $\MRE$ oss. & senza $\sqrt{2/\pi}$
+        & con $\sqrt{2/\pi}$ & rapporto \\
+\midrule
+Parma K7C     & 198\,121 & 1\,094 & 0.0352 & 0.0448 & 0.0357 & \textbf{0.98} \\
+Brescia K10C  & 198\,259 & 2\,611 & 0.0521 & 0.0660 & 0.0527 & \textbf{0.99} \\
+\bottomrule
+\end{tabular}
+\label{tab:validation}
+\end{table}
+
+Il rapporto senza il fattore di conversione vale $0.79$ in entrambi i
+casi, contro $\sqrt{2/\pi}=0.798$: l'accordo è esatto entro
+l'arrotondamento. Con il fattore incluso l'accordo è all'1--2\% su due
+dataset che differiscono per quattro ordini di grandezza in $|\mathcal{X}|$
+($6.99\times10^4$ contro $3.73\times10^7$), per numero di attributi
+($K{=}7$ contro $K{=}10$) e per numero di vincoli.
+
+\medskip
+\noindent
+\textbf{Conclusione.} La \eqref{eq:floor_ok} è validata. La
+\eqref{eq:floor_paper} sottostima il pavimento di un fattore $32$
+(Parma) e $47$ (Brescia).
+
+% ======================================================================
+\section{Impatto sul paper}
+
+\subsection{Cosa resta valido}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Tutte le affermazioni sul tasso.} Entrambe le formule
+  scalano come $O(1/\sqrt{N})$. Le rette di riferimento nei grafici
+  log--log hanno la pendenza giusta; è sbagliata solo l'intercetta.
+  Righe 915, 982, 1011, 1045: la sostanza tiene.
+\item \textbf{La tesi centrale del paper.} Che $\MRE=0$ del raking sia
+  algebricamente garantito e non una misura di accuratezza, e che
+  diversità ($N_{\text{eff}}$, $H$) e valutazione held-out siano i
+  criteri corretti, non dipende in alcun modo da questa formula.
+\item \textbf{L'argomento del paragrafo \emph{Approximate
+  convergence}} (1858--1872) ne esce \emph{rafforzato}: se il
+  pavimento vero è $\sim\!5\times10^{-2}$ anziché $\sim\!10^{-3}$,
+  l'inseguimento dell'MRE di training è ancora più chiaramente mal
+  riposto.
+\end{itemize}
+
+\subsection{Cosa cade}
+
+Il punto critico è la didascalia di riga 1717--1721:
+
+\begin{quote}\itshape
+the dotted line is the theoretical variance floor $1/(2\sqrt{N})$;
+observed MRE lies above the floor at all $N$, confirming that mixing
+bias dominates over gradient variance in this regime.
+\end{quote}
+
+Con un pavimento 30--50 volte troppo basso, \emph{qualunque} misura vi
+sta sopra: il test non ha potere discriminante e l'inferenza sul
+mixing bias non è sostenuta dall'evidenza addotta. Questo
+indipendentemente dal fatto che la conclusione sia vera o falsa.
+
+% ======================================================================
+\section{La questione aperta: due regimi?}
+
+\OPEN{determina la direzione della correzione}
+
+Non è possibile stabilire il segno dell'effetto su A-ISTAT-3 senza
+ricalcolare \eqref{eq:floor_ok} sui suoi $\alpha_j$. C'è però una
+ragione strutturale per sospettare che A-ISTAT-3 e i casi censuari
+stiano in regimi diversi:
+
+\begin{table}[h]
+\centering
+\caption{Campioni di pool per vincolo. Il rapporto $N/m$ misura quanto
+margine ha l'ottimizzatore per assecondare il pool su cui è calcolato
+il gradiente.}
+\begin{tabular}{lrrr}
+\toprule
+Esperimento & $m$ & $N$ & $N/m$ \\
+\midrule
+A-ISTAT-3 (paper) &    31 & 100\,000 & 3\,226 \\
+Parma K7C         & 1\,094 & 100\,000 &     91 \\
+Brescia K10C      & 2\,611 & 200\,000 &     77 \\
+\bottomrule
+\end{tabular}
+\label{tab:regimi}
+\end{table}
+
+Con 31 gradi di libertà e $3\,200$ campioni per vincolo,
+l'ottimizzatore ha pochissimo margine di sovradattamento: in
+A-ISTAT-3 il mixing bias \emph{può} realmente dominare, e la
+conclusione del paper essere corretta pur essendo sostenuta da un
+argomento sbagliato. Nei casi censuari, con 40 volte meno campioni per
+vincolo, il sovradattamento in-sample è plausibile.
+
+Se la lettura a due regimi è confermata, la correzione non è una
+ritirata ma un risultato aggiuntivo, con $N/m$ come variabile di
+controllo.
+
+% ======================================================================
+\section{Evidenza collaterale: l'MRE del Gibbs non è errore campionario}
+
+Confrontando l'MRE del \emph{fit} PCD con il pavimento corretto
+calcolato alla taglia del pool:
+
+\begin{table}[h]
+\centering
+\caption{L'MRE del Gibbs sta \emph{sotto} il pavimento di
+campionamento. La taglia i.i.d.\ equivalente
+$N_{\text{eff}}=N(\MRE_{\min}/\MRE_{\text{oss}})^2$ eccede $N$, il che
+è impossibile per un campionamento onesto e a maggior ragione per una
+catena autocorrelata.}
+\begin{tabular}{lrrrrr}
+\toprule
+Dataset & $N$ pool & $\MRE$ Gibbs & $\MRE_{\min}(N)$ & rapporto
+        & $N_{\text{eff}}$ apparente \\
+\midrule
+Parma K7C    & 100\,000 & 0.0396 & 0.0503 & 0.79 & $\approx161\,000$ \\
+Brescia K10C & 200\,000 & 0.0323 & 0.0524 & 0.62 & $\approx526\,000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Interpretazione.} Il pool PCD non è un campione i.i.d.\
+estratto dal modello: è l'oggetto \emph{rispetto al quale} i $\lambda$
+vengono ottimizzati. Il gradiente è (target $-$ momento del pool), e le
+iterazioni esterne spingono proprio quella differenza verso zero. L'MRE
+riportato è dunque un \textbf{residuo di ottimizzazione misurato sullo
+stesso campione usato per ottimizzare}, non un errore di
+campionamento. Non ha un pavimento e, in linea di principio, tende a
+zero con le iterazioni.
+
+\paragraph{Conferma indipendente.} Le divergenze contro il modello
+esatto restano grandi e asimmetriche mentre l'MRE è basso:
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Dataset & $\MRE$ esatto & $\mathrm{KL}(\text{exact}\|\text{gibbs})$
+        & $\mathrm{KL}(\text{gibbs}\|\text{exact})$ \\
+\midrule
+Parma K7C    & $4.19\times10^{-4}$ & 0.1056 & 0.6415 \\
+Brescia K10C & $4.61\times10^{-4}$ & 0.1041 & 0.7406 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+L'asimmetria $\approx6$--$7\times$ è stabile fra i due dataset. Poiché
+$\mathrm{KL}(g\|e)=\sum g\log(g/e)$ esplode dove $e\to0$ e $g$ no, il
+pool PCD sta mettendo massa dove il modello esatto non ne mette: è
+\emph{sovradispersione}, non sottocampionamento. Coerente con i
+supporti misurati su Parma (esatto $52\,167/69\,888$, Gibbs
+$67\,704/69\,888$).
+
+\paragraph{Nota metodologica.} È la stessa critica che il paper già
+muove al raking --- l'MRE di training non misura accuratezza ---
+applicata però al metodo proprio. Presentata così, rafforza la
+credibilità dell'argomento in revisione anziché indebolirla.
+
+% ======================================================================
+\section{Verifiche da eseguire}
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Ricalcolo del pavimento sugli esperimenti del paper.}
+  Applicare \eqref{eq:floor_ok} agli $\alpha_j$ di Syn-ISTAT
+  (A-ISTAT-1/2/3) e confrontare con gli MRE già in tabella. Determina
+  il segno della correzione. \emph{Prerequisito: i constraint set di
+  Syn-ISTAT devono essere ancora su disco.}
+\item \textbf{Pendenza delle curve di convergenza.} Verificare su
+  \texttt{gibbs\_mre\_curve} se i fit confrontati sono a plateau o
+  ancora in discesa. Pendenza log--log $\approx-0.5$ indica
+  convergenza in corso, $\approx0$ plateau. Fit troncati a stadi
+  diversi non sono confrontabili.
+\item \textbf{Traiettoria congiunta MRE--KL.} Salvare
+  $\mathrm{KL}(\text{gibbs}\|\text{exact})$ ogni 50 iterazioni
+  esterne. \emph{MRE che scende mentre la KL sale} sarebbe la
+  dimostrazione diretta del sovradattamento in-sample, e diventerebbe
+  un risultato centrale anziché una diagnostica.
+\item \textbf{Sensibilità a \texttt{--min-alpha}.} Il 10\% di vincoli
+  più rari contribuisce il 25\% (Parma) e il 21\% (Brescia) del
+  pavimento. Fit con soglie diverse hanno pavimenti diversi e non sono
+  confrontabili: verificare che nel paper le soglie siano uniformi
+  fra le righe delle tabelle comparative.
+\end{enumerate}
+
+% ======================================================================
+\section{Materiale di correzione (inglese, pronto all'uso)}
+
+\selectlanguage{english}
+\noindent
+\emph{Da attivare solo dopo la verifica 1. Il testo per la didascalia
+di riga 1717 è dato in due varianti alternative.}
+
+\subsection*{Definizione del pavimento (nuovo, da inserire in Sez.~4)}
+
+\begin{lstlisting}[language=TeX]
+For an i.i.d. sample of size $N$ from the fitted model,
+$N\hat\alpha_j \sim \mathrm{Bin}(N, \alpha_j)$, so the absolute
+standard error of $\hat\alpha_j$ is
+$\sigma_j = \sqrt{\alpha_j(1-\alpha_j)/N}$.
+Since $\MRE$ in \cref{eq:mre} is a mean of \emph{relative}
+absolute deviations, and $\mathbb{E}|\hat\alpha_j - \alpha_j|
+= \sqrt{2/\pi}\,\sigma_j$ under the normal approximation
+($N\alpha_j \gtrsim 10$), the sampling floor is
+\begin{equation}
+  \MRE_{\min}(N) = \sqrt{\frac{2}{\pi}}\,
+  \frac{1}{m}\sum_{j=1}^{m}\sqrt{\frac{1-\alpha_j}{\alpha_j N}}.
+  \label{eq:mre_floor}
+\end{equation}
+Note that $\MRE_{\min}$ depends on the rarity of the constraints
+and not on $N$ alone: for census marginals with
+$\alpha_j \ll 1/2$ it exceeds the naive bound $1/(2\sqrt{N})$
+--- the maximum \emph{absolute} standard error --- by one to two
+orders of magnitude. We verify \cref{eq:mre_floor} on two
+independent synthetic populations, obtaining agreement within
+$2\%$ (\cref{tab:floor_validation}).
+\end{lstlisting}
+
+\subsection*{Didascalia riga 1717 --- variante A (se l'osservato resta sopra)}
+
+\begin{lstlisting}[language=TeX]
+the dotted line is the sampling floor $\MRE_{\min}(N)$ of
+\cref{eq:mre_floor}, evaluated on the constraint targets;
+observed MRE lies above the floor at all $N$, confirming that
+mixing bias dominates over gradient variance in this regime.
+\end{lstlisting}
+
+\subsection*{Didascalia riga 1717 --- variante B (se l'osservato scende sotto)}
+
+\begin{lstlisting}[language=TeX]
+the dotted line is the sampling floor $\MRE_{\min}(N)$ of
+\cref{eq:mre_floor}. Observed training MRE falls below this
+floor, which is expected: the pool is the sample against which
+$\blam$ is optimised, so training MRE is an in-sample residual
+rather than a sampling error. It is therefore not a valid
+convergence criterion, and we report KL divergence against the
+exact solution instead (\cref{tab:kl}).
+\end{lstlisting}
+
+\subsection*{Tabella guidelines, riga 827}
+
+\begin{lstlisting}[language=TeX]
+  & Sampling floor $\MRE_{\min}(N)$ grows with constraint
+    rarity; sweet spot at $N{=}25$K \\
+\end{lstlisting}
+
+\subsection*{Paragrafo \emph{Approximate convergence}, riga 1858}
+
+\begin{lstlisting}[language=TeX]
+GibbsPCDSolver does not guarantee exact satisfaction of the
+constraints. The relevant floor is $\MRE_{\min}(N)$ of
+\cref{eq:mre_floor}, which for census-scale constraint sets
+is of order $5\times10^{-2}$ at $N{=}10^5$ --- one to two
+orders of magnitude above the naive $1/(2\sqrt{N})$ bound.
+\end{lstlisting}
+
+\selectlanguage{italian}
+
+% ======================================================================
+\section{Codice di riproduzione}
+
+\begin{lstlisting}[language=Python]
+import json, os
+import numpy as np, pandas as pd
+
+SQRT_2_PI = np.sqrt(2 / np.pi)   # 0.797885
+
+def mre_floor(comune, livello, anno=2024):
+    """Pavimento predetto vs MRE su campione i.i.d. dal modello esatto."""
+    d = os.path.expanduser(
+        f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
+    cs  = json.load(open(f"{d}/cs_{livello}.json"))
+    fit = json.load(open(f"{d}/fit_{livello}.json"))
+    pop = pd.read_csv(f"{d}/popolazione_{livello}.csv", dtype=str)
+
+    V, C = cs["vars"], cs["categories"]
+    code = {v: pop[v].astype(str)
+                 .map({c: i for i, c in enumerate(C[v])}).to_numpy()
+            for v in V}
+
+    amap = {(tuple(c["attrs"]), tuple(c["vals"])): c["alpha"]
+            for c in cs["constraints"]}
+    kept = [(tuple(a), tuple(b)) for a, b in fit["kept_sig_exact"]]
+    n = len(pop)
+
+    a, emp = [], []
+    for at, va in kept:
+        m = np.ones(n, dtype=bool)
+        for j, val in zip(at, va):
+            m &= (code[V[j]] == val)
+        a.append(amap[(at, va)]); emp.append(m.mean())
+    a, emp = np.array(a), np.array(emp)
+
+    mre   = float(np.mean(np.abs(emp - a) / a))
+    floor = SQRT_2_PI * float(np.mean(np.sqrt((1 - a) / (a * n))))
+    print(f"{comune} {livello}: n={n:,} m={len(a)} "
+          f"MRE={mre:.4f} floor={floor:.4f} ratio={mre/floor:.2f}")
+
+    # pavimento alla taglia del pool, per confronto con l'MRE del Gibbs
+    N = fit["pool"]
+    fN = SQRT_2_PI * float(np.mean(np.sqrt((1 - a) / (a * N))))
+    g  = fit["gibbs"]["mre_pos"]
+    print(f"   pool N={N:,}: MRE_gibbs={g:.4f} floor={fN:.4f} "
+          f"ratio={g/fN:.2f} -> N_eff apparente {N*(fN/g)**2:,.0f}")
+
+mre_floor("034027", "K7C")
+mre_floor("017029", "K10C")
+\end{lstlisting}
+
+% ======================================================================
+\section*{Changelog}
+\addcontentsline{toc}{section}{Changelog}
+
+\begin{description}[leftmargin=2.2cm,style=nextline]
+\item[v0.1 --- 27/07/2026] Prima stesura. Diagnosi completa,
+  validazione su Parma K7C e Brescia K10C, materiale di correzione
+  predisposto. Verifiche 1--4 non ancora eseguite. Nessuna modifica
+  applicata al sorgente del paper.
+\end{description}
+
+\end{document}

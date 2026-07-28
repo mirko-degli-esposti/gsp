@@ -1,5 +1,5 @@
 """
-assign_nationality.py — v2. Nazionalità two-stage sulla popolazione K7C.
+assign_nationality.py — v2. Nazionalità two-stage sulla popolazione KXC.
 
 Generalizzato per più comuni (ora Bologna 037006, Brescia 017029; estendibile
 via registro COMUNI o flag --sezioni) e per livello territoriale a scelta:
@@ -10,7 +10,7 @@ Gerarchia:  (2a) area UE/EXTRA_UE ~ P(area | zona, sesso)   [sezioni ST17/18/20/
             (2b) paese            ~ P(paese | area, sesso)  [comunale, censimento anno-1]
 Allocazione ESATTA (largest remainder) a ogni livello.
 
-ITL -> paese = 'Italia'. Output: popolazione_K7C_naz.csv (colonne + area, paese).
+ITL -> paese = 'Italia'. Output: popolazione_KXC_naz.csv (colonne + area, paese).
 
 Assunzioni dichiarate:
     (4) paese ⊥ zona | (area, sesso): la struttura territoriale entra al
@@ -42,11 +42,15 @@ SUBMUN_DIR = os.path.expanduser("~/progetti/gsp/data/submun")
 COMUNI = {
     "017029": {"nome": "brescia"},
     "037006": {"nome": "bologna"},
+    "034027": {"nome": "parma"},
 }
 
 LIVELLI = {"asc1": "COM_ASC1", "asc2": "COM_ASC2"}
 
-POP_CANDIDATES = ["popolazione_K7C.csv", "popolazione_K8C.csv", "popolazione_K6C.csv"]
+#POP_CANDIDATES = ["popolazione_K7C.csv", "popolazione_K8C.csv", "popolazione_K6C.csv"]
+POP_CANDIDATES = ["popolazione_K10C.csv", "popolazione_K9C.csv",
+                  "popolazione_K8C.csv", "popolazione_K7C.csv",
+                  "popolazione_K6C.csv"]
 
 def resolve_pop_file(cdir: str, override: str | None) -> str:
     if override:
@@ -165,13 +169,16 @@ def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_nam
 
     # ---------- assegnazione sulla popolazione ----------
     pop_file = resolve_pop_file(cdir, pop_file_override)
+    if out_name is None:                       # il nome di uscita segue l'ingresso
+        out_name = pop_file.replace(".csv", "_naz.csv")
     pop = pd.read_csv(os.path.join(cdir, pop_file))
-    print(f"[pop] file: {pop_file}")
+    print(f"[pop] file: {pop_file} -> {out_name}")
+
     if not no_zona:
-        pop[col_pop] = pop[col_pop].astype(str)
         if col_pop not in pop.columns:
             sys.exit(f"Colonna --col-pop '{col_pop}' assente nella popolazione. "
                      f"Colonne disponibili: {sorted(pop.columns)}")
+        pop[col_pop] = pop[col_pop].astype(str)
     if no_zona:
         pop["_zkey"] = "0"
     else:
@@ -260,8 +267,10 @@ if __name__ == "__main__":
                     help="path CSV sezioni (default: <SUBMUN_DIR>/<nome>_sezioni_2023.csv)")
     ap.add_argument("--pop-file", default=None,
                     help="file popolazione da cui partire (default: auto-detect "
-                         "K7C -> K8C -> K6C, il primo che esiste in constraints_<anno>/)")
-    ap.add_argument("--out", default="popolazione_K7C_naz.csv")
+                         "K10C -> K9C -> K8C -> K7C -> K6C, il primo che esiste "
+                         "in constraints_<anno>/)")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--out", default=None,
+                    help="default: <file popolazione>_naz.csv")
     a = ap.parse_args()
     main(a.comune, a.anno, a.livello, a.col_pop, a.sezioni, a.pop_file, a.out, a.seed)

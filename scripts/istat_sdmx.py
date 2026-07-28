@@ -51,7 +51,7 @@ def flow_version(flow_id: str) -> str:
         hit = cat[cat["dataflow_id"] == flow_id]
         if len(hit):
             return str(hit.iloc[0]["version"])
-    return "1.f0"  # default per dataflow non in catalogo
+    return "1.0"  # default per dataflow non in catalogo
 
 
 def get_structure(flow_id: str, agency: str = "IT1") -> str:
@@ -143,6 +143,15 @@ def fetch(flow_id: str, spec: dict, agency: str = "IT1",
     _throttle()
     r = requests.get(url, headers={"Accept": "application/vnd.sdmx.data+csv;version=1.0.0"},
                      timeout=300)
+    if r.status_code in (429, 403, 503):
+        raise SystemExit(
+            f"\n[STOP] {flow_id}: HTTP {r.status_code} — probabile rate limit.\n"
+            f"       Interrompo TUTTO per non aggravare il blocco.\n"
+            f"       Attendere almeno un'ora prima di riprovare.")
+    if r.status_code == 404:
+        print(f"[fetch] {flow_id}: nessun dato per key={key} (404)")
+        return pd.DataFrame()
+
     if r.status_code == 404:
         print(f"[fetch] {flow_id}: nessun dato per key={key} (404)")
         return pd.DataFrame()

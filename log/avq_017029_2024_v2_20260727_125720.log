@@ -1,0 +1,57 @@
+[avq] 2022: variabili mancanti ['CRONI'], annata saltata (il modulo salute AVQ ruota tra le annate: es. CRONI non e' rilevata nel 2022, dove esistono solo le singole patologie DIAB/IPAR/... e LIMITA; ricostruirla darebbe una definizione non equivalente, quindi l'annata si scarta)
+[avq] 2023: 41,750 record
+[avq] 2024: 45,005 record
+[avq] regione 30 (Lombardia): 8,111 donatori con cella completa (su 8,149)
+[pop] popolazione_K9C_naz.csv: 198,259 individui
+[donor] 32 celle con pool valido (record/cella: min=14, mediana=249, max=541)
+[donor] 2 celle sotto 20 record -> pool regionale: [(('F', '15-34', 'elementare_o_meno'), 14), (('M', '15-34', 'elementare_o_meno'), 15)]
+[donor] 7,367 individui serviti dal pool regionale (3.7%)
+[AMBIENTE] assegnati 171,627 | non_applicabile (missing strutturale nel donatore): 26,632
+[FIDUCIA] assegnati 171,348 | non_applicabile (missing strutturale nel donatore): 26,911
+[SALUTE] assegnati 198,259 | non_applicabile (missing strutturale nel donatore): 0
+[CRONI] assegnati 184,253 | non_applicabile (missing strutturale nel donatore): 14,006
+[FUMO] assegnati 177,406 | non_applicabile (missing strutturale nel donatore): 20,853
+[MH] assegnati 172,988 | non_applicabile (missing strutturale nel donatore): 25,271
+[BMI] assegnati 166,592 | non_applicabile (missing strutturale nel donatore): 31,667
+[BMIMIN] assegnati 27,025 | non_applicabile (missing strutturale nel donatore): 171,234
+[CPESO] assegnati 193,771 | non_applicabile (missing strutturale nel donatore): 4,488
+
+[val] marginali: sintetico vs AVQ pesato (regione)
+  AMBIENTE:
+    1: sintetico 0.077 | avq 0.080 (scarto -0.003)
+    2: sintetico 0.577 | avq 0.578 (scarto -0.001)
+    3: sintetico 0.274 | avq 0.269 (scarto +0.005)
+    4: sintetico 0.072 | avq 0.073 (scarto -0.001)
+  FIDUCIA:
+    1: sintetico 0.279 | avq 0.261 (scarto +0.019)
+    2: sintetico 0.721 | avq 0.739 (scarto -0.019)
+  SALUTE:
+    1: sintetico 0.173 | avq 0.180 (scarto -0.007)
+    2: sintetico 0.511 | avq 0.513 (scarto -0.002)
+    3: sintetico 0.266 | avq 0.261 (scarto +0.006)
+    4: sintetico 0.043 | avq 0.040 (scarto +0.003)
+    5: sintetico 0.007 | avq 0.006 (scarto +0.000)
+  CRONI:
+    1: sintetico 0.686 | avq 0.705 (scarto -0.019)
+    2: sintetico 0.314 | avq 0.295 (scarto +0.019)
+  FUMO:
+    1: sintetico 0.188 | avq 0.202 (scarto -0.014)
+    2: sintetico 0.250 | avq 0.239 (scarto +0.011)
+    3: sintetico 0.562 | avq 0.559 (scarto +0.003)
+  MH (continua): media sintetico 68.49 | avq 68.66 (scarto -0.17)
+  BMI:
+    1: sintetico 0.041 | avq 0.041 (scarto +0.001)
+    2: sintetico 0.517 | avq 0.519 (scarto -0.002)
+    3: sintetico 0.331 | avq 0.328 (scarto +0.003)
+    4: sintetico 0.111 | avq 0.112 (scarto -0.001)
+  BMIMIN:
+    1: sintetico 0.787 | avq 0.791 (scarto -0.004)
+    2: sintetico 0.213 | avq 0.209 (scarto +0.004)
+  CPESO:
+    1: sintetico 0.058 | avq 0.053 (scarto +0.005)
+    2: sintetico 0.208 | avq 0.202 (scarto +0.006)
+    3: sintetico 0.255 | avq 0.255 (scarto +0.001)
+    4: sintetico 0.293 | avq 0.299 (scarto -0.006)
+    5: sintetico 0.187 | avq 0.192 (scarto -0.005)
+
+[done] -> /home/mirko/progetti/gsp/data/comuni/017029/constraints_2024/popolazione_K9C_avq_v2.csv

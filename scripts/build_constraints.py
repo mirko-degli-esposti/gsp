@@ -116,6 +116,67 @@ def pick_year(df: pd.DataFrame, year: int, name: str) -> pd.DataFrame:
         sys.exit(f"{name}: TIME_PERIOD={year} assente; disponibili {years}")
     return df[df["TIME_PERIOD"] == year].copy()
 
+# tavole consumate: (nome, anno richiesto, fatale se manca, blocco)
+TAVOLE_ATTESE = [
+    ("anag_sesso_eta_statociv",      "anno",  True,  "C1 spine anagrafica"),
+    ("cens_sesso_eta_cittadinanza",  "cens",  True,  "C2 sesso x eta x cittadinanza"),
+    ("cens_istruzione_eta",          "cens",  True,  "C3 istruzione x eta"),
+    ("cens_istruzione_cittadinanza", "cens",  True,  "C3 istruzione x cittadinanza"),
+    ("cens_condprof_eta",            "cens",  True,  "C4 condizione prof. x eta"),
+    ("cens_condprof_cittadinanza",   "cens",  True,  "C4 condizione prof. x citt."),
+    ("cens_stranieri_paesi",         "cens",  True,  "C6 paesi di cittadinanza"),
+    ("cens_migr_backg",              "cens",  False, "C7/C8 background migratorio"),
+    ("cens_posizione_prof",          None,    False, "C9 posizione professionale"),
+    ("cens_settore_prof",            None,    False, "C10 settore economico"),
+]
+
+
+def preflight(comune_dir: str, anno: int, cens_anno: int) -> None:
+    """Copertura temporale delle tavole prima di costruire qualsiasi blocco.
+
+    Serve a trasformare in errore immediato due fallimenti altrimenti tardivi
+    o silenziosi: il sys.exit di pick_year a meta' elaborazione, e lo skip
+    stampato ma non fatale dei blocchi C7/C8 quando cens_migr_backg non copre
+    l'anno censuario richiesto.
+    """
+    print(f"[pre] ancoraggio anagrafico 1/1/{anno} | strato censuario {cens_anno}")
+    fatali, saltati, anni_cens = [], [], []
+
+    for name, quale, hard, desc in TAVOLE_ATTESE:
+        path = os.path.join(comune_dir, f"{name}_decoded.csv")
+        if not os.path.exists(path):
+            (fatali if hard else saltati).append(f"{name}: file assente")
+            continue
+        anni = sorted(pd.read_csv(path, usecols=["TIME_PERIOD"])["TIME_PERIOD"]
+                      .astype(str).unique())
+        if quale is None:
+            print(f"[pre] {name:<30} anni {anni} -> pool + riscalatura")
+            continue
+        serve = anno if quale == "anno" else cens_anno
+        if quale == "cens" and hard:
+            anni_cens.append(set(anni))
+        if str(serve) in anni:
+            print(f"[pre] {name:<30} {serve} ok")
+        else:
+            (fatali if hard else saltati).append(
+                f"{name}: {serve} assente (disponibili {anni}) -> {desc}")
+
+    for m in saltati:
+        print(f"[pre] !! blocco SALTATO: {m}")
+    if fatali:
+        print()
+        for m in fatali:
+            print(f"[pre] FATALE: {m}")
+        if anni_cens:
+            comuni_anni = sorted(set.intersection(*anni_cens))
+            if comuni_anni:
+                print(f"[pre] anni censuari coperti da tutte le tavole hard: "
+                      f"{comuni_anni} -> provare --anno {int(comuni_anni[-1]) + 1}")
+        sys.exit(f"[pre] interrotto: --anno {anno} non sostenibile.")
+    if saltati:
+        print(f"[pre] {len(saltati)} blocchi verranno saltati: il constraint "
+              f"set sara' piu' piccolo del previsto.")
+
 def rounding_sigma(df, group_cols, attr_col, total_code, value="OBS_VALUE"):
     """Residui totale_pubblicato - somma_modalità per gruppo -> (sigma, residui)."""
     el = df[df[attr_col] != total_code]
@@ -161,6 +222,7 @@ def apply_conditional(anag_groups: pd.DataFrame, cens: pd.DataFrame,
 def main(comune: str, anno: int):
     cens_anno = anno - 1
     comune_dir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}")
+    preflight(comune_dir, anno, cens_anno)
     out_dir = os.path.join(comune_dir, f"constraints_{anno}")
     os.makedirs(out_dir, exist_ok=True)
     manifest, report = {}, []

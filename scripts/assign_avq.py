@@ -26,7 +26,9 @@ Metodo:
         istruzione non definita -> chiave dedicata);
     (3) per ogni cella, pool di donatori con pesi COEFIN normalizzati;
     (4) per ogni individuo sintetico, estrazione di un donatore e copia
-        del blocco di target; fallback su pool regionale per celle rade.
+        del blocco di target; per le celle rade il condizionamento si
+        degrada per gradi (istruzione, poi eta') invece di collassare
+        sul marginale regionale.
 
 Assunzione dichiarata:
     (6) P(target | sesso, eta, istruzione, regione) costante entro la
@@ -51,6 +53,7 @@ AVQ_YEARS = ["2022", "2023", "2024"]
 
 COMUNE_REGIONE = {
     "017029": 30,    # Brescia -> Lombardia
+    "034027": 80,    # Parma   -> Emilia-Romagna
     "037006": 80,    # Bologna -> Emilia-Romagna
     "074017": 160,   # San Vito dei Normanni -> Puglia
 }
@@ -82,7 +85,29 @@ ISTR_MINORI = "eta_infantile"   # chiave dedicata per le classi 0-13
 
 CELL_COLS = ["sesso", "macroeta", "istr4"]
 NA_TOKEN = "non_applicabile"
+NA_CELL = "__nd__"          # sentinella per chiavi di cella non definite
 
+# Collasso gerarchico del condizionamento quando il pool di cella e' rado.
+# L'istruzione si abbandona per prima (corrispondenza piu' incerta fra
+# codifica AVQ e codifica censuaria); l'eta' si conserva il piu' a lungo,
+# essendo il predittore dominante di salute, fumo e benessere psicologico.
+CELL_LEVELS = [
+    ["sesso", "macroeta", "istr4"],
+    ["sesso", "macroeta"],
+    ["macroeta"],
+]
+
+
+def build_pools(a, cols, min_record):
+    """Pool di donatori (indici, pesi normalizzati) per una chiave di cella."""
+    pools = {}
+    for key, g in a.groupby(cols):
+        if len(g) < min_record:
+            continue
+        p = g["w"].to_numpy()
+        k = key if isinstance(key, tuple) else (key,)
+        pools[k] = (g.index.to_numpy(), p / p.sum())
+    return pools
 
 def load_avq(years, targets, regione):
     """Impila le annate, normalizza i pesi entro anno, ricodifica le celle."""
@@ -138,7 +163,7 @@ def main(comune, anno, pop_file, out_name, targets, seed, min_record):
 
     a = load_avq(AVQ_YEARS, targets, regione)
 
-    pop = pd.read_csv(os.path.join(cdir, pop_file))
+    pop = pd.read_csv(os.path.join(cdir, pop_file)).reset_index(drop=True)
     print(f"[pop] {pop_file}: {len(pop):,} individui")
     for t in targets:
         if t in pop.columns:
@@ -147,42 +172,70 @@ def main(comune, anno, pop_file, out_name, targets, seed, min_record):
     pop["macroeta"] = pop["eta"].map(BIN_MACRO)
     pop["istr4"] = pop["istruzione"].map(ISTR6_TO_4)
     pop.loc[pop["macroeta"] == "0-13", "istr4"] = ISTR_MINORI
-    if pop["macroeta"].isna().any() or pop["istr4"].isna().any():
-        n = int(pop["macroeta"].isna().sum() + pop["istr4"].isna().sum())
-        print(f"[warn] {n} individui senza cella definita: fallback regionale")
 
-    # ---- pool di donatori per cella ----
-    pools, thin = {}, []
-    for key, g in a.groupby(CELL_COLS):
-        if len(g) < min_record:
-            thin.append((key, len(g)))
-            continue
-        p = g["w"].to_numpy()
-        pools[key] = (g.index.to_numpy(), p / p.sum())
+    # NaN -> sentinella esplicita: nessuna chiave puo' sparire dal groupby,
+    # e la sentinella non esiste nei pool -> cade sul fallback per costruzione
+    nd = pop[CELL_COLS].isna().any(axis=1)
+    if nd.any():
+        print(f"[warn] {int(nd.sum()):,} individui senza cella definita "
+              f"-> fallback")
+        for c in CELL_COLS:
+            n_c = int(pop[c].isna().sum())
+            if n_c:
+                print(f"        {c}: {n_c:,} mancanti")
+    pop[CELL_COLS] = pop[CELL_COLS].fillna(NA_CELL)
+
+    # ---- pool gerarchici: cella piena -> collassi progressivi -> regionale ----
+    livelli = [(cols, build_pools(a, cols, min_record)) for cols in CELL_LEVELS]
     p_all = a["w"].to_numpy()
     pool_reg = (a.index.to_numpy(), p_all / p_all.sum())
-    sizes = a.groupby(CELL_COLS).size()
-    print(f"[donor] {len(pools)} celle con pool valido "
-          f"(record/cella: min={sizes.min()}, mediana={int(sizes.median())}, "
-          f"max={sizes.max()})")
-    if thin:
-        print(f"[donor] {len(thin)} celle sotto {min_record} record "
-              f"-> pool regionale: {thin[:5]}")
+
+    print(f"\n[donor] pool per livello (soglia {min_record} record):")
+    for cols, pl in livelli:
+        tot = a.groupby(cols).size()
+        print(f"  {' x '.join(cols):<28} {len(pl):>3} pool validi su {len(tot):>3} "
+              f"celle | record/cella mediana {int(tot.median())}")
+        if len(pl) < len(tot):
+            rade = [(k, int(v)) for k, v in tot.items()
+                    if (k if isinstance(k, tuple) else (k,)) not in pl]
+            print(f"       sotto soglia: {rade}")
 
     # ---- estrazione dei donatori ----
     rng = np.random.default_rng(seed)
-    donor_idx = np.empty(len(pop), dtype=np.int64)
-    n_fallback = 0
-    for key, idx in pop.groupby(CELL_COLS, dropna=False).groups.items():
-        idx = np.asarray(idx)
-        if key in pools:
-            cand, p = pools[key]
-        else:
+    donor_idx = np.full(len(pop), -1, dtype=np.int64)
+    pos_of = {c: i for i, c in enumerate(CELL_COLS)}
+    uso = {}
+
+    grp = pop.groupby(CELL_COLS).indices     # chiave -> POSIZIONI (non etichette)
+    for key in sorted(grp):                  # ordine deterministico
+        pos = grp[key]
+        cand = p = None
+        for liv, (cols, pl) in enumerate(livelli):
+            sub = tuple(key[pos_of[c]] for c in cols)
+            if sub in pl:
+                cand, p = pl[sub]
+                uso[liv] = uso.get(liv, 0) + len(pos)
+                break
+        if cand is None:
             cand, p = pool_reg
-            n_fallback += len(idx)
-        donor_idx[idx] = rng.choice(cand, size=len(idx), p=p, replace=True)
-    if n_fallback:
-        print(f"[donor] {n_fallback:,} individui serviti dal pool regionale")
+            uso["reg"] = uso.get("reg", 0) + len(pos)
+        donor_idx[pos] = rng.choice(cand, size=len(pos), p=p, replace=True)
+
+    if (donor_idx < 0).any():
+        sys.exit(f"[bug] {int((donor_idx < 0).sum()):,} individui senza donatore")
+
+    print("\n[donor] individui per livello di condizionamento effettivo:")
+    for liv, (cols, _) in enumerate(livelli):
+        n = uso.get(liv, 0)
+        if n:
+            print(f"  {' x '.join(cols):<28} {n:>9,}  ({n/len(pop):5.1%})")
+    if uso.get("reg"):
+        print(f"  {'regionale (nessun condiz.)':<28} {uso['reg']:>9,}  "
+              f"({uso['reg']/len(pop):5.1%})")
+
+    n_don = len(np.unique(donor_idx))
+    print(f"[donor] donatori distinti usati: {n_don:,} su {len(a):,} "
+          f"({n_don/len(a):.1%}) | riuso medio {len(pop)/n_don:.1f}x")
 
     # ---- copia in blocco del vettore dei target ----
     don = a.loc[donor_idx, targets].reset_index(drop=True)
@@ -220,7 +273,14 @@ def main(comune, anno, pop_file, out_name, targets, seed, min_record):
 
     # ---- validazione 2: coerenza interna (correlazioni preservate) ----
     num = {t: pd.to_numeric(pop[t], errors="coerce") for t in targets}
-    num = pd.DataFrame(num).dropna()
+    num = pd.DataFrame({t: pd.to_numeric(pop[t], errors="coerce") for t in targets})
+    if num.shape[1] >= 2:
+        print("\n[val] correlazioni fra target (pairwise, min 100 osservazioni):")
+        print(num.corr(min_periods=100).round(3).to_string())
+        src = pd.DataFrame({t: pd.to_numeric(a[t], errors="coerce") for t in targets})
+        print("\n[val] stesse correlazioni nei donatori AVQ (riferimento):")
+        print(src.corr(min_periods=100).round(3).to_string())
+
     if len(num.columns) >= 2 and len(num) > 100:
         print("\n[val] correlazioni fra target nella popolazione sintetica:")
         print(num.corr().round(3).to_string())

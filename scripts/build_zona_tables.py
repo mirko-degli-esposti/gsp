@@ -10,6 +10,7 @@ Aggiungere un comune = aggiungere una voce al registro.
 Comuni registrati:
     017029  Brescia   quartieri (COM_ASC1, 33)
     037006  Bologna   quartieri (COM_ASC1, 6), zone (COM_ASC2, 18, con parent)
+    034027  Parma  quartieri (COM_ASC1, 13)
 
 Uso:
     python build_zona_tables.py 017029                    # Brescia, quartieri
@@ -92,6 +93,16 @@ ZONE_TO_QUARTIERE_BOLOGNA = {
     "37006016": "37006015", "37006017": "37006016", "37006018": "37006016",
 }
 
+ASC_NOMI_PARMA = {
+    "34027001": "Parma Centro", "34027002": "Oltretorrente",
+    "34027003": "Molinetto", "34027004": "Pablo",
+    "34027005": "Golese", "34027006": "San Pancrazio",
+    "34027007": "San Leonardo", "34027008": "Cortile San Martino",
+    "34027009": "Lubiana", "34027010": "San Lazzaro",
+    "34027011": "Cittadella", "34027012": "Montanara",
+    "34027013": "Vigatto",
+}
+
 COMUNI = {
     "017029": {
         "nome": "Brescia",
@@ -115,6 +126,18 @@ COMUNI = {
                      "names": ZONE_NOMI_BOLOGNA, "label": "zone statistiche",
                      "parent": ZONE_TO_QUARTIERE_BOLOGNA,
                      "parent_names": QUARTIERI_NOMI_BOLOGNA},
+        },
+    },
+    "034027": {
+        "nome": "Parma",
+        "sez_csv": "~/progetti/gsp/data/submun/parma_sezioni_2023.csv",
+        "default_level": "quartieri",
+        "levels": {
+            # ISTAT pubblica per Parma il solo COM_ASC1: ASC2 e ASC3 sono
+            # a zero su tutte le 1.357 sezioni.
+            "quartieri": {"column": "COM_ASC1", "expected": 13,
+                          "names": ASC_NOMI_PARMA, "label": "quartieri",
+                          "parent": None, "parent_names": None},
         },
     },
 }

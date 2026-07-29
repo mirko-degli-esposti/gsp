@@ -61,16 +61,16 @@ def resolve_pop_file(cdir: str, override: str | None) -> str:
     
 AREAS = ["UE", "EXTRA_UE"]
 
-EU27 = {  # etichette italiane ISTAT, Italia esclusa
-    "austria", "belgio", "bulgaria", "cechia", "repubblica ceca", "cipro",
-    "croazia", "danimarca", "estonia", "finlandia", "francia", "germania",
-    "grecia", "irlanda", "lettonia", "lituania", "lussemburgo", "malta",
-    "paesi bassi", "polonia", "portogallo", "romania", "slovacchia",
-    "slovenia", "spagna", "svezia", "ungheria",
-}
+# EU27 = {  # etichette italiane ISTAT, Italia esclusa
+#     "austria", "belgio", "bulgaria", "cechia", "repubblica ceca", "cipro",
+#     "croazia", "danimarca", "estonia", "finlandia", "francia", "germania",
+#     "grecia", "irlanda", "lettonia", "lituania", "lussemburgo", "malta",
+#     "paesi bassi", "polonia", "portogallo", "romania", "slovacchia",
+#     "slovenia", "spagna", "svezia", "ungheria",
+# }
 
-AGGREG_RE = ("tutte le voci|unione europea|countries|europ|africa|america|asia|"
-             "oceania|total|apolidi|aggregat|eea|efta")
+# AGGREG_RE = ("tutte le voci|unione europea|countries|europ|africa|america|asia|"
+#              "oceania|total|apolidi|aggregat|eea|efta")
 
 
 
@@ -137,13 +137,18 @@ def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_nam
                                  "cens_stranieri_paesi_decoded.csv"))
     
     d = d[(d["TIME_PERIOD"] == cens_anno) & (d["GENDER"].isin(["M", "F"]))].copy()
-    lab = d["AREA_CONTRY_CITIZEN_label"]
-    d = d[lab.notna()
-          & ~lab.str.lower().str.contains(AGGREG_RE, regex=True, na=False)
-          & (d["OBS_VALUE"].fillna(0) > 0)]
+    # Filtrare gli aggregati per CODICE e non per etichetta: la regex su
+    # 'africa' catturava anche 'Sud Africa', che e' un paese. I codici
+    # aggregati sono una ventina e fissi (G.AGGREGATI_PAESE); i paesi sono
+    # duecento e in crescita.
+    d = d[~d["AREA_CONTRY_CITIZEN"].astype(str).isin(G.AGGREGATI_PAESE)]
+    d = d[d["AREA_CONTRY_CITIZEN_label"].notna()
+          & (pd.to_numeric(d["OBS_VALUE"], errors="coerce").fillna(0) > 0)]
+
     d["paese"] = d["AREA_CONTRY_CITIZEN_label"].astype(str)
-    d["area"] = d["paese"].str.lower().map(
-        lambda s: "UE" if any(s == e or s.startswith(e) for e in EU27) else "EXTRA_UE")
+    d["area"] = d["AREA_CONTRY_CITIZEN"].map(
+        lambda c: "UE" if c in G.EU27_ISO else "EXTRA_UE")
+    
     ue_found = sorted(d[d.area == "UE"]["paese"].unique())
     print(f"[2b] paesi: {d['paese'].nunique()} | classificati UE: {len(ue_found)}")
     print(f"     UE trovati: {ue_found}")

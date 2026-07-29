@@ -48,9 +48,6 @@ import sys
 import numpy as np
 import pandas as pd
 
-import numpy as np
-import pandas as pd
-
 import gsp_common as G
 
 
@@ -108,27 +105,37 @@ def build_pools(a, cols, min_record):
         pools[k] = (g.index.to_numpy(), p / p.sum())
     return pools
 
-def load_avq(years, targets, regione, nome_reg="?"):
-    """Impila le annate, normalizza i pesi entro anno, ricodifica le celle."""
+def load_avq(years, targets, opzionali, regione, nome_reg="?"):
+    """Impila le annate, normalizza i pesi entro anno, ricodifica le celle.
+
+    'targets' determina quali annate sono utilizzabili: se una manca,
+    l'annata si scarta. 'opzionali' vengono prese dove ci sono e restano
+    NaN altrove, cosi' il modulo a rotazione di AVQ non costringe a
+    dimezzare il pool di donatori per quattro variabili.
+    """
     frames = []
     for y in years:
-        path = os.path.join(AVQ_DIR, f"avq{y}", "MICRODATI", f"AVQ_Microdati_{y}.txt")
+        path = os.path.join(AVQ_DIR, f"avq{y}", "MICRODATI",
+                            f"AVQ_Microdati_{y}.txt")
         if not os.path.exists(path):
             print(f"[avq] {y}: file assente, annata saltata")
             continue
-        keep = set(["ETAMi", "SESSO", "ISTRMi", "REGMf", "COEFIN"] + targets)
+        base = ["ETAMi", "SESSO", "ISTRMi", "REGMf", "COEFIN"]
+        keep = set(base + targets + opzionali)
         d = pd.read_csv(path, sep="\t", low_memory=False,
                         usecols=lambda c: c in keep)
-        missing = [c for c in keep if c not in d.columns]
+        missing = [c for c in base + targets if c not in d.columns]
         if missing:
-            print(f"[avq] {y}: variabili mancanti {missing}, annata saltata "
-                  f"(il modulo salute AVQ ruota tra le annate: es. CRONI non "
-                  f"e' rilevata nel 2022, dove esistono solo le singole "
-                  f"patologie DIAB/IPAR/... e LIMITA; ricostruirla darebbe "
-                  f"una definizione non equivalente, quindi l'annata si scarta)")
+            print(f"[avq] {y}: variabili NECESSARIE mancanti {missing}, "
+                  f"annata saltata")
             continue
+        assenti = [c for c in opzionali if c not in d.columns]
+        for c in assenti:
+            d[c] = np.nan
+        if assenti:
+            print(f"[avq] {y}: opzionali assenti -> NaN: {assenti}")
         w = pd.to_numeric(d["COEFIN"], errors="coerce")
-        d["w"] = w / w.sum()          # ogni annata pesa uguale nel pool
+        d["w"] = w / w.sum()
         d["anno_avq"] = y
         frames.append(d)
         print(f"[avq] {y}: {len(d):,} record")
@@ -153,7 +160,7 @@ def load_avq(years, targets, regione, nome_reg="?"):
     return a
 
 
-def main(comune, anno, pop_file, out_name, targets, seed, min_record):
+def main(comune, anno, pop_file, out_name, targets, opzionali, seed, min_record):
     try:
         nome_reg = G.REGIONI[G.info(comune)["regione"]]["nome"]
     except KeyError as e:
@@ -161,11 +168,12 @@ def main(comune, anno, pop_file, out_name, targets, seed, min_record):
     regione = G.cod_avq(comune)
     cdir = G.path_constraints(comune, anno)
 
-    a = load_avq(AVQ_YEARS, targets, regione, nome_reg)
+    a = load_avq(AVQ_YEARS, targets, opzionali, regione, nome_reg)
+    tutti = targets + opzionali
 
     pop = pd.read_csv(os.path.join(cdir, pop_file)).reset_index(drop=True)
     print(f"[pop] {pop_file}: {len(pop):,} individui")
-    for t in targets:
+    for t in tutti:
         if t in pop.columns:
             sys.exit(f"La popolazione ha gia' una colonna '{t}'.")
 
@@ -238,24 +246,27 @@ def main(comune, anno, pop_file, out_name, targets, seed, min_record):
           f"({n_don/len(a):.1%}) | riuso medio {len(pop)/n_don:.1f}x")
 
     # ---- copia in blocco del vettore dei target ----
-    don = a.loc[donor_idx, targets].reset_index(drop=True)
-    for t in targets:
+    don = a.loc[donor_idx, tutti].reset_index(drop=True)
+    for t in tutti:
         col = don[t]
-        # missing del donatore -> non_applicabile (propagazione coerente)
+        # missing del donatore -> non_applicabile. Per le variabili
+        # opzionali il missing e' in gran parte STRUTTURALE: dipende
+        # dall'annata del donatore, non dall'individuo.
         blank = col.isna() | (col.astype(str).str.strip() == "")
         pop[t] = col.where(~blank, NA_TOKEN).to_numpy()
         n_na = int(blank.sum())
+        nota = " [opzionale]" if t in opzionali else ""
         print(f"[{t}] assegnati {len(pop)-n_na:,} | "
-              f"{NA_TOKEN} (missing strutturale nel donatore): {n_na:,}")
+              f"{NA_TOKEN}: {n_na:,}{nota}")
 
     # ---- validazione 1: marginali sintetici vs AVQ pesati ----
     print("\n[val] marginali: sintetico vs AVQ pesato (regione)")
-    for t in targets:
+    for t in tutti:
         s = pd.to_numeric(a[t], errors="coerce")
         ok = s.notna()
         if ok.sum() == 0:
             continue
-        if s[ok].nunique() > 12:      # continua: confronto su media
+        if s[ok].nunique() > 6:     # 0-10 e MH: confronto su media
             m_avq = float((s[ok] * a.loc[ok, "w"]).sum() / a.loc[ok, "w"].sum())
             syn = pd.to_numeric(pop[t], errors="coerce")
             m_syn = float(syn.mean())
@@ -272,23 +283,25 @@ def main(comune, anno, pop_file, out_name, targets, seed, min_record):
                       f"avq {w_avq[k]:.3f} (scarto {syn.get(k, 0)-w_avq[k]:+.3f})")
 
     # ---- validazione 2: coerenza interna (correlazioni preservate) ----
-    num = {t: pd.to_numeric(pop[t], errors="coerce") for t in targets}
-    num = pd.DataFrame({t: pd.to_numeric(pop[t], errors="coerce") for t in targets})
+    # La numerosita' effettiva del sintetico non e' il numero di individui
+    # ma il numero di DONATORI distinti: una coppia di variabili a universi
+    # quasi disgiunti puo' poggiare su poche decine di donatori replicati
+    # migliaia di volte (BMIMIN x VOTOUSL: 266 individui su 198k, ma una
+    # manciata di donatori). Si mascherano le coppie sotto i 100 donatori.
+    num = pd.DataFrame({t: pd.to_numeric(pop[t], errors="coerce")
+                        for t in tutti})
+    src = pd.DataFrame({t: pd.to_numeric(a[t], errors="coerce")
+                        for t in tutti})
     if num.shape[1] >= 2:
-        print("\n[val] correlazioni fra target (pairwise, min 100 osservazioni):")
-        print(num.corr(min_periods=100).round(3).to_string())
-        src = pd.DataFrame({t: pd.to_numeric(a[t], errors="coerce") for t in targets})
+        ok = src.notna().astype(int)
+        n_don = ok.T @ ok                       # donatori validi per coppia
+        C = num.corr(min_periods=100).where(n_don >= 100)
+        print("\n[val] correlazioni fra target "
+              "(mascherate se < 100 donatori distinti):")
+        print(C.round(3).to_string())
         print("\n[val] stesse correlazioni nei donatori AVQ (riferimento):")
         print(src.corr(min_periods=100).round(3).to_string())
 
-    if len(num.columns) >= 2 and len(num) > 100:
-        print("\n[val] correlazioni fra target nella popolazione sintetica:")
-        print(num.corr().round(3).to_string())
-        src = pd.DataFrame({t: pd.to_numeric(a[t], errors="coerce")
-                            for t in targets}).dropna()
-        if len(src) > 100:
-            print("\n[val] stesse correlazioni nei donatori AVQ (riferimento):")
-            print(src.corr().round(3).to_string())
 
     pop = pop.drop(columns=["macroeta", "istr4"])
     out = os.path.join(cdir, out_name)
@@ -308,6 +321,10 @@ if __name__ == "__main__":
     ap.add_argument("--min-record", type=int, default=20,
                     help="donatori minimi per usare il pool di cella [20]")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--targets-opt", default="",
+                    help="variabili prese dove disponibili, NaN altrove "
+                         "(il modulo AVQ ruota fra le annate)")
     x = ap.parse_args()
+    opz = [t.strip() for t in x.targets_opt.split(",") if t.strip()]
     main(x.comune, x.anno, x.pop_file, x.out,
-         [t.strip() for t in x.targets.split(",")], x.seed, x.min_record)
+         [t.strip() for t in x.targets.split(",")], opz, x.seed, x.min_record)

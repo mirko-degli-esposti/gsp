@@ -51,6 +51,9 @@ import pandas as pd
 
 import gsp_common as G
 
+import gsp_common as G
+import opendata_paese as OP
+
 # Colonne P del tracciato: P30+k maschi, P67+k femmine, k=0..15 sui
 # quinquennali da '<5' a '>74'.
 OFF_SESSO = {"M": 30, "F": 67}
@@ -86,15 +89,15 @@ ST_AREA = {("M", "UE"): "ST17", ("F", "UE"): "ST18",
            ("M", "EXTRA_UE"): "ST20", ("F", "EXTRA_UE"): "ST21"}
 AREAS = ["UE", "EXTRA_UE"]
 
-EU27 = {
-    "austria", "belgio", "bulgaria", "cechia", "repubblica ceca", "cipro",
-    "croazia", "danimarca", "estonia", "finlandia", "francia", "germania",
-    "grecia", "irlanda", "lettonia", "lituania", "lussemburgo", "malta",
-    "paesi bassi", "polonia", "portogallo", "romania", "slovacchia",
-    "slovenia", "spagna", "svezia", "ungheria",
-}
-AGGREG_RE = ("tutte le voci|unione europea|countries|europ|africa|america|asia|"
-             "oceania|total|apolidi|aggregat|eea|efta")
+# EU27 = {
+#     "austria", "belgio", "bulgaria", "cechia", "repubblica ceca", "cipro",
+#     "croazia", "danimarca", "estonia", "finlandia", "francia", "germania",
+#     "grecia", "irlanda", "lettonia", "lituania", "lussemburgo", "malta",
+#     "paesi bassi", "polonia", "portogallo", "romania", "slovacchia",
+#     "slovenia", "spagna", "svezia", "ungheria",
+# }
+# AGGREG_RE = ("tutte le voci|unione europea|countries|europ|africa|america|asia|"
+#              "oceania|total|apolidi|aggregat|eea|efta")
 
 SPECIALI = ("888888", "999999")
 
@@ -264,14 +267,19 @@ def tab_paesi(comune, anno):
     d = pd.read_csv(path, low_memory=False)
     d = d[(d["TIME_PERIOD"].astype(str) == str(anno - 1))
           & (d["GENDER"].astype(str).isin(["M", "F"]))].copy()
-    lab = d["AREA_CONTRY_CITIZEN_label"]
-    d = d[lab.notna()
-          & ~lab.str.lower().str.contains(AGGREG_RE, regex=True, na=False)
+    # Aggregati filtrati per CODICE e non per etichetta: una regex su
+    # 'africa' catturava anche 'Sud Africa', che e' un paese. I codici
+    # aggregati sono una ventina e fissi; i paesi duecento e in crescita.
+    d = d[~d["AREA_CONTRY_CITIZEN"].astype(str).isin(G.AGGREGATI_PAESE)]
+    d = d[d["AREA_CONTRY_CITIZEN_label"].notna()
           & (pd.to_numeric(d["OBS_VALUE"], errors="coerce").fillna(0) > 0)]
     d["paese"] = d["AREA_CONTRY_CITIZEN_label"].astype(str)
-    d["area"] = d["paese"].str.lower().map(
-        lambda s: "UE" if any(s == e or s.startswith(e) for e in EU27)
-        else "EXTRA_UE")
+    # Classificare per codice ISO e non per etichetta: le denominazioni
+    # ISTAT sono invertite ('Ceca, Repubblica'), quindi il confronto per
+    # stringa le manca.
+    d["area"] = d["AREA_CONTRY_CITIZEN"].map(
+        lambda c: "UE" if c in G.EU27_ISO else "EXTRA_UE")
+
     d["v"] = pd.to_numeric(d["OBS_VALUE"], errors="coerce")
     cp = d.groupby(["area", "GENDER", "paese"])["v"].sum().reset_index()
     print(f"[3c] paesi: {d['paese'].nunique()} | "
@@ -280,9 +288,9 @@ def tab_paesi(comune, anno):
             for (a, s), g in cp.groupby(["area", "GENDER"])}
 
 
-def assegna_area_paese(pop, sez, comune, anno, rng):
+def assegna_area_paese(pop, sez, comune, anno, rng, usa_tier=True):
     """(3b) area condizionata alla SEZIONE; (3c) paese condizionato ad area."""
-    paesi = tab_paesi(comune, anno)
+    #paesi = tab_paesi(comune, anno)
     sez_i = sez.set_index("SEZ")
     z_area = sez.groupby("zona")[[ST_AREA[(s, a)] for s in ("M", "F")
                                   for a in AREAS]].sum()
@@ -315,17 +323,56 @@ def assegna_area_paese(pop, sez, comune, anno, rng):
           f"dalla sezione, {uso['zona']:,} ({uso['zona']/max(n,1):.1%}) "
           f"dalla zona")
 
-    for key, g in pop.loc[frg].groupby(["area", "sesso"]):
-        if key not in paesi:
-            continue
-        nomi, w = paesi[key]
-        idx = g.index.to_numpy().copy()
-        rng.shuffle(idx)
-        pop.loc[idx, "paese"] = G.spartisci(
-            idx, G.largest_remainder(len(idx), w), nomi)
-    print(f"[3c] paese assegnato a {int(pop.loc[frg, 'paese'].notna().sum()):,} "
-          f"stranieri")
+    # ---- (3c) paese, condizionato alla geografia se la fonte c'e' ----
+    if usa_tier:
+        T, codici, geos, meta = OP.tabella_paese(comune, anno - 1, verbose=True)
+        lab = G.etichette_paese(comune, anno - 1)
+        nomi = np.array([lab.get(c, c) for c in codici])
+        ue = np.array([c in G.EU27_ISO for c in codici])
+        mask = {"UE": ue, "EXTRA_UE": ~ue}
+        ig = {g: i for i, g in enumerate(geos)}
+        isx = {"M": 0, "F": 1}
+        Tc = T.sum(axis=2)                      # riserva comunale (paese, sesso)
+
+        # tier 3 -> sezione (assegnata in 3a), altrimenti la zona
+        geo_col = "sezione" if meta["livello"] == "sezione" else "zona"
+        uso = {"geo": 0, "comune": 0}
+
+        for key, g in pop.loc[frg].groupby(["area", "sesso", geo_col]):
+            area, sesso, geo = key
+            idx = g.index.to_numpy().copy()
+            m = mask[area]
+            j = ig.get(str(geo))
+            w = T[m, isx[sesso], j] if j is not None else None
+            if w is None or w.sum() <= 0:
+                # l'area viene dalle colonne ST della sezione, T dal seed
+                # locale: possono non concordare su celle minuscole
+                w = Tc[m, isx[sesso]]
+                uso["comune"] += len(idx)
+            else:
+                uso["geo"] += len(idx)
+            rng.shuffle(idx)
+            pop.loc[idx, "paese"] = G.spartisci(
+                idx, G.largest_remainder(len(idx), w), nomi[m])
+
+        n = max(len(frg), 1)
+        print(f"[3c] paese: tier {meta['tier']} su {meta['livello']} | "
+              f"{uso['geo']:,} ({uso['geo']/n:.1%}) dalla geografia, "
+              f"{uso['comune']:,} ({uso['comune']/n:.1%}) riserva comunale")
+    else:
+        paesi = tab_paesi(comune, anno)
+        for key, g in pop.loc[frg].groupby(["area", "sesso"]):
+            if key not in paesi:
+                continue
+            nomi_, w = paesi[key]
+            idx = g.index.to_numpy().copy()
+            rng.shuffle(idx)
+            pop.loc[idx, "paese"] = G.spartisci(
+                idx, G.largest_remainder(len(idx), w), nomi_)
+        print(f"[3c] paese: condizionale comunale (--no-tier)")
+
     return pop
+   
 
 
 # ----------------------------------------------------------------------
@@ -472,7 +519,7 @@ def valida(pop, sez):
 
 # ----------------------------------------------------------------------
 
-def main(comune, anno, pop_file, out_name, keep_naz, seed):
+def main(comune, anno, pop_file, out_name, keep_naz, no_tier, seed):
     try:
         G.info(comune)
         cdir = G.path_constraints(comune, anno)
@@ -495,7 +542,7 @@ def main(comune, anno, pop_file, out_name, keep_naz, seed):
     if keep_naz:
         print("\n[3b/3c] --keep-naz: area e paese lasciati invariati")
     else:
-        pop = assegna_area_paese(pop, sez, comune, anno, rng)
+        pop = assegna_area_paese(pop, sez, comune, anno, rng, not no_tier)
     pop = assegna_eta(pop, sez, eta_w, rng)
     pop = assegna_indirizzo(pop, sez, civ, rng)
 
@@ -518,5 +565,8 @@ if __name__ == "__main__":
                     help="non ri-assegna area e paese (li lascia come da "
                          "assign_nationality.py, condizionati sulla zona)")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--no-tier", action="store_true",
+                    help="paese condizionato al solo (area, sesso) comunale, "
+                         "come prima dell'introduzione dei tier")
     x = ap.parse_args()
-    main(x.comune, x.anno, x.pop_file, x.out, x.keep_naz, x.seed)
+    main(x.comune, x.anno, x.pop_file, x.out, x.keep_naz, x.no_tier, x.seed)

@@ -170,7 +170,16 @@ ASC2_NOMI_BOLOGNA = {
     "37006009": "Lame",            "37006018": "San Vitale",
 }    # 18 zone statistiche
 
-
+# Verificato su due assi indipendenti (29/07/2026): baricentri dei civici
+# ANNCSU — Centro Storico compatto (raggio 0,68 km contro 2,2–3,1) e le tre
+# direzioni cardinali coerenti coi nomi — e concentrazione dei toponimi,
+# 5 su 5 al 100% nel quartiere che li nomina.
+ASC_NOMI_MODENA = {
+    "36023001": "Centro Storico",
+    "36023002": "Crocetta, San Lazzaro, Modena Est",
+    "36023003": "Buon Pastore, Sant'Agnese, San Damaso",
+    "36023004": "San Faustino, Madonnina, Quattro Ville",
+}
 # ----------------------------------------------------------------------
 # Comuni — solo il non derivabile
 # ----------------------------------------------------------------------
@@ -233,6 +242,17 @@ COMUNI = {
         # ASC1 ha un solo valore: nessuna articolazione sub-comunale.
         "livello": None,
         "livelli": {},
+    },
+    "036023": {
+        "nome": "Modena", "slug": "modena", "regione": "emilia_romagna",
+        "livello": "quartieri",
+        "livelli": {
+            # Solo ASC1, 4 zone da ~46.000 abitanti: la partizione piu'
+            # grossolana fra i comuni in pipeline. Il lavoro geografico lo
+            # fa l'anello 3 (546 sezioni per zona).
+            "quartieri": {"col": "COM_ASC1", "n": 4,
+                          "nomi": ASC_NOMI_MODENA, "parent": None},
+        },
     },
 }
 
@@ -309,6 +329,30 @@ AGGREGATI_PAESE = {
     "EU",             # Unione europea: somma dei 27, gia' presenti singolarmente
     "999",            # apolidi: non uno Stato, va nel residuale
 }
+
+# Paesi UE27 in codice ISO alpha-2. Classificare per codice e non per
+# etichetta e' piu' robusto: le denominazioni ISTAT sono invertite
+# ('Ceca, Repubblica') e il confronto per stringa e' fragile.
+# La lista si verifica sommando i 27 e confrontando con l'aggregato 'EU'
+# della stessa tavola censuaria.
+EU27_ISO = {
+    "AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR",
+    "GR", "HR", "HU", "IE", "IT", "LT", "LU", "LV", "MT", "NL", "PL",
+    "PT", "RO", "SE", "SI", "SK",
+}
+
+
+def etichette_paese(comune: str, anno_cens: int = 2023) -> dict:
+    """{codice: etichetta ISTAT} dei paesi censiti nel comune."""
+    d = pd.read_csv(os.path.join(path_comune(comune),
+                                 "cens_stranieri_paesi_decoded.csv"),
+                    low_memory=False)
+    d = d[d["TIME_PERIOD"].astype(str) == str(anno_cens)]
+    t = (d[["AREA_CONTRY_CITIZEN", "AREA_CONTRY_CITIZEN_label"]]
+         .dropna().drop_duplicates())
+    t = t[~t["AREA_CONTRY_CITIZEN"].astype(str).isin(AGGREGATI_PAESE)]
+    return dict(zip(t["AREA_CONTRY_CITIZEN"],
+                    t["AREA_CONTRY_CITIZEN_label"]))
 
 
 def paesi_censuari(comune: str, anno_cens: int = 2023) -> dict:

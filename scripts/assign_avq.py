@@ -48,16 +48,15 @@ import sys
 import numpy as np
 import pandas as pd
 
-AVQ_DIR = os.path.expanduser("~/progetti/gsp/data/avq/anni")
+import numpy as np
+import pandas as pd
+
+import gsp_common as G
+
+
 AVQ_YEARS = ["2022", "2023", "2024"]
 
-COMUNE_REGIONE = {
-    "017029": 30,    # Brescia -> Lombardia
-    "034027": 80,    # Parma   -> Emilia-Romagna
-    "037006": 80,    # Bologna -> Emilia-Romagna
-    "074017": 160,   # San Vito dei Normanni -> Puglia
-}
-REGIONE_NOMI = {30: "Lombardia", 80: "Emilia-Romagna", 160: "Puglia"}
+AVQ_DIR = G.AVQ_DIR
 
 # ETAMi (classi AVQ) -> macro-classe di condizionamento (incluse le infantili)
 ETAMI_MACRO = {
@@ -109,7 +108,7 @@ def build_pools(a, cols, min_record):
         pools[k] = (g.index.to_numpy(), p / p.sum())
     return pools
 
-def load_avq(years, targets, regione):
+def load_avq(years, targets, regione, nome_reg="?"):
     """Impila le annate, normalizza i pesi entro anno, ricodifica le celle."""
     frames = []
     for y in years:
@@ -149,19 +148,20 @@ def load_avq(years, targets, regione):
     a = a[a["REGMf"] == regione].copy()
     n0 = len(a)
     a = a.dropna(subset=CELL_COLS + ["w"])
-    print(f"[avq] regione {regione} ({REGIONE_NOMI.get(regione, '?')}): "
+    print(f"[avq] regione {regione} ({nome_reg}): "
           f"{len(a):,} donatori con cella completa (su {n0:,})")
     return a
 
 
 def main(comune, anno, pop_file, out_name, targets, seed, min_record):
-    if comune not in COMUNE_REGIONE:
-        sys.exit(f"Comune {comune} non nel registro COMUNE_REGIONE.")
-    regione = COMUNE_REGIONE[comune]
-    cdir = os.path.expanduser(
-        f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
+    try:
+        nome_reg = G.REGIONI[G.info(comune)["regione"]]["nome"]
+    except KeyError as e:
+        sys.exit(str(e))
+    regione = G.cod_avq(comune)
+    cdir = G.path_constraints(comune, anno)
 
-    a = load_avq(AVQ_YEARS, targets, regione)
+    a = load_avq(AVQ_YEARS, targets, regione, nome_reg)
 
     pop = pd.read_csv(os.path.join(cdir, pop_file)).reset_index(drop=True)
     print(f"[pop] {pop_file}: {len(pop):,} individui")
@@ -299,7 +299,7 @@ def main(comune, anno, pop_file, out_name, targets, seed, min_record):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(
         description="Strato AVQ con campionamento per donatore (hot-deck).")
-    ap.add_argument("comune", help="codice ISTAT (017029, 037006, 074017)")
+    ap.add_argument("comune", help="codice ISTAT del comune (vedi registro in gsp_common.py)")
     ap.add_argument("--anno", type=int, default=2024)
     ap.add_argument("--pop-file", default="popolazione_K9C_naz.csv")
     ap.add_argument("--out", default="popolazione_K9C_avq.csv")

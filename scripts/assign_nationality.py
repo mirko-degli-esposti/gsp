@@ -36,16 +36,14 @@ import sys
 import numpy as np
 import pandas as pd
 
-SUBMUN_DIR = os.path.expanduser("~/progetti/gsp/data/submun")
+import gsp_common as G
 
-# registro comuni: nome usato per il file sezioni di default
-COMUNI = {
-    "017029": {"nome": "brescia"},
-    "037006": {"nome": "bologna"},
-    "034027": {"nome": "parma"},
-}
-
+# Vocabolario locale della CLI. Il registro usa nomi semantici
+# ('quartieri', 'zone'); qui restano i nomi di colonna.
 LIVELLI = {"asc1": "COM_ASC1", "asc2": "COM_ASC2"}
+
+
+COL_TO_ASC = {v: k for k, v in LIVELLI.items()}
 
 #POP_CANDIDATES = ["popolazione_K7C.csv", "popolazione_K8C.csv", "popolazione_K6C.csv"]
 POP_CANDIDATES = ["popolazione_K10C.csv", "popolazione_K9C.csv",
@@ -75,45 +73,38 @@ AGGREG_RE = ("tutte le voci|unione europea|countries|europ|africa|america|asia|"
              "oceania|total|apolidi|aggregat|eea|efta")
 
 
-def norm_code(s: pd.Series, comune: str) -> pd.Series:
-    """Codice zona -> stringa intera: no '.0', no zeri iniziali, no prefisso
-    PROCOM (es. comune 037006: '37006009' -> '9', '9.0' -> '9', '09' -> '9')."""
-    procom = str(int(comune))
-
-    def f(x: str) -> str:
-        x = x.strip()
-        if x.endswith(".0"):
-            x = x[:-2]
-        if x.startswith(procom) and len(x) > len(procom):
-            x = x[len(procom):]
-        return x.lstrip("0") or "0"
-
-    return s.astype(str).map(f)
 
 
-def largest_remainder(n: int, shares: np.ndarray) -> np.ndarray:
-    """Alloca n unità intere secondo shares, largest remainder."""
-    if n == 0 or shares.sum() == 0:
-        return np.zeros(len(shares), dtype=int)
-    exp = n * shares / shares.sum()
-    base = np.floor(exp).astype(int)
-    resto = n - base.sum()
-    if resto > 0:
-        order = np.argsort(-(exp - base))
-        base[order[:resto]] += 1
-    return base
+
+
+
 
 
 def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_name, seed):
-    cdir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
+    try:
+        cdir = G.path_constraints(comune, anno)
+        liv_reg = G.livello_col(comune) if G.info(comune)["livello"] else None
+    except (KeyError, ValueError) as e:
+        sys.exit(str(e))
     cens_anno = anno - 1
 
+    # Il livello viene dal registro. --livello resta per override espliciti,
+    # ma se diverge avverte: i codici ASC1 e ASC2 si sovrappongono (a Bologna
+    # 37006011 vale 'Borgo Panigale-Reno' come ASC1 e 'San Donato' come ASC2),
+    # quindi un merge sul codice sbagliato riesce e da' il nome sbagliato.
+    if livello is None:
+        if liv_reg is None:
+            sys.exit(f"{G.info(comune)['nome']} non ha articolazione "
+                     f"sub-comunale: usare --sezioni e --livello espliciti")
+        livello = COL_TO_ASC[liv_reg]
+        print(f"[cfg] livello dal registro: {livello} ({liv_reg})")
+    elif liv_reg and LIVELLI[livello] != liv_reg:
+        print(f"[warn] --livello {livello} ({LIVELLI[livello]}) diverge dal "
+              f"registro ({liv_reg}): verificare i codici zona")
+
     if sezioni_csv is None:
-        if comune not in COMUNI:
-            sys.exit(f"Comune {comune} non nel registro COMUNI: "
-                     f"aggiungilo o passa --sezioni <path>.")
-        sezioni_csv = os.path.join(
-            SUBMUN_DIR, f"{COMUNI[comune]['nome']}_sezioni_2023.csv")
+        sezioni_csv = G.path_sezioni(comune)
+
 
     # ---------- (2a) P(area | zona, sesso) dalle sezioni ----------
     b = pd.read_csv(sezioni_csv)
@@ -121,7 +112,7 @@ def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_nam
     if col_sez not in b.columns:
         sys.exit(f"Colonna {col_sez} assente in {sezioni_csv}. "
                  f"Colonne disponibili: {sorted(b.columns)}")
-    newcols = {f"_{liv}": norm_code(b[col], comune)
+    newcols = {f"_{liv}": G.norm_code(b[col], comune)
                for liv, col in LIVELLI.items() if col in b.columns}
     b = pd.concat([b, pd.DataFrame(newcols, index=b.index)], axis=1)
     no_zona = b[col_sez].nunique(dropna=True) <= 1
@@ -142,8 +133,9 @@ def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_nam
           f"extraUE tot={z5[['ST20','ST21']].values.sum():,.0f}")
 
     # ---------- (2b) P(paese | area, sesso) comunale ----------
-    d = pd.read_csv(os.path.expanduser(
-        f"~/progetti/gsp/data/comuni/{comune}/cens_stranieri_paesi_decoded.csv"))
+    d = pd.read_csv(os.path.join(G.path_comune(comune),
+                                 "cens_stranieri_paesi_decoded.csv"))
+    
     d = d[(d["TIME_PERIOD"] == cens_anno) & (d["GENDER"].isin(["M", "F"]))].copy()
     lab = d["AREA_CONTRY_CITIZEN_label"]
     d = d[lab.notna()
@@ -182,7 +174,8 @@ def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_nam
     if no_zona:
         pop["_zkey"] = "0"
     else:
-        pop["_zkey"] = norm_code(pop[col_pop], comune)
+        G.verifica_livello(pop[col_pop], comune)
+        pop["_zkey"] = G.norm_code(pop[col_pop], comune)
 
     for c in ("area", "paese"):
         if c in pop.columns:
@@ -219,7 +212,7 @@ def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_nam
     for (zona, sesso), grp in pop.loc[frg_idx].groupby(["_zkey", "sesso"]):
         idx = grp.index.to_numpy().copy()
         rng.shuffle(idx)
-        n_area = largest_remainder(len(idx), area_p.get((zona, sesso), fb[sesso]))
+        n_area = G.largest_remainder(len(idx), area_p.get((zona, sesso), fb[sesso]))
         start = 0
         for area, n_a in zip(AREAS, n_area):
             sub = idx[start:start + n_a]
@@ -228,7 +221,7 @@ def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_nam
                 continue
             pop.loc[sub, "area"] = area
             paesi, w = paese_p[(area, sesso)]
-            n_paese = largest_remainder(n_a, w)
+            n_paese = G.largest_remainder(n_a, w)
             s2 = 0
             for paese, n_p in zip(paesi, n_paese):
                 pop.loc[sub[s2:s2 + n_p], "paese"] = paese
@@ -259,8 +252,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="Nazionalità two-stage (v2, multi-comune).")
     ap.add_argument("comune", help="codice ISTAT (es. 017029 Brescia, 037006 Bologna)")
     ap.add_argument("--anno", type=int, default=2024)
-    ap.add_argument("--livello", choices=list(LIVELLI), default="asc1",
-                    help="livello territoriale per P(area|zona,sesso) [default: asc1]")
+    ap.add_argument("--livello", choices=list(LIVELLI), default=None,
+                    help="livello territoriale [default: dal registro di "
+                         "gsp_common.py]")
     ap.add_argument("--col-pop", default="zona",
                     help="colonna della popolazione con i codici zona [default: zona]")
     ap.add_argument("--sezioni", default=None,

@@ -43,104 +43,14 @@ import os
 from pathlib import Path
 
 import pandas as pd
+import gsp_common as G
 
 
 # ----------------------------------------------------------------------
 # Registro dei comuni
 # ----------------------------------------------------------------------
 
-ASC_NOMI_BRESCIA = {
-    "17029001": "Brescia Antica", "17029002": "Borgo Trento",
-    "17029003": "Porta Milano", "17029004": "Centro Storico Nord",
-    "17029005": "Chiusure", "17029006": "Don Bosco",
-    "17029007": "Fiumicello", "17029008": "Folzano",
-    "17029009": "Fornaci", "17029010": "Lamarmora",
-    "17029011": "Mompiano", "17029012": "Porta Cremona",
-    "17029013": "Buffalora", "17029014": "Porta Venezia",
-    "17029015": "Villaggio Prealpino", "17029016": "Caionvico",
-    "17029017": "S. Bartolomeo", "17029018": "S. Eufemia",
-    "17029019": "S. Polo Case", "17029020": "Chiesanuova",
-    "17029021": "Urago", "17029022": "Casazza",
-    "17029023": "Villaggio Badia", "17029024": "Villaggio Sereno",
-    "17029025": "Villaggio Violino", "17029026": "Primo Maggio",
-    "17029027": "Centro Storico Sud", "17029028": "S. Eustacchio",
-    "17029029": "S. Rocchino", "17029030": "Crocifissa Di Rosa",
-    "17029031": "S. Polo Cimabue", "17029032": "San Polino",
-    "17029033": "S. Polo Parco",
-}
 
-QUARTIERI_NOMI_BOLOGNA = {
-    "37006011": "Borgo Panigale-Reno", "37006012": "Navile",
-    "37006013": "Porto-Saragozza", "37006014": "San Donato-San Vitale",
-    "37006015": "Santo Stefano", "37006016": "Savena",
-}
-
-ZONE_NOMI_BOLOGNA = {
-    "37006001": "Barca", "37006002": "Borgo Panigale", "37006003": "Santa Viola",
-    "37006004": "Bolognina", "37006005": "Corticella", "37006006": "Lame",
-    "37006007": "Costa Saragozza", "37006008": "Malpighi", "37006009": "Marconi",
-    "37006010": "Saffi", "37006011": "San Donato", "37006012": "San Vitale",
-    "37006013": "Colli", "37006014": "Galvani", "37006015": "Irnerio",
-    "37006016": "Murri", "37006017": "Mazzini", "37006018": "San Ruffillo",
-}
-
-ZONE_TO_QUARTIERE_BOLOGNA = {
-    "37006001": "37006011", "37006002": "37006011", "37006003": "37006011",
-    "37006004": "37006012", "37006005": "37006012", "37006006": "37006012",
-    "37006007": "37006013", "37006008": "37006013", "37006009": "37006013",
-    "37006010": "37006013", "37006011": "37006014", "37006012": "37006014",
-    "37006013": "37006015", "37006014": "37006015", "37006015": "37006015",
-    "37006016": "37006015", "37006017": "37006016", "37006018": "37006016",
-}
-
-ASC_NOMI_PARMA = {
-    "34027001": "Parma Centro", "34027002": "Oltretorrente",
-    "34027003": "Molinetto", "34027004": "Pablo",
-    "34027005": "Golese", "34027006": "San Pancrazio",
-    "34027007": "San Leonardo", "34027008": "Cortile San Martino",
-    "34027009": "Lubiana", "34027010": "San Lazzaro",
-    "34027011": "Cittadella", "34027012": "Montanara",
-    "34027013": "Vigatto",
-}
-
-COMUNI = {
-    "017029": {
-        "nome": "Brescia",
-        "sez_csv": "~/progetti/gsp/data/submun/brescia_sezioni_2023.csv",
-        "default_level": "quartieri",
-        "levels": {
-            "quartieri": {"column": "COM_ASC1", "expected": 33,
-                          "names": ASC_NOMI_BRESCIA, "label": "quartieri",
-                          "parent": None, "parent_names": None},
-        },
-    },
-    "037006": {
-        "nome": "Bologna",
-        "sez_csv": "~/progetti/gsp/data/submun/bologna_sezioni_2023.csv",
-        "default_level": "quartieri",
-        "levels": {
-            "quartieri": {"column": "COM_ASC1", "expected": 6,
-                          "names": QUARTIERI_NOMI_BOLOGNA, "label": "quartieri",
-                          "parent": None, "parent_names": None},
-            "zone": {"column": "COM_ASC2", "expected": 18,
-                     "names": ZONE_NOMI_BOLOGNA, "label": "zone statistiche",
-                     "parent": ZONE_TO_QUARTIERE_BOLOGNA,
-                     "parent_names": QUARTIERI_NOMI_BOLOGNA},
-        },
-    },
-    "034027": {
-        "nome": "Parma",
-        "sez_csv": "~/progetti/gsp/data/submun/parma_sezioni_2023.csv",
-        "default_level": "quartieri",
-        "levels": {
-            # ISTAT pubblica per Parma il solo COM_ASC1: ASC2 e ASC3 sono
-            # a zero su tutte le 1.357 sezioni.
-            "quartieri": {"column": "COM_ASC1", "expected": 13,
-                          "names": ASC_NOMI_PARMA, "label": "quartieri",
-                          "parent": None, "parent_names": None},
-        },
-    },
-}
 
 
 # ----------------------------------------------------------------------
@@ -196,22 +106,26 @@ def validate_columns(df: pd.DataFrame, group_column: str) -> None:
                          + ", ".join(missing))
 
 
-def build_names_table(cfg: dict, observed_codes: set[str],
-                      level: str) -> pd.DataFrame:
-    names: dict[str, str] = cfg["names"]
+def build_names_table(comune: str, level: str, observed_codes: set[str],
+                      parent_map: dict | None = None) -> pd.DataFrame:
+    names = G.zona_nomi(comune, level)
     unknown = sorted(observed_codes - set(names))
     absent = sorted(set(names) - observed_codes)
     if unknown:
-        raise ValueError(f"Codici {cfg['label']} senza denominazione: {unknown}")
+        raise ValueError(f"Codici '{level}' senza denominazione: {unknown}")
     if absent:
         raise ValueError(f"Codici attesi non presenti nel CSV: {absent}")
+
+    parent_liv = G.info(comune)["livelli"][level].get("parent")
+    parent_names = G.zona_nomi(comune, parent_liv) if parent_liv else None
+
     rows = []
     for code in sorted(observed_codes):
         row = {"zona": code, "nome": names[code], "livello": level}
-        if cfg["parent"]:
-            parent = cfg["parent"][code]
-            row["quartiere"] = parent
-            row["quartiere_nome"] = cfg["parent_names"][parent]
+        if parent_liv and parent_map:
+            p = parent_map.get(code)
+            row["quartiere"] = p
+            row["quartiere_nome"] = parent_names.get(p) if parent_names else None
         rows.append(row)
     return pd.DataFrame(rows)
 
@@ -251,15 +165,15 @@ def audit_against_comune(z1: pd.DataFrame, z2: pd.DataFrame,
 
 def build_tables(*, comune: str, level: str, sez_csv: Path, com_dir: Path,
                  out_dir: Path) -> None:
-    cfg = COMUNI[comune]["levels"][level]
-    group_column: str = cfg["column"]
-    expected: int = cfg["expected"]
-    level_label: str = cfg["label"]
+    cfg = G.info(comune)["livelli"][level]
+    group_column: str = cfg["col"]
+    expected: int = cfg["n"]
+    level_label: str = level          # la chiave del livello e' gia' l'etichetta
 
     if not sez_csv.exists():
         raise FileNotFoundError(f"CSV delle sezioni non trovato: {sez_csv}")
     out_dir.mkdir(parents=True, exist_ok=True)
-    print(f"[cfg] {COMUNI[comune]['nome']} ({comune}) | livello '{level}' "
+    print(f"[cfg] {G.info(comune)['nome']} ({comune}) | livello '{level}' "
           f"({group_column}, attesi {expected}) | out: {out_dir}")
 
     b = pd.read_csv(sez_csv, dtype=str, keep_default_na=False)
@@ -280,12 +194,46 @@ def build_tables(*, comune: str, level: str, sez_csv: Path, com_dir: Path,
                          f"{len(observed_codes)}: {sorted(observed_codes)}")
     if observed_codes == {"0"} or observed_codes == {0}:
         raise SystemExit(
-            f"{group_column} = 0 per tutte le sezioni: {COMUNI[comune]['nome']} "
+            f"{group_column} = 0 per tutte le sezioni: {G.info(comune)['nome']} "
             "non ha sub-aree amministrative assegnate da ISTAT (codice "
             "convenzionale 'nessuna partizione'). Il livello zona non è "
             "costruibile per questo comune: procedere con K6C/K8C comunale-only.")
 
-    names = build_names_table(cfg, observed_codes, level)
+    # La gerarchia fra livelli si ricava dalle sezioni: ogni sezione porta
+    # sia COM_ASC1 sia COM_ASC2, quindi non serve un dizionario a mano.
+    parent_liv = cfg.get("parent")
+    parent_map = None
+    if parent_liv:
+        pcol = G.livello_col(comune, parent_liv)
+        if pcol in b.columns:
+            pm = b[[group_column, pcol]].copy()
+            pm[pcol] = normalize_code(pm[pcol]).astype(str)
+            n_par = pm.groupby(group_column)[pcol].nunique()
+            if (n_par > 1).any():
+                raise ValueError(
+                    f"Mappatura '{level}' -> '{parent_liv}' non funzionale: "
+                    f"{list(n_par[n_par > 1].index)}")
+            parent_map = (pm.drop_duplicates(group_column)
+                          .set_index(group_column)[pcol].to_dict())
+            from collections import Counter
+            taglie = sorted(Counter(parent_map.values()).values(), reverse=True)
+            print(f"[audit] gerarchia: {len(parent_map)} {level} in "
+                  f"{len(set(parent_map.values()))} {parent_liv} | "
+                  f"taglie {taglie}")
+            # Composizione per nome: e' l'unico modo di accorgersi che un
+            # dizionario codice->nome e' permutato. I controlli strutturali
+            # non lo vedono, perche' una permutazione resta una biiezione.
+            pn = G.zona_nomi(comune, parent_liv)
+            zn = G.zona_nomi(comune, level)
+            comp = {}
+            for z, q in sorted(parent_map.items()):
+                comp.setdefault(pn.get(q, q), []).append(zn.get(z, z))
+            for q, zs in sorted(comp.items()):
+                print(f"           {q:<24} {sorted(zs)}")
+        else:
+            print(f"[warn] colonna {pcol} assente: gerarchia non ricostruita")
+
+    names = build_names_table(comune, level, observed_codes, parent_map)
     names.to_csv(out_dir / "zona_nomi.csv", index=False)
     groups = list(b.groupby(group_column, sort=True))
 
@@ -381,7 +329,7 @@ def build_tables(*, comune: str, level: str, sez_csv: Path, com_dir: Path,
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description="Tabelle sub-comunali Z1-Z4+Z6 da sezioni di censimento "
-                    f"(comuni registrati: {', '.join(sorted(COMUNI))}).")
+                    f"(comuni registrati: {', '.join(sorted(G.COMUNI))}).")
     p.add_argument("comune", help="codice comune ITTER107 (es. 017029)")
     p.add_argument("--level", default=None,
                    help="livello territoriale (default: quello del comune)")
@@ -399,20 +347,22 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     comune = args.comune.zfill(6)
-    if comune not in COMUNI:
+    if comune not in G.COMUNI:
         raise SystemExit(
-            f"comune {comune} non registrato (registrati: {sorted(COMUNI)}); "
-            "aggiungere una voce al dict COMUNI: sez_csv, livelli "
-            "(colonna COM_ASC*, numero atteso, nomi, eventuale parent)")
-    cfg_c = COMUNI[comune]
-    level = args.level or cfg_c["default_level"]
-    if level not in cfg_c["levels"]:
+            f"comune {comune} non registrato (registrati: {sorted(G.COMUNI)}); "
+            "aggiungere una voce a COMUNI in gsp_common.py")
+    cfg_c = G.info(comune)
+    level = args.level or cfg_c["livello"]
+    if level is None:
+        raise SystemExit(f"{cfg_c['nome']} non ha articolazione sub-comunale: "
+                         f"procedere con un livello K senza zona")
+    if level not in cfg_c["livelli"]:
         raise SystemExit(f"livello '{level}' non definito per "
-                         f"{cfg_c['nome']} (validi: {sorted(cfg_c['levels'])})")
-    sez_csv = args.sez_csv or Path(os.path.expanduser(cfg_c["sez_csv"]))
-    com_dir = args.com_dir or Path(os.path.expanduser(
-        f"~/progetti/gsp/data/comuni/{comune}"))
+                         f"{cfg_c['nome']} (validi: {sorted(cfg_c['livelli'])})")
+    sez_csv = args.sez_csv or Path(G.path_sezioni(comune))
+    com_dir = args.com_dir or Path(G.path_comune(comune))
     out_dir = args.out_dir or (com_dir / "zona_2023")
+    
     build_tables(comune=comune, level=level, sez_csv=sez_csv.expanduser(),
                  com_dir=com_dir.expanduser(), out_dir=out_dir.expanduser())
 

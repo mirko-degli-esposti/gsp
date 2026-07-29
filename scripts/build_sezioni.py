@@ -33,51 +33,15 @@ import time
 
 import pandas as pd
 
-SUBMUN = os.path.expanduser("~/progetti/gsp/data/submun")
+import gsp_common as G
+
+SUBMUN = G.SUBMUN
 DATA_DIR = os.path.join(SUBMUN, "Dati_regionali_2023")
 CACHE_DIR = os.path.join(SUBMUN, ".cache")
 
 ASC_COLS = ["COM_ASC1", "COM_ASC2", "COM_ASC3"]
 KEY_COLS = ["CODREG", "REGIONE", "CODPRO", "PROVINCIA", "CODCOM",
             "COMUNE", "PROCOM", "SEZ21_ID"]
-
-# Nomi dei file dentro Dati_regionali_2023.zip, per codice regione ISTAT.
-REGIONE_FILE = {
-    1: "R01_Piemonte_2023_sezioni.xlsx",
-    2: "R02_Valle d'Aosta_2023_sezioni.xlsx",
-    3: "R03_Lombardia_2023_sezioni.xlsx",
-    4: "R04_Trentino-Alto Adige_2023_sezioni.xlsx",
-    5: "R05_Veneto_2023_sezioni.xlsx",
-    6: "R06_Friuli-Venezia Giulia_2023_sezioni.xlsx",
-    7: "R07_Liguria_2023_sezioni.xlsx",
-    8: "R08_Emilia-Romagna_2023_sezioni.xlsx",
-    9: "R09_Toscana_2023_sezioni.xlsx",
-    10: "R10_Umbria_2023_sezioni.xlsx",
-    11: "R11_Marche_2023_sezioni.xlsx",
-    12: "R12_Lazio_2023_sezioni.xlsx",
-    13: "R13_Abruzzo_2023_sezioni.xlsx",
-    14: "R14_Molise_2023_sezioni.xlsx",
-    15: "R15_Campania_2023_sezioni.xlsx",
-    16: "R16_Puglia_2023_sezioni.xlsx",
-    17: "R17_Basilicata_2023_sezioni.xlsx",
-    18: "R18_Calabria_2023_sezioni.xlsx",
-    19: "R19_Sicilia_2023_sezioni.xlsx",
-    20: "R20_Sardegna_2023_sezioni.xlsx",
-}
-
-# Registro dei comuni in pipeline. Il livello ASC NON e' comparabile fra
-# comuni (Brescia ASC1 = 33 zone, Bologna ASC1 = 6): va scelto per comune
-# guardando la granularita', e da quel momento e' fisso.
-COMUNI = {
-    "017029": {"nome": "Brescia", "regione": 3,
-               "livello": "COM_ASC1", "n_zone": 33},
-    "037006": {"nome": "Bologna", "regione": 8,
-               "livello": "COM_ASC2", "n_zone": 18},   # ASC1=6 troppo grosso,
-                                                       # ASC3=90 con code da 13 ab.
-    "034027": {"nome": "Parma", "regione": 8,
-               "livello": "COM_ASC1", "n_zone": 13},   # unico livello pubblicato
-    "074017": {"nome": "San Vito dei Normanni", "regione": 16},
-}
 
 
 def procom_from_comune(comune: str) -> int:
@@ -203,20 +167,21 @@ def valida(sez: pd.DataFrame, validi: list[str]) -> None:
 def main(comune, file_arg, regione_arg, out_arg, dry_run):
     if len(comune) != 6 or not comune.isdigit():
         sys.exit("Il codice comune deve avere sei cifre (es. 034027).")
-    procom = procom_from_comune(comune)
-    info = COMUNI.get(comune, {})
+    procom = G.procom(comune)
+    info = G.COMUNI.get(comune, {})
 
-    # ---- individuazione del file regionale ----
     if file_arg:
         xlsx = file_arg if os.path.isabs(file_arg) else os.path.join(DATA_DIR, file_arg)
+    elif regione_arg:                       # override: codice regione ISTAT
+        if regione_arg not in G.REGIONE_FILE:
+            sys.exit(f"Codice regione {regione_arg} sconosciuto.")
+        xlsx = os.path.join(DATA_DIR, G.REGIONE_FILE[regione_arg])
+    elif info:
+        xlsx = G.path_regionale_xlsx(info["regione"])
     else:
-        reg = regione_arg if regione_arg else info.get("regione")
-        if reg is None:
-            sys.exit(f"Comune {comune} non nel registro COMUNI: indicare "
-                     f"--regione <codice> oppure --file <xlsx>.")
-        if reg not in REGIONE_FILE:
-            sys.exit(f"Codice regione {reg} sconosciuto.")
-        xlsx = os.path.join(DATA_DIR, REGIONE_FILE[reg])
+        sys.exit(f"Comune {comune} non nel registro di gsp_common.py: "
+                 f"indicare --regione <codice ISTAT> oppure --file <xlsx>.")
+
     if not os.path.exists(xlsx):
         sys.exit(f"File regionale assente: {xlsx}\n"
                  f"  estrarlo da Dati_regionali_2023.zip in {SUBMUN}")
@@ -246,19 +211,27 @@ def main(comune, file_arg, regione_arg, out_arg, dry_run):
     valida(sez, validi)
 
     # ---- livello zonale: dal registro, non da default ----
-    liv = info.get("livello")
+    liv = None
+    atteso = None
+    if info and info.get("livello"):
+        liv = G.livello_col(comune)
+        atteso = info["livelli"][info["livello"]]["n"]
+
     if liv is None:
         print(f"\n[out] livello non fissato nel registro per {comune}.")
         print(f"[out] livelli disponibili: {', '.join(validi) or 'nessuno'}")
         print(f"[out] scegliere guardando pop/zona qui sopra e aggiungerlo "
-              f"a COMUNI prima di procedere a valle")
+              f"a COMUNI in gsp_common.py prima di procedere a valle")
     elif liv not in validi:
         sys.exit(f"\n[out] il registro chiede {liv}, ma per {nome} i livelli "
                  f"disponibili sono {validi}")
     else:
-        nz = int(sez.loc[sez[liv] != 0, liv].nunique()) 
-        atteso = info.get("n_zone")
+        nz = int(sez.loc[sez[liv] != 0, liv].nunique())
         print(f"\n[out] livello zonale: {liv} — {nz} zone")
+        if atteso and nz != atteso:
+            sys.exit(f"[out] !! attese {atteso} zone, trovate {nz}: "
+                     f"il file regionale e' cambiato, verificare prima di procedere")
+        
         if atteso and nz != atteso:
             sys.exit(f"[out] !! attese {atteso} zone, trovate {nz}: "
                      f"il file regionale e' cambiato, verificare prima di procedere")
@@ -270,7 +243,10 @@ def main(comune, file_arg, regione_arg, out_arg, dry_run):
         print("\n[dry-run] nessun file scritto")
         return
 
-    out_name = out_arg or f"{nome.lower().replace(' ', '_')}_sezioni_2023.csv"
+    out_name = out_arg or (f"{info['slug']}_sezioni_{G.ANNO_SEZIONI}.csv"
+                           if info else
+                           f"{nome.lower().replace(' ', '_')}_sezioni_"
+                           f"{G.ANNO_SEZIONI}.csv")
     out = os.path.join(SUBMUN, out_name)
     if os.path.exists(out):
         sys.exit(f"{out} esiste gia': rimuoverlo o usare --out")

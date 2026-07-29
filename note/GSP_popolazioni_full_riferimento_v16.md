@@ -1,10 +1,10 @@
 # Popolazioni sintetiche GSP — documento di riferimento
 
-**Versione 1.5 — 29 luglio 2026**
+**Versione 1.6 — 29 luglio 2026**
 Descrive i file `popolazione_K9C_avq_full.csv` per Brescia, Parma, Bologna e
 Modena: come caricarli, cosa contengono, come sono stati costruiti, quali
-limiti dichiarati portano con sé e dove trovare i dati reali per il
-confronto.
+limiti dichiarati portano con sé, dove trovare i dati reali per il
+confronto e **come aggiungere un comune nuovo** (§12).
 
 *Questa versione sostituisce tutte le precedenti.*
 
@@ -205,8 +205,7 @@ righe**. Usare `DataFrame.corr(min_periods=...)`, e vedere §11.
   Brescia** (60.488 contro 49.730) a fronte di meno abitanti: non è
   scarsità complessiva ma distribuzione;
 - `convivenza`: sezione fittizia `888888x`. **Nessun indirizzo**,
-  coordinate = centroide della zona. Modena ne ha un ordine di grandezza
-  meno delle altre (50 contro 481–630).
+  coordinate = centroide della zona.
 
 ---
 
@@ -225,8 +224,7 @@ pubblicano **solo** ASC1. Il livello è **fissato nel registro** di
 `gsp_common.py`, non scelto da riga di comando.
 
 **Le quattro zone di Modena sono la partizione più grossolana in
-pipeline**, meno informativa dei 6 quartieri ASC1 di Bologna che avevamo
-scartato. Si usano comunque: servono ai vincoli Z del MaxEnt e danno un
+pipeline.** Si usano comunque: servono ai vincoli Z del MaxEnt e danno un
 `quartiere` leggibile, mentre il lavoro geografico lo fa l'anello 3 (§10).
 
 ### 3.1 I codici ASC si sovrappongono fra livelli
@@ -247,39 +245,41 @@ riesce e restituisce il nome sbagliato, senza errori né valori mancanti.
 
 Fino al 29/07/2026 il dizionario `codice → nome` di Bologna era
 **permutato**: 16 codici su 18. Nessun controllo strutturale poteva
-vederlo — una permutazione resta una biiezione perfetta — e la gerarchia
-zona→quartiere costruita a mano sopra quei nomi era coerente con sé stessa.
-I dati numerici erano corretti, perché calcolati sui codici; sbagliate
-erano solo le etichette leggibili, cioè ciò che finisce in mappe e tabelle.
+vederlo — una permutazione resta una biiezione perfetta. I dati numerici
+erano corretti, perché calcolati sui codici; sbagliate erano solo le
+etichette leggibili, cioè ciò che finisce in mappe e tabelle.
 
-**Metodo di verifica** (collaudato su Modena, applicabile ovunque, senza
-alcun download):
+**Metodo di verifica**, in ordine di praticità. Bastano due assi
+concordanti; il terzo è disponibile solo in alcuni casi.
 
-1. **Baricentro e dispersione dei civici per zona.** Dal file
-   `{prov}_{nome}_civici_sezioni_asc.csv`, media e deviazione standard di
-   `COORD_X_COMUNE`/`COORD_Y_COMUNE` per `COM_ASC*`, convertite in km. Il
-   centro storico si riconosce dal raggio minimo; i nomi che contengono
-   riferimenti cardinali o toponimi si accoppiano alle direzioni.
-2. **Concentrazione dei toponimi.** Gli odonimi ANNCSU che contengono un
-   toponimo devono cadere nel quartiere che lo nomina.
+**(a) Baricentro e dispersione dei civici.** Dal file
+`{prov}_{nome}_civici_sezioni_asc.csv`, media e deviazione standard di
+`COORD_X_COMUNE`/`COORD_Y_COMUNE` per `COM_ASC*`, convertite in km. Il
+centro storico si riconosce dal raggio minimo; i nomi che contengono
+riferimenti cardinali si accoppiano alle direzioni. Nessun download.
 
-Su Modena i due assi hanno dato lo stesso esito, ciascuno inequivocabile:
+**(b) Concentrazione dei toponimi.** Gli odonimi ANNCSU che contengono un
+toponimo devono cadere nel quartiere che lo nomina.
+
+**(c) Popolazione per zona da fonte comunale.** Se il portale pubblica la
+popolazione per quartiere, il confronto con `P1` aggregato per `COM_ASC*`
+identifica la mappa. Lo scarto atteso è ~1–2% (anagrafe contro censimento).
+
+**(d) Struttura della gerarchia**, solo per comuni con due livelli ASC: le
+taglie dei gruppi si sovrappongono in un solo modo.
+
+Su Modena i tre assi disponibili hanno dato lo stesso esito:
 
 ```
-codice     est_km  nord_km  raggio_km  civici     lettura
-36023001     0,11     0,64       0,68  10.234     Centro Storico
-36023002     2,09     1,36       2,22  14.662     ...Modena Est
-36023003     0,85    -2,11       2,34  17.869     Buon Pastore, S.Agnese, S.Damaso
-36023004    -2,65     0,63       3,07  17.723     San Faustino, Madonnina, 4 Ville
+codice     est_km  nord_km  raggio_km  civici   pop.cens.  pop.anagr.
+36023001     0,11     0,64       0,68  10.234      24.469      24.038
+36023002     2,09     1,36       2,22  14.662      48.018      48.376
+36023003     0,85    -2,11       2,34  17.869      59.842      59.675
+36023004    -2,65     0,63       3,07  17.723      52.268      52.051
 
 toponimi: SAN FAUSTINO -> 004 (100%) · CROCETTA -> 002 · BUON PASTORE -> 003
           SAN DAMASO -> 003 · EMILIA CENTRO -> 001
 ```
-
-Per Bologna, che ha una gerarchia a due livelli, era stato usato un terzo
-metodo: struttura della gerarchia (gruppi di taglia 3, 3, 4, 2, 4, 2, che
-si sovrappongono in un solo modo) più conteggi di stranieri per zona da
-open data comunali.
 
 ### Denominazioni
 
@@ -296,14 +296,13 @@ open data comunali.
 **Modena** (4 quartieri, numerazione ufficiale del Comune)
 
 ```
-36023001 Centro Storico
+36023001 Centro Storico              (portale comunale: CENTRO STORICO-S.CATALDO)
 36023002 Crocetta, San Lazzaro, Modena Est
 36023003 Buon Pastore, Sant'Agnese, San Damaso
 36023004 San Faustino, Madonnina, Quattro Ville
 ```
 
-Brescia e Bologna sono in `gsp_common.py` (`ASC_NOMI_BRESCIA`,
-`ASC1_NOMI_BOLOGNA`, `ASC2_NOMI_BOLOGNA`). I codici ASC2 di Bologna
+Brescia e Bologna sono in `gsp_common.py`. I codici ASC2 di Bologna
 seguono l'ordine **alfabetico** dei nomi, ignorando gli spazi.
 
 ---
@@ -364,22 +363,8 @@ quattro punti che coprono un ordine di grandezza (6,5·10⁵ → 5,3·10⁶).
 MAE della popolazione per sezione: **0,74–1,58** su medie di 84–175
 abitanti. Un campionamento multinomiale darebbe ≈ 9,6.
 
-Il MAE **non cresce con la popolazione** e sembra anzi migliorare con
-zone più grandi: Modena, con 546 sezioni per zona, ha il MAE più basso
-(0,74). Il meccanismo plausibile è che l'errore di arrotondamento
-dell'allocazione esatta si distribuisca su più sezioni quando i gruppi
-sono grandi — ma le sezioni di Modena sono anche le più piccole, e i due
-effetti si sovrappongono.
-
-### Copertura regionale
-
-```bash
-python scripts/join_civici_sezioni.py emilia_romagna | lombardia | puglia
-```
-
-Bounding box derivato dallo shapefile, codici provincia dai dati. Un
-contatore segnala i civici che ANNCSU attribuisce a un comune ma che
-cadono in sezioni di un altro (42 Brescia, 25 Modena, 14 Parma, 0 Bologna).
+Il MAE **non cresce con la popolazione** e sembra anzi migliorare con zone
+più grandi: Modena, con 546 sezioni per zona, ha il MAE più basso (0,74).
 
 ---
 
@@ -427,10 +412,6 @@ per quartiere, media:                         0,029
 per confronto, condizionale geografico:       0,156 - 0,197
 ```
 
-Il seed uniforme riproduce la composizione comunale entro il rumore di
-allocazione, cioè cinque-sette volte meno di quanto sposti un condizionale
-geografico vero.
-
 **Il collaudo ha scoperto due bug latenti**, entrambi della stessa
 famiglia — classificare per etichetta invece che per codice:
 
@@ -458,8 +439,7 @@ già presenti singolarmente, gonfiava il margine censuario del 21%.
 
 Frazione di stranieri che cambia nazionalità passando dal condizionale
 comunale a quello geografico, contro la stessa quantità sotto **ipotesi
-nulla** (due permutazioni indipendenti: nessuna struttura, stesse
-numerosità).
+nulla** (due permutazioni indipendenti).
 
 | | | osservata | nulla | **eccesso** |
 |---|---|---|---|---|
@@ -494,15 +474,13 @@ reale sotto il quartiere.
 | **condizionale** | `Cittad × SEZ21 × Sesso` |
 | **validazione esterna, mai usate per generare** | `ETA × SEZ21`; `Ncomp`, `Relpar`; co-occorrenza di nazionalità nella stessa sezione; `Tipores` |
 
-È l'unica occasione di **validazione esterna vera** che il progetto abbia.
-
 ---
 
 ## 7. Limiti e assunzioni dichiarate
 
 | n. | assunzione | dove |
 |---|---|---|
-| (4') | `paese ⊥ tutto \| (area, sesso, geo)` — `geo` = quartiere, zona o sezione secondo il tier; per il tier 0 `geo` non vincola | §6 |
+| (4') | `paese ⊥ tutto \| (area, sesso, geo)` — `geo` secondo il tier; per il tier 0 non vincola | §6 |
 | (6) | `target AVQ ⊥ tutto \| (sesso, macroetà, istruzione4, regione)` | AVQ |
 | (8) | `sezione ⊥ (istruzione, condizione, background) \| (zona, sesso, età3, cittadinanza)` | anello 3 |
 | (9) | entro il quinquennio, l'età segue la distribuzione **comunale** per anno singolo | anello 3 |
@@ -516,11 +494,8 @@ reale sotto il quartiere.
   distribuzione viene da un **IPF con soglie minime di conseguimento**
   (`elementare` 10, `media` 13, `diploma` 18, `laurea_o_its` 20,
   `post_laurea` 22).
-  *Prima della correzione del 29/07/2026 il 32,8% dei 9-14enni risultava
-  diplomato o laureato.*
 - **Resta sovrastimata `media` nel bin `9-14`**.
-- **Effetto coorte perso fra `65-74` e `75+`**: `Y_GE65` li rende
-  indistinguibili.
+- **Effetto coorte perso fra `65-74` e `75+`**.
 - **Il background migratorio ha risoluzione di zona**, non di sezione.
 
 ### Convenzioni per "assente" — non uniformate
@@ -531,11 +506,6 @@ reale sotto il quartiere.
 | `NaN` | `area`, `via`, `civico` |
 | nessuna | `SALUTE`, `paese` (= `Italia` per gli italiani) |
 
-`non_applicabile` è a volte una **categoria sostantiva** (la condizione
-professionale degli under-15), a volte un **missing individuale**
-(`BMIMIN` per gli adulti), a volte un **planned missing** legato
-all'annata del donatore (`PUNTIFI6,7,13`, `VOTOUSL`).
-
 ---
 
 ## 8. Punti aperti
@@ -544,10 +514,9 @@ all'annata del donatore (`PUNTIFI6,7,13`, `VOTOUSL`).
 
 *Analisi completata il 29/07/2026, patch predisposta e non applicata.*
 
-AVQ pubblica `CITTMi` (variabile derivata, 3 modalità: `1` italiana, `3` e
-`9` da identificare — proporzioni nazionali 93,8% / 4,1% / 2,1%).
-L'effetto sulla **fiducia istituzionale è sostanziale e monotono**, ~1
-punto su 10, replicato in due regioni indipendenti:
+AVQ pubblica `CITTMi` (3 modalità: `1` italiana, `3` e `9` da
+identificare). L'effetto sulla **fiducia istituzionale è sostanziale e
+monotono**, ~1 punto su 10, replicato in due regioni indipendenti:
 
 | media pesata | ITA (1) | gr. 3 | gr. 9 |
 |---|---|---|---|
@@ -557,16 +526,12 @@ punto su 10, replicato in due regioni indipendenti:
 | `PUNTIFI8` Regione, Emilia | 4,97 | 5,97 | 5,78 |
 
 **I non italiani si fidano delle istituzioni PIÙ degli italiani** —
-direzione opposta all'intuizione, ma nota in letteratura: il metro di
-paragone è il paese d'origine. Per Caffaro ribalta la narrazione attesa.
-
-**Nessun effetto invece su `AMBIENTE` (2,37/2,30/2,14) né su `FIDUCIA`
-(1,75/1,77/1,84).** La cittadinanza migliora le `PUNTIFI` e non tocca il
-costrutto più rilevante per Caffaro.
+direzione opposta all'intuizione, ma nota in letteratura. **Nessun effetto
+invece su `AMBIENTE` (2,37/2,30/2,14) né su `FIDUCIA` (1,75/1,77/1,84).**
 
 Numerosità: ~430 non italiani nel pool emiliano su due annate. Il livello
-di cella pieno non regge (~11 donatori per cella), il secondo sì (~43).
-Serve il collasso gerarchico con la cittadinanza in priorità alta:
+di cella pieno non regge (~11 donatori), il secondo sì (~43). Serve il
+collasso gerarchico con la cittadinanza in priorità alta:
 
 ```python
 CELL_COLS = ["sesso", "macroeta", "istr4", "citt"]
@@ -581,46 +546,76 @@ CELL_LEVELS = [
 ```
 
 **Prima di applicare**: identificare le modalità `3` e `9` in
-`METADATI/Classificazioni/`. Con n = 19 e 31 la differenza fra i due gruppi
-non è distinguibile dal rumore, quindi il merge è difendibile — ma va
-deciso sapendo cosa si unisce.
+`METADATI/Classificazioni/`.
 
 **Limite da dichiarare comunque**: il campione AVQ di stranieri è
-autoselezionato sulla competenza linguistica (indagine familiare condotta
-in italiano). Descrive gli stranieri più integrati, quindi la fiducia
-istituzionale stimata è verosimilmente **sovrastimata**. Per un lavoro
-mirato la fonte giusta sarebbe *Condizione e integrazione sociale dei
-cittadini stranieri*.
+autoselezionato sulla competenza linguistica. Descrive gli stranieri più
+integrati, quindi la fiducia istituzionale stimata è verosimilmente
+**sovrastimata**. Per un lavoro mirato la fonte giusta sarebbe *Condizione
+e integrazione sociale dei cittadini stranieri*.
+
+### Modena: due opportunità non sfruttate
+
+*Rilevate il 29/07/2026 esplorando il portale open data comunale.*
+
+**Rioni: una partizione dieci volte più fine dell'ASC1.** Il dataset
+*Serie storiche della popolazione residente* espone la popolazione per
+**37 rioni**, con cittadinanza binaria, età quinquennali e sesso, dal 2002
+al 2024.
+
+| | zone | ab./zona | quota stranieri min → max |
+|---|---|---|---|
+| ASC1 (in uso) | 4 | 46.149 | 0,124 → 0,255 (fattore 2) |
+| rioni | 37 | 4.968 | 0,039 → 0,590 (**fattore 15**) |
+
+Il guadagno **non** sarebbe sulla quota di stranieri — le sezioni sono già
+59 volte più fini e `ST1` è dato censuario — ma sull'**assunzione (8)**:
+istruzione, condizione professionale e background migratorio hanno
+risoluzione di zona, e con quattro zone da 46.000 abitanti sono di fatto
+uniformi sulla città. Con 37 zone acquisterebbero struttura geografica
+reale, che in una città è forte proprio su quegli attributi.
+
+Serve una **mappatura sezione → rione**, ottenibile dai civici se il
+portale pubblica la numerazione civica con il rione (stesso meccanismo del
+voto di maggioranza già usato altrove), oppure per join spaziale dalle
+geometrie dei rioni. Da verificare che i rioni **partizionino** le sezioni:
+una sezione a cavallo introdurrebbe un errore da misurare.
+
+Costo: è una **deviazione dallo standard ISTAT**. Il registro dovrebbe
+ammettere livelli non-`COM_ASC*`, e il confronto fra città si
+complicherebbe. `|X|` K9C passerebbe da 645.120 a 5.967.360.
+
+**Cittadinanza per paese: non disponibile.** I dataset demografici del
+portale (*Popolazione residente dal 1995*, *Serie storiche*, *Emigrati per
+sesso cittadinanza ed età*) hanno tutti `CITTADINANZA` **binaria**. Modena
+resta quindi **tier 0**, ed è il caso che ha permesso di collaudare il ramo
+di default (§6).
+
+**Serie storiche 2002–2024 per rione.** Non serve alla pipeline, che è
+statica, ma è materiale per una domanda diversa: come si è formata la
+geografia attuale. L'anzianità di insediamento di una comunità in un
+quartiere è un predittore di attaccamento al luogo, potenzialmente
+rilevante per il lavoro sulla percezione ambientale.
 
 ### Altri punti aperti
 
-- **`AMBIENTE` non varia per quartiere.** È soddisfazione per l'ambiente
-  *della zona in cui si vive*, ma è condizionata solo su sesso, età e
-  istruzione. È il **candidato numero uno per il tilt areale**. La
-  cittadinanza non basta: serve un'altra covariata di zona e un target
-  areale osservato su cui calibrarla — senza il quale il parametro del
-  tilt resterebbe un'assunzione travestita da risultato.
+- **`AMBIENTE` non varia per quartiere.** È il **candidato numero uno per
+  il tilt areale**. La cittadinanza non basta: serve un'altra covariata di
+  zona e un target areale osservato su cui calibrarla — senza il quale il
+  parametro del tilt resterebbe un'assunzione travestita da risultato.
 - **`assign_nationality.py` è quasi vestigiale.** `area` e `paese` che
   produce sono **interamente sovrascritti** da `enrich.py`; l'unica
   funzione residua è generare il file che `assign_avq.py` legge, al quale
-  servono solo `sesso`, `eta`, `istruzione`. La semplificazione naturale è
-  far leggere ad `assign_avq` direttamente `popolazione_K9C.csv` e
-  ritirare lo script. Chi legge la pipeline oggi vede due passi che
-  assegnano il paese e non capisce perché.
+  servono solo `sesso`, `eta`, `istruzione`.
 - **Ramo di remapping ASC2→ASC1 irraggiungibile** in
   `assign_nationality.py`: `G.verifica_livello()` interviene prima.
-- **Provenienza del paese non tracciata**: non esiste `paese_fonte`
-  analoga a `indirizzo_fonte`.
-- **Struttura familiare.** `Ncomp` e `Relpar` dei microdati di Parma, più
-  `cens_posizione_famiglia` (scaricata e mai usata) per gli altri comuni.
-- **K10C.** Esiste solo per Brescia e porta ancora l'istruzione
-  **pre-correzione**: va rigenerato se usato.
-- **San Vito dei Normanni** (`074017`): registrato, civici presenti, file
-  sezioni non generato. `COM_ASC1` ha un solo valore: resterà un comune
-  **senza articolazione zonale**.
-- **Confronto fra città.** Le popolazioni usano condizionali di
-  risoluzione diversa su partizioni di taglia diversa. Per un confronto
-  rigoroso conviene rigenerarle al **quartiere**.
+- **Provenienza del paese non tracciata**: non esiste `paese_fonte`.
+- **Struttura familiare.** `Ncomp` e `Relpar` dei microdati di Parma.
+- **K10C.** Esiste solo per Brescia e porta l'istruzione pre-correzione.
+- **San Vito dei Normanni** (`074017`): `COM_ASC1` ha un solo valore,
+  resterà un comune **senza articolazione zonale**.
+- **Confronto fra città.** Risoluzioni diverse su partizioni di taglia
+  diversa: per un confronto rigoroso conviene rigenerare al **quartiere**.
 
 ---
 
@@ -690,13 +685,10 @@ Esecuzioni del 29 luglio 2026.
 | donatori distinti usati | 8.108 (100,0%) | 4.618 (99,8%) | 4.625 (99,9%) | 4.617 (99,7%) |
 | riuso medio donatore | 24,5× | 42,9× | 84,3× | 40,0× |
 | supporto \|X\| K9C | 5.322.240 | 2.096.640 | 2.903.040 | **645.120** |
-| MRE(α>0) esatto | 4,6e-04 | 3,6e-04 | — | 4,3e-04 |
 | tier paese (§6) | 1 | 3 | 2 | **0** |
 
 **Il riuso dei donatori è un tetto strutturale.** Il 99,7–100% del pool
-viene usato almeno una volta: la diversità dell'anello 2 è satura, e nella
-popolazione di Bologna esistono al massimo 4.629 vettori psicografici
-distinti indipendentemente dai 390.098 individui.
+viene usato almeno una volta: la diversità dell'anello 2 è satura.
 
 ### Validazione per sezione
 
@@ -709,13 +701,13 @@ distinti indipendentemente dai 390.098 individui.
 
 I totali comunali coincidono esattamente con il censimento. Gli scarti sui
 totali di stranieri (−3, −2, +167, −3) sono entro 0,7 σ del rumore
-multinomiale di estrazione.
+multinomiale.
 
 ### Struttura spaziale: la sezione conta molto più della zona
 
 Decomposizione della varianza della quota UE fra stranieri, al netto della
 discretizzazione. **Calcolata dal file sezioni**, cioè dalla verità
-censuaria: non dipende dalla popolazione sintetica.
+censuaria.
 
 | | abitanti/zona | var **tra** zone | var reale **dentro** | sovradisp. | rapporto |
 |---|---|---|---|---|---|
@@ -725,8 +717,8 @@ censuaria: non dipende dalla popolazione sintetica.
 | Modena (4 zone) | 46.149 | **0,00040** | 0,01756 | 3,17× | **43,5×** |
 
 **Il rapporto cresce monotonamente con la dimensione media delle zone**, su
-quattro partizioni che vanno da 4 a 33 unità. Condizionare sul quartiere
-perde l'85–98% del segnale compositivo.
+quattro partizioni da 4 a 33 unità. Condizionare sul quartiere perde
+l'85–98% del segnale compositivo.
 
 **Quantità e composizione hanno scale spaziali diverse.** Modena lo rende
 evidente: le quattro zone distinguono nettamente il Centro Storico (25,5%
@@ -741,6 +733,7 @@ nazionalità opera per isolato.
 |---|---|---|---|
 | Primo Maggio (Brescia), quota stranieri | 0,329 | 0,293 | 1,12 |
 | Bologna, quota UE fra stranieri | 0,214 | 0,213 | 1,00 |
+| Modena, popolazione per quartiere (4 zone) | — | — | 0,982–1,007 |
 
 ### Un fatto rilevante per il progetto Caffaro
 
@@ -765,27 +758,21 @@ istruzione e **non** su cittadinanza né sulla geografia (§8).
 propria ipotesi nulla prima di essere confrontata fra configurazioni
 diverse.** Quattro occorrenze, stessa forma:
 
-1. **Varianza compositiva della quota UE** (§10). Con 30 stranieri per
-   sezione la varianza fra sezioni è alta per pura combinatoria. Isolata
-   con un test di sovradispersione contro l'assegnazione casuale entro zona.
-2. **Distanza compositiva fra tier** (§6). Il 0,569 grezzo di Parma è per
+1. **Varianza compositiva della quota UE** (§10) — isolata con un test di
+   sovradispersione contro l'assegnazione casuale entro zona.
+2. **Distanza compositiva fra tier** (§6) — il 0,569 grezzo di Parma è per
    il 79% discretizzazione; l'eccesso reale è 1,29.
-3. **Pavimento MRE del PCD** (`nota_mre_floor_v01.tex`). La formula
+3. **Pavimento MRE del PCD** (`nota_mre_floor_v01.tex`) — la formula
    `1/(2√N)` del paper GibbsPCD confonde errore assoluto e relativo.
-4. **Numerosità effettiva di una popolazione hot-deck** (§2.2). Le
-   correlazioni fra variabili AVQ sembrano poggiare su ~200.000
-   osservazioni ma poggiano su al più 4.629 donatori distinti. `BMIMIN` ×
-   `VOTOUSL` ha 266 individui ma una manciata di donatori, e produceva una
-   correlazione di −0,61 priva di significato. `assign_avq.py` maschera
-   ora le coppie con meno di 100 **donatori** distinti.
+4. **Numerosità effettiva di una popolazione hot-deck** (§2.2) — le
+   correlazioni AVQ sembrano poggiare su ~200.000 osservazioni ma poggiano
+   su al più 4.629 donatori distinti.
 
 In tutti e quattro i casi la metrica grezza ordinava le configurazioni in
 modo diverso — e talvolta inverso — rispetto alla metrica corretta.
 
 **Corollario**: quando esiste una configurazione in cui il segnale è *noto
-essere assente*, va usata come taratura. In §6, Brescia e Bologna a livello
-di sezione danno eccesso 1,04 e 1,01: la metrica è tarata correttamente
-proprio perché lì non trova nulla.
+essere assente*, va usata come taratura.
 
 ### 11.2 Due percorsi che devono coincidere sono un test permanente
 
@@ -795,31 +782,254 @@ Modena, dove il tier 0 deve riprodurre esattamente il comportamento
 comunale, la discrepanza residua ha rivelato due bug latenti (§6) presenti
 da sempre e invisibili a qualunque test su un solo ramo.
 
-Vale la pena mantenere entrambi i percorsi anche quando uno diventa il
-default, e usare il confronto come controllo di regressione.
+---
+
+## 12. Aggiungere un comune nuovo
+
+Procedura ricavata dall'aggiunta di Modena (29/07/2026). Tempo complessivo
+circa mezz'ora, di cui tre minuti di download vincolati dal rate limit
+ISTAT. Il grosso del lavoro umano sta nella **fase 2**.
+
+### Prerequisiti regionali (una volta per regione)
+
+| serve | dove |
+|---|---|
+| `Dati_regionali_2023.zip` → `R{NN}_..._sezioni.xlsx` | `data/submun/Dati_regionali_2023/` |
+| shapefile basi territoriali `R{NN}_21_WGS84.shp` | `data/geodata/{regione}/R{NN}_21/SHP/` |
+| indirizzario ANNCSU regionale | `data/geodata/{regione}/indirizzario*/` |
+| voce in `G.REGIONI` | `gsp_common.py` |
+
+Poi, una volta sola per regione:
+
+```bash
+python scripts/join_civici_sezioni.py {regione}
+```
+
+Processa **tutte le province** della regione, quindi i civici di ogni
+comune di quella regione sono già pronti.
+
+### Fase 0 — verifica preliminare (nessun download)
+
+```bash
+python scripts/build_sezioni.py {CODICE} --regione {N} --dry-run
+```
+
+Funziona anche senza voce di registro. Riporta popolazione, numero di
+sezioni e, per ciascun livello `COM_ASC1/2/3`, quante zone e con quale
+distribuzione di popolazione.
+
+**Decisione: quale livello usare.** Criteri emersi finora:
+
+| n. zone | ab./zona | giudizio |
+|---|---|---|
+| 1 | — | nessuna articolazione: comune K6C/K8C senza `zona` |
+| 4–6 | 45–65k | grossolano ma usabile (Modena) |
+| 13–18 | 15–22k | buono |
+| 33+ | ~6k | ottimo |
+| zone con < ~500 ab. | — | inutilizzabili: celle vuote nei vincoli Z |
+
+Se esistono più livelli, scegliere quello con la cardinalità migliore
+purché non abbia code minuscole (Bologna ASC3 ha 90 aree ma la più piccola
+ha 13 abitanti: scartato).
+
+### Fase 1 — bootstrap del registro
+
+Voce **parziale** in `G.COMUNI`, con `nomi: None`:
+
+```python
+    "036023": {
+        "nome": "Modena", "slug": "modena", "regione": "emilia_romagna",
+        "livello": "quartieri",
+        "livelli": {
+            "quartieri": {"col": "COM_ASC1", "n": 4,
+                          "nomi": None, "parent": None},
+        },
+    },
+```
+
+```bash
+python scripts/build_sezioni.py {CODICE}
+```
+
+Scrive `data/submun/{slug}_sezioni_2023.csv`.
+
+### Fase 2 — denominazioni delle zone (il punto critico)
+
+**Dove cercarle**: portale open data comunale, sito istituzionale,
+delibere sulle circoscrizioni. Non esistono in nessun file ISTAT.
+
+**Come verificarle**: §3.2, almeno due assi concordanti. Il metodo (a),
+baricentri dei civici, richiede solo il file civici già generato:
+
+```python
+c = pd.read_csv(G.path_civici(comune), dtype={"CODICE_ISTAT": str},
+                low_memory=False)
+c = c[c.CODICE_ISTAT == comune]
+c = c[pd.to_numeric(c.COM_ASC1, errors="coerce").fillna(0) != 0]
+c["z"] = pd.to_numeric(c.COM_ASC1, errors="coerce").astype("Int64").astype(str)
+lon0, lat0 = c.COORD_X_COMUNE.mean(), c.COORD_Y_COMUNE.mean()
+g = c.groupby("z").agg(civici=("COORD_X_COMUNE","size"),
+                       lon=("COORD_X_COMUNE","mean"), lat=("COORD_Y_COMUNE","mean"),
+                       dlon=("COORD_X_COMUNE","std"), dlat=("COORD_Y_COMUNE","std"))
+g["est_km"]  = (g.lon-lon0)*111*np.cos(np.radians(lat0))
+g["nord_km"] = (g.lat-lat0)*111
+g["raggio_km"] = np.sqrt((g.dlon*111*np.cos(np.radians(lat0)))**2 + (g.dlat*111)**2)
+```
+
+Poi il metodo (b), concentrazione dei toponimi, cercando in `ODONIMO` i
+nomi che compaiono nelle denominazioni.
+
+**Non saltare questa verifica**: l'incidente di Bologna (§3.2) è passato
+inosservato per settimane e ha prodotto mappe con i nomi scambiati.
+
+Infine si completa il registro e:
+
+```bash
+python scripts/gsp_common.py --check {CODICE}
+```
+
+Tutto verde tranne le directory di lavoro, che non esistono ancora.
+
+### Fase 3 — dati ISTAT via SDMX
+
+```bash
+python scripts/fetch_comune.py {CODICE} --explore   # gratis: strutture in cache
+python scripts/fetch_comune.py {CODICE}             # 11 tavole, ~3 min
+```
+
+L'`--explore` verifica che il comune sia nelle codelist territoriali; non
+garantisce che le osservazioni esistano.
+
+**Rate limit ISTAT: 5 query/minuto, violazioni = blocco IP di giorni.** Il
+throttle è a 15 s ed è condiviso fra processi; il guard su 429/403/503
+ferma tutto invece di martellare.
+
+**Verifica obbligatoria** — il totale SDMX censuario deve coincidere con
+`P1` del file sezioni:
+
+```python
+d = pd.read_csv(os.path.join(G.path_comune(comune),
+                "cens_sesso_eta_cittadinanza_decoded.csv"), low_memory=False)
+d["n"] = pd.to_numeric(d.OBS_VALUE, errors="coerce").fillna(0)
+print(d[d.TIME_PERIOD.astype(str)=="2023"].n.sum() / 8)   # = P1
+```
+
+Il fattore 8 vale perché ogni persona è contata due volte per ciascuna
+delle tre dimensioni che variano (sesso, cittadinanza, età), una nella
+propria modalità e una nell'aggregato. Su tutti e quattro i comuni finora
+il risultato è stato **esatto al singolo abitante**.
+
+### Fase 4 — anello 1 (MaxEnt)
+
+```bash
+python scripts/build_zona_tables.py {CODICE}
+python scripts/build_constraints.py {CODICE} --anno 2024
+python scripts/cs_build.py {CODICE} --anno 2024 --livello K9C
+python scripts/fit_cs.py {CODICE} --anno 2024 --livello K9C --eps 1e-8 \
+  --min-alpha 2e-4 --sparse --no-gibbs
+```
+
+Da controllare, nell'ordine:
+
+- `build_zona_tables`: `attesi {n}` e il `[sanity]` top-5 per quota
+  stranieri — deve essere geograficamente plausibile;
+- `build_constraints`: **passare sempre `--anno 2024`** (il default è
+  2025, che salterebbe i blocchi C7/C8 con un `print` e non un errore); il
+  preflight deve dare dieci `ok`;
+- `cs_build`: `|X| = 161.280 × n_zone`;
+- `fit_cs`: `MRE(α>0)` ≈ 4·10⁻⁴, e `massa su celle escluse: 0.00e+00`.
+
+Le celle escluse post-hoc devono valere `|X|/2 + (esclusioni K7C) × 15`:
+metà del supporto è impossibile perché metà delle combinazioni
+`background × origine_genitori` è logicamente incoerente.
+
+### Fase 5 — anelli 2 e 3
+
+```bash
+OPT=PUNTIFI1,PUNTIFI2,PUNTIFI3,PUNTIFI4,PUNTIFI5,PUNTIFI6,PUNTIFI7,PUNTIFI8,PUNTIFI10,PUNTIFI12,PUNTIFI13,VOTOUSL
+
+python scripts/assign_nationality.py {CODICE} --anno 2024 \
+  --pop-file popolazione_K9C.csv --out popolazione_K9C_naz.csv
+
+python scripts/assign_avq.py {CODICE} --anno 2024 \
+  --pop-file popolazione_K9C_naz.csv --out popolazione_K9C_avq.csv \
+  --targets AMBIENTE,FIDUCIA,SALUTE,CRONI,FUMO,MH,BMI,BMIMIN,CPESO \
+  --targets-opt $OPT
+
+python scripts/enrich.py {CODICE} --anno 2024
+```
+
+Il `--pop-file` esplicito serve dove esistono più livelli K: l'auto-detect
+prende il più ricco.
+
+### Fase 6 — validazione finale
+
+```bash
+python scripts/gsp_common.py --check {CODICE}          # tutto verde
+head -1 .../popolazione_K9C_avq_full.csv | tr ',' '\n' | wc -l   # 40
+```
+
+Nel log di `enrich`:
+
+| riga | valore atteso |
+|---|---|
+| `[3c] paese: tier N` | 100% dalla geografia, 0% riserva comunale |
+| `[3e] indirizzo` | ≥ 99,5% dalla sezione |
+| `MAE pop.` | 0,7–1,6, correlazione ≥ 0,9998 |
+| totali | coincidenti col censimento; stranieri entro ~1 σ |
+
+### Cosa cercare negli open data comunali (tier 1–3)
+
+Il condizionale geografico del paese richiede una tabella
+`paese × unità territoriale`, eventualmente con sesso. **La cittadinanza
+binaria non basta**: serve il paese di dettaglio.
+
+| cercare | esito |
+|---|---|
+| «stranieri per cittadinanza e quartiere/zona» | tier 1 o 2 |
+| microdati anagrafici con `Cittad` e sezione | tier 3 |
+| solo `italiana/straniera` | tier 0 |
+| nessun portale | tier 0 |
+
+Il tier 0 è il caso normale e non richiede nulla. Le denominazioni dei
+paesi vanno riconciliate con `G.SINONIMI_PAESE`, che è nazionale e già
+copre i casi ricorrenti.
+
+### Modi di fallire, osservati
+
+| sintomo | causa |
+|---|---|
+| nomi di zona plausibili ma sbagliati | mappa `codice → nome` permutata: verificare su due assi (§3.2) |
+| merge sui codici zona che «funziona» ma dà nomi assurdi | codici ASC1/ASC2 sovrapposti (§3.1) |
+| blocchi C7/C8 «saltati» | `--anno` dimenticato: il default 2025 non ha `cens_migr_backg` |
+| `build_zona_tables` esce con `attesi N, trovati M` | il file regionale è cambiato, o il livello nel registro è sbagliato |
+| dissolve delle sezioni con troppi pochi poligoni | usato `COM_ASC1` dove il registro dice `COM_ASC2` |
 
 ---
 
 ## Changelog
 
+**v1.6 — 29/07/2026**
+Nuova §12, procedura operativa per aggiungere un comune, ricavata
+dall'aggiunta di Modena. Annotate in §8 le due opportunità non sfruttate su
+Modena (37 rioni, serie storiche 2002–2024) e la conferma che il portale
+comunale non pubblica la cittadinanza per paese. §3.2 riorganizzata come
+metodo di verifica in quattro varianti.
+
 **v1.5 — 29/07/2026**
-Aggiunta Modena (`036023`): primo comune **tier 0** collaudato end-to-end,
-partizione più grossolana in pipeline (4 zone da 46.000 abitanti,
-rapporto sezione/zona 43,5×). Metodo di verifica delle denominazioni di
-zona (§3.2), applicabile ovunque e senza download. Corretti due bug di
-classificazione per etichetta anziché per codice (§6). Nuova §11.2.
+Aggiunta Modena: primo comune **tier 0** collaudato end-to-end. Metodo di
+verifica delle denominazioni di zona. Corretti due bug di classificazione
+per etichetta anziché per codice. Nuova §11.2.
 
 **v1.4 — 29/07/2026**
-Analisi dell'effetto della cittadinanza sulle variabili AVQ (§8), patch
-predisposta e non applicata.
+Analisi dell'effetto della cittadinanza sulle variabili AVQ (§8).
 
 **v1.3 — 29/07/2026**
 Dodici variabili di fiducia istituzionale su scala 0–10. Codifiche AVQ
 risolte sul tracciato ufficiale. Attributi da 28 a 40.
 
 **v1.2 — 29/07/2026**
-Condizionale geografico del paese collegato e attivo. §11 sul principio
-dell'ipotesi nulla.
+Condizionale geografico del paese collegato e attivo. §11.
 
 **v1.1 — 29/07/2026**
 Consolidamento in `gsp_common.py`. Correzione dei nomi delle zone di

@@ -24,3 +24,13 @@ note/*.log
 
 # editor
 .vscode/
+__pycache__/
+*.pyc
+scripts_archivio/
+*.log
+note/*.pdf
+__pycache__/
+*.pyc
+scripts_archivio/
+*.log
+note/*.pdf

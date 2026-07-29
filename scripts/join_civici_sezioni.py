@@ -7,32 +7,29 @@ from pathlib import Path
 import geopandas as gpd
 import numpy as np
 import pandas as pd
+import gsp_common as G
 
 
 # ---------------------------------------------------------------------
-# Percorsi
+# Regioni
 # ---------------------------------------------------------------------
 
-BASE = Path(
-    os.path.expanduser(
-        "~/progetti/gsp/data/geodata/emilia_romagna"
-    )
-)
 
-SEZ_SHP = (
-    BASE
-    / "R08_21"
-    / "SHP"
-    / "R08_21_WGS84.shp"
-)
 
-ANNCSU_CSV = (
-    BASE
-    / "indirizzarioEmilia-romagna20260703"
-    / "INDIR_EMIL_20260703.csv"
-)
+# Assegnati da setup_regione().
+BASE = SEZ_SHP = ANNCSU_CSV = OUT_DIR = None
 
-OUT_DIR = BASE / "civici_sezioni_province"
+
+def setup_regione(regione: str) -> None:
+    """Fissa i path globali per la regione scelta."""
+    global BASE, SEZ_SHP, ANNCSU_CSV, OUT_DIR
+    if regione not in G.REGIONI:
+        raise SystemExit(f"Regione '{regione}' sconosciuta. "
+                         f"Disponibili: {sorted(G.REGIONI)}")
+    BASE = Path(G.GEODATA) / regione
+    SEZ_SHP = Path(G.path_shp(regione))
+    ANNCSU_CSV = Path(G.path_anncsu(regione))
+    OUT_DIR = BASE / "civici_sezioni_province"
 
 
 # ---------------------------------------------------------------------
@@ -48,22 +45,16 @@ METRIC_CRS = "EPSG:25832"
 # Fallback per punti non contenuti in alcun poligono.
 NEAREST_MAX_DISTANCE = 20.0  # metri
 
-# Intervalli plausibili, volutamente ampi, per longitudine/latitudine
-# dell'Emilia-Romagna. Servono a intercettare parsing errati.
-X_MIN, X_MAX = 8.0, 14.0
-Y_MIN, Y_MAX = 43.0, 46.5
+# Margine attorno al bounding box della regione, in gradi. Serve a
+# intercettare coordinate palesemente sbagliate senza scartare i civici
+# ai bordi. I quattro estremi sono riempiti da load_sections() a partire
+# dalle sezioni stesse, quindi lo script non va ritoccato per regione.
+BBOX_MARGIN = 0.2
+X_MIN = X_MAX = Y_MIN = Y_MAX = None
+# Solo per dare un nome leggibile ai file di output: i codici provincia
+# effettivi si ricavano dallo shapefile, così non c'è nulla da aggiornare
+# quando si aggiunge una regione.
 
-PROVINCE = {
-    "033": "piacenza",
-    "034": "parma",
-    "035": "reggio_emilia",
-    "036": "modena",
-    "037": "bologna",
-    "038": "ferrara",
-    "039": "ravenna",
-    "040": "forli_cesena",
-    "099": "rimini",
-}
 
 # Campi ANNCSU che vale la pena conservare, se presenti.
 ANNCSU_OPTIONAL_COLUMNS = [
@@ -222,26 +213,36 @@ def load_sections() -> gpd.GeoDataFrame:
         [col for col in preferred if col in sections.columns]
     ].copy()
 
+    # Bounding box in gradi: una sola trasformazione, non 60.000 poligoni.
+    global X_MIN, X_MAX, Y_MIN, Y_MAX
+    from shapely.geometry import box
+    bb = gpd.GeoSeries([box(*sections.total_bounds)],
+                       crs=sections.crs).to_crs("EPSG:4258").total_bounds
+    X_MIN, X_MAX = bb[0] - BBOX_MARGIN, bb[2] + BBOX_MARGIN
+    Y_MIN, Y_MAX = bb[1] - BBOX_MARGIN, bb[3] + BBOX_MARGIN
+    print(f"[sezioni] bbox valido: X [{X_MIN:.3f}, {X_MAX:.3f}] "
+          f"Y [{Y_MIN:.3f}, {Y_MAX:.3f}]")
+
+    sections = sections.to_crs(METRIC_CRS)
+
     # Tutti i calcoli geometrici e le distanze avvengono in metri.
     sections = sections.to_crs(METRIC_CRS)
+
     print(f"[sezioni] CRS operativo: {sections.crs}")
-
     print("\n[sezioni] ripartizione per provincia:")
-    for code, name in PROVINCE.items():
+
+    codes = sorted(sections["SEZ_COD_PROV"].dropna().unique())
+    province = {c: G.PROVINCE_NOMI.get(c, f"prov{c}") for c in codes}
+
+    
+    for code, name in province.items():
         n = int(sections["SEZ_COD_PROV"].eq(code).sum())
-        print(f"  {code} {name:<17} {n:>8,} sezioni")
+        print(f"  {code} {name:<22} {n:>8,} sezioni")
+    ignoti = [c for c in codes if c not in G.PROVINCE_NOMI]
+    if ignoti:
+        print(f"[warning] province senza nome in gsp_common.PROVINCE_NOMI: {ignoti}")
 
-    unexpected = sorted(
-        set(sections["SEZ_COD_PROV"].dropna())
-        - set(PROVINCE)
-    )
-    if unexpected:
-        print(
-            "[warning] codici provinciali inattesi nello shapefile:",
-            unexpected,
-        )
-
-    return sections
+    return sections, province
 
 
 def available_output_columns(frame: pd.DataFrame) -> list[str]:
@@ -273,6 +274,24 @@ def available_output_columns(frame: pd.DataFrame) -> list[str]:
 
     return [col for col in preferred if col in frame.columns]
 
+INT_CODE_COLS = ["PRO_COM", "SEZ21", "SEZ21_ID",
+                 "COM_ASC1", "COM_ASC2", "COM_ASC3"]
+
+
+def cast_codes(frame: pd.DataFrame) -> pd.DataFrame:
+    """
+    Codici territoriali come interi nullable.
+
+    Il join spaziale con how='left' introduce NaN e promuove i codici a
+    float64: senza questo cast i CSV contengono '34027001.0' e il merge
+    contro i file sezioni (SEZ21_ID int64) non trova alcuna corrispondenza,
+    silenziosamente.
+    """
+    out = frame.copy()
+    for col in INT_CODE_COLS:
+        if col in out.columns:
+            out[col] = pd.to_numeric(out[col], errors="coerce").astype("Int64")
+    return out
 
 def _one_match_per_point(
     joined: gpd.GeoDataFrame,
@@ -365,11 +384,12 @@ def spatial_join(
 # Main
 # ---------------------------------------------------------------------
 
-def main() -> None:
+def main(regione: str) -> None:
+    setup_regione(regione)
     check_paths()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    sections = load_sections()
+    sections, PROVINCE = load_sections()
 
     separator = detect_separator(ANNCSU_CSV)
     print(
@@ -405,6 +425,7 @@ def main() -> None:
             "within": 0,
             "nearest": 0,
             "unmatched": 0,
+            "fuori_comune": 0,
         }
         for code in PROVINCE
     }
@@ -523,6 +544,17 @@ def main() -> None:
                 sections_by_province[province_code],
             )
 
+            # ANNCSU attribuisce il civico a un comune, il join spaziale lo
+            # colloca in una sezione: al confine le due attribuzioni possono
+            # divergere. Non si corregge qui, si conta e si filtra a valle.
+            pro_sez = pd.to_numeric(result["PRO_COM"],
+                                    errors="coerce").astype("Int64")
+            pro_civ = pd.to_numeric(result["CODICE_ISTAT"],
+                                    errors="coerce").astype("Int64")
+            n_fuori = int((pro_sez.notna() & (pro_sez != pro_civ)).sum())
+            totals[province_code]["fuori_comune"] += n_fuori
+
+
             n_within = int(
                 result["join_method"].eq("within").sum()
             )
@@ -541,7 +573,8 @@ def main() -> None:
                 f"coordinate={len(part):>8,} "
                 f"within={n_within:>8,} "
                 f"nearest={n_nearest:>6,} "
-                f"fuori={n_unmatched:>6,}"
+                f"fuori={n_unmatched:>6,} "
+                f"fuori_comune={n_fuori:>6,}"
             )
 
             columns = available_output_columns(result)
@@ -551,12 +584,9 @@ def main() -> None:
                   "civici_sezioni_asc.csv"
             )
 
-            result[columns].to_csv(
-                output_file,
-                mode="a",
-                header=not written[province_code],
-                index=False,
-            )
+            cast_codes(result[columns]).to_csv(
+                output_file, mode="a",
+                header=not written[province_code], index=False)
             written[province_code] = True
 
     # Riepilogo finale.
@@ -583,7 +613,8 @@ def main() -> None:
             f"senza_coordinate={stats['no_coordinates']:>10,}  "
             f"within={stats['within']:>10,}  "
             f"nearest={stats['nearest']:>8,}  "
-            f"fuori_sezione={stats['unmatched']:>8,}"
+            f"fuori_sezione={stats['unmatched']:>8,}  "
+            f"fuori_comune={stats['fuori_comune']:>7,}"
         )
 
     summary = pd.DataFrame(summary_rows)
@@ -595,4 +626,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    ap = argparse.ArgumentParser(
+        description="Aggancia i civici ANNCSU alle sezioni di censimento.")
+    ap.add_argument("regione", choices=sorted(G.REGIONI),
+                    help="regione da elaborare")
+    main(ap.parse_args().regione)

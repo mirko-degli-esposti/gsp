@@ -71,7 +71,12 @@ STRUCTURAL_FILL = {
     "istruzione": ("nessun_titolo", 9),
     "condizione": ("non_applicabile", 15),
 }
-
+# Eta' minima realistica di conseguimento del titolo. Serve perche' la
+# classe censuaria dell'istruzione ('Y9-24') attraversa i bin 9-14 e 15-24:
+# senza questo, la quota di diplomati viene applicata identica a ogni eta'
+# e su Parma il 32.8% dei 9-14enni risultava diplomato o laureato.
+ETA_MIN_TITOLO = {"elementare": 10, "media": 13,
+                  "diploma": 18, "laurea_o_its": 20, "post_laurea": 22}
 REPO_CANDIDATES = ["~/progetti/maxent-popsynth-pcd", "/content/maxent-popsynth-pcd"]
 
 
@@ -189,8 +194,27 @@ def block_exact(df: pd.DataFrame, colmap: dict, bins: AgeBins) -> pd.DataFrame:
     keys = [("eta" if k == "eta" else k) for k in colmap.values()]
     return t.groupby(keys)["count"].sum().reset_index()
 
+def _ipf_eta_attr(anag, targets, allowed, iters=500, tol=1e-9):
+    """Tabella (eta singola x attributo) con zeri strutturali, via IPF.
+
+    Vincola simultaneamente i margini di riga (anagrafe per eta) e di
+    colonna (conteggi censuari per titolo): imporre solo i secondi
+    romperebbe la coerenza con il blocco A.
+    """
+    M = allowed.astype(float).copy()
+    if M.sum() == 0:
+        return M
+    for _ in range(iters):
+        rs = M.sum(axis=1)
+        M *= np.divide(anag, rs, out=np.zeros_like(rs), where=rs > 0)[:, None]
+        cs = M.sum(axis=0)
+        M *= np.divide(targets, cs, out=np.zeros_like(cs), where=cs > 0)[None, :]
+        if np.abs(M.sum(axis=1) - anag).max() < tol:
+            break
+    return M
+
 def block_from_class(df: pd.DataFrame, attr_var: str, anag_w: pd.DataFrame,
-                     bins: AgeBins) -> pd.DataFrame:
+                     bins: AgeBins, eta_min: dict | None = None) -> pd.DataFrame:
     d = df.rename(columns={"attr": attr_var, "age_class": "cls"}).copy()
     cls_bounds = {c: parse_class(c) for c in d["cls"].unique()}
     tot = d.groupby(["sex", "cls"])[["count"]].transform("sum")["count"]
@@ -199,12 +223,34 @@ def block_from_class(df: pd.DataFrame, attr_var: str, anag_w: pd.DataFrame,
     for (sex, cls), g in d.groupby(["sex", "cls"]):
         lo, hi = cls_bounds[cls]
         w = anag_w[(anag_w["sex"] == sex) & (anag_w["age"].between(lo, hi))]
-        for _, arow in w.iterrows():
-            b = bins.bin_of(int(arow["age"]))
-            if b is None:
-                continue
-            for _, r in g.iterrows():
-                rows.append((sex, b, r[attr_var], r["share"] * arow["anag"]))
+        w = w[[bins.bin_of(int(a)) is not None for a in w["age"]]]
+        if w.empty:
+            continue
+        eta = w["age"].to_numpy(int)
+        anag = w["anag"].to_numpy(float)
+        vals = g[attr_var].to_numpy()
+        targets = (g["share"].to_numpy(float) * anag.sum())
+
+        if eta_min:
+            allowed = np.array([[a >= eta_min.get(v, 0) for v in vals]
+                                for a in eta])
+            morte = (targets > 0) & ~allowed.any(axis=0)
+            if morte.any():          # nessuna eta' ammissibile nella classe
+                allowed[:, morte] = True
+            M = _ipf_eta_attr(anag, targets, allowed)
+            scarto = np.abs(M.sum(axis=0) - targets).max() / max(targets.max(), 1)
+            if scarto > 1e-3:
+                print(f"[warn] {attr_var} {sex}/{cls}: IPF non converge "
+                      f"(scarto {scarto:.1%}): vincolo per eta' troppo stretto")
+        else:
+            M = anag[:, None] * (targets / anag.sum())[None, :]
+
+        for i, a in enumerate(eta):
+            b = bins.bin_of(int(a))
+            for j, v in enumerate(vals):
+                if M[i, j] > 0:
+                    rows.append((sex, b, v, M[i, j]))
+
     out = pd.DataFrame(rows, columns=["sesso", "eta", attr_var, "count"])
     return out.groupby(["sesso", "eta", attr_var])["count"].sum().reset_index()
 
@@ -346,8 +392,10 @@ def main(comune, anno, min_age, max_age, bins_labels, livello):
                                  "citizenship": "cittadinanza"}, bins),
                 f"censimento {anno-1} (riconciliato, esatto)")
     B.add_block("C_sesso_eta_istruz",
-                block_from_class(T["c3"], "istruzione", anag_w, bins),
-                f"censimento {anno-1}, allocazione su anagrafe")
+                block_from_class(T["c3"], "istruzione", anag_w, bins,
+                                 eta_min=ETA_MIN_TITOLO),
+                f"censimento {anno-1}, allocazione su anagrafe con vincolo "
+                f"di eta' minima per titolo")
     c4 = T["c4"].copy(); c4["attr"] = norm_condprof(c4["attr"])
     B.add_block("D_sesso_eta_condiz",
                 block_from_class(c4, "condizione", anag_w, bins),
@@ -381,6 +429,7 @@ def main(comune, anno, min_age, max_age, bins_labels, livello):
             B.add_block(f"S_{var}_under{age_from}", g[["eta", var, "count"]],
                         f"strutturale: {var}={fill_cat} sotto i {age_from} anni")
 
+    
     # ---------------- blocchi background G/H (v3, K8C/K9C) ----------------
     if has_back:
         c7 = load_optional(cdir, "c7_sex_background.csv")

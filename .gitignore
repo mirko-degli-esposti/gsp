@@ -34,3 +34,4 @@ __pycache__/
 scripts_archivio/
 *.log
 note/*.pdf
+animarium/

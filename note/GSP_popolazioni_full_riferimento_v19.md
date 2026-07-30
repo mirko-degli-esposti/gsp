@@ -1,6 +1,6 @@
 # Popolazioni sintetiche GSP — documento di riferimento
 
-**Versione 1.8 — 30 luglio 2026**
+**Versione 1.9 — 30 luglio 2026**
 Descrive i file `popolazione_K9C_avq_full.csv` per Brescia, Parma, Bologna e
 Modena: come caricarli, cosa contengono, come sono stati costruiti, quali
 limiti dichiarati portano con sé, dove trovare i dati reali per il
@@ -1153,12 +1153,37 @@ riceve le AVQ da un donatore di 55–64 anni. La classe quinquennale 50-54 vale
 l'8% della popolazione** (**misurato**). Per salute percepita, fumo e
 benessere psicologico cinque anni a quell'età non sono trascurabili.
 
-**Quanto scatta il collasso gerarchico: non serve stimarlo.**
-`assign_avq.py` stampa `[donor] individui per livello di condizionamento
-effettivo` con le percentuali dei tre livelli più il fallback regionale. La
-stima indiretta dalle firme — 15,3% confinate alla cella piena su Modena,
-8,3% su Bologna — è un limite inferiore contaminato dalle collisioni fra
-donatori, e va sostituita col dato del log.
+**Quanto scatta il collasso gerarchico: misurato**, rigenerando con lo stesso
+seed sulle popolazioni in uso.
+
+| | cella piena | `sesso × macroeta` | `macroeta` | regionale |
+|---|---|---|---|---|
+| Brescia | **98,5%** | 1,5% | 0% | 0% |
+| Bologna | 97,6% | 2,4% | 0% | 0% |
+| Modena | 97,0% | 3,0% | 0% | 0% |
+| Parma | 96,9% | 3,1% | 0% | 0% |
+
+**Il terzo livello non scatta mai e il fallback regionale nemmeno.** Il
+condizionamento pieno copre il 97–98,5% degli individui; il resto perde
+soltanto l'istruzione.
+
+> La stima indiretta dalle firme — 15,3% confinate alla cella piena su Modena
+> — era un limite inferiore molto pessimistico, contaminato dalle collisioni
+> fra donatori. Va scartata.
+>
+> Va scartato anche il **3,7% servito dal pool regionale** che compare nei log
+> del 27 luglio: quella generazione precede il collasso gerarchico
+> (commit `f383e54`, 28 luglio), mentre le popolazioni in uso sono del 29.
+
+**Il collasso non è casuale: colpisce sempre la bassa istruzione.** Le celle
+sotto la soglia di 20 donatori sono **tutte** `elementare_o_meno`, e
+`M 15-34 elementare_o_meno` ne ha **quattro** nel pool emiliano.
+
+Quel 3% riceve quindi le AVQ condizionate solo su sesso ed età, e viene tirato
+verso la media della popolazione: **più fiducia istituzionale e migliore
+salute percepita di quanto il condizionamento pieno darebbe**. La direzione
+della distorsione è nota, il che è meglio che ignorarla — ma va dichiarata,
+perché ricade su un gruppo già poco rappresentato.
 
 ### 13.3 Numerosità efficace
 
@@ -1195,9 +1220,24 @@ popolazione intera      n = 184.597   n_eff = 1.520   efficienza 0,36
 PUNTIFI10, 15 e più     n = 157.974   n_eff = 3.220   efficienza 0,80
 ```
 
-Gli universi si riconoscono dalla forma, non dalla percentuale: `MH` copre lo
-0,876 e la quota di 15 anni e più vale 0,8763. Scrivere «copertura 87,6%»
-descrive un sintomo; «universo: 15 anni e più» descrive il dato.
+Gli universi si riconoscono dalla forma, non dalla percentuale. E sono **tre
+cose distinte**, che il solo numero confonde (**misurato**, Modena):
+
+```
+MH          161.766 assegnati = 184.597 − 12.812 − 10.019   universo 15+ PURO
+PUNTIFI10   157.974 assegnati                                universo 15+
+                                                             − 3.792 = 2,3%
+                                                             di non risposta d'item
+SALUTE      184.597 assegnati                                nessun universo
+```
+
+`MH` non ha **alcuna** non risposta: coincide all'unità con la popolazione di
+15 anni e più. `PUNTIFI10` ha lo stesso universo più il 2,3% di chi, potendo,
+non ha risposto alla batteria — la nota metodologica ISTAT prevede
+esplicitamente la facoltà di non rispondere sui quesiti sensibili.
+
+Scrivere «copertura 87,6%» descrive un sintomo e confonde i tre casi;
+«universo 15 anni e più, non risposta d'item 2,3%» descrive il dato.
 
 Tre meccanismi distinti, da non confondere:
 
@@ -1326,6 +1366,31 @@ Scarto costante del 2% su tutte, e `SALUTE` esatta: **l'hot-deck trasmette il
 pattern di mancanza del donatore intatto**, come l'assunzione (6) richiede.
 È una verifica diretta dell'anello 2 che non era mai stata fatta.
 
+#### I marginali «sintetico vs AVQ pesato» non sono una validazione
+
+Il log di generazione stampa un confronto fra la marginale del **comune** e
+quella pesata della **regione**. Non è una validazione: i due termini si
+riferiscono a popolazioni diverse, e lo scarto misura **quanto il comune
+differisce dalla sua regione attraverso le variabili di condizionamento** —
+cioè è compositivo per costruzione.
+
+Lo si vede sulla variabile con lo scarto maggiore, `FIDUCIA` (**misurato**):
+
+| | scarto | istruzione terziaria |
+|---|---|---|
+| Brescia | +0,017 | la più bassa delle quattro |
+| Modena | +0,025 | |
+| Parma | +0,028 | |
+| Bologna | **+0,042** | la più alta |
+
+L'ordinamento segue il gradiente d'istruzione, che è una delle tre variabili
+di cella. Non è errore: è la differenza compositiva comune–regione, la stessa
+quantità che il viewer chiama *riga di scomposizione*.
+
+> Il blocco `[val] marginali` del log andrebbe rinominato **«differenza
+> compositiva comune–regione»**. Chiamarlo validazione invita a leggere come
+> errore ciò che è segnale.
+
 ### 13.6 Da rivedere prima di un paper
 
 1. **`CRONI` fra le opzionali?** +53% di pool e +50% di `n_eff` su tutte le
@@ -1340,9 +1405,7 @@ pattern di mancanza del donatore intatto**, come l'assunzione (6) richiede.
 5. **deff per variabili attitudinali**: il modello ISTAT è tarato sulle stime
    demografiche e non si applica.
 6. **Convivenze**: ricevono donatori da un universo che le esclude.
-7. **Log di generazione**: le percentuali per livello di collasso sono già
-   stampate e vanno recuperate invece che stimate.
-8. **Fonte delle medie nazionali della batteria**, mai citata (§2.2).
+7. **Fonte delle medie nazionali della batteria**, mai citata (§2.2).
 
 
 ---
@@ -1602,6 +1665,17 @@ condizionato sugli individui a rischio, dato bin e titolo.
    le 26 esclusioni α=0 di §14.2.
 
 ## Changelog
+
+**v1.9 — 30/07/2026**
+Il collasso gerarchico **misurato** e non più stimato: il condizionamento
+pieno copre il 97–98,5%, il terzo livello e il fallback regionale non
+scattano mai. Ma il collasso non è casuale — colpisce sempre
+`elementare_o_meno` — e la direzione della distorsione è nota. Scartato il
+3,7% da pool regionale dei log del 27 luglio: precede il collasso
+gerarchico. Distinte le tre coperture che il solo numero confondeva: `MH`
+è universo 15+ puro, `PUNTIFI10` ha in più il 2,3% di non risposta d'item.
+Il blocco `[val] marginali` del log è una differenza **compositiva**
+comune–regione, non una validazione.
 
 **v1.8 — 30/07/2026**
 Nuove §14 e §15: l'anello 1 e l'anello 3 verificati. Anatomia del constraint

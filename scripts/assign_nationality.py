@@ -45,19 +45,7 @@ LIVELLI = {"asc1": "COM_ASC1", "asc2": "COM_ASC2"}
 
 COL_TO_ASC = {v: k for k, v in LIVELLI.items()}
 
-#POP_CANDIDATES = ["popolazione_K7C.csv", "popolazione_K8C.csv", "popolazione_K6C.csv"]
-POP_CANDIDATES = ["popolazione_K10C.csv", "popolazione_K9C.csv",
-                  "popolazione_K8C.csv", "popolazione_K7C.csv",
-                  "popolazione_K6C.csv"]
 
-def resolve_pop_file(cdir: str, override: str | None) -> str:
-    if override:
-        return override
-    for name in POP_CANDIDATES:
-        if os.path.exists(os.path.join(cdir, name)):
-            return name
-    sys.exit(f"Nessun file popolazione trovato in {cdir} "
-             f"(cercati: {POP_CANDIDATES}); usa --pop-file per specificarlo.")
     
 AREAS = ["UE", "EXTRA_UE"]
 
@@ -165,7 +153,7 @@ def main(comune, anno, livello, col_pop, sezioni_csv, pop_file_override, out_nam
               f"  sezioni M/F {sez['M']:,.0f}/{sez['F']:,.0f}")
 
     # ---------- assegnazione sulla popolazione ----------
-    pop_file = resolve_pop_file(cdir, pop_file_override)
+    pop_file = G.resolve_pop_file(cdir, pop_file_override)
     if out_name is None:                       # il nome di uscita segue l'ingresso
         out_name = pop_file.replace(".csv", "_naz.csv")
     pop = pd.read_csv(os.path.join(cdir, pop_file))

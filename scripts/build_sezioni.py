@@ -46,9 +46,7 @@ KEY_COLS = ["CODREG", "REGIONE", "CODPRO", "PROVINCIA", "CODCOM",
             "COMUNE", "PROCOM", "SEZ21_ID"]
 
 
-def procom_from_comune(comune: str) -> int:
-    """017029 -> 17029. PROCOM e' il codice a sei cifre senza zero iniziale."""
-    return int(comune)
+
 
 
 def load_regionale(xlsx_path: str) -> pd.DataFrame:

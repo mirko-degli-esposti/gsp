@@ -180,6 +180,79 @@ ASC_NOMI_MODENA = {
     "36023003": "Buon Pastore, Sant'Agnese, San Damaso",
     "36023004": "San Faustino, Madonnina, Quattro Ville",
 }
+
+# Verificato con zona_probe.py (31/07/2026): baricentri dei civici ANNCSU e
+# concentrazione dei toponimi. ATTENZIONE: i codici NON sono 001-010, c'e' un
+# salto su 004-006. L'ordinamento ufficiale del Comune (1 Centro Urbano ...
+# 10 Del Mare) e' pero' preservato. Riscontri diretti: PIANGIPANE 97% su 009,
+# RONCALCECI 100% su 010, toponimi marittimi su 013 (raggio 5,48 km, massimo).
+ASC_NOMI_RAVENNA = {
+    "39014001": "Centro Urbano",
+    "39014002": "Ravenna Sud",
+    "39014003": "Darsena",
+    "39014007": "Sant'Alberto",
+    "39014008": "Mezzano",
+    "39014009": "Piangipane",
+    "39014010": "Roncalceci",
+    "39014011": "San Pietro in Vincoli",
+    "39014012": "Castiglione",
+    "39014013": "Del Mare",
+}
+
+# Verificato con zona_probe.py (31/07/2026). Codici 001-021 consecutivi.
+# Riscontri diretti: SISA/CARPENELLA/BAGNOLINA su 005, CAVA su 010,
+# CAMPO MARTE su 013, toponimi aeronautici su 015, MAGLIANELLA su 021.
+# Da verificare: 016 e 017 (il toponimo OSSI cade su 018).
+# I 21 quartieri sono raggruppati in 8 comitati territoriali, ma il
+# raggruppamento NON e' nel file ISTAT (COM_ASC2/3 sono a zero).
+ASC_NOMI_FORLI = {
+    "40012001": "Centro Storico",
+    "40012002": "Villafranca, San Martino in Villafranca",
+    "40012003": "Roncadello, Branzolino, San Tomè, Barisano",
+    "40012004": "Pieve Acquedotto, Durazzanino, Malmissole, Poggio, San Giorgio",
+    "40012005": "Carpinello, Castellaccio, Bagnolo, Borgo Sisa",
+    "40012006": "Pievequinta, Casemurate, Caserma",
+    "40012007": "La Selva, Forniolo, San Leonardo",
+    "40012008": "Pianta, Ospedaletto, Coriano",
+    "40012009": "Foro Boario, San Benedetto",
+    "40012010": "Cava, Villanova",
+    "40012011": "Romiti",
+    "40012012": "Resistenza",
+    "40012013": "Spazzoli, Campo di Marte, Benefattori",
+    "40012014": "Musicisti, Grandi Italiani",
+    "40012015": "Ronco",
+    "40012016": "Bussecchio",
+    "40012017": "Ca' Ossi",
+    "40012018": "Villagrappa, Castiglione, Petrignone, San Varano, Rovere",
+    "40012019": "Vecchiazzano, Massa, Ladino",
+    "40012020": "San Martino in Strada, San Lorenzo in Noceto, Grisignano",
+    "40012021": "Magliano, Carpena, Ravaldino in Monte, Lardiano",
+}
+
+# Ordine di preferenza dei file popolazione, dal livello piu' ricco al piu'
+# povero. Condiviso fra enrich.py e assign_nationality.py: due auto-detect
+# divergenti sono un modo sicuro di generare confusione.
+POP_CANDIDATES = ["popolazione_K10C.csv", "popolazione_K9C.csv",
+                  "popolazione_K8C.csv", "popolazione_K7C.csv",
+                  "popolazione_K6C.csv"]
+
+
+def resolve_pop_file(cdir, override=None, suffisso=""):
+    """Nome del file popolazione da usare in cdir.
+
+    override  nome esplicito: restituito senza controlli
+    suffisso  variante da cercare (es. '_avq' -> popolazione_K9C_avq.csv)
+    """
+    if override:
+        return override
+    cercati = [n.replace(".csv", f"{suffisso}.csv") if suffisso else n
+               for n in POP_CANDIDATES]
+    for name in cercati:
+        if os.path.exists(os.path.join(cdir, name)):
+            return name
+    raise SystemExit(f"Nessun file popolazione in {cdir}\n"
+                     f"  cercati: {cercati}\n"
+                     f"  usare --pop-file per specificarlo")
 # ----------------------------------------------------------------------
 # Comuni — solo il non derivabile
 # ----------------------------------------------------------------------
@@ -252,6 +325,27 @@ COMUNI = {
             # fa l'anello 3 (546 sezioni per zona).
             "quartieri": {"col": "COM_ASC1", "n": 4,
                           "nomi": ASC_NOMI_MODENA, "parent": None},
+        },
+    },
+
+    "039014": {
+        "nome": "Ravenna", "slug": "ravenna", "regione": "emilia_romagna",
+        "livello": "aree",
+        "livelli": {
+            # Il Comune le chiama "aree territoriali", non quartieri: 3 urbane
+            # (001-003) e 7 rurali su 652 km2. Codici non contigui.
+            "aree": {"col": "COM_ASC1", "n": 10,
+                     "nomi": ASC_NOMI_RAVENNA, "parent": None},
+        },
+    },
+    "040012": {
+        "nome": "Forlì", "slug": "forli", "regione": "emilia_romagna",
+        "livello": "quartieri",
+        "livelli": {
+            # Partizione ibrida: 11 quartieri urbani entro 2,3 km dal centro
+            # e 10 ambiti rurali fra 4 e 10 km. Zona piu' piccola: 1.588 ab.
+            "quartieri": {"col": "COM_ASC1", "n": 21,
+                          "nomi": ASC_NOMI_FORLI, "parent": None},
         },
     },
 }

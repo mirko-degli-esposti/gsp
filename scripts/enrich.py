@@ -49,7 +49,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-import gsp_common as G
+
 
 import gsp_common as G
 import opendata_paese as OP
@@ -526,10 +526,19 @@ def main(comune, anno, pop_file, out_name, keep_naz, no_tier, seed):
     except KeyError as e:
         sys.exit(str(e))
 
+    pop_file = G.resolve_pop_file(cdir, pop_file, "_avq")
     pop = pd.read_csv(os.path.join(cdir, pop_file)).reset_index(drop=True)
 
     if out_name is None:
-        out_name = pop_file.replace(".csv", "_full.csv")
+        # Le varianti di confronto non devono mai atterrare sul nome
+        # canonico: sono run diagnostici, non output di produzione.
+        suff = "_full"
+        if keep_naz:
+            suff += "_keepnaz"
+        elif no_tier:
+            suff += "_tier0"
+        out_name = pop_file.replace(".csv", suff + ".csv")
+        
     print(f"[pop] {pop_file}: {len(pop):,} individui -> {out_name}")
     pop["zona"] = pop["zona"].astype("Int64").astype(str)
     G.verifica_livello(pop["zona"], comune)
@@ -540,6 +549,10 @@ def main(comune, anno, pop_file, out_name, keep_naz, no_tier, seed):
     rng = np.random.default_rng(seed)
     pop = assegna_sezione(pop, sez, rng)
     if keep_naz:
+        if not {"area", "paese"} <= set(pop.columns):
+            sys.exit(f"--keep-naz richiede che {pop_file} abbia gia' le "
+                     f"colonne 'area' e 'paese' (file _naz da "
+                     f"assign_nationality.py): non ci sono.")
         print("\n[3b/3c] --keep-naz: area e paese lasciati invariati")
     else:
         pop = assegna_area_paese(pop, sez, comune, anno, rng, not no_tier)
@@ -558,12 +571,16 @@ if __name__ == "__main__":
         description="Anello 3: sezione, area, paese, eta esatta, indirizzo.")
     ap.add_argument("comune", help="codice ISTAT (es. 034027)")
     ap.add_argument("--anno", type=int, default=2024)
-    ap.add_argument("--pop-file", default="popolazione_K9C_avq.csv")
+    ap.add_argument("--pop-file", default=None,
+                    help="default: auto-detect popolazione_K10C_avq.csv -> "
+                         "K9C_avq -> ... -> K6C_avq in constraints_<anno>/")
     ap.add_argument("--out", default=None,
                     help="default: <file popolazione>_full.csv")
     ap.add_argument("--keep-naz", action="store_true",
-                    help="non ri-assegna area e paese (li lascia come da "
-                         "assign_nationality.py, condizionati sulla zona)")
+                    help="non ri-assegna area e paese. Ha senso SOLO con "
+                         "--pop-file su un file _naz prodotto da "
+                         "assign_nationality.py: sui file _avq quelle "
+                         "colonne non esistono e resterebbero assenti")
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--no-tier", action="store_true",
                     help="paese condizionato al solo (area, sesso) comunale, "

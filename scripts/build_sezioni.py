@@ -14,10 +14,12 @@ effettivamente popolati, controlli di annidamento e di coerenza dei totali.
 
 Nota sui livelli ASC:
     il tracciato ISTAT definisce COM_ASC1/2/3 come sub-aree amministrative
-    "ove presenti". La disponibilita' varia per comune: Bologna pubblica tutti
-    e tre i livelli, Parma soltanto il primo (ASC2 e ASC3 valgono 0). Lo script
-    riporta esplicitamente quali livelli sono utilizzabili, perche' e' questo a
-    determinare il valore ammesso di --livello negli script a valle.
+    "ove presenti". La disponibilita' varia per comune: Bologna pubblica piu'
+    di un livello (ASC1 = 6 quartieri, ASC2 = 18 zone), Parma soltanto il
+    primo (ASC2 e ASC3 valgono 0). Brescia (33) e Modena (4) sono registrati
+    sul solo ASC1. Lo script riporta esplicitamente quali livelli sono
+    utilizzabili, perche' e' questo a determinare il valore ammesso di
+    --level in build_zona_tables.py.
 
 Uso:
     python build_sezioni.py 034027                      # Parma
@@ -232,10 +234,7 @@ def main(comune, file_arg, regione_arg, out_arg, dry_run):
             sys.exit(f"[out] !! attese {atteso} zone, trovate {nz}: "
                      f"il file regionale e' cambiato, verificare prima di procedere")
         
-        if atteso and nz != atteso:
-            sys.exit(f"[out] !! attese {atteso} zone, trovate {nz}: "
-                     f"il file regionale e' cambiato, verificare prima di procedere")
-        #sez["ZONA"] = sez[liv]     # colonna neutra per gli script a valle
+        
         # nessuna colonna derivata: il livello effettivo lo sceglie
         # build_zona_tables.py dal proprio registro. Qui solo verifica.
 

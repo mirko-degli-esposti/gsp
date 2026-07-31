@@ -1,5 +1,5 @@
 """
-build_constraints.py — v1 — dal set di tavole comunali ISTAT al constraint set per GibbsPCD.
+build_constraints.py — v2 — dal set di tavole comunali ISTAT al constraint set per GibbsPCD.
 
 Uso:
     python build_constraints.py 017029 --anno 2025
@@ -8,7 +8,17 @@ Convenzioni:
     --anno N  = ancoraggio anagrafico all'1/1/N (TIME_PERIOD=N nella tavola anagrafica);
                 lo strato censuario usa TIME_PERIOD=N-1 (fotografia ~ottobre N-1).
 
-Input:  ~/progetti/gsp/data/comuni/<comune>/*_decoded.csv   (da fetch_comune.py)
+Input:  ~/progetti/gsp/data/comuni/<comune>/<chiave>_decoded.csv   (da fetch_comune.py)
+    obbligatorie:  anag_sesso_eta_statociv (anno N)
+                   cens_sesso_eta_cittadinanza, cens_istruzione_eta,
+                   cens_istruzione_cittadinanza, cens_condprof_eta,
+                   cens_condprof_cittadinanza, cens_stranieri_paesi  (anno N-1)
+    opzionali:     cens_migr_backg (anno N-1)  -> C7/C8
+                   cens_posizione_prof, cens_settore_prof (qualunque anno) -> C9/C10
+    preflight() verifica la copertura temporale di tutte le tavole PRIMA di
+    costruire qualsiasi blocco: assenza di una obbligatoria = errore fatale,
+    assenza di una opzionale = skip dichiarato a video.
+
 Output: ~/progetti/gsp/data/comuni/<comune>/constraints_<anno>/
     c1_sex_age_marital.csv        vincolo HARD  (anagrafe, conteggi esatti)
     c2_sex_age_citizenship.csv    vincolo SOFT  (censimento -> condizionale su spine anagrafica)
@@ -16,6 +26,10 @@ Output: ~/progetti/gsp/data/comuni/<comune>/constraints_<anno>/
     c4_sex_ageclass_condprof.csv  vincolo SOFT  (idem)
     c5_edu_citizenship.csv        vincolo SOFT
     c6_condprof_citizenship.csv   vincolo SOFT
+    c7_sex_background.csv         vincolo SOFT  (condizionale: serve cens_migr_backg)
+    c8_background_origine.csv     vincolo SOFT  (idem; non_applicabile per nati estero)
+    c9_sex_posizione_prof.csv     vincolo SOFT  (condizionale: universo occupati)
+    c10_sex_settore.csv           vincolo SOFT  (idem)
     nationality_conditional.csv   P(paese | straniero)  (two-stage, fuori dal MaxEnt)
     manifest.json                 descrizione vincoli + sigma arrotondamento per tavola
     report.md                     consistenza anagrafe<->censimento e arrotondamenti
@@ -32,6 +46,19 @@ Note v1 (lezioni dal primo run su Brescia 017029):
       a FRG in uscita per stabilità dello schema
     - gerarchia condprof: 22 = 1+12 (forze di lavoro); 23 = 4+5+7+24 (non forze
       di lavoro); gli aggregati vengono scartati solo se il dettaglio è presente
+
+Note v2 (blocchi C7-C10):
+    - C7/C8: background migratorio a 6 livelli (IT_BIRT_IT ... FOR_B_AB); la
+      cittadinanza ITL/FRG e' funzione deterministica del background (ITL_GROUP),
+      da cui il blocco GC costruito a valle in cs_build.py
+    - C8: origine_genitori e' definita solo per i nati in Italia (NATI_IT); per i
+      nati all'estero il livello e' 'non_applicabile'
+    - C9/C10: fonte EMPLP_1/EMPLP_2, censimento 2021 (il dettaglio non e' rilasciato
+      per anni successivi). Assunzione (7) di stabilita' strutturale 2021 -> anno di
+      ancoraggio: si usano le QUOTE riscalate sul totale occupati del C4 corrente,
+      non i livelli. Se il C4 non e' leggibile i blocchi escono senza riscalatura.
+    - il manifest marca C9/C10 come "hard": e' un residuo, l'universo e' derivato
+      per riscalatura e andrebbe riclassificato "soft"
 """
 
 import os

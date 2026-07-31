@@ -7,15 +7,18 @@ CSV sezioni di default, livelli disponibili con colonna COM_ASC*, numero
 atteso di unita', denominazioni, eventuale gerarchia) + motore unico.
 Aggiungere un comune = aggiungere una voce al registro.
 
-Comuni registrati:
-    017029  Brescia   quartieri (COM_ASC1, 33)
-    037006  Bologna   quartieri (COM_ASC1, 6), zone (COM_ASC2, 18, con parent)
-    034027  Parma  quartieri (COM_ASC1, 13)
+Comuni registrati (il registro vive in gsp_common.py, non qui):
+    017029  Brescia   quartieri (COM_ASC1, 33)                    [default]
+    034027  Parma     quartieri (COM_ASC1, 13)                    [default]
+    036023  Modena    quartieri (COM_ASC1, 4)                     [default]
+    037006  Bologna   quartieri (COM_ASC1, 6)
+                      zone      (COM_ASC2, 18, parent=quartieri)  [default]
 
 Uso:
-    python build_zona_tables.py 017029                    # Brescia, quartieri
-    python build_zona_tables.py 037006                    # Bologna, quartieri
-    python build_zona_tables.py 037006 --level zone       # Bologna, 18 zone
+    python build_zona_tables.py 017029                       # Brescia, 33 quartieri
+    python build_zona_tables.py 036023                       # Modena, 4 quartieri
+    python build_zona_tables.py 037006                       # Bologna, 18 zone (default!)
+    python build_zona_tables.py 037006 --level quartieri     # Bologna, 6 quartieri
     opzioni: --sez-csv, --com-dir, --out-dir
 
 Output (default: <com_dir>/zona_2023/ — la directory letta da cs_build;

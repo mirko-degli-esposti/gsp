@@ -34,6 +34,7 @@ import json
 import importlib
 import numpy as np
 import pandas as pd
+import gsp_common as G
 
 # ----------------------------------------------------------------------
 # Configurazione
@@ -320,6 +321,49 @@ class CSBuilder:
                 return df
         raise KeyError(name)
 
+    def add_esclusioni(self, regole, verbose=True):
+        """Vincoli alpha=0 su combinazioni logicamente impossibili.
+
+        Va chiamato DOPO tutti gli altri add_block: opera solo su categorie
+        gia' registrate, perche' add_block ne creerebbe di nuove allargando
+        |X|. I vincoli sono sulla COPPIA (eta, X): azzerare il marginale di
+        coppia forza a zero tutte le celle sottostanti, perche' le
+        probabilita' sono non negative. Bastano quindi 26 vincoli, non 26
+        per ogni valore di sesso o zona.
+        """
+        n_tot = 0
+        for va, valsA, vb, valsB, motivo in regole:
+            if va not in self.categories or vb not in self.categories:
+                continue
+            A = [x for x in valsA if x in self.categories[va]]
+            Bv = [x for x in valsB if x in self.categories[vb]]
+            if not A or not Bv:
+                continue
+
+            # celle gia' vincolate sulla stessa coppia: non si duplicano
+            gia = set()
+            for _, attrs, df, _ in self.blocks:
+                if set(attrs) == {va, vb}:
+                    gia |= {(r[va], r[vb]) for _, r in df.iterrows()}
+
+            righe = [{va: a, vb: b, "count": 0.0}
+                     for a in A for b in Bv if (a, b) not in gia]
+            saltate = len(A) * len(Bv) - len(righe)
+            if not righe:
+                continue
+
+            nome, k = f"X_{va}_{vb}", 2
+            while any(n == nome for n, *_ in self.blocks):
+                nome, k = f"X_{va}_{vb}_{k}", k + 1
+            self.add_block(nome, pd.DataFrame(righe), f"esclusione: {motivo}")
+            n_tot += len(righe)
+            if verbose:
+                msg = f"[escl] {nome}: {len(righe)} celle a zero ({motivo})"
+                if saltate:
+                    msg += f" | {saltate} gia' vincolate, saltate"
+                print(msg)
+        return n_tot
+
     def build(self, pop_size):
         idx = {v: i for i, v in enumerate(self.var_order)}
         cat_idx = {v: {c: i for i, c in enumerate(cats)}
@@ -359,7 +403,7 @@ class CSBuilder:
 
 
 # ----------------------------------------------------------------------
-def main(comune, anno, min_age, max_age, bins_labels, livello):
+def main(comune, anno, min_age, max_age, bins_labels, livello, esclusioni=False):
     ConstraintSet = import_constraint_set()
     cdir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
     T = load_inputs(cdir)
@@ -721,6 +765,10 @@ def main(comune, anno, min_age, max_age, bins_labels, livello):
         nomi = dict(zip(Z["nomi"]["zona"], Z["nomi"]["nome"]))
 
     # ---------------- build + validazione ----------------
+    if esclusioni:
+        n_escl = B.add_esclusioni(G.IMPOSSIBILI)
+        print(f"[escl] totale {n_escl} celle vincolate a zero")
+
     cs = B.build(pop)
     print(cs.summary())
     print("\n[cs] somme per blocco (attese ~1 per blocchi completi):")
@@ -754,9 +802,11 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     if not args:
         sys.exit("Uso: python cs_build.py <comune> [--anno 2025] "
-                 "[--min-age 0] [--max-age 199] [--livello K6C|K7C|K8C|K9C]")
+                 "[--min-age 0] [--max-age 199] [--livello K6C|K7C|K8C|K9C] "
+                 "[--esclusioni]")
     comune = args[0]
     getv = lambda k, d: int(args[args.index(k) + 1]) if k in args else d
     livello = args[args.index("--livello") + 1] if "--livello" in args else "K6C"
     main(comune, getv("--anno", 2025), getv("--min-age", 0),
-         getv("--max-age", 199), DEFAULT_BINS, livello)
+         getv("--max-age", 199), DEFAULT_BINS, livello,
+         "--esclusioni" in args)

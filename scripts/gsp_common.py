@@ -290,6 +290,35 @@ AVQ_OPZIONALI = [
     "BMI", "CPESO",
 ]
 
+# Combinazioni logicamente IMPOSSIBILI, per nome di categoria.
+# (variabile A, valori A, variabile B, valori B, motivo)
+#
+# Servono perche' assenza di vincolo NON e' vincolo a zero: una cella che
+# nessun blocco copre riceve dalla MaxEnt la probabilita' che le compete
+# per indipendenza. Su Parma questo produceva 9-14enni con diploma o
+# laurea; il tasso di combinazioni impossibili misurato e' 2,64-2,74%.
+#
+# Le soglie sono AMMINISTRATIVE, non stimate: l'universo dell'istruzione
+# censuaria parte da 9 anni, quello della condizione professionale da 15,
+# e i titoli si conseguono a 18/20/22 anni.
+#
+# Usate da cs_build.py (--esclusioni) e da animarium/build/ispeziona_cs.py.
+IMPOSSIBILI = [
+    ("eta", ["0-8", "9-14"],
+     "condizione", ["occupato", "in_cerca", "studente", "casalinga",
+                    "percettore_pensioni", "altra_condizione"],
+     "condizione professionale ha universo 15 anni e piu'"),
+    ("eta", ["15-24", "25-34", "35-49", "50-64", "65-74", "75+"],
+     "condizione", ["non_applicabile"],
+     "sopra i 15 anni la condizione e' sempre applicabile"),
+    ("eta", ["0-8"],
+     "istruzione", ["elementare", "media", "diploma", "laurea_o_its",
+                    "post_laurea"],
+     "universo dell'istruzione: 9 anni e piu'"),
+    ("eta", ["9-14"],
+     "istruzione", ["diploma", "laurea_o_its", "post_laurea"],
+     "soglie minime di conseguimento: 18, 20, 22 anni"),
+]
 # ----------------------------------------------------------------------
 # Comuni — solo il non derivabile
 # ----------------------------------------------------------------------

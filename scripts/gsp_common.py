@@ -285,6 +285,11 @@ def resolve_pop_file(cdir, override=None, suffisso="", escludi=None):
     primo, e in un comune dove K10C e' materiale sperimentale residuo
     questa funzione restituirebbe quello invece del livello di produzione.
     E' gia' successo il 1/8/2026 con assign_avq.py su Brescia.
+
+    Il rilevamento su stderr e' incondizionato e non cambia cosa viene
+    restituito: `escludi` copre il caso NOTO, il messaggio copre quello
+    IGNOTO (un residuo K11C, un _avq vecchio accanto a uno nuovo). Il
+    guasto si ripresentera' simile, non identico.
     """
     if override:
         return override
@@ -293,9 +298,17 @@ def resolve_pop_file(cdir, override=None, suffisso="", escludi=None):
         cand = [n for n in cand if not any(k in n for k in escludi)]
     cercati = [n.replace(".csv", f"{suffisso}.csv") if suffisso else n
                for n in cand]
-    for name in cercati:
-        if os.path.exists(os.path.join(cdir, name)):
-            return name
+
+    trovati = [n for n in cercati
+               if os.path.exists(os.path.join(cdir, n))]
+    if len(trovati) > 1:
+        etichetta = "/".join(cdir.rstrip("/").split("/")[-2:])
+        print(f"[gsp] {etichetta}: {len(trovati)} livelli "
+              f"presenti, uso il primo per ordine di preferenza: "
+              f"{trovati[0]} (altri: {trovati[1:]})", file=sys.stderr)
+    if trovati:
+        return trovati[0]
+
     raise SystemExit(f"Nessun file popolazione in {cdir}\n"
                      f"  cercati: {cercati}\n"
                      f"  usare --pop-file per specificarlo")

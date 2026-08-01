@@ -1,0 +1,149 @@
+Per il problema della biografia, vedo già una distinzione fondamentale:
+
+gli attributi presenti nel record sono fatti vincolanti;
+la biografia dovrà aggiungere dettagli plausibili, ma questi saranno inferenze narrative, non informazioni statisticamente generate dalla pipeline;
+alcuni dettagli potranno essere dedotti con buona affidabilità, altri dovranno essere campionati da distribuzioni condizionate, altri ancora sarebbe meglio non inventarli.
+
+Servirà piuttosto una pipeline controllata, probabilmente in tre passaggi:
+
+record sintetico → profilo strutturato;
+profilo → variabili latenti plausibili, generate con regole o distribuzioni condizionate;
+profilo completo → testo narrativo, affidato all’LLM.
+
+In questo modo OpenRouter e l’LLM servirebbero soprattutto per la realizzazione linguistica e la coerenza narrativa, mentre la plausibilità sociologica rimarrebbe sotto il nostro controllo.
+
+- la biografia narrativa non è il prodotto scientifico, ma una rappresentazione comunicativa di un profilo sintetico costruito con criteri controllati.
+
+1. Profilo osservato o vincolato
+
+È il record che già possiedi:
+
+sesso ed età esatta;
+stato civile;
+cittadinanza, paese e background migratorio;
+istruzione in classe;
+condizione occupazionale;
+quartiere, sezione e indirizzo;
+salute, fumo, BMI;
+fiducia interpersonale e istituzionale;
+soddisfazione ambientale.
+
+Questi attributi devono essere trattati come immutabili: l’LLM non può modificarli né reinterpretarli liberamente. Il profilo deve inoltre rispettare i limiti dichiarati della popolazione: per esempio non conosciamo famiglia, lavoro specifico o reddito, e diversi attributi hanno risoluzioni geografiche differenti.
+
+2. Espansione strutturata del profilo
+
+Qui non farei scrivere nulla all’LLM. Genererei invece nuove variabili discrete o numeriche attraverso:
+
+dataset esterni;
+distribuzioni condizionate;
+ontologie o elenchi controllati;
+regole di compatibilità;
+eventualmente piccoli modelli statistici.
+
+Il risultato sarebbe ancora una riga strutturata, non una biografia.Per esempio: 
+
+{
+  "istruzione": "diploma",
+  "titolo_dettaglio": "diploma tecnico industriale",
+  "condizione": "occupato",
+  "professione": "tecnico manutentore",
+  "settore": "manifattura",
+  "tipo_contratto": "tempo indeterminato",
+  "mezzo_lavoro": "automobile",
+  "tempo_spostamento_min": 24,
+  "hobby": ["calcio", "bricolage", "escursioni"],
+  "tipo_abitazione": "appartamento in condominio"
+}
+
+Ma ogni nuova variabile dovrebbe avere una provenienza precisa.
+
+Titolo di studio dettagliato
+
+Nel file hai già categorie come diploma, laurea_o_its e post_laurea. Il dettaglio potrebbe essere campionato da una distribuzione del tipo:
+
+P(tipo di diploma∣et
+a
+ˋ
+, sesso, territorio, condizione lavorativa)
+
+Non chiederei quindi all’LLM di scegliere liberamente tra liceo classico, istituto tecnico o professionale. Gli fornirei un valore già selezionato.
+
+Lavoro
+
+Potremmo generare progressivamente:
+
+occupato→settore ATECO→gruppo professionale CP→professione leggibile
+
+Il settore e la professione potrebbero essere campionati usando distribuzioni ISTAT condizionate almeno su:
+
+sesso;
+età;
+istruzione;
+cittadinanza o background;
+comune o provincia.
+
+Per una persona con condizione = occupato, istruzione = diploma, 52 anni, non sceglieremmo direttamente “lavora in una fabbrica di componenti automobilistici”. Prima estrarremmo, per esempio:
+
+settore = industria manifatturiera
+professione = operaio specializzato
+
+Solo nella fase narrativa potremmo tradurre ciò in una formulazione concreta ma prudente.
+
+Hobby
+
+Anche gli hobby possono avere una base empirica, usando indagini su:
+
+pratica sportiva;
+lettura;
+cinema;
+associazionismo;
+uso di internet;
+attività culturali;
+giardinaggio o bricolage;
+frequenza di luoghi sociali.
+
+Qui AVQ potrebbe essere particolarmente utile, perché appartiene alla stessa famiglia di indagini da cui provengono già le variabili assegnate tramite hot-deck.
+
+Tuttavia non tutto deve provenire da una tabella perfetta. Possiamo costruire un catalogo di hobby e pesarlo tramite età, sesso, istruzione e condizione. L’importante è non lasciare all’LLM la scelta della distribuzione.
+
+3. Realizzazione narrativa
+
+A questo punto l’LLM riceve un profilo già completo e deve soltanto:
+
+trasformarlo in prosa;
+mantenere la coerenza;
+evitare contraddizioni;
+aggiungere dettagli ambientali innocui;
+rendere la persona riconoscibile e memorabile.
+
+Per esempio, da:
+
+52 anni, diploma tecnico, operaio specializzato,
+vive a Modena, usa l’auto, appassionato di bricolage,
+bassa fiducia nel Comune, salute percepita buona
+
+potrebbe produrre:
+
+Marco ha 52 anni e vive nella zona ovest di Modena. Dopo il diploma tecnico ha iniziato a lavorare nel settore manifatturiero, dove oggi svolge una mansione specializzata. Per raggiungere il posto di lavoro usa quasi sempre l’auto. Nel fine settimana si dedica spesso a piccoli lavori domestici e al bricolage. Ritiene di stare complessivamente bene, ma guarda con una certa diffidenza alle istituzioni locali.
+
+Tre livelli di certezza
+
+Per rendere il metodo trasparente, assocerei a ogni elemento un’etichetta:
+
+livello	significato	esempio
+A — vincolato	presente nella popolazione	52 anni, diploma, occupato
+B — imputato	campionato da dati esterni	settore manifatturiero
+C — narrativo	dettaglio puramente espositivo	“nel fine settimana sistema piccoli oggetti in casa”
+
+La bio può mostrare tutto insieme, ma il sistema conserva internamente la provenienza.
+
+Questo permette anche di generare due prodotti diversi:
+
+una scheda scientifica, con attributi, probabilità e fonti;
+una biografia dimostrativa, con l’effetto “wow”.
+
+La seconda può essere molto vivace senza compromettere la prima, purché sia chiaramente presentata come una realizzazione plausibile tra molte compatibili con lo stesso individuo sintetico, non come la sua vera storia.
+
+Il punto metodologico centrale potrebbe quindi essere formulato così:
+
+L’LLM non genera la persona. La persona viene generata statisticamente; l’LLM ne genera una possibile rappresentazione narrativa.

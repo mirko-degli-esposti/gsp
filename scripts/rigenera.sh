@@ -29,11 +29,14 @@ COMUNI=(
   "017029:K9C:260000"   # Brescia    198.259
   "034027:K9C:260000"   # Parma      198.121
   "036023:K9C:240000"   # Modena     184.597
+  "035033:K9C:220000"   # Reggio E.  171.207
   "039014:K9C:200000"   # Ravenna    156.304
+  "099014:K9C:200000"   # Rimini     150.046
+  "038008:K6C:170000"   # Ferrara    129.391  (non articolato)
   "040012:K9C:150000"   # Forli'     117.050
+  "033032:K9C:140000"   # Piacenza 102.887
   "037021:K6C:30000"    # Castenaso   16.357  (non articolato)
 )
-
 ESCL="--esclusioni"
 DRY=0
 FROM="cs"
@@ -146,7 +149,7 @@ for f in sorted(glob.glob("data/comuni/*/constraints_2024/popolazione_K*_avq_ful
             for va, A, vb, B, _ in G.IMPOSSIBILI
             if va in d.columns and vb in d.columns)
     tot_i += n; tot_n += len(d)
-    print(f"  {c}  {G.info(c)['nome']:<12} {n:>5} su {len(d):>9,}  "
+    print(f"  {c}  {G.info(c)['nome'][:18]:<18} {n:>5} su {len(d):>9,}  "
           f"({d.shape[1]} colonne)")
 print(f"  {'TOTALE':<26} {tot_i:>5} su {tot_n:>9,}")
 PYEOF

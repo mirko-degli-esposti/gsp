@@ -170,7 +170,7 @@ def main(comune, anno, pop_file, out_name, targets, opzionali, seed, min_record)
 
     a = load_avq(AVQ_YEARS, targets, opzionali, regione, nome_reg)
     tutti = targets + opzionali
-
+    pop_file = G.resolve_pop_file(cdir, pop_file)
     pop = pd.read_csv(os.path.join(cdir, pop_file)).reset_index(drop=True)
     print(f"[pop] {pop_file}: {len(pop):,} individui")
     for t in tutti:
@@ -314,7 +314,9 @@ if __name__ == "__main__":
         description="Strato AVQ con campionamento per donatore (hot-deck).")
     ap.add_argument("comune", help="codice ISTAT del comune (vedi registro in gsp_common.py)")
     ap.add_argument("--anno", type=int, default=2024)
-    ap.add_argument("--pop-file", default="popolazione_K9C_naz.csv")
+    ap.add_argument("--pop-file", default=None,
+                    help="default: auto-detect popolazione_K10C.csv -> "
+                         "K9C -> ... -> K6C in constraints_<anno>/")
     ap.add_argument("--out", default="popolazione_K9C_avq.csv")
     ap.add_argument("--targets", default="AMBIENTE,FIDUCIA,SALUTE,CRONI,FUMO,MH",
                     help="variabili AVQ da copiare in blocco dal donatore")

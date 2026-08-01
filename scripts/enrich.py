@@ -120,13 +120,19 @@ def load_sezioni(comune: str) -> pd.DataFrame:
         sys.exit(f"File sezioni assente: {path}\n"
                  f"  generarlo con build_sezioni.py {comune}")
     s = pd.read_csv(path)
-    liv = G.livello_col(comune)
-    if liv not in s.columns:
+     # Comune non articolato: zona degenere unica. Il condizionamento si
+    # sposta interamente sulla sezione, che e' il livello piu' fine
+    # disponibile e anche il piu' informativo (cfr. nota sul segnale
+    # compositivo: la zona ne trattiene fra il 2% e il 20%).
+    liv = G.livello_col(comune) if G.info(comune)["livello"] else None
+    if liv is not None and liv not in s.columns:
         sys.exit(f"Colonna {liv} assente in {path}")
-
+ 
     sez_str = s["SEZ21_ID"].astype("Int64").astype(str)
+    zona_col = (s[liv].astype("Int64").astype(str) if liv is not None
+                else pd.Series("0", index=s.index))
     s = pd.concat([s, pd.DataFrame({
-        "zona": s[liv].astype("Int64").astype(str),
+        "zona": zona_col,
         "SEZ": sez_str,
         "speciale": sez_str.str.contains("|".join(SPECIALI), regex=True),
     }, index=s.index)], axis=1)
@@ -335,6 +341,8 @@ def assegna_area_paese(pop, sez, comune, anno, rng, usa_tier=True):
         Tc = T.sum(axis=2)                      # riserva comunale (paese, sesso)
 
         # tier 3 -> sezione (assegnata in 3a), altrimenti la zona
+         # tier 3 -> sezione (assegnata in 3a); tier 0 su comune non
+        # articolato -> zona degenere, che e' comunque una colonna valida
         geo_col = "sezione" if meta["livello"] == "sezione" else "zona"
         uso = {"geo": 0, "comune": 0}
 
@@ -513,8 +521,14 @@ def valida(pop, sez):
     v_r = max(v_o - v_n, 0.0)
     print(f"\n[val] quota UE: varianza tra zone {v_b:.5f} | "
           f"dentro le zone {v_o:.5f} (di cui {v_n:.5f} da discretizzazione)")
-    print(f"      sovradispersione {v_o/v_n:.2f}x | struttura reale di "
-          f"sezione / di zona = {v_r/v_b:.1f}x")
+    if v_b > 0:
+        print(f"      sovradispersione {v_o/v_n:.2f}x | struttura reale di "
+              f"sezione / di zona = {v_r/v_b:.1f}x")
+    else:
+        # zona unica: il rapporto non e' definito, tutta la struttura
+        # spaziale sta per costruzione dentro l'unica zona.
+        print(f"      sovradispersione {v_o/v_n:.2f}x | zona unica: "
+              f"struttura reale di sezione {v_r:.5f} (rapporto non definito)")
 
 
 # ----------------------------------------------------------------------
@@ -540,8 +554,13 @@ def main(comune, anno, pop_file, out_name, keep_naz, no_tier, seed):
         out_name = pop_file.replace(".csv", suff + ".csv")
         
     print(f"[pop] {pop_file}: {len(pop):,} individui -> {out_name}")
-    pop["zona"] = pop["zona"].astype("Int64").astype(str)
-    G.verifica_livello(pop["zona"], comune)
+    if G.info(comune)["livello"] is None:
+        pop["zona"] = "0"                    # zona degenere: vedi load_sezioni
+        print("[cfg] comune non articolato: zona degenere, "
+              "condizionamento sulla sola sezione")
+    else:
+        pop["zona"] = pop["zona"].astype("Int64").astype(str)
+        G.verifica_livello(pop["zona"], comune)
     sez = load_sezioni(comune)
     civ = load_civici(comune)
     eta_w = load_eta_singola(comune, anno)

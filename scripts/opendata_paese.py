@@ -428,15 +428,16 @@ def tabella_paese(comune: str, anno_cens: int = ANNO_CENS, verbose: bool = True)
     liv = cfg["geo_liv"] if cfg else i["livello"]
     if liv == "sezione":
         key = sez["SEZ21_ID"].astype("Int64").astype(str)
+    elif liv is None:
+        # Comune non articolato: zona degenere unica. Il condizionale
+        # geografico si riduce alla composizione comunale, che e'
+        # esattamente il tier 0. Non e' un errore ma una configurazione.
+        key = pd.Series("0", index=sez.index)
     else:
         key = sez[G.livello_col(comune, liv)].astype("Int64").astype(str)
     peso = sez.groupby(key)["ST1"].sum()
     peso = peso[peso > 0]
     peso = peso / peso.sum()
-
-    if liv is None:
-        raise ValueError(f"{i['nome']} non ha articolazione sub-comunale: "
-                         f"il condizionale geografico non e' applicabile")
 
     tot_A = float(A["n"].sum())
 

@@ -456,6 +456,14 @@ COMUNI = {
             },
         },
     },
+    "037021": {
+        "nome": "Castenaso", "slug": "castenaso", "regione": "emilia_romagna",
+        # Nessun livello ASC popolato nel file regionale 2023: le quattro
+        # frazioni dello Statuto (Fiesso, Marano, Veduro, Villanova) non
+        # sono codificate da ISTAT. Comune K6C, senza coordinata zona.
+        "livello": None,
+        "livelli": {},
+    },
 }
 
 # ----------------------------------------------------------------------

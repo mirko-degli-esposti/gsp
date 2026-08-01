@@ -37,7 +37,6 @@ Assunzione dichiarata:
 
 Uso:
     python assign_avq.py 017029 --anno 2024 \\
-        --pop-file popolazione_K9C_naz.csv --out popolazione_K9C_avq.csv \\
         --targets AMBIENTE,FIDUCIA,SALUTE,CRONI,FUMO,MH
 """
 
@@ -172,6 +171,8 @@ def main(comune, anno, pop_file, out_name, targets, opzionali, seed, min_record)
     tutti = targets + opzionali
     pop_file = G.resolve_pop_file(cdir, pop_file)
     pop = pd.read_csv(os.path.join(cdir, pop_file)).reset_index(drop=True)
+    if out_name is None:
+        out_name = pop_file.replace(".csv", "_avq.csv")
     print(f"[pop] {pop_file}: {len(pop):,} individui")
     for t in tutti:
         if t in pop.columns:
@@ -317,7 +318,8 @@ if __name__ == "__main__":
     ap.add_argument("--pop-file", default=None,
                     help="default: auto-detect popolazione_K10C.csv -> "
                          "K9C -> ... -> K6C in constraints_<anno>/")
-    ap.add_argument("--out", default="popolazione_K9C_avq.csv")
+    ap.add_argument("--out", default=None,
+                    help="default: <file popolazione>_avq.csv")
     ap.add_argument("--targets", default="AMBIENTE,FIDUCIA,SALUTE,CRONI,FUMO,MH",
                     help="variabili AVQ da copiare in blocco dal donatore")
     ap.add_argument("--min-record", type=int, default=20,

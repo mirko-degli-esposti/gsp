@@ -322,9 +322,69 @@ def load_forli(comune: str, cfg: dict, rif: dict) -> pd.DataFrame:
               f"{[f'{k} ({v:.0f})' for k, v in top]}")
     return _lungo(righe)
 
+
+def load_reggio(comune: str, cfg: dict, rif: dict) -> pd.DataFrame:
+    """CSV largo: prima colonna nazionalita', poi una per circoscrizione.
+ 
+    Nessun sesso: sesso=None su ogni riga, l'IPF lo ricostruisce dal
+    margine comunale come per Brescia.
+ 
+    Il file e' in latin-1 (accenti nei nomi delle circoscrizioni) e ha una
+    riga residuale dichiarata, 'Altre nazionalita''.
+    """
+    f = sorted(glob.glob(os.path.join(OPENDATA, comune, "*.csv")))
+    if not f:
+        raise FileNotFoundError(f"nessun csv in {OPENDATA}/{comune}")
+    d = pd.read_csv(f[0], sep=None, engine="python",
+                    encoding=cfg.get("encoding", "latin-1"))
+ 
+    col_naz = d.columns[0]
+    mappa = {G.norm_nome(k): v for k, v in cfg["mappa_unita"].items()}
+    alias = {G.norm_nome(k): v for k, v in cfg.get("alias_paese", {}).items()}
+    residuo = {G.norm_nome(x) for x in cfg.get("etichette_residuo", [])}
+ 
+    zone = []
+    for c in d.columns[1:]:
+        geo = mappa.get(G.norm_nome(str(c)))
+        if geo is None:
+            raise ValueError(f"[reggio] colonna non agganciata: {c!r}. "
+                             f"Aggiungerla a mappa_unita nel registro.")
+        zone.append((c, geo))
+    atteso = len(set(cfg["mappa_unita"].values()))
+    if len(zone) != atteso:
+        raise ValueError(f"[reggio] {len(zone)} circoscrizioni nel file "
+                         f"contro {atteso} nella mappa")
+ 
+    # iterrows + iloc, non itertuples: i nomi di colonna con accenti
+    # ('Nazionalita\'') vengono rinominati da itertuples e l'accesso per
+    # attributo fallisce in silenzio.
+    righe, non_risolti = [], {}
+    for _, r in d.iterrows():
+        et = str(r.iloc[0]).strip()
+        if not et or et.lower() == "nan":
+            continue
+        if G.norm_nome(et) in residuo:
+            p = RESIDUALE
+        else:
+            p = G.risolvi_paese(alias.get(G.norm_nome(et), et), rif)
+            if p is None:
+                non_risolti[et] = non_risolti.get(et, 0) + 1
+                p = RESIDUALE
+        for i, (col, geo) in enumerate(zone, start=1):
+            v = pd.to_numeric(r.iloc[i], errors="coerce")
+            if pd.notna(v) and v > 0:
+                righe.append({"geo": geo, "sesso": None,
+                              "paese": p, "n": float(v)})
+ 
+    if non_risolti:
+        print(f"[reggio] {len(non_risolti)} etichette non risolte "
+              f"-> residuale: {sorted(non_risolti)}")
+    return _lungo(righe)
+
+
 LOADERS = {"brescia": load_brescia, "bologna": load_bologna,
            "parma": load_parma, "ravenna": load_ravenna,
-           "forli": load_forli}
+           "forli": load_forli, "reggio": load_reggio}
  
 
 # ----------------------------------------------------------------------

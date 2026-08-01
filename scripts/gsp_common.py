@@ -817,6 +817,30 @@ def cod_avq(comune: str) -> int:
     """Codice REGMf della regione nei microdati AVQ."""
     return regione(comune)["cod_avq"]
 
+def tier(comune: str) -> int:
+    """Tier del condizionale geografico per `paese`.
+
+    Derivato da `opendata_paese` invece che dichiarato in un campo proprio:
+    un campo puo' divergere dalla fonte che descrive, una derivazione no.
+
+        0  nessuna fonte locale: `paese` non ha struttura sub-comunale, e
+           ogni sua variazione spaziale e' compositiva per costruzione
+        1  fonte a livello di zona/quartiere/area/circoscrizione
+        2  fonte a livello di zona con dettaglio di sesso
+        3  microdati per sezione
+    """
+    od = info(comune).get("opendata_paese")
+    if not od:
+        return 0
+    liv = od.get("geo_liv")
+    if liv is None:
+        raise ValueError(f"{comune}: opendata_paese senza geo_liv")
+    return {"sezione": 3, "zone": 2}.get(liv, 1)
+
+    if not od:
+        return 0
+    return {"sezione": 3, "zone": 2}.get(od.get("geo_liv"), 1)
+
 
 def livello_col(comune: str, livello: str | None = None) -> str:
     """Colonna COM_ASC* del livello zonale (default: quello del registro)."""

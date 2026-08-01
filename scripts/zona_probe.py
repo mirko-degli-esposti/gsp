@@ -144,6 +144,9 @@ def geometria(c: pd.DataFrame) -> pd.DataFrame:
                     "dist_km": float(np.hypot(xb, yb)),
                     "raggio_km": raggio})
     print(f"[geo]  centro dei civici: {lon0:.4f} E, {lat0:.4f} N")
+    if not out:
+        sys.exit("[geo] nessuna zona utilizzabile: tutti i civici hanno "
+                 "COM_ASC a zero. Il comune non e' articolabile (K6C).")
     return pd.DataFrame(out).set_index("zona")
 
 

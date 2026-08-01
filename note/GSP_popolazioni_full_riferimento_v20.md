@@ -1,17 +1,10 @@
 # Popolazioni sintetiche GSP — documento di riferimento
 
-**Versione 2.0 — 1 agosto 2026**
-Descrive i file `popolazione_*_avq_full.csv` per sette comuni: come
-caricarli, cosa contengono, come sono stati costruiti, quali limiti
-dichiarati portano con sé, dove trovare i dati reali per il confronto e
-**come aggiungere un comune nuovo** (§12).
-
-*Novità della v2.0:* tre comuni nuovi (Ravenna, Forlì, Castenaso); il set
-AVQ standard passa da configurazione a costante di progetto e sale a 23
-variabili, con `FIDMED`/`FIDINF` e `FORZE_ARMATE` recuperate; gestione dei
-comuni **non articolati** via zona degenere; e la **correzione di un
-risultato della v1.9** — il rapporto sezione/zona non cresce
-monotonamente con la dimensione delle zone (§10).
+**Versione 2.0 — 2 agosto 2026**
+Descrive i file `popolazione_K9C_avq_full.csv` per Brescia, Parma, Bologna e
+Modena: come caricarli, cosa contengono, come sono stati costruiti, quali
+limiti dichiarati portano con sé, dove trovare i dati reali per il
+confronto e **come aggiungere un comune nuovo** (§12).
 
 *Questa versione sostituisce tutte le precedenti.*
 
@@ -23,23 +16,15 @@ monotonamente con la dimensione delle zone (§10).
 ~/progetti/gsp/data/comuni/{COMUNE}/constraints_2024/popolazione_K9C_avq_full.csv
 ```
 
-| comune | codice | livello | individui | tier paese |
+| comune | codice | individui | attributi | tier paese |
 |---|---|---|---|---|
-| Bologna | `037006` | K9C | 390.098 | 2 |
-| Brescia | `017029` | K9C | 198.259 | 1 |
-| Parma | `034027` | K9C | 198.121 | 3 |
-| Modena | `036023` | K9C | 184.597 | 0 |
-| Ravenna | `039014` | K9C | 156.304 | 1 |
-| Forlì | `040012` | K9C | 117.050 | 1 |
-| Castenaso | `037021` | **K6C** | 16.357 | 0 |
+| Brescia | `017029` | 198.259 | 40 | 1 |
+| Parma | `034027` | 198.121 | 40 | 3 |
+| Bologna | `037006` | 390.098 | 40 | 2 |
+| Modena | `036023` | 184.597 | 40 | 0 |
 
-Totale 1.260.586 individui sintetici, ciascuno con indirizzo civico e
+Totale 971.075 individui sintetici, ciascuno con indirizzo civico e
 coordinate geografiche.
-
-Castenaso è **K6C, senza coordinata `zona`**: il file censuario regionale
-non popola alcun livello `COM_ASC`, quindi il comune non è articolabile.
-Vale lo stesso per Ferrara. Il nome del file segue il livello effettivo
-(`popolazione_K6C_avq_full.csv`), non è uniforme fra comuni.
 
 ### Caricamento
 
@@ -158,18 +143,7 @@ completa, numerosità efficace e limiti: **§13**.
 | `PUNTIFI6` | Presidente della Repubblica | ridotta |
 | `PUNTIFI7` | Governo italiano | ridotta |
 | `PUNTIFI13` | banche | ridotta |
-| `FIDMED` | **medici del SSN** | **alta** |
-| `FIDINF` | **infermieri del SSN** | **alta** |
-| `FORZE_ARMATE` | Forze Armate | bassa |
 | `VOTOUSL` | ASL (esperienza diretta) | bassa |
-
-`FIDMED` e `FIDINF` sono state aggiunte al set standard il 1/8/2026: sono
-le **uniche voci di fiducia presenti in tutte e tre le annate** (2022,
-2023, 2024) all'87–88%, quindi con copertura pari alle migliori `PUNTIFI`
-e indipendente dalla composizione del pool. Per un lavoro sulla
-comunicazione istituzionale del rischio sanitario sono più vicine al
-bersaglio di metà della batteria politica: misurano la credibilità del
-*messaggero* sanitario, non dell'emittente politico.
 
 Struttura interna, replicata nel sintetico entro ±0,01:
 
@@ -207,34 +181,18 @@ dimezzare il pool.
 
 | fascia | variabili | copertura tipica |
 |---|---|---|
-| tutte le annate | i 6 target, `CPESO` | 97–100% |
-| tutte le annate | `FIDMED`, `FIDINF`, `PUNTIFI1,2,3,4,5,8,10,12`, `BMI` | 85–88% |
-| solo 2024 | `PUNTIFI6,7`, `PUNTIFI13` (assente solo nel 2023) | 42–43% |
-| solo 2024 × universo ristretto | `FORZE_ARMATE` 22%, `VOTOUSL` 20% | 19–23% |
+| base (2023+2024) | le 9 originali, `PUNTIFI1,2,3,4,5,8,10,12` | 86–88% |
+| solo 2024 | `PUNTIFI6,7,13` | 42–43% |
+| solo 2024 × utenti ASL | `VOTOUSL` | 15–20% |
 
 Il missing della seconda e terza fascia è **planned missing**: dipende
 dall'annata del donatore, non dall'individuo. La *percentuale*, però, dipende
 anche da noi: con il pool a due annate il 2024 vale il 52,8%, e la copertura
 si prevede a due decimali dalla composizione del pool (§13.1).
 
-**Universi diversi per variabile.** `SALUTE` copre il 100%, `VOTOUSL` il
-20%. Un `dropna()` listwise su tutte e 23 restituisce **zero righe**. Usare
-`DataFrame.corr(min_periods=...)`, e vedere §11.
-
-**`BMIMIN` è esclusa dal set standard**, e per una ragione che va
-distinta dalla bassa copertura: è l'indice di massa corporea calcolato con
-i cut-off IOTF **per i minori**, mentre `BMI` è per i 18 anni e più. Il suo
-13% non è copertura difettosa, è la quota di minorenni. Universo diverso,
-non variabile fragile.
-
-#### Il set è ora una costante di progetto
-
-Fino alla v1.9 il set delle variabili dipendeva da cosa si passava a
-`--targets-opt`: Bologna aveva 21 attributi, i comuni generati dopo ne
-avevano 6. Dalla v2.0 le due liste stanno in `gsp_common.py` come
-`AVQ_TARGETS` (6) e `AVQ_OPZIONALI` (17), e sono i **default**
-dell'argparse. Il comando nudo `python assign_avq.py <comune> --anno 2024`
-produce le 23 variabili, identiche per ogni comune.
+**Universi diversi per variabile.** `BMIMIN` copre il 13,6% (minori 3–17),
+`SALUTE` il 100%. Un `dropna()` listwise su tutte e 21 restituisce **zero
+righe**. Usare `DataFrame.corr(min_periods=...)`, e vedere §11.
 
 ### 2.3 Anello 3 — risoluzione fine
 
@@ -268,12 +226,9 @@ produce le 23 variabili, identiche per ogni comune.
 | comune | livello | zone | abitanti/zona | sezioni | sez./zona |
 |---|---|---|---|---|---|
 | Brescia | `COM_ASC1` (quartieri) | 33 | 6.008 | 1.822 | 55 |
-| Forlì | `COM_ASC1` (quartieri) | 21 | 5.574 | 1.519 | 72 |
-| Bologna | `COM_ASC2` (zone statistiche) | 18 | 21.672 | 2.224 | 124 |
 | Parma | `COM_ASC1` (quartieri) | 13 | 15.240 | 1.357 | 104 |
-| Ravenna | `COM_ASC1` (aree territoriali) | 10 | 15.630 | 2.376 | 238 |
+| Bologna | `COM_ASC2` (zone statistiche) | 18 | 21.672 | 2.224 | 124 |
 | Modena | `COM_ASC1` (quartieri) | **4** | **46.149** | 2.186 | **546** |
-| Castenaso | **nessuno** | — | — | 154 | — |
 
 Bologna usa ASC2 perché i suoi 6 quartieri ASC1 sono troppo pochi; ASC3
 (90 aree) è inutilizzabile per la coda di zone minuscole. Parma e Modena
@@ -283,25 +238,6 @@ pubblicano **solo** ASC1. Il livello è **fissato nel registro** di
 **Le quattro zone di Modena sono la partizione più grossolana in
 pipeline.** Si usano comunque: servono ai vincoli Z del MaxEnt e danno un
 `quartiere` leggibile, mentre il lavoro geografico lo fa l'anello 3 (§10).
-
-**Comuni non articolati: zona degenere.** Castenaso ha `COM_ASC1/2/3` tutti
-a zero — le quattro frazioni dello Statuto (Fiesso, Marano, Veduro,
-Villanova) non sono codificate da ISTAT, coerentemente con l'abolizione
-delle circoscrizioni sotto i 250.000 abitanti. Vale anche per Ferrara. Il
-caso è gestito con una **zona degenere unica** (`zona = "0"` per tutte le
-sezioni) invece che con rami condizionali: ogni `groupby("zona")`
-restituisce un gruppo solo e il codice a valle non se ne accorge. Il
-condizionamento si sposta interamente sulla sezione, che è comunque il
-livello dove sta l'80–98% della struttura compositiva (§10).
-
-Non è una configurazione degradata: è quella in cui la pipeline lavora
-direttamente al livello migliore.
-
-**Le denominazioni di Ravenna hanno codici non contigui.** Le dieci aree
-sono `39014001-003` e `39014007-013`, con un salto su 004–006.
-L'ordinamento ufficiale del Comune (1 Centro Urbano … 10 Del Mare) è però
-preservato. È il secondo caso, dopo Bologna, in cui l'ipotesi «i codici
-seguono l'ordine da 001» è falsa.
 
 ### 3.1 I codici ASC si sovrappongono fra livelli
 
@@ -503,30 +439,6 @@ norma un ISO alpha-2 ma non sempre (`X95` Kosovo, `XSD_S` Sud Sudan), e
 alcuni aggregati hanno forma alpha-2 — `EU` in particolare, somma dei 27
 già presenti singolarmente, gonfiava il margine censuario del 21%.
 
-### Le fonti stanno fuori dal catalogo open data
-
-Ravenna e Forlì mostrano che *«assente dal catalogo open data»* non
-significa *«assente»*: per entrambe la fonte stava in una **pubblicazione
-statistica del sito comunale**, non nel catalogo. La ricerca va estesa lì
-prima di dichiarare un comune tier 0.
-
-| comune | formato | struttura | note |
-|---|---|---|---|
-| Ravenna | `.xls` (BIFF, serve `xlrd`) | doppia intestazione: riga aree, riga M/F/T | 139 nazionalità × 10 aree, 17.870 persone, +0,5% sulle sezioni |
-| Forlì | `.xlsx` **senza `sharedStrings`** (serve `python-calamine`) | formato lungo `QUARTIERE, STATO, F, M, TOTALE` | 42 unità aggregate nei 21 quartieri, residuo `altro` al 16,5%, −1,9% sulle sezioni |
-
-Due lezioni operative. **I formati sono ostili**: nessuno dei due si apre
-con `openpyxl`, e l'errore che producono (`KeyError` su `zipfile`) non
-suggerisce la causa. Il loader deve dichiarare la dipendenza nel messaggio
-d'errore.
-
-E **la fonte può essere più fine del livello di destinazione**: Forlì
-disaggrega in 41 unità fra frazioni e rioni storici — il Centro Storico è
-spezzato nei quattro rioni Schiavonia, San Pietro, Ravaldino, Cotogni — che
-si aggregano nei 21 quartieri `COM_ASC1`. Aggregando non si perde nulla, ma
-la mappa 41→21 va scritta a mano nel registro e va verificata: il loader
-alza eccezione se il file non copre tutti i quartieri attesi.
-
 ### Riconciliazione delle denominazioni
 
 | | agganciati | residuo |
@@ -552,15 +464,6 @@ nulla** (due permutazioni indipendenti).
 
 **A livello di quartiere l'informazione è sostanziale e simile ovunque**:
 2,1–2,6 volte quanto si sposterebbe per caso.
-
-**Ravenna e Forlì (v2.0) portano il numero di comuni a tier 1 a tre.**
-Distanza media dalla composizione comunale: Parma 0,569 (tier 3, sezione) ·
-Ravenna 0,194 · Brescia 0,188 · Bologna 0,179 · Forlì (da misurare) ·
-Modena 0,000 (tier 0). Fra 10 e 33 unità la distanza è identica entro il
-4%; il salto sta solo nel passaggio alla sezione. Se sia effetto della
-scala o della ricchezza della fonte — microdati individuali contro tabelle
-aggregate — resta da separare, aggregando i microdati di Parma ai suoi 13
-quartieri e rimisurando.
 
 **Una fonte povera ma geograficamente risolta vale quanto una ricca.**
 Brescia (19 paesi più un residuo del 10,8%, senza sesso) ottiene 2,08
@@ -820,41 +723,16 @@ Decomposizione della varianza della quota UE fra stranieri, al netto della
 discretizzazione. **Calcolata dal file sezioni**, cioè dalla verità
 censuaria.
 
-| | abitanti/zona | var **tra** zone | var reale **dentro** | sovradisp. | rapporto | quota trattenuta |
-|---|---|---|---|---|---|---|
-| Forlì (21 zone) | 5.574 | — | 0,02417 | 2,81× | **3,5×** | 22,2% |
-| Ravenna (10 zone) | 15.630 | 0,00731 | — | 2,74× | **4,9×** | 16,9% |
-| Brescia (33 zone) | 6.008 | 0,00168 | 0,00991 | 2,89× | **5,9×** | 14,5% |
-| Parma (13 zone) | 15.240 | 0,00110 | 0,01249 | 3,50× | **11,3×** | 8,1% |
-| Bologna (18 zone) | 21.672 | 0,00072 | 0,01124 | 3,04× | **15,7×** | 6,0% |
-| Modena (4 zone) | 46.149 | **0,00040** | 0,01756 | 3,17× | **43,5×** | 2,3% |
+| | abitanti/zona | var **tra** zone | var reale **dentro** | sovradisp. | rapporto |
+|---|---|---|---|---|---|
+| Brescia (33 zone) | 6.008 | 0,00168 | 0,00991 | 2,89× | **5,9×** |
+| Parma (13 zone) | 15.240 | 0,00110 | 0,01249 | 3,50× | **11,3×** |
+| Bologna (18 zone) | 21.672 | 0,00072 | 0,01124 | 3,04× | **15,7×** |
+| Modena (4 zone) | 46.149 | **0,00040** | 0,01756 | 3,17× | **43,5×** |
 
-> **Correzione alla v1.9.** La v1.9 affermava che *«il rapporto cresce
-> monotonamente con la dimensione media delle zone»*, su quattro partizioni.
-> Con Ravenna e Forlì **la monotonia cade**: Ravenna ha 15.630 abitanti per
-> zona, quasi esattamente come Parma (15.240), ma un rapporto di 4,9 contro
-> 11,3 — meno della metà. E Forlì con 21 zone batte Brescia che ne ha 33.
-> La correlazione di rango fra numero di zone e quota trattenuta, sui sei
-> comuni articolati, è 0,714 (p = 0,111): presente ma non significativa.
-
-**Quello che conta è l'allineamento della partizione, non la sua
-granularità.** Ravenna e Forlì hanno zone costruite attorno a frazioni
-identificabili — dieci aree su 652 km², ventun quartieri di cui dieci
-rurali, ciascuno corrispondente a nuclei nominati. Modena e Bologna hanno
-suddivisioni amministrative di un tessuto urbano continuo. Quando i confini
-seguono l'insediamento, dieci pezzi bastano; quando lo tagliano
-trasversalmente, diciotto non servono.
-
-Condizionare sul quartiere perde comunque **l'80–98%** del segnale
-compositivo: anche nella configurazione migliore, quattro quinti della
-struttura stanno sotto la zona. È la giustificazione quantitativa
-dell'anello 3.
-
-L'analisi completa, con una metrica basata sull'informazione mutua e un
-nullo che preserva la quantità distruggendo solo la composizione, sta in
-`note/nota_segnale_compositivo_v2.md`. Le tre metriche indipendenti —
-varianza grezza, varianza corretta per discretizzazione, informazione mutua
-— concordano entro il 16% su tutti i comuni.
+**Il rapporto cresce monotonamente con la dimensione media delle zone**, su
+quattro partizioni da 4 a 33 unità. Condizionare sul quartiere perde
+l'85–98% del segnale compositivo.
 
 **Quantità e composizione hanno scale spaziali diverse.** Modena lo rende
 evidente: le quattro zone distinguono nettamente il Centro Storico (25,5%
@@ -1216,18 +1094,6 @@ variabili e copertura delle quattro a rotazione. **Da decidere
 consapevolmente**, con il numero accanto: una variabile obbligatoria assente
 in un'annata costa un terzo del pool a tutte le altre venti.
 
-`FIDMED` e `FIDINF`, essendo presenti in tutte e tre le annate, resterebbero
-all'87–88% in entrambi gli scenari: sono l'unica parte della batteria
-indifferente a questa scelta.
-
-> **Vicolo cieco già esplorato (1/8/2026).** Si è cercato in `avq2022` un
-> equivalente rinominato di `CRONI`, che avrebbe fatto rientrare il 2022
-> senza costi. L'unico candidato per nome è `MALAT`, ma **non è la stessa
-> variabile**: è vuota nel 99,99% dei casi (unico valore `05` allo 0,01%),
-> contro il 65/27/8 di `CRONI`. Altra domanda, non un rinominamento. Il
-> compromesso descritto sopra resta l'unica leva: o `CRONI` obbligatoria e
-> due annate, o `CRONI` opzionale e tre. Non c'è una terza via.
-
 #### Perché le coperture sono quelle
 
 La rotazione del modulo AVQ è **reale e dell'ISTAT**: `PUNTIFI6`, `PUNTIFI7`,
@@ -1248,18 +1114,9 @@ VOTOUSL     0,528 × 0,876 × 0,38 (filtro esperienza) = 0,176
 
 Nel tracciato la batteria occupa dodici posizioni consecutive (525–536) con
 identica scala e formulazione. Undici si chiamano `PUNTIFI{n}`; la
-dodicesima si chiama **`FORZE_ARMATE`**, posizione 534.
-
-**Risolto nella v2.0**: `FORZE_ARMATE` è nel set standard. La batteria
-sintetica ha ora dodici voci su dodici, più `FIDMED` e `FIDINF` che nel
-tracciato stanno subito dopo (537–538) con la stessa scala ma formulazione
-diversa — *"quanto personalmente si fida di: medici del SSN"* invece di
-*"quanto si fida delle seguenti istituzioni"*. La differenza di
-formulazione va tenuta presente: fiducia in una **categoria professionale**,
-non in un'istituzione.
-
-`PUNTIFI9` e `PUNTIFI11` non esistono nel tracciato: la numerazione ha
-buchi, non ci sono voci mancanti oltre a quelle elencate.
+dodicesima si chiama **`FORZE_ARMATE`**, posizione 534. Non essendo elencata
+fra i target, **non è nella popolazione**: la batteria sintetica ha undici
+voci su dodici.
 
 > **Corollario di metodo.** Sia la lista dei target sia `ISTRMI_MAP` sono
 > tabelle scritte a mano che **falliscono in silenzio**: producono assenze,
@@ -1443,8 +1300,17 @@ Modena, PUNTIFI10       n = 157.974
   varianza si stima per collassamento degli strati, che sovrastima; anche
   trattare l'estrazione come con reimmissione sovrastima (**dichiarato**,
   §6.2 della nota). Gli errori pubblicati sono quindi conservativi;
-- **le firme sottostimano i donatori del 9–10%**: nel pool emiliano 418
-  donatori e in quello lombardo 821 hanno 21-uple indistinguibili
+- **le firme sottostimano i donatori usati**, e non di una quantità costante.
+  Con la firma a 23 variabili e undici comuni lo scarto rispetto alla
+  dimensione del pool va da −460 (Bologna) a −885 (Brescia), con Castenaso a
+  −739. *Una versione precedente riportava «−418 identico, proprietà del
+  pool»: era una **coincidenza di configurazione**, misurata su tre città
+  grandi della stessa regione che saturavano il pool allo stesso modo.* Lo
+  scarto somma due componenti — **collisioni** fra donatori con firma
+  identica, che nessuna variabile in più separerà mai perché hanno quasi tutto
+  mancante, e **saturazione incompleta**, donatori mai estratti perché il
+  comune non ha abbastanza individui nella cella giusta. Separarle richiede il
+  numero di donatori *usati*, che `assign_avq.py` stampa nel log (**aperto**)
   (**misurato**). L'errore va nella direzione prudente.
 
 Il modello per calcolare gli errori campionari AVQ è disponibile e
@@ -1459,18 +1325,61 @@ verificato: `log(ε²) = a + b·log(Ŷ)`, con per l'Emilia-Romagna, persone,
 > riuso diseguale (Kish) e dal disegno dell'indagine (grappoli,
 > stratificazione, calibrazione).
 
-**misurato** su quattro comuni: `n_eff` sull'intera popolazione sta fra 1.478
-e 2.007, con popolazioni da 184.597 a 390.098. Bologna ha 2,1 volte gli
-abitanti di Modena e `n_eff` più grande del 5%; **Parma ha più individui di
-Modena e `n_eff` più basso**. La dimensione del comune non entra: il tetto è
-il pool regionale.
+**misurato su undici comuni** (firma a 23 variabili, popolazioni del
+2/8/2026). Le due misure di `n_eff` si comportano in modo opposto.
 
-| | individui | firme | `n_eff` | efficienza |
+| | individui | `n_eff` intera pop. | `n_eff` su `PUNTIFI10` | banda × |
 |---|---|---|---|---|
-| Brescia | 198.259 | 7.287 | 2.007 | 0,28 |
-| Modena | 184.597 | 4.199 | 1.520 | 0,36 |
-| Parma | 198.121 | 4.200 | 1.478 | 0,35 |
-| Bologna | 390.098 | 4.207 | 1.599 | 0,38 |
+| Bologna | 390.098 | 966 | 2.845 | 10,9 |
+| Brescia | 198.259 | 1.093 | **5.655** | 5,5 |
+| Parma | 198.121 | 832 | 3.181 | 7,3 |
+| Modena | 184.597 | 862 | 3.220 | 7,0 |
+| Reggio nell'Emilia | 171.207 | 795 | 3.347 | 6,6 |
+| Ravenna | 156.304 | 995 | 3.334 | 6,4 |
+| Rimini | 150.046 | 924 | 3.318 | 6,2 |
+| Ferrara | 129.391 | 1.153 | 3.082 | 6,1 |
+| Forlì | 117.050 | 916 | 3.325 | 5,5 |
+| Piacenza | 102.887 | 810 | 3.237 | 5,2 |
+| **Castenaso** | **16.357** | 741 | 2.770 | **2,2** |
+
+**La colonna sull'intera popolazione è inutilizzabile.** Sta fra 741 e 1.153
+— variazione del 56% — e **non segue nulla**: né la popolazione (Castenaso ha
+1/24 degli abitanti di Bologna e `n_eff` più basso solo del 23%), né il riuso,
+né il livello (Ferrara ha il massimo e Castenaso il minimo, ed è lo stesso
+livello). Non misura il riuso: misura **il collasso delle firme dei minori**,
+presente ovunque nella stessa proporzione e dominante in `Σm²`.
+
+Se ne era già vista l'instabilità rispetto al set AVQ: togliendo `BMIMIN` —
+l'unica variabile che distingue un bambino da un altro — Modena passa da 1.520
+a 862, **−43%**, senza che nulla cambi nella popolazione. Una quantità che si
+muove del 43% per una variabile al 13% di copertura, e non risponde a una
+variazione di 24 volte nella popolazione, non misura niente.
+
+**La colonna sull'universo giusto invece si legge.** Nove comuni su undici
+stanno fra 3.082 e 3.347, entro l'8%: è **il pool regionale, e si vede**.
+Brescia sta a 5.655 perché attinge a quello lombardo, quasi doppio. Il
+rapporto `n_eff / donatori usati` vale 0,74–0,84 dappertutto.
+
+Ed è **stabile rispetto al set AVQ**: sull'universo 15+, passando da 21 a 23
+variabili, Modena resta a 3.220 alla cifra, donatori compresi. Stessa
+popolazione, set diverso: la misura sull'intera popolazione si muove del 43%,
+quella per universo di zero. È un esperimento controllato, e vale più
+dell'argomento teorico che lo aveva preceduto.
+
+#### Castenaso: una popolazione piccola è più affidabile di una grande
+
+`n/n_eff` vale 5,0 a Castenaso e 119 a Bologna: **banda ×2,2 contro ×10,9**,
+un fattore cinque sulla stessa identica statistica.
+
+Castenaso **non satura il pool**: 13.910 individui su 3.746 donatori fanno
+riuso 3,7, quindi ogni donatore porta ancora informazione quasi indipendente.
+Bologna ne ha 338.890 sugli stessi 4.000 donatori, e ognuno vale 85 individui
+che dicono tutti la stessa cosa.
+
+> **Sulle variabili donate, una popolazione sintetica piccola è più
+> affidabile di una grande.** L'informazione è quella del pool: diluirla su
+> più individui non la aumenta, e il rapporto `n/n_eff` la fa apparire più
+> precisa proprio dove lo è di meno.
 
 ### 13.4 Cosa il pool eredita dall'indagine
 
@@ -1650,7 +1559,7 @@ standard multinomiale è `√(Nα(1−α))`, quindi la metrica giusta è lo z-sc
 
 | | Modena | Parma | atteso |
 |---|---|---|---|
-| `sd(z)` | 1,030 | 1,031 | 1,000 |
+| `sd(z)` | **1,018** | 1,031 | 1,000 |
 | media(z) | −0,021 | +0,005 | 0 |
 | \|z\| medio | 0,829 | 0,810 | 0,798 |
 | \|z\| > 2 | 4,45% | 5,49% | 4,55% |
@@ -1659,8 +1568,10 @@ standard multinomiale è `√(Nα(1−α))`, quindi la metrica giusta è lo z-sc
 Il fit è **non distorto** e la dispersione è al 3% sopra il teorico, identica
 nelle due città.
 
-**`sd(z)² = 1,06` è il fattore di inflazione della varianza**: il pool di
-184.597 individui vale ~174.000 estrazioni indipendenti. È la prima
+**`sd(z)² = 1,04` è il fattore di inflazione della varianza**: il pool di
+184.597 individui vale ~177.000 estrazioni indipendenti. Era 1,06 sulle
+popolazioni del 29/7; la rigenerazione del 2/8 lo ha marginalmente
+migliorato. È la prima
 quantificazione del mixing della catena Gibbs, e si legge senza glossario —
 *quanto costa in informazione il fatto che PCD non produce estrazioni
 indipendenti*.
@@ -1809,6 +1720,16 @@ condizionato sugli individui a rischio, dato bin e titolo.
 
 ## Changelog
 
+
+**v2.0 — 02/08/2026**
+Undici comuni invece di quattro, popolazioni rigenerate col set AVQ a 23
+variabili. §13.3 riscritta: `n_eff` sull'intera popolazione varia del 56% fra
+comuni **senza seguire nulla**, nemmeno una variazione di 24 volte nella
+popolazione, mentre sull'universo della variabile e' costante entro l'8% ed e'
+il pool regionale. Aggiunto Castenaso: sulle variabili donate una popolazione
+sintetica piccola e' piu' affidabile di una grande. Corretta come coincidenza
+di configurazione l'affermazione che lo scarto firme-pool fosse −418 identico.
+`sd(z)` da 1,030 a 1,018, inflazione della varianza da 1,06 a 1,04.
 **v1.9 — 30/07/2026**
 Il collasso gerarchico **misurato** e non più stimato: il condizionamento
 pieno copre il 97–98,5%, il terzo livello e il fallback regionale non

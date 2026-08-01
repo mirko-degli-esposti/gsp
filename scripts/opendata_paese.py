@@ -470,7 +470,7 @@ def tabella_paese(comune: str, anno_cens: int = ANNO_CENS, verbose: bool = True)
 
     T, paesi, geos, n_it, scarto = costruisci_tabella(A, B, peso)
     if verbose:
-        print(f"[{comune}] {i['nome']}: tier {tier} ({liv}) | "
+        print(f"[{comune}] {i['nome']}: tier {tier} ({liv or 'comune'}) | "
               f"{len(paesi)} paesi x 2 sessi x {len(geos)} unita' | "
               f"IPF {n_it} iter, scarto {scarto:.2e}")
     return T, paesi, geos, {"tier": tier, "livello": liv, "B": B, "A": A}

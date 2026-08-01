@@ -364,7 +364,8 @@ def assegna_area_paese(pop, sez, comune, anno, rng, usa_tier=True):
                 idx, G.largest_remainder(len(idx), w), nomi[m])
 
         n = max(len(frg), 1)
-        print(f"[3c] paese: tier {meta['tier']} su {meta['livello']} | "
+        print(f"[3c] paese: tier {meta['tier']} su "
+              f"{meta['livello'] or 'comune'} | "
               f"{uso['geo']:,} ({uso['geo']/n:.1%}) dalla geografia, "
               f"{uso['comune']:,} ({uso['comune']/n:.1%}) riserva comunale")
     else:

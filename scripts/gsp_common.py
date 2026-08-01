@@ -274,16 +274,25 @@ POP_CANDIDATES = ["popolazione_K10C.csv", "popolazione_K9C.csv",
                   "popolazione_K6C.csv"]
 
 
-def resolve_pop_file(cdir, override=None, suffisso=""):
+def resolve_pop_file(cdir, override=None, suffisso="", escludi=None):
     """Nome del file popolazione da usare in cdir.
 
     override  nome esplicito: restituito senza controlli
     suffisso  variante da cercare (es. '_avq' -> popolazione_K9C_avq.csv)
+    escludi   livelli da NON considerare, es. ['K10C']
+
+    Il parametro `escludi` esiste perche' POP_CANDIDATES prova K10C per
+    primo, e in un comune dove K10C e' materiale sperimentale residuo
+    questa funzione restituirebbe quello invece del livello di produzione.
+    E' gia' successo il 1/8/2026 con assign_avq.py su Brescia.
     """
     if override:
         return override
+    cand = POP_CANDIDATES
+    if escludi:
+        cand = [n for n in cand if not any(k in n for k in escludi)]
     cercati = [n.replace(".csv", f"{suffisso}.csv") if suffisso else n
-               for n in POP_CANDIDATES]
+               for n in cand]
     for name in cercati:
         if os.path.exists(os.path.join(cdir, name)):
             return name

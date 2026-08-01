@@ -253,6 +253,43 @@ def resolve_pop_file(cdir, override=None, suffisso=""):
     raise SystemExit(f"Nessun file popolazione in {cdir}\n"
                      f"  cercati: {cercati}\n"
                      f"  usare --pop-file per specificarlo")
+
+
+# Set standard delle variabili AVQ (v2, 1 ago 2026).
+#
+# FIDUCIA e' fiducia INTERPERSONALE generalizzata, a polarita' invertita.
+# La fiducia ISTITUZIONALE sta nelle PUNTIFI* e in FIDMED/FIDINF, tutte
+# su scala 0-10 (0 = per niente, 10 = completamente):
+#   PUNTIFI1  Parlamento italiano      PUNTIFI8   Governo regionale
+#   PUNTIFI2  sistema giudiziario      PUNTIFI10  Governo comunale
+#   PUNTIFI3  forze dell'ordine        PUNTIFI12  vigili del fuoco
+#   PUNTIFI4  partiti politici         FIDMED     medici del SSN
+#   PUNTIFI5  Parlamento europeo       FIDINF     infermieri del SSN
+#   PUNTIFI6  Pres. della Repubblica   PUNTIFI13  banche
+#   PUNTIFI7  Governo italiano         FORZE_ARMATE
+# PUNTIFI9 e PUNTIFI11 non esistono nel tracciato.
+#
+# Copertura attesa nel pool 2023+2024 (il 2022 e' escluso: manca CRONI):
+#   ~97%  CPESO
+#   ~88%  FIDMED, FIDINF, PUNTIFI1/2/3/4/5/8/10/12, BMI
+#   ~43%  PUNTIFI6, PUNTIFI7, PUNTIFI13   (solo annata 2024)
+#   ~21%  FORZE_ARMATE                    (solo 2024, e ivi al 42,7%)
+#   ~19%  VOTOUSL                         (solo 2024, e ivi al 37,9%)
+# Il missing e' STRUTTURALE (annata del donatore o universo della domanda),
+# non individuale: il sottocampione con valore e' casuale.
+#
+# Esclusa BMIMIN: e' l'indice di massa corporea per MINORI (cut-off IOTF),
+# universo diverso da BMI (18+), non una variabile a bassa copertura.
+AVQ_TARGETS = ["AMBIENTE", "FIDUCIA", "SALUTE", "CRONI", "FUMO", "MH"]
+AVQ_OPZIONALI = [
+    "FIDMED", "FIDINF",
+    "PUNTIFI1", "PUNTIFI2", "PUNTIFI3", "PUNTIFI4", "PUNTIFI5",
+    "PUNTIFI8", "PUNTIFI10", "PUNTIFI12",
+    "PUNTIFI6", "PUNTIFI7", "PUNTIFI13",
+    "FORZE_ARMATE", "VOTOUSL",
+    "BMI", "CPESO",
+]
+
 # ----------------------------------------------------------------------
 # Comuni — solo il non derivabile
 # ----------------------------------------------------------------------

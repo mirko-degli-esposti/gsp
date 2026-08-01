@@ -117,6 +117,10 @@ def load_avq(years, targets, opzionali, regione, nome_reg="?"):
         path = os.path.join(AVQ_DIR, f"avq{y}", "MICRODATI",
                             f"AVQ_Microdati_{y}.txt")
         if not os.path.exists(path):
+            # 2022: CRONI non e' presente e non ha equivalenti. Verificato il 1/8/2026
+            # contro il tracciato e i dati: l'unica variabile con nome simile e' MALAT,
+            # che pero' e' vuota nel 99,99% dei casi (contro il 65/27/8 di CRONI) —
+            # altra domanda, non un rinominamento. Il pool resta a due annate.
             print(f"[avq] {y}: file assente, annata saltata")
             continue
         base = ["ETAMi", "SESSO", "ISTRMi", "REGMf", "COEFIN"]
@@ -320,12 +324,12 @@ if __name__ == "__main__":
                          "K9C -> ... -> K6C in constraints_<anno>/")
     ap.add_argument("--out", default=None,
                     help="default: <file popolazione>_avq.csv")
-    ap.add_argument("--targets", default="AMBIENTE,FIDUCIA,SALUTE,CRONI,FUMO,MH",
+    ap.add_argument("--targets", default=",".join(G.AVQ_TARGETS),
                     help="variabili AVQ da copiare in blocco dal donatore")
     ap.add_argument("--min-record", type=int, default=20,
                     help="donatori minimi per usare il pool di cella [20]")
     ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--targets-opt", default="",
+    ap.add_argument("--targets-opt", default=",".join(G.AVQ_OPZIONALI),
                     help="variabili prese dove disponibili, NaN altrove "
                          "(il modulo AVQ ruota fra le annate)")
     x = ap.parse_args()

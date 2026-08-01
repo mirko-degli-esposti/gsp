@@ -242,9 +242,89 @@ def load_ravenna(comune: str, cfg: dict, rif: dict) -> pd.DataFrame:
               f"-> residuale: {[f'{k} ({v:.0f})' for k, v in top]}")
     return _lungo(righe)
 
+def load_forli(comune: str, cfg: dict, rif: dict) -> pd.DataFrame:
+    """Formato lungo (QUARTIERE, STATO, F, M, TOTALE).
+ 
+    La fonte disaggrega in 41 unita' sub-quartiere: la mappa 41 -> 21 sta
+    in cfg['mappa_unita'] ed e' ricavata dall'elenco ufficiale dei
+    quartieri. 'in corso di definizione' non e' un'unita' territoriale e
+    viene escluso.
+ 
+    L'etichetta 'altro' e' il gruppo residuale dichiarato dalla fonte: va
+    a RESIDUALE senza passare dal resolver, altrimenti verrebbe cercata
+    fra i paesi censuari.
+    """
+    f = (sorted(glob.glob(os.path.join(OPENDATA, comune, "*.xlsx")))
+         + sorted(glob.glob(os.path.join(OPENDATA, comune, "*.xls"))))
+    if not f:
+        raise FileNotFoundError(f"nessun xlsx in {OPENDATA}/{comune}")
+    try:
+        d = pd.read_excel(f[0], header=0, engine="calamine")
+    except (ImportError, ValueError):
+        try:                                   # xlsx non standard: openpyxl fallisce
+            d = pd.read_excel(f[0], header=0)
+        except KeyError as exc:
+            raise ImportError(
+                f"{os.path.basename(f[0])} e' un xlsx senza sharedStrings: "
+                f"openpyxl non lo apre. Installare python-calamine.") from exc
+ 
+    d.columns = [str(c).strip().upper() for c in d.columns]
+    attese = {"QUARTIERE", "STATO", "F", "M"}
+    if not attese <= set(d.columns):
+        raise ValueError(f"[forli] colonne attese {sorted(attese)}, "
+                         f"trovate {list(d.columns)}")
+ 
+    mappa = {G.norm_nome(k): v for k, v in cfg["mappa_unita"].items()}
+    alias = {G.norm_nome(k): v for k, v in cfg.get("alias_paese", {}).items()}
+    residuo = {G.norm_nome(x) for x in cfg.get("etichette_residuo", ["altro"])}
+ 
+    d["_u"] = d["QUARTIERE"].astype(str).map(G.norm_nome)
+    d["geo"] = d["_u"].map(mappa)
+ 
+    fuori = d[d["geo"].isna()]
+    if len(fuori):
+        n = pd.to_numeric(fuori.get("TOTALE", fuori["F"] + fuori["M"]),
+                          errors="coerce").fillna(0).sum()
+        print(f"[forli] unita' non mappate (escluse): "
+              f"{sorted(fuori['QUARTIERE'].astype(str).unique())} "
+              f"-> {n:,.0f} persone")
+        d = d[d["geo"].notna()]
+ 
+    atteso = len(set(cfg["mappa_unita"].values()))
+    if d["geo"].nunique() != atteso:
+        mancanti = sorted(set(cfg["mappa_unita"].values()) - set(d["geo"]))
+        raise ValueError(f"[forli] {d['geo'].nunique()} quartieri nel file "
+                         f"contro {atteso} nella mappa; mancanti: {mancanti}")
+ 
+    righe, non_risolti = [], {}
+    for r in d.itertuples():
+        et = str(r.STATO).strip()
+        if G.norm_nome(et) in residuo:
+            p = RESIDUALE
+        else:
+            p = G.risolvi_paese(alias.get(G.norm_nome(et), et), rif)
+            if p is None:
+                v = pd.to_numeric(getattr(r, "F", 0), errors="coerce") or 0
+                v += pd.to_numeric(getattr(r, "M", 0), errors="coerce") or 0
+                non_risolti[et] = non_risolti.get(et, 0) + float(v)
+                p = RESIDUALE
+        for col, sesso in (("F", "F"), ("M", "M")):
+            v = pd.to_numeric(getattr(r, col), errors="coerce")
+            if pd.notna(v) and v > 0:
+                righe.append({"geo": r.geo, "sesso": sesso,
+                              "paese": p, "n": float(v)})
+ 
+    if non_risolti:
+        tot = sum(non_risolti.values())
+        top = sorted(non_risolti.items(), key=lambda x: -x[1])[:8]
+        print(f"[forli] {len(non_risolti)} etichette non risolte "
+              f"({tot:,.0f} persone) -> residuale: "
+              f"{[f'{k} ({v:.0f})' for k, v in top]}")
+    return _lungo(righe)
 
 LOADERS = {"brescia": load_brescia, "bologna": load_bologna,
-           "parma": load_parma, "ravenna": load_ravenna}
+           "parma": load_parma, "ravenna": load_ravenna,
+           "forli": load_forli}
  
 
 # ----------------------------------------------------------------------

@@ -229,6 +229,43 @@ ASC_NOMI_FORLI = {
     "40012021": "Magliano, Carpena, Ravaldino in Monte, Lardiano",
 }
 
+# Verificato con zona_probe.py (1/8/2026): i quattro baricentri
+# corrispondono ai nomi. 001 al raggio minimo (0,60 km) e' il centro;
+# 002 a -3,60 km est = Ovest; 003 a -2,58 km nord = Sud;
+# 004 a +2,87 km est = Nordest.
+ASC_NOMI_REGGIO = {
+    "35033001": "Città storica",
+    "35033002": "Ovest",
+    "35033003": "Sud",
+    "35033004": "Nordest",
+}
+# verificato .....
+ASC_NOMI_RIMINI = {
+    "99014001": "Centro storico - Marina Centro - San Giuliano",
+    "99014002": "Borgo San Giovanni - Lagomaggio",
+    "99014003": "Bellariva - Miramare",
+    "99014004": "Borgo Mazzini - INA Casa - Vergiano - Corpolò",
+    "99014005": "Celle - Viserba - San Vito - Santa Giustina",
+    "99014006": "V PEEP Ausa - Grotta Rossa - Gaiofana",
+}
+
+# Piacenza non ha denominazioni ufficiali sintetiche: le fonti comunali
+# usano "ex Quartiere N". La lettura geografica fra parentesi e' NOSTRA,
+# ricavata dai baricentri ANNCSU (zona_probe, 1/8/2026) e coerente con
+# l'elenco comunale delle strade per ex quartiere.
+# Ancore: CORNEGLIANA 100% su 003 (elenco: Q3), FARNESIANA 401 civici
+# 100% su 004 (la sede della circoscrizione 4 era al c.c. Farnesiana),
+# STRADONE FARNESE e CITTADELLA su 001 con raggio 0,62 km (il minimo).
+# DISSONANZA: l'elenco comunale mette via Malchioda nel Q4, ma i civici
+# la danno 118 al 100% su 002. Una strada sola; da riverificare se
+# emergessero altre incoerenze.
+ASC_NOMI_PIACENZA = {
+    "33032001": "Ex Quartiere 1 (Centro storico)",
+    "33032002": "Ex Quartiere 2 (Ovest)",
+    "33032003": "Ex Quartiere 3 (Sud)",
+    "33032004": "Ex Quartiere 4 (Est)",
+}
+
 # Ordine di preferenza dei file popolazione, dal livello piu' ricco al piu'
 # povero. Condiviso fra enrich.py e assign_nationality.py: due auto-detect
 # divergenti sono un modo sicuro di generare confusione.
@@ -508,6 +545,7 @@ COMUNI = {
                 "MAGLIANO RAVALDINO IN MONTE LARDIANO": "40012021",
                 "CARPENA": "40012021",
             },
+            
             # DA VERIFICARE contro cens_stranieri_paesi_decoded.csv:
             # le etichette ISTAT sotto sono ricostruite per analogia con
             # Ravenna, non lette. La Cina e' il secondo gruppo (1.962
@@ -529,6 +567,94 @@ COMUNI = {
         # sono codificate da ISTAT. Comune K6C, senza coordinata zona.
         "livello": None,
         "livelli": {},
+    },
+    "038008": {
+        "nome": "Ferrara", "slug": "ferrara", "regione": "emilia_romagna",
+        # COM_ASC1/2/3 tutti a zero nel file regionale 2023: ISTAT non
+        # codifica alcuna partizione sub-comunale. Comune K6C, gestito con
+        # zona degenere unica (vedi load_sezioni in enrich.py). Terzo caso
+        # dopo Castenaso; qui pero' su scala reale, 129.391 abitanti e
+        # 1.761 sezioni.
+        "livello": None,
+        "livelli": {},
+    },
+    "035033": {
+        "nome": "Reggio nell'Emilia", "slug": "reggio_emilia",
+        "regione": "emilia_romagna",
+        "livello": "circoscrizioni",
+        "livelli": {
+            # Partizione per quadranti: centro storico piu' tre settori
+            # cardinali. 42.800 abitanti per zona, la seconda piu'
+            # grossolana in pipeline dopo Modena (46.149).
+            "circoscrizioni": {"col": "COM_ASC1", "n": 4,
+                               "nomi": ASC_NOMI_REGGIO, "parent": None},
+        },
+        "opendata_paese": {
+            "loader": "reggio",
+            "geo_liv": "circoscrizioni",
+            "encoding": "latin-1",
+            "etichette_residuo": ["Altre nazionalità"],
+            # ATTENZIONE: la fonte comunale e' del 2013, contro il 2023
+            # delle sezioni. L'assunzione di stabilita' strutturale e'
+            # stata VERIFICATA il 1/8/2026 sulla quota UE per zona: ranghi
+            # 4-2-1-3 nel 2013 contro 4-1-2-3 nel 2023, con l'unico
+            # scambio fra due zone che nel 2023 distano 0,003 (rumore).
+            # Le quote sono cresciute di 2-4 punti in modo uniforme, quindi
+            # la FORMA condizionale regge anche se i livelli no.
+            # La fonte non distingue il sesso: lo ricostruisce l'IPF dal
+            # margine comunale, come per Brescia.
+            "mappa_unita": {
+                "Città storica": "35033001",
+                "Ovest":         "35033002",
+                "Sud":           "35033003",
+                "Nordest":       "35033004",
+            },
+            "alias_paese": {
+                "Moldavia":              "Moldova",
+                "Russia, Federazione":   "Russia",
+                "Repubblica Dominicana": "Dominicana, Repubblica",
+                "Costa Avorio":          "Costa d'Avorio",
+                "Burkina Faso":          "Burkina Faso (ex Alto Volta)",
+                "Repubblica Ceca":       "Ceca, Repubblica",
+            },
+        },
+    },
+    "099014": {
+        "nome": "Rimini", "slug": "rimini", "regione": "emilia_romagna",
+        "livello": "quartieri",
+        "livelli": {
+            # Sei ex-quartieri, disposti lungo l'asse litoraneo: 001 centro
+            # (raggio 0,70 km, il minimo), 003 e 005 agli estremi opposti
+            # della costa, 006 entroterra verso San Marino. Denominazioni
+            # verificate con zona_probe.py (1/8/2026): LAGOMAGGIO 100% su
+            # 002, CORIANO/MONTESCUDO/MONTE TITANO su 006, D'AUGUSTO e
+            # DESTRA PORTO su 001.
+            # NOTA: nel 2025 il Comune ha istituito 12 NUOVI quartieri.
+            # I dati comunali dal 2025 in poi NON sono agganciabili a
+            # COM_ASC1, che resta sui 6 del censimento 2023.
+            "quartieri": {"col": "COM_ASC1", "n": 6,
+                          "nomi": ASC_NOMI_RIMINI, "parent": None},
+        },
+        # tier 0: il portale statistico pubblica gli stranieri per
+        # quartiere solo come totali, non per paese di cittadinanza.
+        # Bollettini demografici in PDF, nessun CSV con paese x geografia.
+        # Contatto per una eventuale richiesta: opendata@comune.rimini.it
+    },
+    "033032": {
+        "nome": "Piacenza", "slug": "piacenza", "regione": "emilia_romagna",
+        "livello": "quartieri",
+        "livelli": {
+            # Quattro ex circoscrizioni disposte a quadranti attorno al
+            # centro: 25.700 abitanti per zona, configurazione analoga a
+            # Modena e Reggio.
+            "quartieri": {"col": "COM_ASC1", "n": 4,
+                          "nomi": ASC_NOMI_PIACENZA, "parent": None},
+        },
+        # tier 0: l'Annuario Statistico comunale rielabora AP11, POSAS e
+        # STRASA, tutte fonti ISTAT a livello COMUNALE — quindi il
+        # dettaglio paese x quartiere non puo' esistere in quel canale.
+        # Da riprovare se l'Ufficio Statistica pubblicasse elaborazioni
+        # dall'anagrafe interna. Contatto: portale opendata.comune.piacenza.it
     },
 }
 

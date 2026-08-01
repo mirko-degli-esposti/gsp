@@ -170,9 +170,82 @@ def load_parma(comune: str, cfg: dict, rif: dict) -> pd.DataFrame:
     return _lungo(g.to_dict("records"))
 
 
-LOADERS = {"brescia": load_brescia, "bologna": load_bologna,
-           "parma": load_parma}
+def load_ravenna(comune: str, cfg: dict, rif: dict) -> pd.DataFrame:
+    """XLS a doppia intestazione: riga 1 = aree, riga 2 = M/F/T.
+ 
+    Layout: colonna 0 = nazionalita', poi per ogni area tre colonne
+    contigue (M, F, T). Si usano M e F, si scarta T. L'ultima area e'
+    'T O T A L I' e va esclusa. L'ultima riga e' 'TOTALE'.
+ 
+    Il file usa denominazioni proprie sia per le aree ('S.P.VINCOLI') sia
+    per i paesi ('ARABIA', 'MACEDONIA'): entrambe passano da cfg. Gli alias
+    dei paesi sono applicati PRIMA di G.risolvi_paese, cosi' il resolver
+    condiviso vede etichette gia' nella forma censuaria.
+    """
+    f = (sorted(glob.glob(os.path.join(OPENDATA, comune, "*.xls")))
+         + sorted(glob.glob(os.path.join(OPENDATA, comune, "*.xlsx"))))
+    if not f:
+        raise FileNotFoundError(f"nessun xls in {OPENDATA}/{comune}")
+    try:
+        d = pd.read_excel(f[0], header=None)
+    except ImportError as exc:                       # xlrd assente
+        raise ImportError(f"lettura di {os.path.basename(f[0])} richiede "
+                          f"xlrd >= 2.0.1: conda install xlrd") from exc
+ 
+    nomi = G.zona_nomi(comune, cfg["geo_liv"])
+    per_nome = {G.norm_nome(v): k for k, v in nomi.items()}
+    override = cfg.get("override_nome", {})
+    alias = {G.norm_nome(k): v for k, v in cfg.get("alias_paese", {}).items()}
+ 
+    # colonne d'area dalla riga 1, escludendo intestazione e totale
+    aree = []
+    for i, v in d.iloc[1].items():
+        if pd.isna(v):
+            continue
+        et = str(v).strip()
+        if et == "AREE TERRITORIALI" or et.replace(" ", "") == "TOTALI":
+            continue
+        geo = override.get(et) or per_nome.get(G.norm_nome(et))
+        if geo is None:
+            raise ValueError(f"[ravenna] area non agganciata: {et!r}. "
+                             f"Aggiungerla a override_nome nel registro.")
+        aree.append((i, geo))
+    if len(aree) != len(nomi):
+        raise ValueError(f"[ravenna] {len(aree)} aree nel file contro "
+                         f"{len(nomi)} nel registro")
+ 
+    etichette = d.iloc[3:, 0]
+    ultima = etichette[etichette.astype(str).str.strip().str.upper()
+                       == "TOTALE"].index
+    fine = int(ultima[0]) if len(ultima) else len(d)
+ 
+    righe, residuali = [], {}
+    for col, geo in aree:
+        for k, sesso in ((0, "M"), (1, "F")):
+            n = pd.to_numeric(d.iloc[3:fine, col + k], errors="coerce").fillna(0)
+            for et, v in zip(d.iloc[3:fine, 0], n):
+                if pd.isna(et) or v <= 0:
+                    continue
+                lab = alias.get(G.norm_nome(et), str(et).strip())
+                p = G.risolvi_paese(lab, rif)
+                if p is None:
+                    residuali[str(et).strip()] = residuali.get(
+                        str(et).strip(), 0) + v
+                righe.append({"geo": geo, "sesso": sesso,
+                              "paese": p or RESIDUALE, "n": float(v)})
+ 
+    if residuali:
+        tot = sum(residuali.values())
+        top = sorted(residuali.items(), key=lambda x: -x[1])[:8]
+        print(f"[ravenna] {len(residuali)} etichette non risolte "
+              f"({tot:,.0f} persone, {100 * tot / sum(r['n'] for r in righe):.1f}%) "
+              f"-> residuale: {[f'{k} ({v:.0f})' for k, v in top]}")
+    return _lungo(righe)
 
+
+LOADERS = {"brescia": load_brescia, "bologna": load_bologna,
+           "parma": load_parma, "ravenna": load_ravenna}
+ 
 
 # ----------------------------------------------------------------------
 # Margine comunale (censimento) e IPF

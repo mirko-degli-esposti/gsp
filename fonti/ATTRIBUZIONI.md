@@ -109,7 +109,7 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **URL:** https://esploradati.istat.it/SDMXWS/rest
 - **Scaricato il:** None
 - **Copertura:** None, None
-- **Universo:** censimento permanente al 31 dicembre. Universo ristretto ai soli OCCUPATI (dipendente, autonomo, ecc.): non e' la popolazione totale, e un vincolo che lo trattasse come tale sarebbe sbagliato. Il grezzo contiene gli aggregati.
+- **Universo:** … universo ristretto ai soli OCCUPATI … Usata da build_constraints come vincolo C9 SOFT e CONDIZIONALE all'universo occupati (c9_sex_posizione_prof.csv), non come marginale sulla popolazione totale.
 
 > ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
 
@@ -131,7 +131,7 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **URL:** https://esploradati.istat.it/SDMXWS/rest
 - **Scaricato il:** None
 - **Copertura:** None, None
-- **Universo:** censimento permanente al 31 dicembre. Come cens_posizione_prof, universo ristretto ai soli OCCUPATI, classificati per settore di attivita' economica. Il grezzo contiene gli aggregati.
+- **Universo:** … universo ristretto ai soli OCCUPATI … Usata da build_constraints come vincolo C9 SOFT e CONDIZIONALE all'universo occupati (c9_sex_posizione_prof.csv), non come marginale sulla popolazione totale.
 
 > ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
 
@@ -145,3 +145,25 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Universo:** censimento permanente, stranieri residenti al 31 dicembre per paese di cittadinanza (~150 paesi). Pubblicato SOLO a livello comunale: e' la ragione per cui la pipeline assume paese indipendente dalla geografia dato (area, sesso), e per cui le fonti sub-comunali in data/submun/ sono complementari e non alternative (margine A dell'IPF in opendata_paese.py). Il grezzo contiene gli aggregati.
 
 > ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - dati per sezione di censimento, file regionali 2023
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://www.istat.it/notizia/dati-per-sezioni-di-censimento/
+- **Scaricato il:** 2026-08-02
+- **Copertura:** None, None
+- **Universo:** censimento permanente 2023, conteggi per SEZIONE di censimento. L'unita' e' la sezione, non l'individuo: ogni riga porta ~130 conteggi. La geometria e' quella del censimento 2021 (SEZ21_ID), i dati sono 2023: anni diversi per griglia e contenuto. COM_ASC1/2/3 sono le sub-aree amministrative, presenti solo dove il comune e' articolato: e' la fonte della gerarchia zona/quartiere. I CSV per citta' in data/submun/ sono DERIVATI, prodotti da build_sezioni.py filtrando su PROCOM.
+
+> ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
+
+## Tracciato dei file regionali per sezione, 2023
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://www.istat.it/notizia/dati-per-sezioni-di-censimento/
+- **Scaricato il:** 2026-08-02
+- **Copertura:** IT, 2023
+- **Universo:** codebook delle 138 colonne dei file regionali: NOME_CAMPO -> DEFINIZIONE. Non e' un dato ma il suo dizionario: senza, colonne come P14 o ST2_B non vogliono dire niente.
+
+> ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0

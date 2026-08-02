@@ -494,17 +494,22 @@ fonti:
     usabile_per: [vincoli_maxent, vincoli_maxent_soft]
     usato_da: [build_constraints.py, cs_build.py]
     non_usabile_per: [vincoli_su_popolazione_totale]
-# Da appendere UNA VOLTA SOLA a fonti/registro.yaml.
-# Prima di appendere: verificare che non ci sia gia' un
-#   grep -c 'id: istat_sezioni_2023' fonti/registro.yaml
+
 
   - id: istat_sezioni_2023
     tipo: multi_istanza
     ente: ISTAT
     titolo: Censimento permanente - dati per sezione di censimento, file regionali 2023
-    url: DA_VERIFICARE          # link di download dello zip
     data_accesso: 2026-08-02
-    licenza: DA_VERIFICARE      # cercare nella Nota Metodologica
+    url: https://www.istat.it/notizia/dati-per-sezioni-di-censimento/
+    url_download: https://esploradati.istat.it/databrowser/DWL/PERMPOP/SUBCOM/Dati_regionali_2023.zip
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
+    nota_licenza: >-
+      la pagina del dataset non dichiara una licenza propria; si applica
+      quella generale ISTAT (Creative Commons Attribuzione 4.0, note
+      legali e pagina Open Data), verificata il 2/8/2026.
     archiviazione: locale
     percorso: data/submun/Dati_regionali_2023/{istanza}_2023_sezioni.xlsx
     chiave_istanza: regione
@@ -528,9 +533,16 @@ fonti:
   - id: istat_sezioni_2023_tracciato
     ente: ISTAT
     titolo: Tracciato dei file regionali per sezione, 2023
-    url: DA_VERIFICARE          # stessa pagina dello zip
     data_accesso: 2026-08-02
-    licenza: DA_VERIFICARE
+    url: https://www.istat.it/notizia/dati-per-sezioni-di-censimento/
+    url_download: https://esploradati.istat.it/databrowser/DWL/PERMPOP/SUBCOM/Dati_regionali_2023.zip
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
+    nota_licenza: >-
+      la pagina del dataset non dichiara una licenza propria; si applica
+      quella generale ISTAT (Creative Commons Attribuzione 4.0, note
+      legali e pagina Open Data), verificata il 2/8/2026.
     archiviazione: git
     file: istat_sezioni_2023_tracciato.xlsx
     sha256: 98071eb0f9e71a1bc59f5eb49503b8d31e7adc010aaa6c30d96ff3d9d1bfe3be

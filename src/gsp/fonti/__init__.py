@@ -198,13 +198,25 @@ def _impronta(id_fonte, d, diag):
     """
     f = info(id_fonte)
     g = path_grezzo(id_fonte)
-    pesi = d["peso"].to_numpy()
-    return {
+    imp = {
         "id": id_fonte,
         "sha256": sha256(g) if os.path.exists(g) else f.get("sha256"),
         "byte": os.path.getsize(g) if os.path.exists(g) else None,
-        "n_misurato": float(pesi.sum()),
         "modalita": int(len(d)),
+        "diagnostica": {k: (float(v) if isinstance(v, float) else v)
+                        for k, v in diag.items()},
+    }
+    if "peso" not in d.columns:
+        # normalizzatori che non producono una distribuzione (codebook,
+        # tavole di definizioni): l'impronta e' la testa piu' i conteggi.
+        prima = d.columns[0]
+        imp["n_misurato"] = float(len(d))
+        imp["testa"] = [str(x) for x in d[prima].head(N_IMPRONTA)]
+        return imp
+
+    pesi = d["peso"].to_numpy()
+    imp.update({
+        "n_misurato": float(pesi.sum()),
         "peso_max": float(pesi.max()) if len(d) else None,
         "peso_min": float(pesi.min()) if len(d) else None,
         "hapax": int((pesi == 1).sum()),
@@ -212,9 +224,8 @@ def _impronta(id_fonte, d, diag):
                    pd.Series(pesi).quantile([i / 10 for i in range(1, 10)])],
         "testa": [{"chiave": k, "peso": float(p)} for k, p in
                   zip(d["chiave"].head(N_IMPRONTA), pesi[:N_IMPRONTA])],
-        "diagnostica": {k: (float(v) if isinstance(v, float) else v)
-                        for k, v in diag.items()},
-    }
+    })
+    return imp
 
 
 def _impronta_multi(id_fonte):
@@ -231,9 +242,12 @@ def _impronta_multi(id_fonte):
         out[k] = {
             "sha256": sha256(p),
             "byte": os.path.getsize(p),
-            **{c: diag[c] for c in
-               ("righe", "anni", "obs_somma", "ref_area", "dataflow")
-               if c in diag},
+            # tutta la diagnostica scalare, qualunque sia il
+            # normalizzatore: SDMX porta anni e obs_somma, le sezioni
+            # comuni e popolazione, un normalizzatore futuro altro ancora.
+            **{k: v for k, v in diag.items()
+               if isinstance(v, (int, float, str))
+               or (isinstance(v, list) and len(v) <= 40)},
         }
     return {"id": id_fonte, "tipo": "multi_istanza",
             "n_istanze": len(out), "istanze": out}
@@ -398,27 +412,32 @@ def verifica(id_fonte=None, silenzioso=False):
                         f"{str(f.get('sha256'))[:12]})")
 
         try:
-            _, diag = normalizza(i, salva=False)
+            d_norm, diag = normalizza(i, salva=False)
+            # solo distribuzione_csv produce n_misurato/modalita; gli altri
+            # normalizzatori riassumono altro, e il confronto si fa su cio'
+            # che c'e'.
+            n_oss = diag.get("n_misurato", float(len(d_norm)))
+            m_oss = diag.get("modalita", len(d_norm))
             n_att = f.get("n_misurato")
-            if n_att is not None and abs(diag["n_misurato"] - n_att) > 0.5:
-                note.append(f"n_misurato {diag['n_misurato']:.0f} "
-                            f"contro {n_att:.0f} nel registro")
+            if n_att is not None and abs(n_oss - n_att) > 0.5:
+                note.append(f"n_misurato {n_oss:.0f} contro {n_att:.0f} "
+                            "nel registro")
             m_att = f.get("modalita")
-            if m_att is not None and diag["modalita"] != m_att:
-                note.append(f"modalita' {diag['modalita']} contro {m_att}")
-            riga["n"] = diag["n_misurato"]
-            riga["modalita"] = diag["modalita"]
+            if m_att is not None and m_oss != m_att:
+                note.append(f"modalita' {m_oss} contro {m_att}")
+            riga["n"] = n_oss
+            riga["modalita"] = m_oss
 
             imp = _impronta_salvata(i)
             if imp is None:
                 note.append("impronta assente, generarla con --impronta")
             else:
-                if abs(imp["n_misurato"] - diag["n_misurato"]) > 0.5:
+                if abs(imp.get("n_misurato", n_oss) - n_oss) > 0.5:
                     note.append(f"impronta: n {imp['n_misurato']:.0f} "
-                                f"contro {diag['n_misurato']:.0f}")
-                if imp["modalita"] != diag["modalita"]:
+                                f"contro {n_oss:.0f}")
+                if imp.get("modalita", m_oss) != m_oss:
                     note.append(f"impronta: modalita' {imp['modalita']} "
-                                f"contro {diag['modalita']}")
+                                f"contro {m_oss}")
         except Exception as e:              # noqa: BLE001
             note.append(f"normalizzatore fallito: {type(e).__name__}: {e}")
 
@@ -613,17 +632,32 @@ def _main():
         imp = impronta(a.scansiona, scrivi=True)
         print(f"fonti/impronte/{a.scansiona}.json · "
               f"{imp['n_istanze']} istanze")
+        salta = {"sha256", "byte", "righe", "colonne"}
         for k, v in sorted(imp["istanze"].items()):
-            anni = v.get("anni") or []
-            print(f"  {k:10s} {v['righe']:7,} righe  "
-                  f"{('anni ' + anni[0] + '-' + anni[-1]) if anni else '':16s} "
-                  f"{v.get('obs_somma', 0):,.0f}")
+            pezzi = [f"{v['righe']:,} righe"]
+            anni = v.get("anni")
+            if anni:
+                pezzi.append(f"anni {anni[0]}-{anni[-1]}")
+            for c, et in (("comuni", "comuni"), ("sezioni", "sezioni"),
+                          ("popolazione", "pop"), ("obs_somma", "obs")):
+                if c in v:
+                    pezzi.append(f"{et} {v[c]:,.0f}"
+                                 if isinstance(v[c], (int, float))
+                                 else f"{et} {v[c]}")
+            extra = [f"{c}={v[c]}" for c in sorted(v)
+                     if c not in salta and c not in
+                     ("anni", "comuni", "sezioni", "popolazione", "obs_somma")
+                     and not c.startswith("var_") and not c.startswith("obs_per")]
+            print(f"  {k:22s} " + " · ".join(pezzi)
+                  + ("   " + " ".join(extra) if extra else ""))
         return
     if a.impronta:
         imp = impronta(a.impronta, scrivi=True)
+        t = imp.get("testa") or [None]
+        t0 = t[0]["chiave"] if isinstance(t[0], dict) else t[0]
         print(f"fonti/impronte/{a.impronta}.json scritta · "
               f"n {imp['n_misurato']:.0f} · modalita' {imp['modalita']} · "
-              f"testa {imp['testa'][0]['chiave']}")
+              f"testa {t0}")
         return
 
     if a.elenco:

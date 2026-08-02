@@ -1,0 +1,58 @@
+{
+  "id": "istat_sezioni_2023",
+  "istanze": {
+    "R03_Lombardia": {
+      "byte": 38504549,
+      "colonne": 138,
+      "comuni": 1503,
+      "popolazione": 10012054.0,
+      "righe": 67419,
+      "sezioni": 67419,
+      "sezioni_senza_residenti": 6171,
+      "sha256": "f5fad0cdcbe40798724974c56a1523ce417c9dbfeeb75888600f835b62a35fad",
+      "var_A": 4,
+      "var_EM": 6,
+      "var_IT": 12,
+      "var_NA": 1,
+      "var_P": 72,
+      "var_PF": 8,
+      "var_ST": 24
+    },
+    "R08_Emilia-Romagna": {
+      "byte": 24850390,
+      "colonne": 138,
+      "comuni": 330,
+      "popolazione": 4451938.0,
+      "righe": 43729,
+      "sezioni": 43729,
+      "sezioni_senza_residenti": 2536,
+      "sha256": "f2b1caa5fafa2f457037cae3fca83479bbe259b7a840c8081bc6d6d134f31ab9",
+      "var_A": 4,
+      "var_EM": 6,
+      "var_IT": 12,
+      "var_NA": 1,
+      "var_P": 72,
+      "var_PF": 8,
+      "var_ST": 24
+    },
+    "R16_Puglia": {
+      "byte": 14076387,
+      "colonne": 138,
+      "comuni": 257,
+      "popolazione": 3890661.0,
+      "righe": 24577,
+      "sezioni": 24577,
+      "sezioni_senza_residenti": 2165,
+      "sha256": "99009ede3c76ae5634df5b8da6bf16214fc2dfc3b100c8fd46dbc049a93e0a18",
+      "var_A": 4,
+      "var_EM": 6,
+      "var_IT": 12,
+      "var_NA": 1,
+      "var_P": 72,
+      "var_PF": 8,
+      "var_ST": 24
+    }
+  },
+  "n_istanze": 3,
+  "tipo": "multi_istanza"
+}

@@ -1,0 +1,33 @@
+{
+  "byte": 13786,
+  "diagnostica": {
+    "campi": 138,
+    "senza_definizione": 0
+  },
+  "id": "istat_sezioni_2023_tracciato",
+  "modalita": 138,
+  "n_misurato": 138.0,
+  "sha256": "98071eb0f9e71a1bc59f5eb49503b8d31e7adc010aaa6c30d96ff3d9d1bfe3be",
+  "testa": [
+    "CODREG",
+    "REGIONE",
+    "CODPRO",
+    "PROVINCIA",
+    "CODCOM",
+    "COMUNE",
+    "PROCOM",
+    "SEZ21_ID",
+    "COM_ASC1",
+    "COM_ASC2",
+    "COM_ASC3",
+    "P1",
+    "P2",
+    "P3",
+    "P14",
+    "P15",
+    "P16",
+    "P17",
+    "P18",
+    "P19"
+  ]
+}

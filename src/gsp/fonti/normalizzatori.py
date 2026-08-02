@@ -105,9 +105,64 @@ def sdmx_csv(path, **kw):
     return d, diag
 
 
+def sezioni_xlsx(path, foglio=0, col_popolazione="P1", col_comune="PROCOM",
+                 col_sezione="SEZ21_ID", **kw):
+    """Tavola dei dati per sezione di censimento (file regionali ISTAT).
+
+    L'unita' NON e' l'individuo ma la SEZIONE: ogni riga porta ~130
+    conteggi. Torna il frame intatto; la diagnostica riassume cio' che
+    serve a riconoscerlo e a confrontarlo con le altre fonti.
+    """
+    d = pd.read_excel(path, sheet_name=foglio)
+    d.columns = [str(c).strip() for c in d.columns]
+    diag = {"righe": len(d), "colonne": len(d.columns)}
+
+    if {"P1", "P2", "P3"} <= set(d.columns):
+        s = pd.to_numeric(d["P1"], errors="coerce") \
+            - pd.to_numeric(d["P2"], errors="coerce") \
+            - pd.to_numeric(d["P3"], errors="coerce")
+        diag["scarto_P1_P2P3"] = int(s.abs().sum())
+
+    if col_sezione in d.columns:
+        diag["sezioni"] = int(d[col_sezione].nunique())
+        if diag["sezioni"] != len(d):
+            diag["sezioni_ripetute"] = len(d) - diag["sezioni"]
+    if col_comune in d.columns:
+        diag["comuni"] = int(d[col_comune].nunique())
+    if col_popolazione in d.columns:
+        v = pd.to_numeric(d[col_popolazione], errors="coerce")
+        diag["popolazione"] = float(v.sum())
+        n_vuote = int((v.fillna(0) == 0).sum())
+        if n_vuote:
+            diag["sezioni_senza_residenti"] = n_vuote
+    for pref in ("P", "IT", "ST", "EM", "PF", "NA", "A"):
+        n = sum(1 for c in d.columns
+                if c.startswith(pref) and c[len(pref):].split("_")[0].isdigit())
+        if n:
+            diag[f"var_{pref}"] = n
+    return d, diag
+
+
+def tracciato_xlsx(path, foglio=0, col_chiave="NOME_CAMPO",
+                   col_definizione="DEFINIZIONE", **kw):
+    """Codebook: NOME_CAMPO -> DEFINIZIONE. Non e' un dato, e' il suo
+    dizionario: senza, le colonne P14 e ST2_B non vogliono dire niente."""
+    d = pd.read_excel(path, sheet_name=foglio)
+    d.columns = [str(c).strip() for c in d.columns]
+    d = d.rename(columns={col_chiave: "chiave",
+                          col_definizione: "definizione"})
+    d["chiave"] = d["chiave"].astype(str).str.strip()
+    d["definizione"] = d["definizione"].astype(str).str.strip()
+    diag = {"campi": len(d),
+            "senza_definizione": int((d["definizione"] == "").sum())}
+    return d[["chiave", "definizione"]], diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "sdmx_csv": sdmx_csv,
+    "sezioni_xlsx": sezioni_xlsx,
+    "tracciato_xlsx": tracciato_xlsx,
 }
 
 

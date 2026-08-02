@@ -494,3 +494,52 @@ fonti:
     usabile_per: [vincoli_maxent, vincoli_maxent_soft]
     usato_da: [build_constraints.py, cs_build.py]
     non_usabile_per: [vincoli_su_popolazione_totale]
+# Da appendere UNA VOLTA SOLA a fonti/registro.yaml.
+# Prima di appendere: verificare che non ci sia gia' un
+#   grep -c 'id: istat_sezioni_2023' fonti/registro.yaml
+
+  - id: istat_sezioni_2023
+    tipo: multi_istanza
+    ente: ISTAT
+    titolo: Censimento permanente - dati per sezione di censimento, file regionali 2023
+    url: DA_VERIFICARE          # link di download dello zip
+    data_accesso: 2026-08-02
+    licenza: DA_VERIFICARE      # cercare nella Nota Metodologica
+    archiviazione: locale
+    percorso: data/submun/Dati_regionali_2023/{istanza}_2023_sezioni.xlsx
+    chiave_istanza: regione
+    riferimento_temporale: 31_dicembre
+    metadati: Nota-Metodologica-sezioni-censimento-2023_6marzo2026.pdf
+    universo: >-
+      censimento permanente 2023, conteggi per SEZIONE di censimento.
+      L'unita' e' la sezione, non l'individuo: ogni riga porta ~130
+      conteggi. La geometria e' quella del censimento 2021 (SEZ21_ID),
+      i dati sono 2023: anni diversi per griglia e contenuto.
+      COM_ASC1/2/3 sono le sub-aree amministrative, presenti solo dove il
+      comune e' articolato: e' la fonte della gerarchia zona/quartiere.
+      I CSV per citta' in data/submun/ sono DERIVATI, prodotti da
+      build_sezioni.py filtrando su PROCOM.
+    unita: sezione di censimento
+    normalizzatore: sezioni_xlsx
+    usabile_per: [geografia_subcomunale, gerarchia_zone, vincoli_zona]
+    usato_da: [build_sezioni.py, assign_nationality.py, common.py]
+    non_usabile_per: [microdati_individuali]
+
+  - id: istat_sezioni_2023_tracciato
+    ente: ISTAT
+    titolo: Tracciato dei file regionali per sezione, 2023
+    url: DA_VERIFICARE          # stessa pagina dello zip
+    data_accesso: 2026-08-02
+    licenza: DA_VERIFICARE
+    archiviazione: git
+    file: istat_sezioni_2023_tracciato.xlsx
+    sha256: 98071eb0f9e71a1bc59f5eb49503b8d31e7adc010aaa6c30d96ff3d9d1bfe3be
+    universo: >-
+      codebook delle 138 colonne dei file regionali: NOME_CAMPO ->
+      DEFINIZIONE. Non e' un dato ma il suo dizionario: senza, colonne
+      come P14 o ST2_B non vogliono dire niente.
+    unita: variabile
+    copertura: {geo: "IT", tempo: 2023}
+    normalizzatore: tracciato_xlsx
+    usabile_per: [decodifica_colonne_sezioni]
+    non_usabile_per: [conteggi]

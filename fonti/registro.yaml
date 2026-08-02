@@ -56,8 +56,8 @@ fonti:
     attribuzione: >-
       Comune di Firenze, "Cognomi residenti - Anno 2012",
       opendata.comune.fi.it, CC BY 4.0
-    aggiornamento: DA_VERIFICARE   # scaricare il metadato del 2012
-    metadati: null
+    aggiornamento: notPlanned
+    metadati: firenze_cognomi_2012.xml
     file: firenze_cognomi_2012.csv
     sha256: 5bc0df81ed1badaaf7c0c934b4057768a6ef077e99946992a98ac65ea81ba350
     archiviazione: git
@@ -72,12 +72,8 @@ fonti:
     n_dichiarato: null
     n_misurato: 372819
     modalita: 65400
-    anomalie:
-      - 2 record con cognome vuoto (90 + 28 persone), esclusi
-      - 3 coppie di righe byte-identiche emesse dalla fonte
-        (DE LUCIA 27+1, ECH-CHATOUI 1+1, EL SHAHAT... 1+1), fuse
-      - file ASCII puro; accenti gia' appiattiti a monte
-      - separatore ";" invece di "," come nel 2013
+    - separatore ";" contro "," del 2013, dichiarato nel metadato
+        (dc:modified identico nei due, 2024-10-08)
     bias: >-
       stessa popolazione del 2013 (correlazione 0,9985): non e' un
       campione indipendente

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dcat="http://www.w3.org/ns/dcat#" version="2.0">
+  <channel>
+    <title>Cognomi residenti - Anno 2012</title>
+    <description>Il dataset contiene la classifica dei cognomi più diffusi nel Comune di Firenze nell'anno 2012. Il separatore delle risorse CSV è ";" (lett. punto e virgola).</description>
+    <dc:creator><foaf:name>Comune di Firenze - Direzione Generale -  Servizio Pianificazione, Controllo e Statistica</foaf:name><foaf:mbox>statistica@comune.fi.it</foaf:mbox></dc:creator>
+    <dc:publisher><foaf:name>Comune di Firenze - Direzione Generale -  Servizio Pianificazione, Controllo e Statistica</foaf:name><foaf:mbox>statistica@comune.fi.it</foaf:mbox></dc:publisher>
+    <dc:created>2018-06-27 16:05:28</dc:created>
+    <dc:modified>2024-10-08 10:47:34</dc:modified>
+    <dcterms:accrualPeriodicity>notPlanned</dcterms:accrualPeriodicity>
+    <dc:license>cc-by-4.0</dc:license>
+    <dc:spatial>
+      <dc:type/>
+    </dc:spatial>
+    <language>ita</language>
+    <dcat:landingPage>http://opendata.comune.fi.it/?q=metarepo/datasetinfo&amp;id=cognomi-residenti-2012</dcat:landingPage>
+    <dcat:byteSize>863.9Kbytes</dcat:byteSize>
+    <dcat:keyword>territorio</dcat:keyword>
+    <dcat:keyword>residenti</dcat:keyword>
+    <dcat:keyword>Questioni Sociali</dcat:keyword>
+    <dcat:keyword>cognomi</dcat:keyword>
+    <dcat:keyword>open data</dcat:keyword>
+    <dcat:keyword>02 Popolazione</dcat:keyword>
+    <dcat:theme>Statistica territorio</dcat:theme>
+    <dcat:theme>Popolazione e società</dcat:theme>
+    <dcat:theme>Annuario Statistico del Comune di Firenze</dcat:theme>
+    <item>
+      <atom:id>cognomi-residenti-2012:1</atom:id>
+    </item>
+  </channel>
+</rss>

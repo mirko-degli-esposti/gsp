@@ -22,6 +22,7 @@ senza universo dichiarato e' un elenco di numeri, non una misura.
 import argparse
 import glob
 import hashlib
+import importlib
 import json
 import os
 import re
@@ -75,6 +76,11 @@ CAMPI_MULTI = [
 ]
 
 N_IMPRONTA = 20             # quante modalita' di testa entrano nell'impronta
+
+# sha256 della stringa vuota: un file da 0 byte ha questa firma. Capita
+# quando un download fallisce restituendo HTML o niente, e in mezzo a
+# gigabyte di dati non se ne accorge nessuno.
+SHA_VUOTO = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
 # ------------------------------------------------------------------ registro
 
@@ -219,13 +225,19 @@ def istanze(id_fonte):
 
 
 def path_grezzo(id_fonte, istanza=None):
+    f = info(id_fonte)
     if tipo(id_fonte) == "multi_istanza":
         mappa = istanze(id_fonte)
         if istanza is None:
             raise ValueError(f"'{id_fonte}' e' multi_istanza: serve `istanza`"
                              f" fra {sorted(mappa)}")
         return mappa[istanza]
-    return os.path.join(DIR_GREZZI, info(id_fonte)["file"])
+    # una fonte a file singolo puo' vivere fuori da fonti/grezzi: e' il
+    # caso dei file troppo grossi o gia' collocati in data/. `percorso` e'
+    # relativo alla radice del repo e ha la precedenza su `file`.
+    if f.get("percorso"):
+        return os.path.join(RADICE, f["percorso"])
+    return os.path.join(DIR_GREZZI, f["file"])
 
 
 def path_norm(id_fonte):
@@ -365,6 +377,74 @@ def carica(id_fonte, istanza=None, rinormalizza=False):
     return pd.read_parquet(p)
 
 
+
+# --------------------------------------------------- parametri operativi
+
+
+def parametri(id_fonte):
+    """Risolve `parametri_da`, il riferimento alla configurazione operativa.
+
+    Le fonti locali per il paese di cittadinanza hanno gia' in
+    gsp.common.COMUNI un blocco `opendata_paese` con loader, livello
+    geografico, encoding, mappe di riconciliazione dei nomi. Il registro
+    NON lo riscrive: lo referenzia. Riscriverlo darebbe due dichiarazioni
+    della stessa cosa, destinate a divergere in silenzio.
+
+        parametri_da: common.COMUNI.017029.opendata_paese
+
+    Il primo segmento e' il modulo dentro `gsp`, i successivi sono chiavi
+    di dizionario o attributi.
+    """
+    rif = info(id_fonte).get("parametri_da")
+    if not rif:
+        return None
+    pezzi = str(rif).split(".")
+    if len(pezzi) < 2:
+        raise ValueError(f"{id_fonte}: parametri_da '{rif}' malformato")
+    modulo = importlib.import_module(f"gsp.{pezzi[0]}")
+    obj, percorso = modulo, f"gsp.{pezzi[0]}"
+    for p in pezzi[1:]:
+        percorso += f".{p}"
+        if isinstance(obj, dict):
+            if p not in obj:
+                raise KeyError(f"{id_fonte}: {percorso} non esiste")
+            obj = obj[p]
+        else:
+            if not hasattr(obj, p):
+                raise KeyError(f"{id_fonte}: {percorso} non esiste")
+            obj = getattr(obj, p)
+    return obj
+
+
+def copertura(silenzioso=False):
+    """Comuni con un blocco `opendata_paese` in gsp.common e senza scheda.
+
+    Stessa asimmetria di n_dichiarato contro n_misurato, applicata alla
+    copertura invece che ai conteggi: dice che una fonte e' entrata nella
+    pipeline senza passare dal registro.
+    """
+    common = importlib.import_module("gsp.common")
+    reg = _leggi_registro()
+    registrati = set()
+    for f in reg.values():
+        pezzi = str(f.get("parametri_da") or "").split(".")
+        if len(pezzi) >= 3:
+            registrati.add(pezzi[2])
+
+    mancanti = [(c, v.get("nome", "?"))
+                for c, v in getattr(common, "COMUNI", {}).items()
+                if v.get("opendata_paese") and c not in registrati]
+
+    if not silenzioso:
+        if mancanti:
+            print("comuni con `opendata_paese` e senza scheda nel registro:")
+            for c, n in sorted(mancanti):
+                print(f"  {c}  {n}")
+        else:
+            print("ogni comune con `opendata_paese` ha la sua scheda")
+    return mancanti
+
+
 # ------------------------------------------------------------------ verifica
 
 
@@ -391,8 +471,16 @@ def _verifica_multi(i, f, riga):
     vecchie = imp.get("istanze", {})
     nuove = sorted(set(trovate) - set(vecchie))
     perse = sorted(set(vecchie) - set(trovate))
-    cambiate = [k for k in sorted(set(trovate) & set(vecchie))
-                if sha256(trovate[k]) != vecchie[k].get("sha256")]
+    cambiate, vuote = [], []
+    for k in sorted(set(trovate) & set(vecchie)):
+        h = sha256(trovate[k])
+        if h == SHA_VUOTO:
+            vuote.append(k)
+        if h != vecchie[k].get("sha256"):
+            cambiate.append(k)
+    if vuote:
+        note.append(f"{len(vuote)} istanze VUOTE (0 byte): "
+                    f"{', '.join(vuote[:4])}")
 
     if perse:
         note.append(f"{len(perse)} mancanti: {', '.join(perse[:4])}")
@@ -420,6 +508,8 @@ def verifica(id_fonte=None, silenzioso=False):
 
         obbl = CAMPI_OBBLIGATORI if f.get("tipo") != "multi_istanza" \
             else CAMPI_MULTI
+        if f.get("percorso"):
+            obbl = [c for c in obbl if c != "file"]
         mancanti = [c for c in obbl if c not in f]
         if mancanti:
             note.append("campi mancanti: " + ",".join(mancanti))
@@ -428,6 +518,14 @@ def verifica(id_fonte=None, silenzioso=False):
         if arch not in ARCHIVIAZIONI:
             note.append(f"archiviazione '{arch}' non valida")
         riga["arch"] = arch
+
+        if f.get("parametri_da"):
+            try:
+                if not parametri(i):
+                    note.append(f"parametri_da '{f['parametri_da']}' "
+                                "risolve a un blocco vuoto")
+            except Exception as e:                      # noqa: BLE001
+                note.append(f"parametri_da rotto: {e}")
 
         if f.get("tipo") == "multi_istanza":
             riga = _verifica_multi(i, f, riga)
@@ -456,6 +554,8 @@ def verifica(id_fonte=None, silenzioso=False):
             continue
 
         h = sha256(g)
+        if h == SHA_VUOTO:
+            note.append("il file e' VUOTO (0 byte): il download e' fallito")
         if h != f.get("sha256"):
             note.append(f"sha256 diverso (disco {h[:12]}, registro "
                         f"{str(f.get('sha256'))[:12]})")
@@ -667,6 +767,8 @@ def _main():
     ap.add_argument("--verifica", nargs="?", const=True)
     ap.add_argument("--pubblico", action="store_true",
                     help="cosa puo' finire in un repo pubblico")
+    ap.add_argument("--copertura", action="store_true",
+                    help="fonti usate dalla pipeline e non registrate")
     ap.add_argument("--attribuzioni", action="store_true",
                     help="rigenera fonti/ATTRIBUZIONI.md")
     ap.add_argument("--normalizza", metavar="ID")
@@ -683,19 +785,24 @@ def _main():
               f"{imp['n_istanze']} istanze")
         salta = {"sha256", "byte", "righe", "colonne"}
         for k, v in sorted(imp["istanze"].items()):
-            pezzi = [f"{v['righe']:,} righe"]
+            n_righe = v.get("righe", v.get("modalita",
+                                           v.get("righe_grezze", 0)))
+            pezzi = [f"{n_righe:,} righe"]
             anni = v.get("anni")
             if anni:
                 pezzi.append(f"anni {anni[0]}-{anni[-1]}")
             for c, et in (("comuni", "comuni"), ("sezioni", "sezioni"),
-                          ("popolazione", "pop"), ("obs_somma", "obs")):
+                          ("popolazione", "pop"), ("obs_somma", "obs"),
+                          ("somma_pesi", "pesi"), ("n_eff_kish", "n_eff")):
                 if c in v:
                     pezzi.append(f"{et} {v[c]:,.0f}"
                                  if isinstance(v[c], (int, float))
                                  else f"{et} {v[c]}")
             extra = [f"{c}={v[c]}" for c in sorted(v)
                      if c not in salta and c not in
-                     ("anni", "comuni", "sezioni", "popolazione", "obs_somma")
+                     ("anni", "comuni", "sezioni", "popolazione", "obs_somma",
+                      "somma_pesi", "n_eff_kish", "eta_min", "eta_max",
+                      "peso_min", "peso_max", "regioni")
                      and not c.startswith("var_") and not c.startswith("obs_per")]
             print(f"  {k:22s} " + " · ".join(pezzi)
                   + ("   " + " ".join(extra) if extra else ""))
@@ -711,6 +818,9 @@ def _main():
 
     if a.elenco:
         print(elenco().to_string(index=False))
+    elif a.copertura:
+        m = copertura()
+        sys.exit(0 if not m else 1)
     elif a.attribuzioni:
         attribuzioni()
     elif a.pubblico:

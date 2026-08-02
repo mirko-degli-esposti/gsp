@@ -1,0 +1,726 @@
+n,variabile,descrizione
+1,PROFAM,progressivo famiglia
+2,PROIND,numero d'ordine del componente
+3,NCOMP,nï¿½ dei componenti la famiglia attuale
+4,ANNO,anno della rilevazione
+5,RELPAR,relazione di parentela con la persona di riferimento
+7,SESSO,Sesso - scheda generale
+9,STCPM,Stato civile precedente il matrimonio
+10,AMATR,Anno del matrimonio
+13,LAVPAS,Ha lavorato in passato
+16,TIPNU2,Tipo nucleo 2
+17,NUMNU2,Numero progressivo del nucleo nell'ambito della famiglia 2
+18,RPNUC2,Relazione di parentela nell'ambito del nucleo 2
+22,COEFIN,Per ottenere la stima espressa in unitï¿½ dividere per 10.000 (diecimila) Coefficiente di ripor
+25,MOTAS,Motivo principale per cui frequenta il nido
+26,DOMRIF,Motivo per cui non frequenta il nido: la domanda non ï¿½ stata accettata
+27,MEMFAM,"Motivo per cui non frequenta il nido: lo segue un membro della famiglia, non ho problemi di org"
+28,NIDLON,"Motivo per cui non frequenta il nido: l'asilo ï¿½ lontano, scomodo"
+29,NODELE,Motivo per cui non frequenta il nido: non voglio delegare il compito educativo
+30,MALAT,Motivo per cui non frequenta il nido: il bambino si ammalava troppo spesso
+31,ABBAND,Motivo per cui non frequenta il nido: il bambino puï¿½ sentirsi abbandonato
+32,NONVUO,Motivo per cui non frequenta il nido: il bambino non vuole andare
+33,NOMED,Motivo per cui non frequenta il nido: lo ha sconsigliato un medico
+34,TPICC,Motivo per cui non frequenta il nido: il bambino ï¿½ troppo piccolo
+35,NDTROPPO,Motivo per cui non frequenta il nido: l'asilo costa troppo
+36,ORARIS,Motivo per cui non frequenta il nido: l'asilo ha orari scomodi
+37,ALNIDO,Motivo per cui non frequenta il nido: altro
+38,LEZPR,Negli ultimi 12 mesi ha frequentato lezioni private o corsi: recupero scolastico
+39,INFOR,Negli ultimi 12 mesi ha frequentato lezioni private o corsi: informatica
+40,LING,Negli ultimi 12 mesi ha frequentato lezioni private o corsi: lingue
+41,ARTCUL,Negli ultimi 12 mesi ha frequentato lezioni private o corsi: attivitï¿½ artistiche e\o cultural
+42,USORA,"77=variabile per turni, 88=variabile per altra ragione, 99=non esco, lavoro in casa Orario abit"
+43,USMIN,"77=variabile per turni, 88=variabile per altra ragione, 99=non esco, lavoro in casa Orario abit"
+44,HHSCLA,99=variabile Tempo impiegato per andare al lavoro/scuola (ora)
+45,MMSCLA,99=variabile Tempo impiegato per andare al lavoro/scuola (minuti)
+46,DIVCOM,Per motivi di lavoro o di studio lei vive con una certa regolaritï¿½ prevalentemente in un comu
+47,STCOM,Lavora o studia abitualmente nello stesso comune in cui risiede
+48,STPROV,Lavora o studia abitualmente in un altro comune della stessa provincia
+49,STREG,Lavora o studia abitualmente in un'altra provincia della stessa regione
+50,ALTREG,Lavora o studia abitualmente in un'altra regione italiana
+51,ESTERO,Lavora o studia abitualmente all'estero
+52,USOMT,Uso di mezzo di trasporto pubblico e/o privato per andare a scuola o al lavoro
+53,TRENO,Mezzo di trasporto usato per andare a scuola o al lavoro: treno
+54,TRAM,Mezzo di trasporto usato per andare a scuola o al lavoro: tram
+55,METRO,Mezzo di trasporto usato per andare a scuola o al lavoro: metropolitana
+56,BUS,"Mezzo di trasporto usato per andare a scuola o al lavoro: autobus, filobus (all'interno del com"
+57,COR,"Mezzo di trasporto usato per andare a scuola o al lavoro: pullman, corriera (tra comuni diversi"
+58,PAZSC,Mezzo di trasporto usato per andare a scuola o al lavoro: pullman aziendale o scolastico
+59,AUTOC,Mezzo di trasporto usato per andare a scuola o al lavoro: auto privata (come conducente)
+60,AUTOP,Mezzo di trasporto usato per andare a scuola o al lavoro: auto privata (come passeggero)
+61,MOTO,Mezzo di trasporto usato per andare a scuola o al lavoro: motocicletta o ciclomotore
+62,BICI,Mezzo di trasporto usato per andare a scuola o al lavoro: bicicletta
+63,ALMEZ,Mezzo di trasporto usato per andare a scuola o al lavoro: altro mezzo
+64,MTPUSO,Mezzo di trasporto utilizzato nel tratto piï¿½ lungo per andare a scuola o al lavoro
+65,CARPOO,Si organizza con colleghi/compagni di studio per andare a lavoro/scuola utilizzando una sola ve
+66,HHFAM,00=non svolge attivitï¿½ Ore a settimana dedicate al lavoro domestico e di cura della famiglia
+67,MMFAM,00=non svolge attivitï¿½ Minuti a settimana dedicati al lavoro domestico e di cura della famigl
+68,HHLAV,00=non svolge attivitï¿½ Ore a settimana dedicate all'attivitï¿½ lavorativa
+69,MMLAV,00=non svolge attivitï¿½ Minuti a settimana dedicati all'attivitï¿½ lavorativa
+70,TLADO,Attivitï¿½ fisica nel lavoro domestico e familiare
+71,TLAV,Attivitï¿½ fisica nell'attivitï¿½ lavorativa
+72,PROSOC,Negli ultimi 3 mesi ha fatto ricorso a pronto soccorso
+73,NPROSOM,ricostruita Quante volte ha fatto ricorso al pronto soccorso
+74,GUMED,Negli ultimi 3 mesi ha fatto ricorso a guardia medica
+75,NGUMEDM,ricostruita Quante volte ha fatto ricorso alla guardia medica
+76,ASSDO,Negli ultimi 3 mesi ha fatto ricorso a assistenza domiciliare
+77,NASSDOM,ricostruita Quante volte ha fatto ricorso all'assistenza domiciliare
+78,RICOV,"Negli ultimi 3 mesi ï¿½ stato ricoverato in un ospedale, in un istituto di cura accreditato (co"
+79,NNRICAM,ricostruita Quante volte ï¿½ stato ricoverato negli ultimi tre mesi?
+80,GGRICAM,ricostruita Per quante notti complessivamente ï¿½ stato ricoverato negli ultimi tre mesi?
+81,CONSPE,Ha contributo al pagamento delle spese di ricovero
+82,CONDIR,Contributo diretto per spese ricovero
+83,CONASS,Contributo tramite assicurazione privata per spese ricovero
+84,QASSAM,Soddisfazione per ricovero: assistenza medica
+85,QASSIN,Soddisfazione per ricovero: assistenza infermieristica
+86,QVITTO,Soddisfazione per ricovero: vitto
+87,QSERIG,Soddisfazione per ricovero: servizi igienici
+88,VISMED12,negli ultimi 12 mesi ha fatto ricorso a visite presso medici specialisti
+89,VSPESA,spesa per ultima visita specialistica (ultimi 12 mesi)
+90,VISPRE,l'ultima visita specialistica (ultimi 12 mesi) ï¿½ stata prescritta da un medico?
+91,VISRI1,rinuncia a visita specialistica ultimi 12 mesi
+92,VISRI2,"rinuncia a visita specialistica ultimi 12 mesi: non poteva pagarla, costava troppo"
+93,VISRI3,rinuncia a visita specialistica ultimi 12 mesi: lista d'attesa lunga
+94,VISRI4,rinuncia a visita specialistica ultimi 12 mesi: scomoditï¿½
+95,VISRI5,rinuncia a visita specialistica ultimi 12 mesi: non poteva assendarsi dal lavoro
+96,VISRI6,rinuncia a visita specialistica ultimi 12 mesi: doveva accudire figli o altre persone
+97,VISRI7,rinuncia a visita specialistica ultimi 12 mesi: altro
+98,ANSANG12,negli ultimi 12 mesi si ï¿½ sottoposto a esami del sangue?
+99,ACCER12,negli ultimi 12 mesi si ï¿½ sottoposto a esami specialistici?
+100,ASPESA,spesa per ultimo esame specialistico (ultimi 12 mesi)
+101,ACCPRE,l'ultimo esame specialistico (ultimi 12 mesi) le ï¿½ stato prescritto da un medico?
+102,ACCRI1,rinuncia a accertamento specialistico ultimi 12 mesi
+103,ACCRI2,"rinuncia a accertamento specialistico ultimi 12 mesi: non poteva pagarlo, costava troppo"
+104,ACCRI3,rinuncia a accertamento specialistico ultimi 12 mesi: lista d'attesa lunga
+105,ACCRI4,rinuncia a accertamento specialistico ultimi 12 mesi: scomoditï¿½
+106,ACCRI5,rinuncia a accertamento specialistico ultimi 12 mesi: non poteva assentarsi dal lavoro
+107,ACCRI6,rinuncia a accertamento specialistico ultimi 12 mesi: doveva accudire figli o altre persone
+108,ACCRI7,rinuncia a accertamento specialistico ultimi 12 mesi: altro
+109,ASAINF,"Ha da solo o insieme ad altri componenti della famiglia, un'assicurazione sulla salute o sugli"
+110,ASVITA,"Ha da solo o insieme ad altri componenti della famiglia, un'assicurazione sulla vita o per pens"
+111,MINCDO,Incidente domestico subito negli ultimi 3 mesi
+112,MNINCDM,ricostruita Incidente domestico subito negli ultimi 3 mesi: quante volte
+113,SPOCON,Nel suo tempo libero pratica con carattere di continuitï¿½ uno o piï¿½ sport?
+114,SPOSAL,Nel suo tempo libero pratica saltuariamente uno o piï¿½ sport?
+115,ATTFIS,Le capita di svolgere nel tempo libero qualche attivitï¿½ fisica?
+116,FREQSPO,Frequenza nell'anno delle attivitï¿½ sportive praticate
+117,ORESETSP,Ore di attivitï¿½ sportiva praticate nell'ultima settimana
+118,SPPAG,Negli ultimi 12 mesi ha fatto sport in luoghi a pagamento?
+119,SPRIV,Negli ultimi 12 mesi ha frequentato lezioni private o corsi di sport a spese sue o della famigl
+120,RETTA,Paga una retta annua o periodica per un circolo o club sportivo?
+121,AMICI,Con che frequenza si vede con amici nel tempo libero?
+122,PARENT,"Ha altri parenti su cui poter contare (oltre a genitori, figli, fratelli e sorelle, nonni e nip"
+123,AMICI2,Ha amici su cui poter contare
+124,VICINI,Ha vicini su cui poter contare
+125,VISRI8,rinuncia a visita specialistica ultimi 12 mesi: a causa del Covid19
+126,ACCRI8,rinuncia a accertamento specialistico ultimi 12 mesi: a causa del Covid19
+127,CPESO,Frequenza con cui usa controllare il suo peso
+128,FARM,Negli ultimi due giorni ha fatto uso di farmaci?
+129,PASTO,Qual ï¿½ il suo pasto principale?
+130,COLAZ,Ha l'abitudine di fare la prima colazione? (se la fa piï¿½ di una volta consideri solo la prima
+131,LPRAN,Dove pranza abitualmente nei giorni non festivi? (di scuola o di lavoro)
+132,MENSA,Costo mensa aziendale
+133,PANPAS,"Frequenza consumo: pane, pasta, riso"
+134,SALUMI,Frequenza consumo: salumi
+135,POLLO,"Frequenza consumo: carne di pollo, tacchino, coniglio, vitello"
+136,COV,Frequenza consumo: carni ovine
+137,CBOV,Frequenza consumo: carni bovine
+138,CMAIAL,Frequenza consumo: carni di maiale (escluso salumi)
+139,LATTE,Frequenza consumo: latte
+140,FORM,"Frequenza consumo: formaggi, latticini"
+141,UOVA,Frequenza consumo: uova
+142,PESCE,Frequenza consumo: pesce
+143,VERD,"Frequenza consumo: verdure in foglia cotte e crude (spinaci, insalate, cicoria, cavolo, broccol"
+144,POMOD,"Frequenza consumo: pomodori (escluse conserve), melanzane, peperoni, finocchi, zucchine, carcio"
+145,FRUTTA,Frequenza consumo: frutta
+146,PZVERD,1 porzione=1 piatto medio Numero di porzioni di insalata oppure ortaggi e/o verdura
+147,PZFRUTTA,1 porzione=1 mela o 1 arancia o 2 mandarini Numero di porzioni di frutta
+148,LEGUMI,Frequenza consumo: legumi secchi o in scatola
+149,PATATE,Frequenza consumo: patate
+150,SNACK,"Frequenza consumo: snack salati (patatine, pop corn, salatini, olive)"
+151,DOLCI,"Frequenza consumo: dolci (torte farcite, merendine, gelati, ecc)"
+152,BEVEG,"frequenza consumo bevande vegetali a base di soia, avena, riso, mandorle, miglio"
+153,CGRAS,Quale dei seguenti grassi usa piï¿½ frequentemente per la cottura dei cibi?
+154,FGRAS,Quale dei seguenti grassi usa piï¿½ frequentemente per il condimento a crudo dei cibi ( insalat
+155,QTSALE,Fa attenzione alla quantitï¿½ di sale e/o al consumo di cibi salati?
+156,IODIO,Usa sale arricchito con iodio
+157,ACMIN,Quantitï¿½ consumata abitualmente di acqua minerale
+158,BGAS,Quantitï¿½ consumata abitualmente di bevande gassate (esclusa l'acqua minerale)
+159,BIRRA,Quantitï¿½ consumata abitualmente di birra
+160,VINO,Quantitï¿½ consumata abitualmente di vino
+161,BICBIRRAM,1 bicchiere=1 boccale da 330ml - ricostruita Quanti bicchieri di birra consuma abitualmente al
+162,BICVINOM,1 bicchiere=125ml - ricostruita Quanti bicchieri di vino consuma abitualmente al giorno?
+163,BFPAS,Frequenza con cui capita di bere vino o alcolici fuori dai pasti
+164,BICFUORIM,ricostruita Complessivamente in una settimana quanti bicchieri di vino o alcolici consuma abitu
+165,ANAL,In quale quantitï¿½ consuma abitualmente: aperitivi analcolici
+166,ALCOL,In quale quantitï¿½ consuma abitualmente: aperitivi alcolici
+167,AMAR,In quale quantitï¿½ consuma abitualmente: amari
+168,LIQUOR,In quale quantitï¿½ consuma abitualmente: superalcolici ( o liquori )
+169,BICALTROM,"ricostruita Numero di bicchieri al giorno di aperitivi alcolici, amari o superalcolici"
+170,ALCOL12,Consumo di bevande alcoliche negli ultimi 12 mesi
+171,BICALC,Consumo di almeno 6 bicchieri di bevande alcoliche in un'unica occasione negli ultimi 12 mesi
+172,NBICALCM,ricostruita Consumo di almeno 6 bicchieri di bevande alcoliche in un'unica occasione negli ulti
+173,DOVCASP,Luogo di consumo di almeno 6 bicchieri di alcol: a casa propria
+174,DOVAMPA,Luogo di consumo di almeno 6 bicchieri di alcol: a casa di parenti o amici
+175,DOVRISTO,Luogo di consumo di almeno 6 bicchieri di alcol:al ristorante/trattoria/osteria/pizzeria
+176,DOVPUB,Luogo di consumo di almeno 6 bicchieri di alcol:al bar/pub/birreria
+177,DOVDISCO,Luogo di consumo di almeno 6 bicchieri di alcol: in discoteca
+178,DOVSTR,Luogo di consumo di almeno 6 bicchieri di alcol: all'aperto/per strada
+179,DOVALT,Luogo di consumo di almeno 6 bicchieri di alcol: altro luogo
+180,FUMO,Attualmente fuma?
+181,FRFUMO,Con quale frequenza fuma
+182,TFUMO,Che cosa fuma prevalentemente
+183,NSIGARM,ricostruita Quante sigarette fuma in media al giorno
+184,ESIG,Uso della sigaretta elettronica
+185,TABNB,usa anche solo saltuariamente dispositivi a tabacco riscaldato non bruciato
+186,SALUTE,oms Come va in generale la sua salute?
+187,CRONI,Il termine lunga durata si riferisce a malattie o problemi di salute che durano da almeno 6 mes
+188,LIMITA,"A causa di problemi di salute, in che misura lei ha delle limitazioni, che durano da almeno 6 m"
+189,DIAB,Affetto da malattia cronica: diabete
+190,IPAR,Affetto da malattia cronica: ipertensione arteriosa
+191,INFAR,Affetto da malattia cronica: infarto del miocardio
+192,CUORE,Affetto da malattia cronica: angina pectoris o altre malattie del cuore
+193,BRON,"Affetto da malattia cronica: bronchite cronica, enfisema, insufficienza respiratoria"
+194,ASMA,Affetto da malattia cronica: asma bronchiale
+195,ALLER,Affetto da malattia cronica: malattie allergiche
+196,TUMOR,Affetto da malattia cronica: tumore (incluso linfoma e leucemia)
+197,ULCER,Affetto da malattia cronica: ulcera gastrica e duodenale
+198,FEGATO,Affetto da malattia cronica: calcolosi del fegato o delle vie biliari
+199,CIRRO,Affetto da malattia cronica: cirrosi epatica
+200,CALRE,Affetto da malattia cronica: calcolosi renale
+201,ARTRO,"Affetto da malattia cronica: artrosi, artrite"
+202,OSTEO,Affetto da malattia cronica: osteoporosi
+203,ICTUS,ictus
+204,DEPRES,depressione
+205,SF9,Per quanto tempo nelle ultime 4 settimane si ï¿½ sentito calmo e/o sereno
+206,SF11,Per quanto tempo nelle ultime 4 settimane si ï¿½ sentito scoraggiato e triste
+207,SF13,Per quanto tempo nelle ultime 4 settimane si ï¿½ sentito molto agitato
+208,SF14,Per quanto tempo nelle ultime 4 settimane si ï¿½ sentito giï¿½ di morale
+209,SF15,Per quanto tempo nelle ultime 4 settimane si ï¿½ sentito felice
+210,RADIO,Ha l'abitudine di ascoltare la radio?
+211,HHRAD,99=non so Ore di ascolto della radio al giorno
+212,MMRAD,99=non so Minuti di ascolto della radio al giorno
+213,TELE,Ha l'abitudine di guardare la tv?
+214,HHTEL,99=non so Per quante ore guarda la televisione
+215,MMTEL,99=non so Per quanti minuti guarda la televisione
+216,FREQSERIE,99=non so frequenza serie tv
+217,BIBLIO,biblioteca negli ultimi 12 mesi
+218,NUMBIBM,ricostruita quante volte si ï¿½ recato in biblioteca negli ultimi 12 mesi? num.
+219,BIBLIO1,"in biblioteca per: raccogliere informazioni (generali, bibliografiche, ecc.)"
+220,BIBLIO2,in biblioteca per: consultare cataloghi
+221,BIBLIO3,"in biblioteca per: consultare quotidiani, riviste, altro materiale stampato"
+222,BIBLIO4,"in biblioteca per: leggere, studiare"
+223,BIBLIO5,in biblioteca per: prendere in prestito libri
+224,BIBLIO6,in biblioteca per: prendere in prestito materiale audio-visivo
+225,BIBLIO7,"in biblioteca per: partecipare a lezioni, corsi, ecc."
+226,BIBLIO8,"in biblioteca per: avere aiuto o assistenza nel fare i compiti, scrivere curriculum, compilare"
+227,BIBLIO9,"in biblioteca per: partecipare a conferenze, dibattiti, mostre, ecc."
+228,BIBLIO10,"in biblioteca per: assistere a concerti, proiezioni di filmati, ecc."
+229,BIBLIO11,in biblioteca per: assistere a presentazioni di libri
+230,BIBLIO12,in biblioteca per: navigare su Internet
+231,BIBLIO13,in biblioteca per: incontrare gli amici
+232,BIBLIO14,in biblioteca per: partecipare a letture animate ad alta voce
+233,BIBLIO15,"in biblioteca per: partecipare a laboratori (teatrali, musicali, ecc.)"
+234,BIBALTC,in biblioteca per: altro (codice)
+235,BIBONLINE,Negli ultimi 12 mesi si ï¿½ mai collegato online al sito di una biblioteca per consultare catal
+236,TEATRO,Frequenza con cui negli ultimi 12 mesi ï¿½ andato a teatro?
+237,CINE,Frequenza con cui negli ultimi 12 mesi ï¿½ andato a cinema?
+238,MUSEO,Frequenza con cui negli ultimi 12 mesi ï¿½ andato a musei o mostre?
+239,MUSIC,Frequenza con cui negli ultimi 12 mesi ï¿½ andato a concerti di musica classica?
+240,ACMUS,Frequenza con cui negli ultimi 12 mesi ï¿½ andato ad altri concerti di musica?
+241,SPSPO,Frequenza con cui negli ultimi 12 mesi ï¿½ andato a spettacoli sportivi?
+242,DISCO,"Frequenza con cui negli ultimi 12 mesi ï¿½ andato in discoteche, balere, night club o altri luo"
+243,MONUM,"Frequenza con cui negli ultimi 12 mesi ï¿½ andato in siti archeologici, monumenti?"
+244,INTTEMPO,Lei ha mai usato Internet?
+245,FREQIN12,Frequenza d'uso di Internet negli ultimi 12 mesi
+246,FREQ_GG,utilizzo di Internet piï¿½ volte al giorno
+247,INCOMU5,negli ultimi 3 mesi ha spedito o ricevuto mail
+248,INCOMU1B,Negli ultimi 3 mesi ha telefonato/effettuato videochiamate
+249,INCOMU4AGG,"ricostruita Negli ultimi 3 mesi ha usato messaggeria istantanea (es. Whatsapp, Skype, Viber, Me"
+250,INCOMU6,"negli ultimi 3 mesi ha partecipato a social network (creare un profilo utente, postare messaggi"
+251,INCOMU7,negli ultimi 3 mesi ha espresso opinioni su temi sociali o politici su web (ad esempio tramite
+252,INCOMU8,negli ultimi 3 mesi ha partecipato a consultazioni o votazioni online su temi sociali (civici)
+253,INTATT8,"negli ultimi 3 mesi ha letto giornali, informazioni, riviste online"
+254,INTATT31,negli ultimi 3 mesi ha letto o scaricato libri online o e_book
+255,INTATT32,Negli ultimi 3 mesi ascoltare la musica
+256,INTATT7BN,Negli ultimi 3 mesi ha guardato programmi televisivi streaming
+257,INTATT30A,Negli ultimi 3 mesi ha guardato film o serie tv in streaming
+258,INTATT30B,"Negli ultimi 3 mesi ha guardato contenuti video da servizi di condivisione (es. Youtube, Istagr"
+259,INTATT28B,Negli ultimi 3 mesi ha giocato o scaricato giochi
+260,INTATT14,negli ultimi 3 mesi ha cercato informazioni sanitarie
+261,INTSAL3,Negli ultimi 3 mesi ha preso un appuntamento con un medico
+262,INTFASC,Negli ultimi 3 mesi ha acceduto al fascicolo sanitario elettronico
+263,INTALTSAL,Negli ultimi 3 mesi ha utilizzato altri servizi sanitari
+264,INTATT11,negli ultimi 3 mesi ha usato servizi bancari via Internet
+265,INTATT13,negli ultimi 3 mesi ha venduto merci o servizi
+266,INTATT16,negli ultimi 3 mesi ha cercato informazioni su merci o servizi
+267,INTATT18A,negli ultimi 3 mesi ha fatto un corso di formazione online
+268,MATDID_N,negli ultimi 3 mesi ha ulizzato materiale didattico online esclusi i corsi completi es. video t
+269,COM_STUDN,Negli ultimi 3 mesi ha comunicato con docenti o studenti utilizzando audio o video online (es.
+270,FOR_SC,"Motivi per cui ha partecipato a tali attivitï¿½ di formazione: scolastici, universitari, accade"
+271,FOR_LAV,Motivi per cui ha partecipato a tali attivitï¿½ di formazione: professionali/legati allï¿½attiv
+272,FOR_PR,Motivi per cui ha partecipato a tali attivitï¿½ di formazione: motivi privati
+273,ACC,Ha mai aperto un account o effettuato una registrazione a un'app o a un servizio gratuito
+274,ACC_DEL,Negli ultimi 3 mesi ha mai cancellato un suo account personale
+275,ACC_PRB,Negli ultimi 3 mesi ha riscontrato difficoltï¿½ nel cancellare o chiudere un proprio account
+276,COSINT9A,Negli ultimi 3 mesi ha svolto operazioni finanziarie per uso privato su internet (escluse e-mai
+277,COSINT9B,Negli ultimi 3 mesi ha svolto operazioni finanziarie per uso privato su internet (escluse e-mai
+278,COSINT9C,Negli ultimi 3 mesi ha svolto operazioni finanziarie per uso privato su internet (escluse e-mai
+279,PA_CO,negli ultimi 12 mesi ha usato Internet per Accedere alle informazioni acquisite sul proprio con
+280,PA_BA,negli ultimi 12 mesi ha usato Internet perAccedere alle informazioni da banche dati o registri
+281,PA_SE,negli ultimi 12 mesi ha usato Internet per ottenere informazioni sui servizi benefici ecc
+282,PA_DWN,negli ultimi 12 mesi ha usato Internet per scaricare stampare moduli ufficiali dai siti della P
+283,PA_PRE,negli ultimi 12 mesi ha usato Internet per prendere un appuntamento tramite un sito web della P
+284,PA_RED_N,"Negli ultimi 12 mesi ha compilato, modificato, revisionato o approvato la Sua dichiarazione dei"
+285,PA_CER,"Negli ultimi 12 mesi, per motivi privati, ha utilizzato siti web o app della Pubblica Amministr"
+286,PA_PPS,"Negli ultimi 12 mesi, per motivi privati, ha utilizzato siti web o app della Pubblica Amministr"
+287,PA_SC,"Negli ultimi 12 mesi, per motivi privati, ha utilizzato siti web o app della Pubblica Amministr"
+288,PA_ALT,"Negli ultimi 12 mesi, per motivi privati, ha utilizzato siti web o app della pubblica amministr"
+289,PANO_DOC,"Motivi per cui non ha richiesto documenti ufficiali, prestazioni di previdenza sociale altre is"
+290,PANO_SKIL,"Motivi per cui non ha richiesto documenti ufficiali, prestazioni di previdenza sociale altre is"
+291,PANO_SIC,"Motivi per cui non ha richiesto documenti ufficiali, prestazioni di previdenza sociale altre is"
+292,PANO_PER,"Motivi per cui non ha richiesto documenti ufficiali, prestazioni di previdenza sociale altre is"
+293,PANO_ALT,"Motivi per cui non ha richiesto documenti ufficiali, prestazioni di previdenza sociale altre is"
+294,PAPR_APP,Problemi riscontrati nell'utilizzo di siti web o app della Pubblica Amministrazione o dei gesto
+295,PAPR_TEC,Problemi riscontrati nell'utilizzo di siti web o app della Pubblica Amministrazione o dei gesto
+296,PAPR_ACC,Problemi riscontrati nell'utilizzo di siti web o app della Pubblica Amministrazione o dei gesto
+297,PAPR_ALT,Problemi riscontrati nell'utilizzo di siti web o app della Pubblica Amministrazione o dei gesto
+298,PAPR_NO,Problemi riscontrati nell'utilizzo di siti web o app della Pubblica Amministrazione o dei gesto
+299,INTCOM,ha mai comprato o ordinato merci e/o servizi per uso privato su internet
+300,B_ABB,"Negli ultimi 3 mesi ha comprato capi di abbigliamento, incluso quello sportivo, scarpe o access"
+301,B_SPORT,negli ultimi 3 mesi ha comprato articoli sportivi
+302,B_TOYS,negli ultimi 3 mesi ha comprato giocattoli
+303,B_HOME,negli ultimi 3 mesi ha comprato articoli per la casa
+304,B_MUFIL,"Negli ultimi 3 mesi ha comprato cd, vinili o film/serie tv come dvd, blu-ray"
+305,B_LIBRI,negli ultimi 3 mesi ha comprato libri
+306,B_PC,"negli ultimi 3 mesi ha comprato Computer, tablet, telefoni cellulari, smartphone"
+307,B_TV,negli ultimi 3 mesi ha comprato TV
+308,B_FARM,negli ultimi 3 mesi ha comprato farmaci
+309,B_PASTI,negli ultimi 3 mesi ha comprato consegne da ristoranti pasti
+310,B_CIBO,negli ultimi 3 mesi ha comprato prodotti alimentari
+311,B_COSM,negli ultimi 3 mesi ha comprato prodotti di cosmesi
+312,B_IGENE,negli ultimi 3 mesi ha comprato prodotti per la pulizia della casa
+313,B_VEICOLI,"negli ultimi 3 mesi ha comprato biciclette, ciclomotori auto"
+314,B_ALT,negli ultimi 3 mesi ha comprato ALTRE MERCI
+315,B_NO,negli ultimi 3 mesi non ho comprato merci
+316,MS_ABBINT1,Negli ultimi 3 mesi quali tipi di merci e/o servizi ha acquistato: abbonamenti ad internet o a
+317,MS_ABBELE1,Negli ultimi 3 mesi quali tipi di merci e/o servizi ha acquistato: abbonamenti fornitura elettr
+318,MS_NO1,Negli ultimi 3 mesi quali tipi di merci e/o servizi ha acquistato: nessuno
+319,S_MUSIC,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento:Musi
+320,S_FILM,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento:FILM
+321,S_QUOT,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento: new
+322,S_GIOCH1,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento: gio
+323,S_SAL,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento:APP
+324,S_APPAL,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento:ALTR
+325,S_NOAPP1,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento: nes
+326,P2P_TRAAG1,Negli ultimi 3 mesi ha acquistato tramite siti web o app o un servizio di trasporto da agenzie
+327,P2P_ACCAG1,Negli ultimi 3 mesi ha acquistato tramite siti web o app: affitto di alloggio
+328,MS_TICK,"Negli ultimi 3 mesi ha acquistato tramite siti web o app: biglietti per eventi sportivi, concer"
+329,S_BOOK1,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento: lib
+330,S_SOFT1,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento: sof
+331,S_GIOCHI1,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento: gio
+332,S_NO,Negli ultimi 3 mesi ha acquistato o si ï¿½ abbonato a uno dei seguenti servizi a pagamento: nes
+333,IOT_ALRM,Quali dei seguenti dispositivi o sistemi connessi ad internet ha utilizzato: sistemi connessi a
+334,IOT_ASS,Quali dei seguenti dispositivi o sistemi connessi ad internet ha utilizzato: app che svolgono l
+335,IOT_ENER,Quali dei seguenti dispositivi o sistemi connessi ad internet ha utilizzato: sistemi connessi a
+336,IOT_ELET,Quali dei seguenti dispositivi o sistemi connessi ad internet ha utilizzato: elettrodomestici
+337,IOT_NODISP,Quali dei seguenti dispositivi o sistemi connessi ad internet ha utilizzato: non ho utilizzato
+338,IOT_NOKNW,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: non
+339,IOT_NOSER,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: non
+340,IOT_NOCOST,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: per
+341,IOT_NOSKIL,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: non
+342,IOT_NOCOMP,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: non
+343,IOT_NOPRIVA,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: per
+344,IOT_NOSICU,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: per
+345,IOT_NOSAL,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: per
+346,IOT_NOALT,Per quale motivo non ha utilizzato nessuno dei dispositivi o sistemi connessi ad internet: altr
+347,IOT_TVN,"Dispostivi usati, se presenti nella sua abitazione smart-tv"
+348,IOT_CONSN,"Dispostivi usati, se presenti nella sua abitazione, consolle per videogiochi"
+349,IOT_BLUEN,"Dispostivi usati , se presenti nella sua abitazione: smart speaker casse, altoparlanti e/o altr"
+350,IOT_WATCN,"Dispositivi connessi ad internet utilizzati: smart watch, fascia per il fitness, cuffie e/o occ"
+351,IOT_SALN,"Dispositivi connessi ad internet utilizzati: dispositivi per monitorare la pressione sanguigna,"
+352,IOT_TOYN,Dispositivi connessi ad internet utilizzati: giocattoli connessi ad internet (ad es. Robot o pu
+353,IOT_CARN,Dispositivi connessi ad internet utilizzati: connessione wireless integrata nellï¿½automobile
+354,IOT_PR,Problemi riscontrati nellï¿½utilizzo dei dispositivi o dei sistemi collegati a internet: protez
+355,IOT_PRS,Problemi riscontrati nellï¿½utilizzo dei dispositivi o dei sistemi collegati a internet: proble
+356,IOT_PRD,Problemi riscontrati nellï¿½utilizzo dei dispositivi o dei sistemi collegati a internet: diffic
+357,IOT_PRALT,Problemi riscontrati nellï¿½utilizzo dei dispositivi o dei sistemi collegati a internet: altro
+358,CENFUO,Frequenza con cui va a cena o pranzo fuori
+359,LQUOT,Legge quotidiani almeno una volta alla settimana?
+360,QUONLINE,Legge quotidiani online almeno una volta alla settimana?
+361,LIBRI,ha letto libri negli ultimi 12 mesi?
+362,NLIBRIM,ricostruita Numero di libri letti negli ultimi 12 mesi (considerare solo i libri letti per moti
+363,NLIBRI_CARM,ricostruita numero di libri cartacei letti num.
+364,NLEBOOM,ricostruita Numero di e-book letti negli ultimi 12 mesi num.
+365,NLAUDIOM,ricostruita Numero di audiolibri ascoltati negli ultimi 12 mesi num.
+366,RIVSET,Abitualmente legge qualche rivista settimanale?
+367,NOSETT,Abitualmente legge qualche periodico non settimanale?
+368,CHIES,Abitualmente con che frequenza si reca in chiesa o in altro luogo di culto?
+369,SITEC,Soddisfazione per la situazione economica negli ultimi 12 mesi
+370,SALUT,Soddisfazione per la propria salute negli ultimi 12 mesi
+371,RELFAM,Soddisfazione per le relazioni familiari negli ultimi 12 mesi
+372,RELAM,Soddisfazione per le relazioni con amici negli ultimi 12 mesi
+373,TEMLIB,Soddisfazione per il tempo libero negli ultimi 12 mesi
+374,AMBIENTE,"Soddisfazione per la situazione ambientale (aria, acqua, ecc.) della zona in cui vive"
+375,PAESAGGIO,"Secondo lei, il paesaggio del luogo in cui vive ï¿½ affetto da evidente degrado?"
+376,SODLAV2,Solo per le persone che lavorano Pensi agli ultimi 12 mesi. Lei si ritiene soddisfatto del suo
+377,POLIT,Con quale frequenza le capita di parlare di politica?
+378,PPAPO,Ha partecipato negli ultimi 12 mesi a riunioni di: partiti politici
+379,PSIND,Ha partecipato negli ultimi 12 mesi a riunioni di: organizzazioni sindacali ( sindacati confede
+380,PGRVO,Ha partecipato negli ultimi 12 mesi a riunioni di: associazioni o gruppi di volontariato
+381,PAECO,Ha partecipato negli ultimi 12 mesi a riunioni di: associazioni ecologiche per i diritti civili
+382,PCULT,"Ha partecipato negli ultimi 12 mesi a riunioni di: associazioni culturali, ricreative o di altr"
+383,PASPRO,Ha partecipato negli ultimi 12 mesi a riunioni di: associazioni professionali o di categoria
+384,COMIZ,Negli ultimi 12 mesi ha partecipato a un comizio
+385,CORTEI,Negli ultimi 12 mesi ha partecipato a un corteo
+386,DIBPO,Negli utlimi 12 mesi ha sentito un dibattito politico
+387,FINPA,"Negli ultimi 12 mesi ha dato soldi a un partito (per sottoscrizione, sostegno)"
+388,FINAS,Negli ultimi 12 mesi ha dato soldi ad un'associazione
+389,VOLON,Negli ultimi 12 mesi ha svolto attivitï¿½ gratuita per associazioni o gruppi di volontariato
+390,ATGRA,Negli ultimi 12 mesi ha svolto attivitï¿½ gratuita per un'associazione non di volontariato
+391,VOLPA,Negli ultimi 12 mesi ha svolto attivitï¿½ gratuita per un partito
+392,VOLSI,Negli ultimi 12 mesi ha svolto attivitï¿½ gratuita per un sindacato
+393,INCSPI,Negli ultimi 12 mesi ha partecipato a incontri o iniziative realizzate o promosse da parrocchie
+394,POLITI,Con che frequenza si informa dei fatti della politica italiana?
+395,PRADIO,Si informa di politica attraverso: radio
+396,PTELEV,Si informa di politica attraverso: televisione
+397,PQUOT,Si informa di politica attraverso: quotidiani
+398,PSETT,Si informa di politica attraverso: settimanali
+399,PARIV,Si informa di politica attraverso: altre riviste non settimanali
+400,PAMICI,Si informa di politica attraverso: amici
+401,PPAREN,Si informa di politica attraverso: parenti
+402,PCONOS,Si informa di politica attraverso: conoscenti
+403,PCOLAV,Si informa di politica attraverso: colleghi di lavoro
+404,ORGPOL,Si informa di politica attraverso: incontri o riunioni presso organizzazioni politiche
+405,ORGSIN,Si informa di politica attraverso: incontri o riunioni presso organizzazioni sindacali
+406,ALTPOL,Si informa di politica attraverso: altro
+407,PWEB,Si informa dei fatti della politica attraverso Internet?
+408,PWEBM1_1,"in che modo si informa dei fatti della politica attraverso Internet: legge o scarica giornali,"
+409,PWEBM1_2,in che modo si informa dei fatti della politica attraverso Internet: legge o scarica riviste on
+410,PWEBM2,In che modo si informa dei fatti della politica attraverso Internet: ascolta radio e TV online
+411,PWEBM3,In che modo si informa dei fatti della politica attraverso Internet: tramite siti di partiti po
+412,PWEBM4,In che modo si informa dei fatti della politica attraverso Internet: tramite i social network (
+413,PWEBM5,"In che modo si informa dei fatti della politica attraverso Internet: tramite blog, newsgroup o"
+414,PWEBM6,In che modo si informa dei fatti della politica attraverso Internet: altro
+415,NPOLI,Motivo per cui non si informa mai di politica: non mi interessa
+416,NTPOLI,Motivo per cui non si informa mai di politica: non ho tempo
+417,POLCOM,Motivo per cui non si informa mai di politica: ï¿½ un argomento troppo complicato
+418,SFIPOL,Motivo per cui non si informa mai di politica: sono sfiduciato della politica italiana
+419,NALTPO,Motivo per cui non si informa mai di politica: altro
+420,UFFAN,"Negli ultimi 12 mesi le ï¿½ capitato di servirsi degli uffici anagrafici ( comune, circoscrizio"
+421,TUFAN,In genere quanto aspetta in fila prima di essere servito?
+422,VOTOAN,giudizio complessivo sul servizio ricevuto negli uffici anagrafici
+423,GORAR,Trova comodo l'orario?
+424,CORAR,Se le si desse l'opportunitï¿½ di cambiare l'orario di sportello come lo vorrebbe?
+425,USOSS,Negli ultimi 12 mesi si ï¿½ recato in una ASL per prenotare una visita o un'analisi o per prati
+426,TEMSS,In genere quanto aspetta in fila prima di essere servito?
+427,VOTOUSL,giudizio complessivo sul servizio ricevuto nell' Asl
+428,GOUSL,Trova comodo l'orario?
+429,COUSL,Se le si desse l'opportunitï¿½ di cambiare l'orario di sportello come lo vorrebbe?
+430,UFFPOS,Negli ultimi 12 mesi si ï¿½ recato presso un ufficio postale?
+431,RACCO,Frequenza con cui si reca all'ufficio postale per: spedizione raccomandate
+432,VAGLIA,Frequenza con cui si reca all'ufficio postale per: spedizione vaglia
+433,VCOC,Frequenza con cui si reca all'ufficio postale per: versamenti in conto corrente
+434,RPENS,Frequenza con cui si reca all'ufficio postale per: ritiro pensioni
+435,RPARA,Frequenza con cui si reca all'ufficio postale per: ritiro pacchi o raccomandate
+436,TRACC,Tempo di attesa in fila per spedizione raccomandate
+437,TVAGL,Tempo di attesa in fila per spedizione vaglia
+438,TCCP,Tempo di attesa in fila per versamenti in conto corrente
+439,TRPEN,Tempo di attesa in fila per ritiro pensioni
+440,TPARA,Tempo di attesa in fila per ritiro pacchi o raccomandate
+441,VOTOPOS,giudizio complessivo sul servizio ricevuto all'ufficio postale
+442,GOSPO,Trova comodo l'orario?
+443,COSPO,se le si desse l'opportunitï¿½ di cambiare l'orario di sportello come lo vorrebbe?
+444,BANCA,Negli ultimi 12 mesi le ï¿½ capitato di servirsi di una banca per operazioni di sportello come
+445,TABAN,In genere quanto aspetta in fila prima di essere servito?
+446,BANCM,Possiede il bancomat?
+447,CCRED,Possiede carta di credito?
+448,NCCREDM,ricostruita Quante carte di credito possiede?
+449,USOTRAM,"Utilizza autobus, filobus, tram all'interno del suo comune?"
+450,FCORS,Giudizio su: frequenza delle corse
+451,PUNT,Giudizio su: puntualitï¿½
+452,POSSE,Giudizio su: possibilitï¿½ di trovare posto a sedere
+453,VELCO,Giudizio su: velocitï¿½ della corsa
+454,PULIZ,Giudizio su: pulizia delle vetture
+455,COMOF,Giudizio su: comoditï¿½ dell'attesa alle fermate
+456,COLLEG,Giudizio su: possibilitï¿½ di collegamento tra zone del comune
+457,COMOR,Giudizio su: comoditï¿½ di orari
+458,CPSBI,Giudizio su: costo del biglietto
+459,VOTOBU,"Giudizio complessivo sul servizio di autobus, filobus, tram"
+460,USOPUL,"Utilizza pullman, corriere che collegano comuni diversi?"
+461,FRCMT,Giudizio su: frequenza delle corse
+462,PUNMT,Giudizio su: puntualitï¿½
+463,SEDMT,Giudizio su: possibilitï¿½ di trovare posto a sedere
+464,VELMT,Giudizio su: velocitï¿½ della corsa
+465,PULMT,Giudizio su: pulizia delle vetture
+466,ATTMT,Giudizio su: comoditï¿½ dell'attesa alle fermate
+467,COLCO,Giudizio su: possibilitï¿½ di collegamento con altri comuni
+468,ORAMT,Giudizio su: comoditï¿½ di orari
+469,CBMT,Giudizio su: costo del biglietto
+470,INFMT,Giudizio su: informazioni sugli orari e sui servizi
+471,VOTOPU,"Giudizio complessivo del servizio di pullman, corriere tra comuni diversi"
+472,USTRE,Utilizza il treno?
+473,FRTRE,Giudizio su: frequenza delle corse
+474,PUTRE,Giudizio su: puntualitï¿½ dei treni
+475,PSTRE,Giudizio su: possibilitï¿½ di trovare posto a sedere
+476,VETRE,Giudizio su: velocitï¿½ della corsa
+477,PULSTR,Giudizio su: pulizia delle vetture
+478,COMAT,Giudizio su: comoditï¿½ dell'attesa alle fermate
+479,COLCOM,Giudizio su: possibilitï¿½ di collegamento con altri comuni dei treni
+480,COMORA,Giudizio su: comoditï¿½ di orari
+481,COBIG,Giudizio su: costo del biglietto
+482,INFTR,"Giudizio su: informazioni sul servizio (orari, destinazioni, punti di ristoro)"
+483,VOTOTR,Giudizio complessivo sui treni
+484,BIKESH,negli ultimi 12 mesi ha fatto ricorso a servizi di bike sharing
+485,CARSH,negli ultimi 12 mesi ha fatto ricorso a servizi di car sharing
+486,USOCICL,Utilizza un ciclomotore o un motociclo come conducente
+487,USOAUT,Utilizza l'automobile come conducente
+488,SERRA,"Problemi ambientali che la preoccupano maggiormente: effetto serra, buco nell'ozono"
+489,ESTINZ,Problemi ambientali che la preoccupano maggiormente: estinzione di alcune specie animali/vegeta
+490,CAMCLI,Problemi ambientali che la preoccupano maggiormente: cambiamenti climatici
+491,SMARIF,Problemi ambientali che la preoccupano maggiormente: produzione e smaltimento rifiuti
+492,AMRUM,Problemi ambientali che la preoccupano maggiormente: rumore
+493,IARIA,Problemi ambientali che la preoccupano maggiormente: inquinamento dell'aria
+494,INQSU,Problemi ambientali che la preoccupano maggiormente: inquinamento del suolo
+495,INQFIU,"Problemi ambientali che la preoccupano maggiormente: inquinamento di fiumi, mari"
+496,DISDR,"Problemi ambientali che la preoccupano maggiormente: dissesto idrogeologico (terremoti, alluvio"
+497,CATASTR,Problemi ambientali che la preoccupano maggiormente: catastrofi provocate dall'uomo
+498,FORES2,Problemi ambientali che la preoccupano maggiormente: distruzione delle foreste
+499,INQELET2,Problemi ambientali che la preoccupano maggiormente: inquinamento elettromagnetico
+500,PAESAG2,Problemi ambientali che la preoccupano maggiormente: rovina del paesaggio (eccessiva costruzion
+501,ESRISO2,"Problemi ambientali che la preoccupano maggiormente: esaurimento risorse naturali (acqua, miner"
+502,ALTAMB2,Problemi ambientali che la preoccupano maggiormente: altri problemi
+503,ETICHET,leggere ingredienti su etichette prodotti alimentari
+504,BIOLOG,acquistare alimenti e prodotti biologici
+505,ALOCAL,acquistare alimenti e prodotti locali
+506,GCARTE,gettare carte per la strada
+507,SPRACQUA,fare attenzione a non sprecare l'acqua
+508,SPRENER,fare attenzione a non sprecare energia elettrica
+509,DOPFIL,parcheggiare l'automobile in doppia fila
+510,ARUMOR,fare attenzione a non adottare comportamenti di guida rumorosi
+511,TRASPO,scegliere mezzi di trasporto alternativi all'auto e/o altri veicoli a motore privati
+512,USAGETT,utilizzare prodotti usa e getta
+513,SICURO,Quanto si sente sicuro camminando per la strada quando ï¿½ buio ed ï¿½ solo/a nella zona in cui
+514,DROGAN,nella zona in cui abita con che frequenza le capita di vedere: persone che si drogano
+515,SPADRO,nella zona in cui abita con che frequenza le capita di vedere: persone che spacciano droga
+516,PROST,nella zona in cui abita con che frequenza le capita di vedere: prostitute in cerca di clienti
+517,VANDAL,nella zona in cui abita con che frequenza le capita di vedere: atti di vandalismo contro il ben
+518,MENDI,"frequenza con cui capita di vedere vagabondi, persone senza fissa dimora"
+519,VOTOVI,"0=per niente soddisfatto, 10=molto soddisfatto Attualmente quanto si ritiene soddisfatto della"
+520,FUTUASP,"Nei prossimi 5 anni lei pensa che la sua situazione personale: migliorerï¿½, resterï¿½ la stess"
+521,FIDUCIA,Lei pensa che ci si possa fidare della maggior parte della gente oppure bisogna stare molto att
+522,FIDU1,Immagini di aver perso il suo portafoglio con che probabilitï¿½ pensa le venga restituito da: u
+523,FIDU2,Immagini di aver perso il suo portafoglio con che probabilitï¿½ pensa le venga restituito da: u
+524,FIDU3,Immagini di aver perso il suo portafoglio con che probabilitï¿½ pensa le venga restituito da: u
+525,PUNTIFI6,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+526,PUNTIFI1,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+527,PUNTIFI5,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+528,PUNTIFI7,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+529,PUNTIFI8,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+530,PUNTIFI10,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+531,PUNTIFI4,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+532,PUNTIFI2,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+533,PUNTIFI3,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+534,FORZE_ARMATE,"0=non si fida per niente, 10=si fida"
+535,PUNTIFI12,"0=non si fida per niente, 10=si fida completamente Utilizzando un punteggio da 0 a 10 indichi q"
+536,PUNTIFI13,"0=non si fida per niente, 10=si fida"
+537,FIDMED,Utilizzando un punteggio da 0 a 10 potrebbe indicare quanto personalmente si fida di: medici de
+538,FIDINF,Utilizzando un punteggio da 0 a 10 potrebbe indicare quanto personalmente si fida di: altro per
+539,FIDSCIE,Utilizzando un punteggio da 0 a 10 potrebbe indicare quanto personalmente si fida di: scienziat
+540,IMPITA1,Ognuno possa dire liberamente ciï¿½ che pensa
+541,IMPITA2,Uomini e donne abbiano uguali diritti e possano accedere a tutti i lavori con lo stesso stipend
+542,IMPITA3,"Tutte le persone abbiano gli stessi diritti a prescindere dal paese di provenienza, dal colore"
+543,IMPITA4,Giornali e mass media possano esprimere diversi punti di vista senza essere censurati
+544,IMPITA5,Ognuno possa professare liberamente la propria religione
+545,IMPITA6,Si tengano periodicamente libere elezioni
+546,IMPITA7,Tutte le persone abbiano gli stessi diritti a prescindere dall'orientamento sessuale
+547,IMPITA8,"Le organizzazioni a difesa dei diritti civili, sociali e umani operino liberamente"
+548,IMPITA9,Il sistema giudiziario sia equo
+549,IMPITA10,I partiti di opposizione possano operare liberamente
+550,NEUROB,ricostruita disturbi nervosi che per le persone di 65 anni e piï¿½ comprendono anche alzheimer
+551,BMI,ricostruita indice di massa corporea per persone di 18 anni e piu'
+552,MH,Lï¿½indice di salute mentale MH ï¿½ una misura di disagio
+553,BMIMIN,calcolato utilizzando 'The Extended
+554,SENELE,"Complessivamente, quanto ï¿½ soddisfatto del servizio dell'energia elettrica?"
+555,GCONT,Giudizio su: continuitï¿½ del servizio (assenza di guasti e interruzioni della fornitura)
+556,GASBAL,Giudizio su: assenza di sbalzi di tensione
+557,GDISPL,Giudizio su: comprensibilitï¿½ del display
+558,GCBOL,Giudizio su: comprensibilitï¿½ delle bollette
+559,GINF,"Giudizio su: informazione sul servizio (informazioni su tariffe, condizioni di erogazione, alla"
+560,GAS5,Come arriva il gas all'abitazione?
+561,SGAS,Complessivamente quanto ï¿½ soddisfatto del servizio gas?
+562,GASPR2,Giudizio sul servizio del gas: adeguatezza pressione di fornitura
+563,FLGAS,Giudizio sul servizio del gas: frequenza di lettura dei contatori
+564,COMBOL,Giudizio sul servizio del gas: comprensibilitï¿½ delle bollette
+565,SERINF,"Giudizio sul servizio del gas: informazione sul servizio (informazioni su tariffe, condizioni d"
+566,SICURET,Giudizio sul servizio del gas: sicurezza della rete di distribuzione
+567,SPORCO,La zona in cui abita presenta: sporcizia nelle strade
+568,PARCH,La zona in cui abita presenta: difficoltï¿½ di parcheggio
+569,COLMP,La zona in cui abita presenta: difficoltï¿½ di collegamento coi mezzi pubblici
+570,TRAF,La zona in cui abita presenta: traffico
+571,INQAR,La zona in cui abita presenta: inquinamento dell'aria
+572,RUMORE,La zona in cui abita presenta: rumore
+573,CRIM,La zona in cui abita presenta: rischio di criminalitï¿½
+574,ODSGR,La zona in cui abita presenta: odori sgradevoli
+575,ILLSTR,La zona in cui abita presenta: scarsa illuminazione delle strade
+576,CONPAV,La zona in cui abita presenta: cattive condizioni della pavimentazione stradale
+577,PARCHI,"Nella zona in cui abita la famiglia ci sono parchi, giardini o altro verde pubblico raggiungibi"
+578,CICL,Nella zona in cui abita ci sono piste ciclabili raggiungibili in bicicletta in meno di 5 minuti
+579,AFFACCIO,La sua abitazione affaccia su una strada in cui il passaggio di veicoli in una normale giornata
+580,STANZEM,Si Considera anche la cucina se ha
+581,TERRAZ,L'abitazione dispone di terrazzo o balcone?
+582,GARDEN,L'abitazione dispone di giardino privato?
+583,TELEF,L'abitazione dispone di telefono
+584,NELENC,Il numero telefonico dell'abitazione principale ï¿½ riportato nell'elenco telefonico del comune
+585,RISCAL,L'abitazione dispone di riscaldamento?
+586,TRISC,Tipo di riscaldamento prevalente:
+587,REACQ1,L'acqua arriva all'abitazione attraverso rete comunale
+588,REACQ2,"L'acqua arriva all'abitazione attraverso pozzi, sorgenti o altre fonti private"
+589,REACQ3,L'acqua arriva all'abitazione attraverso sistemi raccolta acqua piovana
+590,REACQ4,L'acqua arriva all'abitazione attraverso autobotti
+591,REACQ5,L'acqua arriva all'abitazione in altro modo
+592,SODACQUA,Complessivamente quanto ï¿½ soddisfatto del servizio idrico?
+593,AGFORN,Giudizio sul servizio idrico: assenza di interruzioni della fornitura
+594,AGPRESS,Giudizio sul servizio idrico: livello di pressione dell'acqua
+595,AGODOR,"Giudizio sul servizio idrico: odore, sapore e limpidezza dell'acqua"
+596,AGLETTUR,Giudizio sul servizio idrico: frequenza di lettura dei contatori
+597,AGFATTUR,Giudizio sul servizio idrico: frequenza della fatturazione
+598,AGBOLLET,Giudizio sul servizio idrico: comprensibilitï¿½ delle bollette
+599,SPEAB,Si verificano uno o piï¿½ dei seguenti problemi: le spese per l'abitazione sono troppo alte
+600,ABIPIC,Si verificano uno o piï¿½ dei seguenti problemi: l'abitazione ï¿½ troppo piccola
+601,ABLONF,Si verificano uno o piï¿½ dei seguenti problemi: l'abitazione ï¿½ troppo distante da altri fami
+602,ACQUA,Si verificano uno o piï¿½ dei seguenti problemi: irregolaritï¿½ nella erogazione dell'acqua
+603,ABICC,Si verificano uno o piï¿½ dei seguenti problemi: l'abitazione ï¿½ in cattive condizioni
+604,ERACQ,Frequenza con cui negli ultimi 12 mesi si ï¿½ verificata l'irregolaritï¿½ nella erogazione dell
+605,SIACQ,La famiglia o qualche componente beve abitualmente acqua del rubinetto in casa
+606,ACQBRU,Nessun componente della famiglia beve acqua di rubinetto perchï¿½ non ï¿½ bevibile o non ci fid
+607,NOACQ,Nessun componente della famiglia beve acqua di rubinetto per altro motivo
+608,GODAB,A che titolo la famiglia occupa l'abitazione?
+609,FARMA,Difficoltï¿½ a raggiungere: farmacie
+610,PRSOC,Difficoltï¿½ a raggiungere: pronto soccorso
+611,UFFPO,Difficoltï¿½ a raggiungere: ufficio postale
+612,POLICE,"Difficoltï¿½ a raggiungere: polizia, carabinieri"
+613,UFFCOM,Difficoltï¿½ a raggiungere: uffici comunali
+614,NIDO,Difficoltï¿½ a raggiungere: asilo nido
+615,SMATER,Difficoltï¿½ a raggiungere: scuola dell'infanzia
+616,SELEM,Difficoltï¿½ a raggiungere: scuola primaria
+617,SMINF,Difficoltï¿½ a raggiungere: scuola secondaria di primo grado
+618,MERCAT,"Difficoltï¿½ a raggiungere: negozi di generi alimentari, mercati"
+619,SMERC,Difficoltï¿½ a raggiungere: supermercati
+620,CRARIF,Giudizio sul costo sostenuto per: raccolta rifiuti urbani
+621,CERACQ,Giudizio sul costo sostenuto per: erogazione dell'acqua
+622,POAPO,La zona in cui vive ï¿½ servita/coinvolta dalla raccolta porta a porta dei rifiuti?
+623,R_CARTA,Abitudine a raccogliere i rifiuti in modo separato tramite gli appositi contenitori: carta e ca
+624,R_VETRO,Abitudine a raccogliere i rifiuti in modo separato tramite gli appositi contenitori: vetro
+625,R_FARM,Abitudine a raccogliere i rifiuti in modo separato tramite gli appositi contenitori: farmaci
+626,R_BAT,Abitudine a raccogliere i rifiuti in modo separato tramite gli appositi contenitori: batterie u
+627,R_LATAL,Abitudine a raccogliere i rifiuti in modo separato tramite gli appositi contenitori: contenitor
+628,R_PLAS,Abitudine a raccogliere i rifiuti in modo separato tramite gli appositi contenitori: contenitor
+629,R_RORG,Abitudine a raccogliere i rifiuti in modo separato tramite gli appositi contenitori: rifiuti or
+630,R_SECCO,Abitudine alla raccolta differenziata per: rifiuto secco/indifferenziato
+631,R_ALT,Abitudine a raccogliere i rifiuti in modo separato tramite gli appositi contenitori: altro
+632,SODPOAPO,Complessivamente la sua famiglia quanto ï¿½ soddisfatta del servizio di raccolta dei rifiuti po
+633,NOSPO1,Famiglia non soddisfatta per il servizio di raccolta dei rifiuti porta a porta per: problemi le
+634,NOSPO7,Famiglia non soddisfatta per il servizio di raccolta dei rifiuti porta a porta per: problemi le
+635,NOSPO2,Famiglia non soddisfatta per il servizio di raccolta dei rifiuti porta a porta per: problemi le
+636,NOSPO3,Famiglia non soddisfatta per il servizio di raccolta dei rifiuti porta a porta per: odori causa
+637,NOSPO4,Famiglia non soddisfatta per il servizio di raccolta dei rifiuti porta a porta per: non ritiene
+638,NOSPO5,Famiglia non soddisfatta per il servizio di raccolta dei rifiuti porta a porta per: non crede c
+639,NOSPO8,Famiglia non soddisfatta per il servizio di raccolta dei rifiuti porta a porta per: non sono ad
+640,NOSPO6,Famiglia non soddisfatta per il servizio di raccolta dei rifiuti porta a porta per: altro motiv
+641,ECOSTAZ,"Nella zona in cui vive la sua famiglia ci sono stazioni ecologiche, cioï¿½ centri dove ï¿½ poss"
+642,USOECO2,La sua famiglia ha mai portato rifiuti in questi centri di raccolta?
+643,ECOCAR,Tipo di rifiuti portato nelle stazioni ecologiche: carta/cartone di dimensioni ingombranti
+644,ECOVET,Tipo di rifiuti portato nelle stazioni ecologiche: vetro
+645,ECOPLA,Tipo di rifiuti portato nelle stazioni ecologiche: plastica di dimensioni ingombranti
+646,ECOPNE,Tipo di rifiuti portato nelle stazioni ecologiche: pneumatici
+647,ECOMET,Tipo di rifiuti portato nelle stazioni ecologiche: metalli
+648,ECOLEG,Tipo di rifiuti portato nelle stazioni ecologiche: legno
+649,ECOFAR,Tipo di rifiuti portato nelle stazioni ecologiche: farmaci scaduti
+650,ECOBAT,Tipo di rifiuti portato nelle stazioni ecologiche: batterie usate
+651,ECOING,Tipo di rifiuti portato nelle stazioni ecologiche: rifiuti ingombranti
+652,ECOINE,Tipo di rifiuti portato nelle stazioni ecologiche: inerti
+653,ECOELE,Tipo di rifiuti portato nelle stazioni ecologiche: apparecchiature elettriche ed elettroniche
+654,ECOOLI,Tipo di rifiuti portato nelle stazioni ecologiche: olio esausto
+655,ECOINF,Tipo di rifiuti portato nelle stazioni ecologiche: rifiuti tossici e/o infiammabili
+656,ECOPOT,Tipo di rifiuti portato nelle stazioni ecologiche: verde e potature
+657,ECOTESS,Tipo di rifiuti portato nelle stazioni ecologiche: rifiuti tessili
+658,ECOALT,Tipo di rifiuti portato nelle stazioni ecologiche: altro
+659,NOECO,Motivo per cui la famiglia non ha mai portato rifiuti nelle stazioni ecologiche
+660,SPIDIF1,Cosa potrebbe spingere la famiglia ad effettuare o fare piï¿½ spesso la raccolta differenziata:
+661,SPIDIF2,Cosa potrebbe spingere la famiglia ad effettuare o fare piï¿½ spesso la raccolta differenziata:
+662,SPIDIF3,Cosa potrebbe spingere la famiglia ad effettuare o fare piï¿½ spesso la raccolta differenziata:
+663,SPIDIF4,Cosa potrebbe spingere la famiglia ad effettuare o fare piï¿½ spesso la raccolta differenziata:
+664,SPIDIF5,Cosa potrebbe spingere la famiglia ad effettuare o fare piï¿½ spesso la raccolta differenziata:
+665,SPIDIF6,Cosa potrebbe spingere la famiglia ad effettuare o fare piï¿½ spesso la raccolta differenziata:
+666,SPIDIF7,Cosa potrebbe spingere la famiglia ad effettuare o fare piï¿½ spesso la raccolta differenziata:
+667,SPIDIF8,Cosa potrebbe spingere la famiglia ad effettuare o fare piï¿½ spesso la raccolta differenziata:
+668,CAMAB,Negli ultimi 12 mesi uno o piï¿½ dei componenti della famiglia attuale ha cambiato abitazione?
+669,PCAMAB,Negli ultimi 12 mesi la famiglia o qualche componente ha preso seriamente in considerazione la
+670,ASSCA,La famiglia ï¿½ assicurata contro i furti nell'abitazione?
+671,COLFAGG,ricostruita La famiglia si avvale di: collaboratore/collaboratrice domestico/a
+672,BABYSAGG,ricostruita La famiglia si avvale di: baby-sitter
+673,ASSANZAGG,ricostruita La famiglia si avvale di: persona che assiste un anziano o un disabile
+674,HCOLF,00=saltuariamente Ore a settimana collaboratore/collaboratrice domestico/a
+675,HBABYS,00=saltuariamente Ore a settimana baby-sitter
+676,HASANZ,00=saltuariamente Ore a settimana persona che assiste un anziano o un disabile
+677,AVVOC,Negli ultimi 12 mesi la famiglia ï¿½ ricorsa alla consulenza di: avvocato
+678,NOTAIO,Negli ultimi 12 mesi la famiglia ï¿½ ricorsa alla consulenza di: notaio
+679,COMMER,Negli ultimi 12 mesi la famiglia ï¿½ ricorsa alla consulenza di: commercialista
+680,NOMOD,Organizzazione della famiglia per la compilazione dei modelli per il pagamento delle tasse: la
+681,COMFAM,Organizzazione della famiglia per la compilazione dei modelli per il pagamento delle tasse: se
+682,NONPAG,Organizzazione della famiglia per la compilazione dei modelli per il pagamento delle tasse: se
+683,PAGAM,Organizzazione della famiglia per la compilazione dei modelli per il pagamento delle tasse: se
+684,LAVST,Possesso di: lavastoviglie
+685,NLAVSTM,ricostruita numero lavastoviglie
+686,LAVATR,Possesso di: lavatrice
+687,NLAVATM,ricostruita numero lavatrici
+688,VIDER,Possesso di: videoregistratore
+689,NVIDER,numero videoregistratore
+690,VIDEO,Possesso di: videocamera
+691,NVIDEOM,ricostruita numero videocamere
+692,DVD,Possesso di: Lettore DVD/Blu Ray
+693,NDVDM,ricostruita numero lettori DVD/Blu Ray
+694,HIFI,Possesso di: impianto stereo hi-fi per ascoltare musica
+695,NHIFIM,ricostruita numero impianto stereo hi-fi per ascoltare musica
+696,TELCOL,Possesso di: televisore
+697,NTELCOM,ricostruita numero televisori
+698,ANTEPA,Possesso di: antenna parabolica
+699,NANTEPA,numero antenna parabolica
+700,CLIMAT,"Possesso di: condizionatori, climatizzatori"
+701,NCLIMATM,"ricostruita numero condizionatori, climatizzatori"
+702,BIC,Possesso di: bicicletta
+703,NBICM,ricostruita numero di biciclette
+704,MOTOR,"Possesso di: motorino, scooter"
+705,NMOTORM,"ricostruita numero motorini, scooter"
+706,AMOTO,"Possesso di: motocicletta, moto"
+707,NMOTOM,"ricostruita numero di motociclette, moto"
+708,AUTO,La famiglia possiede l'automobile?
+709,NAUTOM,ricostruita numero automobili
+710,BOX,"La famiglia dispone di un posto macchina o di un garage di proprietï¿½, non attaccato all'abita"
+711,NBOX,Numero di posto macchina o garage posseduti
+712,LIBFAM,Quanti libri possiede la famiglia?
+713,TELCEL,La famiglia possiede il telefono cellulare?
+714,NTELCELM,ricostruita Numero di telefoni cellulari posseduti
+715,TELCIN,Il telefono o i telefoni cellulari di cui dispone la famiglia hanno la possibilitï¿½ di collega
+716,VGIOC,La famiglia possiede: consolle per videogiochi
+717,NVIGIOCM,"ricostruita Numero consolle, videogiochi, altre apparecchiature computerizzate (escluso persona"
+718,EBOOK,La famiglia possiede: lettore di e-book
+719,NEBOOKM,ricostruita Numero di lettori di e-book
+720,FOTODIG,La famiglia possiede: macchina fotografica digitale
+721,NFOTODIGM,ricostruita Numero di macchine fotografiche digitali
+722,AINTERN,La famiglia dispone di un accesso ad Internet da casa?
+723,CIDSLWIFI,"Connessione usata dalla famiglia: fissa a banda larga (es.DSL, ADSL, VDSL, cavo, fibra ottica,"
+724,CISFPAL,Connessione usata dalla famiglia: rete di telefonia mobile a banda larga con cellulare o smartp
+725,CISFMOD,Connessione usata dalla famiglia: rete di telefonia mobile a banda larga tramite SIM card o chi
+726,CIBASTR,"Connessione fissa o mobile a banda stretta (es.ISDN, 2G, GPRS, ecc.)"
+727,MOTNOAI1,Motivo per cui la famiglia non dispone di accesso ad Internet da casa: accede ad Internet da al
+728,MOTNOAI3,"Motivo per cui la famiglia non dispone di accesso ad Internet da casa: Internet non ï¿½ utile,"
+729,MOTNOAI4,Motivo per cui la famiglia non dispone di accesso ad Internet da casa: alto costo degli strumen
+730,MOTNOAI5,Motivo per cui la famiglia non dispone di accesso ad Internet da casa: alto costo del collegame
+731,MOTNOAI6,Motivo per cui la famiglia non dispone di accesso ad Internet da casa: nessuno sa usare interne
+732,MOTNOAI8,"Motivo per cui la famiglia non dispone di accesso ad Internet da casa: motivi di privacy, sicur"
+733,MOTNOAI10,Motivo per cui la famiglia non dispone di accesso ad Internet da casa: mancanza di una connessi
+734,MOTNOAI9,Motivo per cui la famiglia non dispone di accesso ad Internet da casa: altro motivo (codice)
+735,SITE,Valutazione della situazione economica della famiglia confrontata con quella di un anno fa
+736,RISEC,Con riferimento agli ultimi 12 mesi e tenendo presente le esigenze di tutti i componenti famili

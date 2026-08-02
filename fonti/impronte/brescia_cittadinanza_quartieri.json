@@ -1,0 +1,238 @@
+{
+  "id": "brescia_cittadinanza_quartieri",
+  "istanze": {
+    "borgo-trento": {
+      "byte": 337,
+      "modalita": 20,
+      "n_misurato": 6959.0,
+      "righe_grezze": 20,
+      "sha256": "c93dae2a61a217c952165a2adb6b85cb9aef80770f0e0d105c8f9ba4ef357d16"
+    },
+    "brescia-antica": {
+      "byte": 388,
+      "modalita": 23,
+      "n_misurato": 7025.0,
+      "righe_grezze": 23,
+      "sha256": "9394fc36c4a8a7ac9d97c2330ab48f5a4c8c78840266c410ba1a8375b44309c5"
+    },
+    "buffalora": {
+      "byte": 177,
+      "modalita": 9,
+      "n_misurato": 2357.0,
+      "righe_grezze": 9,
+      "sha256": "d42700ee7d4821c88d09f0110c09719cd3c2be672f4f904424370b2da138bb02"
+    },
+    "caionvico": {
+      "byte": 148,
+      "modalita": 8,
+      "n_misurato": 2263.0,
+      "righe_grezze": 8,
+      "sha256": "fc3b9ee0863446bcdd25c051bd3624c614440cb453b2157e9052734a46816fcc"
+    },
+    "casazza": {
+      "byte": 307,
+      "modalita": 17,
+      "n_misurato": 2812.0,
+      "righe_grezze": 17,
+      "sha256": "72fbe1ab1676facab5a65bf1e0705b5b0bb924e3cdc632c93998437b778766f4"
+    },
+    "centro-storico-nord": {
+      "byte": 539,
+      "modalita": 33,
+      "n_misurato": 8123.0,
+      "righe_grezze": 33,
+      "sha256": "83ae49d53f60448a32a9140b8a286717edc14ed47a481002eb277e4020613292"
+    },
+    "centro-storico-sud": {
+      "byte": 370,
+      "modalita": 22,
+      "n_misurato": 6443.0,
+      "righe_grezze": 22,
+      "sha256": "e4491c1c8830f583c79c5029b18a968d80a5a8c879aba5ca41df555219e64eb5"
+    },
+    "chiesanuova-noce-girelli": {
+      "byte": 390,
+      "modalita": 22,
+      "n_misurato": 7319.0,
+      "righe_grezze": 22,
+      "sha256": "dfe8c14a1a78f83c12a60f45294a692e685c39d5005a5c40d93be0f82b53c6a2"
+    },
+    "chiusure": {
+      "byte": 440,
+      "modalita": 25,
+      "n_misurato": 11106.0,
+      "righe_grezze": 25,
+      "sha256": "535336839e07a686d987644d64524baffb18370a7d4a393e2b9bba266a529407"
+    },
+    "crocifissa-di-rosa": {
+      "byte": 322,
+      "modalita": 18,
+      "n_misurato": 5249.0,
+      "righe_grezze": 18,
+      "sha256": "19979c2d68cef36c3a81c9abd0d3e60671f536ffad78afebce8368b2ebcafd5a"
+    },
+    "don-bosco": {
+      "byte": 383,
+      "modalita": 22,
+      "n_misurato": 7389.0,
+      "righe_grezze": 22,
+      "sha256": "cbf6c2eb40c620226b6ed515c8cbce78542df14493f38348716b40c7db332155"
+    },
+    "fiumicello": {
+      "byte": 361,
+      "modalita": 21,
+      "n_misurato": 6969.0,
+      "righe_grezze": 21,
+      "sha256": "9196477f80a61041619a555c1246b37eaa45d916f3845d521e2d69783cd407cc"
+    },
+    "folzano": {
+      "byte": 235,
+      "modalita": 13,
+      "n_misurato": 1885.0,
+      "righe_grezze": 13,
+      "sha256": "bd4ee8b81122b52921aa0bf7f40340aad7dbca60af1c9ea3182f02b2ce1397d8"
+    },
+    "fornaci": {
+      "byte": 233,
+      "modalita": 13,
+      "n_misurato": 2593.0,
+      "righe_grezze": 13,
+      "sha256": "f9d6ef3c69b5c99c4dc2868837110d7b433f409d8d77e4ae52079bf91c25429d"
+    },
+    "lamarmora": {
+      "byte": 440,
+      "modalita": 25,
+      "n_misurato": 9220.0,
+      "righe_grezze": 25,
+      "sha256": "b8087c80cc968f6b4b7a296b6e3305fd622a00ff23ac4286ad86f4bf7915986c"
+    },
+    "mompiano": {
+      "byte": 332,
+      "modalita": 19,
+      "n_misurato": 7353.0,
+      "righe_grezze": 19,
+      "sha256": "e792c56628921044554fdc1e4319ce6e6fe6efd7b2e1c98ad877b00e7a14244b"
+    },
+    "porta-cremona": {
+      "byte": 542,
+      "modalita": 32,
+      "n_misurato": 14521.0,
+      "righe_grezze": 32,
+      "sha256": "328242247c6c50350f64db61d6b598fb59c0ea28fbc854baf2547968bf9019e0"
+    },
+    "porta-milano": {
+      "byte": 414,
+      "modalita": 24,
+      "n_misurato": 6195.0,
+      "righe_grezze": 24,
+      "sha256": "7e92cc853c2746771e992222bbe8f216bf74a8789b8485d024bdd83fb63f87ee"
+    },
+    "porta-venezia": {
+      "byte": 427,
+      "modalita": 25,
+      "n_misurato": 11197.0,
+      "righe_grezze": 25,
+      "sha256": "ffcca3fb4769c8198a5f3dc59110fa94699e07ad3ee5e34af780d8cd051f30de"
+    },
+    "primo-maggio": {
+      "byte": 341,
+      "modalita": 20,
+      "n_misurato": 3953.0,
+      "righe_grezze": 20,
+      "sha256": "324b487b67db2db0b646f1fab56e40c551cbc294ab97dde8834271a654494169"
+    },
+    "s.-bartolomeo": {
+      "byte": 274,
+      "modalita": 17,
+      "n_misurato": 5408.0,
+      "righe_grezze": 17,
+      "sha256": "3a44cabc31b313168cad694ae584365602bae798e806fd5ca938ef26aecc8b8f"
+    },
+    "s.-eufemia": {
+      "byte": 265,
+      "modalita": 15,
+      "n_misurato": 3343.0,
+      "righe_grezze": 15,
+      "sha256": "05e4a9a5b60d3b58d06b88214bd45432eb2b0924bf7e43dbc6043dfe71a723de"
+    },
+    "s.-eustacchio": {
+      "byte": 421,
+      "modalita": 24,
+      "n_misurato": 8573.0,
+      "righe_grezze": 24,
+      "sha256": "69b0d3eddd1be1a1548a6337f95cac2ce6a52a696e2b955db6557d78b5b912a9"
+    },
+    "s.-polo-case": {
+      "byte": 320,
+      "modalita": 18,
+      "n_misurato": 4934.0,
+      "righe_grezze": 18,
+      "sha256": "e6ca183b9e54e9796128cf9609a1ef229656f941b45cdb578ab36e4b80ac8afa"
+    },
+    "s.-polo-cimabue": {
+      "byte": 349,
+      "modalita": 19,
+      "n_misurato": 7227.0,
+      "righe_grezze": 19,
+      "sha256": "d15ed89f9a8c9c351bca5f70ad814e36c3d9ae45c6391e126bf185da57fa385c"
+    },
+    "s.-polo-parco": {
+      "byte": 367,
+      "modalita": 21,
+      "n_misurato": 5689.0,
+      "righe_grezze": 21,
+      "sha256": "1e38fd1a7f955446088374dac989742747a59c506dfc350dd8a76b311da92638"
+    },
+    "s.-rocchino": {
+      "byte": 344,
+      "modalita": 20,
+      "n_misurato": 5786.0,
+      "righe_grezze": 20,
+      "sha256": "bb8e9eeb0b519910089d864a2622ae99af7403bc1f9a2903af77c31457b7557d"
+    },
+    "sanpolino": {
+      "byte": 288,
+      "modalita": 16,
+      "n_misurato": 2503.0,
+      "righe_grezze": 16,
+      "sha256": "b04df3800cd44ae77f95da00999a94af20603435fe255568b7155523dc46b262"
+    },
+    "urago": {
+      "byte": 352,
+      "modalita": 20,
+      "n_misurato": 10181.0,
+      "righe_grezze": 20,
+      "sha256": "670047a1a59c772c04a6f9dde0695f2d44af66302e859dbf008ea82dee4df82f"
+    },
+    "villaggio-badia": {
+      "byte": 236,
+      "modalita": 13,
+      "n_misurato": 3578.0,
+      "righe_grezze": 13,
+      "sha256": "d980fad6dd3c7ac1cc47d7df60a42892fad37c3bbcce47ce54ff3aae431e9943"
+    },
+    "villaggio-prealpino": {
+      "byte": 234,
+      "modalita": 14,
+      "n_misurato": 4548.0,
+      "righe_grezze": 14,
+      "sha256": "e1d245291b6ccd7d0e9be5888d58d331fb21b69b9654af9751d4eafbf64c4fb2"
+    },
+    "villaggio-sereno": {
+      "byte": 269,
+      "modalita": 15,
+      "n_misurato": 6059.0,
+      "righe_grezze": 15,
+      "sha256": "d55103aabc59793f14d089339a0eb1242f107228365352a4322206c9175af29a"
+    },
+    "villaggio-violino": {
+      "byte": 233,
+      "modalita": 13,
+      "n_misurato": 3687.0,
+      "righe_grezze": 13,
+      "sha256": "c565af3a4d11a8bb6b38c6ee1346d6205d1a1b5e5e436045db74be44f1e430d2"
+    }
+  },
+  "n_istanze": 33,
+  "tipo": "multi_istanza"
+}

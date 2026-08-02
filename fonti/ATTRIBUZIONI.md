@@ -3,6 +3,33 @@
 Generato da `python -m gsp.fonti --attribuzioni`. Non modificare a mano:
 le informazioni vivono in `fonti/registro.yaml`.
 
+## Aspetti della vita quotidiana - microdati per la ricerca (mIcro.STAT)
+
+- **Fonte:** ISTAT
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** DA_VERIFICARE
+- **Copertura:** None, None
+- **Universo:** campione dell'indagine multiscopo sulle famiglie, individui residenti in famiglia (esclusi i conviventi in istituto). Unita' CAMPIONARIA, non individuo: ogni record porta COEFIN, coefficiente di riporto all'universo, e rappresenta se stesso piu' altri COEFIN-1. n_misurato registra i RECORD, perche' e' cio' che la pipeline consuma - il pool di donatori e' fatto di record, non di pesi. somma_pesi e n_eff_kish stanno nell'impronta e non vanno confusi con n.
+
+## Tracciato dei microdati AVQ 2024
+
+- **Fonte:** ISTAT
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** DA_VERIFICARE
+- **Copertura:** IT, 2024
+- **Universo:** elenco delle variabili dei microdati AVQ 2024 con le rispettive definizioni. Non e' un dato ma il suo dizionario: senza, sigle come FIDUCIA, AMBIENTE, CRONI o BMIMIN non vogliono dire niente. Estratto da data/avq/esplorazione/avq_vars_2024.csv.
+
+## Cittadinanze straniere per quartiere
+
+- **Fonte:** Comune di Brescia
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** 2025-07-06
+- **Copertura:** None, None
+- **Universo:** residenti per CITTADINANZA e quartiere, italiani inclusi: la riga ITALIA e' presente nel file e viene filtrata a valle da opendata_paese.py (riga 97). I totali per quartiere sono quindi popolazione totale, non stranieri. Fonte ANAGRAFICA comunale, di data diversa dal censimento. Non distingue il sesso: lo ricostruisce l'IPF dal margine comunale. E' il margine B dell'IPF, COMPLEMENTARE e non alternativo al censimento (margine A): il censimento porta i ~150 paesi, i livelli corretti e il sesso, la fonte locale porta la geografia. Il gruppo residuale e' il complemento dei paesi nominati IN QUEL QUARTIERE, quindi cambia da file a file: le modalita' vanno da 8 (Caionvico) a 33 (Centro storico nord).
+
 ## Cognomi residenti - Anno 2012
 
 - **Fonte:** Comune di Firenze - Direzione Generale - Servizio Pianificazione, Controllo e Statistica
@@ -167,3 +194,12 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Universo:** codebook delle 138 colonne dei file regionali: NOME_CAMPO -> DEFINIZIONE. Non e' un dato ma il suo dizionario: senza, colonne come P14 o ST2_B non vogliono dire niente.
 
 > ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
+
+## Residenti per quartiere ed eta'
+
+- **Fonte:** Comune di Piacenza
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** DA_VERIFICARE
+- **Copertura:** 033032, DA_VERIFICARE
+- **Universo:** FILE VUOTO (0 byte, verificato 2/8/2026): il download e' fallito e non se ne era accorto nessuno. L'sha256 registrato e' quello della stringa vuota. Il nome suggerisce residenti per quartiere ed eta', che comunque NON conterrebbe il paese di cittadinanza e non potrebbe fare da margine B dell'IPF. Piacenza resta tier 0 per una ragione strutturale, non per mancanza di ricerca: l'Annuario Statistico comunale rielabora AP11, POSAS e STRASA, tutte fonti ISTAT a livello COMUNALE, quindi il dettaglio paese x quartiere non puo' esistere in quel canale. Da riprovare se l'Ufficio Statistica pubblicasse elaborazioni dall'anagrafe interna.

@@ -1,0 +1,33 @@
+{
+  "byte": 57718,
+  "diagnostica": {
+    "campi": 725,
+    "senza_definizione": 0
+  },
+  "id": "avq_tracciato_2024",
+  "modalita": 725,
+  "n_misurato": 725.0,
+  "sha256": "e4776e74d286a0ab262c8ab0bfe4902bca95b8d7b5386a740069cb0fc759decc",
+  "testa": [
+    "PROFAM",
+    "PROIND",
+    "NCOMP",
+    "ANNO",
+    "RELPAR",
+    "SESSO",
+    "STCPM",
+    "AMATR",
+    "LAVPAS",
+    "TIPNU2",
+    "NUMNU2",
+    "RPNUC2",
+    "COEFIN",
+    "MOTAS",
+    "DOMRIF",
+    "MEMFAM",
+    "NIDLON",
+    "NODELE",
+    "MALAT",
+    "ABBAND"
+  ]
+}

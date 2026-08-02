@@ -117,12 +117,6 @@ def sezioni_xlsx(path, foglio=0, col_popolazione="P1", col_comune="PROCOM",
     d.columns = [str(c).strip() for c in d.columns]
     diag = {"righe": len(d), "colonne": len(d.columns)}
 
-    if {"P1", "P2", "P3"} <= set(d.columns):
-        s = pd.to_numeric(d["P1"], errors="coerce") \
-            - pd.to_numeric(d["P2"], errors="coerce") \
-            - pd.to_numeric(d["P3"], errors="coerce")
-        diag["scarto_P1_P2P3"] = int(s.abs().sum())
-
     if col_sezione in d.columns:
         diag["sezioni"] = int(d[col_sezione].nunique())
         if diag["sezioni"] != len(d):
@@ -158,11 +152,84 @@ def tracciato_xlsx(path, foglio=0, col_chiave="NOME_CAMPO",
     return d[["chiave", "definizione"]], diag
 
 
+def avq_microdati(path, col_peso="COEFIN", col_regione="REGMf",
+                  col_eta="ETAMi", col_sesso="SESSO", **kw):
+    """Microdati campionari AVQ (mIcro.STAT), TSV a centinaia di colonne.
+
+    L'unita' e' l'individuo CAMPIONARIO: ogni record porta COEFIN, il
+    coefficiente di riporto all'universo. Due misure entrambe corrette
+    della stessa fonte - i record e la somma dei pesi - e il registro deve
+    dire quale sta registrando.
+
+    Legge solo le colonne di struttura: il file intero e' troppo grande e
+    le variabili di contenuto cambiano da un'annata all'altra.
+    """
+    intestazione = pd.read_csv(path, sep="\t", nrows=0)
+    colonne = [str(c).strip() for c in intestazione.columns]
+    volute = [c for c in (col_peso, col_regione, col_eta, col_sesso)
+              if c in colonne]
+    d = pd.read_csv(path, sep="\t", usecols=volute, low_memory=False)
+
+    diag = {"righe": len(d), "colonne": len(colonne)}
+    if col_regione in d.columns:
+        diag["regioni"] = int(d[col_regione].nunique())
+    if col_eta in d.columns:
+        e = pd.to_numeric(d[col_eta], errors="coerce")
+        diag["eta_min"] = float(e.min())
+        diag["eta_max"] = float(e.max())
+    if col_peso in d.columns:
+        w = pd.to_numeric(d[col_peso], errors="coerce").fillna(0.0)
+        diag["somma_pesi"] = float(w.sum())
+        diag["peso_min"] = float(w[w > 0].min()) if (w > 0).any() else None
+        diag["peso_max"] = float(w.max())
+        # numerosita' efficace di Kish: quanti record "veri" valgono i
+        # pesi. E' il numero da citare accanto a qualunque statistica AVQ,
+        # perche' la dimensione del pool da sola la sovrastima.
+        s2 = float((w ** 2).sum())
+        diag["n_eff_kish"] = round(float(w.sum()) ** 2 / s2, 1) if s2 else None
+    return d, diag
+
+
+def tracciato_csv(path, sep=",", col_chiave="variabile",
+                  col_definizione="descrizione", encoding="utf-8", **kw):
+    """Codebook in CSV: variabile -> descrizione.
+
+    Gemello di tracciato_xlsx: stessa forma canonica, sorgente diversa.
+    Come quello, non produce `peso`: non e' una distribuzione ma un
+    dizionario, e l'impronta lo tratta di conseguenza.
+    """
+    d = pd.read_csv(path, sep=sep, encoding=encoding,
+                    keep_default_na=False, na_values=[], dtype=str)
+    d.columns = [str(c).strip().lower() for c in d.columns]
+    ck, cd = col_chiave.lower(), col_definizione.lower()
+    mancanti = [c for c in (ck, cd) if c not in d.columns]
+    if mancanti:
+        raise KeyError(
+            f"colonne {mancanti} assenti in {path}; presenti: "
+            + ", ".join(d.columns))
+    d = d.rename(columns={ck: "chiave", cd: "definizione"})
+    d["chiave"] = d["chiave"].str.strip()
+    d["definizione"] = d["definizione"].str.strip()
+
+    diag = {"campi": len(d),
+            "senza_definizione": int((d["definizione"] == "").sum())}
+    n_vuote = int((d["chiave"] == "").sum())
+    if n_vuote:
+        diag["chiave_vuota"] = n_vuote
+        d = d[d["chiave"] != ""]
+    dupl = int(d["chiave"].duplicated().sum())
+    if dupl:
+        diag["chiavi_ripetute"] = dupl
+    return d[["chiave", "definizione"]].reset_index(drop=True), diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "sdmx_csv": sdmx_csv,
     "sezioni_xlsx": sezioni_xlsx,
     "tracciato_xlsx": tracciato_xlsx,
+    "tracciato_csv": tracciato_csv,
+    "avq_microdati": avq_microdati,
 }
 
 

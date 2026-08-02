@@ -1,0 +1,46 @@
+{
+  "id": "avq_microdati",
+  "istanze": {
+    "2022": {
+      "byte": 70476186,
+      "colonne": 741,
+      "eta_max": 15.0,
+      "eta_min": 1.0,
+      "n_eff_kish": -46165.9,
+      "peso_max": 82762334.0,
+      "peso_min": 462161.0,
+      "regioni": 24,
+      "righe": 42022,
+      "sha256": "53b82e46189c9ae0a0ac68013b46ce642625b0a223affffc9bc34a8ef9daebb0",
+      "somma_pesi": 584992366590.0
+    },
+    "2023": {
+      "byte": 67138996,
+      "colonne": 708,
+      "eta_max": 15.0,
+      "eta_min": 1.0,
+      "n_eff_kish": -44919.3,
+      "peso_max": 84327327.0,
+      "peso_min": 601862.0,
+      "regioni": 24,
+      "righe": 41750,
+      "sha256": "16549e8d943f59cb32af313e0021ce5718e2718dc72111f1911f86a184555466",
+      "somma_pesi": 583801891947.0
+    },
+    "2024": {
+      "byte": 75433617,
+      "colonne": 736,
+      "eta_max": 15.0,
+      "eta_min": 1.0,
+      "n_eff_kish": -40980.4,
+      "peso_max": 58182195.0,
+      "peso_min": 578742.0,
+      "regioni": 26,
+      "righe": 45005,
+      "sha256": "d22a4eedafc28de326a7ed8c2c5313dc00ecacc20f30c4bbe047c31c9a16e2ae",
+      "somma_pesi": 586206999986.0
+    }
+  },
+  "n_istanze": 3,
+  "tipo": "multi_istanza"
+}

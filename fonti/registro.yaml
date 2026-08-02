@@ -555,3 +555,174 @@ fonti:
     normalizzatore: tracciato_xlsx
     usabile_per: [decodifica_colonne_sezioni]
     non_usabile_per: [conteggi]
+
+
+  - id: avq_microdati
+    tipo: multi_istanza
+    ente: ISTAT
+    titolo: Aspetti della vita quotidiana - microdati per la ricerca (mIcro.STAT)
+    url: DA_VERIFICARE          # pagina mIcro.STAT del rilascio
+    data_accesso: DA_VERIFICARE
+    licenza: DA_VERIFICARE      # i file per la ricerca hanno condizioni
+                                # d'uso proprie, NON e' automaticamente
+                                # la CC-BY generale di ISTAT: leggere il
+                                # !Leggimi.html e la nota metodologica
+    archiviazione: locale
+    percorso: data/avq/anni/avq{istanza}/MICRODATI/AVQ_Microdati_{istanza}.txt
+    chiave_istanza: anno
+    riferimento_temporale: anno_indagine
+    metadati: avq{istanza}/METADATI/
+    universo: >-
+      campione dell'indagine multiscopo sulle famiglie, individui
+      residenti in famiglia (esclusi i conviventi in istituto).
+      Unita' CAMPIONARIA, non individuo: ogni record porta COEFIN,
+      coefficiente di riporto all'universo, e rappresenta se stesso piu'
+      altri COEFIN-1. n_misurato registra i RECORD, perche' e' cio' che la
+      pipeline consuma - il pool di donatori e' fatto di record, non di
+      pesi. somma_pesi e n_eff_kish stanno nell'impronta e non vanno
+      confusi con n.
+    unita: individuo campionario
+    normalizzatore: avq_microdati
+    cella_condizionamento: [REGMf, SESSO, ETAMi->macroeta, ISTRMi->istr4]
+    uso: >-
+      assign_avq.py impila le annate normalizzando COEFIN ENTRO ANNO
+      (w = COEFIN / somma COEFIN dell'anno): ogni annata pesa 1/n
+      indipendentemente dalla propria numerosita'. Dentro ogni cella il
+      donatore e' estratto con probabilita' proporzionale a w, e si copia
+      il VETTORE COMPLETO dei target - e' questo che preserva le
+      correlazioni fra variabili, non il campionamento per variabile.
+    nota_pool: >-
+      il pool effettivo dipende dai TARGET richiesti, non e' un numero
+      fisso: un'annata che non ha una variabile fra i target viene
+      scartata per intero. Con CRONI fra i target il 2022 esce e il pool
+      resta a due annate (verificato 1/8/2026: MALAT non e' un
+      rinominamento di CRONI, e' vuota nel 99,99% dei casi). Le variabili
+      OPZIONALI restano invece NaN dove assenti, cosi' il modulo a
+      rotazione non dimezza il pool.
+    da_chiarire: >-
+      (1) equipesare le annate implica un pool che rappresenta una media
+      del triennio e non la popolazione a una data: per l'uso come
+      donatori di attributi e' probabilmente irrilevante, ma non e' stato
+      verificato. (2) n_eff di Kish del pool per cella e' molto piu'
+      piccolo della dimensione del pool: 1.520 per Modena, 1.599 per
+      Bologna. E' il numero da citare accanto a qualunque statistica AVQ
+      della popolazione sintetica. (3) numero di donatori effettivamente
+      ESTRATTI: non ancora misurato, assign_avq.py non lo stampa
+      (verificato 2/8/2026, la nota che diceva il contrario era errata).
+      Serve sia per separare collisioni da saturazione incompleta, sia
+      perche' la maschera a 100 donatori nella validazione 2 e' oggi
+      calcolata sui donatori DISPONIBILI e non su quelli estratti.
+    usabile_per: [pool_donatori_hot_deck, attributi_AVQ]
+    usato_da: [assign_avq.py]
+    non_usabile_per: [conteggi_comunali, stime_dirette_subregionali,
+                      vincoli_maxent]
+
+  - id: avq_tracciato_2024
+    ente: ISTAT
+    titolo: Tracciato dei microdati AVQ 2024
+    url: DA_VERIFICARE
+    data_accesso: DA_VERIFICARE
+    licenza: DA_VERIFICARE
+    archiviazione: git
+    file: avq_tracciato_2024.csv
+    sha256: e4776e74d286a0ab262c8ab0bfe4902bca95b8d7b5386a740069cb0fc759decc
+    universo: >-
+      elenco delle variabili dei microdati AVQ 2024 con le rispettive
+      definizioni. Non e' un dato ma il suo dizionario: senza, sigle come
+      FIDUCIA, AMBIENTE, CRONI o BMIMIN non vogliono dire niente. Estratto
+      da data/avq/esplorazione/avq_vars_2024.csv.
+    unita: variabile
+    copertura: {geo: "IT", tempo: 2024}
+    normalizzatore: tracciato_csv
+    opzioni: {sep: ",", col_chiave: variabile, col_definizione: descrizione}
+    usabile_per: [decodifica_variabili_avq]
+    non_usabile_per: [conteggi]
+# Fonti locali per il paese di cittadinanza (margine B dell'IPF).
+#
+# Da appendere UNA VOLTA SOLA a fonti/registro.yaml. Forma sicura:
+#   grep -q "id: brescia_cittadinanza" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/schede_opendata.yaml" >> fonti/registro.yaml
+#
+# PRINCIPIO: la configurazione operativa (loader, livello geografico,
+# encoding, override dei nomi, mappe di riconciliazione, alias dei paesi)
+# vive gia' in gsp.common.COMUNI[<cod>]["opendata_paese"]. Il registro NON
+# la riscrive: la referenzia con `parametri_da`, e --verifica controlla
+# che il riferimento regga. Riscriverla darebbe due dichiarazioni della
+# stessa cosa, destinate a divergere in silenzio.
+#
+# Qui c'e' solo cio' che a common.py manca: provenienza, licenza,
+# data di accesso, universo, limiti d'uso.
+#
+# Le altre cinque schede si ricavano da questa cambiando id, ente,
+# percorso, tipo (`file` se non ci sono istanze), normalizzatore, tier
+# e universo. I codici: 034027 Parma (tier 3), 035033 Reggio (tier 1,
+# encoding latin-1, fonte 2013), 037006 Bologna (tier 2, Parquet),
+# 039014 Ravenna (XLS, due annate), 040012 Forli' (XLSX, 41 unita' -> 21).
+
+  - id: brescia_cittadinanza_quartieri
+    tipo: multi_istanza
+    ente: Comune di Brescia
+    titolo: Cittadinanze straniere per quartiere
+    url: DA_VERIFICARE          # pagina con i 33 link, uno per quartiere
+    data_accesso: 2025-07-06    # dai timestamp dei file, 16:01-16:05
+    licenza: DA_VERIFICARE      # portale comunale: nessuna regola generale,
+                                # va letta la pagina (CC-BY? IODL 2.0? nulla?)
+    archiviazione: locale
+    percorso: data/opendata/017029/cittadinanza/{istanza}.csv
+    chiave_istanza: quartiere
+    parametri_da: common.COMUNI.017029.opendata_paese
+    tier: 1
+    universo: >-
+      residenti per CITTADINANZA e quartiere, italiani inclusi: la riga
+      ITALIA e' presente nel file e viene filtrata a valle da
+      opendata_paese.py (riga 97). I totali per quartiere sono quindi
+      popolazione totale, non stranieri. Fonte ANAGRAFICA comunale, di
+      data diversa dal censimento. Non distingue il sesso: lo ricostruisce
+      l'IPF dal margine comunale. E' il margine B dell'IPF, COMPLEMENTARE
+      e non alternativo al censimento (margine A): il censimento porta i
+      ~150 paesi, i livelli corretti e il sesso, la fonte locale porta la
+      geografia. Il gruppo residuale e' il complemento dei paesi nominati
+      IN QUEL QUARTIERE, quindi cambia da file a file: le modalita' vanno
+      da 8 (Caionvico) a 33 (Centro storico nord).
+
+    unita: individuo
+    normalizzatore: distribuzione_csv
+    opzioni: {sep: ",", col_chiave: cittadinanze, col_peso: num}
+    usabile_per: [margine_B_ipf, geografia_paese_tier1]
+    usato_da: [opendata_paese.py]
+    non_usabile_per: [sesso, popolazione_italiana, conteggi_assoluti]
+
+  # Piacenza: il file c'e' ma e' VUOTO, e comunque non sarebbe la fonte
+  # che serve. Registrato lo stesso: senza questa scheda, fra sei mesi
+  # quel file sembra il pezzo mancante.
+  - id: piacenza_residenti_quartiere_eta
+    ente: Comune di Piacenza
+    titolo: Residenti per quartiere ed eta'
+    url: DA_VERIFICARE          # opendata.comune.piacenza.it
+    data_accesso: DA_VERIFICARE
+    licenza: DA_VERIFICARE
+    archiviazione: locale
+    percorso: data/opendata/033032/piacenza_residenti_quartiere_eta.csv
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    copertura: {geo: "033032", tempo: DA_VERIFICARE}
+    tier: 0
+    universo: >-
+      FILE VUOTO (0 byte, verificato 2/8/2026): il download e' fallito e
+      non se ne era accorto nessuno. L'sha256 registrato e' quello della
+      stringa vuota. Il nome suggerisce residenti per quartiere ed eta',
+      che comunque NON conterrebbe il paese di cittadinanza e non
+      potrebbe fare da margine B dell'IPF.
+      Piacenza resta tier 0 per una ragione strutturale, non per
+      mancanza di ricerca: l'Annuario Statistico comunale rielabora AP11,
+      POSAS e STRASA, tutte fonti ISTAT a livello COMUNALE, quindi il
+      dettaglio paese x quartiere non puo' esistere in quel canale. Da
+      riprovare se l'Ufficio Statistica pubblicasse elaborazioni
+      dall'anagrafe interna.
+    unita: individuo
+    normalizzatore: distribuzione_csv
+    opzioni: {sep: ";"}         # ipotesi, non verificabile su file vuoto
+    anomalie:
+      - file da 0 byte; --verifica resta DIVERGE finche' non si riscarica
+    usabile_per: []
+    non_usabile_per: [file_vuoto, margine_B_ipf, geografia_paese]

@@ -20,9 +20,11 @@ senza universo dichiarato e' un elenco di numeri, non una misura.
 """
 
 import argparse
+import glob
 import hashlib
 import json
 import os
+import re
 import shutil
 import sys
 
@@ -66,6 +68,12 @@ CAMPI_OBBLIGATORI = [
     "normalizzatore", "usabile_per", "non_usabile_per",
 ]
 
+CAMPI_MULTI = [
+    "id", "ente", "titolo", "licenza", "archiviazione", "percorso",
+    "chiave_istanza", "universo", "unita", "normalizzatore",
+    "usabile_per", "non_usabile_per",
+]
+
 N_IMPRONTA = 20             # quante modalita' di testa entrano nell'impronta
 
 # ------------------------------------------------------------------ registro
@@ -104,13 +112,27 @@ def elenco(usabile_per=None, ente=None, come_tabella=True):
         if ente and ente.lower() not in f["ente"].lower():
             continue
         cop = f.get("copertura") or {}
+        multi = f.get("tipo") == "multi_istanza"
+        if multi:
+            try:
+                n_ist = len(istanze(f["id"]))
+            except Exception:                       # noqa: BLE001
+                n_ist = None
+            geo = f"{n_ist} {f.get('chiave_istanza', 'istanze')}"
+            tempo = f.get("riferimento_temporale")
+            n = None
+        else:
+            geo = cop.get("geo")
+            tempo = cop.get("tempo")
+            n = f.get("n_misurato")
         righe.append({
             "id": f["id"],
-            "ente": f["ente"],
-            "geo": cop.get("geo"),
-            "tempo": cop.get("tempo"),
+            "tipo": "multi" if multi else "file",
+            "ente": (f["ente"] or "").split(" - ")[0],
+            "geo": geo,
+            "tempo": tempo,
             "unita": f.get("unita"),
-            "n": f.get("n_misurato"),
+            "n": n,
             "licenza": f.get("licenza"),
             "arch": f.get("archiviazione"),
         })
@@ -118,7 +140,42 @@ def elenco(usabile_per=None, ente=None, come_tabella=True):
     return d if come_tabella else righe
 
 
-def path_grezzo(id_fonte):
+def tipo(id_fonte):
+    """'file' (una fonte, un file) oppure 'multi_istanza' (una tavola,
+    tanti file uguali per forma e diversi per chiave: un comune, un anno)."""
+    return info(id_fonte).get("tipo", "file")
+
+
+def istanze(id_fonte):
+    """Mappa {chiave_istanza: percorso assoluto}, dal pattern `percorso`.
+
+    Il pattern e' relativo alla radice del repo e contiene {istanza}:
+        data/comuni/{istanza}/cens_istruzione_eta_raw.csv
+    I grezzi multi-istanza vivono in data/, fuori da fonti/grezzi/, perche'
+    sono troppi e troppo grossi per essere versionati.
+    """
+    f = info(id_fonte)
+    pat = f.get("percorso")
+    if not pat:
+        raise KeyError(f"'{id_fonte}' e' multi_istanza ma non ha `percorso`")
+    intero = os.path.join(RADICE, pat)
+    rx = re.compile("^" + re.escape(intero).replace(
+        re.escape("{istanza}"), "([^/]+)") + "$")
+    out = {}
+    for p in sorted(glob.glob(intero.replace("{istanza}", "*"))):
+        m = rx.match(p)
+        if m:
+            out[m.group(1)] = p
+    return out
+
+
+def path_grezzo(id_fonte, istanza=None):
+    if tipo(id_fonte) == "multi_istanza":
+        mappa = istanze(id_fonte)
+        if istanza is None:
+            raise ValueError(f"'{id_fonte}' e' multi_istanza: serve `istanza`"
+                             f" fra {sorted(mappa)}")
+        return mappa[istanza]
     return os.path.join(DIR_GREZZI, info(id_fonte)["file"])
 
 
@@ -160,9 +217,34 @@ def _impronta(id_fonte, d, diag):
     }
 
 
+def _impronta_multi(id_fonte):
+    """Impronta di una fonte multi-istanza: una riga per istanza.
+
+    E' l'unica cosa che finisce in git per queste fonti: i grezzi stanno in
+    data/, che pesa gigabyte ed e' escluso. Serve a riconoscere se un file
+    riscaricato o rigenerato e' lo stesso che e' stato usato.
+    """
+    mappa = istanze(id_fonte)
+    out = {}
+    for k, p in mappa.items():
+        _, diag = normalizza(id_fonte, k, salva=False)
+        out[k] = {
+            "sha256": sha256(p),
+            "byte": os.path.getsize(p),
+            **{c: diag[c] for c in
+               ("righe", "anni", "obs_somma", "ref_area", "dataflow")
+               if c in diag},
+        }
+    return {"id": id_fonte, "tipo": "multi_istanza",
+            "n_istanze": len(out), "istanze": out}
+
+
 def impronta(id_fonte, scrivi=False):
-    d, diag = normalizza(id_fonte, salva=False)
-    imp = _impronta(id_fonte, d, diag)
+    if tipo(id_fonte) == "multi_istanza":
+        imp = _impronta_multi(id_fonte)
+    else:
+        d, diag = normalizza(id_fonte, salva=False)
+        imp = _impronta(id_fonte, d, diag)
     if scrivi:
         os.makedirs(DIR_IMPRONTE, exist_ok=True)
         with open(path_impronta(id_fonte), "w", encoding="utf-8") as fh:
@@ -192,14 +274,14 @@ def sha256(path, blocco=1 << 20):
 # ------------------------------------------------------------------ carica
 
 
-def normalizza(id_fonte, salva=True):
+def normalizza(id_fonte, istanza=None, salva=True):
     """Applica il normalizzatore al grezzo. Ritorna (DataFrame, diagnostica)."""
     f = info(id_fonte)
     d, diag = normalizzatori.applica(
-        f["normalizzatore"], path_grezzo(id_fonte),
+        f["normalizzatore"], path_grezzo(id_fonte, istanza),
         f.get("opzioni"), f.get("dimensioni"),
     )
-    if salva:
+    if salva and tipo(id_fonte) == "file":
         os.makedirs(DIR_NORM, exist_ok=True)
         d.to_parquet(path_norm(id_fonte), index=False, compression="zstd")
         os.makedirs(DIR_IMPRONTE, exist_ok=True)
@@ -209,8 +291,11 @@ def normalizza(id_fonte, salva=True):
     return d, diag
 
 
-def carica(id_fonte, rinormalizza=False):
-    """DataFrame canonico. Rinormalizza se il Parquet manca o e' piu' vecchio."""
+def carica(id_fonte, istanza=None, rinormalizza=False):
+    """Frame della fonte. Per le multi-istanza serve `istanza`; il Parquet
+    non viene usato (i grezzi vivono in data/ e sono gia' compatti)."""
+    if tipo(id_fonte) == "multi_istanza":
+        return normalizza(id_fonte, istanza, salva=False)[0]
     p, g = path_norm(id_fonte), path_grezzo(id_fonte)
     if rinormalizza or not os.path.exists(p) or os.path.getmtime(p) < os.path.getmtime(g):
         return normalizza(id_fonte)[0]
@@ -218,6 +303,46 @@ def carica(id_fonte, rinormalizza=False):
 
 
 # ------------------------------------------------------------------ verifica
+
+
+def _verifica_multi(i, f, riga):
+    """Confronta le istanze sul disco con quelle nell'impronta.
+
+    Tre esiti distinti, e la distinzione conta: un'istanza NUOVA e' un
+    comune aggiunto (informazione, non guasto), una CAMBIATA e' un file
+    rigenerato o riscaricato (da guardare), una MANCANTE e' un dato che non
+    c'e' piu'.
+    """
+    imp = _impronta_salvata(i)
+    trovate = istanze(i)
+    riga["arch"] = f.get("archiviazione")
+    riga["n"] = len(trovate)
+
+    if imp is None:
+        riga.update(esito="DIVERGE",
+                    nota=f"{len(trovate)} istanze sul disco, impronta "
+                         f"assente: generarla con --scansiona")
+        return riga
+
+    note = []
+    vecchie = imp.get("istanze", {})
+    nuove = sorted(set(trovate) - set(vecchie))
+    perse = sorted(set(vecchie) - set(trovate))
+    cambiate = [k for k in sorted(set(trovate) & set(vecchie))
+                if sha256(trovate[k]) != vecchie[k].get("sha256")]
+
+    if perse:
+        note.append(f"{len(perse)} mancanti: {', '.join(perse[:4])}")
+    if cambiate:
+        note.append(f"{len(cambiate)} cambiate: {', '.join(cambiate[:4])}")
+
+    if note:
+        riga.update(esito="DIVERGE", nota=" · ".join(note))
+    elif nuove:
+        riga.update(esito="NUOVE",
+                    nota=f"{len(nuove)} istanze non in impronta: "
+                         f"{', '.join(nuove[:6])} — rilanciare --scansiona")
+    return riga
 
 
 def verifica(id_fonte=None, silenzioso=False):
@@ -230,7 +355,9 @@ def verifica(id_fonte=None, silenzioso=False):
         riga = {"id": i, "esito": "ok", "nota": ""}
         note = []
 
-        mancanti = [c for c in CAMPI_OBBLIGATORI if c not in f]
+        obbl = CAMPI_OBBLIGATORI if f.get("tipo") != "multi_istanza" \
+            else CAMPI_MULTI
+        mancanti = [c for c in obbl if c not in f]
         if mancanti:
             note.append("campi mancanti: " + ",".join(mancanti))
 
@@ -238,6 +365,14 @@ def verifica(id_fonte=None, silenzioso=False):
         if arch not in ARCHIVIAZIONI:
             note.append(f"archiviazione '{arch}' non valida")
         riga["arch"] = arch
+
+        if f.get("tipo") == "multi_istanza":
+            riga = _verifica_multi(i, f, riga)
+            if note:
+                riga["esito"] = "DIVERGE"
+                riga["nota"] = " · ".join(note + [riga.get("nota", "")]).strip(" ·")
+            righe.append(riga)
+            continue
 
         g = path_grezzo(i)
         if not os.path.exists(g):
@@ -300,9 +435,9 @@ def verifica(id_fonte=None, silenzioso=False):
     d = pd.DataFrame(righe)
     # IMPRONTA non e' un guasto: e' lo stato normale di una fonte `locale`
     # o `remoto` vista da un clone che non ha i grezzi.
-    d["ok"] = d.esito.isin(["ok", "IMPRONTA"])
+    d["ok"] = d.esito.isin(["ok", "IMPRONTA", "NUOVE"])
     if not silenzioso:
-        segni = {"ok": "  ", "IMPRONTA": " ·"}
+        segni = {"ok": "  ", "IMPRONTA": " ·", "NUOVE": " +"}
         for _, r in d.iterrows():
             print(f"{segni.get(r.esito, '!!')} {r.id:34s} "
                   f"{r.esito:8s} {r.nota}")
@@ -468,10 +603,22 @@ def _main():
                     help="rigenera fonti/ATTRIBUZIONI.md")
     ap.add_argument("--normalizza", metavar="ID")
     ap.add_argument("--impronta", metavar="ID")
+    ap.add_argument("--scansiona", metavar="ID",
+                    help="rileva le istanze di una fonte multi_istanza")
     ap.add_argument("--aggiungi", metavar="PATH")
     ap.add_argument("--id", metavar="ID")
     a = ap.parse_args()
 
+    if a.scansiona:
+        imp = impronta(a.scansiona, scrivi=True)
+        print(f"fonti/impronte/{a.scansiona}.json · "
+              f"{imp['n_istanze']} istanze")
+        for k, v in sorted(imp["istanze"].items()):
+            anni = v.get("anni") or []
+            print(f"  {k:10s} {v['righe']:7,} righe  "
+                  f"{('anni ' + anni[0] + '-' + anni[-1]) if anni else '':16s} "
+                  f"{v.get('obs_somma', 0):,.0f}")
+        return
     if a.impronta:
         imp = impronta(a.impronta, scrivi=True)
         print(f"fonti/impronte/{a.impronta}.json scritta · "

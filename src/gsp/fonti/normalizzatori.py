@@ -71,8 +71,43 @@ def distribuzione_csv(path, sep=",", col_chiave=None, col_peso=None,
     return d, diag
 
 
+def sdmx_csv(path, **kw):
+    """Risposta SDMX-CSV di esploradati.istat.it, come arriva dal server.
+
+    Non e' una distribuzione `chiave/peso`: ha molte dimensioni e una
+    colonna OBS_VALUE. Torna il frame intatto; la diagnostica riassume cio'
+    che serve a riconoscerlo (anni presenti, somma delle osservazioni,
+    territorio, dataflow).
+    """
+    d = pd.read_csv(path, dtype=str, keep_default_na=False, na_values=[],
+                    low_memory=False)
+    d.columns = [c.strip() for c in d.columns]
+    diag = {"righe": len(d), "colonne": len(d.columns)}
+
+    if "DATAFLOW" in d.columns:
+        fl = sorted(set(d["DATAFLOW"]))
+        diag["dataflow"] = fl[0] if len(fl) == 1 else fl
+    if "REF_AREA" in d.columns:
+        diag["ref_area"] = sorted(set(d["REF_AREA"]))
+    if "TIME_PERIOD" in d.columns:
+        diag["anni"] = sorted(set(d["TIME_PERIOD"]))
+    if "OBS_VALUE" in d.columns:
+        v = pd.to_numeric(d["OBS_VALUE"], errors="coerce")
+        diag["obs_somma"] = float(v.sum())
+        n_na = int(v.isna().sum())
+        if n_na:
+            diag["obs_non_numerici"] = n_na
+        if "TIME_PERIOD" in d.columns:
+            diag["obs_per_anno"] = {
+                a: float(s) for a, s in
+                d.assign(_v=v).groupby("TIME_PERIOD")["_v"].sum().items()
+            }
+    return d, diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
+    "sdmx_csv": sdmx_csv,
 }
 
 

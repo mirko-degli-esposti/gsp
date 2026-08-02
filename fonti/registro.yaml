@@ -80,3 +80,93 @@ fonti:
       campione indipendente
     usabile_per: [controllo_stabilita]
     non_usabile_per: [cognome_italiano, cognome_straniero, geografia_emilia]
+
+
+  # --- ISTAT SDMX: tavole multi-istanza -----------------------------------
+  # Una scheda per tavola, non per file: universo, licenza e normalizzatore
+  # sono identici fra i comuni, cambia solo la chiave territoriale.
+  # Le istanze le rileva `--scansiona`, che scrive fonti/impronte/<id>.json.
+
+  - id: istat_anag_sesso_eta_statociv
+    tipo: multi_istanza
+    ente: ISTAT
+    titolo: Popolazione residente per eta', sesso e stato civile
+    url: https://esploradati.istat.it/SDMXWS/rest
+    dataflow: 22_289_DF_DCIS_POPRES1_26
+    spec: {FREQ: A, DATA_TYPE: JAN, SEX: ["1","2"],
+           MARITAL_STATUS: ["1","2","3","4","15","16","17"]}
+    nota_query: >-
+      eta' lasciata in wildcard (posizione vuota nella key): la key
+      esplicita supera il limite di 260 caratteri per segmento di http.sys
+      sul frontend di esploradati. La dimensione territoriale non e'
+      cablata: find_territory_dim la trova cercando il codice comune nelle
+      codelist. Limite del servizio: 4 query/minuto.
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      ISTAT, "Popolazione residente per eta', sesso e stato civile",
+      esploradati.istat.it, CC BY 4.0
+    archiviazione: locale
+    percorso: data/comuni/{istanza}/anag_sesso_eta_statociv_raw.csv
+    chiave_istanza: comune
+    riferimento_temporale: 1_gennaio
+    universo: >-
+      popolazione residente ANAGRAFICA al 1 gennaio dell'anno indicato.
+      Fonte DCIS: conteggio di iscritti in anagrafe, non stima campionaria.
+      L'anno n corrisponde all'anno n-1 delle tavole censuarie, che sono al
+      31 dicembre: confrontare n con n non ha senso. 
+      Il grezzo contiene i codici aggregati (TOTAL ecc.): obs_somma
+      nell'impronta e' circa 2x la popolazione vera. E' una firma per
+      riconoscere il file, non un conteggio.
+    unita: individuo
+    normalizzatore: sdmx_csv
+    usabile_per: [vincoli_eta_sesso, vincoli_stato_civile, controllo_totali]
+    non_usabile_per: [confronto_diretto_con_censimento_stesso_anno]
+
+  - id: istat_cens_istruzione_eta
+    tipo: multi_istanza
+    ente: ISTAT
+    titolo: Censimento permanente - istruzione per eta'
+    url: https://esploradati.istat.it/SDMXWS/rest
+    dataflow: DF_DCSS_ISTR_LAV_PEN_2_TV_1
+    spec: {}
+    nota_query: >-
+      nessun vincolo oltre al territorio: si scarica l'intero dataflow per
+      il comune. Limite del servizio: 4 query/minuto.
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      ISTAT, "Censimento permanente della popolazione",
+      esploradati.istat.it, CC BY 4.0
+    archiviazione: locale
+    percorso: data/comuni/{istanza}/cens_istruzione_eta_raw.csv
+    chiave_istanza: comune
+    riferimento_temporale: 31_dicembre
+    universo: >-
+      censimento permanente, popolazione residente al 31 dicembre
+      (INDICATOR = RESPOP_AV). E' una STIMA integrata da fonti
+      amministrative e indagine campionaria, non un conteggio esaustivo:
+      i vincoli che ne derivano hanno un margine e non sono verita'.
+      Serie storica pluriennale nello stesso file: l'anno usato dalla
+      pipeline va scelto, non e' l'unico presente.
+      Il grezzo contiene i codici aggregati (TOTAL ecc.): obs_somma
+      nell'impronta e' circa 8x la popolazione vera. E' una firma per
+      riconoscere il file, non un conteggio.
+    unita: individuo
+    normalizzatore: sdmx_csv
+    usabile_per: [vincoli_istruzione]
+    non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
+
+# Le altre 9 tavole, da CORE in scripts/fetch_comune.py:
+#
+#   cens_sesso_eta_cittadinanza    DF_DCSS_POP_DEMCITMIG_SETA_1
+#   cens_istruzione_cittadinanza   DF_DCSS_ISTR_LAV_PEN_2_TV_2
+#   cens_condprof_eta              DF_DCSS_ISTR_LAV_PEN_2_TV_3
+#   cens_condprof_cittadinanza     DF_DCSS_ISTR_LAV_PEN_2_TV_4
+#   cens_stranieri_paesi           DF_DCSS_POP_DEMCITMIG_TV_3
+#   cens_migr_backg                DF_DCSS_MIGR_BACKG_PAR_TV_1_COM
+#   cens_posizione_famiglia        DF_DCSS_HCUE_COM_2_COM
+#   cens_posizione_prof            DF_DCSS_EMPLP_1_COM
+#   cens_settore_prof              DF_DCSS_EMPLP_2_COM
+#
+# Tutte con spec vuota, riferimento_temporale 31_dicembre e lo stesso
+# universo di cens_istruzione_eta. Cambia solo `usabile_per`, che e' la
+# parte che richiede giudizio.

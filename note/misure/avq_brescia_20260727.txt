@@ -2,10 +2,6 @@
 [avq] 2023: 41,750 record
 [avq] 2024: 45,005 record
 [avq] regione 30 (Lombardia): 8,111 donatori con cella completa (su 8,149)
-[pop] popolazione_K9C_naz.csv: 198,259 individui
-[donor] 32 celle con pool valido (record/cella: min=14, mediana=249, max=541)
-[donor] 2 celle sotto 20 record -> pool regionale: [(('F', '15-34', 'elementare_o_meno'), 14), (('M', '15-34', 'elementare_o_meno'), 15)]
-[donor] 7,367 individui serviti dal pool regionale (3.7%)
 [AMBIENTE] assegnati 171,627 | non_applicabile (missing strutturale nel donatore): 26,632
 [FIDUCIA] assegnati 171,348 | non_applicabile (missing strutturale nel donatore): 26,911
 [SALUTE] assegnati 198,259 | non_applicabile (missing strutturale nel donatore): 0
@@ -16,6 +12,7 @@
 [BMIMIN] assegnati 27,025 | non_applicabile (missing strutturale nel donatore): 171,234
 [CPESO] assegnati 193,771 | non_applicabile (missing strutturale nel donatore): 4,488
 
+=== validazione correlazioni, corsa 123737 ===
 [val] marginali: sintetico vs AVQ pesato (regione)
   AMBIENTE:
     1: sintetico 0.077 | avq 0.080 (scarto -0.003)
@@ -39,6 +36,28 @@
     2: sintetico 0.250 | avq 0.239 (scarto +0.011)
     3: sintetico 0.562 | avq 0.559 (scarto +0.003)
   MH (continua): media sintetico 68.49 | avq 68.66 (scarto -0.17)
+
+[val] correlazioni fra target nella popolazione sintetica:
+          AMBIENTE  FIDUCIA  SALUTE  CRONI   FUMO     MH
+AMBIENTE     1.000    0.052   0.071  0.020 -0.045 -0.108
+FIDUCIA      0.052    1.000   0.102  0.030 -0.000 -0.113
+SALUTE       0.071    0.102   1.000  0.485 -0.016 -0.371
+CRONI        0.020    0.030   0.485  1.000  0.012 -0.180
+FUMO        -0.045   -0.000  -0.016  0.012  1.000  0.029
+MH          -0.108   -0.113  -0.371 -0.180  0.029  1.000
+
+[val] stesse correlazioni nei donatori AVQ (riferimento):
+          AMBIENTE  FIDUCIA  SALUTE  CRONI   FUMO     MH
+AMBIENTE     1.000    0.055   0.066  0.015 -0.052 -0.109
+FIDUCIA      0.055    1.000   0.095  0.038 -0.007 -0.109
+SALUTE       0.066    0.095   1.000  0.483 -0.013 -0.357
+CRONI        0.015    0.038   0.483  1.000  0.016 -0.180
+FUMO        -0.052   -0.007  -0.013  0.016  1.000  0.029
+MH          -0.109   -0.109  -0.357 -0.180  0.029  1.000
+
+[done] -> /home/mirko/progetti/gsp/data/comuni/017029/constraints_2024/popolazione_K9C_avq_v2.csv
+
+=== confronti marginali BMI/BMIMIN/CPESO, corsa 125720 ===
   BMI:
     1: sintetico 0.041 | avq 0.041 (scarto +0.001)
     2: sintetico 0.517 | avq 0.519 (scarto -0.002)

@@ -35,3 +35,5 @@ scripts_archivio/
 *.log
 note/*.pdf
 animarium/
+log/
+bundle/

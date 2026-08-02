@@ -46,3 +46,9 @@ dist/
 
 # generati, ricostruibili in un comando
 fonti/norm/
+
+# i grezzi registrati sono versionati per scelta: sono la fonte primaria
+# di misure usate nella pipeline, e senza di essi --verifica non puo'
+# controllare nulla. Sopra i 5 MB si usa `archiviazione: locale` e il file
+# torna escluso da fonti/grezzi/.gitignore.
+!fonti/grezzi/*.csv

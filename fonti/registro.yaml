@@ -743,3 +743,127 @@ fonti:
     usabile_per: [margine_B_ipf, geografia_paese_tier1]
     usato_da: [opendata_paese.py]
     non_usabile_per: [sesso, livelli_assoluti_2023, popolazione_italiana]
+
+
+  - id: ravenna_cittadinanza_aree
+    tipo: multi_istanza
+    ente: Comune di Ravenna
+    titolo: Popolazione residente con cittadinanza straniera per aree territoriali
+    url: DA_VERIFICARE
+    data_accesso: DA_VERIFICARE
+    licenza: DA_VERIFICARE
+    archiviazione: locale
+    percorso: data/opendata/039014/ravenna_stranieri_cittadinanza_area_{istanza}.xls
+    chiave_istanza: anno
+    parametri_da: common.COMUNI.039014.opendata_paese
+    tier: 1
+    universo: >-
+      residenti con cittadinanza STRANIERA per nazionalita' e area
+      territoriale, fonte ANAGRAFICA comunale. A differenza di Brescia e
+      Reggio, questa fonte DISTINGUE IL SESSO: e' l'unica delle locali a
+      farlo, e l'IPF non deve ricostruirlo dal margine comunale.
+      Non contiene gli italiani: i totali sono gia' i soli stranieri.
+      Dieci aree territoriali piu' la colonna aggregata "T O T A L I",
+      che va esclusa, e una riga finale "TOTALE", idem.
+    unita: individuo
+    normalizzatore: excel_aree_sesso
+    dimensioni: [zona, sesso]
+    anomalie:
+      - >-
+        foglio Excel formattato per la STAMPA, non per l'elaborazione:
+        doppia intestazione (riga 1 aree, riga 2 M/F/T) con celle unite,
+        che in pandas diventano NaN. Il nome dell'area compare solo sopra
+        la prima delle sue tre colonne.
+      - >-
+        dove maschi e femmine sono entrambi zero, le celle M e F sono
+        vuote e c'e' solo il totale a 0: e' formattazione, non dato
+        mancante. Il normalizzatore le salta senza contarle come NaN.
+      - >-
+        i metadati OLE dicono: file creato nel 2003, salvato e STAMPATO
+        il 30/1/2024. E' un foglio di lavoro interno dell'ufficio
+        statistica, pubblicato cosi' com'e'.
+      - >-
+        il 2024 era stato scaricato ma il file risultava a 0 byte
+        (verificato 2/8/2026): rimosso. Da riscaricare dal portale se
+        serve la seconda annata.
+      - >-
+        denominazioni proprie sia per le aree ("S.P.VINCOLI") sia per i
+        paesi ("ARABIA", "MACEDONIA"): la riconciliazione vive in
+        gsp.common (override_nome, alias_paese) ed e' referenziata con
+        `parametri_da`. Gli alias dei paesi si applicano PRIMA di
+        G.risolvi_paese, cosi' il resolver condiviso vede etichette gia'
+        in forma censuaria.
+    bias: >-
+      si usano le colonne M e F e si SCARTA T: la colonna dei totali e'
+      ridondante rispetto alla somma, e in alcune celle e' l'unico valore
+      presente. Sommare anche T raddoppierebbe i conteggi.
+    usabile_per: [margine_B_ipf, geografia_paese_tier1, sesso]
+    usato_da: [opendata_paese.py]
+    non_usabile_per: [popolazione_italiana]
+
+
+  - id: forli_cittadinanza_quartieri
+    ente: Comune di Forli'
+    titolo: Stranieri per quartiere, sesso e nazionalita'
+    url: DA_VERIFICARE
+    data_accesso: DA_VERIFICARE
+    licenza: DA_VERIFICARE
+    archiviazione: locale
+    percorso: data/opendata/040012/forli_stranieri_quartiere_sesso_nazionalita.xlsx
+    sha256: 769a688edc748837d2c2d696bc1fce61baf2c1786c5eb1f3288d6e8eb876a8f7
+    copertura: {geo: "040012", tempo: DA_VERIFICARE}
+    parametri_da: common.COMUNI.040012.opendata_paese
+    tier: 1
+    universo: >-
+      residenti STRANIERI per nazionalita', quartiere e sesso, fonte
+      ANAGRAFICA comunale. Formato lungo (QUARTIERE, STATO, F, M,
+      TOTALE), il piu' semplice fra le fonti locali. Distingue il sesso,
+      come Ravenna e a differenza di Brescia e Reggio.
+      La fonte disaggrega in 41 unita' sub-quartiere che la pipeline
+      aggrega nei 21 quartieri COM_ASC1: la mappa 41 -> 21 vive in
+      gsp.common ed e' referenziata con `parametri_da`. Qui il
+      normalizzatore misura le 41 unita' come stanno sul disco.
+    unita: individuo
+    normalizzatore: formato_lungo
+    opzioni: {col_chiave: STATO, col_dimensione: QUARTIERE,
+              colonne_valore: ["F", "M"],
+              escludi_dimensione: ["in corso di definizione"],
+              etichette_residuo: ["altro"]}
+    dimensioni: [zona, sesso]
+    anomalie:
+      - >-
+        xlsx NON standard: manca xl/sharedStrings.xml, le stringhe sono
+        inline nelle celle. openpyxl solleva KeyError; serve
+        python-calamine. Il file contiene 9 voci e nessuna tabella di
+        stringhe condivise, generato il 6/10/2021 da un programma che non
+        e' Excel.
+      - >-
+        "in corso di definizione" (9 persone) non e' un'unita'
+        territoriale: escluso. Nel file le unita' distinte sono 42, di cui
+        41 mappate + questa. Verificato 2/8/2026: nessuna unita' della
+        mappa manca dal file e viceversa.
+      - >-
+        la colonna TOTALE e' ridondante rispetto a F + M e viene
+        scartata: sommarla raddoppierebbe.
+      - >-
+        "altro" e' il gruppo residuale dichiarato dalla fonte e va a
+        RESIDUALE senza passare dal resolver dei paesi, altrimenti
+        verrebbe cercato fra i paesi censuari.
+    bias: >-
+      il residuo "altro" pesa 2.480 persone su 15.012 (dopo l'esclusione
+      di "in corso di definizione", 9 persone), cioe' il 16,5%
+      (verificato 2/8/2026): quasi il triplo del 6,1% di Reggio Emilia.
+      La fonte nomina 42 paesi mentre l'IPF ne produce 119, presi dal
+      censimento: piu' fine e' la geografia, piu' i paesi rari finiscono
+      nel complemento, e per un sesto degli stranieri di Forli' la
+      geografia e' ricostruita per differenza invece che osservata.
+      I LIVELLI non coincidono col censimento: la fonte totalizza 15.012
+      contro 15.298 del censimento, uno scarto dell'1,8%, che l'IPF
+      normalizza via. E' la misura numerica del principio per cui la
+      fonte locale porta la FORMA condizionale e non i livelli.
+      Diagnostica di opendata_paese --check 040012: IPF convergente in 9
+      iterazioni con scarto 1,84e-11, distanza media dalla composizione
+      comunale 0,170 (0 = nessuna informazione geografica).
+    usabile_per: [margine_B_ipf, geografia_paese_tier1, sesso]
+    usato_da: [opendata_paese.py]
+    non_usabile_per: [popolazione_italiana, livelli_assoluti]

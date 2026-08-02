@@ -1,0 +1,121 @@
+{
+  "byte": 17085,
+  "decili": [
+    5.0,
+    6.0,
+    7.0,
+    9.0,
+    13.0,
+    16.0,
+    23.0,
+    35.0,
+    60.39999999999998
+  ],
+  "diagnostica": {
+    "modalita": 42,
+    "n_F": 7731.0,
+    "n_M": 7281.0,
+    "n_misurato": 15012.0,
+    "residuo_peso": 2480.0,
+    "residuo_quota": 0.1652,
+    "righe_grezze": 336,
+    "sesso": [
+      "F",
+      "M"
+    ],
+    "unita_escluse": [
+      "in corso di definizione"
+    ],
+    "unita_escluse_peso": 9.0,
+    "zona_n": 41
+  },
+  "hapax": 3,
+  "id": "forli_cittadinanza_quartieri",
+  "modalita": 42,
+  "n_misurato": 15012.0,
+  "peso_max": 198.0,
+  "peso_min": 1.0,
+  "sha256": "769a688edc748837d2c2d696bc1fce61baf2c1786c5eb1f3288d6e8eb876a8f7",
+  "testa": [
+    {
+      "chiave": "ROMANIA",
+      "peso": 198.0
+    },
+    {
+      "chiave": "ROMANIA",
+      "peso": 178.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 154.0
+    },
+    {
+      "chiave": "ROMANIA",
+      "peso": 152.0
+    },
+    {
+      "chiave": "ALBANIA",
+      "peso": 145.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 145.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 139.0
+    },
+    {
+      "chiave": "ALBANIA",
+      "peso": 132.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 127.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 126.0
+    },
+    {
+      "chiave": "ROMANIA",
+      "peso": 122.0
+    },
+    {
+      "chiave": "ROMANIA",
+      "peso": 122.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 119.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 117.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 117.0
+    },
+    {
+      "chiave": "altro",
+      "peso": 117.0
+    },
+    {
+      "chiave": "MAROCCO",
+      "peso": 116.0
+    },
+    {
+      "chiave": "MAROCCO",
+      "peso": 111.0
+    },
+    {
+      "chiave": "ALBANIA",
+      "peso": 110.0
+    },
+    {
+      "chiave": "REPUBBLICA POPOLARE CINESE",
+      "peso": 110.0
+    }
+  ]
+}

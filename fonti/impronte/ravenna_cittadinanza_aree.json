@@ -1,0 +1,33 @@
+{
+  "id": "ravenna_cittadinanza_aree",
+  "istanze": {
+    "2023": {
+      "byte": 136192,
+      "celle": 1052,
+      "modalita": 129,
+      "n_F": 9167.0,
+      "n_M": 8703.0,
+      "n_misurato": 17870.0,
+      "sessi": [
+        "F",
+        "M"
+      ],
+      "sha256": "b022f08f7439cfeb450aed684b11b591629dfabf0972d57b5a628693749b3cba",
+      "zona_n": 10,
+      "zona_nomi": [
+        "CASTIGLIONE",
+        "CENTRO URBANO",
+        "DARSENA",
+        "MARE",
+        "MEZZANO",
+        "PIANGIPANE",
+        "RAVENNA SUD",
+        "RONCALCECI",
+        "S. ALBERTO",
+        "S.P.VINCOLI"
+      ]
+    }
+  },
+  "n_istanze": 1,
+  "tipo": "multi_istanza"
+}

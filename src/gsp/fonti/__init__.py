@@ -295,23 +295,34 @@ def _impronta_multi(id_fonte):
     E' l'unica cosa che finisce in git per queste fonti: i grezzi stanno in
     data/, che pesa gigabyte ed e' escluso. Serve a riconoscere se un file
     riscaricato o rigenerato e' lo stesso che e' stato usato.
+
+    Un'istanza illeggibile NON ferma le altre: viene registrata con il suo
+    errore. Con trentatre' file scaricati a mano prima o poi uno e' vuoto
+    o corrotto, e perdere l'impronta degli altri trentadue per quello
+    sarebbe sbagliato.
     """
     mappa = istanze(id_fonte)
-    out = {}
-    for k, p in mappa.items():
-        _, diag = normalizza(id_fonte, k, salva=False)
-        out[k] = {
-            "sha256": sha256(p),
-            "byte": os.path.getsize(p),
+    out, rotte = {}, []
+    for k, percorso in mappa.items():
+        voce = {"sha256": sha256(percorso),
+                "byte": os.path.getsize(percorso)}
+        try:
             # tutta la diagnostica scalare, qualunque sia il
             # normalizzatore: SDMX porta anni e obs_somma, le sezioni
             # comuni e popolazione, un normalizzatore futuro altro ancora.
-            **{k: v for k, v in diag.items()
-               if isinstance(v, (int, float, str))
-               or (isinstance(v, list) and len(v) <= 40)},
-        }
-    return {"id": id_fonte, "tipo": "multi_istanza",
-            "n_istanze": len(out), "istanze": out}
+            _, diag = normalizza(id_fonte, k, salva=False)
+            voce.update({c: v for c, v in diag.items()
+                         if isinstance(v, (int, float, str))
+                         or (isinstance(v, list) and len(v) <= 40)})
+        except Exception as e:                          # noqa: BLE001
+            voce["errore"] = f"{type(e).__name__}: {e}"
+            rotte.append(k)
+        out[k] = voce
+    imp = {"id": id_fonte, "tipo": "multi_istanza",
+           "n_istanze": len(out), "istanze": out}
+    if rotte:
+        imp["istanze_illeggibili"] = rotte
+    return imp
 
 
 def impronta(id_fonte, scrivi=False):
@@ -481,6 +492,10 @@ def _verifica_multi(i, f, riga):
     if vuote:
         note.append(f"{len(vuote)} istanze VUOTE (0 byte): "
                     f"{', '.join(vuote[:4])}")
+    illeggibili = imp.get("istanze_illeggibili") or []
+    if illeggibili:
+        note.append(f"{len(illeggibili)} istanze illeggibili: "
+                    f"{', '.join(illeggibili[:4])}")
 
     if perse:
         note.append(f"{len(perse)} mancanti: {', '.join(perse[:4])}")

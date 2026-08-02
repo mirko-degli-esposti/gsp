@@ -52,6 +52,15 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 > Comune di Firenze, "Cognomi residenti - Anno 2013", opendata.comune.fi.it, CC BY 4.0
 
+## Stranieri per quartiere, sesso e nazionalita'
+
+- **Fonte:** Comune di Forli'
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** DA_VERIFICARE
+- **Copertura:** 040012, DA_VERIFICARE
+- **Universo:** residenti STRANIERI per nazionalita', quartiere e sesso, fonte ANAGRAFICA comunale. Formato lungo (QUARTIERE, STATO, F, M, TOTALE), il piu' semplice fra le fonti locali. Distingue il sesso, come Ravenna e a differenza di Brescia e Reggio. La fonte disaggrega in 41 unita' sub-quartiere che la pipeline aggrega nei 21 quartieri COM_ASC1: la mappa 41 -> 21 vive in gsp.common ed e' referenziata con `parametri_da`. Qui il normalizzatore misura le 41 unita' come stanno sul disco.
+
 ## Popolazione residente per eta', sesso e stato civile
 
 - **Fonte:** ISTAT
@@ -194,3 +203,21 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Universo:** codebook delle 138 colonne dei file regionali: NOME_CAMPO -> DEFINIZIONE. Non e' un dato ma il suo dizionario: senza, colonne come P14 o ST2_B non vogliono dire niente.
 
 > ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
+
+## Popolazione residente con cittadinanza straniera per aree territoriali
+
+- **Fonte:** Comune di Ravenna
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** DA_VERIFICARE
+- **Copertura:** None, None
+- **Universo:** residenti con cittadinanza STRANIERA per nazionalita' e area territoriale, fonte ANAGRAFICA comunale. A differenza di Brescia e Reggio, questa fonte DISTINGUE IL SESSO: e' l'unica delle locali a farlo, e l'IPF non deve ricostruirlo dal margine comunale. Non contiene gli italiani: i totali sono gia' i soli stranieri. Dieci aree territoriali piu' la colonna aggregata "T O T A L I", che va esclusa, e una riga finale "TOTALE", idem.
+
+## Nazionalita' piu' numerose per circoscrizione, 2013
+
+- **Fonte:** Comune di Reggio nell'Emilia
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** DA_VERIFICARE
+- **Copertura:** 035033, 2013
+- **Universo:** residenti stranieri per nazionalita' e circoscrizione, fonte ANAGRAFICA comunale. Matrice larga: nazionalita' sulle righe, le 4 circoscrizioni sulle colonne. Non distingue il sesso: lo ricostruisce l'IPF dal margine comunale, come per Brescia. Contiene una modalita' residuale dichiarata, "Altre nazionalita'", che l'IPF tratta come complemento dei paesi nominati e non come un paese: la sua quota sulla massa totale sta in `residuo_quota` nell'impronta, e dice quanta informazione la fonte porta davvero.

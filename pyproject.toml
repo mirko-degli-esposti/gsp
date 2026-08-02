@@ -3,7 +3,7 @@ name = "gsp"
 version = "0.1.0"
 description = "Popolazioni sintetiche generative"
 requires-python = ">=3.11"
-dependencies = ["pandas", "numpy", "pyarrow", "pyyaml"]
+dependencies = ["pandas", "numpy", "pyarrow", "pyyaml", "xlrd", "python-calamine", "openpyxl"]
 
 [build-system]
 requires = ["setuptools>=68"]

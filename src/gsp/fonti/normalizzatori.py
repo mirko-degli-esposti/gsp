@@ -284,9 +284,153 @@ def matrice_csv(path, sep=None, encoding="utf-8", col_chiave=None,
     return lungo[["chiave", dimensione, "peso"]], diag
 
 
+def excel_aree_sesso(path, riga_aree=1, riga_sessi=2, prima_riga_dati=3,
+                     dimensione="zona", colonne_sesso=("M", "F"),
+                     escludi_aree=("AREE TERRITORIALI", "TOTALI"),
+                     escludi_righe=("TOTALE",), **kw):
+    """Foglio Excel formattato per la stampa, a doppia intestazione.
+
+        riga 1   AREE TERRITORIALI:  CENTRO URBANO | RAVENNA SUD | ...
+        riga 2   NAZIONALITA':       M  F  T       | M  F  T     | ...
+        riga 3+  AFGANISTAN          18  2  20     | 24  4  28   | ...
+
+    Le celle unite di Excel diventano NaN in pandas: il nome dell'area
+    compare solo sopra la prima delle tre colonne, e si propaga in avanti.
+
+    Si sommano M e F e si SCARTA T, come fa load_ravenna: la colonna dei
+    totali e' ridondante e in alcune celle e' l'unico valore presente
+    (formattazione, non informazione). Si escludono l'area 'T O T A L I'
+    e la riga 'TOTALE', che sono aggregati: contarli raddoppia.
+
+    NON riconcilia le denominazioni proprie ('S.P.VINCOLI', 'ARABIA'):
+    quelle vivono in gsp.common e sono referenziate con `parametri_da`.
+    """
+    d = pd.read_excel(path, header=None)
+    norm = lambda x: str(x).strip().upper().replace(" ", "")  # noqa: E731
+    fuori_aree = {norm(x) for x in escludi_aree}
+    fuori_righe = {norm(x) for x in escludi_righe}
+
+    # riga delle aree: propaga il nome sulle colonne unite
+    aree, corrente = {}, None
+    for i, v in d.iloc[riga_aree].items():
+        if not pd.isna(v) and str(v).strip():
+            corrente = str(v).strip()
+        if corrente and norm(corrente) not in fuori_aree:
+            aree[i] = corrente
+
+    sessi = {i: str(v).strip().upper()
+             for i, v in d.iloc[riga_sessi].items() if not pd.isna(v)}
+    volute = {s.upper() for s in colonne_sesso}
+
+    righe = []
+    for _, r in d.iloc[prima_riga_dati:].iterrows():
+        et = str(r.iloc[0]).strip()
+        if not et or et.lower() == "nan" or norm(et) in fuori_righe:
+            continue
+        for i, area in aree.items():
+            if sessi.get(i) not in volute:
+                continue
+            v = pd.to_numeric(r.iloc[i], errors="coerce")
+            if pd.isna(v):
+                continue                    # cella unita': zero, non dato
+            righe.append((et, area, sessi[i], float(v)))
+
+    lungo = pd.DataFrame(righe, columns=["chiave", dimensione, "sesso",
+                                         "peso"])
+    diag = {"modalita": int(lungo["chiave"].nunique()),
+            f"{dimensione}_n": int(lungo[dimensione].nunique()),
+            f"{dimensione}_nomi": sorted(set(aree.values())),
+            "sessi": sorted(volute),
+            "celle": len(lungo),
+            "n_misurato": float(lungo["peso"].sum())}
+    for s in sorted(volute):
+        diag[f"n_{s}"] = float(lungo.loc[lungo["sesso"] == s, "peso"].sum())
+
+    lungo = lungo.sort_values("peso", ascending=False,
+                              kind="stable").reset_index(drop=True)
+    return lungo, diag
+
+
+def formato_lungo(path, col_chiave="STATO", col_dimensione="QUARTIERE",
+                  dimensione="zona", colonne_valore=("F", "M"),
+                  nome_valore="sesso", escludi_dimensione=(),
+                  etichette_residuo=(), sep=",", encoding="utf-8", **kw):
+    """Tabella gia' in formato lungo, con il sesso su colonne affiancate.
+
+        QUARTIERE   STATO     F   M   TOTALE
+        BAGNOLO     ROMANIA  10   9       19
+        BAGNOLO     altro    26  15       41
+
+    Scioglie le colonne di `colonne_valore` in righe, scartando la
+    colonna dei totali che e' ridondante. Legge xlsx (calamine, con
+    openpyxl come ripiego) o csv, dall'estensione.
+
+    NON aggrega le unita' territoriali: la mappa 41 -> 21 quartieri vive
+    in gsp.common ed e' referenziata con `parametri_da`. Qui si misura la
+    fonte come sta sul disco.
+    """
+    if str(path).lower().endswith((".xlsx", ".xls")):
+        try:
+            d = pd.read_excel(path, header=0, engine="calamine")
+        except (ImportError, ValueError):
+            # xlsx senza sharedStrings: openpyxl solleva KeyError
+            d = pd.read_excel(path, header=0)
+    else:
+        d = pd.read_csv(path, sep=sep, encoding=encoding)
+    d.columns = [str(c).strip().upper() for c in d.columns]
+
+    ck, cd = col_chiave.upper(), col_dimensione.upper()
+    valori = [c.upper() for c in colonne_valore]
+    attese = {ck, cd, *valori}
+    mancanti = sorted(attese - set(d.columns))
+    if mancanti:
+        raise KeyError(f"colonne {mancanti} assenti in {path}; "
+                       f"presenti: {list(d.columns)}")
+
+    d[ck] = d[ck].astype(str).str.strip()
+    d[cd] = d[cd].astype(str).str.strip()
+
+    diag = {"righe_grezze": len(d)}
+    fuori = {str(x).strip().lower() for x in escludi_dimensione}
+    if fuori:
+        m = d[cd].str.lower().isin(fuori)
+        if m.any():
+            diag["unita_escluse"] = sorted(set(d.loc[m, cd]))
+            diag["unita_escluse_peso"] = float(
+                pd.to_numeric(d.loc[m, valori].stack(), errors="coerce").sum())
+            d = d[~m]
+
+    lungo = d.melt(id_vars=[ck, cd], value_vars=valori,
+                   var_name=nome_valore, value_name="peso")
+    lungo = lungo.rename(columns={ck: "chiave", cd: dimensione})
+    lungo["peso"] = pd.to_numeric(lungo["peso"], errors="coerce").fillna(0.0)
+    lungo = lungo[lungo["peso"] != 0]
+
+    tot = float(lungo["peso"].sum())
+    diag.update({"modalita": int(lungo["chiave"].nunique()),
+                 f"{dimensione}_n": int(lungo[dimensione].nunique()),
+                 nome_valore: sorted(set(lungo[nome_valore])),
+                 "n_misurato": tot})
+    for v in sorted(set(lungo[nome_valore])):
+        diag[f"n_{v}"] = float(lungo.loc[lungo[nome_valore] == v, "peso"].sum())
+
+    if etichette_residuo:
+        res = {str(x).strip().lower() for x in etichette_residuo}
+        m = lungo["chiave"].str.lower().isin(res)
+        if m.any():
+            diag["residuo_peso"] = float(lungo.loc[m, "peso"].sum())
+            diag["residuo_quota"] = round(diag["residuo_peso"] / tot, 4) if tot else None
+
+    lungo = lungo.sort_values("peso", ascending=False,
+                              kind="stable").reset_index(drop=True)
+    return lungo[["chiave", dimensione, nome_valore, "peso"]], diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "matrice_csv": matrice_csv,
+    "formato_lungo": formato_lungo,
+    "excel_aree_sesso": excel_aree_sesso,
     "sdmx_csv": sdmx_csv,
     "sezioni_xlsx": sezioni_xlsx,
     "tracciato_xlsx": tracciato_xlsx,

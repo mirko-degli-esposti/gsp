@@ -119,6 +119,14 @@ fonti:
       riconoscere il file, non un conteggio.
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: C1 (c1_sex_age_marital.csv)
+    vincolo: hard
+    obbligatoria: true
+    anno_usato: N
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      unica fonte HARD: conteggi anagrafici esatti. Tutti gli altri blocchi
+      sono SOFT e condizionali su questa spina.
     usabile_per: [vincoli_eta_sesso, vincoli_stato_civile, controllo_totali]
     non_usabile_per: [confronto_diretto_con_censimento_stesso_anno]
 
@@ -152,6 +160,13 @@ fonti:
       riconoscere il file, non un conteggio.
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: C3 (c3_sex_ageclass_edu.csv)
+    vincolo: soft
+    obbligatoria: true
+    anno_usato: N-1
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      classi d'eta' censuarie, non quelle anagrafiche.
     usabile_per: [vincoli_istruzione]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
   - id: istat_cens_sesso_eta_cittadinanza
@@ -179,6 +194,11 @@ fonti:
       Il grezzo contiene i codici aggregati (TOTAL ecc.).
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: C2 (c2_sex_age_citizenship.csv)
+    vincolo: soft
+    obbligatoria: true
+    anno_usato: N-1
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     usabile_per: [vincoli_maxent, tabelle_zona]
     usato_da: [build_zona_tables.py, build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno, paese_di_dettaglio]
@@ -207,6 +227,15 @@ fonti:
       cens_istruzione_eta. Il grezzo contiene i codici aggregati.
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: C5 (c5_edu_citizenship.csv)
+    vincolo: soft
+    obbligatoria: true
+    anno_usato: N-1
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      DA CHIARIRE: la tupla in build_constraints.py la etichetta 'C3', ma
+      il file prodotto e' c5_edu_citizenship.csv. Qui si segue il nome del
+      file.
     usabile_per: [vincoli_maxent]
     usato_da: [build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
@@ -237,6 +266,11 @@ fonti:
       Il grezzo contiene i codici aggregati.
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: C4 (c4_sex_ageclass_condprof.csv)
+    vincolo: soft
+    obbligatoria: true
+    anno_usato: N-1
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     usabile_per: [vincoli_maxent]
     usato_da: [build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
@@ -264,6 +298,14 @@ fonti:
       cens_condprof_eta. Il grezzo contiene i codici aggregati.
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: C6 (c6_condprof_citizenship.csv)
+    vincolo: soft
+    obbligatoria: true
+    anno_usato: N-1
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      DA CHIARIRE: la tupla la etichetta 'C4', il file prodotto e'
+      c6_condprof_citizenship.csv.
     usabile_per: [vincoli_maxent]
     usato_da: [build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
@@ -294,6 +336,15 @@ fonti:
       dell'IPF in opendata_paese.py). Il grezzo contiene gli aggregati.
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: nationality_conditional.csv
+    vincolo: fuori_maxent
+    obbligatoria: true
+    anno_usato: N-1
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      produce P(paese | straniero) a due stadi, FUORI dal MaxEnt. DA
+      CHIARIRE: la tupla la etichetta 'C6', che pero' e' gia'
+      condprof_citizenship.
     usabile_per: [vincoli_maxent, margine_A_ipf, assegnazione_paese, registro_paesi]
     usato_da: [build_constraints.py, opendata_paese.py, assign_nationality.py, enrich.py, common.py]
     non_usabile_per: [geografia_subcomunale, popolazione_italiana]
@@ -325,6 +376,14 @@ fonti:
       di Gibbs riducibile a lambda*. Il grezzo contiene gli aggregati.
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: C7/C8 (c7_sex_background.csv, c8_background_origine.csv)
+    vincolo: soft
+    obbligatoria: false
+    anno_usato: N-1
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      opzionale: se manca, preflight() salta i blocchi e lo dichiara. C8 ha
+      'non_applicabile' per i nati all'estero.
     usabile_per: [vincoli_maxent, blocco_GC]
     usato_da: [build_constraints.py, cs_build.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
@@ -354,6 +413,13 @@ fonti:
       Il grezzo contiene gli aggregati.
     unita: individuo
     normalizzatore: sdmx_csv
+    blocco: null
+    vincolo: null
+    obbligatoria: false
+    anno_usato: null
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      non compare in build_constraints.py: nessun blocco, nessun uso.
     usabile_per: []
     usato_da: []
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
@@ -376,13 +442,21 @@ fonti:
     chiave_istanza: comune
     riferimento_temporale: 31_dicembre
     universo: >-
-      censimento permanente al 31 dicembre. Universo ristretto ai soli
-      OCCUPATI (dipendente, autonomo, ecc.): non e' la popolazione totale,
-      e un vincolo che lo trattasse come tale sarebbe sbagliato.
-      Il grezzo contiene gli aggregati.
+      … universo ristretto ai soli OCCUPATI …
+      Usata da build_constraints come vincolo C9 SOFT e CONDIZIONALE
+      all'universo occupati (c9_sex_posizione_prof.csv), non come
+      marginale sulla popolazione totale.
     unita: individuo occupato
     normalizzatore: sdmx_csv
-    usabile_per: [vincoli_maxent]
+    blocco: C9 (c9_sex_posizione_prof.csv)
+    vincolo: soft
+    obbligatoria: false
+    anno_usato: qualunque
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      SOFT e CONDIZIONALE all'universo occupati: non entra come marginale
+      sulla popolazione totale.
+    usabile_per: [vincoli_maxent, vincoli_maxent_soft]
     usato_da: [build_constraints.py]
     non_usabile_per: [vincoli_su_popolazione_totale]
 
@@ -404,11 +478,18 @@ fonti:
     chiave_istanza: comune
     riferimento_temporale: 31_dicembre
     universo: >-
-      censimento permanente al 31 dicembre. Come cens_posizione_prof,
-      universo ristretto ai soli OCCUPATI, classificati per settore di
-      attivita' economica. Il grezzo contiene gli aggregati.
-    unita: individuo occupato
+      … universo ristretto ai soli OCCUPATI …
+      Usata da build_constraints come vincolo C9 SOFT e CONDIZIONALE
+      all'universo occupati (c9_sex_posizione_prof.csv), non come
+      marginale sulla popolazione totale.
     normalizzatore: sdmx_csv
-    usabile_per: [vincoli_maxent]
+    blocco: C10 (c10_sex_settore.csv)
+    vincolo: soft
+    obbligatoria: false
+    anno_usato: qualunque
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    nota_pipeline: >-
+      come C9: soft e condizionale all'universo occupati.
+    usabile_per: [vincoli_maxent, vincoli_maxent_soft]
     usato_da: [build_constraints.py, cs_build.py]
     non_usabile_per: [vincoli_su_popolazione_totale]

@@ -5,11 +5,19 @@ schema: 1
 fonti:
 
   - id: firenze_cognomi_2013
-    ente: Comune di Firenze
-    titolo: Cognomi residenti
-    url: https://opendata.comune.fi.it/page_dataset_show?id=cognomi-residenti
+    ente: >-
+      Comune di Firenze - Direzione Generale - Servizio Pianificazione,
+      Controllo e Statistica
+    contatto: statistica@comune.fi.it
+    titolo: Cognomi residenti - Anno 2013
+    url: "http://opendata.comune.fi.it/?q=metarepo/datasetinfo&id=cognomi-residenti-2013"
     data_accesso: 2026-08-02
-    licenza: DA_VERIFICARE
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      Comune di Firenze, "Cognomi residenti - Anno 2013",
+      opendata.comune.fi.it, CC BY 4.0
+    aggiornamento: notPlanned      # dal metadato: dataset congelato
+    metadati: firenze_cognomi_2013.xml
     file: firenze_cognomi_2013.csv
     sha256: aeedad53c604b707d096289c6ac289de3c2a730924cf8d7ebe34c0c4b67e343d
     archiviazione: git
@@ -28,7 +36,8 @@ fonti:
       - 2 record con cognome vuoto (75 + 33 persone), esclusi
       - 4 coppie con spazio in testa (" DE LUCIA", " ROCCO"), fuse
       - particelle nobiliari in minuscolo ("de VIVO"), preservate
-      - file ASCII puro: eventuali accenti gia' appiattiti a monte
+      - file ASCII puro; accenti gia' appiattiti a monte
+      - byteSize dichiarato 875.4 Kbytes = 875465 byte, coincide
     bias: >-
       include gli stranieri con la composizione toscana (HU al rango 13);
       strato hapax al 51% dei tipi, rinnovato per ~1/6 ogni anno
@@ -36,11 +45,19 @@ fonti:
     non_usabile_per: [cognome_straniero, geografia_emilia]
 
   - id: firenze_cognomi_2012
-    ente: Comune di Firenze
-    titolo: Cognomi residenti
-    url: https://opendata.comune.fi.it/page_dataset_show?id=cognomi-residenti
+    ente: >-
+      Comune di Firenze - Direzione Generale - Servizio Pianificazione,
+      Controllo e Statistica
+    contatto: statistica@comune.fi.it
+    titolo: Cognomi residenti - Anno 2012
+    url: "http://opendata.comune.fi.it/?q=metarepo/datasetinfo&id=cognomi-residenti-2012"
     data_accesso: 2026-08-02
-    licenza: DA_VERIFICARE
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      Comune di Firenze, "Cognomi residenti - Anno 2012",
+      opendata.comune.fi.it, CC BY 4.0
+    aggiornamento: DA_VERIFICARE   # scaricare il metadato del 2012
+    metadati: null
     file: firenze_cognomi_2012.csv
     sha256: 5bc0df81ed1badaaf7c0c934b4057768a6ef077e99946992a98ac65ea81ba350
     archiviazione: git
@@ -59,7 +76,8 @@ fonti:
       - 2 record con cognome vuoto (90 + 28 persone), esclusi
       - 3 coppie di righe byte-identiche emesse dalla fonte
         (DE LUCIA 27+1, ECH-CHATOUI 1+1, EL SHAHAT... 1+1), fuse
-      - file ASCII puro: eventuali accenti gia' appiattiti a monte
+      - file ASCII puro; accenti gia' appiattiti a monte
+      - separatore ";" invece di "," come nel 2013
     bias: >-
       stessa popolazione del 2013 (correlazione 0,9985): non e' un
       campione indipendente

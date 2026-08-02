@@ -351,6 +351,46 @@ def pubblicabile(silenzioso=False):
     return d
 
 
+def attribuzioni(scrivi=True):
+    """Genera fonti/ATTRIBUZIONI.md dal registro.
+
+    Le licenze CC-BY obbligano ad attribuire in modo visibile a chi riceve
+    i dati: un campo dentro un YAML non basta. Il file e' generato, mai
+    scritto a mano, cosi' non puo' divergere dal registro.
+    """
+    reg = _leggi_registro()
+    righe = ["# Attribuzioni delle fonti",
+             "",
+             "Generato da `python -m gsp.fonti --attribuzioni`. Non "
+             "modificare a mano:",
+             "le informazioni vivono in `fonti/registro.yaml`.",
+             ""]
+    for i in sorted(reg):
+        f = reg[i]
+        cop = f.get("copertura") or {}
+        righe += [
+            f"## {f.get('titolo', i)}",
+            "",
+            f"- **Fonte:** {' '.join((f.get('ente') or '').split())}",
+            f"- **Licenza:** {f.get('licenza')}",
+            f"- **URL:** {f.get('url')}",
+            f"- **Scaricato il:** {f.get('data_accesso')}",
+            f"- **Copertura:** {cop.get('geo')}, {cop.get('tempo')}",
+            f"- **Universo:** {' '.join((f.get('universo') or '').split())}",
+        ]
+        attr = f.get("attribuzione")
+        if attr:
+            righe += ["", "> " + " ".join(attr.split())]
+        righe.append("")
+    testo = "\n".join(righe)
+    if scrivi:
+        p = os.path.join(DIR_FONTI, "ATTRIBUZIONI.md")
+        with open(p, "w", encoding="utf-8") as fh:
+            fh.write(testo)
+        print(f"fonti/ATTRIBUZIONI.md scritto · {len(reg)} fonti")
+    return testo
+
+
 # ------------------------------------------------------------------ aggiungi
 
 
@@ -424,6 +464,8 @@ def _main():
     ap.add_argument("--verifica", nargs="?", const=True)
     ap.add_argument("--pubblico", action="store_true",
                     help="cosa puo' finire in un repo pubblico")
+    ap.add_argument("--attribuzioni", action="store_true",
+                    help="rigenera fonti/ATTRIBUZIONI.md")
     ap.add_argument("--normalizza", metavar="ID")
     ap.add_argument("--impronta", metavar="ID")
     ap.add_argument("--aggiungi", metavar="PATH")
@@ -439,6 +481,8 @@ def _main():
 
     if a.elenco:
         print(elenco().to_string(index=False))
+    elif a.attribuzioni:
+        attribuzioni()
     elif a.pubblico:
         d = pubblicabile()
         sys.exit(0 if (d.esito != "BLOCCANTE").all() else 1)

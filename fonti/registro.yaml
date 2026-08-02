@@ -1,0 +1,67 @@
+# Registro delle fonti esterne della pipeline GSP.
+# Una fonte senza `universo` compilato non e' registrata: e' depositata.
+schema: 1
+
+fonti:
+
+  - id: firenze_cognomi_2013
+    ente: Comune di Firenze
+    titolo: Cognomi residenti
+    url: https://opendata.comune.fi.it/page_dataset_show?id=cognomi-residenti
+    data_accesso: 2026-08-02
+    licenza: DA_VERIFICARE
+    file: firenze_cognomi_2013.csv
+    sha256: aeedad53c604b707d096289c6ac289de3c2a730924cf8d7ebe34c0c4b67e343d
+    archiviazione: git
+    universo: >-
+      residenti anagrafici del comune di Firenze, tutte le eta',
+      italiani e stranieri, un record per persona
+    unita: individuo
+    copertura: {geo: "048017", tempo: 2013}
+    normalizzatore: distribuzione_csv
+    opzioni: {sep: ","}
+    dimensioni: []
+    n_dichiarato: null
+    n_misurato: 375371
+    modalita: 66353
+    anomalie:
+      - 2 record con cognome vuoto (75 + 33 persone), esclusi
+      - 4 coppie con spazio in testa (" DE LUCIA", " ROCCO"), fuse
+      - particelle nobiliari in minuscolo ("de VIVO"), preservate
+      - file ASCII puro: eventuali accenti gia' appiattiti a monte
+    bias: >-
+      include gli stranieri con la composizione toscana (HU al rango 13);
+      strato hapax al 51% dei tipi, rinnovato per ~1/6 ogni anno
+    usabile_per: [cognome_italiano, coda_zipf]
+    non_usabile_per: [cognome_straniero, geografia_emilia]
+
+  - id: firenze_cognomi_2012
+    ente: Comune di Firenze
+    titolo: Cognomi residenti
+    url: https://opendata.comune.fi.it/page_dataset_show?id=cognomi-residenti
+    data_accesso: 2026-08-02
+    licenza: DA_VERIFICARE
+    file: firenze_cognomi_2012.csv
+    sha256: 5bc0df81ed1badaaf7c0c934b4057768a6ef077e99946992a98ac65ea81ba350
+    archiviazione: git
+    universo: >-
+      residenti anagrafici del comune di Firenze, tutte le eta',
+      italiani e stranieri, un record per persona
+    unita: individuo
+    copertura: {geo: "048017", tempo: 2012}
+    normalizzatore: distribuzione_csv
+    opzioni: {sep: ";"}
+    dimensioni: []
+    n_dichiarato: null
+    n_misurato: 372819
+    modalita: 65400
+    anomalie:
+      - 2 record con cognome vuoto (90 + 28 persone), esclusi
+      - 3 coppie di righe byte-identiche emesse dalla fonte
+        (DE LUCIA 27+1, ECH-CHATOUI 1+1, EL SHAHAT... 1+1), fuse
+      - file ASCII puro: eventuali accenti gia' appiattiti a monte
+    bias: >-
+      stessa popolazione del 2013 (correlazione 0,9985): non e' un
+      campione indipendente
+    usabile_per: [controllo_stabilita]
+    non_usabile_per: [cognome_italiano, cognome_straniero, geografia_emilia]

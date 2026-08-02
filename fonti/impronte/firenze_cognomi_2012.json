@@ -1,0 +1,111 @@
+{
+  "byte": 863923,
+  "decili": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    2.0,
+    3.0,
+    5.0,
+    9.0
+  ],
+  "diagnostica": {
+    "chiave_vuota_peso": 118.0,
+    "chiave_vuota_righe": 2,
+    "chiavi_fuse": 3,
+    "modalita": 65400,
+    "n_misurato": 372819.0,
+    "righe_grezze": 65405
+  },
+  "hapax": 33593,
+  "id": "firenze_cognomi_2012",
+  "modalita": 65400,
+  "n_misurato": 372819.0,
+  "peso_max": 1543.0,
+  "peso_min": 1.0,
+  "sha256": "5bc0df81ed1badaaf7c0c934b4057768a6ef077e99946992a98ac65ea81ba350",
+  "testa": [
+    {
+      "chiave": "ROSSI",
+      "peso": 1543.0
+    },
+    {
+      "chiave": "BIANCHI",
+      "peso": 962.0
+    },
+    {
+      "chiave": "INNOCENTI",
+      "peso": 916.0
+    },
+    {
+      "chiave": "CONTI",
+      "peso": 801.0
+    },
+    {
+      "chiave": "GORI",
+      "peso": 766.0
+    },
+    {
+      "chiave": "MARTINI",
+      "peso": 714.0
+    },
+    {
+      "chiave": "RICCI",
+      "peso": 689.0
+    },
+    {
+      "chiave": "BARTOLINI",
+      "peso": 626.0
+    },
+    {
+      "chiave": "CECCHI",
+      "peso": 621.0
+    },
+    {
+      "chiave": "GALLI",
+      "peso": 619.0
+    },
+    {
+      "chiave": "MANETTI",
+      "peso": 608.0
+    },
+    {
+      "chiave": "FABBRI",
+      "peso": 601.0
+    },
+    {
+      "chiave": "BERTI",
+      "peso": 582.0
+    },
+    {
+      "chiave": "CASINI",
+      "peso": 571.0
+    },
+    {
+      "chiave": "LANDI",
+      "peso": 557.0
+    },
+    {
+      "chiave": "MASINI",
+      "peso": 545.0
+    },
+    {
+      "chiave": "LOMBARDI",
+      "peso": 542.0
+    },
+    {
+      "chiave": "MASI",
+      "peso": 539.0
+    },
+    {
+      "chiave": "VANNINI",
+      "peso": 519.0
+    },
+    {
+      "chiave": "HU",
+      "peso": 510.0
+    }
+  ]
+}

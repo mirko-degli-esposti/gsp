@@ -46,7 +46,7 @@ import os
 from pathlib import Path
 
 import pandas as pd
-import gsp_common as G
+import gsp.common as G
 
 
 # ----------------------------------------------------------------------

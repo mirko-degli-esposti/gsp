@@ -34,7 +34,7 @@ import json
 import importlib
 import numpy as np
 import pandas as pd
-import gsp_common as G
+import gsp.common as G
 
 # ----------------------------------------------------------------------
 # Configurazione

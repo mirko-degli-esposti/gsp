@@ -42,7 +42,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-import gsp_common as G
+import gsp.common as G
 
 # Denominazioni urbanistiche generiche: si tolgono dall'odonimo per isolare
 # il toponimo vero e proprio.

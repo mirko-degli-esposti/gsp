@@ -35,7 +35,7 @@ import time
 
 import pandas as pd
 
-import gsp_common as G
+import gsp.common as G
 
 SUBMUN = G.SUBMUN
 DATA_DIR = os.path.join(SUBMUN, "Dati_regionali_2023")

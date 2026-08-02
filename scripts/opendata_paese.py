@@ -52,7 +52,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-import gsp_common as G
+import gsp.common as G
 
 OPENDATA = os.path.join(G.DATA, "opendata")
 ANNO_CENS = 2023

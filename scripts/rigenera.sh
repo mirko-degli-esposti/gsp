@@ -140,7 +140,7 @@ if [[ $DRY -eq 0 && $KO -eq 0 ]]; then
   python - <<'PYEOF'
 import glob, sys, pandas as pd
 sys.path.insert(0, "scripts")
-import gsp_common as G
+import gsp.common as G
 tot_i = tot_n = 0
 for f in sorted(glob.glob("data/comuni/*/constraints_2024/popolazione_K*_avq_full.csv")):
     c = f.split("/")[2]

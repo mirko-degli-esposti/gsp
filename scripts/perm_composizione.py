@@ -70,7 +70,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-import gsp_common as G
+import gsp.common as G
 
 GRUPPI_DEFAULT = "UE=ST17,ST18;NONUE=ST20,ST21"
 

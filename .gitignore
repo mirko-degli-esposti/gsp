@@ -37,3 +37,12 @@ note/*.pdf
 animarium/
 log/
 bundle/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.ipynb_checkpoints/
+
+# generati, ricostruibili in un comando
+fonti/norm/

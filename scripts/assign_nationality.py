@@ -36,7 +36,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-import gsp_common as G
+import gsp.common as G
 
 # Vocabolario locale della CLI. Il registro usa nomi semantici
 # ('quartieri', 'zone'); qui restano i nomi di colonna.

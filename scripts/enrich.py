@@ -51,7 +51,7 @@ import pandas as pd
 
 
 
-import gsp_common as G
+import gsp.common as G
 import opendata_paese as OP
 
 # Colonne P del tracciato: P30+k maschi, P67+k femmine, k=0..15 sui

@@ -47,7 +47,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-import gsp_common as G
+import gsp.common as G
 
 
 AVQ_YEARS = ["2022", "2023", "2024"]

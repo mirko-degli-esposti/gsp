@@ -72,7 +72,8 @@ fonti:
     n_dichiarato: null
     n_misurato: 372819
     modalita: 65400
-    - separatore ";" contro "," del 2013, dichiarato nel metadato
+    anomalie:
+      - separatore ";" contro "," del 2013, dichiarato nel metadato
         (dc:modified identico nei due, 2024-10-08)
     bias: >-
       stessa popolazione del 2013 (correlazione 0,9985): non e' un

@@ -482,6 +482,7 @@ fonti:
       Usata da build_constraints come vincolo C9 SOFT e CONDIZIONALE
       all'universo occupati (c9_sex_posizione_prof.csv), non come
       marginale sulla popolazione totale.
+    unita: individuo occupato
     normalizzatore: sdmx_csv
     blocco: C10 (c10_sex_settore.csv)
     vincolo: soft

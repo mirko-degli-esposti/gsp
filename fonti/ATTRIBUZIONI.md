@@ -36,6 +36,39 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 > ISTAT, "Popolazione residente per eta', sesso e stato civile", esploradati.istat.it, CC BY 4.0
 
+## Censimento permanente - condizione professionale per cittadinanza
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente, popolazione residente al 31 dicembre. Stesso avvertimento sull'universo della condizione professionale di cens_condprof_eta. Il grezzo contiene i codici aggregati.
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - condizione professionale per eta'
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente, popolazione residente al 31 dicembre. ATTENZIONE all'universo della condizione professionale: le modalita' occupato/disoccupato/inattivo non si applicano a tutta la popolazione, e i bambini stanno in una categoria a parte o sono esclusi. Da verificare sulla codelist prima di usarla come vincolo. Il grezzo contiene i codici aggregati.
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - istruzione per cittadinanza
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente, popolazione residente al 31 dicembre. Stima integrata, non conteggio esaustivo. Incrocio istruzione x cittadinanza senza l'eta': per l'incrocio con l'eta' serve cens_istruzione_eta. Il grezzo contiene i codici aggregati.
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
 ## Censimento permanente - istruzione per eta'
 
 - **Fonte:** ISTAT
@@ -44,5 +77,71 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Scaricato il:** None
 - **Copertura:** None, None
 - **Universo:** censimento permanente, popolazione residente al 31 dicembre (INDICATOR = RESPOP_AV). E' una STIMA integrata da fonti amministrative e indagine campionaria, non un conteggio esaustivo: i vincoli che ne derivano hanno un margine e non sono verita'. Serie storica pluriennale nello stesso file: l'anno usato dalla pipeline va scelto, non e' l'unico presente. Il grezzo contiene i codici aggregati (TOTAL ecc.): obs_somma nell'impronta e' circa 8x la popolazione vera. E' una firma per riconoscere il file, non un conteggio.
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - background migratorio per origine dei genitori
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente, popolazione residente al 31 dicembre per background migratorio e origine dei genitori. E' la fonte del blocco GC (background x cittadinanza), che contiene 6 zeri strutturali: senza un vincolo congiunto esplicito il MaxEnt assume indipendenza anche dove la relazione e' deterministica, e produce ~30% di combinazioni impossibili. Gli stessi zeri rendono la catena di Gibbs riducibile a lambda*. Il grezzo contiene gli aggregati.
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - posizione nella famiglia
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente al 31 dicembre. Descrive la posizione dell'individuo nel nucleo familiare: l'unita' resta l'individuo, ma l'informazione e' relazionale e la pipeline attuale NON modella le famiglie. NESSUNO script la legge (verificato 2/8/2026): scaricata e non usata. Il grezzo contiene gli aggregati.
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - posizione professionale
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente al 31 dicembre. Universo ristretto ai soli OCCUPATI (dipendente, autonomo, ecc.): non e' la popolazione totale, e un vincolo che lo trattasse come tale sarebbe sbagliato. Il grezzo contiene gli aggregati.
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - popolazione per sesso, eta' e cittadinanza
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente, popolazione residente al 31 dicembre (INDICATOR = RESPOP_AV). Stima integrata, non conteggio esaustivo. Cittadinanza nella dicotomia italiana/straniera, non il paese di dettaglio: per quello serve cens_stranieri_paesi. Il grezzo contiene i codici aggregati (TOTAL ecc.).
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - settore di attivita' economica
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente al 31 dicembre. Come cens_posizione_prof, universo ristretto ai soli OCCUPATI, classificati per settore di attivita' economica. Il grezzo contiene gli aggregati.
+
+> ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
+
+## Censimento permanente - stranieri per paese di cittadinanza
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/SDMXWS/rest
+- **Scaricato il:** None
+- **Copertura:** None, None
+- **Universo:** censimento permanente, stranieri residenti al 31 dicembre per paese di cittadinanza (~150 paesi). Pubblicato SOLO a livello comunale: e' la ragione per cui la pipeline assume paese indipendente dalla geografia dato (area, sesso), e per cui le fonti sub-comunali in data/submun/ sono complementari e non alternative (margine A dell'IPF in opendata_paese.py). Il grezzo contiene gli aggregati.
 
 > ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0

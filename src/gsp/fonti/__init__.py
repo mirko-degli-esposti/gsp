@@ -81,10 +81,59 @@ N_IMPRONTA = 20             # quante modalita' di testa entrano nell'impronta
 _cache = {}
 
 
+class _SenzaDuplicati(yaml.SafeLoader):
+    """SafeLoader che rifiuta le chiavi ripetute.
+
+    PyYAML di suo tiene l'ULTIMA e scarta le precedenti senza dire niente:
+    sostituire un campo scrivendo la riga nuova sopra quella vecchia
+    produce un registro che dice una cosa diversa da quella che si legge
+    guardando il file. E' l'unico errore di edit manuale che il resto dei
+    controlli non puo' vedere, perche' arriva gia' filtrato dal parser.
+    """
+
+
+def _mappa_senza_duplicati(loader, node, deep=False):
+    loader.flatten_mapping(node)
+    viste, mappa = {}, {}
+    for k_node, v_node in node.value:
+        k = loader.construct_object(k_node, deep=deep)
+        if k in viste:
+            raise yaml.constructor.ConstructorError(
+                "durante la lettura del registro", node.start_mark,
+                f"chiave '{k}' ripetuta: gia' presente a riga "
+                f"{viste[k].line + 1}. PyYAML terrebbe in silenzio solo "
+                f"l'ultima", k_node.start_mark)
+        viste[k] = k_node.start_mark
+        mappa[k] = loader.construct_object(v_node, deep=deep)
+    return mappa
+
+
+_SenzaDuplicati.add_constructor(
+    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, _mappa_senza_duplicati)
+
+
 def _leggi_registro():
     if "reg" not in _cache:
-        with open(REGISTRO, encoding="utf-8") as f:
-            doc = yaml.safe_load(f) or {}
+        try:
+            with open(REGISTRO, encoding="utf-8") as f:
+                doc = yaml.load(f, _SenzaDuplicati) or {}
+        except yaml.constructor.ConstructorError as e:
+            m = e.problem_mark
+            raise SystemExit(
+                f"\n{REGISTRO}\n"
+                f"  riga {m.line + 1}: {e.problem}\n"
+                f"  Togli la riga vecchia: tenerle entrambe fa si' che il "
+                f"registro dica\n  una cosa diversa da quella che si legge "
+                f"guardando il file.\n") from None
+        except yaml.YAMLError as e:
+            m = getattr(e, "problem_mark", None)
+            dove = f"  riga {m.line + 1}, colonna {m.column + 1}\n" if m else ""
+            raise SystemExit(
+                f"\n{REGISTRO}: YAML non valido\n{dove}"
+                f"  {getattr(e, 'problem', e)}\n"
+                f"  Di solito e' l'indentazione: dentro una lista il testo "
+                f"che va a capo\n  sta due spazi a destra del trattino.\n"
+            ) from None
         fonti = doc.get("fonti") or []
         ids = [f["id"] for f in fonti]
         dupl = {i for i in ids if ids.count(i) > 1}

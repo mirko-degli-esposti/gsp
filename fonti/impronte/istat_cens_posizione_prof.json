@@ -1,0 +1,137 @@
+{
+  "id": "istat_cens_posizione_prof",
+  "istanze": {
+    "017029": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1069,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 347152.0,
+      "ref_area": [
+        "17029"
+      ],
+      "righe": 9,
+      "sha256": "20e1a7fa23a21bf12d6ccbbfda7b0a98805fb171a62dc39a59ad96edd85b4dd1"
+    },
+    "033032": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1067,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 183076.00000000003,
+      "ref_area": [
+        "33032"
+      ],
+      "righe": 9,
+      "sha256": "b38465c476a379fa904c51db912c0a0ec5b7f8476a85f8fcc9ff6e693ed88c2f"
+    },
+    "034027": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1094,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 368192.0,
+      "ref_area": [
+        "034027"
+      ],
+      "righe": 9,
+      "sha256": "92656445622124877a59f2bce628f601ab2c9b0ee0d2e624dfcc8c5b78a03a1c"
+    },
+    "035033": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1069,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 318688.0,
+      "ref_area": [
+        "35033"
+      ],
+      "righe": 9,
+      "sha256": "a306eaf9d44209bd3d057e1a408d8564bb2c8bfad7eabcd77a29d45b0e119b8f"
+    },
+    "036023": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1069,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 337024.0,
+      "ref_area": [
+        "36023"
+      ],
+      "righe": 9,
+      "sha256": "4f439ad4602928bab8a4b807fccae21c73fbf8549917ff047b52d2736783aa74"
+    },
+    "037021": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1066,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 29335.999999999996,
+      "ref_area": [
+        "37021"
+      ],
+      "righe": 9,
+      "sha256": "194025cbec8ec04dd273069afff33c10b385971f4af5bc9735397d05bdb7f6f8"
+    },
+    "038008": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1067,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 229040.00000000017,
+      "ref_area": [
+        "38008"
+      ],
+      "righe": 9,
+      "sha256": "cbd0fbc43eaf3bd76e41c511fcfff5cce7703630ebe2052011ea90c940795376"
+    },
+    "039014": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1069,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 270304.00000000006,
+      "ref_area": [
+        "39014"
+      ],
+      "righe": 9,
+      "sha256": "92d750b09c2268b5d9357c2e9b0b8f2c813f199667168c1b1c6aa418c693a9b7"
+    },
+    "040012": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1069,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 208215.99999999997,
+      "ref_area": [
+        "40012"
+      ],
+      "righe": 9,
+      "sha256": "4fd7b5d45bf18b7d974368113cd5ac47181887f07a52038c7d265344b7d9e24b"
+    },
+    "099014": {
+      "anni": [
+        "2021"
+      ],
+      "byte": 1069,
+      "dataflow": "IT1:DF_DCSS_EMPLP_1_COM(1.0)",
+      "obs_somma": 248919.99999999997,
+      "ref_area": [
+        "99014"
+      ],
+      "righe": 9,
+      "sha256": "75b4e8b139b59ba8ff6c587454f4533b084cb2404c9e7bdd876103019ab544f2"
+    }
+  },
+  "n_istanze": 10,
+  "tipo": "multi_istanza"
+}

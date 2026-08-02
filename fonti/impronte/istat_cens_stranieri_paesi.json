@@ -1,0 +1,235 @@
+{
+  "id": "istat_cens_stranieri_paesi",
+  "istanze": {
+    "017029": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 263144,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 1993376.0,
+      "ref_area": [
+        "17029"
+      ],
+      "righe": 2454,
+      "sha256": "5f9c195b751d5f18fa8759a3fe3a66b8bc1dad0bb0df1a9b91499e12e15e1dc8"
+    },
+    "033032": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 234722,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 1050079.0,
+      "ref_area": [
+        "33032"
+      ],
+      "righe": 2186,
+      "sha256": "95d3ee6f09c46481abedecddc4c09df697ae1a1e541750ebfc8926ef83e1d324"
+    },
+    "034027": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 269331,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 1813403.0,
+      "ref_area": [
+        "034027"
+      ],
+      "righe": 2487,
+      "sha256": "724318ef642f7131f036948e9c2496170ebdbd0284cff52c7535f7fd0cdbe62f"
+    },
+    "035033": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 243510,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 1517143.0,
+      "ref_area": [
+        "35033"
+      ],
+      "righe": 2267,
+      "sha256": "7826b70e642f5971374c5c716817e4f77c9404a9c101781fca0e3bf8135dcfb3"
+    },
+    "036023": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 251340,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 1543831.0,
+      "ref_area": [
+        "36023"
+      ],
+      "righe": 2341,
+      "sha256": "8720d9bbbc7617ddbb732c7c8a26a034e12d20b1833a90a9a6002ed4d83ec725"
+    },
+    "037006": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 286481,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 3180421.0,
+      "ref_area": [
+        "37006"
+      ],
+      "righe": 2670,
+      "sha256": "9fdb7ded4bbe3c5c785742b36eee166293f7b019adad71ac245503d0a9e4f726"
+    },
+    "037021": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 133170,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 58374.0,
+      "ref_area": [
+        "37021"
+      ],
+      "righe": 1228,
+      "sha256": "307bfa04687ccd207ae1112e2d50076c65028e0eeb034f8e0b807010c4885c92"
+    },
+    "038008": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 239386,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 797861.0,
+      "ref_area": [
+        "38008"
+      ],
+      "righe": 2232,
+      "sha256": "a442a0eb7d4b981ed90c8cab8a10edb1d802e39a3171e473718b1fd4d371beac"
+    },
+    "039014": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 230837,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 915214.0,
+      "ref_area": [
+        "39014"
+      ],
+      "righe": 2150,
+      "sha256": "2b917877f99411b84a49f9b0d675d473936aee027dda688c438e51e99dfeeedb"
+    },
+    "040012": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 217050,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 814318.0,
+      "ref_area": [
+        "40012"
+      ],
+      "righe": 2018,
+      "sha256": "ed870a9ae8a403e32f71cbc777019d007efea232fd316da28e7b4bf86746ad76"
+    },
+    "074017": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 122334,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 35940.0,
+      "ref_area": [
+        "74017"
+      ],
+      "righe": 1124,
+      "sha256": "768e906b884e62bfa962be19e38699b15c3600a05a61c3a2d0ad324968267fc8"
+    },
+    "099014": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 245260,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_TV_3(1.0)",
+      "obs_somma": 1055936.0,
+      "ref_area": [
+        "99014"
+      ],
+      "righe": 2286,
+      "sha256": "0d90a6a672c801c370df6924f5252f70cc8565c7a3ce8cbea84d93e781b884aa"
+    }
+  },
+  "n_istanze": 12,
+  "tipo": "multi_istanza"
+}

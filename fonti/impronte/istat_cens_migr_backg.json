@@ -1,0 +1,187 @@
+{
+  "id": "istat_cens_migr_backg",
+  "istanze": {
+    "017029": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59174,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 9018512.0,
+      "ref_area": [
+        "17029"
+      ],
+      "righe": 495,
+      "sha256": "b34e8f7f1a8e1c9877983b7462b909df1ae75c852ee3cb53cbee529d0768f8ff"
+    },
+    "033032": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59050,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 4692692.0,
+      "ref_area": [
+        "33032"
+      ],
+      "righe": 495,
+      "sha256": "8455bee295c8ada8e0c6f5500b069f26cb5d4eb63072d6ee4609c5ae6854207f"
+    },
+    "034027": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59646,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 9037496.0,
+      "ref_area": [
+        "034027"
+      ],
+      "righe": 495,
+      "sha256": "4084339005095205d33eaf2a97c9f9137717cc412c4a813a5bfa47faf993a412"
+    },
+    "035033": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59130,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 7843156.0,
+      "ref_area": [
+        "35033"
+      ],
+      "righe": 495,
+      "sha256": "6328235e6c45aaacd2601fcbd04a3ff1f9de28be01f3d55a4ff2b9c129189553"
+    },
+    "036023": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59178,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 8528636.0,
+      "ref_area": [
+        "36023"
+      ],
+      "righe": 495,
+      "sha256": "a6fd961cc91e406bfd43e1e81b74c176c9139a9bf4249997ed46373016eceb61"
+    },
+    "037006": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59258,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 17967400.0,
+      "ref_area": [
+        "37006"
+      ],
+      "righe": 495,
+      "sha256": "f2f53d0d0279a5e603b12a053e04b641184fb226f1a5e662e99b0c10ec5d658b"
+    },
+    "037021": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 57581,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 761244.0,
+      "ref_area": [
+        "37021"
+      ],
+      "righe": 485,
+      "sha256": "8acb878f5e13fa85b7811be5b05c713b039cca6f43ece3bdf3dd78652beac11e"
+    },
+    "038008": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59050,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 6044060.0,
+      "ref_area": [
+        "38008"
+      ],
+      "righe": 495,
+      "sha256": "a86d34124170408d5893789d2f424208bcdac6c24910c1fec86f3ec5273b9aaa"
+    },
+    "039014": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59119,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 7279988.0,
+      "ref_area": [
+        "39014"
+      ],
+      "righe": 495,
+      "sha256": "d72ead97b9c84ae44964d26446243becc3e6922fd5f3f888e1a8982663aa899b"
+    },
+    "040012": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59020,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 5422944.0,
+      "ref_area": [
+        "40012"
+      ],
+      "righe": 495,
+      "sha256": "9db2af00f305fb01c729689f15df7222405e67d6404a39bec25d77b4113b2914"
+    },
+    "074017": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 56565,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 860676.0,
+      "ref_area": [
+        "74017"
+      ],
+      "righe": 478,
+      "sha256": "7c43209182460297c728c03efd7e5203ad74e695f50f440d36c57e47873f5466"
+    },
+    "099014": {
+      "anni": [
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "byte": 59157,
+      "dataflow": "IT1:DF_DCSS_MIGR_BACKG_PAR_TV_1_COM(1.0)",
+      "obs_somma": 6946304.0,
+      "ref_area": [
+        "99014"
+      ],
+      "righe": 495,
+      "sha256": "b5c780db297d436f324b044ece5db55b786c175a06e503e48d7c36df69908aa8"
+    }
+  },
+  "n_istanze": 12,
+  "tipo": "multi_istanza"
+}

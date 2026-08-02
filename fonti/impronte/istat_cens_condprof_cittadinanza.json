@@ -1,0 +1,223 @@
+{
+  "id": "istat_cens_condprof_cittadinanza",
+  "istanze": {
+    "017029": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60397,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 12424612.0,
+      "ref_area": [
+        "17029"
+      ],
+      "righe": 486,
+      "sha256": "fa5afaa0d08906b8601750fc7d60d447903d311805c26a8cf2fead59ffadc8f9"
+    },
+    "033032": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60366,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 6481712.0,
+      "ref_area": [
+        "33032"
+      ],
+      "righe": 486,
+      "sha256": "b0fa17f7205aa67714ebf03d643b6571b2055587e56b39b64fc5df44b657e056"
+    },
+    "034027": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60879,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 12441420.0,
+      "ref_area": [
+        "034027"
+      ],
+      "righe": 486,
+      "sha256": "a5890ac95bace9ffb643660fdab7eb9e1b2b761f9cdb163fd0d7fc47152816a3"
+    },
+    "035033": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60378,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 10654185.0,
+      "ref_area": [
+        "35033"
+      ],
+      "righe": 486,
+      "sha256": "673c58a3eddec351f5796437b351d2463fd2bd80e7ba0e069bb3e5e271a88a75"
+    },
+    "036023": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60377,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 11688926.0,
+      "ref_area": [
+        "36023"
+      ],
+      "righe": 486,
+      "sha256": "4c3c61600c55d8515a1a3329ebbab2ba4c423dff1eb16499800d5d30ac52933c"
+    },
+    "037006": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60519,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 24921962.0,
+      "ref_area": [
+        "37006"
+      ],
+      "righe": 486,
+      "sha256": "43df519986b31824ce072aa59448f1b9c2c52a7288e0d29a22b2879ae399ee79"
+    },
+    "037021": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60119,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 998810.0,
+      "ref_area": [
+        "37021"
+      ],
+      "righe": 486,
+      "sha256": "3d70df0419163c498529d48bf6222fa51da3c46edd0634589fa2138cf4642b77"
+    },
+    "038008": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60356,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 8454472.0,
+      "ref_area": [
+        "38008"
+      ],
+      "righe": 486,
+      "sha256": "68150a78c05456eaaa37a97fe105ef27c6193440c2eec533dd62c48fea4d4ec6"
+    },
+    "039014": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60380,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 9997288.0,
+      "ref_area": [
+        "39014"
+      ],
+      "righe": 486,
+      "sha256": "6616f2548bcdc357ffde92fc802f604ec2e344bf6c95e02147097a09ec56e326"
+    },
+    "040012": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60363,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 7406786.0,
+      "ref_area": [
+        "40012"
+      ],
+      "righe": 486,
+      "sha256": "5be9169b23e980fde369ef36c2d9fc57d4e293be824e133b8158cd377101c37c"
+    },
+    "074017": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60153,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 1172144.0,
+      "ref_area": [
+        "74017"
+      ],
+      "righe": 486,
+      "sha256": "4fd4051dd373a0da70aded764ac03be62a1eb1f411ae1e7636d2d17e8a6b364f"
+    },
+    "099014": {
+      "anni": [
+        "2018",
+        "2019",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 60368,
+      "dataflow": "IT1:DF_DCSS_ISTR_LAV_PEN_2_TV_4(1.0)",
+      "obs_somma": 9449337.0,
+      "ref_area": [
+        "99014"
+      ],
+      "righe": 486,
+      "sha256": "4b34494690f248286a04c955bb71a78f24b971b98db072a67838d11ca6026bc2"
+    }
+  },
+  "n_istanze": 12,
+  "tipo": "multi_istanza"
+}

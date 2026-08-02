@@ -1,0 +1,235 @@
+{
+  "id": "istat_cens_sesso_eta_cittadinanza",
+  "istanze": {
+    "017029": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 416925,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 8690092.0,
+      "ref_area": [
+        "17029"
+      ],
+      "righe": 3658,
+      "sha256": "55f64823fa1b64f7b7c9f9b8e94a226388de7bbe39e4fda6116a7763c5b8fa40"
+    },
+    "033032": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 413766,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 4535096.0,
+      "ref_area": [
+        "33032"
+      ],
+      "righe": 3642,
+      "sha256": "652320248492ff779f5257fe1770511677efa4e76abc00b4483fa94972c7ed51"
+    },
+    "034027": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 419998,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 8695108.0,
+      "ref_area": [
+        "034027"
+      ],
+      "righe": 3654,
+      "sha256": "c20e0aa661ad4b03bf8f2efabbb33c37260b142d790590de1f104ae2a2ceec65"
+    },
+    "035033": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 418261,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 7521680.0,
+      "ref_area": [
+        "35033"
+      ],
+      "righe": 3673,
+      "sha256": "e267097a44dba9dc2eede36b20ccdf6aa9d2b1e489caf9c17057c2dac8d9ffee"
+    },
+    "036023": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 417896,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 8166320.0,
+      "ref_area": [
+        "36023"
+      ],
+      "righe": 3668,
+      "sha256": "5ffc8525cfc4a9d5b769119183f6a30e876efcd053d9df300be69f5c3afb516a"
+    },
+    "037006": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 421977,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 17181896.0,
+      "ref_area": [
+        "37006"
+      ],
+      "righe": 3693,
+      "sha256": "91b9366a163bf8836f3bf1ffb8051a2082bc37e184d273996ae726e66f5f9add"
+    },
+    "037021": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 388129,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 708100.0,
+      "ref_area": [
+        "37021"
+      ],
+      "righe": 3441,
+      "sha256": "cf133055b644d78a4448a5cbea7b6834606bee4c76e92e0af952b8bb8667c2af"
+    },
+    "038008": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 413538,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 5735076.0,
+      "ref_area": [
+        "38008"
+      ],
+      "righe": 3638,
+      "sha256": "2546ead7356c9fd2ce645008d5a2fadff3b4cd33b4f55465c6f2f65874087bc3"
+    },
+    "039014": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 417634,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 6891372.0,
+      "ref_area": [
+        "39014"
+      ],
+      "righe": 3670,
+      "sha256": "4c4246b800e3c885b232f17ff0af37888359ec8033049a35125c71e91429a77a"
+    },
+    "040012": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 414368,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 5159728.0,
+      "ref_area": [
+        "40012"
+      ],
+      "righe": 3647,
+      "sha256": "e3bead8009d4922e3ccebb183b538a9989f6869f2bfb24e6360f17ddef042f03"
+    },
+    "074017": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 388664,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 799744.0,
+      "ref_area": [
+        "74017"
+      ],
+      "righe": 3446,
+      "sha256": "70b7a9580072533ec7c7e614f1519699acf3593841df6dc5bdcb4a07e13b4e55"
+    },
+    "099014": {
+      "anni": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "byte": 419195,
+      "dataflow": "IT1:DF_DCSS_POP_DEMCITMIG_SETA_1(1.0)",
+      "obs_somma": 6588568.0,
+      "ref_area": [
+        "99014"
+      ],
+      "righe": 3684,
+      "sha256": "487c87ba14db8188787fbe523c64ee3590a4d676623f9e542e96e6d977d9944a"
+    }
+  },
+  "n_istanze": 12,
+  "tipo": "multi_istanza"
+}

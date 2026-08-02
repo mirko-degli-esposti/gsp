@@ -1,0 +1,133 @@
+{
+  "id": "istat_cens_posizione_famiglia",
+  "istanze": {
+    "033032": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2354,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 818920.0,
+      "ref_area": [
+        "33032"
+      ],
+      "righe": 18,
+      "sha256": "ec8f17a03a9e64d192af2441f69672e72b8dce2c9ca641e55ca6822977e84a98"
+    },
+    "034027": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2377,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 1563970.0,
+      "ref_area": [
+        "034027"
+      ],
+      "righe": 18,
+      "sha256": "61a4c7fbd4eae104dcc3c1c6102b70cd12ff5e4e28ea15ecfe5970e255a22529"
+    },
+    "035033": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2355,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 1361994.0,
+      "ref_area": [
+        "35033"
+      ],
+      "righe": 18,
+      "sha256": "cb48c64d9ce8ab52518d19c35d9bc695f5ea99acdc63f9097dabc17fc2028fac"
+    },
+    "036023": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2357,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 1472542.0,
+      "ref_area": [
+        "36023"
+      ],
+      "righe": 18,
+      "sha256": "b6f650583c8bf63a8735d91817eb93e100a26452f1f1ea6bea0234376dc9c096"
+    },
+    "037021": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2336,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 128248.0,
+      "ref_area": [
+        "37021"
+      ],
+      "righe": 18,
+      "sha256": "53d3ded5e01e3ee616592299eb1b82057190f46781061b33996b26d02eadb2ad"
+    },
+    "038008": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2354,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 1034162.0,
+      "ref_area": [
+        "38008"
+      ],
+      "righe": 18,
+      "sha256": "39c6591720cf46818bc5df84805302f1fa278aa5ce7bc606e3339befd8e09a27"
+    },
+    "039014": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2355,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 1245392.0,
+      "ref_area": [
+        "39014"
+      ],
+      "righe": 18,
+      "sha256": "16f38d9461b0ffa8807ad3a6d5f29af6605346f6676a0edb4369ae79ed75e25b"
+    },
+    "040012": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2354,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 932200.0,
+      "ref_area": [
+        "40012"
+      ],
+      "righe": 18,
+      "sha256": "b97d6642ee11be93237a4d4242852271f2d661a5a8d5d568330e2a44521cc703"
+    },
+    "099014": {
+      "anni": [
+        "2021",
+        "2024"
+      ],
+      "byte": 2355,
+      "dataflow": "IT1:DF_DCSS_HCUE_COM_2_COM(1.0)",
+      "obs_somma": 1192622.0,
+      "ref_area": [
+        "99014"
+      ],
+      "righe": 18,
+      "sha256": "cf5bb4997c5b574a8b18ab5ac470b352c517a556795196ee177c805b9931704b"
+    }
+  },
+  "n_istanze": 9,
+  "tipo": "multi_istanza"
+}

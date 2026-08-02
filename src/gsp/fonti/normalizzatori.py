@@ -223,8 +223,70 @@ def tracciato_csv(path, sep=",", col_chiave="variabile",
     return d[["chiave", "definizione"]].reset_index(drop=True), diag
 
 
+def matrice_csv(path, sep=None, encoding="utf-8", col_chiave=None,
+                dimensione="zona", etichette_residuo=None, **kw):
+    """Matrice larga: prima colonna la modalita', le altre le unita'
+    territoriali, le celle i conteggi.
+
+    Scioglie in formato lungo `chiave, <dimensione>, peso`. E' il primo
+    caso in cui il campo `dimensioni` del registro serve davvero.
+
+    NON riconcilia i nomi: la traduzione delle denominazioni comunali in
+    codici ISTAT vive gia' in gsp.common.COMUNI[...]["opendata_paese"]
+    (mappa_unita, alias_paese) ed e' referenziata con `parametri_da`.
+    Qui si misura soltanto.
+
+    `sep=None` con engine python lascia sniffare il separatore, come fa
+    load_reggio.
+    """
+    etichette_residuo = etichette_residuo or []
+    d = pd.read_csv(path, sep=sep, engine="python", encoding=encoding)
+    if col_chiave is None:
+        col_chiave = d.columns[0]
+    unita = [c for c in d.columns if c != col_chiave]
+
+    lungo = d.melt(id_vars=[col_chiave], value_vars=unita,
+                   var_name=dimensione, value_name="peso")
+    lungo = lungo.rename(columns={col_chiave: "chiave"})
+    lungo["chiave"] = lungo["chiave"].astype(str).str.strip()
+    lungo[dimensione] = lungo[dimensione].astype(str).str.strip()
+    lungo["peso"] = pd.to_numeric(lungo["peso"], errors="coerce")
+
+    diag = {"modalita": int(d[col_chiave].nunique()),
+            f"{dimensione}_n": len(unita),
+            f"{dimensione}_nomi": [str(c).strip() for c in unita]}
+
+    n_na = int(lungo["peso"].isna().sum())
+    if n_na:
+        diag["celle_non_numeriche"] = n_na
+        lungo = lungo[lungo["peso"].notna()]
+    vuote = int((lungo["chiave"] == "").sum())
+    if vuote:
+        diag["chiave_vuota"] = vuote
+        lungo = lungo[lungo["chiave"] != ""]
+
+    lungo["peso"] = lungo["peso"].astype("float64")
+    tot = float(lungo["peso"].sum())
+    diag["n_misurato"] = tot
+
+    # quanto della massa sta nella modalita' residuale: dice quanta
+    # informazione la fonte porta davvero, ed e' il numero che l'IPF
+    # tratta come complemento invece che come paese.
+    if etichette_residuo:
+        res = {str(x).strip().lower() for x in etichette_residuo}
+        m = lungo["chiave"].str.lower().isin(res)
+        if m.any():
+            diag["residuo_peso"] = float(lungo.loc[m, "peso"].sum())
+            diag["residuo_quota"] = round(diag["residuo_peso"] / tot, 4) if tot else None
+
+    lungo = lungo.sort_values("peso", ascending=False,
+                              kind="stable").reset_index(drop=True)
+    return lungo[["chiave", dimensione, "peso"]], diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
+    "matrice_csv": matrice_csv,
     "sdmx_csv": sdmx_csv,
     "sezioni_xlsx": sezioni_xlsx,
     "tracciato_xlsx": tracciato_xlsx,

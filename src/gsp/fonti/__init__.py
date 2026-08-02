@@ -263,7 +263,7 @@ def _impronta(id_fonte, d, diag):
         "id": id_fonte,
         "sha256": sha256(g) if os.path.exists(g) else f.get("sha256"),
         "byte": os.path.getsize(g) if os.path.exists(g) else None,
-        "modalita": int(len(d)),
+        "modalita": int(diag.get("modalita", len(d))),
         "diagnostica": {k: (float(v) if isinstance(v, float) else v)
                         for k, v in diag.items()},
     }
@@ -271,7 +271,7 @@ def _impronta(id_fonte, d, diag):
         # normalizzatori che non producono una distribuzione (codebook,
         # tavole di definizioni): l'impronta e' la testa piu' i conteggi.
         prima = d.columns[0]
-        imp["n_misurato"] = float(len(d))
+        imp["n_misurato"] = float(diag.get("n_misurato", len(d)))
         imp["testa"] = [str(x) for x in d[prima].head(N_IMPRONTA)]
         return imp
 

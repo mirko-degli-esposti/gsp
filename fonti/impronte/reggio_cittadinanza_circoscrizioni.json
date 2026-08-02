@@ -1,0 +1,116 @@
+{
+  "byte": 704,
+  "decili": [
+    43.6,
+    55.0,
+    73.8,
+    122.80000000000004,
+    170.0,
+    265.79999999999995,
+    389.89999999999986,
+    472.4000000000001,
+    639.4000000000001
+  ],
+  "diagnostica": {
+    "modalita": 26,
+    "n_misurato": 31431.0,
+    "residuo_peso": 1928.0,
+    "residuo_quota": 0.0613,
+    "zona_n": 4,
+    "zona_nomi": [
+      "Città storica",
+      "Ovest",
+      "Sud",
+      "Nordest"
+    ]
+  },
+  "hapax": 0,
+  "id": "reggio_cittadinanza_circoscrizioni",
+  "modalita": 26,
+  "n_misurato": 31431.0,
+  "peso_max": 2486.0,
+  "peso_min": 9.0,
+  "sha256": "fcdfd4c26d1e368e7b0a32b1b2f0124b3c6ad134d8dc2b7bfc08162665b68ce6",
+  "testa": [
+    {
+      "chiave": "Cina",
+      "peso": 2486.0
+    },
+    {
+      "chiave": "Marocco",
+      "peso": 1305.0
+    },
+    {
+      "chiave": "Albania",
+      "peso": 1186.0
+    },
+    {
+      "chiave": "Cina",
+      "peso": 1109.0
+    },
+    {
+      "chiave": "Albania",
+      "peso": 985.0
+    },
+    {
+      "chiave": "Ghana",
+      "peso": 943.0
+    },
+    {
+      "chiave": "Marocco",
+      "peso": 796.0
+    },
+    {
+      "chiave": "Albania",
+      "peso": 764.0
+    },
+    {
+      "chiave": "Albania",
+      "peso": 749.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 730.0
+    },
+    {
+      "chiave": "Marocco",
+      "peso": 643.0
+    },
+    {
+      "chiave": "Ucraina",
+      "peso": 631.0
+    },
+    {
+      "chiave": "Nigeria",
+      "peso": 589.0
+    },
+    {
+      "chiave": "Ucraina",
+      "peso": 578.0
+    },
+    {
+      "chiave": "Ucraina",
+      "peso": 571.0
+    },
+    {
+      "chiave": "Altre nazionalità",
+      "peso": 567.0
+    },
+    {
+      "chiave": "Egitto",
+      "peso": 566.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 562.0
+    },
+    {
+      "chiave": "Altre nazionalità",
+      "peso": 508.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 505.0
+    }
+  ]
+}

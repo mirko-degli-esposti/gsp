@@ -693,4 +693,53 @@ fonti:
     usato_da: [opendata_paese.py]
     non_usabile_per: [sesso, popolazione_italiana, conteggi_assoluti]
 
-  
+
+  - id: reggio_cittadinanza_circoscrizioni
+    ente: Comune di Reggio nell'Emilia
+    titolo: Nazionalita' piu' numerose per circoscrizione, 2013
+    url: DA_VERIFICARE
+    data_accesso: DA_VERIFICARE
+    licenza: DA_VERIFICARE
+    archiviazione: locale
+    percorso: data/opendata/035033/nazionalita-piu-numerose-per-circoscrizione-2013.csv
+    sha256: fcdfd4c26d1e368e7b0a32b1b2f0124b3c6ad134d8dc2b7bfc08162665b68ce6
+    copertura: {geo: "035033", tempo: 2013}
+    parametri_da: common.COMUNI.035033.opendata_paese
+    tier: 1
+    universo: >-
+      residenti stranieri per nazionalita' e circoscrizione, fonte
+      ANAGRAFICA comunale. Matrice larga: nazionalita' sulle righe, le 4
+      circoscrizioni sulle colonne. Non distingue il sesso: lo
+      ricostruisce l'IPF dal margine comunale, come per Brescia.
+      Contiene una modalita' residuale dichiarata, "Altre nazionalita'",
+      che l'IPF tratta come complemento dei paesi nominati e non come un
+      paese: la sua quota sulla massa totale sta in `residuo_quota`
+      nell'impronta, e dice quanta informazione la fonte porta davvero.
+    unita: individuo
+    normalizzatore: matrice_csv
+    opzioni: {encoding: latin-1, dimensione: zona,
+              etichette_residuo: ["Altre nazionalità"]}
+    dimensioni: [zona]
+    anomalie:
+      - file in ISO-8859-1, non UTF-8 (accenti nei nomi delle
+        circoscrizioni). Letto come UTF-8 i nomi arrivano corrotti.
+      - >-
+        i nomi di colonna con accenti fanno fallire IN SILENZIO
+        l'accesso per attributo con itertuples, che li rinomina:
+        load_reggio usa iterrows + iloc per questo.
+    bias: >-
+      la fonte e' del 2013 contro il 2023 delle sezioni: dieci anni di
+      scarto fra la geografia della cittadinanza e il censimento su cui
+      si fa l'IPF. L'assunzione di stabilita' strutturale e' stata
+      VERIFICATA il 1/8/2026 sulla quota UE per zona: ranghi 4-2-1-3 nel
+      2013 contro 4-1-2-3 nel 2023, con l'unico scambio fra due zone che
+      nel 2023 distano 0,003 (rumore). Le quote sono cresciute di 2-4
+      punti in modo uniforme: la FORMA condizionale regge anche se i
+      livelli no. E' questa verifica, non la data del file, a rendere la
+      fonte usabile. Il residuo dichiarato "Altre nazionalita'" pesa 1.928 persone su
+      31.431, cioe' il 6,1%: le 25 nazionalita' nominate coprono il 93,9%
+      degli stranieri, quindi la fonte e' quasi completa e non una
+      graduatoria troncata.
+    usabile_per: [margine_B_ipf, geografia_paese_tier1]
+    usato_da: [opendata_paese.py]
+    non_usabile_per: [sesso, livelli_assoluti_2023, popolazione_italiana]

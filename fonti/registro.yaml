@@ -693,36 +693,4 @@ fonti:
     usato_da: [opendata_paese.py]
     non_usabile_per: [sesso, popolazione_italiana, conteggi_assoluti]
 
-  # Piacenza: il file c'e' ma e' VUOTO, e comunque non sarebbe la fonte
-  # che serve. Registrato lo stesso: senza questa scheda, fra sei mesi
-  # quel file sembra il pezzo mancante.
-  - id: piacenza_residenti_quartiere_eta
-    ente: Comune di Piacenza
-    titolo: Residenti per quartiere ed eta'
-    url: DA_VERIFICARE          # opendata.comune.piacenza.it
-    data_accesso: DA_VERIFICARE
-    licenza: DA_VERIFICARE
-    archiviazione: locale
-    percorso: data/opendata/033032/piacenza_residenti_quartiere_eta.csv
-    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-    copertura: {geo: "033032", tempo: DA_VERIFICARE}
-    tier: 0
-    universo: >-
-      FILE VUOTO (0 byte, verificato 2/8/2026): il download e' fallito e
-      non se ne era accorto nessuno. L'sha256 registrato e' quello della
-      stringa vuota. Il nome suggerisce residenti per quartiere ed eta',
-      che comunque NON conterrebbe il paese di cittadinanza e non
-      potrebbe fare da margine B dell'IPF.
-      Piacenza resta tier 0 per una ragione strutturale, non per
-      mancanza di ricerca: l'Annuario Statistico comunale rielabora AP11,
-      POSAS e STRASA, tutte fonti ISTAT a livello COMUNALE, quindi il
-      dettaglio paese x quartiere non puo' esistere in quel canale. Da
-      riprovare se l'Ufficio Statistica pubblicasse elaborazioni
-      dall'anagrafe interna.
-    unita: individuo
-    normalizzatore: distribuzione_csv
-    opzioni: {sep: ";"}         # ipotesi, non verificabile su file vuoto
-    anomalie:
-      - file da 0 byte; --verifica resta DIVERGE finche' non si riscarica
-    usabile_per: []
-    non_usabile_per: [file_vuoto, margine_B_ipf, geografia_paese]
+  

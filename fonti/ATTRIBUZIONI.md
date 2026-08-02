@@ -194,12 +194,3 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Universo:** codebook delle 138 colonne dei file regionali: NOME_CAMPO -> DEFINIZIONE. Non e' un dato ma il suo dizionario: senza, colonne come P14 o ST2_B non vogliono dire niente.
 
 > ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
-
-## Residenti per quartiere ed eta'
-
-- **Fonte:** Comune di Piacenza
-- **Licenza:** DA_VERIFICARE
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** DA_VERIFICARE
-- **Copertura:** 033032, DA_VERIFICARE
-- **Universo:** FILE VUOTO (0 byte, verificato 2/8/2026): il download e' fallito e non se ne era accorto nessuno. L'sha256 registrato e' quello della stringa vuota. Il nome suggerisce residenti per quartiere ed eta', che comunque NON conterrebbe il paese di cittadinanza e non potrebbe fare da margine B dell'IPF. Piacenza resta tier 0 per una ragione strutturale, non per mancanza di ricerca: l'Annuario Statistico comunale rielabora AP11, POSAS e STRASA, tutte fonti ISTAT a livello COMUNALE, quindi il dettaglio paese x quartiere non puo' esistere in quel canale. Da riprovare se l'Ufficio Statistica pubblicasse elaborazioni dall'anagrafe interna.

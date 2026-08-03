@@ -246,9 +246,9 @@ def main(comune, anno, pop_file, out_name, targets, opzionali, seed, min_record)
         print(f"  {'regionale (nessun condiz.)':<28} {uso['reg']:>9,}  "
               f"({uso['reg']/len(pop):5.1%})")
 
-    n_don = len(np.unique(donor_idx))
-    print(f"[donor] donatori distinti usati: {n_don:,} su {len(a):,} "
-          f"({n_don/len(a):.1%}) | riuso medio {len(pop)/n_don:.1f}x")
+    n_estratti = len(np.unique(donor_idx))
+    print(f"[donor] donatori distinti usati: {n_estratti:,} su {len(a):,} "
+          f"({n_estratti/len(a):.1%}) | riuso medio {len(pop)/n_estratti:.1f}x")
 
     # ---- copia in blocco del vettore dei target ----
     don = a.loc[donor_idx, tutti].reset_index(drop=True)
@@ -298,17 +298,69 @@ def main(comune, anno, pop_file, out_name, targets, opzionali, seed, min_record)
     src = pd.DataFrame({t: pd.to_numeric(a[t], errors="coerce")
                         for t in tutti})
     if num.shape[1] >= 2:
-        ok = src.notna().astype(int)
-        n_don = ok.T @ ok                       # donatori validi per coppia
-        C = num.corr(min_periods=100).where(n_don >= 100)
-        print("\n[val] correlazioni fra target "
-              "(mascherate se < 100 donatori distinti):")
+        # La numerosita' effettiva non e' il numero di donatori
+        # DISPONIBILI nel pool ma di quelli effettivamente ESTRATTI: una
+        # coppia con 400 disponibili e 60 estratti poggia su 60
+        # osservazioni indipendenti, non 400, e con la soglia sui
+        # disponibili passerebbe il filtro senza doverlo.
+        usati = np.unique(donor_idx)
+        ok_u = src.loc[usati].notna().astype(int)
+        n_coppia = ok_u.T @ ok_u                 # estratti distinti per coppia
+        ok_d = src.notna().astype(int)
+        n_disp = ok_d.T @ ok_d                   # disponibili, per confronto
+
+        C = num.corr(min_periods=100).where(n_coppia >= 100)
+        print(f"\n[val] correlazioni fra target (mascherate se < 100 "
+              f"donatori distinti ESTRATTI):")
         print(C.round(3).to_string())
+
+        m = ((n_disp >= 100) & (n_coppia < 100)).to_numpy()
+        piu_lasco = int(np.triu(m, k=1).sum())
+        if piu_lasco:
+            print(f"[val] {piu_lasco} coppie superano la soglia sui "
+                  f"DISPONIBILI ma non sugli ESTRATTI: prima passavano.")
+
+        R = src.corr(min_periods=100)
+        print("\n[val] stesse correlazioni nei donatori AVQ (riferimento):")
+        print(R.round(3).to_string())
+
+        # scarto sintetico-donatori: e' IL controllo che giustifica
+        # l'hot-deck, e su 23 variabili sono 253 coppie da guardare a
+        # occhio. Ridotto a due numeri piu' le tre peggiori.
+        D = (C - R).abs()
+        # niente np.fill_diagonal: con pandas 3 il .values e' una vista
+        # in sola lettura. Si maschera la diagonale via etichette.
+        for t in D.columns:
+            D.loc[t, t] = np.nan
+        n_cop = int(D.notna().to_numpy().sum() // 2)
+        print(f"\n[val] scarto |sintetico - donatori| su {n_cop} coppie: "
+              f"max {D.max().max():.3f} | mediano {D.stack().median():.3f}")
+        peggiori = D.stack().sort_values(ascending=False)
+        viste = set()
+        for (i, j), v in peggiori.items():
+            if (j, i) in viste:
+                continue
+            viste.add((i, j))
+            nd = int(n_coppia.loc[i, j])
+            print(f"       {i} x {j}: {v:.3f}  (n={nd:,}, atteso ~{1/nd**0.5:.3f})")
+            if len(viste) == 3:
+                break
+
+
+        # coppie che la vecchia soglia (sui DISPONIBILI) lasciava passare:
+        # solo il triangolo superiore, la diagonale non e' una coppia
+        m = ((n_disp >= 100) & (n_coppia < 100)).to_numpy()
+        piu_lasco = int(np.triu(m, k=1).sum())
+        if piu_lasco:
+            print(f"[val] {piu_lasco} coppie superano la soglia sui "
+                  f"DISPONIBILI ma non sugli ESTRATTI: prima passavano.")
+
         print("\n[val] stesse correlazioni nei donatori AVQ (riferimento):")
         print(src.corr(min_periods=100).round(3).to_string())
 
-
+    
     pop = pop.drop(columns=["macroeta", "istr4"])
+
     out = os.path.join(cdir, out_name)
     pop.to_csv(out, index=False)
     print(f"\n[done] -> {out}")

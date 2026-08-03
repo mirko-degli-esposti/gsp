@@ -1,0 +1,21 @@
+{
+  "id": "modena_nomi_residenti",
+  "istanze": {
+    "F": {
+      "byte": 108939,
+      "modalita": 650,
+      "n_misurato": 475621.0,
+      "righe_grezze": 650,
+      "sha256": "ea0d81027d70d21ccd99d225ce7edb9331a59d9b42d37e43052c219e2960a0d7"
+    },
+    "M": {
+      "byte": 108425,
+      "modalita": 650,
+      "n_misurato": 598902.0,
+      "righe_grezze": 650,
+      "sha256": "52ccb7d0f2e3324e7b690755f6ef351a984fc315f9b716e74b824d9cf9e9ca54"
+    }
+  },
+  "n_istanze": 2,
+  "tipo": "multi_istanza"
+}

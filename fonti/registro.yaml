@@ -1079,3 +1079,98 @@ fonti:
     usabile_per: [decodifica_microdati_parma]
     usato_da: [opendata_paese.py]
     non_usabile_per: [conteggi]
+# Nomi propri — Comune di Modena, stock dei residenti.
+#
+#   grep -q "id: modena_nomi_residenti" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/scheda_modena_nomi.yaml" >> fonti/registro.yaml
+#
+#   sha256sum data/nomi/modena_nomi_*.csv     -> i due DA_CALCOLARE
+#   python -m gsp.fonti --scansiona modena_nomi_residenti
+#   python -m gsp.fonti --verifica
+#
+# NOTA: `distribuzione_csv` abbassa i nomi di colonna, quindi `col_chiave`
+# e `col_peso` vanno in MINUSCOLO anche se nel file sono maiuscoli.
+
+  - id: modena_nomi_residenti
+    tipo: multi_istanza
+    ente: Comune di Modena
+    titolo: Nomi maggiormente frequenti dei residenti, per sesso
+    url: https://dati.emilia-romagna.it/dataset/nomi-maggiormente-frequenti-di-sesso-maschile-dal-2012-al-2022
+    url_femminile: https://dati.emilia-romagna.it/dataset/nomi-maggiormente-frequenti-di-sesso-femminile-nel-2012-al-2022
+    url_download: >-
+      https://geonext.comune.modena.it/geoservernext//Modena/Nomi_maggiormente_frequenti_di_sesso_maschile_dal_2012_al_2022_preview/wfs?service=WFS&version=1.3.0&request=GetFeature&typename=Modena:Nomi_maggiormente_frequenti_di_sesso_maschile_dal_2012_al_2022_preview&outputformat=csv
+    data_accesso: 2026-08-03
+    licenza: CC-BY-4.0
+    licenza_uri: https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40
+    attribuzione: >-
+      Comune di Modena, "Nomi maggiormente frequenti", via
+      dati.emilia-romagna.it, CC BY 4.0
+    id_risorsa: {M: a6bd9610-bceb-4fa8-b7b1-682b4542c354,
+                 F: 5c3e6356-df9f-4e19-aacc-ff51b5f505af}
+    archiviazione: locale
+    percorso: data/nomi/modena_nomi_{istanza}.csv
+    chiave_istanza: sesso
+    riferimento_temporale: 31_dicembre
+    universo: >-
+      STOCK dei residenti anagrafici del comune di Modena, NON i nati
+      dell'anno: la descrizione del catalogo dice "attribuiti ai nati" ma
+      i valori lo smentiscono (1.390 ANTONIO nel 2015 non sono neonati).
+      Esattamente 50 nomi per sesso e per anno, 650 righe per file.
+      Non distingue eta' ne' cittadinanza: e' una lista unica per sesso,
+      ed e' la ragione per cui il repertorio dichiara `condiziona:
+      [sesso]` e non `[sesso, coorte]`.
+    unita: individuo
+    copertura: {geo: "036023", tempo: "2012-2024"}
+    normalizzatore: distribuzione_csv
+    opzioni: {sep: ",", col_chiave: nome, col_peso: occorrenze,
+              dimensioni: [anno]}
+    anomalie:
+      - >-
+        il TITOLO dice "dal 2012 al 2022" ma i dati arrivano al 2024
+        (13 annate, verificato 3/8/2026). Il nome del dataset e' rimasto
+        indietro rispetto agli aggiornamenti.
+      - >-
+        il catalogo descrive il dataset come nomi "attribuiti ai nati":
+        e' errato, sono lo stock dei residenti.
+      - >-
+        servito da un WFS di GeoServer, quindi il CSV porta quattro
+        colonne di servizio che non c'entrano con i nomi: FID, OBJECTID,
+        DATA_INS, SHAPE. `SHAPE` e' un POINT (1652000 4945000) IDENTICO
+        su tutte le righe — il centroide di Modena, messo li' perche' il
+        servizio pretende una geometria.
+      - >-
+        i due file hanno metadati CKAN di eta' diversa: il campo `hash`
+        contiene un timestamp in millisecondi, che da' 2023-03-13 per il
+        maschile e 2025-08-27 per il femminile. Sono due pubblicazioni
+        separate, non due meta' di un export unico.
+      - >-
+        gli access url differiscono anche nel namespace WFS: `Modena:`
+        per il maschile, `Modena_public:` per il femminile, piu' un
+        doppio slash in `geoservernext//` nel primo. Da tenere presente
+        se un giorno si automatizza il ri-scaricamento.
+      - >-
+        DATA_INS mostra due ondate di inserimento: le righe fino al 2022
+        sono del 2023-03-10, quelle successive del 2025-04-22.
+    bias: >-
+      fonte MODENESE usata per tutti i comuni. A differenza dei cognomi
+      fiorentini la scelta e' regionalmente coerente per dieci comuni su
+      dodici: resta discutibile per Brescia (Lombardia) e per il comune
+      pugliese.
+      Il troncamento a 50 nomi per anno significa che la distribuzione
+      sintetica e' piu' CONCENTRATA di quella vera: nessun nome raro
+      comparira' mai, e la coda e' assente per costruzione, non per
+      soppressione. Per rendere naturale un persona-prompt e'
+      irrilevante; per qualunque statistica sui nomi no.
+      Non condiziona sull'eta': un ottantenne puo' chiamarsi Lorenzo e un
+      bambino Silvano. La correzione richiede una fonte per coorte, che
+      ISTAT pubblica solo dal 1999 (Contanomi, e solo i primi 50
+      nazionali o i primi 10 regionali). Per il 1927-1998 non esistono
+      fonti regionali aperte: la via pulita e' chiedere a un ufficio
+      statistica comunale una tavola sesso x classe quinquennale di
+      nascita x nome x frequenza, con soppressione sotto 5 — e'
+      un'aggregazione non identificativa.
+    usabile_per: [repertorio_nomi]
+    usato_da: [gsp.nomi]
+    non_usabile_per: [condizionamento_per_coorte, cittadinanza,
+                      statistiche_sui_nomi, geografia]

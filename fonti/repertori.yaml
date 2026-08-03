@@ -1,0 +1,77 @@
+# Repertori onomastici — configurazione, non codice.
+#
+# Un REPERTORIO e' una fonte del registro piu' la dichiarazione di cosa
+# condiziona. Cambiare sorgente significa cambiare `fonte`: il generatore
+# legge le colonne dichiarate e non sa da dove vengano.
+#
+# `condiziona: []`     lista unica
+# `condiziona: [x, y]` il frame normalizzato deve avere le colonne x e y,
+#                      e il generatore le usa per scegliere il sottoinsieme
+schema: 1
+
+repertori:
+
+  - id: cognome_italiano
+    tipo: cognome
+    fonte: firenze_cognomi_2013
+    condiziona: []
+    pesato: true
+    bias: >-
+      cognomi FIORENTINI usati per tutta l'Emilia-Romagna e per Brescia.
+      Scelta dichiarata, non corretta: TOLOMELLI, primo ad Argelato, non
+      compare in 375.371 fiorentini, e INNOCENTI (terzo a Firenze) e' un
+      artefatto dell'Ospedale degli Innocenti. Da sostituire con una
+      fonte anagrafica emiliana quando disponibile: bastera' cambiare
+      `fonte` qui.
+
+# --- da compilare -------------------------------------------------------
+# I repertori seguenti non hanno ancora una fonte registrata. Finche'
+# `fonte` e' DA_REGISTRARE il generatore lo dichiara e ripiega secondo
+# `fallback`.
+
+  - id: cognome_straniero
+    tipo: cognome
+    fonte: DA_REGISTRARE
+    condiziona: [paese]
+    pesato: false
+    fallback: cognome_italiano
+    bias: >-
+      serve un repertorio per paese. Vedi le tre opzioni in nota.
+
+  - id: nome_italiano
+    tipo: nome
+    fonte: modena_nomi_residenti
+    condiziona: [sesso]
+    filtro: {anno: 2024}
+    pesato: true
+    fallback: null
+    bias: >-
+      Contanomi ISTAT copre solo le coorti dal 1999 (tre bin su otto,
+      ~30% della popolazione). Per le altre serve una fonte comunale sui
+      RESIDENTI, o un repertorio curato per decennio.
+
+  - id: nome_straniero
+    tipo: nome
+    fonte: DA_REGISTRARE
+    condiziona: [paese, sesso]
+    pesato: false
+    fallback: nome_italiano
+
+# Instradamento: il cognome segue il PADRE, il nome dipende dai genitori.
+# Ordine significativo: si applica la prima regola che combacia.
+regole:
+  cognome:
+    - se: {background: [italiano_nativo, italiano_rientrato]}
+      usa: cognome_italiano
+    - se: {origine_genitori: [madre_straniera_padre_italiano]}
+      usa: cognome_italiano
+    - se: {}
+      usa: cognome_straniero
+  nome:
+    - se: {background: [italiano_nativo, italiano_rientrato]}
+      usa: nome_italiano
+    - se: {origine_genitori: [madre_italiana_padre_straniero,
+                              madre_straniera_padre_italiano]}
+      usa: nome_italiano
+    - se: {}
+      usa: nome_straniero

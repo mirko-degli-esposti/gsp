@@ -213,6 +213,17 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 > ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
 
+## Nomi maggiormente frequenti dei residenti, per sesso
+
+- **Fonte:** Comune di Modena
+- **Licenza:** CC-BY-4.0
+- **URL:** https://dati.emilia-romagna.it/dataset/nomi-maggiormente-frequenti-di-sesso-maschile-dal-2012-al-2022
+- **Scaricato il:** 2026-08-03
+- **Copertura:** 036023, 2012-2024
+- **Universo:** STOCK dei residenti anagrafici del comune di Modena, NON i nati dell'anno: la descrizione del catalogo dice "attribuiti ai nati" ma i valori lo smentiscono (1.390 ANTONIO nel 2015 non sono neonati). Esattamente 50 nomi per sesso e per anno, 650 righe per file. Non distingue eta' ne' cittadinanza: e' una lista unica per sesso, ed e' la ragione per cui il repertorio dichiara `condiziona: [sesso]` e non `[sesso, coorte]`.
+
+> Comune di Modena, "Nomi maggiormente frequenti", via dati.emilia-romagna.it, CC BY 4.0
+
 ## Descrizione e codifica dei campi, 2025
 
 - **Fonte:** Comune di Parma

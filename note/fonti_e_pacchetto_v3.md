@@ -557,8 +557,7 @@ stampa un messaggio annuncia il blocco sbagliato. Nel registro il campo
 
 ### 6.4 Il ciclo di rigenerazione
 
-Già previsto per le 26 esclusioni α=0 sulle combinazioni impossibili
-età-istruzione ed età-condizione. Aggiungere lì la colonna `idx_don`
+ Aggiungere lì la colonna `idx_don`
 costa nulla e chiude §5.6 su dodici comuni in un colpo.
 
 ---

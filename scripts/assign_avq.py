@@ -127,6 +127,12 @@ def load_avq(years, targets, opzionali, regione, nome_reg="?"):
         keep = set(base + targets + opzionali)
         d = pd.read_csv(path, sep="\t", low_memory=False,
                         usecols=lambda c: c in keep)
+        # numero di riga DENTRO l'annata: e' l'unica parte dell'identita'
+        # del donatore che non cambia fra corse. L'indice di `a` no: dipende
+        # da quali annate sono state caricate, e con CRONI fra i target il
+        # 2022 salta e slittano tutti.
+        d["riga_avq"] = np.arange(len(d), dtype=np.int32)
+        
         missing = [c for c in base + targets if c not in d.columns]
         if missing:
             print(f"[avq] {y}: variabili NECESSARIE mancanti {missing}, "
@@ -154,6 +160,8 @@ def load_avq(years, targets, opzionali, regione, nome_reg="?"):
     # i minori non hanno istruzione rilevata: chiave dedicata
     a.loc[a["macroeta"] == "0-13", "istr4"] = ISTR_MINORI
     a["sesso"] = a["SESSO"].map({1: "M", 2: "F"})
+    a["donor_id"] = (a["anno_avq"].astype(str) + ":"
+                     + a["riga_avq"].astype(str))
 
     a = a[a["REGMf"] == regione].copy()
     n0 = len(a)
@@ -178,7 +186,7 @@ def main(comune, anno, pop_file, out_name, targets, opzionali, seed, min_record)
     if out_name is None:
         out_name = pop_file.replace(".csv", "_avq.csv")
     print(f"[pop] {pop_file}: {len(pop):,} individui")
-    for t in tutti:
+    for t in tutti + ["donor_id"]:
         if t in pop.columns:
             sys.exit(f"La popolazione ha gia' una colonna '{t}'.")
 
@@ -249,6 +257,13 @@ def main(comune, anno, pop_file, out_name, targets, opzionali, seed, min_record)
     n_estratti = len(np.unique(donor_idx))
     print(f"[donor] donatori distinti usati: {n_estratti:,} su {len(a):,} "
           f"({n_estratti/len(a):.1%}) | riuso medio {len(pop)/n_estratti:.1f}x")
+
+    # l'identita' del donatore scritta a monte, non ricostruita a valle:
+    # la firma a 23 valori e' esatta per gli adulti e collide sul 90% dei
+    # minori, che hanno 19-21 variabili mancanti (riferimento §13.3).
+    pop["donor_id"] = a.loc[donor_idx, "donor_id"].to_numpy()
+    print(f"[donor] colonna `donor_id` scritta: "
+          f"{pop['donor_id'].nunique():,} valori distinti")
 
     # ---- copia in blocco del vettore dei target ----
     don = a.loc[donor_idx, tutti].reset_index(drop=True)

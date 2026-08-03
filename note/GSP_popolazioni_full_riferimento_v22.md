@@ -417,7 +417,7 @@ assign_nationality.py   -> + paese (comunale)      |  anello 2
 assign_avq.py           -> + 21 variabili AVQ      |
                                                    |
 enrich.py               -> + sezione, area, paese (geografico),
-   usa opendata_paese.py    eta_anni, indirizzo, lon/lat      anello 3
+   usa gsp.opendata         eta_anni, indirizzo, lon/lat      anello 3
 ```
 
 `|X|` = 161.280 × n_zone. MRE(α>0) ≈ 4·10⁻⁴, **indipendente da `|X|`** su

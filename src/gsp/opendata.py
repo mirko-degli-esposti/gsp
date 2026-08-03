@@ -38,9 +38,9 @@ Assunzioni:
       resta riservata alla validazione esterna.
 
 Uso:
-    python opendata_paese.py --check                  # tutti i comuni
-    python opendata_paese.py --check 034027
-    python opendata_paese.py --dump 037006 --top 15   # tabella risultante
+    python -m gsp.opendata --check                  # tutti i comuni
+    python -m gsp.opendata --check 034027
+    python -m gsp.opendata --dump 037006 --top 15   # tabella risultante
 """
 
 from __future__ import annotations

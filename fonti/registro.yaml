@@ -942,3 +942,114 @@ fonti:
                   gerarchia_zona_quartiere]
     usato_da: [opendata_paese.py]
     non_usabile_per: [popolazione_italiana, livelli_assoluti]
+
+  - id: parma_microdati_residenti
+    ente: Comune di Parma
+    titolo: Popolazione residente 2025 - microdati individuali
+    url: DA_VERIFICARE
+    data_accesso: 2025-07-28        # dai timestamp dei file
+    licenza: DA_VERIFICARE          # microdati individuali: verificare le
+                                    # condizioni d'uso, potrebbero non
+                                    # essere una CC-BY semplice
+    archiviazione: locale
+    percorso: data/opendata/034027/Popolazione_residente_2025.csv
+    sha256: b4c39ca96ace229864fdeeff59e3fe5655df81d46af22b1050c9570bfaea679d
+    copertura: {geo: "034027", tempo: 2025}
+    parametri_da: common.COMUNI.034027.opendata_paese
+    tier: 3
+    universo: >-
+      anagrafe comunale COMPLETA, una riga per residente: 202.111
+      individui, italiani inclusi. E' l'unica fonte locale a microdato
+      individuale e non a conteggio aggregato, e la sola con risoluzione
+      di SEZIONE (1.320 sezioni contro i 13 quartieri).
+      opendata_paese.py filtra Cittad != 100 per tenere i soli stranieri
+      (36.327, il 18%): il filtro e' a valle, la fonte ha tutti.
+      Porta due variabili che nessun'altra fonte locale ha, Ncomp
+      (numero componenti) e Relpar (relazione di parentela): non servono
+      all'IPF sul paese, ma sono struttura FAMILIARE, e insieme alla
+      tavola ISTAT cens_posizione_famiglia sono il materiale gia'
+      disponibile per quando le famiglie verranno modellate.
+    unita: individuo
+    normalizzatore: microdati_csv
+    opzioni: {sep: ";", col_geo: SEZ21, col_chiave: Cittad,
+              conteggi: [Quartiere, Cittad, Relpar, Tipores]}
+    anomalie:
+      - >-
+        ETA contiene valori NEGATIVI (minimo -1): un'eta' negativa non
+        esiste. O e' un codice per "meno di un anno" o e' un mancante.
+        Il conteggio esatto sta in ETA_negativi nell'impronta. DA
+        CHIARIRE prima di usare ETA per qualunque cosa.
+      - >-
+        1.320 sezioni distinte nei microdati, contro le 1.357 citate
+        nella docstring di load_parma: la differenza sono sezioni
+        censuarie senza residenti anagrafici. Il numero misurato e'
+        1.320.
+      - >-
+        151 codici di cittadinanza presenti nei dati contro i 225
+        definiti nel codebook: 74 paesi sono previsti dalla codifica ma
+        non hanno residenti a Parma.
+      - >-
+        SEZ21 e' il codice LOCALE: SEZ21_ID = "34027" + SEZ21 su sette
+        cifre. L'aggancio alle sezioni censuarie copre il 99,9% degli
+        individui; le sezioni residue esistono in anagrafe ma non hanno
+        popolazione censuaria pubblicata e finiscono nel residuale
+        territoriale.
+      - >-
+        UN solo record con ETA = -1 su 202.111 (Golese, sez. 570,
+        italiano). NON e' un codice convenzionale: il codebook documenta
+        ETA come "numerico" senza valori speciali, e l'eta' 0 e' gia'
+        popolata da 1.474 individui. E' un dato sporco. Irrilevante per
+        le statistiche, ma se finisse in un vincolo o in un pool di
+        donatori produrrebbe un individuo con eta' negativa. Per
+        opendata_paese il rischio e' nullo: e' italiano e viene filtrato.
+      - >-
+        Ncomp arriva a 319: sono le CONVIVENZE ANAGRAFICHE (Tipores = 2),
+        non famiglie. La variabile mescola due universi e non e'
+        utilizzabile per la dimensione familiare senza condizionare su
+        Tipores.
+      - >-
+        un solo individuo oltre i 110 anni (max 111): nessun cluster di
+        mai-cancellati, difetto tipico delle anagrafi.
+      - >-
+        SEZ21 e' documentato come "numero progressivo da 1 a 1667"; nei
+        dati i valori distinti sono 1.320 e il massimo osservato 1.665.
+        I codici non sono contigui e non tutte le sezioni hanno
+        residenti.
+    bias: >-
+      essendo microdato individuale non ha ne' gruppo residuale di paese
+      ne' troncamento della graduatoria: sotto questo aspetto e' insieme
+      a Bologna la fonte migliore, e ha in piu' la risoluzione di
+      sezione. Il limite non e' nella fonte ma nel censimento, che
+      pubblica la cittadinanza di dettaglio solo a livello comunale.
+      Come tutte le locali, i LIVELLI sono anagrafici e di data diversa
+      dal censimento: l'IPF usa la FORMA condizionale.
+    usabile_per: [margine_B_ipf, geografia_paese_tier3, sesso, eta,
+                  struttura_familiare]
+    usato_da: [opendata_paese.py]
+    non_usabile_per: [livelli_assoluti]
+
+  - id: parma_codifica_campi
+    ente: Comune di Parma
+    titolo: Descrizione e codifica dei campi, 2025
+    url: DA_VERIFICARE
+    data_accesso: 2025-07-28
+    licenza: DA_VERIFICARE
+    archiviazione: locale
+    percorso: data/opendata/034027/Descrizione_codifica_campi_2025.csv
+    sha256: dde845f0814ffc58ad7559879e9075b12ab4340a7190073d59b7eb979bebb018
+    copertura: {geo: "034027", tempo: 2025}
+    universo: >-
+      codebook a DUE livelli: campo -> codice -> etichetta. Diverso dai
+      tracciati visti finora, che sono a un livello (variabile ->
+      descrizione). Cittad ha 225 codici, Relpar 30, Tipores e Sesso 2;
+      ETA, Ncomp, Quartiere e SEZ21 non hanno codici, solo la descrizione
+      del campo. Senza questo file i microdati sono numeri senza
+      significato: 'Cittad = 201' non vuole dire niente.
+    unita: variabile
+    normalizzatore: codebook_csv
+    opzioni: {sep: ";", encoding: latin-1}
+    anomalie:
+      - file in ISO-8859-1 come quello di Reggio Emilia, non UTF-8
+    usabile_per: [decodifica_microdati_parma]
+    usato_da: [opendata_paese.py]
+    non_usabile_per: [conteggi]

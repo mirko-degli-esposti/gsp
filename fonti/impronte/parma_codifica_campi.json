@@ -1,0 +1,52 @@
+{
+  "byte": 10016,
+  "diagnostica": {
+    "campi": 8,
+    "campi_senza_codici": [
+      "ETA",
+      "Ncomp",
+      "Quartiere",
+      "SEZ21"
+    ],
+    "codici_per_campo": {
+      "Cittad": 225,
+      "ETA": 0,
+      "Ncomp": 0,
+      "Quartiere": 0,
+      "Relpar": 30,
+      "SEZ21": 0,
+      "Sesso": 2,
+      "Tipores": 2
+    },
+    "codici_veri": 259,
+    "modalita": 8,
+    "n_misurato": 263.0,
+    "righe": 263
+  },
+  "id": "parma_codifica_campi",
+  "modalita": 8,
+  "n_misurato": 263.0,
+  "sha256": "dde845f0814ffc58ad7559879e9075b12ab4340a7190073d59b7eb979bebb018",
+  "testa": [
+    "Tipores",
+    "Tipores",
+    "Sesso",
+    "Sesso",
+    "ETA",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad",
+    "Cittad"
+  ]
+}

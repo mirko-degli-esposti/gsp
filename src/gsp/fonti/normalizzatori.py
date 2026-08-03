@@ -492,12 +492,103 @@ def tabella_parquet(path, col_chiave=None, col_dimensione=None,
     return out, diag
 
 
+def microdati_csv(path, sep=None, encoding="utf-8", col_geo=None,
+                  col_chiave=None, conteggi=(), **kw):
+    """Microdati individuali: una riga per persona, non conteggi.
+
+    L'unita' e' l'individuo vero e n_misurato sono i RECORD, non una
+    somma di pesi: a differenza di AVQ questi non sono campionari ma
+    l'anagrafe intera. Torna il frame intatto e riassume la struttura.
+
+    `conteggi` elenca le colonne di cui riportare il numero di modalita'
+    distinte; `col_geo` quella territoriale.
+    """
+    d = pd.read_csv(path, sep=sep, engine="python" if sep is None else "c",
+                    encoding=encoding, low_memory=False)
+    d.columns = [str(c).strip() for c in d.columns]
+    diag = {"righe": len(d), "colonne": len(d.columns),
+            "campi": list(d.columns)}
+
+    for c in conteggi:
+        if c in d.columns:
+            diag[f"{c}_n"] = int(d[c].nunique())
+    if col_geo and col_geo in d.columns:
+        diag["geo_n"] = int(d[col_geo].nunique())
+    if col_chiave and col_chiave in d.columns:
+        diag["modalita"] = int(d[col_chiave].nunique())
+
+    # controllo di plausibilita' sui campi numerici: un'eta' negativa o
+    # un conteggio a zero sono difetti della fonte, non del lettore.
+    for c in d.columns:
+        v = pd.to_numeric(d[c], errors="coerce")
+        if v.notna().mean() < 0.9:
+            continue
+        mn, mx = float(v.min()), float(v.max())
+        diag[f"{c}_min"], diag[f"{c}_max"] = mn, mx
+        if mn < 0:
+            diag[f"{c}_negativi"] = int((v < 0).sum())
+    diag["n_misurato"] = float(len(d))
+    return d, diag
+
+
+def codebook_csv(path, sep=None, encoding="latin-1", col_campo="CAMPO",
+                 col_descrizione="DESCRIZIONE CAMPO", col_codice="CODICE",
+                 col_etichetta="DESCRIZIONE CODICE",
+                 segnaposto=("numerico", "non applicabile", "n.a.", "-"),
+                 **kw):
+    """Codebook a DUE livelli: campo -> codice -> etichetta.
+
+    Diverso da tracciato_csv, che e' a un livello (variabile ->
+    descrizione). Alcuni campi hanno decine di codici (Cittad: 225,
+    Relpar: 30) e altri nessuno.
+
+    I campi senza codifica non hanno la cella vuota: hanno una riga
+    SEGNAPOSTO con codice 0 ed etichetta 'numerico' o 'Non applicabile'.
+    Contarla come un codice vero direbbe che ETA ha una codifica, che e'
+    falso — ed e' la differenza fra sapere che un valore anomalo e' un
+    codice convenzionale o un dato sporco.
+    """
+    d = pd.read_csv(path, sep=sep, engine="python" if sep is None else "c",
+                    encoding=encoding, keep_default_na=False, na_values=[],
+                    dtype=str)
+    d.columns = [str(c).strip() for c in d.columns]
+    for c in (col_campo, col_descrizione, col_codice, col_etichetta):
+        if c not in d.columns:
+            raise KeyError(f"colonna '{c}' assente in {path}; "
+                           f"presenti: {list(d.columns)}")
+    out = d.rename(columns={col_campo: "chiave",
+                            col_descrizione: "descrizione",
+                            col_codice: "codice",
+                            col_etichetta: "etichetta"})
+    for c in ("chiave", "descrizione", "codice", "etichetta"):
+        out[c] = out[c].str.strip()
+
+    segna = {str(x).strip().lower() for x in segnaposto}
+    e = out["etichetta"].str.lower()
+    out["segnaposto"] = (out["codice"] == "") | e.isin(segna) | \
+        e.str.startswith("numero progressivo")
+
+    veri = out[~out["segnaposto"]]
+    per_campo = veri.groupby("chiave").size()
+    tutti = sorted(set(out["chiave"]))
+    diag = {"campi": len(tutti),
+            "righe": len(out),
+            "codici_per_campo": {k: int(per_campo.get(k, 0)) for k in tutti},
+            "campi_senza_codici": [k for k in tutti if per_campo.get(k, 0) == 0],
+            "codici_veri": int(len(veri)),
+            "modalita": len(tutti),
+            "n_misurato": float(len(out))}
+    return out[["chiave", "descrizione", "codice", "etichetta"]], diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "matrice_csv": matrice_csv,
     "formato_lungo": formato_lungo,
     "tabella_parquet": tabella_parquet,
     "excel_aree_sesso": excel_aree_sesso,
+    "microdati_csv": microdati_csv,
+    "codebook_csv": codebook_csv,
     "sdmx_csv": sdmx_csv,
     "sezioni_xlsx": sezioni_xlsx,
     "tracciato_xlsx": tracciato_xlsx,

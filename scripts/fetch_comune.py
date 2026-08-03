@@ -15,7 +15,7 @@ La modalita --profile:
     - salva il profilo completo in
       ~/progetti/gsp/data/comuni/<codice>/<tavola>_profile.csv.
 
-Il modulo istat_sdmx.py deve essere nella stessa cartella o nel PYTHONPATH.
+Usa gsp.istat.sdmx, dal pacchetto installato con `pip install -e .`.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ from typing import Any
 
 import pandas as pd
 
-import istat_sdmx as sdmx
+import gsp.istat.sdmx as sdmx
 
 
 # ----------------------------------------------------------------------

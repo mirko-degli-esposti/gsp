@@ -1,5 +1,5 @@
 """
-gsp_common.py — registri, percorsi e primitive condivise della pipeline GSP.
+gsp/common.py — registri, percorsi e primitive condivise della pipeline GSP.
 
 Consolida i cinque registri di comuni che erano duplicati in build_sezioni.py,
 build_zona_tables.py, assign_nationality.py, assign_avq.py, enrich.py e
@@ -14,15 +14,15 @@ a sei cifre contiene gia' provincia e comune, e i percorsi sono formule:
     civici    ->  geodata/{regione}/civici_sezioni_province/{prov}_{nome}_...csv
 
 Uso come modulo:
-    import gsp_common as G
+    import gsp.common as G
     info = G.info("034027")
     p    = pd.read_csv(G.path_sezioni("034027"))
     q    = G.zona_nomi("034027")
 
 Uso da riga di comando:
-    python gsp_common.py --check              # verifica tutti i comuni
-    python gsp_common.py --check 034027       # un comune solo
-    python gsp_common.py --dump-nomi 037006   # nomi zona da zona_2023/, da incollare
+    python -m gsp.common --check              # verifica tutti i comuni
+    python -m gsp.common --check 034027       # un comune solo
+    python -m gsp.common --dump-nomi 037006   # nomi zona da zona_2023/, da incollare
 """
 
 from __future__ import annotations
@@ -148,7 +148,7 @@ ASC_NOMI_PARMA = {
 
 # DA COMPLETARE: incollare i due dizionari dal registro di
 # build_zona_tables.py, oppure generarli con
-#     python gsp_common.py --dump-nomi 037006
+#     python -m gsp.common --dump-nomi 037006
 ASC1_NOMI_BOLOGNA={
     "37006011": "Borgo Panigale-Reno",
     "37006012": "Navile",
@@ -816,7 +816,7 @@ def info(comune: str) -> dict:
     """Voce di registro del comune, con controllo di esistenza."""
     if comune not in COMUNI:
         raise KeyError(f"Comune {comune} non nel registro COMUNI di "
-                       f"gsp_common.py. Presenti: {sorted(COMUNI)}")
+                       f"gsp/common.py. Presenti: {sorted(COMUNI)}")
     return COMUNI[comune]
 
 
@@ -884,7 +884,7 @@ def zona_nomi(comune: str, livello: str | None = None) -> dict:
     if nomi is None:
         raise ValueError(
             f"Denominazioni mancanti per {i['nome']} livello '{liv}'. "
-            f"Generarle con: python gsp_common.py --dump-nomi {comune}")
+            f"Generarle con: python -m gsp.common --dump-nomi {comune}")
     return nomi
 
 def verifica_livello(codici, comune: str, livello: str | None = None) -> str:
@@ -1101,7 +1101,7 @@ def check(comuni: list[str] | None = None, anno: int = 2024) -> int:
     """Verifica il registro contro i file su disco. Ritorna il n. di errori."""
     target = comuni or sorted(COMUNI)
     print("=" * 66)
-    print(f"gsp_common — verifica registro ({len(target)} comuni)")
+    print(f"gsp.common — verifica registro ({len(target)} comuni)")
     print("=" * 66)
 
     # regioni

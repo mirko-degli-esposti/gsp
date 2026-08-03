@@ -34,7 +34,8 @@ def import_repo():
             sys.path.insert(0, os.path.dirname(d))
             pkg = os.path.basename(d)
             return (importlib.import_module(f"{pkg}.constraint_set").ConstraintSet,
-                    importlib.import_module(f"{pkg}.gibbs_pcd_solver").GibbsPCDSolver)
+                    importlib.import_module(f"{pkg}.gibbs_pcd_solver").GibbsPCDSolver,
+                    importlib.import_module(f"{pkg}.fast_F").constraint_indices)
     sys.exit("repo maxent-popsynth-pcd non trovato")
 
 
@@ -61,7 +62,7 @@ def main():
     outdir = os.path.expanduser(gs("--out", "~/progetti/gsp/regress/lab"))
     os.makedirs(outdir, exist_ok=True)
 
-    ConstraintSet, GibbsPCDSolver = import_repo()
+    ConstraintSet, GibbsPCDSolver, constraint_indices = import_repo()
     cdir = os.path.expanduser(
         f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
     spec = json.load(open(os.path.join(cdir, f"cs_{liv}.json")))
@@ -152,8 +153,6 @@ def main():
         # celle da escludere: quelle che soddisfano un vincolo con alpha=0
         excl = np.zeros(X, dtype=bool)
         if zero_cons:
-            sys.path.insert(0, os.path.expanduser("~/progetti/gsp/scripts"))
-            from fast_F import constraint_indices
             cz = ConstraintSet(spec["domain_sizes"])
             for c in zero_cons:
                 cz.add(c["attrs"], c["vals"], 1.0)

@@ -643,7 +643,7 @@ fonti:
     usabile_per: [pool_donatori_hot_deck, attributi_AVQ]
     usato_da: [assign_avq.py]
     non_usabile_per: [conteggi_comunali, stime_dirette_subregionali,
-                      vincoli_maxent]
+                      vincoli_maxent, condizionamento_per_taglia_comune]
     bias: >-
       n_eff di Kish nazionale, per annata: 31.015 (2022), 31.386 (2023),
       34.154 (2024) su 42.022 / 41.750 / 45.005 record — rapporto ~0,74,
@@ -652,6 +652,15 @@ fonti:
       1.599 per Bologna: un fattore VENTI, ed e' la stratificazione a
       costarlo, non i pesi. E' 1.520, non 8.111, il numero da citare
       accanto a una statistica AVQ della popolazione sintetica.
+      Il file ad uso pubblico e' prodotto dall'MFR per sottocampionamento
+      e ne eredita struttura e trattamento delle variabili, ma NON la
+      classe di ampiezza demografica del comune (verificato 3/8/2026 sul
+      tracciato 2024: assente). Il condizionamento geografico si ferma
+      quindi alla REGIONE: Bologna con 390.098 abitanti e Castenaso con
+      16.357 attingono allo stesso pool di 4.629 donatori
+      emiliano-romagnoli. E' il limite territoriale della fonte, ed e' la
+      ragione per cui `distanza dalla composizione comunale` misura la
+      geografia del PAESE ma non quella degli attributi AVQ.
     anomalie:
       - >-
         COEFIN e' memorizzato come INTERO con quattro decimali impliciti:

@@ -89,14 +89,14 @@ for riga in "${COMUNI[@]}"; do
 
   if [[ "$FROM" == "cs" ]]; then
     FASE="cs_build"
-    esegui "$LOG" python scripts/cs_build.py "$COD" --anno $ANNO \
+    esegui "$LOG" python scripts/vincoli/cs_build.py "$COD" --anno $ANNO \
            --livello "$LIV" $ESCL || { FASE="cs_build FALLITO"; }
   fi
 
   if [[ -z "${FASE##*cs_build}" || "$FROM" != "cs" ]] && \
      [[ "$FASE" != *FALLITO* ]] && [[ "$FROM" =~ ^(cs|fit)$ ]]; then
     FASE="fit_cs"
-    esegui "$LOG" python scripts/fit_cs.py "$COD" --anno $ANNO \
+    esegui "$LOG" python scripts/fit/fit_cs.py "$COD" --anno $ANNO \
            --livello "$LIV" --eps 1e-8 --min-alpha 2e-4 \
            --pool "$POOL" --outer 500 --numba --sparse \
            --tol 0 --sweeps 40 --no-gibbs || FASE="fit_cs FALLITO"
@@ -104,14 +104,14 @@ for riga in "${COMUNI[@]}"; do
 
   if [[ "$FASE" != *FALLITO* ]]; then
     FASE="assign_avq"
-    esegui "$LOG" python scripts/assign_avq.py "$COD" --anno $ANNO \
+    esegui "$LOG" python scripts/attributi/assign_avq.py "$COD" --anno $ANNO \
            --pop-file "popolazione_${LIV}.csv" \
       || FASE="assign_avq FALLITO"
   fi
 
   if [[ "$FASE" != *FALLITO* ]]; then
     FASE="enrich"
-    esegui "$LOG" python scripts/enrich.py "$COD" --anno $ANNO \
+    esegui "$LOG" python scripts/attributi/enrich.py "$COD" --anno $ANNO \
            --pop-file "popolazione_${LIV}_avq.csv" \
       || FASE="enrich FALLITO"
   fi

@@ -11,7 +11,7 @@ TARGETS="${5:-AMBIENTE,FIDUCIA,SALUTE,CRONI,FUMO,MH,BMI,BMIMIN,CPESO}"
 
 GSP="$HOME/progetti/gsp"
 CDIR="$GSP/data/comuni/$COMUNE/constraints_$ANNO"
-SCRIPT="$GSP/scripts/assign_avq.py"
+SCRIPT="$GSP/scripts/attributi/assign_avq.py"
 OUTNAME="popolazione_K9C_avq_${TAG}.csv"
 STAMP="$(date +%Y%m%d_%H%M%S)"
 LOGDIR="$GSP/log"; mkdir -p "$LOGDIR"

@@ -32,7 +32,7 @@ SWEEPS=5                       # 5 e 10 danno lo stesso risultato; 3 destabilizz
 
 GSP=~/progetti/gsp
 CDIR=$GSP/data/comuni/$COMUNE/constraints_$ANNO
-SCRIPTS=$GSP/scripts
+SCRIPTS=$GSP/scripts/gibbs
 OUT=$GSP/regress/scaling_$(date +%Y%m%d_%H%M)
 mkdir -p "$OUT"
 LOG="$OUT/progress.log"

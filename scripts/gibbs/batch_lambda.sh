@@ -30,7 +30,7 @@ N=100000
 OUTER=2500
 SWEEPS=5
 
-SCRIPTS=~/progetti/gsp/scripts
+SCRIPTS=~/progetti/gsp/scripts/gibbs
 OUT=~/progetti/gsp/regress/lab_$(date +%Y%m%d_%H%M)
 mkdir -p "$OUT"
 LOG="$OUT/progress.log"

@@ -644,8 +644,13 @@ fonti:
     url: DA_VERIFICARE
     data_accesso: DA_VERIFICARE
     licenza: DA_VERIFICARE
-    archiviazione: git
-    file: avq_tracciato_2024.csv
+    nota_licenza: >-
+      il !Leggimi di mIcro.STAT dice "file ad uso pubblico"
+      (la classe meno restrittiva) ma NON dichiara una licenza.
+      Finche' non e' chiarita sulla pagina di rilascio il grezzo
+      resta `locale`: verificabile qui, non ridistribuito.
+    archiviazione: locale
+    percorso: data/avq/esplorazione/avq_vars_2024.csv
     sha256: e4776e74d286a0ab262c8ab0bfe4902bca95b8d7b5386a740069cb0fc759decc
     universo: >-
       elenco delle variabili dei microdati AVQ 2024 con le rispettive

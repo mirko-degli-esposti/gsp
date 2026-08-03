@@ -51,3 +51,12 @@ fonti/norm/
 # controllare nulla. Sopra i 5 MB si usa `archiviazione: locale` e il file
 # torna escluso da fonti/grezzi/.gitignore.
 !fonti/grezzi/*.csv
+
+# temporanei LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz

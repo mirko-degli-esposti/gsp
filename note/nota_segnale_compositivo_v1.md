@@ -327,7 +327,7 @@ quando le rispettive popolazioni saranno generate.
 
 ## 14. Riproducibilità
 
-Script: `scripts/perm_composizione.py`. Seed 20260731. Input:
+Script: `scripts/diagnostica/perm_composizione.py`. Seed 20260731. Input:
 `<comune>_sezioni_2023.csv` da `build_sezioni.py`. Nessuna dipendenza dal
 ramo comunale del pipeline.
 

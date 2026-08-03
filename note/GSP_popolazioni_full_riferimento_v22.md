@@ -727,7 +727,7 @@ incontrate: `note/fonti_e_pacchetto_v3.md`.
 Versione senza condizionale geografico, per i confronti:
 
 ```bash
-python scripts/enrich.py 037006 --anno 2024 --no-tier \
+python scripts/attributi/enrich.py 037006 --anno 2024 --no-tier \
     --out popolazione_K9C_avq_full_tier0.csv
 ```
 
@@ -897,7 +897,7 @@ ISTAT. Il grosso del lavoro umano sta nella **fase 2**.
 Poi, una volta sola per regione:
 
 ```bash
-python scripts/join_civici_sezioni.py {regione}
+python scripts/vincoli/join_civici_sezioni.py {regione}
 ```
 
 Processa **tutte le province** della regione, quindi i civici di ogni
@@ -906,7 +906,7 @@ comune di quella regione sono già pronti.
 ### Fase 0 — verifica preliminare (nessun download)
 
 ```bash
-python scripts/build_sezioni.py {CODICE} --regione {N} --dry-run
+python scripts/vincoli/build_sezioni.py {CODICE} --regione {N} --dry-run
 ```
 
 Funziona anche senza voce di registro. Riporta popolazione, numero di
@@ -943,7 +943,7 @@ Voce **parziale** in `G.COMUNI`, con `nomi: None`:
 ```
 
 ```bash
-python scripts/build_sezioni.py {CODICE}
+python scripts/vincoli/build_sezioni.py {CODICE}
 ```
 
 Scrive `data/submun/{slug}_sezioni_2023.csv`.
@@ -988,8 +988,8 @@ Tutto verde tranne le directory di lavoro, che non esistono ancora.
 ### Fase 3 — dati ISTAT via SDMX
 
 ```bash
-python scripts/fetch_comune.py {CODICE} --explore   # gratis: strutture in cache
-python scripts/fetch_comune.py {CODICE}             # 11 tavole, ~3 min
+python scripts/acquisizione/fetch_comune.py {CODICE} --explore   # gratis: strutture in cache
+python scripts/acquisizione/fetch_comune.py {CODICE}             # 11 tavole, ~3 min
 ```
 
 L'`--explore` verifica che il comune sia nelle codelist territoriali; non
@@ -1017,10 +1017,10 @@ il risultato è stato **esatto al singolo abitante**.
 ### Fase 4 — anello 1 (MaxEnt)
 
 ```bash
-python scripts/build_zona_tables.py {CODICE}
-python scripts/build_constraints.py {CODICE} --anno 2024
-python scripts/cs_build.py {CODICE} --anno 2024 --livello K9C
-python scripts/fit_cs.py {CODICE} --anno 2024 --livello K9C --eps 1e-8 \
+python scripts/vincoli/build_zona_tables.py {CODICE}
+python scripts/vincoli/build_constraints.py {CODICE} --anno 2024
+python scripts/vincoli/cs_build.py {CODICE} --anno 2024 --livello K9C
+python scripts/fit/fit_cs.py {CODICE} --anno 2024 --livello K9C --eps 1e-8 \
   --min-alpha 2e-4 --sparse --no-gibbs
 ```
 
@@ -1043,15 +1043,15 @@ metà del supporto è impossibile perché metà delle combinazioni
 ```bash
 OPT=PUNTIFI1,PUNTIFI2,PUNTIFI3,PUNTIFI4,PUNTIFI5,PUNTIFI6,PUNTIFI7,PUNTIFI8,PUNTIFI10,PUNTIFI12,PUNTIFI13,VOTOUSL
 
-python scripts/assign_nationality.py {CODICE} --anno 2024 \
+python scripts/attributi/assign_nationality.py {CODICE} --anno 2024 \
   --pop-file popolazione_K9C.csv --out popolazione_K9C_naz.csv
 
-python scripts/assign_avq.py {CODICE} --anno 2024 \
+python scripts/attributi/assign_avq.py {CODICE} --anno 2024 \
   --pop-file popolazione_K9C_naz.csv --out popolazione_K9C_avq.csv \
   --targets AMBIENTE,FIDUCIA,SALUTE,CRONI,FUMO,MH,BMI,BMIMIN,CPESO \
   --targets-opt $OPT
 
-python scripts/enrich.py {CODICE} --anno 2024
+python scripts/attributi/enrich.py {CODICE} --anno 2024
 ```
 
 Il `--pop-file` esplicito serve dove esistono più livelli K: l'auto-detect

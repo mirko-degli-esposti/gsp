@@ -1,7 +1,7 @@
 # Fonti da registrare (ricognizione 2/8/2026)
 
 Endpoint unico esterno: https://esploradati.istat.it/SDMXWS/rest
-Usato da scripts/istat_sdmx.py e scripts/istat_catalog.py. Limite 4 query/min.
+Usato da scripts/istat_sdmx.py e scripts/acquisizione/istat_catalog.py. Limite 4 query/min.
 
 - data/comuni/<cod>/  coppie _raw/_decoded per ~12 tavole censuarie e
   anagrafiche. archiviazione: locale. Un id per tavola, non per comune.

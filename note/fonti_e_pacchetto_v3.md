@@ -46,7 +46,7 @@ file — fragile, si rompe da Colab — oppure il pacchetto installato.
 | prima | dopo |
 |---|---|
 | `python scripts/gsp_common.py --check` | `python -m gsp.common --check` |
-| `python scripts/fit_cs.py` | invariato |
+| `python scripts/fit/fit_cs.py` | invariato |
 | `import gsp_common as G` (solo da `scripts/`) | `import gsp.common as G` (da ovunque) |
 | — | `python -m gsp.fonti --verifica` |
 

@@ -1,0 +1,131 @@
+{
+  "byte": 276776,
+  "decili": [
+    1.0,
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    6.0,
+    9.0,
+    18.0,
+    49.0
+  ],
+  "diagnostica": {
+    "anni_n": 39,
+    "anno_max": 2024,
+    "anno_min": 1986,
+    "anno_usato": 2024,
+    "colonne": 7,
+    "modalita": 155,
+    "n_misurato": 61277.0,
+    "quartiere_valori": [
+      "Borgo Panigale - Reno",
+      "Navile",
+      "Porto - Saragozza",
+      "San Donato - San Vitale",
+      "Santo Stefano",
+      "Savena"
+    ],
+    "righe_anno": 3101,
+    "righe_grezze": 81571,
+    "sesso_valori": [
+      "Femmine",
+      "Maschi"
+    ],
+    "unita_escluse": [
+      "Senza fissa dimora"
+    ],
+    "unita_escluse_peso": 324.0,
+    "zona_n": 18
+  },
+  "hapax": 747,
+  "id": "bologna_cittadinanza_zone",
+  "modalita": 155,
+  "n_misurato": 61277.0,
+  "peso_max": 791.0,
+  "peso_min": 1.0,
+  "sha256": "3ad8d086bc7b453c4c141a11c45a3bd8c0ae201608d260ce73140b4fd42d91f8",
+  "testa": [
+    {
+      "chiave": "Cina",
+      "peso": 791.0
+    },
+    {
+      "chiave": "Cina",
+      "peso": 734.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 698.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 670.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 651.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 546.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 528.0
+    },
+    {
+      "chiave": "Pakistan",
+      "peso": 526.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 488.0
+    },
+    {
+      "chiave": "Bangladesh",
+      "peso": 485.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 471.0
+    },
+    {
+      "chiave": "Pakistan",
+      "peso": 436.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 421.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 418.0
+    },
+    {
+      "chiave": "Pakistan",
+      "peso": 389.0
+    },
+    {
+      "chiave": "Bangladesh",
+      "peso": 384.0
+    },
+    {
+      "chiave": "Ucraina",
+      "peso": 359.0
+    },
+    {
+      "chiave": "Romania",
+      "peso": 358.0
+    },
+    {
+      "chiave": "Bangladesh",
+      "peso": 357.0
+    },
+    {
+      "chiave": "Bangladesh",
+      "peso": 346.0
+    }
+  ]
+}

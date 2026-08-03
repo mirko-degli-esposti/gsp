@@ -426,10 +426,77 @@ def formato_lungo(path, col_chiave="STATO", col_dimensione="QUARTIERE",
     return lungo[["chiave", dimensione, nome_valore, "peso"]], diag
 
 
+def tabella_parquet(path, col_chiave=None, col_dimensione=None,
+                    dimensione="zona", col_peso=None, col_anno=None,
+                    solo_ultimo_anno=False, dimensioni=None,
+                    escludi_dimensione=(), etichette_residuo=(), **kw):
+    """Tabella gia' in formato lungo, salvata in Parquet.
+
+    E' il formato migliore fra quelli incontrati: colonne dichiarate,
+    tipi conservati, nessuna formattazione da sciogliere. Con `col_anno`
+    e `solo_ultimo_anno` si misura l'annata che la pipeline usa davvero
+    invece di tutta la serie storica.
+    """
+    d = pd.read_parquet(path)
+    d.columns = [str(c).strip() for c in d.columns]
+    diag = {"righe_grezze": len(d), "colonne": len(d.columns)}
+
+    if col_anno and col_anno in d.columns:
+        anni = pd.to_datetime(d[col_anno], errors="coerce").dt.year
+        diag["anni_n"] = int(anni.nunique())
+        diag["anno_min"] = int(anni.min())
+        diag["anno_max"] = int(anni.max())
+        if solo_ultimo_anno:
+            d = d[anni == anni.max()].copy()
+            diag["anno_usato"] = int(anni.max())
+            diag["righe_anno"] = len(d)
+
+    ck = col_chiave or d.columns[0]
+    cd = col_dimensione
+    cp = col_peso or d.columns[-1]
+
+    fuori = {str(x).strip().lower() for x in escludi_dimensione}
+    if cd and fuori:
+        m = d[cd].astype(str).str.strip().str.lower().isin(fuori)
+        if m.any():
+            diag["unita_escluse"] = sorted(set(d.loc[m, cd].astype(str)))
+            diag["unita_escluse_peso"] = float(
+                pd.to_numeric(d.loc[m, cp], errors="coerce").sum())
+            d = d[~m]
+
+    out = d.rename(columns={ck: "chiave", cp: "peso"})
+    if cd:
+        out = out.rename(columns={cd: dimensione})
+    out["peso"] = pd.to_numeric(out["peso"], errors="coerce").fillna(0.0)
+
+    tot = float(out["peso"].sum())
+    diag.update({"modalita": int(out["chiave"].nunique()),
+                 "n_misurato": tot})
+    if cd:
+        diag[f"{dimensione}_n"] = int(out[dimensione].nunique())
+    for c in (dimensioni or []):
+        if c in out.columns and c != dimensione:
+            diag[f"{c}_valori"] = sorted(set(out[c].astype(str)))[:20]
+
+    if etichette_residuo:
+        res = {str(x).strip().lower() for x in etichette_residuo}
+        m = out["chiave"].astype(str).str.lower().isin(res)
+        diag["residuo_peso"] = float(out.loc[m, "peso"].sum())
+        diag["residuo_quota"] = round(diag["residuo_peso"] / tot, 4) if tot else None
+
+    cols = ["chiave"] + ([dimensione] if cd else []) \
+        + [c for c in (dimensioni or []) if c in out.columns and c != dimensione] \
+        + ["peso"]
+    out = out[cols].sort_values("peso", ascending=False,
+                                kind="stable").reset_index(drop=True)
+    return out, diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "matrice_csv": matrice_csv,
     "formato_lungo": formato_lungo,
+    "tabella_parquet": tabella_parquet,
     "excel_aree_sesso": excel_aree_sesso,
     "sdmx_csv": sdmx_csv,
     "sezioni_xlsx": sezioni_xlsx,

@@ -867,3 +867,78 @@ fonti:
     usabile_per: [margine_B_ipf, geografia_paese_tier1, sesso]
     usato_da: [opendata_paese.py]
     non_usabile_per: [popolazione_italiana, livelli_assoluti]
+# Bologna — fonte locale per il paese di cittadinanza, tier 2.
+# Richiede normalizzatori.py aggiornato (21411 byte) con `tabella_parquet`.
+#
+# Appendere in modo sicuro:
+#   grep -q "id: bologna_cittadinanza" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/scheda_bologna.yaml" >> fonti/registro.yaml
+#
+# Poi:
+#   sha256sum data/opendata/037006/*.parquet   -> sostituire DA_CALCOLARE
+#   python -m gsp.fonti --impronta bologna_cittadinanza_zone
+#   python -m gsp.fonti --verifica
+
+  - id: bologna_cittadinanza_zone
+    ente: Comune di Bologna
+    titolo: >-
+      Popolazione residente straniera per cittadinanza, sesso, quartiere
+      e zona - serie storica
+    url: DA_VERIFICARE
+    data_accesso: DA_VERIFICARE
+    licenza: DA_VERIFICARE
+    archiviazione: locale
+    percorso: data/opendata/037006/popolazione-residente-straniera-per-cittadinanzasesso-quartiere-e-zona-serie-st0.parquet
+    sha256: 3ad8d086bc7b453c4c141a11c45a3bd8c0ae201608d260ce73140b4fd42d91f8
+    copertura: {geo: "037006", tempo: 2024}
+    parametri_da: common.COMUNI.037006.opendata_paese
+    tier: 2
+    universo: >-
+      residenti STRANIERI per paese di cittadinanza, zona, quartiere e
+      sesso, fonte ANAGRAFICA comunale. E' la piu' ricca delle sei fonti
+      locali su ogni asse: 19 ZONE (contro 4 circoscrizioni a Reggio e
+      21 quartieri a Forli'), il sesso, e nessun gruppo residuale.
+      Serie storica 1986-2024, 39 annate in un solo file: `anno` e' una
+      COLONNA, non un attributo del file. La pipeline usa l'annata piu'
+      recente (load_bologna prende max(anno)), non tutta la serie.
+      Due colonne distinte per la cittadinanza: `cittadinanza` e' l'area
+      geografica di raggruppamento (11 modalita'), `stato_cittadinanza`
+      e' il paese di dettaglio (180 nella serie, 155 nel 2024). La
+      pipeline usa la seconda.
+    unita: individuo
+    normalizzatore: tabella_parquet
+    opzioni: {col_chiave: stato_cittadinanza, col_dimensione: zona,
+              col_peso: residenti, col_anno: anno, solo_ultimo_anno: true,
+              escludi_dimensione: ["Senza fissa dimora"],
+              dimensioni: [sesso, quartiere]}
+    dimensioni: [zona, sesso, quartiere]
+    anomalie:
+      - >-
+        "Senza fissa dimora" compare fra le zone ma non e' un'unita'
+        territoriale: escluso, come "in corso di definizione" a Forli'.
+        Il peso escluso sta in `unita_escluse_peso` nell'impronta.
+      - >-
+        25 paesi compaiono nella serie storica ma non nel 2024 (180
+        contro 155): sono comunita' estinte o mai piu' rilevate.
+      - >-
+        `anno` e' di tipo data (1986-01-01, ...), non intero: va
+        convertito prima di filtrare.
+    bias: >-
+      NESSUN gruppo residuale: `stato_cittadinanza` porta i paesi veri,
+      quindi residuo_quota non esiste. E' la sola fonte locale che non
+      perde informazione nel complemento, ed e' anche quella con la
+      geografia piu' fine — le due cose insieme sono rare.
+      Confronto con le altre (verificato 2/8/2026): Reggio 6,1% di
+      residuo su 4 circoscrizioni, Forli' 16,5% su 41 unita', Bologna 0%
+      su 19 zone.
+      Nel 2024 la fonte nomina 155 paesi, PIU' dei 119 che l'IPF produce
+      dal censimento: qui il margine B e' piu' ricco del margine A, il
+      contrario di quanto accade altrove.
+      Come per tutte le locali, i LIVELLI sono anagrafici e di data
+      diversa dal censimento: l'IPF li normalizza e usa solo la FORMA
+      condizionale.
+    usabile_per: [margine_B_ipf, geografia_paese_tier2, sesso,
+                  gerarchia_zona_quartiere]
+    usato_da: [opendata_paese.py]
+    non_usabile_per: [popolazione_italiana, livelli_assoluti]

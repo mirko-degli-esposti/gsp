@@ -21,6 +21,15 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Copertura:** IT, 2024
 - **Universo:** elenco delle variabili dei microdati AVQ 2024 con le rispettive definizioni. Non e' un dato ma il suo dizionario: senza, sigle come FIDUCIA, AMBIENTE, CRONI o BMIMIN non vogliono dire niente. Estratto da data/avq/esplorazione/avq_vars_2024.csv.
 
+## Popolazione residente straniera per cittadinanza, sesso, quartiere e zona - serie storica
+
+- **Fonte:** Comune di Bologna
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** DA_VERIFICARE
+- **Copertura:** 037006, 2024
+- **Universo:** residenti STRANIERI per paese di cittadinanza, zona, quartiere e sesso, fonte ANAGRAFICA comunale. E' la piu' ricca delle sei fonti locali su ogni asse: 19 ZONE (contro 4 circoscrizioni a Reggio e 21 quartieri a Forli'), il sesso, e nessun gruppo residuale. Serie storica 1986-2024, 39 annate in un solo file: `anno` e' una COLONNA, non un attributo del file. La pipeline usa l'annata piu' recente (load_bologna prende max(anno)), non tutta la serie. Due colonne distinte per la cittadinanza: `cittadinanza` e' l'area geografica di raggruppamento (11 modalita'), `stato_cittadinanza` e' il paese di dettaglio (180 nella serie, 155 nel 2024). La pipeline usa la seconda.
+
 ## Cittadinanze straniere per quartiere
 
 - **Fonte:** Comune di Brescia

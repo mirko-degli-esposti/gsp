@@ -561,12 +561,42 @@ fonti:
     tipo: multi_istanza
     ente: ISTAT
     titolo: Aspetti della vita quotidiana - microdati per la ricerca (mIcro.STAT)
-    url: DA_VERIFICARE          # pagina mIcro.STAT del rilascio
-    data_accesso: DA_VERIFICARE
-    licenza: DA_VERIFICARE      # il !Leggimi dice "file ad uso pubblico"
-                                # (mIcro.STAT, la classe meno restrittiva)
-                                # ma NON dichiara una licenza: cercarla
-                                # sulla pagina di rilascio
+    url: https://www.istat.it/microdati/aspetti-della-vita-quotidiana/
+    url_note_legali: https://www.istat.it/note-legali/
+    url_normativa_microdati: https://www.istat.it/dati/microdati/normativa/
+    data_accesso: 2026-08-03
+    licenza: CC-BY-4.0
+    licenza_uri: https://creativecommons.org/licenses/by/4.0/
+    attribuzione: >-
+      ISTAT, "Aspetti della vita quotidiana - microdati ad uso pubblico",
+      istat.it, CC BY 4.0
+    nota_licenza: >-
+      licenza INFERITA, non letta: la pagina AVQ non ne dichiara una
+      propria, e si applica quella generale del sito ("salvo diversa
+      indicazione", note legali). Verificato il 3/8/2026 dentro lo zip di
+      tutte e tre le annate: il !Leggimi qualifica i file come "ad uso
+      pubblico" — la classe meno restrittiva, scaricabile senza contratto
+      a differenza di MFR e SUF — e ne' esso ne' i quattro PDF dei
+      metadati pongono condizioni d'uso, divieti di ridistribuzione o
+      clausole sulla reidentificazione.
+      La CC-BY consente esplicitamente l'adattamento, quindi la
+      popolazione sintetica che ne deriva e' ridistribuibile citando la
+      fonte. La RISERVATEZZA e' un asse diverso dalla licenza: vedi
+      nota_riservatezza.
+    nota_riservatezza: >-
+      i file ad uso pubblico sono gia' sottoposti da ISTAT al trattamento
+      per la tutela della riservatezza, dichiarato nel !Leggimi: «a causa
+      del trattamento dei dati per la tutela della riservatezza, le
+      elaborazioni effettuate sui file ad uso pubblico possono condurre a
+      risultati in qualche misura difformi rispetto a quelli pubblicati».
+      La protezione e' incorporata NEL DATO, non affidata a una clausola
+      d'uso — ed e' la stessa ragione per cui le stime dalla popolazione
+      sintetica non coincidono con quelle ufficiali per costruzione.
+      La popolazione sintetica aggiunge uno strato: ogni vettore AVQ e'
+      replicato ~40 volte su individui diversi (4.617 donatori su 184.597
+      individui a Modena), quindi nessuna combinazione e' unica. Cio' che
+      resta reale nel record e' il VETTORE di risposte di un rispondente
+      gia' perturbato, mai la sua identita' ne' la sua geografia.
     archiviazione: locale
     percorso: data/avq/anni/avq{istanza}/MICRODATI/AVQ_Microdati_{istanza}.txt
     chiave_istanza: anno
@@ -643,13 +673,17 @@ fonti:
     titolo: Tracciato dei microdati AVQ 2024
     url: DA_VERIFICARE
     data_accesso: DA_VERIFICARE
-    licenza: DA_VERIFICARE
+    licenza: CC-BY-4.0
+    licenza_uri: https://creativecommons.org/licenses/by/4.0/
+    attribuzione: >-
+      ISTAT, "Aspetti della vita quotidiana - microdati ad uso pubblico",
+      istat.it, CC BY 4.0
     nota_licenza: >-
       il !Leggimi di mIcro.STAT dice "file ad uso pubblico"
       (la classe meno restrittiva) ma NON dichiara una licenza.
       Finche' non e' chiarita sulla pagina di rilascio il grezzo
       resta `locale`: verificabile qui, non ridistribuito.
-    archiviazione: locale
+    archiviazione: git
     percorso: data/avq/esplorazione/avq_vars_2024.csv
     sha256: e4776e74d286a0ab262c8ab0bfe4902bca95b8d7b5386a740069cb0fc759decc
     universo: >-

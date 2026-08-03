@@ -6,20 +6,24 @@ le informazioni vivono in `fonti/registro.yaml`.
 ## Aspetti della vita quotidiana - microdati per la ricerca (mIcro.STAT)
 
 - **Fonte:** ISTAT
-- **Licenza:** DA_VERIFICARE
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** DA_VERIFICARE
+- **Licenza:** CC-BY-4.0
+- **URL:** https://www.istat.it/microdati/aspetti-della-vita-quotidiana/
+- **Scaricato il:** 2026-08-03
 - **Copertura:** None, None
 - **Universo:** campione dell'indagine multiscopo sulle famiglie, individui residenti in famiglia (esclusi i conviventi in istituto). Unita' CAMPIONARIA, non individuo: ogni record porta COEFIN, coefficiente di riporto all'universo, e rappresenta se stesso piu' altri COEFIN-1. n_misurato registra i RECORD, perche' e' cio' che la pipeline consuma - il pool di donatori e' fatto di record, non di pesi. somma_pesi e n_eff_kish stanno nell'impronta e non vanno confusi con n.
+
+> ISTAT, "Aspetti della vita quotidiana - microdati ad uso pubblico", istat.it, CC BY 4.0
 
 ## Tracciato dei microdati AVQ 2024
 
 - **Fonte:** ISTAT
-- **Licenza:** DA_VERIFICARE
+- **Licenza:** CC-BY-4.0
 - **URL:** DA_VERIFICARE
 - **Scaricato il:** DA_VERIFICARE
 - **Copertura:** IT, 2024
 - **Universo:** elenco delle variabili dei microdati AVQ 2024 con le rispettive definizioni. Non e' un dato ma il suo dizionario: senza, sigle come FIDUCIA, AMBIENTE, CRONI o BMIMIN non vogliono dire niente. Estratto da data/avq/esplorazione/avq_vars_2024.csv.
+
+> ISTAT, "Aspetti della vita quotidiana - microdati ad uso pubblico", istat.it, CC BY 4.0
 
 ## Popolazione residente straniera per cittadinanza, sesso, quartiere e zona - serie storica
 

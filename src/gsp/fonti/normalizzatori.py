@@ -153,7 +153,7 @@ def tracciato_xlsx(path, foglio=0, col_chiave="NOME_CAMPO",
 
 
 def avq_microdati(path, col_peso="COEFIN", col_regione="REGMf",
-                  col_eta="ETAMi", col_sesso="SESSO", **kw):
+                  col_eta="ETAMi", col_sesso="SESSO", scala_peso=1, **kw):
     """Microdati campionari AVQ (mIcro.STAT), TSV a centinaia di colonne.
 
     L'unita' e' l'individuo CAMPIONARIO: ogni record porta COEFIN, il
@@ -163,6 +163,12 @@ def avq_microdati(path, col_peso="COEFIN", col_regione="REGMf",
 
     Legge solo le colonne di struttura: il file intero e' troppo grande e
     le variabili di contenuto cambiano da un'annata all'altra.
+
+    `scala_peso` divide COEFIN: nei file mIcro.STAT il coefficiente e'
+    memorizzato come INTERO con decimali impliciti (il !Leggimi avverte
+    di verificare il separatore decimale indicato nel tracciato). Con
+    scala_peso=10000 la somma dei pesi torna alla popolazione residente
+    in famiglia; senza, e' inflazionata di quattro ordini di grandezza.
     """
     intestazione = pd.read_csv(path, sep="\t", nrows=0)
     colonne = [str(c).strip() for c in intestazione.columns]
@@ -178,10 +184,17 @@ def avq_microdati(path, col_peso="COEFIN", col_regione="REGMf",
         diag["eta_min"] = float(e.min())
         diag["eta_max"] = float(e.max())
     if col_peso in d.columns:
-        w = pd.to_numeric(d[col_peso], errors="coerce").fillna(0.0)
+        # float PRIMA di elevare al quadrato: COEFIN e' intero e con
+        # somma ~5.8e11 il quadrato sfonda int64 (max 9.2e18) wrappando a
+        # negativo. Un n_eff negativo e' il sintomo di questo, non di un
+        # peso negativo.
+        w = pd.to_numeric(d[col_peso], errors="coerce").astype("float64")
+        w = w.fillna(0.0) / float(scala_peso)
         diag["somma_pesi"] = float(w.sum())
         diag["peso_min"] = float(w[w > 0].min()) if (w > 0).any() else None
         diag["peso_max"] = float(w.max())
+        if scala_peso != 1:
+            diag["scala_peso"] = scala_peso
         # numerosita' efficace di Kish: quanti record "veri" valgono i
         # pesi. E' il numero da citare accanto a qualunque statistica AVQ,
         # perche' la dimensione del pool da sola la sovrastima.

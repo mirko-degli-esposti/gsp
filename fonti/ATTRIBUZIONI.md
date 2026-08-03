@@ -213,6 +213,24 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 > ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
 
+## Descrizione e codifica dei campi, 2025
+
+- **Fonte:** Comune di Parma
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** 2025-07-28
+- **Copertura:** 034027, 2025
+- **Universo:** codebook a DUE livelli: campo -> codice -> etichetta. Diverso dai tracciati visti finora, che sono a un livello (variabile -> descrizione). Cittad ha 225 codici, Relpar 30, Tipores e Sesso 2; ETA, Ncomp, Quartiere e SEZ21 non hanno codici, solo la descrizione del campo. Senza questo file i microdati sono numeri senza significato: 'Cittad = 201' non vuole dire niente.
+
+## Popolazione residente 2025 - microdati individuali
+
+- **Fonte:** Comune di Parma
+- **Licenza:** DA_VERIFICARE
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** 2025-07-28
+- **Copertura:** 034027, 2025
+- **Universo:** anagrafe comunale COMPLETA, una riga per residente: 202.111 individui, italiani inclusi. E' l'unica fonte locale a microdato individuale e non a conteggio aggregato, e la sola con risoluzione di SEZIONE (1.320 sezioni contro i 13 quartieri). opendata_paese.py filtra Cittad != 100 per tenere i soli stranieri (36.327, il 18%): il filtro e' a valle, la fonte ha tutti. Porta due variabili che nessun'altra fonte locale ha, Ncomp (numero componenti) e Relpar (relazione di parentela): non servono all'IPF sul paese, ma sono struttura FAMILIARE, e insieme alla tavola ISTAT cens_posizione_famiglia sono il materiale gia' disponibile per quando le famiglie verranno modellate.
+
 ## Popolazione residente con cittadinanza straniera per aree territoriali
 
 - **Fonte:** Comune di Ravenna

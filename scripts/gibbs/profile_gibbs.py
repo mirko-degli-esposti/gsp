@@ -8,7 +8,7 @@ Separa i due addendi di un'iterazione:
 
 Non costruisce F e non fa alcun fit: parte in secondi.
 
-    python profile_gibbs.py 017029 --anno 2024 --livello K10C \
+    python scripts/gibbs/profile_gibbs.py 017029 --anno 2024 --livello K10C \
            --min-alpha 2e-4 --pool 400000 --numba
 """
 

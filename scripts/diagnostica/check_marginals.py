@@ -24,7 +24,7 @@ Valuta TUTTI i vincoli del CS, inclusi quelli scartati dal pruning: su
 quelli il modello non e' stato addestrato, quindi il loro |z| misura
 generalizzazione, non aderenza.
 
-    python check_marginals.py 017029 --anno 2024 --livello K10C \
+    python scripts/diagnostica/check_marginals.py 017029 --anno 2024 --livello K10C \
         --pops popolazione_K10C.csv,pool_K10C.csv --min-alpha 2e-4
     ... --csv report_K10C.csv     # dettaglio per vincolo
 """

@@ -2,7 +2,7 @@
 build_constraints.py — v2 — dal set di tavole comunali ISTAT al constraint set per GibbsPCD.
 
 Uso:
-    python build_constraints.py 017029 --anno 2025
+    python scripts/vincoli/build_constraints.py 017029 --anno 2025
 
 Convenzioni:
     --anno N  = ancoraggio anagrafico all'1/1/N (TIME_PERIOD=N nella tavola anagrafica);
@@ -590,7 +590,7 @@ def main(comune: str, anno: int):
 if __name__ == "__main__":
     args = sys.argv[1:]
     if not args:
-        sys.exit("Uso: python build_constraints.py <codice_comune> [--anno 2025]")
+        sys.exit("Uso: python scripts/vincoli/build_constraints.py <codice_comune> [--anno 2025]")
     comune = args[0]
     anno = int(args[args.index("--anno") + 1]) if "--anno" in args else 2025
     main(comune, anno)

@@ -49,10 +49,10 @@ degli odds ratio, NON gode della stessa invarianza.
 
 Uso
 ---
-    python perm_composizione.py 039014
-    python perm_composizione.py 017029 --level COM_ASC1 -B 2000
-    python perm_composizione.py 037006 --level COM_ASC2
-    python perm_composizione.py 036023 --gruppi "UE=ST17,ST18;NONUE=ST20,ST21"
+    python scripts/diagnostica/perm_composizione.py 039014
+    python scripts/diagnostica/perm_composizione.py 017029 --level COM_ASC1 -B 2000
+    python scripts/diagnostica/perm_composizione.py 037006 --level COM_ASC2
+    python scripts/diagnostica/perm_composizione.py 036023 --gruppi "UE=ST17,ST18;NONUE=ST20,ST21"
 
 ATTENZIONE: le colonne di default (ST17/ST18 = UE, ST20/ST21 = non UE) sono
 quelle usate da assign_nationality.py. VERIFICARLE sul tracciato prima di

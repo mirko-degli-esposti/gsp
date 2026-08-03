@@ -16,7 +16,7 @@ le alpha_hat devono restare al pavimento di campionamento per sempre.
 Confronta i due kernel (NumPy e Numba): se solo uno dei due rompe
 l'invarianza, il bug e' localizzato.
 
-    python test_invariance.py 017029 --anno 2024 --livello K10C \
+    python scripts/gibbs/test_invariance.py 017029 --anno 2024 --livello K10C \
         --min-alpha 2e-4 --sweeps 20 --kernel both
     ... --n 50000        # sottocampiona la popolazione (il NumPy e' lento)
 

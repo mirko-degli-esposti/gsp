@@ -7,7 +7,7 @@ propria directory. Traccia la traiettoria completa di ||lambda_t|| e
 ||lambda_t - lambda*||, che e' l'unico modo per sapere se un run e'
 davvero convergiuto (la MRE si appiattisce mentre lambda cresce ancora).
 
-    python gibbs_lab.py 017029 --livello K10C --min-alpha 2e-4 \\
+    python scripts/gibbs/gibbs_lab.py 017029 --livello K10C --min-alpha 2e-4 \\
         --pool 100000 --outer 2500 --sweeps 5 --lr 0.01 --kl \\
         --tag base --out ~/progetti/gsp/regress/lab
 

@@ -36,7 +36,7 @@ Assunzione dichiarata:
         pubblico e viene assunta nulla.
 
 Uso:
-    python assign_avq.py 017029 --anno 2024 \\
+    python scripts/attributi/assign_avq.py 017029 --anno 2024 \\
         --targets AMBIENTE,FIDUCIA,SALUTE,CRONI,FUMO,MH
 """
 

@@ -24,9 +24,9 @@ dal formato. Se la popolazione è codificata ad ASC2 e si chiede --livello
 asc1, la mappatura ASC2 -> ASC1 viene derivata automaticamente dalle sezioni.
 
 Uso:
-    python assign_nationality.py 017029 --anno 2024                      # Brescia, ASC1
-    python assign_nationality.py 037006 --anno 2024 --livello asc2       # Bologna, 18 zone
-    python assign_nationality.py 037006 --anno 2024 --livello asc1       # Bologna, 6 quartieri
+    python scripts/attributi/assign_nationality.py 017029 --anno 2024                      # Brescia, ASC1
+    python scripts/attributi/assign_nationality.py 037006 --anno 2024 --livello asc2       # Bologna, 18 zone
+    python scripts/attributi/assign_nationality.py 037006 --anno 2024 --livello asc1       # Bologna, 6 quartieri
 """
 
 import argparse

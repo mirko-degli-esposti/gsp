@@ -18,10 +18,10 @@ una zona sola. Serve per i comuni di cui NON si conoscono le denominazioni
 (il caso Modena era l'opposto: nomi noti, ipotesi da verificare).
 
 Uso:
-    python zona_probe.py 039014                  # Ravenna, COM_ASC1
-    python zona_probe.py 037006 --level COM_ASC2 # Bologna, 18 zone
-    python zona_probe.py 040012 --min-civici 50  # soglia toponimi piu' alta
-    python zona_probe.py 039014 --file /percorso/civici.csv
+    python scripts/diagnostica/zona_probe.py 039014                  # Ravenna, COM_ASC1
+    python scripts/diagnostica/zona_probe.py 037006 --level COM_ASC2 # Bologna, 18 zone
+    python scripts/diagnostica/zona_probe.py 040012 --min-civici 50  # soglia toponimi piu' alta
+    python scripts/diagnostica/zona_probe.py 039014 --file /percorso/civici.csv
 
 Lettura dell'output:
     raggio_km piccolo + baricentro vicino al centro -> nucleo urbano storico

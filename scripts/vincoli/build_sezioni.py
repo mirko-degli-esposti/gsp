@@ -22,10 +22,10 @@ Nota sui livelli ASC:
     --level in build_zona_tables.py.
 
 Uso:
-    python build_sezioni.py 034027                      # Parma
-    python build_sezioni.py 037006 --out bologna_sezioni_2023.csv
-    python build_sezioni.py 017029 --file R03_Lombardia_2023_sezioni.xlsx
-    python build_sezioni.py 034027 --dry-run            # solo diagnostica
+    python scripts/vincoli/build_sezioni.py 034027                      # Parma
+    python scripts/vincoli/build_sezioni.py 037006 --out bologna_sezioni_2023.csv
+    python scripts/vincoli/build_sezioni.py 017029 --file R03_Lombardia_2023_sezioni.xlsx
+    python scripts/vincoli/build_sezioni.py 034027 --dry-run            # solo diagnostica
 """
 
 import argparse

@@ -9,8 +9,8 @@ K7C: |X| = 33 x 5376 = 177.408, m ~ 2.400 -> F densa ~3.4 GB float64 (x2 per
 F e F_g): dentro i 64 GB della macchina; fit esatto atteso in minuti.
 
 Uso:
-    python fit_cs.py 017029 --anno 2024 --livello K7C --eps 1e-8 --min-alpha 2e-4 --no-gibbs
-    python fit_cs.py 017029 --anno 2025                      # K6C, come fit_k6c
+    python scripts/fit/fit_cs.py 017029 --anno 2024 --livello K7C --eps 1e-8 --min-alpha 2e-4 --no-gibbs
+    python scripts/fit/fit_cs.py 017029 --anno 2025                      # K6C, come fit_k6c
 Output in constraints_<anno>/: fit_<LIV>.json, popolazione_<LIV>.csv
 """
 
@@ -431,7 +431,7 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
 if __name__ == "__main__":
     args = sys.argv[1:]
     if not args:
-        sys.exit("Uso: python fit_cs.py <comune> [--anno 2025] [--livello K6C|K7C|K8C|K9C] "
+        sys.exit("Uso: python scripts/fit/fit_cs.py <comune> [--anno 2025] [--livello K6C|K7C|K8C|K9C] "
                  "[--eps 0] [--pool 20000] [--outer 500] [--numba] [--sparse] "
                  "[--min-alpha 0] [--blocks A,B,Z1,...] [--no-gibbs] [--no-exact] "
                  "[--tol 0.02] [--warm-from K9C] [--anneal 0]")

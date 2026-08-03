@@ -2,11 +2,11 @@
 fetch_comune_v2.py - scarica e profila tavole ISTAT SDMX per un comune.
 
 Uso:
-    python fetch_comune.py 037006 --explore
-    python fetch_comune.py 037006
-    python fetch_comune.py 037006 --only cens_istruzione_eta
-    python fetch_comune.py 037006 --profile cens_condprof_eta
-    python fetch_comune.py 037006 --profile cens_condprof_eta --max-values 40
+    python scripts/acquisizione/fetch_comune.py 037006 --explore
+    python scripts/acquisizione/fetch_comune.py 037006
+    python scripts/acquisizione/fetch_comune.py 037006 --only cens_istruzione_eta
+    python scripts/acquisizione/fetch_comune.py 037006 --profile cens_condprof_eta
+    python scripts/acquisizione/fetch_comune.py 037006 --profile cens_condprof_eta --max-values 40
 
 La modalita --profile:
     - scarica una sola tavola per il comune;

@@ -20,8 +20,8 @@ Assunzioni dichiarate:
     categoria non e' esprimibile come pattern atomico senza assunzioni extra.
 
 Uso:
-    python cs_build.py 017029 --anno 2025                    # K6C
-    python cs_build.py 017029 --anno 2024 --livello K7C      # K7C (zona 2023)
+    python scripts/vincoli/cs_build.py 017029 --anno 2025                    # K6C
+    python scripts/vincoli/cs_build.py 017029 --anno 2024 --livello K7C      # K7C (zona 2023)
 Output in constraints_<anno>/: cs_<LIV>.json, targets_<LIV>.json
 Richiede per K7C: ~/progetti/gsp/data/comuni/<comune>/zona_2023/ (build_zona_tables.py)
 """
@@ -801,7 +801,7 @@ def main(comune, anno, min_age, max_age, bins_labels, livello, esclusioni=False)
 if __name__ == "__main__":
     args = sys.argv[1:]
     if not args:
-        sys.exit("Uso: python cs_build.py <comune> [--anno 2025] "
+        sys.exit("Uso: python scripts/vincoli/cs_build.py <comune> [--anno 2025] "
                  "[--min-age 0] [--max-age 199] [--livello K6C|K7C|K8C|K9C] "
                  "[--esclusioni]")
     comune = args[0]

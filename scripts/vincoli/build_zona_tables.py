@@ -15,10 +15,10 @@ Comuni registrati (il registro vive in gsp_common.py, non qui):
                       zone      (COM_ASC2, 18, parent=quartieri)  [default]
 
 Uso:
-    python build_zona_tables.py 017029                       # Brescia, 33 quartieri
-    python build_zona_tables.py 036023                       # Modena, 4 quartieri
-    python build_zona_tables.py 037006                       # Bologna, 18 zone (default!)
-    python build_zona_tables.py 037006 --level quartieri     # Bologna, 6 quartieri
+    python scripts/vincoli/build_zona_tables.py 017029                       # Brescia, 33 quartieri
+    python scripts/vincoli/build_zona_tables.py 036023                       # Modena, 4 quartieri
+    python scripts/vincoli/build_zona_tables.py 037006                       # Bologna, 18 zone (default!)
+    python scripts/vincoli/build_zona_tables.py 037006 --level quartieri     # Bologna, 6 quartieri
     opzioni: --sez-csv, --com-dir, --out-dir
 
 Output (default: <com_dir>/zona_2023/ — la directory letta da cs_build;

@@ -37,9 +37,9 @@ Assunzioni dichiarate:
         indipendente.
 
 Uso:
-    python enrich.py 034027 --anno 2024
-    python enrich.py 037006 --anno 2024 --pop-file popolazione_K9C_avq.csv
-    python enrich.py 034027 --anno 2024 --keep-naz     # non ri-assegna area/paese
+    python scripts/attributi/enrich.py 034027 --anno 2024
+    python scripts/attributi/enrich.py 037006 --anno 2024 --pop-file popolazione_K9C_avq.csv
+    python scripts/attributi/enrich.py 034027 --anno 2024 --keep-naz     # non ri-assegna area/paese
 """
 
 import argparse

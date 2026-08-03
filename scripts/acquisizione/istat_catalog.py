@@ -2,10 +2,10 @@
 Catalogo dataflow ISTAT SDMX (esploradati) — scarica una volta, greppa in locale.
 
 Uso:
-    python istat_catalog.py                # scarica/aggiorna il catalogo, stampa statistiche
-    python istat_catalog.py istruzione     # grep case-insensitive su id + nomi
-    python istat_catalog.py "condizione professionale"
-    python istat_catalog.py --refresh      # forza ri-download del catalogo
+    python scripts/acquisizione/istat_catalog.py                # scarica/aggiorna il catalogo, stampa statistiche
+    python scripts/acquisizione/istat_catalog.py istruzione     # grep case-insensitive su id + nomi
+    python scripts/acquisizione/istat_catalog.py "condizione professionale"
+    python scripts/acquisizione/istat_catalog.py --refresh      # forza ri-download del catalogo
 
 Output in OUT_DIR:
     catalog_dataflows.xml   (risposta grezza, cache)
@@ -95,4 +95,4 @@ if __name__ == "__main__":
         grep_catalog(" ".join(args), cat)
     else:
         print(f"[catalog] {len(cat)} dataflow disponibili. Esempio: "
-              f"python istat_catalog.py istruzione")
+              f"python scripts/acquisizione/istat_catalog.py istruzione")

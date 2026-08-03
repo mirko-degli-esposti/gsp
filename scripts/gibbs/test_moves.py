@@ -13,7 +13,7 @@ Misura anche l'entropia media della condizionale p(x_k | x_-k): se e'
 prossima a zero la condizionale e' quasi deterministica e il valore e'
 di fatto imposto dal resto della tupla.
 
-    python test_moves.py 017029 --anno 2024 --livello K10C --min-alpha 2e-4
+    python scripts/gibbs/test_moves.py 017029 --anno 2024 --livello K10C --min-alpha 2e-4
     ... --scramble background,origine_genitori    # dallo stato perturbato
     ... --sweeps 5 --n 50000
 """

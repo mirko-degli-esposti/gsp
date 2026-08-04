@@ -1,0 +1,119 @@
+{
+  "byte": 4768,
+  "decili": [
+    2.2668,
+    2.438,
+    3.4512,
+    4.4002,
+    4.658,
+    4.9154,
+    6.396,
+    6.669,
+    6.9596
+  ],
+  "diagnostica": {
+    "anni": "['2024']",
+    "avvertenza": "NON sono cifre pubblicate dall'ISTAT: l'Istituto diffonde percentuali di punteggi 6-10 e 8-10, non medie. Le uniche medie pubblicate sono nel BES e riguardano quattro indicatori compositi, con forze dell'ordine e vigili del fuoco insieme. L'errore standard qui riportato usa i pesi ma non il grappolo familiare: `se_grappolo` lo corregge con il fattore 1,66 di §13.3 del riferimento, ed e' quello da usare.",
+    "copertura_max": 1.0,
+    "copertura_min": 0.4015,
+    "eta_min_ETAMi": 5,
+    "fattore_grappolo": 1.66,
+    "fonte": "elaborazione propria sui microdati AVQ public use (mIcro.STAT), annate 2024",
+    "metodo": "media pesata con COEFIN, su ETAMi >= 5 (15 anni e piu'), calcolata sull'universo di ciascuna variabile",
+    "modalita": 23,
+    "n_misurato": 23.0,
+    "se_grappolo_max": 0.133,
+    "se_grappolo_min": 0.0031,
+    "se_max": 0.1032,
+    "se_min": 0.0024
+  },
+  "hapax": 0,
+  "id": "avq_medie_nazionali",
+  "modalita": 23,
+  "n_misurato": 23.0,
+  "peso_max": 68.42,
+  "peso_min": 1.313,
+  "sha256": "435123b2f825a49100612608e42acb8db8d649eee80605688372e199f849a6ac",
+  "testa": [
+    {
+      "chiave": "MH",
+      "peso": 68.42
+    },
+    {
+      "chiave": "PUNTIFI12",
+      "peso": 8.055
+    },
+    {
+      "chiave": "FIDMED",
+      "peso": 6.98
+    },
+    {
+      "chiave": "FIDINF",
+      "peso": 6.878
+    },
+    {
+      "chiave": "PUNTIFI3",
+      "peso": 6.675
+    },
+    {
+      "chiave": "PUNTIFI6",
+      "peso": 6.66
+    },
+    {
+      "chiave": "FORZE_ARMATE",
+      "peso": 6.507
+    },
+    {
+      "chiave": "VOTOUSL",
+      "peso": 6.322
+    },
+    {
+      "chiave": "PUNTIFI10",
+      "peso": 5.097
+    },
+    {
+      "chiave": "PUNTIFI2",
+      "peso": 4.87
+    },
+    {
+      "chiave": "PUNTIFI1",
+      "peso": 4.684
+    },
+    {
+      "chiave": "PUNTIFI8",
+      "peso": 4.658
+    },
+    {
+      "chiave": "PUNTIFI5",
+      "peso": 4.619
+    },
+    {
+      "chiave": "PUNTIFI7",
+      "peso": 4.407
+    },
+    {
+      "chiave": "PUNTIFI13",
+      "peso": 4.373
+    },
+    {
+      "chiave": "PUNTIFI4",
+      "peso": 3.464
+    },
+    {
+      "chiave": "CPESO",
+      "peso": 3.432
+    },
+    {
+      "chiave": "BMI",
+      "peso": 2.555
+    },
+    {
+      "chiave": "FUMO",
+      "peso": 2.36
+    },
+    {
+      "chiave": "SALUTE",
+      "peso": 2.29
+    }
+  ]
+}

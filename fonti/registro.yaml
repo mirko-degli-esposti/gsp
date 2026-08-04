@@ -1217,3 +1217,78 @@ fonti:
     usato_da: [gsp.nomi]
     non_usabile_per: [condizionamento_per_coorte, cittadinanza,
                       statistiche_sui_nomi, geografia]
+
+  # Medie nazionali della batteria AVQ — DERIVATO.
+#
+# Sostituire il blocco `avq_medie_nazionali` gia' presente in
+# fonti/registro.yaml (quello era una bozza incompleta: mancavano unita,
+# normalizzatore, usabile_per, non_usabile_per, e il percorso puntava a
+# data/riferimenti/ invece che a fonti/derivati/).
+#
+# Richiede normalizzatori.py (28736) con `riferimenti_json` e
+# fonti_init.py (33360).
+#
+#   python -m gsp.fonti --impronta avq_medie_nazionali
+#   python -m gsp.fonti --verifica
+
+  - id: avq_medie_nazionali
+    ente: GSP (derivato)
+    titolo: Medie nazionali della batteria AVQ
+    url: null                   # non esiste una pagina: e' un derivato
+    data_accesso: 2026-08-04
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      Elaborazione propria su ISTAT, "Aspetti della vita quotidiana -
+      microdati ad uso pubblico", CC BY 4.0
+    archiviazione: git
+    percorso: fonti/derivati/medie_nazionali.json
+    sha256: 435123b2f825a49100612608e42acb8db8d649eee80605688372e199f849a6ac
+    copertura: {geo: "IT", tempo: 2024}
+    derivato_da: [avq_microdati]
+    prodotto_da: scripts/riferimenti/medie_nazionali.py
+    universo: >-
+      medie ponderate nazionali delle 23 variabili AVQ, calcolate dai
+      microdati con i pesi COEFIN, universo 15 anni e piu' (ETAMi >= 5),
+      ciascuna sull'universo della propria variabile.
+      NON esiste una fonte ISTAT equivalente: la batteria di fiducia non
+      e' pubblicata in forma aggregata. Le cinque medie che erano cablate
+      nel viewer venivano da un'origine mai identificata (§13.6 punto 7
+      del riferimento, chiuso il 2/8/2026); ricalcolate coincidono entro
+      0,045 con quelle cablate, e ora ne coprono ventitre invece di
+      cinque.
+      Il file si autodescrive: porta `fonte`, `metodo`, `avvertenza`,
+      `anni`, `eta_min_ETAMi` e `fattore_grappolo`, e il normalizzatore
+      li riporta nell'impronta — chi la legge sa come e' stato calcolato
+      senza aprire il registro.
+    unita: media ponderata
+    normalizzatore: riferimenti_json
+    anomalie:
+      - >-
+        `n_misurato` sono le MODALITA' (23), non una somma: sommare delle
+        medie non significa niente. Il normalizzatore lo dichiara e
+        l'impronta usa quel valore invece della somma dei pesi.
+      - >-
+        l'artefatto NON contiene la data di generazione, di proposito:
+        stessi dati in ingresso -> stesso file byte per byte. Con un
+        timestamp dentro, l'sha256 divergerebbe a ogni esecuzione anche
+        senza che i numeri cambino, e un controllo che diverge sempre e'
+        un controllo che si smette di guardare. La data di produzione sta
+        in `data_accesso` e nel mtime del file.
+    bias: >-
+      essendo un DERIVATO eredita da avq_microdati tutto cio' che la
+      riguarda: la licenza, la perturbazione per la tutela della
+      riservatezza gia' applicata da ISTAT, e il caveat che le
+      elaborazioni sui file ad uso pubblico «possono condurre a risultati
+      in qualche misura difformi rispetto a quelli pubblicati».
+      Quindi NON sono stime ufficiali e non vanno confrontate con
+      pubblicazioni ISTAT: sono il riferimento interno rispetto al quale
+      la popolazione sintetica si misura.
+      Ogni variabile porta con se' la propria precisione: `se` e
+      soprattutto `se_grappolo`, corretto per l'effetto di grappolo
+      dell'indagine (piu' rispondenti nella stessa famiglia non sono
+      osservazioni indipendenti). E' `se_grappolo` il numero da usare per
+      le tacche del pannello: `se` da solo sottostima.
+    usabile_per: [riferimento_nazionale_batteria, tacche_pannello]
+    usato_da: [animarium]
+    non_usabile_per: [stime_ufficiali, confronto_con_pubblicazioni_istat,
+                      riferimento_regionale]

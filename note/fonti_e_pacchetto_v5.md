@@ -1,0 +1,746 @@
+# Registro delle fonti, pacchetto `gsp`, donatori AVQ — v5
+
+Aggiornata il 4 agosto 2026. Sostituisce la v4. Rispetto a quella: metà di
+`animarium/build/` è passata a GSP, il registro ha ventisette fonti e la
+prima **catena** invece di fonti isolate, e `gsp.nomi` genera nomi e
+cognomi deterministici per il ramo italiano.
+
+---
+
+## 1. Il pacchetto e gli script
+
+### Il criterio
+
+**Nel pacchetto va ciò che qualcun altro importa.** Che abbia anche una
+CLI è irrilevante: `gsp.common` ce l'ha, e `python -m` la serve.
+
+**In `scripts/` va ciò che si esegue.** Il legame con il pacchetto può
+essere un `import` — e allora il modulo sta nel pacchetto — oppure un
+**file**: `istat_catalog` scrive `catalog_dataflows.csv` che
+`gsp.istat.sdmx` legge, `medie_nazionali` scrive un JSON che Animarium
+consuma. Il legame-file non giustifica il pacchetto.
+
+### Struttura
+
+```
+~/progetti/gsp/
+  pyproject.toml
+  src/gsp/
+    __init__.py            vuoto: importare `gsp` non deve tirarsi dietro
+                           pandas, numba e yaml
+    common.py              registro dei 12 comuni e primitive condivise
+    opendata.py            fonti locali per il paese di cittadinanza
+    istat/sdmx.py          client SDMX (4 query/minuto)
+    nomi/__init__.py       repertori onomastici deterministici
+    fonti/
+      __init__.py          il registro delle fonti
+      __main__.py          abilita `python -m gsp.fonti`
+      normalizzatori.py    13 funzioni pure grezzo -> canonico
+
+  scripts/
+    rigenera.sh · run_avq.sh          orchestrazione
+    acquisizione/    istat_catalog · fetch_comune
+    vincoli/         build_constraints · build_sezioni ·
+                     build_zona_tables · cs_build · join_civici_sezioni
+    fit/             fit_cs
+    attributi/       assign_nationality · assign_avq · enrich
+    diagnostica/     verifica_vincoli · verifica_donor · ispeziona_avq ·
+                     ispeziona_cs · diag_quinq · diag_istruzione_eta ·
+                     zona_probe · perm_composizione
+    gibbs/           gibbs_lab · profile_gibbs · test_invariance ·
+                     test_moves · batch_lambda.sh · batch_scaling.sh
+    riferimenti/     medie_nazionali
+
+  scripts_archivio/  preflight · run_regression · regress_fit ·
+                     check_marginals
+  fonti/             registro, grezzi, metadati, impronte, DERIVATI
+  data/              4,7 GB, fuori da git
+  note/  note/storico/
+```
+
+`pip install -e .` nell'ambiente `ml`. Dipendenze: `pandas`, `numpy`,
+`pyarrow`, `pyyaml`, `xlrd`, `openpyxl`, `python-calamine`.
+
+### Metà di `animarium/build/` non era Animarium
+
+`build/` aveva quattordici file e 3.377 righe; ne restano sette e 1.718.
+Sei diagnostici e `medie_nazionali` sono passati a GSP.
+
+Erano lì per **quando** sono stati scritti, non per **cosa** fanno: le
+etichette `F0(a)`, `F0(b)`, `F2`, `F3`, `F4` sono le lacune del design di
+Animarium, e quei diagnostici sono nati per rispondere a domande che il
+viewer poneva. È la stessa storia di `preflight.sh` in GSP — strumenti di
+una fase, sedimentati dove la fase si svolgeva.
+
+Tre di essi si dichiaravano già in bilico nel titolo: «Animarium / GSP».
+
+**`check_marginals` e `verifica_vincoli` erano lo stesso strumento**,
+scritti a due giorni di distanza: entrambi normalizzano l'errore contro
+il pavimento di campionamento, ed entrambi si aprono spiegando che
+l'errore relativo grezzo su celle piccole non significa niente.
+`check_marginals` lo dice in forma teorica —
+`z = (α_oss − α)/√(α(1−α)/N)`, mediana 0,674, media 0,798 —
+`verifica_vincoli` in forma empirica: «la v1 trovava celle sbagliate del
+132%, ma quelle celle avevano valore atteso 1,3 individui». La stessa
+scoperta raccontata due volte. Resta la v2 (30 luglio), l'altra in
+archivio.
+
+### Le dipendenze locali, sciolte
+
+Nessuno script in `scripts/` importa più un altro: era la condizione per
+riordinare senza rompere niente.
+
+- `gsp_common` → `gsp.common` (undici importatori)
+- `istat_sdmx` → `gsp.istat.sdmx` (`fetch_comune`)
+- `opendata_paese` → `gsp.opendata` (`enrich`, **una sola funzione**:
+  `tabella_paese(comune, anno-1)`)
+- `fast_F` e `test_F`: erano copie **identiche byte per byte** di
+  `maxent-popsynth-pcd/src/`. Cancellate; `gibbs_lab` le importa dal repo
+  con `importlib`, come già faceva per il solver
+
+### Metodo di verifica
+
+Baseline **prima**, spostamento, confronto. Per il riordino di `scripts/`
+la baseline migliore è stata `rigenera.sh --dry-run`, che stampa i
+comandi senza eseguirli: il `diff` mostrava esattamente 44 righe — quattro
+comandi per undici comuni — cambiate solo nella sottocartella.
+
+Per gli script senza `argparse` il `--help` produce un traceback che
+contiene il **percorso del file**: la differenza è attesa, e il confronto
+va fatto ignorandolo (`sed 's|/home[^"]*/||'`).
+
+---
+
+## 2. Il registro delle fonti
+
+### Il principio
+
+> **Ogni fonte richiede il suo universo dichiarato.** Un file senza
+> universo è un elenco di numeri, non una misura.
+
+### Struttura sul disco
+
+```
+fonti/
+  registro.yaml        scritto a mano: universo, licenza, uso
+  repertori.yaml       configurazione onomastica (§6)
+  grezzi/              i file originali sotto i 5 MB, versionati
+  derivati/            prodotti da GSP, registrati come fonti
+  metadati/            DCAT, note metodologiche, tracciati d'origine
+  impronte/            GENERATE: firma di ogni fonte, sempre in git
+  norm/                GENERATE: Parquet canonici, ricostruibili
+  ATTRIBUZIONI.md      GENERATO: obbligo CC-BY verso chi riceve i dati
+```
+
+**Il grezzo è immutabile.** Le correzioni vivono nel normalizzatore, che
+è codice versionato; le stranezze restano dichiarate in `anomalie`.
+
+**`derivati/` è nuova** e la distinzione è deliberata: `grezzi/` è ciò che
+si è scaricato, `derivati/` ciò che si è calcolato. Un derivato è una
+fonte a pieno titolo — ha universo, licenza, impronta — ma dichiara anche
+da cosa viene.
+
+### Tre livelli di archiviazione
+
+```
+git      grezzo versionato: riproducibile da un clone     (< 5 MB)
+locale   grezzo su disco, gitignorato: verificabile qui
+remoto   nessun grezzo: resta l'URL, l'impronta è l'unica prova
+```
+
+### Due tipi di fonte
+
+**`file`** — una fonte, un file, un hash. Il grezzo sta in `fonti/grezzi/`
+oppure, se `percorso` è dichiarato, dove vive già.
+
+**`multi_istanza`** — una scheda per *tavola*, tante istanze uguali per
+forma e diverse per chiave. `percorso` contiene un pattern con
+`{istanza}` e `--scansiona` le rileva da sole.
+
+### `parametri_da` e `derivato_da`: le due relazioni
+
+**`parametri_da`** referenzia la configurazione operativa invece di
+riscriverla:
+
+```yaml
+parametri_da: common.COMUNI.017029.opendata_paese
+```
+
+`--verifica` controlla che il riferimento regga. Nota che
+`opendata_paese` qui è il nome della **chiave di configurazione**, non del
+modulo: il modulo è diventato `gsp.opendata`, la chiave resta.
+
+**`derivato_da`** è nuovo, e traccia una **catena** invece di una fonte
+singola:
+
+```yaml
+derivato_da: [avq_microdati]
+prodotto_da: scripts/riferimenti/medie_nazionali.py
+```
+
+Tre cose si propagano senza doverle riscrivere: la licenza con la sua
+attribuzione, la perturbazione per la riservatezza, e il caveat che le
+stime differiscono da quelle pubblicate.
+
+**Da fare**: `--verifica` potrebbe segnalare se un derivato è **più
+permissivo della sua origine** — `archiviazione: git` su un derivato di
+una fonte con licenza non chiarita. Con un solo derivato non giustifica
+il codice, ma è il tipo di errore che si fa una volta e si paga caro.
+
+### I comandi
+
+```bash
+python -m gsp.fonti --verifica          # hash, conteggi, campi obbligatori
+python -m gsp.fonti --elenco            # inventario
+python -m gsp.fonti --scansiona ID      # rileva le istanze, scrive l'impronta
+python -m gsp.fonti --impronta ID       # (fonti a file singolo)
+python -m gsp.fonti --attribuzioni      # rigenera ATTRIBUZIONI.md
+python -m gsp.fonti --pubblico          # cosa può finire in un repo pubblico
+python -m gsp.fonti --copertura         # fonti usate e NON registrate
+python -m gsp.fonti --aggiungi PATH --id ID
+```
+
+### Gli esiti di `--verifica`
+
+| esito | significato | esce con |
+|---|---|---|
+| `ok` | tutto coincide | 0 |
+| `IMPRONTA` | grezzo assente ma impronta presente: stato **normale** di un clone senza i file pesanti | 0 |
+| `NUOVE` | istanze non ancora in impronta: un comune aggiunto è informazione | 0 |
+| `DIVERGE` | hash cambiato, conteggi diversi, campi mancanti, file vuoto, riferimento rotto | 1 |
+| `ROTTA` | dichiarata in git ma assente; né grezzo né impronta | 1 |
+
+Uno stato che fallisce sempre è uno stato che si smette di guardare.
+
+### I tredici normalizzatori
+
+| nome | forma | diagnostica caratteristica |
+|---|---|---|
+| `distribuzione_csv` | `chiave, peso` | modalità, n_misurato, chiavi fuse |
+| `matrice_csv` | largo → `chiave, zona, peso` | zona_nomi, **residuo_quota** |
+| `formato_lungo` | melt di colonne affiancate | unità escluse, n per sesso |
+| `tabella_parquet` | lungo, con filtro d'anno | anni_n, anno_usato |
+| `excel_aree_sesso` | doppia intestazione Excel | zona_nomi, n_M, n_F |
+| `microdati_csv` | record individuali | **min/max e negativi per colonna** |
+| `codebook_csv` | `campo, codice, etichetta` | codici_per_campo, segnaposto |
+| `riferimenti_json` | derivato con metadati in testa | **fonte, metodo, se_grappolo** |
+| `sdmx_csv` | frame intatto | dataflow, ref_area, anni, obs_somma |
+| `sezioni_xlsx` | frame intatto | sezioni, comuni, popolazione, vuote |
+| `tracciato_xlsx` / `tracciato_csv` | `chiave, definizione` | campi, senza_definizione |
+| `avq_microdati` | colonne di struttura | somma_pesi, **n_eff_kish** |
+
+**Trappola ricorrente**: `distribuzione_csv` abbassa i nomi di colonna,
+quindi `col_chiave` e `col_peso` vanno in **minuscolo** anche se nel file
+sono maiuscoli. L'errore è `KeyError: 'chiave'`, che non aiuta.
+
+---
+
+## 3. Le ventisette fonti
+
+### Cognomi — Comune di Firenze (2)
+
+CC-BY-4.0, in git, metadato DCAT, `notPlanned`.
+`firenze_cognomi_2013`: 375.371 residenti, 66.353 cognomi distinti, 51%
+hapax; Chao1 stima ~125.000 nella popolazione generatrice.
+`firenze_cognomi_2012` è solo controllo di stabilità: correlazione 0,9985
+— stessa popolazione a un anno di distanza, non un campione indipendente.
+
+Il limite è regionale: `TOLOMELLI`, primo ad Argelato, non compare in
+375.371 fiorentini; `INNOCENTI` è l'artefatto dell'Ospedale degli
+Innocenti.
+
+### Nomi — Comune di Modena (1)
+
+CC-BY-4.0 con URI del vocabolario controllato AgID, via
+dati.emilia-romagna.it, servito da un **WFS di GeoServer**.
+Multi-istanza su `sesso`, 650 righe per file, esattamente 50 nomi per
+anno.
+
+Sei anomalie registrate, e nessuna si sarebbe ritrovata dopo: il titolo
+dice «dal 2012 al 2022» ma i dati arrivano al **2024**; il catalogo dice
+«nomi attribuiti ai nati» ma sono lo **stock** dei residenti (1.390
+ANTONIO nel 2015 non sono neonati); quattro colonne di servizio WFS con
+`SHAPE` che è il centroide di Modena ripetuto 650 volte; i due file hanno
+timestamp CKAN di due anni e mezzo di distanza, decodificati dal campo
+`hash`; namespace WFS diversi fra maschile e femminile.
+
+A differenza dei cognomi fiorentini la scelta è **regionalmente coerente**
+per dieci comuni su dodici.
+
+### ISTAT SDMX — 11 tavole × 12 comuni
+
+CC-BY-4.0, `archiviazione: locale`. **4 query/minuto**.
+
+| | universo | ruolo |
+|---|---|---|
+| `istat_anag_sesso_eta_statociv` | anagrafe, 1 gennaio anno **N** | C1, unico **hard** |
+| altre dieci | censimento permanente, 31 dicembre anno **N−1** | C2–C10, **soft** |
+
+Serie 2019–2025 e 2018–2024: sette anni ciascuna, sfalsate di uno perché
+sono gli **stessi sette istanti**.
+
+`obs_somma` è ~2× e ~8× la popolazione per via degli aggregati: **firma
+per riconoscere il file, non conteggio**.
+
+### Sezioni di censimento (2)
+
+**135.725 sezioni**, 18,35 milioni di residenti. Geometria del censimento
+**2021**, dati **2023**. **10.872 sezioni senza residenti**.
+
+### AVQ (3, di cui uno derivato)
+
+**`avq_microdati`** — licenza **CC-BY-4.0 inferita**, non letta: la pagina
+AVQ non ne dichiara una propria e si applica quella generale del sito.
+Verificato dentro lo zip di tutte e tre le annate: il `!Leggimi`
+qualifica i file come «ad uso pubblico» — la classe meno restrittiva — e
+né esso né i quattro PDF pongono condizioni d'uso, divieti di
+ridistribuzione o clausole sulla reidentificazione.
+
+`unita: individuo campionario`. **`COEFIN` ha quattro decimali impliciti**
+(`scala_peso: 10000`).
+
+| anno | record | somma pesi | n_eff Kish |
+|---|---|---|---|
+| 2022 | 42.022 | 58.499.237 | 31.015 |
+| 2023 | 41.750 | 58.380.189 | 31.386 |
+| 2024 | 45.005 | 58.620.700 | 34.154 |
+
+I record del 2022 coincidono con i 42.022 dichiarati nel `!Leggimi`.
+
+**Riservatezza**: i file sono già sottoposti da ISTAT al trattamento per
+la tutela della riservatezza — «a causa del trattamento dei dati per la
+tutela della riservatezza, le elaborazioni possono condurre a risultati
+in qualche misura difformi rispetto a quelli pubblicati». La protezione è
+**incorporata nel dato**, non affidata a una clausola d'uso.
+
+**Limite territoriale**: il file pubblico è prodotto dall'MFR per
+sottocampionamento e ne eredita struttura e trattamento, ma **non la
+classe di ampiezza demografica del comune** (verificato sul tracciato
+2024: assente). Il condizionamento si ferma quindi alla **regione**:
+Bologna con 390.098 abitanti e Castenaso con 16.357 attingono allo stesso
+pool di 4.629 donatori. **La geografia della cittadinanza è condizionata
+fino alla sezione, quella degli attributi AVQ si ferma alla regione** —
+due risoluzioni molto diverse nello stesso record.
+
+**`avq_medie_nazionali`** — il primo derivato. Medie ponderate nazionali
+delle 23 variabili, con `se` e `se_grappolo`. **Non esiste una fonte
+ISTAT equivalente**: la batteria di fiducia non è pubblicata in forma
+aggregata, e le cinque medie cablate nel viewer venivano da un'origine
+mai identificata. Ricalcolate coincidono entro 0,045 e ne coprono
+ventitre invece di cinque.
+
+### Le sei fonti locali (7 schede)
+
+| comune | tier | unità | paesi | residuo | sesso | età |
+|---|---|---|---|---|---|---|
+| Parma | 3 | **1.320 sezioni** | 151 | — | sì | sì |
+| Bologna | 2 | 19 zone | 155 | **0%** | sì | no |
+| Forlì | 1 | 41 sub-quartieri | 42 | **16,5%** | sì | no |
+| Brescia | 1 | 33 quartieri | 8–33 per file | variabile | no | no |
+| Ravenna | 1 | 10 aree | ~40 | — | sì | no |
+| Reggio E. | 1 | 4 circoscrizioni | 25 | **6,1%** | no | no |
+
+Distanza media dalla composizione comunale: Forlì **0,170**, Parma
+**0,569**. Da capire se il salto sia dovuto alla scala (sezione contro
+quartiere) o alla ricchezza della fonte (microdati contro tabella
+aggregata).
+
+---
+
+## 4. Cosa il registro ha già trovato
+
+- **Due file scaricati vuoti** (0 byte) mai notati: Piacenza e Ravenna
+  2024. Da qui il controllo `SHA_VUOTO`.
+- **`unita` sparita** da `istat_cens_settore_prof` in un'edit manuale.
+- **Un record con `ETA = -1`** su 202.111 a Parma, trovato dal controllo
+  di plausibilità di `microdati_csv`. Il codebook ha stabilito che `ETA`
+  è «numerico» senza valori speciali: **dato sporco, non convenzione**.
+  Nessuna delle due cose da sola bastava.
+- **`Ncomp` fino a 319**: convivenze anagrafiche, non famiglie.
+- **`cens_posizione_famiglia` mai usata.**
+- **Overflow int64 nel Kish**: `n_eff` negativo perché `sum(w)²` con
+  somma 5,8e11 sfonda int64.
+- **Il titolo di un dataset che mente** sulla copertura temporale.
+
+### `residuo_quota` come criterio comparabile
+
+L'ipotesi «più fine la geografia, più informazione nel residuo» reggeva
+da Reggio (4 unità, 6,1%) a Forlì (41 unità, 16,5%). **È falsa**: Bologna
+ha 19 zone e zero residuo. La relazione dipende da come il comune
+costruisce la pubblicazione. E a Bologna la fonte nomina 155 paesi contro
+i 119 che l'IPF produce dal censimento: il margine B è più ricco del
+margine A, il contrario del caso generale.
+
+---
+
+## 5. Donatori AVQ — CHIUSA
+
+### Le previsioni falsificate
+
+**«`assign_avq.py` non stampa i donatori usati»** — falso, la riga c'era.
+**«La validazione delle correlazioni è stata rimossa»** — falso, il blocco
+gira sempre. Entrambe attribuivano allo script **meno** diagnostica di
+quanta ne abbia, ed entrambe erano dedotte dai log invece che dal
+sorgente.
+
+Una terza: lo scarto di `FIDUCIA` spiegato come effetto della dicotomia,
+mentre il §13.5 del riferimento aveva già la spiegazione migliore —
+**differenza compositiva comune–regione**, che segue il gradiente
+d'istruzione su quattro città.
+
+### Il difetto vero
+
+La soglia mascherava le correlazioni con meno di 100 donatori, ma li
+contava sui **disponibili** invece che sugli **estratti**. Corretto;
+**zero coppie** lasciate passare su tutti i comuni, quindi il difetto era
+teorico — ma la quantità ora è quella giusta.
+
+C'era anche una collisione di nome: `n_don` era prima lo scalare degli
+estratti, poi sovrascritto dalla matrice dei disponibili. Ora
+`n_estratti` e `n_coppia`.
+
+### Donatori estratti e scarto delle correlazioni
+
+| comune | estratti / pool | riuso | mediano | massimo | n | atteso ~1/√n |
+|---|---|---|---|---|---|---|
+| Brescia | 8.111/8.111 (**100%**) | 24,4× | 0,005 | 0,031 | 1.258 | 0,028 |
+| Modena | 4.617/4.629 (99,7%) | 40,0× | 0,007 | 0,046 | 1.130 | 0,030 |
+| Castenaso | 4.336/4.629 (**93,7%**) | 3,8× | 0,009 | 0,061 | 1.001 | 0,032 |
+
+**Il mediano scala con il riuso, non con la popolazione.** Osservato su
+atteso resta fra 1 e 2 ovunque.
+
+> *Su 253 coppie, lo scarto fra le correlazioni della popolazione
+> sintetica e quelle dei donatori AVQ ha mediana 0,007 e massimo 0,046,
+> con le tre peggiori entro 1,5 errori standard della loro numerosità
+> effettiva.*
+
+### Le collisioni: spiegate, non risolvibili
+
+| n mancanti su 23 | donatori | firme | collisioni | quota |
+|---|---|---|---|---|
+| 0–4 | 2.095 | 2.095 | **0** | 0,000 |
+| 5 (annata 2023) | 1.697 | 1.693 | 4 | 0,002 |
+| 6–18 | 314 | 313 | 1 | 0,003 |
+| **19–21** | 519 | 68 | **451** | **0,87** |
+
+**Il 99% sta nei minori**, ai quali le domande su fiducia, salute
+percepita, fumo, benessere psicologico e antropometria non vengono poste.
+Nessuna variabile aggiuntiva le eliminerà, perché per quei donatori le
+variabili aggiuntive sono proprio quelle che mancano.
+
+### `donor_id` scritto a monte — FATTO
+
+Identità **stabile fra corse**: `"2024:12345"`, annata più riga dentro
+l'annata — non l'indice del pool, che slitta quando cambia l'insieme
+delle annate. In Parquet costa 0,32 MB grazie al dictionary encoding.
+
+| | firma | colonna | fattore |
+|---|---|---|---|
+| Brescia | 1.093 | **6.618** | 6,1 |
+| Modena | 862 | **3.741** | 4,3 |
+| Castenaso | 741 | **3.205** | 4,3 |
+
+`n_eff` sull'intera popolazione quadruplica e **smette di essere
+erratico**: Brescia sta al doppio degli altri perché attinge al pool
+lombardo, rapporto 1,77 contro il 1,75 dei pool.
+
+**Sull'universo della variabile invece non cambia nulla**: 3.220 → 3.227
+su Modena, +0,2%. Le collisioni stanno fra i minori, che l'universo 15+
+esclude per costruzione. Quindi la raccomandazione del §13.3 — `n_eff`
+per variabile — era **immune al difetto dell'identificatore**, e nessuna
+banda pubblicata era sbagliata.
+
+### Ancora aperto
+
+Equipesare le annate implica un pool che rappresenta una media del
+triennio e non la popolazione a una data. Per donare attributi è
+*probabilmente* irrilevante, ma non è stato verificato.
+
+---
+
+## 6. `gsp.nomi` — l'onomastica
+
+### Il principio
+
+**Il nome non è una colonna della popolazione.** È generato al momento
+del bisogno da una funzione deterministica dell'`id`, e non finisce mai
+in un file. Il determinismo **sostituisce la memorizzazione**: dallo
+stesso id esce sempre lo stesso nome, quindi il risultato è riproducibile
+e citabile senza essere scritto.
+
+Serve a rendere naturali i persona-prompt degli agenti LLM. Per quell'uso
+la fedeltà della coda è irrilevante.
+
+### Tre strati, perché cambiare sorgente non tocchi il codice
+
+**Il repertorio** è una fonte del registro più la dichiarazione di cosa
+condiziona (`fonti/repertori.yaml`). `condiziona: []` è una lista unica,
+`condiziona: [sesso]` seleziona il sottoinsieme, e se la fonte è
+`multi_istanza` sulla stessa chiave si carica l'istanza. `filtro`
+seleziona una porzione **fissa** uguale per tutti — tipicamente l'annata.
+
+**Le regole** instradano ogni individuo: il cognome segue il **padre**, il
+nome dipende dai genitori. Prima regola che combacia.
+
+**Il generatore** pesca con `blake2b(SEME|canale|id)`. Canali separati per
+nome e cognome: correggendo domani il repertorio dei nomi, i cognomi non
+si rimescolano.
+
+Cambiare i cognomi italiani da Firenze a una fonte emiliana è **una riga**
+in `repertori.yaml`.
+
+### Stato
+
+`cognome_italiano` (Firenze) e `nome_italiano` (Modena) sono pronti. Il
+**ramo straniero** è l'unico pezzo aperto: con `fallback` dichiarato uno
+straniero prende nome e cognome italiani, e la traccia lo dice — difetto
+visibile invece che nascosto.
+
+### Due decisioni da prendere
+
+**`blake2b` o `SHA-256`.** Sono entrambi mescolatori deterministici e per
+questo uso equivalenti. Ma BLAKE2b **non esiste nei browser**, SHA-256 sì
+(`crypto.subtle`). Se un giorno il viewer dovesse calcolare i nomi
+invece di riceverli, SHA-256 è l'unica scelta — e costa nulla adottarlo
+adesso, mentre cambiarlo dopo rigenera tutta l'onomastica.
+
+**Quale `id`.** `to_parquet` assegna `id = arange(len)` **dopo**
+l'ordinamento per `zona, sezione`, quindi lo stesso individuo avrebbe due
+nomi diversi partendo dal CSV o dal Parquet. Serve un `uid` **stabile**
+nato a monte — in `fit_cs`, perché l'identità appartiene all'individuo
+dalla nascita. Il Parquet manterrebbe il suo `id` progressivo per i
+permalink e la codifica `DELTA_BINARY_PACKED`.
+
+---
+
+## 7. Privacy e disclosure
+
+### L'argomento, in tre livelli
+
+**Primo: non c'è nessun dato personale da proteggere.** La popolazione è
+*simulata da aggregati pubblicati*, non anonimizzata da record
+individuali. Sono due cose giuridicamente diverse: l'anonimizzazione deve
+dimostrare di aver rotto un legame, la simulazione non ne ha mai avuto
+uno.
+
+**Secondo: l'unica cosa reale nel record è il vettore AVQ**, e viene da
+una fonte già protetta da ISTAT. Il hot-deck aggiunge uno strato: ogni
+vettore replicato ~40 volte, nessuna combinazione unica.
+
+**Terzo: l'indirizzo non porta informazione.** L'assegnazione al civico è
+arbitraria dentro la sezione, e la risoluzione dei dati si ferma alla
+sezione.
+
+I primi due reggono da soli.
+
+### Cosa in un record è davvero reale
+
+| componente | origine | quanto è reale |
+|---|---|---|
+| età, sesso, istruzione, condizione, cittadinanza | MaxEnt da marginali | nessun individuo dietro |
+| zona, sezione | vincoli aggregati | nessuno |
+| **civico** | estratto da ANNCSU | **l'indirizzo esiste** |
+| **vettore AVQ** | copiato da un donatore | **risposte di una persona vera, perturbate** |
+| nome | generato | plausibile, quindi collidente |
+
+Il vettore AVQ è **la cosa più reale del record**, ed è quella a cui non
+pensa nessuno.
+
+### Tre prodotti, tre regimi
+
+```
+popolazione completa   →  data/, non lascia la macchina
+bundle pubblico        →  senza nome, coordinata randomizzata in sezione
+campione narrativo     →  completo, generato al momento, decine di individui
+```
+
+La differenza fra una scheda letta a schermo e un dataset scaricabile è
+quella fra citare un caso e pubblicare un archivio. **Il bundle è
+scaricabile per costruzione** — DuckDB-WASM lo prende via HTTP — quindi
+il banner del pannello non viaggia con il file.
+
+### `--pubblico` in `to_parquet` — da fare
+
+Toglie `via` e `civico`, e sostituisce `lon`/`lat` con un punto casuale
+dentro la sezione. **Non si perde niente**, perché l'assegnazione al
+civico è già casuale dentro la sezione: la mappa resta visivamente
+identica, la densità è la stessa, e il file diventa autoprotettivo.
+
+Nello stesso passaggio si toglie `quartiere`, che è **uno-a-uno con
+`zona`** (verificato: 4 e 4 a Modena, 18 e 18 a Bologna, coppie distinte
+pari al numero di zone) e il cui nome arriva già dal manifest.
+
+### La regola di disclosure in un punto solo
+
+```python
+gsp.individui.campione(comune, n=20,  dettaglio="narrativo")
+gsp.individui.campione(comune, n=120, dettaglio="persona")
+gsp.individui.tabella(comune,         dettaglio="pubblico")
+```
+
+Un SIVE-like avrà bisogno di caricare, filtrare, campionare e costruire
+persona-prompt: esattamente questo. Se quella logica sta in
+`animarium/build/`, il terzo consumatore la duplica.
+
+---
+
+## 8. Come si aggiunge una fonte
+
+```bash
+python -m gsp.fonti --aggiungi ~/scarichi/file.csv --id ente_variabile_anno
+```
+
+Stampa uno stub YAML con `DA_COMPILARE` sui campi che richiedono
+giudizio: **universo**, **unità**, **usabile_per**, **non_usabile_per**.
+
+**Scaricare sempre i metadati insieme ai dati.** Per Firenze l'XML DCAT ha
+risolto la licenza in dieci secondi. Per Parma il codebook ha stabilito
+che `ETA = -1` è sporco. Per Modena il campo `hash` di CKAN conteneva due
+timestamp diversi.
+
+**I codebook vanno registrati come fonti**: sono la fonte che dà
+significato ai valori dell'altra.
+
+**`non_usabile_per`** è il campo che nessuno mette ed è quello che serve.
+
+---
+
+## 9. Principi
+
+**Il significato di una quantità appartiene a chi la produce.** La
+struttura generica non lo indovina. Tre occorrenze in due giorni:
+`modalita` sulla matrice di Reggio (26 nazionalità o 104 righe lunghe?),
+`n_misurato` sui codebook (righe o campi?), la somma dei pesi sulle medie
+nazionali (82 o 23?). Ogni volta la correzione è la stessa: la
+diagnostica del normalizzatore vince.
+
+**Un artefatto che contiene la propria data di generazione non è
+verificabile.** L'hash cambia a ogni esecuzione anche quando i numeri
+sono identici, quindi il registro non distingue «rigenerato uguale» da
+«rigenerato diverso», e l'unico controllo che conta si spegne. Vale per
+tutto: bundle, impronte, popolazioni. Stessa ragione per cui i nomi usano
+un hash con seme fisso e `donor_id` è `"2024:12345"` invece dell'indice
+del pool.
+
+**Ogni metrica che scala col numero di celle va normalizzata contro la
+sua ipotesi nulla.** Il pavimento di campionamento in `verifica_vincoli`,
+`1/√n` sulle correlazioni, `n_eff` di Kish sui donatori, `residuo_quota`
+sulle fonti locali.
+
+**Mantenere due percorsi che devono produrre lo stesso output è un test
+di regressione permanente.** `gibbs_pcd_solver_old.py` nel repo pubblico;
+i due rami paralleli sul consolidamento di `gsp_common`.
+
+**Una fonte senza `non_usabile_per` viene riusata a sproposito sei mesi
+dopo**, quando si è dimenticato perché la si era scaricata.
+
+---
+
+## 10. Questioni aperte
+
+### 10.1 Da fare, corte
+
+- **`--pubblico` in `to_parquet`**: coordinata randomizzata, via/civico e
+  `quartiere` fuori
+- **`uid` in `fit_cs`**, con rigenerazione completa e confronto
+- **`blake2b` → `SHA-256`** in `gsp.nomi`, prima di generare qualsiasi
+  cosa
+- **`medie_nazionali.json` copiato da `build_bundle`** invece che
+  generato in Animarium: GSP produce, Animarium consuma
+- **la riga 170 del riferimento** dice ancora
+  `animarium/build/medie_nazionali.py`
+
+### 10.2 Etichette di blocco disallineate
+
+| tavola | la tupla dice | il file prodotto è |
+|---|---|---|
+| `cens_istruzione_cittadinanza` | C3 | `c5_edu_citizenship.csv` |
+| `cens_condprof_cittadinanza` | C4 | `c6_condprof_citizenship.csv` |
+| `cens_stranieri_paesi` | C6 | `nationality_conditional.csv` |
+
+C6 assegnato due volte. Nel registro `blocco` segue il nome del file.
+
+### 10.3 Difetti delle fonti
+
+- **`ETA = -1`** a Parma, un record
+- **Ravenna 2024** da riscaricare
+- **`Ncomp`** non usabile senza condizionare su `Tipores`
+
+### 10.4 Fonti non registrate
+
+- **`data/istat_catalog/`** — `catalog_dataflows.csv` (641 KB) da
+  `catalog_dataflows.xml` (13,6 MB). È un **indice**, non un dato: dice
+  cosa esiste, non cosa contiene. Serve un `elenco_csv` senza `peso`.
+- **`data/istat_structures/`** (120 MB): DSD e codelist SDMX.
+- **`data/geodata/`** (1,7 GB): mai guardato.
+- **Licenze dei sette portali comunali.**
+
+### 10.5 Rifiniture
+
+- `resolve_pop_file` con regole diverse fra script: `assign_avq` ed
+  `enrich` preferiscono K10C, `to_parquet` lo esclude. Su Brescia chi
+  rigenera a mano senza `--pop-file` produce un file che il viewer
+  ignora.
+- `_radice()` in `common.py`, quando servirà a un terzo modulo.
+- Il **ramo straniero** dei nomi: per paese da liste aperte, dalla fonte
+  fiorentina con un classificatore, o generato morfologicamente.
+- Il condizionamento dei nomi **per coorte**: ISTAT copre solo dal 1999;
+  per il 1927–1998 la via pulita è chiedere a un ufficio statistica
+  comunale una tavola sesso × classe quinquennale × nome × frequenza con
+  soppressione sotto 5.
+
+---
+
+## 11. Trappole imparate
+
+**`cat >>` non è idempotente**, ed è capitato **tre volte**. Un controllo
+che stampa e basta non serve se il comando pericoloso è nella stessa riga
+incollata. La forma giusta lega il controllo all'azione:
+
+```bash
+grep -q "id: X" fonti/registro.yaml \
+  && echo "GIA' PRESENTE, non appendo" \
+  || cat "$SCAR/schede.yaml" >> fonti/registro.yaml
+```
+
+**Le chiavi YAML duplicate spariscono in silenzio.** PyYAML tiene
+l'**ultima**. È l'unico errore che nessun altro controllo può vedere,
+perché arriva già filtrato dal parser.
+
+**`sed -i 'Nd'` è cieco**: cancella per numero senza guardare il
+contenuto, e il numero spesso viene da un messaggio d'errore invece che
+dal file.
+
+**Dopo ogni modifica a mano, stampare il risultato**, non solo validare:
+`usabile_per: [a b]` senza virgola è YAML valido e produce **un solo
+elemento**.
+
+**I numeri di riga invecchiano**, e non vanno mai calcolati su una copia
+per applicarli a un'altra.
+
+**L'sha256 della stringa vuota è `e3b0c442…852b855`.**
+
+**Un difetto localizzato non deve far perdere le informazioni buone.**
+
+**Attenzione ai tipi interi in operazioni quadratiche.** `sum(w)²` su
+int64 con somma 5,8e11 wrappa a negativo.
+
+**`np.fill_diagonal(D.values, ...)` non funziona con pandas 3**: il
+`.values` è una vista in sola lettura.
+
+**`astype(str)` lascia i NaN come float**, e `"|".join` fallisce.
+
+**Confrontare invocazioni diverse dello stesso script non misura nulla.**
+Il bundle di Modena è passato da 5,12 a 3,68 MB, e ho cercato la causa in
+`donor_id` prima di accorgermi che `build_bundle` passa
+`--drop-avq-raw` e la mia invocazione no. Il segnale che avrei dovuto
+cogliere: Reggio *saliva* invece di scendere.
+
+**Il prompt dice `(base)` invece di `(ml)`** ed è la causa più frequente
+di `ModuleNotFoundError`. `conda config --set auto_activate_base false`
+più `conda activate ml` in `.bashrc`.
+
+**I file da Windows arrivano `100755`.** Il browser rinomina gli omonimi.
+L'estrazione appiattita di uno zip fa collidere i file omonimi *dentro*
+lo zip. **`python-calamine` si importa come `python_calamine`.**

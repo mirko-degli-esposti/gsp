@@ -1,0 +1,265 @@
+{
+ "fonte": "elaborazione propria sui microdati AVQ public use (mIcro.STAT), annate 2024",
+ "metodo": "media pesata con COEFIN, su ETAMi >= 5 (15 anni e piu'), calcolata sull'universo di ciascuna variabile",
+ "avvertenza": "NON sono cifre pubblicate dall'ISTAT: l'Istituto diffonde percentuali di punteggi 6-10 e 8-10, non medie. Le uniche medie pubblicate sono nel BES e riguardano quattro indicatori compositi, con forze dell'ordine e vigili del fuoco insieme. L'errore standard qui riportato usa i pesi ma non il grappolo familiare: `se_grappolo` lo corregge con il fattore 1,66 di §13.3 del riferimento, ed e' quello da usare.",
+ "eta_min_ETAMi": 5,
+ "anni": [
+  "2024"
+ ],
+ "fattore_grappolo": 1.66,
+ "variabili": [
+  {
+   "var": "MH",
+   "media": 68.42,
+   "n": 40120,
+   "copertura": 1.0,
+   "sd": 18.063,
+   "se": 0.1032,
+   "se_grappolo": 0.133,
+   "min": 0.0,
+   "max": 100.0
+  },
+  {
+   "var": "PUNTIFI12",
+   "media": 8.055,
+   "n": 39077,
+   "copertura": 0.974,
+   "sd": 2.08,
+   "se": 0.012,
+   "se_grappolo": 0.0155,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "FIDMED",
+   "media": 6.98,
+   "n": 39191,
+   "copertura": 0.9768,
+   "sd": 2.1,
+   "se": 0.0121,
+   "se_grappolo": 0.0156,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "FIDINF",
+   "media": 6.878,
+   "n": 39119,
+   "copertura": 0.975,
+   "sd": 2.076,
+   "se": 0.012,
+   "se_grappolo": 0.0155,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI3",
+   "media": 6.675,
+   "n": 39020,
+   "copertura": 0.9726,
+   "sd": 2.478,
+   "se": 0.0144,
+   "se_grappolo": 0.0185,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI6",
+   "media": 6.66,
+   "n": 38967,
+   "copertura": 0.9713,
+   "sd": 2.997,
+   "se": 0.0174,
+   "se_grappolo": 0.0224,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "FORZE_ARMATE",
+   "media": 6.507,
+   "n": 18521,
+   "copertura": 0.4616,
+   "sd": 2.599,
+   "se": 0.0219,
+   "se_grappolo": 0.0282,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "VOTOUSL",
+   "media": 6.322,
+   "n": 16107,
+   "copertura": 0.4015,
+   "sd": 1.987,
+   "se": 0.018,
+   "se_grappolo": 0.0232,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI10",
+   "media": 5.097,
+   "n": 38823,
+   "copertura": 0.9677,
+   "sd": 2.734,
+   "se": 0.0159,
+   "se_grappolo": 0.0205,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI2",
+   "media": 4.87,
+   "n": 38773,
+   "copertura": 0.9664,
+   "sd": 2.698,
+   "se": 0.0157,
+   "se_grappolo": 0.0202,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI1",
+   "media": 4.684,
+   "n": 38811,
+   "copertura": 0.9674,
+   "sd": 2.721,
+   "se": 0.0158,
+   "se_grappolo": 0.0204,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI8",
+   "media": 4.658,
+   "n": 38791,
+   "copertura": 0.9669,
+   "sd": 2.711,
+   "se": 0.0158,
+   "se_grappolo": 0.0203,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI5",
+   "media": 4.619,
+   "n": 38774,
+   "copertura": 0.9665,
+   "sd": 2.713,
+   "se": 0.0158,
+   "se_grappolo": 0.0203,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI7",
+   "media": 4.407,
+   "n": 38791,
+   "copertura": 0.9669,
+   "sd": 2.824,
+   "se": 0.0164,
+   "se_grappolo": 0.0211,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI13",
+   "media": 4.373,
+   "n": 38798,
+   "copertura": 0.967,
+   "sd": 2.765,
+   "se": 0.0161,
+   "se_grappolo": 0.0207,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "PUNTIFI4",
+   "media": 3.464,
+   "n": 38600,
+   "copertura": 0.9621,
+   "sd": 2.625,
+   "se": 0.0153,
+   "se_grappolo": 0.0197,
+   "min": 0.0,
+   "max": 10.0
+  },
+  {
+   "var": "CPESO",
+   "media": 3.432,
+   "n": 39003,
+   "copertura": 0.9722,
+   "sd": 1.148,
+   "se": 0.0067,
+   "se_grappolo": 0.0086,
+   "min": 1.0,
+   "max": 5.0
+  },
+  {
+   "var": "BMI",
+   "media": 2.555,
+   "n": 38307,
+   "copertura": 0.9548,
+   "sd": 0.739,
+   "se": 0.0043,
+   "se_grappolo": 0.0056,
+   "min": 1.0,
+   "max": 4.0
+  },
+  {
+   "var": "FUMO",
+   "media": 2.36,
+   "n": 39548,
+   "copertura": 0.9857,
+   "sd": 0.795,
+   "se": 0.0046,
+   "se_grappolo": 0.0059,
+   "min": 1.0,
+   "max": 3.0
+  },
+  {
+   "var": "SALUTE",
+   "media": 2.29,
+   "n": 40120,
+   "copertura": 1.0,
+   "sd": 0.828,
+   "se": 0.0047,
+   "se_grappolo": 0.0061,
+   "min": 1.0,
+   "max": 5.0
+  },
+  {
+   "var": "AMBIENTE",
+   "media": 2.261,
+   "n": 39453,
+   "copertura": 0.9834,
+   "sd": 0.743,
+   "se": 0.0043,
+   "se_grappolo": 0.0055,
+   "min": 1.0,
+   "max": 4.0
+  },
+  {
+   "var": "FIDUCIA",
+   "media": 1.771,
+   "n": 39319,
+   "copertura": 0.98,
+   "sd": 0.42,
+   "se": 0.0024,
+   "se_grappolo": 0.0031,
+   "min": 1.0,
+   "max": 2.0
+  },
+  {
+   "var": "CRONI",
+   "media": 1.313,
+   "n": 37103,
+   "copertura": 0.9248,
+   "sd": 0.464,
+   "se": 0.0028,
+   "se_grappolo": 0.0036,
+   "min": 1.0,
+   "max": 2.0
+  }
+ ]
+}

@@ -277,7 +277,11 @@ def _impronta(id_fonte, d, diag):
 
     pesi = d["peso"].to_numpy()
     imp.update({
-        "n_misurato": float(pesi.sum()),
+        # la diagnostica del normalizzatore VINCE sulla somma dei pesi:
+        # per una distribuzione le due coincidono, ma per un riferimento
+        # di medie sommare i pesi non significa niente ed e' il
+        # normalizzatore a sapere qual e' la quantita' giusta.
+        "n_misurato": float(diag.get("n_misurato", pesi.sum())),
         "peso_max": float(pesi.max()) if len(d) else None,
         "peso_min": float(pesi.min()) if len(d) else None,
         "hapax": int((pesi == 1).sum()),

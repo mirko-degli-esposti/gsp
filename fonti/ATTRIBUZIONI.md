@@ -3,6 +3,17 @@
 Generato da `python -m gsp.fonti --attribuzioni`. Non modificare a mano:
 le informazioni vivono in `fonti/registro.yaml`.
 
+## Medie nazionali della batteria AVQ
+
+- **Fonte:** GSP (derivato)
+- **Licenza:** CC-BY-4.0
+- **URL:** None
+- **Scaricato il:** 2026-08-04
+- **Copertura:** IT, 2024
+- **Universo:** medie ponderate nazionali delle 23 variabili AVQ, calcolate dai microdati con i pesi COEFIN, universo 15 anni e piu' (ETAMi >= 5), ciascuna sull'universo della propria variabile. NON esiste una fonte ISTAT equivalente: la batteria di fiducia non e' pubblicata in forma aggregata. Le cinque medie che erano cablate nel viewer venivano da un'origine mai identificata (§13.6 punto 7 del riferimento, chiuso il 2/8/2026); ricalcolate coincidono entro 0,045 con quelle cablate, e ora ne coprono ventitre invece di cinque. Il file si autodescrive: porta `fonte`, `metodo`, `avvertenza`, `anni`, `eta_min_ETAMi` e `fattore_grappolo`, e il normalizzatore li riporta nell'impronta — chi la legge sa come e' stato calcolato senza aprire il registro.
+
+> Elaborazione propria su ISTAT, "Aspetti della vita quotidiana - microdati ad uso pubblico", CC BY 4.0
+
 ## Aspetti della vita quotidiana - microdati per la ricerca (mIcro.STAT)
 
 - **Fonte:** ISTAT

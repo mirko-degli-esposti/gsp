@@ -13,6 +13,8 @@ cio' che ripulisce va dichiarato in `diagnostica` e, se e' strutturale,
 in `anomalie` nel registro.
 """
 
+import json
+
 import pandas as pd
 
 # ---------------------------------------------------------------- generici
@@ -594,8 +596,63 @@ def codebook_csv(path, sep=None, encoding="latin-1", col_campo="CAMPO",
     return out[["chiave", "descrizione", "codice", "etichetta"]], diag
 
 
+def riferimenti_json(path, chiave_dati="variabili", col_chiave="var",
+                     col_peso="media", extra=("n", "copertura", "sd", "se",
+                                              "se_grappolo", "min", "max"),
+                     meta=("fonte", "metodo", "avvertenza", "anni",
+                           "eta_min_ETAMi", "fattore_grappolo"), **kw):
+    """Riferimento DERIVATO in JSON: metadati in testa, dati sotto una
+    chiave.
+
+    A differenza delle fonti scaricate, un derivato si autodescrive: il
+    file porta `fonte`, `metodo` e `avvertenza`, e questi finiscono nella
+    diagnostica — quindi nell'impronta — cosi' chi la legge sa come e'
+    stato calcolato senza aprire il registro.
+
+    `n_misurato` sono le MODALITA', non una somma: sommare delle medie non
+    significa niente. E' lo stesso caso dei codebook.
+    """
+    with open(path, encoding="utf-8") as f:
+        d = json.load(f)
+    if chiave_dati not in d:
+        raise KeyError(f"'{chiave_dati}' assente in {path}; "
+                       f"chiavi presenti: {list(d)}")
+    voci = d[chiave_dati]
+    if isinstance(voci, dict):                     # {nome: valore}
+        voci = [{col_chiave: k, col_peso: v} for k, v in voci.items()]
+
+    out = pd.DataFrame(voci)
+    mancanti = [c for c in (col_chiave, col_peso) if c not in out.columns]
+    if mancanti:
+        raise KeyError(f"campi {mancanti} assenti nelle voci di "
+                       f"'{chiave_dati}'; presenti: {list(out.columns)}")
+    out = out.rename(columns={col_chiave: "chiave", col_peso: "peso"})
+    out["chiave"] = out["chiave"].astype(str).str.strip()
+    out["peso"] = pd.to_numeric(out["peso"], errors="coerce")
+
+    diag = {"modalita": int(out["chiave"].nunique()),
+            "n_misurato": float(len(out))}
+    if len(out) != out["chiave"].nunique():
+        diag["chiavi_ripetute"] = len(out) - int(out["chiave"].nunique())
+    for c in meta:
+        if c in d:
+            v = d[c]
+            diag[c] = v if isinstance(v, (int, float, str)) else str(v)
+    # la precisione del riferimento, se il derivato la porta: senza, una
+    # media e' un numero senza intervallo
+    for c in ("se", "se_grappolo", "copertura"):
+        if c in out.columns:
+            v = pd.to_numeric(out[c], errors="coerce")
+            diag[f"{c}_min"] = float(v.min())
+            diag[f"{c}_max"] = float(v.max())
+
+    tenute = ["chiave", "peso"] + [c for c in extra if c in out.columns]
+    return out[tenute], diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
+    "riferimenti_json": riferimenti_json,
     "matrice_csv": matrice_csv,
     "formato_lungo": formato_lungo,
     "tabella_parquet": tabella_parquet,

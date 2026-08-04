@@ -397,10 +397,27 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
                         for i, v in enumerate(spec["vars"])})
     if "zona_nomi" in spec and "zona" in dfp.columns:
         dfp["quartiere"] = dfp["zona"].map(spec["zona_nomi"])
+
+    # Identificatore STABILE dell'individuo. Nasce qui perche' l'individuo
+    # nasce qui: assign_nationality, assign_avq ed enrich aggiungono
+    # colonne e non riordinano mai le righe, quindi l'uid sopravvive
+    # inalterato a tutta la catena.
+    #
+    # NON e' l'`id` del Parquet, che to_parquet assegna DOPO l'ordinamento
+    # per zona,sezione e usa per i permalink: quello e' progressivo per
+    # costruzione, questo deve restare attaccato alla persona.
+    #
+    # Serve a due cose indipendenti: e' la chiave dell'onomastica
+    # (gsp.nomi genera nome e cognome da qui, deterministicamente, senza
+    # che nessun nome finisca mai in un file), ed e' cio' che rende
+    # RIPRODUCIBILE un campione narrativo — «i venti di Cittadella» sono
+    # gli stessi a ogni esecuzione, quindi una demo si puo' provare prima
+    # e una biografia mostrata in un articolo si puo' citare.
+    dfp.insert(0, "uid", [f"{comune}-{i:07d}" for i in range(len(dfp))])
+
     out_pop = os.path.join(cdir, f"popolazione_{livello}.csv")
     dfp.to_csv(out_pop, index=False)
     print(f"[pop] campione n={n:,} da {fonte_pop} -> {out_pop}")
-    print(f"[pop] campione n={n:,} -> {out_pop}")
     key = ["zona"] if "zona" in dfp.columns else ["sesso", "eta"]
     m_samp = dfp.groupby(key).size() / n
     print(f"[pop] check marginale {key} (campione, prime 5 righe):")

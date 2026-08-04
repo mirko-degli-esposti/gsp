@@ -143,6 +143,8 @@ sys.path.insert(0, "scripts")
 import gsp.common as G
 tot_i = tot_n = 0
 for f in sorted(glob.glob("data/comuni/*/constraints_2024/popolazione_K*_avq_full.csv")):
+    if "K10C" in f:        # residuo sperimentale di Brescia, mai in produzione
+        continue
     c = f.split("/")[2]
     d = pd.read_csv(f, low_memory=False)
     n = sum(int(d[d[va].isin(A) & d[vb].isin(B)].shape[0])

@@ -334,17 +334,68 @@ def repertorio(cat, sesso=None, eta=None, regione="ITD5", solo_foglie=True):
 RESIDUALI = ("altre ", "altri ", "altro ")
 
 
-def _leggibile(t):
-    """«gruppo economico-statistico» -> «discipline economico-statistiche».
+# Prefissi burocratici da togliere. Il censimento scrive «diploma di
+# istruzione secondaria di II grado di istituto tecnico industriale»;
+# tolto il prefisso resta «istituto tecnico industriale», che si puo'
+# dire. Ordine significativo: il piu' lungo per primo.
+PREFISSI = (
+    "diploma di istruzione secondaria di ii grado di ",
+    "diploma di istruzione secondaria di ii  grado di ",
+    "diploma di istruzione secondaria di ii grado ",
+    "diploma di istruzione di ii grado ",
+    "diploma di qualifica di ",
+)
 
-    I nomi dei gruppi del censimento sono etichette di classificazione,
-    non modi di dire un titolo. La sostituzione e' meccanica e imperfetta
-    — resta qualche accordo sbagliato — ma e' molto meglio di «gruppo».
+# La fonte abbrevia in modo incoerente: «istit. profess.» accanto a
+# «istituto professionale» esteso, sullo stesso livello dell'albero.
+ABBREVIAZIONI = {
+    "istit. profess.": "istituto professionale per i",
+    "ist. profess.": "istituto professionale per i",
+}
+
+# Etichette che il taglio del prefisso lascia monche: «diploma di
+# istruzione di II grado artistica» diventerebbe «artistica», un aggettivo
+# senza nome.
+ECCEZIONI = {
+    "artistica": "istituto d'arte",
+}
+
+# Il ramo distingue due titoli che il censimento etichetta IDENTICI:
+# `30102` e `40102` sono entrambi «diploma di qualifica di istituto
+# professionale per l'industria», ma il primo e' la qualifica triennale e
+# il secondo il diploma quinquennale. Senza il prefisso di ramo la stessa
+# riga comparirebbe due volte in un repertorio, e sarebbe anche falsa per
+# una delle due.
+PREFISSO_RAMO = {
+    "30000": "qualifica di",
+    "40000": "diploma di",
+}
+
+
+def _leggibile(t):
+    """Da etichetta di classificazione a cosa direbbe una persona.
+
+    Tre passaggi, tutti meccanici e imperfetti — resta qualche accordo
+    sbagliato — ma molto meglio dell'originale:
+      1. «gruppo economico-statistico» -> «discipline economico-statistiche»
+      2. via i prefissi burocratici
+      3. le abbreviazioni estese
     """
-    t = t.strip()
+    t = " ".join(t.strip().split())
+    b = t.lower()
+    for a, e in ABBREVIAZIONI.items():
+        if a in b:
+            i = b.index(a)
+            t = t[:i] + e + t[i + len(a):]
+            b = t.lower()
+    for pre in PREFISSI:
+        if b.startswith(pre):
+            t = t[len(pre):]
+            break
     if t.lower().startswith("gruppo "):
         t = "discipline " + t[7:]
-    return t
+    t = ECCEZIONI.get(t.lower().strip(), t)
+    return t.strip()
 
 
 # Il RAMO dice il livello, che l'etichetta della foglia non porta:
@@ -381,8 +432,13 @@ def titolo_leggibile(cod, etichetta=None):
             t = et[p]
     t = _leggibile(t)
 
-    pref = LIVELLO.get(rad.get(cod))
-    if pref and not t.lower().startswith(("laurea", "diploma", "corso")):
+    r = rad.get(cod)
+    pref = LIVELLO.get(r) or PREFISSO_RAMO.get(r)
+    # «liceo scientifico» si dice cosi': «diploma di liceo scientifico» e'
+    # corretto ma nessuno lo direbbe. Il prefisso serve agli istituti, non
+    # ai licei.
+    if pref and not t.lower().startswith(("laurea", "diploma", "corso",
+                                          "qualifica", "licenza", "liceo")):
         t = f"{pref} {t}"
     return t
 

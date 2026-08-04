@@ -167,7 +167,7 @@ significa che chi diffida del Comune diffida anche di ARPA e ATS, che sono
 articolazioni regionali: non esiste un canale istituzionale alternativo.
 
 **Medie nazionali AVQ 2024**, ricalcolate il 2/8/2026 con
-`animarium/build/medie_nazionali.py`: media pesata con `COEFIN` su
+`scripts/riferimenti/medie_nazionali.py`: media pesata con `COEFIN` su
 `ETAMi >= 5` (15 anni e piu'), cioe' **sullo stesso universo della popolazione
 sintetica**.
 

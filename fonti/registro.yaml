@@ -597,6 +597,13 @@ fonti:
       individui a Modena), quindi nessuna combinazione e' unica. Cio' che
       resta reale nel record e' il VETTORE di risposte di un rispondente
       gia' perturbato, mai la sua identita' ne' la sua geografia.
+      La popolazione sintetica che ne deriva e' diffusa secondo tre regimi
+      dichiarati (note/piano_trattamento_v1.md §4): il vettore AVQ compare
+      nel bundle pubblico, ma senza nome ne' indirizzo, e ogni vettore e'
+      replicato ~40 volte su individui diversi — nessuna combinazione e'
+      unica. E' il vettore AVQ, non l'indirizzo, la componente piu' reale
+      del record: sono le risposte di un rispondente vero, gia' perturbato
+      da ISTAT.
     archiviazione: locale
     percorso: data/avq/anni/avq{istanza}/MICRODATI/AVQ_Microdati_{istanza}.txt
     chiave_istanza: anno
@@ -1389,8 +1396,10 @@ fonti:
       un'inferenza nostra sulla natura del dato.
       Questo NON esaurisce la questione a valle: la congiunzione fra un
       civico reale e attributi sintetici sensibili in un file scaricabile
-      e' un problema nostro, non della fonte. Vedi il §7 di
-      note/fonti_e_pacchetto_v5.md e `--pubblico` in to_parquet.
+      e' un problema nostro, non della fonte. Risolto il 4/8/2026: il
+      bundle pubblico non contiene via ne' civico e le coordinate sono un
+      punto casuale dentro la sezione (regime pubblico di default in
+      to_parquet). Vedi note/piano_trattamento_v1.md §4.2.
     archiviazione: locale
     percorso: data/geodata/{istanza}/indirizzario*.zip
     chiave_istanza: regione

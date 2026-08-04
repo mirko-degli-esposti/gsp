@@ -41,7 +41,7 @@ arXiv:2603.27312, con il codice pubblico su
 
 Tutte le fonti sono censite in un registro (`fonti/registro.yaml`) che per
 ciascuna dichiara universo, licenza, data di accesso, impronta
-crittografica e **limiti d'uso**. Al 4 agosto 2026 sono ventinove.
+crittografica e **limiti d'uso**. Al 4 agosto 2026 sono ventotto.
 
 | famiglia | ente | licenza | condizione |
 |---|---|---|---|

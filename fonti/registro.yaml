@@ -1291,4 +1291,145 @@ fonti:
     usabile_per: [riferimento_nazionale_batteria, tacche_pannello]
     usato_da: [animarium]
     non_usabile_per: [stime_ufficiali, confronto_con_pubblicazioni_istat,
-                      riferimento_regionale]
+                      riferimento_regionale]# Geodata — le due famiglie regionali, registrate come ZIP.
+#
+# Richiede normalizzatori.py (30699) con `archivio_zip` e fonti_init.py
+# (33757) con il pattern a due jolly.
+#
+#   grep -q "id: istat_sezioni_shp" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/schede_geodata.yaml" >> fonti/registro.yaml
+#
+#   python -m gsp.fonti --scansiona istat_sezioni_shp
+#   python -m gsp.fonti --scansiona anncsu_indirizzario
+#   python -m gsp.fonti --verifica
+#
+# SCELTA DI FONDO: si registrano gli ZIP, non gli estratti.
+# Lo zip e' il grezzo — immutabile, con l'impronta, cio' che si e'
+# scaricato. L'estratto e' cache di lavoro: ricostruibile con un comando,
+# cancellabile, e la pipeline lo legge tramite i percorsi dichiarati in
+# gsp.common.REGIONI. Il backup delle fonti geografiche passa cosi' da
+# 1,7 GB a 230 MB, e `--verifica` non deve calcolare l'hash di mezzo giga.
+
+  - id: istat_sezioni_shp
+    tipo: multi_istanza
+    ente: ISTAT
+    titolo: Basi territoriali - sezioni di censimento 2021, shapefile
+    url: DA_VERIFICARE
+    data_accesso: 2026-07-28
+    licenza: CC-BY-4.0
+    nota_licenza: >-
+      licenza generale del sito ISTAT ("salvo diversa indicazione", note
+      legali): non e' dichiarata sulla pagina delle basi territoriali. E'
+      un'inferenza corretta ma di natura diversa da una licenza letta.
+    attribuzione: >-
+      ISTAT, "Basi territoriali e variabili censuarie", CC BY 4.0
+    archiviazione: locale
+    percorso: data/geodata/{istanza}/R*_21.zip
+    chiave_istanza: regione
+    parametri_da: common.REGIONI
+    universo: >-
+      geometrie delle sezioni di censimento, edizione 2021, in WGS84.
+      Una regione per istanza: R03 Lombardia, R08 Emilia-Romagna,
+      R16 Puglia.
+      E' la GEOMETRIA, non i dati: i conteggi per sezione stanno in
+      `istat_sezioni_2023`, che ha edizione dei dati 2023 su geometria
+      2021 — lo stesso disallineamento che produce
+      `sezioni_2023_non_nello_shapefile.csv` in ogni cartella regionale.
+    unita: sezione di censimento
+    normalizzatore: archivio_zip
+    anomalie:
+      - >-
+        il registro verifica lo ZIP, NON l'estratto che la pipeline legge
+        (`gsp.common.REGIONI[reg]["shp"]` punta a
+        R??_21/SHP/R??_21_WGS84.shp). Se qualcuno modificasse l'estratto,
+        `--verifica` non se ne accorgerebbe. Con file da 80 MB non
+        succede a mano, ma va detto.
+      - >-
+        i nomi dei file NON sono uniformi fra istanze: R03, R08, R16 sono
+        i codici regione ISTAT. Il pattern usa `*` accanto a `{istanza}`,
+        e solo quest'ultima entra nella chiave.
+    usabile_per: [geometrie_sezioni, aggancio_civici, mappa_regionale]
+    usato_da: [scripts/vincoli/join_civici_sezioni.py]
+    non_usabile_per: [conteggi, dati_censuari]
+
+  - id: anncsu_indirizzario
+    tipo: multi_istanza
+    ente: ISTAT e Agenzia delle Entrate
+    titolo: >-
+      ANNCSU - Archivio Nazionale dei Numeri Civici delle Strade Urbane,
+      indirizzario regionale
+    url: https://www.anncsu.gov.it/it/consultazione-dellarchivio/open-data/
+    url_download: https://www.anncsu.gov.it/it/consultazione-dellarchivio/open-data/Accedi-ai-servizi-di-dowload-massivo-in-Open-data/
+    url_specifiche: https://www.agenziaentrate.gov.it/portale/documents/20143/8411843/ALLEGATO+-+SPECIFICHE+TECNICHE.pdf
+    url_tracciato: https://www.anncsu.gov.it/.allegati/metadata_indirizzario.json
+    data_accesso: 2026-07-28
+    licenza: CC-BY-4.0
+    licenza_uri: https://creativecommons.org/licenses/by/4.0/
+    attribuzione: >-
+      ANNCSU - Archivio Nazionale dei Numeri Civici delle Strade Urbane,
+      Istat e Agenzia delle Entrate, open data ex Reg. (UE) 2023/138
+    nota_licenza: >-
+      il portale ANNCSU non dichiara una stringa di licenza, ma due vie
+      indipendenti convergono su CC-BY-4.0.
+      (1) Il Regolamento di esecuzione (UE) 2023/138, che attua la
+      Direttiva (UE) 2019/1024, classifica gli indirizzi fra le "serie di
+      dati di elevato valore" nella categoria dati geospaziali e ne
+      impone il rilascio in formato aperto, con CC-BY-4.0 o equivalente.
+      (2) L'art. 52 c.2 del D.Lgs 82/2005 (CAD) stabilisce l'open by
+      default per i dati delle PA privi di licenza esplicita.
+      AgID classifica ANNCSU nel proprio cruscotto come "Open Data ai
+      sensi del Reg. UE 2023/138 (HVD)". Verificato il 4/8/2026.
+    nota_riservatezza: >-
+      le Specifiche tecniche vigenti sono state adottate con Provvedimento
+      interdirigenziale Istat-Agenzia delle Entrate del 12 dicembre 2024,
+      PREVIO PARERE POSITIVO DEL GARANTE per la protezione dei dati
+      personali. La pubblicazione aperta dei civici georeferenziati e'
+      stata quindi vagliata dall'autorita' competente: non e'
+      un'inferenza nostra sulla natura del dato.
+      Questo NON esaurisce la questione a valle: la congiunzione fra un
+      civico reale e attributi sintetici sensibili in un file scaricabile
+      e' un problema nostro, non della fonte. Vedi il §7 di
+      note/fonti_e_pacchetto_v5.md e `--pubblico` in to_parquet.
+    archiviazione: locale
+    percorso: data/geodata/{istanza}/indirizzario*.zip
+    chiave_istanza: regione
+    parametri_da: common.REGIONI
+    universo: >-
+      tutti gli accessi esterni (numeri civici) certificati dai Comuni e
+      conferiti in ANNCSU, per regione, con coordinate. Aggiornamento
+      mensile; la data di creazione e' nel nome del file (20260703).
+      Diciotto campi documentati nel tracciato JSON: fra gli altri
+      ODONIMO (DUG+DUF), CIVICO, ESPONENTE, SPECIFICITA (la numerazione
+      rosso/nero di Firenze e Genova), COORD_X/Y_COMUNE, QUOTA e METODO.
+      L'archivio contiene UN SOLO CSV, da 170 a 240 MB per regione.
+    unita: accesso esterno
+    normalizzatore: archivio_zip
+    anomalie:
+      - >-
+        le coordinate sono in ETRF2000 gradi decimali (realizzazione
+        italiana di ETRS89), mentre lo shapefile delle sezioni e' in
+        WGS84. La differenza e' sotto il metro alle nostre latitudini e
+        irrilevante per l'aggancio civico-sezione, ma va dichiarata.
+      - >-
+        `METODO` dice come il Comune ha attribuito le coordinate: 1 e 3
+        sono accurate sotto i 5 m, 2 e 4 sopra, 5 e' derivazione indiretta
+        dal Portale per i Comuni. NON e' stato usato per filtrare:
+        l'aggancio alla sezione tollera errori di qualche metro, ma per
+        usi piu' fini andrebbe guardato.
+      - >-
+        i dati comprendono accessi di tipo SNC, privi di numero civico
+        standard, inseriti dai Comuni fra il 2014 e il 2016.
+      - >-
+        come per le sezioni, il registro verifica lo ZIP e non l'estratto
+        che la pipeline legge.
+    bias: >-
+      la copertura dipende dal conferimento dei Comuni: i capoluoghi e i
+      comuni sopra i 20.000 abitanti hanno conferito nell'ambito della
+      Rilevazione dei Numeri Civici, gli altri progressivamente. Al
+      31/03/2026 sono 4.304 i Comuni con TUTTI i civici georeferenziati
+      su ~7.900: per i restanti la copertura geografica e' parziale, e
+      questo si riflette nell'aggancio civico-sezione.
+    usabile_per: [civici_georeferenziati, indirizzi_sintetici]
+    usato_da: [scripts/vincoli/join_civici_sezioni.py]
+    non_usabile_per: [conteggi_di_popolazione, residenti]

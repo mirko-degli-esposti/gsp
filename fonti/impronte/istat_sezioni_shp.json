@@ -1,0 +1,46 @@
+{
+  "id": "istat_sezioni_shp",
+  "istanze": {
+    "emilia_romagna": {
+      "byte": 40701699,
+      "byte_non_compressi": 91668913.0,
+      "date_contenuto": [
+        "2025-04-10"
+      ],
+      "file_maggiore": "SHP/R08_21_WGS84.shp",
+      "file_nell_archivio": 13,
+      "modalita": 13,
+      "n_misurato": 13.0,
+      "rapporto_compressione": 0.444,
+      "sha256": "da376bd5bee0020cbcc16ac07a377396c1b389d2f1d16230e3c07f8f9bf01287"
+    },
+    "lombardia": {
+      "byte": 61888278,
+      "byte_non_compressi": 144138457.0,
+      "date_contenuto": [
+        "2025-07-14"
+      ],
+      "file_maggiore": "SHP/R03_21_WGS84.shp",
+      "file_nell_archivio": 12,
+      "modalita": 12,
+      "n_misurato": 12.0,
+      "rapporto_compressione": 0.4294,
+      "sha256": "c4baaa8398dd24abadf3e105e94f469f11a7b78b27b8ff3c6d7e20e422119f8a"
+    },
+    "puglia": {
+      "byte": 30918528,
+      "byte_non_compressi": 67850552.0,
+      "date_contenuto": [
+        "2025-04-10"
+      ],
+      "file_maggiore": "SHP/R16_21_WGS84.shp",
+      "file_nell_archivio": 11,
+      "modalita": 11,
+      "n_misurato": 11.0,
+      "rapporto_compressione": 0.4557,
+      "sha256": "c7216359c1a710a8d1f2193c318bc4dc4ff731c3f16bb0b9d5d9e7977d260f85"
+    }
+  },
+  "n_istanze": 3,
+  "tipo": "multi_istanza"
+}

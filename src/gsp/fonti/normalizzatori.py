@@ -14,6 +14,8 @@ in `anomalie` nel registro.
 """
 
 import json
+import os
+import zipfile
 
 import pandas as pd
 
@@ -650,9 +652,50 @@ def riferimenti_json(path, chiave_dati="variabili", col_chiave="var",
     return out[tenute], diag
 
 
+def archivio_zip(path, **kw):
+    """Grezzo che resta COMPRESSO: si misura l'archivio, non il contenuto.
+
+    Serve alle famiglie in cui il grezzo scaricato pesa centinaia di MB e
+    l'estratto e' cache di lavoro: geodata ha 599 MB di indirizzari e 180
+    di shapefile estratti, contro 230 MB di zip. Registrare gli zip
+    significa che il backup delle fonti sta in 230 MB invece di 1,7 GB, e
+    che `--verifica` non deve calcolare l'hash di mezzo giga.
+
+    La diagnostica elenca il contenuto senza decomprimerlo — nomi,
+    dimensioni, date — quindi l'impronta sa cosa c'e' dentro anche quando
+    l'estratto non c'e'.
+
+    ASIMMETRIA DA DICHIARARE: il registro verifica lo ZIP, non l'estratto.
+    Se qualcuno modificasse l'estratto, `--verifica` non se ne
+    accorgerebbe. Con file da 240 MB non succede a mano, ma va scritto.
+    """
+    with zipfile.ZipFile(path) as z:
+        voci = z.infolist()
+    righe = [{"chiave": v.filename, "peso": float(v.file_size)}
+             for v in voci if not v.is_dir()]
+    out = pd.DataFrame(righe)
+    tot = float(out["peso"].sum()) if len(out) else 0.0
+    diag = {"file_nell_archivio": len(out),
+            "byte_non_compressi": tot,
+            "rapporto_compressione": (round(os.path.getsize(path) / tot, 4)
+                                      if tot else None),
+            # la quantita' giusta e' il NUMERO DI FILE, non la somma delle
+            # loro dimensioni: sommare byte non e' un conteggio di unita'
+            "modalita": len(out),
+            "n_misurato": float(len(out))}
+    date = sorted({f"{v.date_time[0]:04d}-{v.date_time[1]:02d}-"
+                   f"{v.date_time[2]:02d}" for v in voci})
+    diag["date_contenuto"] = date[:4]
+    if len(out):
+        g = out.loc[out["peso"].idxmax()]
+        diag["file_maggiore"] = str(g["chiave"])
+    return out.sort_values("peso", ascending=False).reset_index(drop=True), diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "riferimenti_json": riferimenti_json,
+    "archivio_zip": archivio_zip,
     "matrice_csv": matrice_csv,
     "formato_lungo": formato_lungo,
     "tabella_parquet": tabella_parquet,

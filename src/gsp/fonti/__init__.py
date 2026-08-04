@@ -214,8 +214,14 @@ def istanze(id_fonte):
     if not pat:
         raise KeyError(f"'{id_fonte}' e' multi_istanza ma non ha `percorso`")
     intero = os.path.join(RADICE, pat)
-    rx = re.compile("^" + re.escape(intero).replace(
-        re.escape("{istanza}"), "([^/]+)") + "$")
+    # `*` nel pattern e' ammesso oltre a {istanza}: serve alle famiglie in
+    # cui il nome del file non e' uniforme fra istanze — geodata ha
+    # lombardia/R03_21.zip ed emilia_romagna/R08_21.zip, dove varia sia la
+    # cartella sia il file. Solo {istanza} viene catturato; il `*` fa da
+    # jolly e non entra nella chiave.
+    rx = re.compile("^" + re.escape(intero)
+                    .replace(re.escape("{istanza}"), "([^/]+)")
+                    .replace(re.escape("*"), "[^/]*") + "$")
     out = {}
     for p in sorted(glob.glob(intero.replace("{istanza}", "*"))):
         m = rx.match(p)
@@ -780,12 +786,116 @@ def aggiungi(path, id_fonte, copia=True):
 # ------------------------------------------------------------------ cli
 
 
+# --------------------------------------------------------------- lacune
+
+# Campi che richiedono GIUDIZIO: nessuno script li puo' dedurre, e sono
+# quelli che rendono una fonte usabile invece che soltanto presente.
+CAMPI_GIUDIZIO = ["universo", "unita", "usabile_per", "non_usabile_per"]
+# Campi di provenienza: senza, la fonte non e' rintracciabile ne'
+# ridistribuibile.
+CAMPI_PROVENIENZA = ["url", "data_accesso", "licenza"]
+
+SEGNAPOSTO = ("DA_VERIFICARE", "DA_COMPILARE", "DA_CALCOLARE",
+              "DA_REGISTRARE", "?", "", None)
+
+
+def _vuoto(v):
+    if isinstance(v, str):
+        return v.strip() in SEGNAPOSTO
+    if isinstance(v, (list, dict)):
+        return len(v) == 0
+    return v in SEGNAPOSTO
+
+
+def lacune(stampa=True):
+    """Cosa manca, fonte per fonte. Non e' `--verifica`, che controlla la
+    COERENZA fra scheda e disco: qui si guarda la COMPLETEZZA della
+    dichiarazione, cioe' quanto una fonte e' documentata."""
+    reg = _leggi_registro()
+    righe = []
+    for idf, f in sorted(reg.items()):
+        manca_g = [c for c in CAMPI_GIUDIZIO if _vuoto(f.get(c))]
+        manca_p = [c for c in CAMPI_PROVENIENZA if _vuoto(f.get(c))]
+        # una licenza inferita non e' una lacuna, ma va saputa
+        inferita = ("nota_licenza" in f
+                    and not _vuoto(f.get("licenza")))
+        extra = []
+        if _vuoto(f.get("attribuzione")) and not _vuoto(f.get("licenza")) \
+                and str(f.get("licenza")).startswith("CC-BY"):
+            extra.append("attribuzione")
+        if _vuoto(f.get("anomalie")):
+            extra.append("anomalie")
+        if _vuoto(f.get("usato_da")):
+            extra.append("usato_da")
+        righe.append({"id": idf, "giudizio": manca_g, "provenienza": manca_p,
+                      "extra": extra, "inferita": inferita,
+                      "archiviazione": f.get("archiviazione", "?")})
+    if not stampa:
+        return righe
+
+    critiche = [r for r in righe if r["giudizio"]]
+    prov = [r for r in righe if r["provenienza"]]
+    print(f"{len(reg)} fonti registrate\n")
+
+    print("CAMPI DI GIUDIZIO mancanti — nessuno script puo' dedurli")
+    print("-" * 62)
+    if critiche:
+        for r in critiche:
+            print(f"  {r['id']:<34} {', '.join(r['giudizio'])}")
+    else:
+        print("  nessuna: ogni fonte dichiara universo, unita' e limiti d'uso")
+
+    print(f"\nPROVENIENZA da completare — {len(prov)} fonti")
+    print("-" * 62)
+    for r in prov:
+        print(f"  {r['id']:<34} {', '.join(r['provenienza'])}"
+              f"   [{r['archiviazione']}]")
+    if not prov:
+        print("  nessuna")
+
+    inf = [r["id"] for r in righe if r["inferita"]]
+    if inf:
+        print(f"\nLICENZA INFERITA, non letta — {len(inf)} fonti")
+        print("-" * 62)
+        print("  " + ", ".join(inf))
+        print("  Reggono, ma sono di natura diversa da una licenza")
+        print("  dichiarata sulla pagina della fonte.")
+
+    manc_attr = [r["id"] for r in righe if "attribuzione" in r["extra"]]
+    if manc_attr:
+        print(f"\nCC-BY SENZA `attribuzione` — {len(manc_attr)} fonti")
+        print("-" * 62)
+        print("  " + ", ".join(manc_attr))
+        print("  ATTRIBUZIONI.md le genera dai campi base, ma una riga")
+        print("  scritta a mano e' piu' utile a chi riceve i dati.")
+
+    manc_anom = [r["id"] for r in righe if "anomalie" in r["extra"]]
+    if manc_anom:
+        print(f"\nSENZA `anomalie` — {len(manc_anom)} fonti")
+        print("-" * 62)
+        print("  " + ", ".join(manc_anom))
+        print("  Non e' un difetto: puo' darsi che non ne abbiano. Ma ogni")
+        print("  fonte guardata da vicino finora ne aveva almeno una.")
+
+    manc_uso = [r["id"] for r in righe if "usato_da" in r["extra"]]
+    if manc_uso:
+        print(f"\nSENZA `usato_da` — {len(manc_uso)} fonti")
+        print("-" * 62)
+        print("  " + ", ".join(manc_uso))
+        print("  Una fonte che nessuno dichiara di usare o e' scaricata")
+        print("  invano, o ha un consumatore non tracciato.")
+    return righe
+
+
+
 def _main():
     ap = argparse.ArgumentParser(description="registro delle fonti GSP")
     ap.add_argument("--elenco", action="store_true")
     ap.add_argument("--verifica", nargs="?", const=True)
     ap.add_argument("--pubblico", action="store_true",
                     help="cosa puo' finire in un repo pubblico")
+    ap.add_argument("--lacune", action="store_true",
+                    help="cosa manca nelle schede")
     ap.add_argument("--copertura", action="store_true",
                     help="fonti usate dalla pipeline e non registrate")
     ap.add_argument("--attribuzioni", action="store_true",
@@ -837,6 +947,8 @@ def _main():
 
     if a.elenco:
         print(elenco().to_string(index=False))
+    elif a.lacune:
+        lacune()
     elif a.copertura:
         m = copertura()
         sys.exit(0 if not m else 1)

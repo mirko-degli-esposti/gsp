@@ -3,6 +3,17 @@
 Generato da `python -m gsp.fonti --attribuzioni`. Non modificare a mano:
 le informazioni vivono in `fonti/registro.yaml`.
 
+## ANNCSU - Archivio Nazionale dei Numeri Civici delle Strade Urbane, indirizzario regionale
+
+- **Fonte:** ISTAT e Agenzia delle Entrate
+- **Licenza:** CC-BY-4.0
+- **URL:** https://www.anncsu.gov.it/it/consultazione-dellarchivio/open-data/
+- **Scaricato il:** 2026-07-28
+- **Copertura:** None, None
+- **Universo:** tutti gli accessi esterni (numeri civici) certificati dai Comuni e conferiti in ANNCSU, per regione, con coordinate. Aggiornamento mensile; la data di creazione e' nel nome del file (20260703). Diciotto campi documentati nel tracciato JSON: fra gli altri ODONIMO (DUG+DUF), CIVICO, ESPONENTE, SPECIFICITA (la numerazione rosso/nero di Firenze e Genova), COORD_X/Y_COMUNE, QUOTA e METODO. L'archivio contiene UN SOLO CSV, da 170 a 240 MB per regione.
+
+> ANNCSU - Archivio Nazionale dei Numeri Civici delle Strade Urbane, Istat e Agenzia delle Entrate, open data ex Reg. (UE) 2023/138
+
 ## Medie nazionali della batteria AVQ
 
 - **Fonte:** GSP (derivato)
@@ -227,6 +238,17 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Universo:** codebook delle 138 colonne dei file regionali: NOME_CAMPO -> DEFINIZIONE. Non e' un dato ma il suo dizionario: senza, colonne come P14 o ST2_B non vogliono dire niente.
 
 > ISTAT, "Dati per sezioni di censimento 2023", istat.it, CC BY 4.0
+
+## Basi territoriali - sezioni di censimento 2021, shapefile
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** 2026-07-28
+- **Copertura:** None, None
+- **Universo:** geometrie delle sezioni di censimento, edizione 2021, in WGS84. Una regione per istanza: R03 Lombardia, R08 Emilia-Romagna, R16 Puglia. E' la GEOMETRIA, non i dati: i conteggi per sezione stanno in `istat_sezioni_2023`, che ha edizione dei dati 2023 su geometria 2021 — lo stesso disallineamento che produce `sezioni_2023_non_nello_shapefile.csv` in ogni cartella regionale.
+
+> ISTAT, "Basi territoriali e variabili censuarie", CC BY 4.0
 
 ## Nomi maggiormente frequenti dei residenti, per sesso
 

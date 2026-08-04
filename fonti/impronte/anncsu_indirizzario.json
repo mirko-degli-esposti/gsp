@@ -1,0 +1,46 @@
+{
+  "id": "anncsu_indirizzario",
+  "istanze": {
+    "emilia_romagna": {
+      "byte": 28948434,
+      "byte_non_compressi": 172657813.0,
+      "date_contenuto": [
+        "2026-07-03"
+      ],
+      "file_maggiore": "INDIR_EMIL_20260703.csv",
+      "file_nell_archivio": 1,
+      "modalita": 1,
+      "n_misurato": 1.0,
+      "rapporto_compressione": 0.1677,
+      "sha256": "5158eba38288d0833e08034e942ceae419199caf24698a27de09d1c0a0def9bf"
+    },
+    "lombardia": {
+      "byte": 36787137,
+      "byte_non_compressi": 238981424.0,
+      "date_contenuto": [
+        "2026-07-03"
+      ],
+      "file_maggiore": "INDIR_LOMB_20260703.csv",
+      "file_nell_archivio": 1,
+      "modalita": 1,
+      "n_misurato": 1.0,
+      "rapporto_compressione": 0.1539,
+      "sha256": "bda30fd072483ef9b7827d1e78b29c0428bf30c0ebc22d871959abbdc4874a33"
+    },
+    "puglia": {
+      "byte": 27791592,
+      "byte_non_compressi": 187027460.0,
+      "date_contenuto": [
+        "2026-07-03"
+      ],
+      "file_maggiore": "INDIR_PUGL_20260703.csv",
+      "file_nell_archivio": 1,
+      "modalita": 1,
+      "n_misurato": 1.0,
+      "rapporto_compressione": 0.1486,
+      "sha256": "0fefdad170bdb1ffcbba1750e73e4c414a77f55c0b7b70f283b7eebe4089ccae"
+    }
+  },
+  "n_istanze": 3,
+  "tipo": "multi_istanza"
+}

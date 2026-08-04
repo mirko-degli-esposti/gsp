@@ -1,0 +1,100 @@
+# Raccordo fra i nomi di paese della popolazione e i codici ISO-3166-2
+# del dataset `popular-names-by-country`.
+#
+# SOLO i paesi che hanno NOMI E COGNOMI insieme. Il dataset copre 106
+# paesi per i nomi propri e 75 per i cognomi, ma l'intersezione e' 65: e
+# un nome arabo con un cognome fiorentino — «Mohamed Innocenti» — e'
+# PEGGIO di due nomi italiani, perche' segnala l'errore invece di
+# nasconderlo. Se manca il cognome non si usa nemmeno il nome.
+#
+# Copertura misurata su Parma (34.429 stranieri, 136 paesi distinti):
+# 59,6% degli stranieri ha un paese coperto. Il 40,4% resta al fallback
+# italiano, ed e' concentrato: Nigeria 6,7%, Tunisia 6,0%, Marocco 3,7%,
+# Ghana 3,5%, Pakistan 3,0%, Costa d'Avorio 2,9%, Senegal 2,2%, Camerun
+# 2,2% — cioe' il mondo arabo e l'Africa subsahariana, che ne' Wikipedia
+# ne' gli istituti statistici nazionali documentano.
+schema: 1
+fonte: popular_names_by_country
+verificato: 2026-08-04
+
+# nome del paese nella popolazione -> ISO-3166-2 nel dataset
+paesi:
+  Albania: AL
+  Argentina: AR
+  Armenia: AM
+  Australia: AU
+  Austria: AT
+  Azerbaigian: AZ
+  Bangladesh: BD
+  Belgio: BE
+  Bielorussia: BY
+  Bosnia-Erzegovina: BA
+  Brasile: BR
+  Bulgaria: BG
+  Canada: CA
+  "Ceca, Repubblica": CZ
+  Cile: CL
+  Cina: CN
+  Colombia: CO
+  Corea del sud: KR
+  Croazia: HR
+  Danimarca: DK
+  El Salvador: SV
+  Estonia: EE
+  Filippine: PH
+  Finlandia: FI
+  Francia: FR
+  Georgia: GE
+  Germania: DE
+  Giappone: JP
+  Grecia: GR
+  India: IN
+  Irlanda: IE
+  Islanda: IS
+  Israele: IL
+  Italia: IT
+  Kazakhstan: KZ
+  Lettonia: LV
+  Lituania: LT
+  Lussemburgo: LU
+  "Macedonia, Ex Repubblica Jugoslava di": MK
+  Malta: MT
+  Messico: MX
+  Moldova: MD
+  Montenegro: ME
+  Nepal: NP
+  Norvegia: "NO"
+  Nuova Zelanda: NZ
+  Paesi Bassi: NL
+  Paraguay: PY
+  "Perù": PE
+  Polonia: PL
+  Portogallo: PT
+  Regno unito: GB
+  Romania: RO
+  Russia: RU
+  "Serbia, Repubblica di": RS
+  Slovacchia: SK
+  Slovenia: SI
+  Spagna: ES
+  Stati Uniti: US
+  Svizzera: CH
+  Taiwan: TW
+  Turchia: TR
+  Ucraina: UA
+  Ungheria: HU
+
+# Paesi presenti nel dataset ma NON fra gli stranieri di Parma: restano
+# qui perche' altri comuni potrebbero averli.
+#   FO Isole Faroe · SE Svezia (solo nomi) · UY Uruguay (solo nomi)
+
+note:
+  - >-
+    `Norvegia: "NO"` va fra virgolette: senza, YAML lo legge come il
+    booleano false. E' la stessa trappola dei campi `usabile_per` senza
+    virgola.
+  - >-
+    la profondita' varia molto: Filippine 50 cognomi, Albania 46, Cina
+    40, ma Romania 12, Moldova 15, India 7, Bangladesh 6. Con dieci
+    cognomi su 4.750 rumeni la collisione in un campione da venti e'
+    circa il 10% — accettabile — ma in uno da centoventi e' quasi certa.

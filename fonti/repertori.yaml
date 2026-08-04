@@ -31,12 +31,20 @@ repertori:
 
   - id: cognome_straniero
     tipo: cognome
-    fonte: DA_REGISTRARE
+    fonte: popular_names_cognomi
     condiziona: [paese]
+    traduci: {paese: paesi_onomastici.yaml}
     pesato: false
     fallback: cognome_italiano
     bias: >-
-      serve un repertorio per paese. Vedi le tre opzioni in nota.
+      copre 59,6% degli stranieri (misurato su Parma). Il resto ripiega
+      su cognome_italiano, e la traccia lo dichiara. Il buco e'
+      concentrato nel mondo arabo e nell'Africa subsahariana — Nigeria,
+      Tunisia, Marocco, Ghana, Pakistan, Costa d'Avorio, Senegal,
+      Camerun — che ne' Wikipedia ne' gli istituti nazionali documentano.
+      NON pesato anche dove la fonte avrebbe i conteggi: con 10-50 voci
+      per paese l'uniforme e' indistinguibile, a differenza dei cognomi
+      italiani dove la coda lunga rende il peso essenziale.
 
   - id: nome_italiano
     tipo: nome
@@ -52,10 +60,21 @@ repertori:
 
   - id: nome_straniero
     tipo: nome
-    fonte: DA_REGISTRARE
+    fonte: popular_names_nomi
     condiziona: [paese, sesso]
+    traduci: {paese: paesi_onomastici.yaml}
     pesato: false
     fallback: nome_italiano
+    bias: >-
+      stessa fonte e stessa copertura dei cognomi: 65 paesi, 59,6% degli
+      stranieri (misurato su Parma, verificato su 400 individui: 59,2%).
+      Il vincolo che nome e cognome cadano INSIEME e' nel raccordo
+      `paesi_onomastici.yaml`, che include solo i paesi coperti da
+      entrambi — la fonte ne avrebbe 106 per i nomi ma un nome arabo su
+      un cognome fiorentino segnala l'errore invece di nasconderlo.
+      Il sesso c'e' nella colonna `Gender` (F/M), quindi il
+      condizionamento e' pieno: senza, un uomo con nome femminile sarebbe
+      piu' visibile di un cognome sbagliato.
 
 # Instradamento: il cognome segue il PADRE, il nome dipende dai genitori.
 # Ordine significativo: si applica la prima regola che combacia.

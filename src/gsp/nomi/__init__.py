@@ -167,6 +167,28 @@ def _rng(id_individuo, canale):
     return np.random.default_rng(int.from_bytes(h, "little"))
 
 
+def _traduzioni(spec):
+    """{colonna: {valore_popolazione: valore_fonte}} da un file YAML."""
+    if not spec:
+        return None
+    chiave = ("trad", str(spec))
+    if chiave in _cache:
+        return _cache[chiave]
+    fuori = {}
+    for col, nome in (spec.items() if isinstance(spec, dict) else []):
+        percorso = os.path.join(F.DIR_FONTI, nome)
+        with open(percorso, encoding="utf-8") as f:
+            doc = yaml.safe_load(f) or {}
+        # la tabella sta sotto una chiave omonima della colonna, oppure
+        # e' l'unico dizionario di stringhe del documento
+        tab = doc.get(col + "i") or doc.get(col) or doc.get("paesi")
+        if not isinstance(tab, dict):
+            raise KeyError(f"{nome} non contiene una tabella per '{col}'")
+        fuori[col] = {str(k): str(v) for k, v in tab.items()}
+    _cache[chiave] = fuori
+    return fuori
+
+
 def _pesca(id_rep, id_individuo, attributi, canale):
     d, r = _carica(id_rep, attributi)
     cond = [c for c in (r.get("condiziona") or [])
@@ -183,12 +205,27 @@ def _pesca(id_rep, id_individuo, attributi, canale):
             raise LookupError(f"repertorio '{id_rep}': filtro {c}={v} "
                               f"non seleziona nulla")
 
+    # `traduci` mappa il valore dell'individuo su quello della fonte: la
+    # popolazione dice «Romania», il dataset onomastico dice «RO». La
+    # tabella e' un file dichiarato, non una costante nel codice, perche'
+    # e' un raccordo con le sue ragioni — quali paesi sono coperti e
+    # perche' — non un dettaglio di implementazione.
+    trad = _traduzioni(r.get("traduci"))
+
     if cond:
         m = pd.Series(True, index=d.index)
         for c in cond:
             valore = attributi.get(c)
             if c == "coorte" and valore is None:
                 valore = BIN_COORTE.get(attributi.get("eta"))
+            if trad and c in trad:
+                nuovo_v = trad[c].get(str(valore))
+                if nuovo_v is None:
+                    raise LookupError(
+                        f"repertorio '{id_rep}': '{valore}' non e' fra i "
+                        f"paesi coperti dalla fonte ({len(trad[c])} su "
+                        f"quelli possibili). Si ripiega.")
+                valore = nuovo_v
             m &= d[c].astype(str) == str(valore)
         sub = d[m]
         if sub.empty:

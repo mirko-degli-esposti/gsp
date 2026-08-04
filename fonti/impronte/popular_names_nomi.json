@@ -1,0 +1,50 @@
+{
+  "byte": 124454,
+  "diagnostica": {
+    "modalita": 1394,
+    "n_misurato": 2480.0,
+    "paesi": 106,
+    "paesi_sotto_10": [
+      "BY",
+      "GQ",
+      "MT",
+      "SM",
+      "TH",
+      "TN"
+    ],
+    "senza_sesso": 0,
+    "sessi": [
+      "F",
+      "M"
+    ],
+    "voci_per_paese_max": 87,
+    "voci_per_paese_mediana": 20,
+    "voci_per_paese_min": 5
+  },
+  "id": "popular_names_nomi",
+  "modalita": 1394,
+  "n_misurato": 2480.0,
+  "sha256": "b55fbdd0cbc8ddfa7345322e9ebd479cc52fa1f90a5ee7e382a68b5487b01292",
+  "testa": [
+    "Martina",
+    "Emma",
+    "Jana",
+    "Lucia",
+    "Iker",
+    "Leo",
+    "Martí",
+    "Biel",
+    "Dylan",
+    "Jordi",
+    "Marc",
+    "Mariam",
+    "Sara",
+    "Sarah",
+    "Fatima",
+    "Fatma",
+    "Ayesha",
+    "Noor",
+    "Mohammad",
+    "Ali"
+  ]
+}

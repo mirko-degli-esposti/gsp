@@ -743,9 +743,71 @@ def classificazione_xlsx(path, foglio=0, col_chiave=None,
     return out, diag
 
 
+def onomastico_csv(path, col_paese="Country", col_chiave="Romanized Name",
+                   col_alt="Localized Name", col_peso="Count",
+                   solo_paesi=None, **kw):
+    """Repertorio onomastico per paese, con romanizzazione.
+
+    `chiave` e' la forma ROMANIZZATA: una popolazione sintetica italiana
+    ha bisogno di nomi scrivibili in alfabeto latino, non di ideogrammi.
+    La forma localizzata resta come colonna, perche' e' l'originale e
+    buttarla sarebbe una perdita.
+
+    `peso` puo' mancare: la fonte lo riporta «when available», e per molti
+    paesi non c'e'. Dove manca si estrae uniformemente, il che con dieci
+    o cinquanta voci e' indistinguibile — a differenza dei cognomi
+    italiani, dove la coda lunga rende il peso essenziale.
+    """
+    d = pd.read_csv(path, encoding="utf-8-sig")
+    d.columns = [str(c).strip() for c in d.columns]
+    for c in (col_paese, col_chiave):
+        if c not in d.columns:
+            raise KeyError(f"colonna '{c}' assente; presenti: "
+                           f"{list(d.columns)}")
+    if solo_paesi:
+        d = d[d[col_paese].isin(list(solo_paesi))]
+
+    out = d.rename(columns={col_paese: "paese", col_chiave: "chiave"})
+    out["chiave"] = out["chiave"].astype(str).str.strip()
+    # dove la romanizzazione manca si ripiega sulla forma localizzata
+    if col_alt in out.columns:
+        vuote = out["chiave"].isin(["", "nan", "None"])
+        out.loc[vuote, "chiave"] = out.loc[vuote, col_alt].astype(str)
+    out = out[out["chiave"].str.len() > 0]
+
+    diag = {"paesi": int(out["paese"].nunique()),
+            "modalita": int(out["chiave"].nunique()),
+            "n_misurato": float(len(out))}
+    per = out.groupby("paese").size()
+    diag["voci_per_paese_min"] = int(per.min()) if len(per) else 0
+    diag["voci_per_paese_mediana"] = int(per.median()) if len(per) else 0
+    diag["voci_per_paese_max"] = int(per.max()) if len(per) else 0
+    diag["paesi_sotto_10"] = sorted(per[per < 10].index)[:20]
+
+    if col_peso in out.columns:
+        w = pd.to_numeric(out[col_peso], errors="coerce")
+        out["peso"] = w.fillna(0.0)
+        diag["con_peso"] = int((w > 0).sum())
+        diag["senza_peso"] = int(w.isna().sum() + (w == 0).sum())
+    # `Gender` diventa `sesso`: il file dei nomi ce l'ha, quello dei
+    # cognomi no, e senza il condizionamento un uomo prenderebbe un nome
+    # femminile — piu' visibile di un cognome sbagliato.
+    if "Gender" in out.columns:
+        out = out.rename(columns={"Gender": "sesso"})
+        out["sesso"] = out["sesso"].astype(str).str.strip().str.upper()
+        diag["sessi"] = sorted(set(out["sesso"]))
+        diag["senza_sesso"] = int((~out["sesso"].isin(["M", "F"])).sum())
+
+    tenute = (["chiave", "paese"]
+              + [c for c in ("sesso", "peso", col_alt, "Rank")
+                 if c in out.columns])
+    return out[tenute].reset_index(drop=True), diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "riferimenti_json": riferimenti_json,
+    "onomastico_csv": onomastico_csv,
     "classificazione_xlsx": classificazione_xlsx,
     "archivio_zip": archivio_zip,
     "matrice_csv": matrice_csv,

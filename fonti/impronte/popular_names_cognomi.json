@@ -1,0 +1,119 @@
+{
+  "byte": 95779,
+  "decili": [
+    0.0,
+    0.0,
+    8.0,
+    8120.800000000005,
+    26975.0,
+    72996.99999999997,
+    121709.59999999993,
+    240000.0,
+    600912.0000000002
+  ],
+  "diagnostica": {
+    "con_peso": 1792,
+    "modalita": 1853,
+    "n_misurato": 2537.0,
+    "paesi": 75,
+    "paesi_sotto_10": [
+      "BD",
+      "BY",
+      "GR",
+      "IN"
+    ],
+    "senza_peso": 745,
+    "voci_per_paese_max": 146,
+    "voci_per_paese_mediana": 24,
+    "voci_per_paese_min": 5
+  },
+  "hapax": 0,
+  "id": "popular_names_cognomi",
+  "modalita": 1853,
+  "n_misurato": 2537.0,
+  "peso_max": 101500000.0,
+  "peso_min": 0.0,
+  "sha256": "32cb28bea558a9d353feeef097da03c6488a4e7ba9398e5983cee2f0b9caa91c",
+  "testa": [
+    {
+      "chiave": "Grigoryan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Harutyunyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Sargsyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Hovhannisyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Khachatryan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Hakobyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Petrosyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Vardanyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Gevorgyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Karapetyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Mkrtchyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Ghazaryan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Manukyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Avetisyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Poghosyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Martirosyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Sahakyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Arakelyan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Margaryan",
+      "peso": 0.0
+    },
+    {
+      "chiave": "Davtyan",
+      "peso": 0.0
+    }
+  ]
+}

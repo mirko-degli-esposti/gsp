@@ -1483,7 +1483,7 @@ fonti:
       di studio italiani", CC BY 4.0
     archiviazione: locale
     percorso: data/istruzione/CLAIST_2026.xlsx
-    sha256: DA_CALCOLARE
+    sha256: a469633858d7e2f5ba77b412a290800e2a51c31543280cc00da50a04039d6cef
     metadati: data/istruzione/Nota-metodologica-CLAIST-2025.pdf
     copertura: {geo: "IT", tempo: "storicizzata"}
     universo: >-
@@ -1563,7 +1563,7 @@ fonti:
       abitazioni 2011", CC BY 4.0
     archiviazione: locale
     percorso: data/censimento_2011/DICA_TITSTUDIO-data.zip
-    sha256: DA_CALCOLARE
+    sha256: 95b2f7a520de3ecf1e0236989b500bf09da61f7bab87707606c2b6a4ccbb0ead
     copertura: {geo: "IT", tempo: 2011}
     universo: >-
       popolazione residente di SEI ANNI E PIU' per titolo di studio,
@@ -1620,3 +1620,136 @@ fonti:
     usabile_per: [frequenze_titoli, condizionamento_per_sesso_eta]
     usato_da: []
     non_usabile_per: [titoli_post_2011, coorti_giovani_terziario]
+# Repertorio onomastico per paese — cognomi e nomi stranieri.
+#
+# Richiede normalizzatori.py (35385) con `onomastico_csv`,
+# nomi_init.py (11919) con `traduci`, piu' i due YAML.
+#
+#   grep -q "id: popular_names_cognomi" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/scheda_popular_names.yaml" >> fonti/registro.yaml
+#
+#   sha256sum data/nomi/popular-names/*.csv
+#   python -m gsp.fonti --impronta popular_names_cognomi
+#   python -m gsp.fonti --impronta popular_names_nomi
+#   python -m gsp.fonti --verifica
+
+  - id: popular_names_cognomi
+    ente: Andy Boothe (sigpwned)
+    titolo: Popular Names by Country Dataset - cognomi
+    url: https://github.com/sigpwned/popular-names-by-country-dataset
+    url_documentazione: https://sigpwned.com/2023/07/15/popular-names-by-country-dataset/
+    data_accesso: 2026-08-04
+    licenza: CC0-1.0
+    licenza_uri: https://creativecommons.org/publicdomain/zero/1.0/
+    attribuzione: >-
+      Andy Boothe, "Popular Names by Country Dataset", CC0. I dati
+      originali provengono da Wikipedia, "Lists of most common surnames",
+      luglio 2023.
+    nota_licenza: >-
+      CC0 dichiarata dall'autore, con provenienza esplicita: «Data is
+      pulled from en.wikipedia.org/wiki/Lists_of_most_common_surnames the
+      week of Jul 8, 2023». Wikipedia e' CC-BY-SA, ma i cognomi piu'
+      diffusi di un paese sono FATTI, non opere: la CC0 sul dato estratto
+      e' difendibile. L'autore e' esplicito sulla provenienza anche degli
+      altri dataset che confronta, il che e' un buon segno.
+    archiviazione: locale
+    percorso: data/nomi/popular-names/common-surnames-by-country.csv
+    sha256: 32cb28bea558a9d353feeef097da03c6488a4e7ba9398e5983cee2f0b9caa91c
+    copertura: {geo: "75 paesi", tempo: 2023}
+    universo: >-
+      cognomi PIU' DIFFUSI per paese, con forma localizzata e romanizzata
+      e, dove disponibile, il conteggio. 2.278 cognomi da 75 paesi,
+      «generally at least 10 each per country».
+      L'UNIVERSO DICHIARATO DALL'AUTORE E' IL TESTING DEL SOFTWARE:
+      «I need a names dataset for doing some software testing», e i
+      criteri sono quelli dell'internazionalizzazione — avere esempi CJK
+      e RTL, con romanizzazione. NON e' costruito per rappresentare una
+      popolazione.
+      Per il nostro uso va bene lo stesso: serve un repertorio di
+      PLAUSIBILITA' per rendere naturale un persona-prompt, non una
+      distribuzione. Ma la differenza va dichiarata.
+    unita: cognome
+    normalizzatore: onomastico_csv
+    opzioni: {col_paese: Country, col_chiave: "Romanized Name",
+              col_alt: "Localized Name", col_peso: Count}
+    anomalie:
+      - >-
+        i NOMI coprono 106 paesi, i COGNOMI solo 75, e l'intersezione e'
+        65. Un nome arabo con cognome fiorentino — «Mohamed Innocenti» —
+        e' PEGGIO di due nomi italiani, perche' segnala l'errore invece
+        di nasconderlo: il raccordo `paesi_onomastici.yaml` include
+        quindi SOLO i paesi coperti da entrambi.
+      - >-
+        la profondita' varia di un ordine di grandezza: Filippine 50
+        cognomi, Albania 46, Cina 40, ma Romania 12, Moldova 15, India 7,
+        Bangladesh 6. E la Romania e' il 13,8% degli stranieri di Parma:
+        con dodici cognomi, in un campione da venti la collisione e'
+        circa il 10% — accettabile — ma in uno da centoventi e' quasi
+        certa.
+      - >-
+        il conteggio c'e' «when available», e per molti paesi manca. Il
+        normalizzatore riporta `con_peso` e `senza_peso`; dove manca si
+        estrae uniformemente.
+      - >-
+        la romanizzazione, dove non fornita dalla fonte, viene da Google
+        Translate (dichiarato dall'autore). Per i paesi che ti servono e'
+        raramente rilevante — sono quasi tutti in alfabeto latino o
+        cirillico — ma per il cinese lo e'.
+      - >-
+        `Norvegia: NO` nel raccordo va fra virgolette: senza, YAML lo
+        legge come il booleano false.
+    bias: >-
+      COPERTURA 59,6% degli stranieri, misurata su Parma (34.429
+      stranieri, 136 paesi distinti). Il 40,4% ripiega su
+      `cognome_italiano`, e la traccia lo dichiara.
+      Il buco NON e' casuale: e' il mondo arabo e l'Africa subsahariana —
+      Nigeria 6,7%, Tunisia 6,0%, Marocco 3,7%, Ghana 3,5%, Pakistan
+      3,0%, Costa d'Avorio 2,9%, Senegal 2,2%, Camerun 2,2%. Sono paesi
+      per cui ne' Wikipedia ne' gli istituti statistici nazionali
+      pubblicano liste onomastiche, quindi la lacuna e' della letteratura
+      aperta, non di questo dataset. Forebears.io li ha ma non e' open
+      data.
+      La coda europea recupera otto punti rispetto ai soli primi paesi:
+      Spagna, Francia, Russia, Brasile, Colombia, Polonia e una trentina
+      di altri sono coperti.
+    usabile_per: [repertorio_cognomi_stranieri, plausibilita_onomastica]
+    usato_da: [gsp.nomi]
+    non_usabile_per: [statistiche_onomastiche, distribuzioni,
+                      africa_subsahariana, mondo_arabo]
+
+  - id: popular_names_nomi
+    ente: Andy Boothe (sigpwned)
+    titolo: Popular Names by Country Dataset - nomi propri
+    url: https://github.com/sigpwned/popular-names-by-country-dataset
+    data_accesso: 2026-08-04
+    licenza: CC0-1.0
+    attribuzione: >-
+      Andy Boothe, "Popular Names by Country Dataset", CC0. I dati
+      originali provengono da Wikipedia, "List of most popular given
+      names", luglio 2023.
+    archiviazione: locale
+    percorso: data/nomi/popular-names/common-forenames-by-country.csv
+    sha256: b55fbdd0cbc8ddfa7345322e9ebd479cc52fa1f90a5ee7e382a68b5487b01292
+    copertura: {geo: "106 paesi", tempo: 2023}
+    universo: >-
+      nomi propri piu' diffusi per paese, 2.370 voci da 106 paesi, con
+      romanizzazione. Stessa provenienza e stesso universo dichiarato dei
+      cognomi: costruito per il testing del software.
+      Include il SESSO quando la fonte lo riporta, il che lo rende
+      utilizzabile con `condiziona: [paese, sesso]`.
+    unita: nome proprio
+    normalizzatore: onomastico_csv
+    opzioni: {col_paese: Country, col_chiave: "Romanized Name",
+              col_alt: "Localized Name", col_peso: Count}
+    anomalie:
+      - >-
+        copre 31 paesi in piu' dei cognomi — fra cui Tunisia, Marocco,
+        Pakistan, Egitto — ma quei paesi NON sono usabili: senza cognome
+        si otterrebbe un nome straniero su un cognome fiorentino.
+    bias: >-
+      vedi popular_names_cognomi. La copertura utilizzabile e' quella
+      dell'INTERSEZIONE con i cognomi, 65 paesi, non i 106 dichiarati.
+    usabile_per: [repertorio_nomi_stranieri]
+    usato_da: [gsp.nomi]
+    non_usabile_per: [statistiche_onomastiche, paesi_senza_cognomi]

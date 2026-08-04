@@ -1753,3 +1753,111 @@ fonti:
     usabile_per: [repertorio_nomi_stranieri]
     usato_da: [gsp.nomi]
     non_usabile_per: [statistiche_onomastiche, paesi_senza_cognomi]
+# Repertori onomastici da categorie MediaWiki.
+#
+# Richiede normalizzatori.py (37618) con `cognomi_wiki_csv` e
+# scripts/acquisizione/scarica_cognomi_wiki.py per scaricarli.
+#
+#   grep -q "id: cognomi_wiki_MA_ARAB" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/schede_cognomi_wiki.yaml" >> fonti/registro.yaml
+#
+#   python scripts/riempi_sha.py
+#   python -m gsp.fonti --impronta cognomi_wiki_MA_ARAB
+#   python -m gsp.fonti --impronta cognomi_wiki_NG_YORUBA
+#   python -m gsp.fonti --verifica
+
+  - id: cognomi_wiki_MA_ARAB
+    ente: Wikipedia
+    titolo: Cognomi di origine marocchina
+    url: https://en.wikipedia.org/wiki/Category:Surnames_of_Moroccan_origin
+    url_api: >-
+      https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Surnames_of_Moroccan_origin&cmlimit=500&cmnamespace=0&format=json
+    data_accesso: 2026-08-04
+    licenza: CC-BY-SA-4.0
+    licenza_uri: https://creativecommons.org/licenses/by-sa/4.0/
+    attribuzione: >-
+      Wikipedia, "Category:Surnames of Moroccan origin", CC BY-SA 4.0
+    archiviazione: locale
+    percorso: data/nomi/wiki/cognomi_MA_ARAB.csv
+    sha256: e3704ccc066185d9b38bc3ae3a44312ebb7213756e4c1674ff8a9189bca72aa5
+    prodotto_da: scripts/acquisizione/scarica_cognomi_wiki.py
+    copertura: {geo: "Maghreb", tempo: 2026}
+    universo: >-
+      65 cognomi di origine marocchina, arabi e berberi, dalle voci della
+      categoria Wikipedia. I titoli delle voci SONO i cognomi: la
+      categoria contiene pagine intitolate «Bennani», non pagine su
+      persone di cognome Bennani.
+      Scaricati con l'API delle categorie, non raschiati dalla pagina:
+      l'URL e la data stanno nel file, quindi la provenienza e'
+      riproducibile.
+      E' un ELENCO, non una distribuzione: Wikipedia dice quali cognomi
+      esistono, non quanti li portano. Il repertorio non e' pesato, e con
+      65 voci l'estrazione uniforme e' indistinguibile.
+    unita: cognome
+    normalizzatore: cognomi_wiki_csv
+    anomalie:
+      - >-
+        i diacritici sono normalizzati — «Aâboubou» diventa «Aaboubou» —
+        perche' un marocchino residente in Italia scrive il cognome senza
+        segni sui documenti. L'originale resta nella colonna omonima e la
+        diagnostica conta quanti ne hanno.
+      - >-
+        la categoria mescola cognomi arabi e berberi senza distinguerli.
+        Per il Marocco e' corretto, per Tunisia e Algeria un po' meno: la
+        componente berbera vi pesa diversamente.
+    bias: >-
+      usato per MAROCCO, TUNISIA E ALGERIA (10,1% degli stranieri di
+      Parma), non solo per il Marocco. E' un'estensione per PROSSIMITA'
+      LINGUISTICA: i cognomi arabo-berberi del Maghreb condividono la
+      stessa matrice. Non e' una fonte per la Tunisia — e' una fonte
+      marocchina usata anche altrove, e la differenza va detta.
+      NON esteso a Egitto e Levante, dove l'onomastica araba diverge.
+    usabile_per: [repertorio_cognomi_maghreb, plausibilita_onomastica]
+    usato_da: [gsp.nomi]
+    non_usabile_per: [statistiche_onomastiche, distribuzioni,
+                      egitto, levante]
+
+  - id: cognomi_wiki_NG_YORUBA
+    ente: Wiktionary
+    titolo: Cognomi yoruba
+    url: https://en.wiktionary.org/wiki/Category:Yoruba_surnames
+    url_api: >-
+      https://en.wiktionary.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Yoruba%20surnames&cmlimit=500&cmnamespace=0&format=json
+    data_accesso: 2026-08-04
+    licenza: CC-BY-SA-4.0
+    attribuzione: >-
+      Wiktionary, "Category:Yoruba surnames", CC BY-SA 4.0
+    archiviazione: locale
+    percorso: data/nomi/wiki/cognomi_NG_YORUBA.csv
+    sha256: 4cac9d408a30e81c109f4dc58d12829b411366c607f88782f8693718452019c8
+    prodotto_da: scripts/acquisizione/scarica_cognomi_wiki.py
+    copertura: {geo: "Nigeria", tempo: 2026}
+    universo: >-
+      107 cognomi yoruba dalla categoria Wiktionary, con l'etimologia
+      nella voce originale. Elenco, non distribuzione.
+    unita: cognome
+    normalizzatore: cognomi_wiki_csv
+    anomalie:
+      - >-
+        i diacritici dell'ortografia yoruba sono normalizzati:
+        «Adebayọ» diventa «Adebayo», «Adeṣina» diventa «Adesina». Un
+        nigeriano residente in Italia scrive il cognome senza segni
+        tonali, che i documenti italiani non portano. L'originale resta
+        nella colonna omonima.
+    bias: >-
+      usato per TUTTA LA NIGERIA (6,7% degli stranieri di Parma), ma gli
+      yoruba sono circa il 20% della popolazione nigeriana, accanto a
+      igbo (18%) e hausa (30%). Usarli per tutti SOVRARAPPRESENTA un
+      gruppo su tre, e gli immigrati in Italia non rispecchiano comunque
+      le proporzioni nigeriane.
+      La scelta e' obbligata: le categorie Wiktionary per igbo e hausa
+      esistono ma hanno 6 e 3 voci — appena abbozzate — mentre quella
+      yoruba ne ha 107 ed e' curata. Verificato il 4/8/2026.
+      NON esteso a Ghana, Camerun o altri paesi subsahariani: i repertori
+      akan, ewe e mandinga sono diversi, e «Adebayo Diop» per un
+      senegalese sarebbe come «Giuseppe Andersen» per un norvegese.
+    usabile_per: [repertorio_cognomi_nigeria, plausibilita_onomastica]
+    usato_da: [gsp.nomi]
+    non_usabile_per: [statistiche_onomastiche, distribuzioni,
+                      igbo, hausa, altri_paesi_subsahariani]

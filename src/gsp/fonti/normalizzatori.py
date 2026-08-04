@@ -804,10 +804,50 @@ def onomastico_csv(path, col_paese="Country", col_chiave="Romanized Name",
     return out[tenute].reset_index(drop=True), diag
 
 
+def cognomi_wiki_csv(path, col_chiave="cognome", **kw):
+    """Repertorio da una categoria MediaWiki, scaricato via API.
+
+    Il file porta la provenienza in tre righe di commento — URL,
+    categoria, licenza, data — perche' si autodescriva come i derivati.
+    Il normalizzatore le legge e le riporta nella diagnostica, cosi'
+    finiscono nell'impronta.
+
+    Non e' pesato: una categoria e' un ELENCO, non una distribuzione.
+    Wikipedia dice quali cognomi esistono, non quanti li portano.
+    """
+    meta = {}
+    with open(path, encoding="utf-8") as f:
+        for riga in f:
+            if not riga.startswith("#"):
+                break
+            parti = [x.strip().strip('"') for x in riga.lstrip("# ").split(",", 2)]
+            if len(parti) >= 2:
+                meta[parti[0]] = " · ".join(parti[1:])
+    d = pd.read_csv(path, comment="#", encoding="utf-8")
+    d.columns = [str(c).strip() for c in d.columns]
+    if col_chiave not in d.columns:
+        raise KeyError(f"colonna '{col_chiave}' assente; presenti: "
+                       f"{list(d.columns)}")
+    out = d.rename(columns={col_chiave: "chiave"})
+    out["chiave"] = out["chiave"].astype(str).str.strip()
+    out = out[out["chiave"].str.len() > 1]
+
+    diag = {"modalita": int(out["chiave"].nunique()),
+            "n_misurato": float(len(out))}
+    if "diacritici" in out.columns:
+        diag["con_diacritici"] = int(pd.to_numeric(
+            out["diacritici"], errors="coerce").fillna(0).sum())
+    diag.update({k: v for k, v in meta.items()})
+    tenute = ["chiave"] + [c for c in ("originale", "diacritici")
+                           if c in out.columns]
+    return out[tenute].reset_index(drop=True), diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "riferimenti_json": riferimenti_json,
     "onomastico_csv": onomastico_csv,
+    "cognomi_wiki_csv": cognomi_wiki_csv,
     "classificazione_xlsx": classificazione_xlsx,
     "archivio_zip": archivio_zip,
     "matrice_csv": matrice_csv,

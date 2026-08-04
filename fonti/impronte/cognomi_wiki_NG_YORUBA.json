@@ -1,0 +1,37 @@
+{
+  "byte": 2654,
+  "diagnostica": {
+    "con_diacritici": 51,
+    "fonte": "https://en.wiktionary.org · Category:Yoruba surnames",
+    "licenza": "CC-BY-SA-4.0 · en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License",
+    "modalita": 107,
+    "n_misurato": 107.0,
+    "scaricato": "2026-08-04 · cognomi yoruba: UNO dei tre grandi repertori nigeriani, accanto a igbo e hausa"
+  },
+  "id": "cognomi_wiki_NG_YORUBA",
+  "modalita": 107,
+  "n_misurato": 107.0,
+  "sha256": "4cac9d408a30e81c109f4dc58d12829b411366c607f88782f8693718452019c8",
+  "testa": [
+    "Abimbola",
+    "Adebayo",
+    "Adebobajo",
+    "Adediran",
+    "Adedire",
+    "Adegbamigbe",
+    "Adejugbe",
+    "Adejuyigbe",
+    "Adekugbe",
+    "Adesina",
+    "Adeyemi",
+    "Adeyemo",
+    "Adisa",
+    "Ajayi",
+    "Ajewole",
+    "Akinleye",
+    "Alaba",
+    "Aladejana",
+    "Aladelusi",
+    "Alademomi"
+  ]
+}

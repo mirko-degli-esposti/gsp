@@ -76,6 +76,44 @@ repertori:
       condizionamento e' pieno: senza, un uomo con nome femminile sarebbe
       piu' visibile di un cognome sbagliato.
 
+  - id: cognome_maghreb
+    tipo: cognome
+    fonte: cognomi_wiki_MA_ARAB
+    condiziona: []
+    pesato: false
+    fallback: cognome_italiano
+    bias: >-
+      repertorio MAROCCHINO esteso a Tunisia e Algeria per prossimita'
+      linguistica: i cognomi arabo-berberi del Maghreb condividono la
+      stessa matrice, e Ben Ali o El Amrani funzionano in tutta l'area.
+      NON e' una fonte per la Tunisia: e' una fonte marocchina usata
+      anche altrove, e la differenza va detta. Il Marocco ha una
+      componente berbera che Tunisia e Algeria hanno in misura minore,
+      quindi l'estensione e' imperfetta in quella direzione.
+      Non esteso a Egitto e Levante, dove l'onomastica araba diverge.
+      Non pesato: una categoria di Wikipedia e' un ELENCO, non una
+      distribuzione.
+
+  
+
+  - id: cognome_yoruba
+    tipo: cognome
+    fonte: cognomi_wiki_NG_YORUBA
+    condiziona: []
+    pesato: false
+    fallback: cognome_italiano
+    bias: >-
+      cognomi YORUBA usati per tutta la Nigeria. Gli yoruba sono circa il
+      20% della popolazione nigeriana, accanto a igbo (18%) e hausa
+      (30%): usarli per tutti sovrarappresenta un gruppo su tre.
+      La scelta e' obbligata: le categorie Wiktionary per igbo e hausa
+      esistono ma hanno 6 e 3 voci — appena abbozzate — mentre quella
+      yoruba ne ha 107 ed e' curata.
+      NON esteso a Ghana, Camerun o altri paesi subsahariani: i
+      repertori akan, ewe e mandinga sono diversi, e «Adebayo Diop» per
+      un senegalese sarebbe come «Giuseppe Andersen» per un norvegese.
+
+
 # Instradamento: il cognome segue il PADRE, il nome dipende dai genitori.
 # Ordine significativo: si applica la prima regola che combacia.
 regole:
@@ -84,6 +122,12 @@ regole:
       usa: cognome_italiano
     - se: {origine_genitori: [madre_straniera_padre_italiano]}
       usa: cognome_italiano
+    - se: {cittadinanza: [ITL]}
+      usa: cognome_italiano
+    - se: {paese: [Marocco, Tunisia, Algeria]}
+      usa: cognome_maghreb
+    - se: {paese: [Nigeria]}
+      usa: cognome_yoruba
     - se: {}
       usa: cognome_straniero
   nome:

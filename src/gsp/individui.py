@@ -233,6 +233,22 @@ def _proietta(d, comune, r, rng):
         d.insert(1, "nome", [a for a, _ in nomi])
         d.insert(2, "cognome", [b for _, b in nomi])
 
+        # Il titolo DETTAGLIATO — «diploma di perito industriale» invece
+        # di «diploma» — sta nei regimi che hanno il nome, per la stessa
+        # ragione: e' cio' che rende una scheda una persona invece di un
+        # profilo. Deterministico dall'uid come il nome, e non finisce in
+        # nessun file.
+        try:
+            from gsp import istruzione as _IS
+            d["titolo_studio"] = [
+                _IS.titolo_agente(x.uid, x.get("istruzione"),
+                                  sesso=x.get("sesso"), eta=x.get("eta"))
+                for _, x in d.iterrows()]
+        except Exception as e:                              # noqa: BLE001
+            # il repertorio dei titoli e' opzionale: se la fonte non e'
+            # registrata la scheda resta valida, solo meno ricca
+            print(f"[avviso] titoli non disponibili ({e})")
+
     if r["coord"] == "randomizzate" and {"lon", "lat", "sezione"} <= set(d.columns):
         # Punto casuale nel rettangolo dei civici della sezione. NON si
         # perde niente: l'assegnazione al civico e' gia' arbitraria dentro
@@ -318,9 +334,16 @@ def scheda(riga, variabili=("PUNTIFI10", "PUNTIFI8", "FIDMED", "VOTOUSL",
     p.append(f"{testa or riga.get('uid', '?')}" + (f" — {luogo}" if luogo else ""))
 
     eta = riga.get("eta_anni")
+    # il titolo dettagliato SOSTITUISCE la categoria quando c'e': «diploma
+    # di perito industriale» dice qualcosa, «diploma» no
+    tit = riga.get("titolo_studio")
+    if not isinstance(tit, str) or not tit.strip():
+        tit = str(riga.get("istruzione", "")).replace("_", " ")
+    elif tit.isupper():
+        tit = tit.capitalize()
     riga_2 = [f"{int(eta)} anni" if pd.notna(eta) else riga.get("eta"),
               {"M": "uomo", "F": "donna"}.get(riga.get("sesso")),
-              str(riga.get("istruzione", "")).replace("_", " "),
+              tit,
               str(riga.get("condizione", "")).replace("_", " ")]
     p.append("  " + " · ".join(x for x in riga_2 if x))
 

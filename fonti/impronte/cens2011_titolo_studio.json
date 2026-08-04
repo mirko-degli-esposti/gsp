@@ -1,0 +1,79 @@
+{
+  "byte": 12860617,
+  "decili": [
+    22912.0,
+    26170.0,
+    48640.0,
+    98730.0,
+    168022.0,
+    187392.0,
+    1032408.0,
+    15374128.0,
+    56690037.0
+  ],
+  "diagnostica": {
+    "byte_non_compressi": 132090019.0,
+    "date_contenuto": [
+      "2025-10-21",
+      "2025-10-23"
+    ],
+    "file_maggiore": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_TITSTUDIO-data-it.csv",
+    "file_nell_archivio": 11,
+    "modalita": 11,
+    "n_misurato": 11.0,
+    "rapporto_compressione": 0.0974
+  },
+  "hapax": 0,
+  "id": "cens2011_titolo_studio",
+  "modalita": 11,
+  "n_misurato": 11.0,
+  "peso_max": 58441410.0,
+  "peso_min": 170.0,
+  "sha256": "95b2f7a520de3ecf1e0236989b500bf09da61f7bab87707606c2b6a4ccbb0ead",
+  "testa": [
+    {
+      "chiave": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_TITSTUDIO-data-it.csv",
+      "peso": 58441410.0
+    },
+    {
+      "chiave": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_TITSTUDIO-data-en.csv",
+      "peso": 56690037.0
+    },
+    {
+      "chiave": "CSV - DATI SOLO CODICI - DATA ONLY CODES/DICA_TITSTUDIO-data.csv",
+      "peso": 15374128.0
+    },
+    {
+      "chiave": "METADATA/DimITTER107-data.csv",
+      "peso": 1032408.0
+    },
+    {
+      "chiave": "METADATA/DICA_TITSTUDIO-lower-20251021130344.xls",
+      "peso": 187392.0
+    },
+    {
+      "chiave": "METADATA/DimTIME-data.csv",
+      "peso": 168022.0
+    },
+    {
+      "chiave": "METADATA/DimTITOLO_STUDIO_CENS-data.csv",
+      "peso": 98730.0
+    },
+    {
+      "chiave": "METADATA/DICA_TITSTUDIO-topmeta-20251021130344.xls",
+      "peso": 48640.0
+    },
+    {
+      "chiave": "METADATA/DimETA1-data.csv",
+      "peso": 26170.0
+    },
+    {
+      "chiave": "METADATA/DimTIPO_DATO_CENS_POP-data.csv",
+      "peso": 22912.0
+    },
+    {
+      "chiave": "METADATA/DimSEXISTAT1-data.csv",
+      "peso": 170.0
+    }
+  ]
+}

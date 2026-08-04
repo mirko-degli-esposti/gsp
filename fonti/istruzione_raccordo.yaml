@@ -1,0 +1,160 @@
+# Raccordo fra i titoli di studio del censimento 2011 e le sei categorie
+# di `istruzione` della popolazione sintetica.
+#
+# NON e' una tabella dedotta da una fonte: nessuno la pubblica. E' una
+# DECISIONE, presa guardando i numeri, e questo file la dichiara insieme
+# alle ragioni. Verificata come PARTIZIONE: ogni codice del censimento
+# cade in una categoria e una sola, e nessun gruppo resta fuori
+# (controllo automatico in gsp.istruzione.verifica_partizione).
+#
+# La struttura del codice censuario e' a gruppi di tre cifre con gli zeri
+# iniziali soppressi: sei cifre per la secondaria, nove per il terziario.
+#   001 999          nessun titolo
+#   040 200          diploma 4-5 anni · istituto tecnico
+#   072 008 998      laurea magistrale · economico · discipline aziendali
+schema: 1
+
+fonte: cens2011_titolo_studio
+verificato: 2026-08-04
+
+# --------------------------------------------------------------- regole
+# Si applica la prima regola che combacia. `g1` e' il primo gruppo di tre
+# cifre, `g2` il secondo.
+regole:
+
+  - se: {g1: ["001", "002"]}
+    usa: nessun_titolo
+    nota: >-
+      analfabeta e alfabeta privo di titolo. In Emilia-Romagna 330.227
+      persone su 4.098.473 al censimento 2011.
+
+  - se: {g1: ["010"]}
+    usa: elementare
+
+  - se: {g1: ["020"]}
+    usa: media
+    nota: >-
+      «licenza di scuola media inferiore o di avviamento professionale»:
+      l'avviamento, che esisteva solo prima del 1962, e' gia' fuso qui
+      dalla fonte. Anche CLAIST lo fonde. Nessun rischio di attribuire
+      l'avviamento a una coorte giovane.
+
+  - se: {g1: ["030"]}
+    usa: diploma
+    nota: >-
+      qualifica professionale di 2-3 anni. NON e' un diploma quinquennale,
+      ma nelle sei categorie non esiste un livello intermedio: il titolo
+      dettagliato AGGIUNGE qui informazione che la categoria non aveva.
+
+  - se: {g1: ["040"]}
+    usa: diploma
+
+  # Il ramo 050 e' l'unico che non si decide sul primo gruppo: contiene
+  # tre epoche dell'AFAM, con livelli ISCED diversi.
+  - se: {g1: ["050"], g2_inizia: ["60"]}
+    usa: post_laurea
+    nota: >-
+      AFAM del VECCHIO ORDINAMENTO, codici 050600-050607 (accademia di
+      belle arti,
+      conservatorio, ISIA, arte drammatica, danza): 13.089 persone in ER.
+      Era un percorso lungo, quindi post_laurea per analogia con la
+      laurea del vecchio ordinamento. E' la scelta piu' discutibile di
+      questo file, ed e' la piu' piccola: lo 0,3% della popolazione.
+
+  - se: {g1: ["050"], g2_inizia: ["61"]}
+    usa: laurea_o_its
+    nota: >-
+      AFAM di I livello, codici 050610-050617: e' una triennale, e CLAIST
+      le assegna ISCED_A
+      660, lo stesso della laurea triennale e del diploma ITS.
+
+  - se: {g1: ["050"], g2_inizia: ["62"]}
+    usa: post_laurea
+    nota: >-
+      AFAM di II livello, codici 050620-050627: equivale alla magistrale,
+      ISCED_A 760.
+      ATTENZIONE: i tre gruppi cominciano TUTTI per 6 — 600, 610, 620 — e
+      il discriminante e' la SECONDA cifra. Una regola su `["6"]` farebbe
+      cadere tutto il ramo nel vecchio ordinamento (errore trovato dal
+      test il 4/8/2026).
+
+  - se: {g1: ["050"], g2: ["000"]}
+    usa: laurea_o_its
+    nota: >-
+      totale di ramo: non e' una foglia e non dovrebbe mai essere estratto.
+      La categoria e' indifferente ma dichiarata per completezza.
+
+  - se: {g1: ["060"]}
+    usa: laurea_o_its
+    nota: >-
+      diploma universitario di 2-3 anni del vecchio ordinamento, la
+      «laurea breve»: e' il predecessore della triennale, e la categoria
+      unisce percorsi terziari brevi diversi — e' la ragione per cui si
+      chiama `laurea_o_its`.
+
+  - se: {g1: ["071"]}
+    usa: laurea_o_its
+
+  - se: {g1: ["072"]}
+    usa: post_laurea
+    nota: >-
+      DECISIONE PRINCIPALE di questo file, e la piu' verificabile.
+      Nelle sei categorie `post_laurea` sta al 17,08% e `laurea_o_its` al
+      5,31% (Modena, K9C, 4/8/2026). Se la magistrale stesse in
+      `laurea_o_its` i rapporti sarebbero invertiti.
+      La conferma viene da una fonte INDIPENDENTE: al censimento 2011 in
+      Emilia-Romagna la laurea magistrale conta 375.976 persone contro le
+      103.943 di diploma universitario piu' triennale, cioe' un rapporto
+      di 0,276 — contro lo 0,311 della popolazione sintetica 2024. Le due
+      cifre sono vicine e lo scarto va nella direzione giusta: nel 2024
+      la riforma del 1999 ha avuto tredici anni in piu' per produrre
+      triennali.
+      Nota che `072` include TUTTO il vecchio ordinamento: nel 2011 la
+      gran parte dei laureati aveva la laurea quadriennale o
+      quinquennale pre-riforma, che il censimento classifica qui.
+
+# ------------------------------------------------------------- livelli
+# A quale profondita' dell'albero fermarsi, per categoria. Estrarre a un
+# livello e sommare i figli sarebbe doppio conteggio: si pescano SOLO LE
+# FOGLIE del livello scelto.
+profondita:
+  nessun_titolo: 2      # 001999, 002999
+  elementare:    2
+  media:         2
+  diploma:       2      # 040202 istituto tecnico industriale
+  laurea_o_its:  2      # 071005 gruppo ingegneria
+  post_laurea:   2      # 072008 gruppo economico-statistico
+
+# -------------------------------------------------------------- limiti
+limiti:
+  - >-
+    IL CENSIMENTO 2011 NON RILEVA IL POST-LAUREA. Non esiste alcuna voce
+    di dottorato, master o scuola di specializzazione (verificato
+    4/8/2026 cercando "dottorat|master|specializzaz" su tutte le 457
+    modalita': l'unico esito e' un falso positivo, una laurea in lingue
+    «con specializzazione turistico culturale»).
+    Conseguenza: la categoria `post_laurea` produrra' SOLO lauree
+    magistrali, mai dottorati. Per una biografia e' plausibile — la
+    magistrale e' il titolo tipico di quella categoria — ma va detto.
+    L'alternativa sarebbe aggiungere una quota stimata di dottorati da
+    un'altra fonte, cioe' un peso inventato.
+  - >-
+    la fonte ha QUINDICI ANNI. Il trasferimento per coorte e' pulito per
+    chi era gia' uscito dal sistema formativo — sopra i 35 anni nel 2011,
+    cioe' sopra i 48 oggi — mentre per le coorti giovani il titolo puo'
+    essere cambiato dopo. I titoli istituiti dopo il 2011 (ITS Academy
+    riformati nel 2022-2023, nuove classi di laurea del 2024) sono per
+    costruzione assenti.
+  - >-
+    il territorio si ferma alla REGIONE: 28 codici, da IT alle ripartizioni
+    alle regioni, nessun comune. Non e' un limite grave, perche' il
+    MaxEnt ha gia' condizionato `istruzione` sul comune: quello che manca
+    e' la variazione territoriale del DETTAGLIO dentro la categoria, che
+    varia molto meno della quota di diplomati. E' la stessa risoluzione a
+    cui sono condizionati gli attributi AVQ.
+  - >-
+    i codici `30101` e `40101` hanno etichette quasi identiche —
+    entrambi «diploma di qualifica di istituto professionale agrario» —
+    ma il primo e' la qualifica triennale e il secondo il diploma
+    quinquennale. Guardarli per descrizione li farebbe sembrare
+    duplicati: e' il codice a distinguerli.

@@ -1442,3 +1442,181 @@ fonti:
     usabile_per: [civici_georeferenziati, indirizzi_sintetici]
     usato_da: [scripts/vincoli/join_civici_sezioni.py]
     non_usabile_per: [conteggi_di_popolazione, residenti]
+# Titoli di studio — le due fonti complementari.
+#
+# Richiede normalizzatori.py (32936) con `classificazione_xlsx`.
+#
+#   grep -q "id: claist_2026" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/schede_titoli.yaml" >> fonti/registro.yaml
+#
+#   sha256sum data/istruzione/CLAIST_2026.xlsx      -> DA_CALCOLARE
+#   sha256sum data/censimento_2011/*.zip            -> DA_CALCOLARE
+#   python -m gsp.fonti --impronta claist_2026
+#   python -m gsp.fonti --impronta cens2011_titolo_studio
+#   python -m gsp.fonti --verifica
+#
+# LE DUE FONTI SONO COMPLEMENTARI, ed e' la stessa divisione del lavoro
+# fra margine A e margine B in opendata_paese:
+#   CLAIST         quali titoli esistono, come si chiamano, per quale
+#                  coorte erano ottenibili, e come si raccordano ai
+#                  livelli ISCED
+#   DICA_TITSTUDIO quante persone li possedevano, per sesso, eta' e
+#                  territorio
+# Nessuna delle due basta da sola.
+
+  - id: claist_2026
+    ente: ISTAT
+    titolo: >-
+      CLAIST 2026 - Mappa dei percorsi di istruzione e dei titoli di
+      studio italiani
+    url: DA_VERIFICARE
+    url_nota_metodologica: DA_VERIFICARE
+    data_accesso: 2026-08-04
+    licenza: CC-BY-4.0
+    nota_licenza: >-
+      licenza generale del sito ISTAT ("salvo diversa indicazione", note
+      legali): la pagina CLAIST non ne dichiara una propria. Inferita,
+      non letta.
+    attribuzione: >-
+      ISTAT, "CLAIST 2026 - Mappa dei percorsi di istruzione e dei titoli
+      di studio italiani", CC BY 4.0
+    archiviazione: locale
+    percorso: data/istruzione/CLAIST_2026.xlsx
+    sha256: DA_CALCOLARE
+    metadati: data/istruzione/Nota-metodologica-CLAIST-2025.pdf
+    copertura: {geo: "IT", tempo: "storicizzata"}
+    universo: >-
+      tutti i percorsi di istruzione e formazione italiani, ATTUALI E
+      PASSATI, dai servizi per l'infanzia al dottorato. Sostituisce la
+      Classificazione dei titoli di studio del 2003.
+      Struttura gerarchica su SEI livelli: 61 tipologie di programma al
+      primo, circa 20.000 percorsi al sesto, codificati in un
+      COD_CLAIST a 18 digit (3-2-2-4-4-3). Sedici fogli, 29.282 righe in
+      tutto.
+      Il registro normalizza il foglio "Schema sintetico 2026" — 104
+      righe, 42 titoli — che e' il livello utile per attribuire un titolo
+      a un individuo sintetico: non seimila corsi, non sei categorie.
+      Il livello 2 e' l'ORDINAMENTO, cioe' il decreto di riferimento: e'
+      questo che rende la mappa storicizzata e permette di sapere quali
+      titoli erano ottenibili in quale periodo.
+    unita: titolo di studio
+    normalizzatore: classificazione_xlsx
+    opzioni: {foglio: "Schema sintetico 2026", col_chiave: codice_titolo,
+              col_definizione: TITOLO_CONSEGUITO,
+              extra: [ISCED_A_3, cod_livello_1_2, livello_1, livello_2,
+                      ISCED_P_3]}
+    anomalie:
+      - >-
+        39 codici titolo ma 42 denominazioni distinte: lo stesso codice
+        porta nomi diversi perche' la denominazione e' cambiata nel tempo
+        mentre il titolo e' rimasto lo stesso. CTS_7_10_20 e' sia LAUREA
+        SPECIALISTICA sia LAUREA MAGISTRALE. Verificato 4/8/2026.
+      - >-
+        104 righe per 42 titoli: la molteplicita' e' la
+        STORICIZZAZIONE. "DIPLOMA DI MATURITA' (ANTE 2010)" compare 13
+        volte, una per ogni tipo di scuola che lo rilasciava — liceo,
+        istituto tecnico, magistrale, d'arte, corsi serali.
+      - >-
+        i codici ISCED_A_3 sono 12 e mappano quasi direttamente sulle sei
+        categorie di `istruzione` della popolazione: 20/100 elementare,
+        244 media, 344/353/354 diploma, 660 laurea_o_its (che contiene
+        SIA la laurea triennale SIA il diploma ITS Academy, esattamente
+        come la nostra categoria), 760/860 post_laurea. Il raccordo va
+        comunque dichiarato e verificato come partizione.
+      - >-
+        il vincolo TEMPORALE e' dentro i titoli stessi: "DIPLOMA DI
+        MATURITA' (ANTE 2010)" contro "DIPLOMA DI SUPERAMENTO DELL'ESAME
+        DI STATO", "DIPLOMA DI LAUREA DEL VECCHIO ORDINAMENTO" contro
+        "LAUREA DI 1° LIVELLO (TRIENNALE)" che esiste solo dal D.M.
+        509/99. Non serve imporre la coorte dall'esterno.
+      - >-
+        "LICENZA MEDIA (INCLUSA LICENZA DI AVVIAMENTO PROFESSIONALE)":
+        l'avviamento professionale, che esisteva solo prima del 1962, e'
+        gia' fuso nella licenza media a questo livello. Il rischio di
+        generare un venticinquenne con l'avviamento non esiste.
+    bias: >-
+      e' un VOCABOLARIO, non una distribuzione: dice quali titoli
+      esistono, non quante persone li hanno. Le frequenze vengono da
+      cens2011_titolo_studio.
+      Non include i vecchi corsi delle Scuole dirette a fini speciali e
+      parauniversitarie, i TFA di sostegno, i corsi per mediatori
+      linguistici. Per la Formazione professionale regionale e per i
+      Master di I e II livello il dettaglio dei corsi e' rinviato a una
+      versione successiva.
+    usabile_per: [vocabolario_titoli, storicizzazione, raccordo_isced,
+                  gruppi_disciplinari_mur]
+    non_usabile_per: [frequenze, conteggi, geografia]
+
+  - id: cens2011_titolo_studio
+    ente: ISTAT
+    titolo: >-
+      Titolo di studio della popolazione residente di 6 anni e piu' -
+      Censimento della popolazione 2011
+    url: DA_VERIFICARE
+    url_download: https://esploradati.istat.it/databrowser/DWL/censtatv5db/Popolazione/DICA_TITSTUDIO-data.zip
+    dataflow: DF_BULK_CPO2011_DICA_TITSTUDIO
+    data_accesso: 2026-08-04
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      ISTAT, "15° Censimento generale della popolazione e delle
+      abitazioni 2011", CC BY 4.0
+    archiviazione: locale
+    percorso: data/censimento_2011/DICA_TITSTUDIO-data.zip
+    sha256: DA_CALCOLARE
+    copertura: {geo: "IT", tempo: 2011}
+    universo: >-
+      popolazione residente di SEI ANNI E PIU' per titolo di studio,
+      sesso, eta' e territorio, al censimento 2011. L'universo a 6 anni
+      copre anche i bin 9-14 della nostra popolazione, che le rilevazioni
+      sulle forze di lavoro (15+) escluderebbero.
+      Circa 457 modalita' di titolo, in una gerarchia codificata a cinque
+      cifre: la prima e' il ramo (1 elementare, 2 media, 3 qualifica 2-3
+      anni, 4 maturita' 4-5 anni, 5 terziario non universitario, 6
+      diploma universitario v.o., 7 laurea, 0 laurea magistrale), le
+      successive scendono al tipo di scuola e all'indirizzo. I codici che
+      finiscono in 00 sono totali di ramo.
+      Il ramo 4 ha 27 voci ed e' il livello giusto per una biografia:
+      "istituto tecnico per geometri", "liceo classico", "istituto
+      professionale per i servizi alberghieri".
+    unita: individuo residente
+    normalizzatore: archivio_zip
+    anomalie:
+      - >-
+        i file dentro lo zip sono in UTF-16 con BOM e separatore `|`,
+        SENZA riga di intestazione. Il quinto campo dei codebook e' un
+        progressivo di ordinamento (10, 20, 30...), NON il livello
+        gerarchico: la gerarchia sta nel codice.
+      - >-
+        lo stesso indirizzo compare in due rami con etichetta quasi
+        identica: 30101 e 40101 sono entrambi "diploma di qualifica di
+        istituto professionale agrario", ma il primo e' la qualifica
+        triennale e il secondo il diploma quinquennale. Guardarli per
+        descrizione li farebbe sembrare duplicati: e' il codice a
+        distinguerli.
+      - >-
+        lo zip contiene TRE versioni degli stessi dati — solo codici (15
+        MB), codici e descrizioni in italiano (58 MB) e in inglese (57
+        MB) — piu' i codebook per dimensione in METADATA/. Si usa la
+        versione a soli codici con i codebook a fianco, come per i
+        microdati di Parma.
+      - >-
+        il dataflow SDMX e' di tipo ONLY_FILE con VIRTUALDSD: NON e'
+        interrogabile per dimensioni. L'URL dello zip sta
+        nell'annotazione ATTACHED_DATA_FILES della struttura. Non
+        consuma il limite di 4 query al minuto.
+    bias: >-
+      e' il censimento 2011, quindi ha QUINDICI ANNI. Il trasferimento
+      per coorte e' pulito per chi era gia' uscito dal sistema formativo
+      — sopra i 35 anni nel 2011, cioe' sopra i 48 oggi — mentre per le
+      coorti giovani il titolo puo' essere cambiato dopo: chi aveva 22
+      anni nel 2011 poteva laurearsi in seguito. I titoli istituiti dopo
+      il 2011 (ITS Academy riformati nel 2022-2023, nuove classi di
+      laurea del 2024) sono per costruzione assenti.
+      Non esiste una tavola equivalente sul censimento permanente: il
+      catalogo ISTAT, alla voce "titolo di studio", restituisce solo
+      rilevazioni sulle FORZE DI LAVORO, campionarie e con universo 15+
+      (verificato 4/8/2026).
+    usabile_per: [frequenze_titoli, condizionamento_per_sesso_eta]
+    usato_da: []
+    non_usabile_per: [titoli_post_2011, coorti_giovani_terziario]

@@ -692,9 +692,61 @@ def archivio_zip(path, **kw):
     return out.sort_values("peso", ascending=False).reset_index(drop=True), diag
 
 
+def classificazione_xlsx(path, foglio=0, col_chiave=None,
+                         col_definizione=None, extra=(), **kw):
+    """Classificazione ufficiale su piu' fogli.
+
+    Diversa da `tracciato_xlsx`, che e' un codebook a due colonne: qui
+    servono anche le colonne di RACCORDO — il codice ISCED, il decreto di
+    ordinamento — perche' sono cio' che rende la classificazione usabile
+    per mappare su altro.
+
+    La diagnostica riporta l'inventario di TUTTI i fogli, non solo di
+    quello letto: una classificazione ufficiale ha il dettaglio sparso, e
+    sapere quante righe ci sono altrove dice quanto si sta usando.
+    """
+    x = pd.ExcelFile(path)
+    inventario = {}
+    for f in x.sheet_names:
+        try:
+            inventario[f] = int(len(x.parse(f, usecols=[0])))
+        except Exception:                                    # noqa: BLE001
+            inventario[f] = None
+
+    d = x.parse(foglio)
+    d.columns = [str(c).strip() for c in d.columns]
+    ck = col_chiave or d.columns[0]
+    if ck not in d.columns:
+        raise KeyError(f"colonna chiave '{ck}' assente nel foglio "
+                       f"'{foglio}'; presenti: {list(d.columns)}")
+    out = d.rename(columns={ck: "chiave"})
+    if col_definizione and col_definizione in out.columns:
+        out = out.rename(columns={col_definizione: "definizione"})
+    out["chiave"] = out["chiave"].astype(str).str.strip()
+
+    tenute = ["chiave"] + [c for c in (["definizione"] + list(extra))
+                           if c in out.columns]
+    out = out[tenute]
+    diag = {"foglio": str(foglio),
+            "fogli": len(x.sheet_names),
+            "righe_per_foglio": inventario,
+            "righe_totali": sum(v for v in inventario.values() if v),
+            "modalita": int(out["chiave"].nunique()),
+            "n_misurato": float(len(out))}
+    if len(out) != out["chiave"].nunique():
+        diag["chiavi_ripetute"] = len(out) - int(out["chiave"].nunique())
+    for c in extra:
+        if c in out.columns:
+            diag[f"{c}_distinti"] = int(out[c].nunique())
+    if "definizione" in out.columns:
+        diag["definizioni_distinte"] = int(out["definizione"].nunique())
+    return out, diag
+
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "riferimenti_json": riferimenti_json,
+    "classificazione_xlsx": classificazione_xlsx,
     "archivio_zip": archivio_zip,
     "matrice_csv": matrice_csv,
     "formato_lungo": formato_lungo,

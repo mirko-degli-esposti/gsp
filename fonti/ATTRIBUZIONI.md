@@ -65,6 +65,28 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Copertura:** None, None
 - **Universo:** residenti per CITTADINANZA e quartiere, italiani inclusi: la riga ITALIA e' presente nel file e viene filtrata a valle da opendata_paese.py (riga 97). I totali per quartiere sono quindi popolazione totale, non stranieri. Fonte ANAGRAFICA comunale, di data diversa dal censimento. Non distingue il sesso: lo ricostruisce l'IPF dal margine comunale. E' il margine B dell'IPF, COMPLEMENTARE e non alternativo al censimento (margine A): il censimento porta i ~150 paesi, i livelli corretti e il sesso, la fonte locale porta la geografia. Il gruppo residuale e' il complemento dei paesi nominati IN QUEL QUARTIERE, quindi cambia da file a file: le modalita' vanno da 8 (Caionvico) a 33 (Centro storico nord).
 
+## Titolo di studio della popolazione residente di 6 anni e piu' - Censimento della popolazione 2011
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** 2026-08-04
+- **Copertura:** IT, 2011
+- **Universo:** popolazione residente di SEI ANNI E PIU' per titolo di studio, sesso, eta' e territorio, al censimento 2011. L'universo a 6 anni copre anche i bin 9-14 della nostra popolazione, che le rilevazioni sulle forze di lavoro (15+) escluderebbero. Circa 457 modalita' di titolo, in una gerarchia codificata a cinque cifre: la prima e' il ramo (1 elementare, 2 media, 3 qualifica 2-3 anni, 4 maturita' 4-5 anni, 5 terziario non universitario, 6 diploma universitario v.o., 7 laurea, 0 laurea magistrale), le successive scendono al tipo di scuola e all'indirizzo. I codici che finiscono in 00 sono totali di ramo. Il ramo 4 ha 27 voci ed e' il livello giusto per una biografia: "istituto tecnico per geometri", "liceo classico", "istituto professionale per i servizi alberghieri".
+
+> ISTAT, "15° Censimento generale della popolazione e delle abitazioni 2011", CC BY 4.0
+
+## CLAIST 2026 - Mappa dei percorsi di istruzione e dei titoli di studio italiani
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** 2026-08-04
+- **Copertura:** IT, storicizzata
+- **Universo:** tutti i percorsi di istruzione e formazione italiani, ATTUALI E PASSATI, dai servizi per l'infanzia al dottorato. Sostituisce la Classificazione dei titoli di studio del 2003. Struttura gerarchica su SEI livelli: 61 tipologie di programma al primo, circa 20.000 percorsi al sesto, codificati in un COD_CLAIST a 18 digit (3-2-2-4-4-3). Sedici fogli, 29.282 righe in tutto. Il registro normalizza il foglio "Schema sintetico 2026" — 104 righe, 42 titoli — che e' il livello utile per attribuire un titolo a un individuo sintetico: non seimila corsi, non sei categorie. Il livello 2 e' l'ORDINAMENTO, cioe' il decreto di riferimento: e' questo che rende la mappa storicizzata e permette di sapere quali titoli erano ottenibili in quale periodo.
+
+> ISTAT, "CLAIST 2026 - Mappa dei percorsi di istruzione e dei titoli di studio italiani", CC BY 4.0
+
 ## Cognomi residenti - Anno 2012
 
 - **Fonte:** Comune di Firenze - Direzione Generale - Servizio Pianificazione, Controllo e Statistica

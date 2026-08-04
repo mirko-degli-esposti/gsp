@@ -1,8 +1,9 @@
 # Registro delle fonti, pacchetto `gsp`, attributi derivati — v7
 
 Aggiornata il 4 agosto 2026. Sostituisce la v6. Rispetto a quella:
-**trentaquattro fonti**, l'onomastica è completa — il ramo straniero
-copre il 59,2% degli stranieri con nome e cognome del loro paese — e il
+**trentasei fonti**, l'onomastica è completa — il ramo straniero copre il
+**76,5%** degli stranieri con un cognome del loro paese o della loro area
+— e il
 registro ha valutato per la prima volta una **fonte di terze parti**
 invece che istituzionale, accettandola per metà con i limiti misurati.
 
@@ -215,7 +216,7 @@ python -m gsp.fonti --aggiungi PATH --id ID
 
 Uno stato che fallisce sempre è uno stato che si smette di guardare.
 
-### I sedici normalizzatori
+### I diciassette normalizzatori
 
 | nome | forma | diagnostica caratteristica |
 |---|---|---|
@@ -228,6 +229,7 @@ Uno stato che fallisce sempre è uno stato che si smette di guardare.
 | `codebook_csv` | `campo, codice, etichetta` | codici_per_campo, segnaposto |
 | `riferimenti_json` | derivato con metadati in testa | **fonte, metodo, se_grappolo** |
 | `onomastico_csv` | repertorio per paese, con romanizzazione | paesi, voci per paese, con/senza peso, sessi |
+| `cognomi_wiki_csv` | categoria MediaWiki via API | provenienza dal file, diacritici |
 | `classificazione_xlsx` | classificazione ufficiale multi-foglio | fogli, righe per foglio, colonne di raccordo |
 | `archivio_zip` | l'archivio, **senza decomprimerlo** | file dentro, byte non compressi, date |
 | `sdmx_csv` | frame intatto | dataflow, ref_area, anni, obs_somma |
@@ -241,7 +243,7 @@ sono maiuscoli. L'errore è `KeyError: 'chiave'`, che non aiuta.
 
 ---
 
-## 3. Le trentaquattro fonti
+## 3. Le trentasei fonti
 
 ### Cognomi — Comune di Firenze (2)
 
@@ -377,7 +379,7 @@ Il pattern `percorso` ammette un `*` accanto a `{istanza}`, perché i nomi
 non sono uniformi fra regioni: `R03_21.zip`, `R08_21.zip`, `R16_21.zip`
 sono i codici regione ISTAT.
 
-### Repertori onomastici (3)
+### Repertori onomastici (5)
 
 **`firenze_cognomi_2013`** e **`modena_nomi_residenti`** per il ramo
 italiano (vedi sopra e §6).
@@ -386,6 +388,11 @@ italiano (vedi sopra e §6).
 due file, CC0, da Wikipedia luglio 2023. 2.278 cognomi da 75 paesi e
 2.370 nomi da 106, con romanizzazione e sesso. Universo dichiarato: il
 testing del software.
+
+**`cognomi_wiki_MA_ARAB`** (65 voci) e **`cognomi_wiki_NG_YORUBA`** (107)
+— categorie MediaWiki, CC-BY-SA, scaricate via API. Elenchi, non
+distribuzioni: Wikipedia dice quali cognomi esistono, non quanti li
+portano.
 
 ### Le sei fonti locali (7 schede)
 
@@ -585,13 +592,61 @@ solo i paesi coperti da entrambi.
 **verificata a 59,2% su 400 individui estratti** — le due misure
 coincidono entro il rumore di campionamento.
 
-Il 40,8% ripiega su `cognome_italiano`, e il buco non è casuale: è il
-mondo arabo e l'Africa subsahariana — Nigeria 6,7%, Tunisia 6,0%, Marocco
-3,7%, Ghana 3,5%, Pakistan 3,0%, Costa d'Avorio 2,9%, Senegal 2,2%,
-Camerun 2,2%. Sono paesi per cui **né Wikipedia né gli istituti
-statistici nazionali** pubblicano liste onomastiche: la lacuna è della
-letteratura aperta, non di questo dataset. Forebears.io li ha, ma non è
-open data e i termini vietano l'estrazione sistematica.
+Il buco non è casuale: è il mondo arabo e l'Africa subsahariana — Nigeria
+6,7%, Tunisia 6,0%, Marocco 3,7%, Ghana 3,5%, Pakistan 3,0%, Costa
+d'Avorio 2,9%, Senegal 2,2%, Camerun 2,2%. Sono paesi per cui **né
+Wikipedia né gli istituti statistici nazionali** pubblicano liste
+onomastiche nella stessa forma: la lacuna è della letteratura aperta, non
+di questo dataset.
+
+### Due estensioni da categorie MediaWiki
+
+Metà di quel buco si è chiusa con due categorie, CC-BY-SA, scaricate con
+l'**API delle categorie** e non raschiate dalla pagina: l'URL e la data
+finiscono nel file, quindi la provenienza è riproducibile mentre un
+copia-incolla darebbe «l'ho preso da un sito».
+
+**`cognomi_wiki_MA_ARAB`** — 65 cognomi di origine marocchina, arabi e
+berberi, usati per **Marocco, Tunisia e Algeria**. È un'estensione per
+prossimità linguistica, non una fonte per la Tunisia, e la differenza sta
+nel `bias`. Non estesa a Egitto e Levante, dove l'onomastica araba
+diverge.
+
+**`cognomi_wiki_NG_YORUBA`** — 107 cognomi yoruba usati per **tutta la
+Nigeria**. Gli yoruba sono circa il 20% della popolazione nigeriana,
+accanto a igbo (18%) e hausa (30%): usarli per tutti sovrarappresenta un
+gruppo su tre. La scelta è obbligata — le categorie Wiktionary per igbo e
+hausa esistono ma hanno **6 e 3 voci**, appena abbozzate, mentre quella
+yoruba ne ha 107 ed è curata.
+
+I diacritici sono normalizzati — «Adebayọ» → «Adebayo», «Aâboubou» →
+«Aaboubou» — perché un residente in Italia scrive il cognome senza segni
+sui documenti; l'originale resta in una colonna a fianco.
+
+**Copertura totale 76,5%**, verificata su mille individui: 59,0% da
+`popular-names`, 10,9% dal Maghreb, 6,6% dagli yoruba. I tre numeri
+tornano uno per uno con le quote di Parma.
+
+### Il 23,5% che resta, e perché
+
+Ghana 3,5%, Pakistan 3,0%, Costa d'Avorio 2,9%, Senegal 2,2%, Camerun
+2,2%, il Corno d'Africa, più una coda di novanta paesi.
+
+I dati **esistono ma sono in compilazioni proprietarie**. Forebears.io ha
+tutto — la Nigeria con incidenza e frequenza — ma la pagina copyright
+vieta la riproduzione oltre la citazione. Behind the Name ha 33 cognomi
+dell'Africa occidentale in una collezione curata dal 1996, e il copyright
+dice «you are NOT ALLOWED to redisplay this website's content on your
+website, copy or scrape», concedendo solo «a few of the name definitions»
+e l'uso in «your homework assignment».
+
+Entrambi però scrivono «without my permission», il che implica che il
+permesso si possa chiedere: **due mail** per un uso accademico non
+commerciale sono la strada più corta.
+
+L'alternativa è una lista curata per l'Africa occidentale — Diallo,
+Traoré, Keita, Ndiaye, Diop, Cissé — verificata su Behind the Name senza
+estrarla. Sarebbe un derivato con `metodo` dichiarato, non una fonte.
 
 La profondità varia di un ordine di grandezza: Filippine 50 cognomi,
 Albania 46, Cina 40, ma Romania 12, Moldova 15, India 7, Bangladesh 6. E
@@ -899,10 +954,17 @@ C6 assegnato due volte. Nel registro `blocco` segue il nome del file.
   rigenera a mano senza `--pop-file` produce un file che il viewer
   ignora.
 - `_radice()` in `common.py`, quando servirà a un terzo modulo.
-- ~~Il **ramo straniero** dei nomi~~ — **fatto** per il 59,2%. Resta il
-  buco arabo e subsahariano, che nessuna fonte aperta copre: le strade
-  sono una licenza di ricerca da Forebears, una lista curata da fonti
-  sparse, o il fallback dichiarato che c'è già.
+- ~~Il **ramo straniero** dei nomi~~ — **fatto** per il 76,5%. Resta il
+  23,5%: Ghana, Pakistan, Costa d'Avorio, Senegal, Camerun, il Corno
+  d'Africa e una coda di novanta paesi. Le strade sono due mail — Mike
+  Campbell di Behind the Name e Forebears, entrambi hanno i dati e
+  scrivono «without my permission» — oppure una lista curata per
+  l'Africa occidentale, verificata senza estrarla. Il fallback
+  dichiarato c'è già.
+- **I `nome_straniero` per Maghreb e Nigeria non esistono**: quelle due
+  fonti hanno solo i cognomi. Un maghrebino prende quindi cognome del suo
+  repertorio e nome italiano — il caso opposto a quello che il vincolo
+  «insieme» voleva evitare, e va guardato se stoni.
 - **CLAIST non è ancora usato** da `gsp.istruzione`: serve per le
   denominazioni moderne (il censimento ha quelle del 2011) e per il
   vincolo temporale duro, che oggi emerge solo dalle frequenze.

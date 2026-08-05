@@ -6,9 +6,16 @@ emiliano-romagnoli piu' Brescia: come caricarli, cosa contengono, come sono
 stati costruiti, quali limiti dichiarati portano con sé, dove trovare i dati
 reali per il confronto e **come aggiungere un comune nuovo** (§12).
 
-Le **fonti esterne** — 24, con universo, licenza, impronta e limiti d'uso
+Le **fonti esterne** — 37, con universo, licenza, impronta e limiti d'uso
 dichiarati — sono censite a parte in `fonti/registro.yaml`; la loro
-documentazione è in `note/fonti_e_pacchetto_v3.md` (§9).
+documentazione è in `note/fonti_e_pacchetto_v8.md` (§9).
+
+> **Alcuni attributi non stanno nel file.** Nome e cognome, titolo di
+> studio dettagliato, settore e posizione professionale sono
+> **derivazioni**: si calcolano quando servono, deterministicamente
+> dall'`uid`, e non finiscono in nessun CSV né nel bundle. Questo
+> documento descrive ciò che il file contiene; per le derivazioni vedi
+> §2.4 e `note/fonti_e_pacchetto_v8.md`.
 
 *Questa versione sostituisce tutte le precedenti.*
 
@@ -262,6 +269,59 @@ righe**. Usare `DataFrame.corr(min_periods=...)`, e vedere §11.
   scarsità complessiva ma distribuzione;
 - `convivenza`: sezione fittizia `888888x`. **Nessun indirizzo**,
   coordinate = centroide della zona.
+
+---
+
+### 2.4 Attributi derivati — esistono, ma non sono nel file
+
+Quattro attributi si possono ottenere per ogni individuo e **non stanno
+in nessuna colonna**: si calcolano al momento, deterministicamente
+dall'`uid`, e non finiscono né nel CSV né nel bundle del visualizzatore.
+
+| attributo | modulo | condizionato su | fonte |
+|---|---|---|---|
+| nome, cognome | `gsp.nomi` | sesso, background, origine dei genitori, paese | anagrafiche comunali, repertori per paese |
+| titolo di studio dettagliato | `gsp.istruzione` | istruzione, sesso, coorte | censimento 2011, 458 modalità |
+| settore × posizione professionale | `gsp.lavoro` | sesso, comune | censimento 2011, 21 sezioni × 6 profili |
+
+```python
+import gsp.individui as I
+d = I.campione("034027", {"quartiere": "Cittadella"}, n=20,
+               dettaglio="narrativo")
+print(I.scheda(d.iloc[0], anagrafica=True))
+```
+
+```
+Maria Bruni — Via Ugo La Malfa, Cittadella
+  45 anni · donna · laurea magistrale in medicina e chirurgia
+  dipendente, sanità e assistenza sociale
+```
+
+**Perché non sono nel file.** Sono funzioni deterministiche di attributi
+già presenti: non aggiungono informazione, ma rendono un record
+riconoscibile come *persona* invece che come profilo statistico. Il
+determinismo sostituisce la memorizzazione — dallo stesso `uid` esce
+sempre lo stesso valore, quindi un campione è riproducibile e citabile
+senza che nulla sia scritto su disco.
+
+È anche la ragione per cui il bundle pubblico non li porta: la stessa
+proprietà che li rende utili in una presentazione li renderebbe
+problematici in un archivio scaricabile. Vedi
+`note/piano_trattamento_v2.md` §3.1.
+
+**Perché a valle e non nel MaxEnt.** Non è una scelta di comodità ma il
+risultato di una misura: un attributo va nello spazio degli stati solo se
+la sua struttura — tipicamente geografica — non è deducibile da ciò che
+c'è già. Il criterio è la distanza in variazione totale fra composizione
+condizionata e marginale (`gsp.tvd`), e per questi attributi dice
+chiaramente «a valle».
+
+Il livello **K10C**, che includeva il settore economico fra le variabili
+vincolate, è il controesempio: trentasette milioni di stati contro
+69.888, una catena di Gibbs riducibile per gli zeri strutturali del
+blocco `MC`, e un vincolo che condiziona sul sesso ignorando
+l'istruzione, che è tre volte più informativa. Resta come materiale
+sperimentale, escluso dalla produzione.
 
 ---
 
@@ -1903,6 +1963,13 @@ condizionato sugli individui a rischio, dato bin e titolo.
    le 26 esclusioni α=0 di §14.2.
 
 ## Changelog
+
+
+**v2.2 — 05/08/2026, ritocchi**
+Il file di popolazione **non è cambiato**: le derivazioni non aggiungono
+colonne. Aggiunta §2.4 sugli attributi che esistono ma non stanno nel
+CSV, e aggiornati i rimandi alle note (`fonti_e_pacchetto_v8`, il registro
+a 37 fonti).
 
 
 **v2.2 — 02/08/2026**

@@ -1,5 +1,0 @@
-Sul lavoro sui donatori, riassumo cosa serve per quando ci tornerai — sono tre cose che si ottengono tutte dalla stessa modifica:
-
-Donatori estratti distinti, che non è mai stato stampato. Chiude lo scarto fra firme e donatori dichiarati.
-La maschera a 100 in validazione 2 va calcolata sugli estratti, non sui disponibili. Oggi n_don = ok.T @ ok conta i donatori validi nel pool: una coppia che poggia su 400 disponibili ma 60 effettivamente pescati passa il filtro e non dovrebbe. È lo stesso principio della normalizzazione contro l'ipotesi nulla, applicato al posto giusto.
-Il conteggio delle collisioni diventa misurato invece che stimato: donatori estratti distinti meno firme distinte.

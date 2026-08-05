@@ -60,3 +60,9 @@ fonti/norm/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# chiavi: non devono MAI stare qui
+.env
+*.key
+*_secret*
+secrets.*

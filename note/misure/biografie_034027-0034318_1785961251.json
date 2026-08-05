@@ -1,0 +1,122 @@
+{
+ "uid": "034027-0034318",
+ "comune": "034027",
+ "modello": "deepseek/deepseek-chat",
+ "temperatura": 1.0,
+ "momento": "2026-08-05T22:20:51",
+ "profilo": {
+  "A": {
+   "nome": "Laura Cintolesi",
+   "eta": 53,
+   "sesso": "donna",
+   "stato_civile": "divorziato sciolto",
+   "quartiere": "San Pancrazio",
+   "via": "Via Giuseppe Mori",
+   "cittadinanza": "italiana",
+   "paese di cittadinanza": null,
+   "condizione": "occupato"
+  },
+  "B": {
+   "titolo_studio": "laurea magistrale in lingue e letteratura",
+   "settore": "sanità e assistenza sociale",
+   "posizione": "dipendente"
+  },
+  "AVQ": {
+   "salute percepita (1 molto bene – 5 molto male)": 3,
+   "malattie croniche (1 sì, 2 no)": 2,
+   "abitudine al fumo (1 sì, 2 ex, 3 mai)": 3,
+   "indice di salute mentale (0–100, alto = meglio)": 0,
+   "indice di massa corporea": 3,
+   "soddisfazione per l'ambiente della zona (1 molto – 4 per niente)": 2,
+   "fiducia interpersonale (1 la gente è degna di fiducia, 2 mai troppa prudenza)": 1,
+   "fiducia nei medici del SSN (0–10)": 7,
+   "fiducia negli infermieri del SSN (0–10)": 7,
+   "fiducia nel governo comunale (0–10)": 2,
+   "fiducia nel governo regionale (0–10)": 3,
+   "fiducia nel Parlamento italiano (0–10)": 4,
+   "fiducia nel sistema giudiziario (0–10)": 8,
+   "fiducia nelle forze dell'ordine (0–10)": 8,
+   "fiducia nei partiti politici (0–10)": 4,
+   "fiducia nei vigili del fuoco (0–10)": 9
+  }
+ },
+ "profilo_testo": "DATI ANAGRAFICI (vincolati dalla popolazione sintetica)\n  nome: Laura Cintolesi\n  eta: 53\n  sesso: donna\n  stato_civile: divorziato sciolto\n  quartiere: San Pancrazio\n  via: Via Giuseppe Mori\n  cittadinanza: italiana\n  condizione: occupato\n\nISTRUZIONE E LAVORO (attribuiti da distribuzioni censuarie condizionate)\n  titolo_studio: laurea magistrale in lingue e letteratura\n  settore: sanità e assistenza sociale\n  posizione: dipendente\n\nRISPOSTE A UN'INDAGINE SU SALUTE, BENESSERE E FIDUCIA\n  salute percepita (1 molto bene – 5 molto male): 3\n  malattie croniche (1 sì, 2 no): 2\n  abitudine al fumo (1 sì, 2 ex, 3 mai): 3\n  indice di salute mentale (0–100, alto = meglio): 0\n  indice di massa corporea: 3\n  soddisfazione per l'ambiente della zona (1 molto – 4 per niente): 2\n  fiducia interpersonale (1 la gente è degna di fiducia, 2 mai troppa prudenza): 1\n  fiducia nei medici del SSN (0–10): 7\n  fiducia negli infermieri del SSN (0–10): 7\n  fiducia nel governo comunale (0–10): 2\n  fiducia nel governo regionale (0–10): 3\n  fiducia nel Parlamento italiano (0–10): 4\n  fiducia nel sistema giudiziario (0–10): 8\n  fiducia nelle forze dell'ordine (0–10): 8\n  fiducia nei partiti politici (0–10): 4\n  fiducia nei vigili del fuoco (0–10): 9",
+ "sistema": "Scrivi biografie brevi di persone italiane, in italiano, per\nun progetto di ricerca sulle popolazioni sintetiche.\n\nREGOLE, in ordine di importanza.\n\n1. I dati che ricevi sono VINCOLI, non suggerimenti: non contraddirli,\n   non modificarli, non arrotondarli. Se una persona ha 47 anni, ne ha\n   47.\n\n2. NON elencare i valori numerici e non tradurli meccanicamente. «Ha\n   fiducia 3 nel Comune» e «ha poca fiducia nel Comune» sono entrambi\n   sbagliati: il primo e' una tabella, il secondo una parafrasi. Un\n   atteggiamento si mostra in cosa una persona fa, dice o evita, non si\n   dichiara.\n\n3. Puoi aggiungere dettagli plausibili che i dati non contengono —\n   abitudini, oggetti, luoghi, piccoli fatti. DEVI marcarli fra\n   parentesi quadre, cosi': [va al mercato il sabato]. Sono la parte\n   inventata e chi legge deve poterla distinguere.\n\n4. Non inventare familiari, redditi o datori di lavoro con nomi propri.\n\n5. Da otto a dodici righe. Prosa, senza elenchi e senza titoli.\n\nScrivi una persona, non un profilo.",
+ "richiesta": "Ecco i dati di un individuo sintetico.\n\n{profilo}\n\nScrivine una breve biografia seguendo le regole.",
+ "biografie": [
+  "Laura Cintolesi vive a San Pancrazio, in via Giuseppe Mori, da quasi vent’anni. Laureata in lingue e letteratura, lavora nel settore sanitario come dipendente, forse in un ufficio amministrativo o come mediatrice linguistica [dove a volte traduce documenti per pazienti stranieri]. Non fumatrice, ha un rapporto complicato con la sua salute: non soffre di patologie croniche, ma nemmeno si sente in forma. [Tende a rimandare gli esami di controllo.]  \n\nPur critica verso la politica — ha poca fiducia nel Comune e nella Regione — crede fermamente nelle istituzioni: stima i vigili del fuoco, le forze dell’ordine e la magistratura. Con i medici e gli infermieri è più cauta, pur riconoscendone il valore. [Quando parla del SSN, sospira: \"Potrebbero ascoltarci di più\".]  \n\nAma il suo quartiere, anche se qualche sera [mentre rientra dal lavoro] nota sporcizia ai bordi delle strade. Nonostante tutto, sorride ancora agli sconosciuti: \"La maggior parte della gente è buona\", ripete. [Conserva una vecchia edizione delle poesie di Saba sul comodino.]",
+  "Laura Cintolesi, 53 anni, vive nel quartiere San Pancrazio, in una tranquilla via che si affaccia su un parco alberato. Laureata magistrale in lingue e letteratura, lavora da anni nel settore della sanità e dell’assistenza sociale come dipendente, un ruolo che le permette di mettere a frutto la sua preparazione e il suo interesse per gli altri. Pur essendo in salute e senza problemi fisici gravi, vive momenti di forte disagio interiore, che la portano a riflettere spesso sulla sua condizione [passa molte serate in solitudine, ascoltando musica classica o leggendo romanzi]. Non ha mai fumato e cerca di mantenere uno stile di vita equilibrato, anche se il peso è fonte di qualche preoccupazione.\n\nLaura si trova a proprio agio nel suo quartiere, apprezzandone l’ambiente vivibile e le piccole occasioni di socialità [talvolta si ferma a chiacchierare con i vicini durante le passeggiate serali]. Ha una fiducia marcata nel sistema sanitario, in particolare negli infermieri e nei medici, ma guarda con scetticismo alle istituzioni politiche, giudicate spesso distanti dalle esigenze concrete delle persone. Al contrario, nutre grande rispetto per le forze dell’ordine e i vigili del fuoco, che considera pilastri della vita civile. Pur essendo naturalmente aperta e disponibile al dialogo, negli ultimi tempi ha sviluppato una certa diffidenza verso il mondo esterno, cercando di preservare i suoi spazi di tranquillità. [Durante i weekend, quando non lavora, si dedica alla cura del suo piccolo giardino, luogo che considera un rifugio sicuro.]",
+  "Laura Cintolesi vive nel quartiere San Pancrazio, in Via Giuseppe Mori. Cinquantatreenne divorziata, ha una laurea magistrale in lingue e letteratura, ma lavora nel settore della sanità e dell’assistenza sociale come dipendente. Salute fisica discreta, senza malattie croniche, non ha mai fumato, ma mostra evidenti segni di disagio mentale, forse legati al lavoro o alla solitudine. [Passa le sere a leggere romanzi in lingua originale, spesso con una tazza di tè.]  \n\nSi trova abbastanza soddisfatta dell’ambiente del suo quartiere, anche se lamenta qualche problema di decoro urbano. Ha una certa fiducia nelle persone, tendendo a credere nel buono degli altri. Apprezza i professionisti del SSN, medici e infermieri, ma ha scarso riguardo per il governo comunale e regionale, che considera distanti dalle sue esigenze.  \n\nPur non avendo molta stima nei partiti politici, crede nel sistema giudiziario e nelle forze dell’ordine, che vede come presidi di giustizia. I vigili del fuoco, invece, sono per lei un punto di riferimento sicuro. [Ogni volta che sente le sirene, pensa a quanto siano indispensabili.] Laura è una donna pragmatica, che cerca di vivere con equilibrio, ma il suo sguardo sul mondo è spesso segnato da un velo di sfiducia verso chi dovrebbe rappresentarla."
+ ],
+ "uso": [
+  {
+   "prompt_tokens": 797,
+   "completion_tokens": 299,
+   "total_tokens": 1096,
+   "cost": 0.0007075,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0007075,
+    "upstream_inference_prompt_cost": 0.0003188,
+    "upstream_inference_completions_cost": 0.0003887
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  },
+  {
+   "prompt_tokens": 797,
+   "completion_tokens": 401,
+   "total_tokens": 1198,
+   "cost": 0.00061193,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00061193,
+    "upstream_inference_prompt_cost": 0.00025504,
+    "upstream_inference_completions_cost": 0.00035689
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  },
+  {
+   "prompt_tokens": 797,
+   "completion_tokens": 346,
+   "total_tokens": 1143,
+   "cost": 0.00056298,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00056298,
+    "upstream_inference_prompt_cost": 0.00025504,
+    "upstream_inference_completions_cost": 0.00030794
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ ]
+}

@@ -1,0 +1,123 @@
+{
+ "uid": "037006-0335257",
+ "comune": "037006",
+ "seed": 62216,
+ "modello": "deepseek/deepseek-chat",
+ "temperatura": 1.0,
+ "momento": "2026-08-05T22:37:38",
+ "profilo": {
+  "A": {
+   "nome": "Claudio Lo Coco",
+   "eta": 43,
+   "sesso": "uomo",
+   "stato_civile": "coniugato unito",
+   "quartiere": "Corticella",
+   "via": "Via Delle Fonti",
+   "cittadinanza": "italiana",
+   "paese di cittadinanza": null,
+   "condizione": "occupato"
+  },
+  "B": {
+   "titolo_studio": "laurea magistrale in ingegneria meccanica, elettrotecnica, chimica, industriale, elettrica e aeronautica",
+   "settore": "costruzioni",
+   "posizione": "lavoratore in proprio"
+  },
+  "AVQ": {
+   "salute percepita (1 molto bene – 5 molto male)": 2,
+   "malattie croniche (1 sì, 2 no)": 1,
+   "abitudine al fumo (1 sì, 2 ex, 3 mai)": 3,
+   "indice di salute mentale (0–100, alto = meglio)": 76,
+   "indice di massa corporea": 3,
+   "soddisfazione per l'ambiente della zona (1 molto – 4 per niente)": 2,
+   "fiducia interpersonale (1 la gente è degna di fiducia, 2 mai troppa prudenza)": 1,
+   "fiducia nei medici del SSN (0–10)": 8,
+   "fiducia negli infermieri del SSN (0–10)": 8,
+   "fiducia nel governo comunale (0–10)": 3,
+   "fiducia nel governo regionale (0–10)": 5,
+   "fiducia nel Parlamento italiano (0–10)": 7,
+   "fiducia nel sistema giudiziario (0–10)": 3,
+   "fiducia nelle forze dell'ordine (0–10)": 7,
+   "fiducia nei partiti politici (0–10)": 3,
+   "fiducia nei vigili del fuoco (0–10)": 10
+  }
+ },
+ "profilo_testo": "DATI ANAGRAFICI (vincolati dalla popolazione sintetica)\n  nome: Claudio Lo Coco\n  eta: 43\n  sesso: uomo\n  stato_civile: coniugato unito\n  quartiere: Corticella\n  via: Via Delle Fonti\n  cittadinanza: italiana\n  condizione: occupato\n\nISTRUZIONE E LAVORO (attribuiti da distribuzioni censuarie condizionate)\n  titolo_studio: laurea magistrale in ingegneria meccanica, elettrotecnica, chimica, industriale, elettrica e aeronautica\n  settore: costruzioni\n  posizione: lavoratore in proprio\n\nRISPOSTE A UN'INDAGINE SU SALUTE, BENESSERE E FIDUCIA\n  salute percepita (1 molto bene – 5 molto male): 2\n  malattie croniche (1 sì, 2 no): 1\n  abitudine al fumo (1 sì, 2 ex, 3 mai): 3\n  indice di salute mentale (0–100, alto = meglio): 76\n  indice di massa corporea: 3\n  soddisfazione per l'ambiente della zona (1 molto – 4 per niente): 2\n  fiducia interpersonale (1 la gente è degna di fiducia, 2 mai troppa prudenza): 1\n  fiducia nei medici del SSN (0–10): 8\n  fiducia negli infermieri del SSN (0–10): 8\n  fiducia nel governo comunale (0–10): 3\n  fiducia nel governo regionale (0–10): 5\n  fiducia nel Parlamento italiano (0–10): 7\n  fiducia nel sistema giudiziario (0–10): 3\n  fiducia nelle forze dell'ordine (0–10): 7\n  fiducia nei partiti politici (0–10): 3\n  fiducia nei vigili del fuoco (0–10): 10",
+ "sistema": "Scrivi biografie brevi di persone italiane, in italiano, per\nun progetto di ricerca sulle popolazioni sintetiche.\n\nREGOLE, in ordine di importanza.\n\n1. I dati che ricevi sono VINCOLI, non suggerimenti: non contraddirli,\n   non modificarli, non arrotondarli. Se una persona ha 47 anni, ne ha\n   47.\n\n2. NON elencare i valori numerici e non tradurli meccanicamente. «Ha\n   fiducia 3 nel Comune» e «ha poca fiducia nel Comune» sono entrambi\n   sbagliati: il primo e' una tabella, il secondo una parafrasi. Un\n   atteggiamento si mostra in cosa una persona fa, dice o evita, non si\n   dichiara.\n\n3. Puoi aggiungere dettagli plausibili che i dati non contengono —\n   abitudini, oggetti, luoghi, piccoli fatti. DEVI marcarli fra\n   parentesi quadre.\n\n   Si marca tutto cio' che un'altra biografia della stessa persona\n   potrebbe raccontare diversamente:\n     «[va al mercato il sabato]»           inventato, si marca\n     «[ha due figli grandi]»               inventato, si marca\n     «[da vent'anni nello stesso reparto]» inventato, si marca\n   Non si marca cio' che i dati dicono, ne' le conseguenze necessarie:\n     «vive a Cittadella»                   e' nei dati\n     «ha finito l'universita'»             segue dal titolo di studio\n   Nel dubbio, marca.\n\n4. Non inventare datori di lavoro con nomi propri ne' redditi.\n\n5. Il SETTORE e la POSIZIONE sono vincoli; la mansione precisa non c'e'\n   nei dati. Se la immagini, marcala fra parentesi quadre come gli altri\n   dettagli inventati. NON usare «forse», «probabilmente», «potrebbe\n   essere»: un condizionale nel testo fa sembrare che sia la persona a\n   non sapere cosa fa, che e' un'altra cosa. Meglio\n   «[si occupa di accettazione al pronto soccorso]» che «lavora nel\n   settore sanitario, forse come amministrativa».\n\n6. Da otto a dodici righe. Prosa, senza elenchi e senza titoli.\n\nScrivi una persona, non un profilo.",
+ "richiesta": "Ecco i dati di un individuo sintetico.\n\n{profilo}\n\nScrivine una breve biografia seguendo le regole.",
+ "biografie": [
+  "Claudio Lo Coco vive a Corticella, in Via Delle Fonti, con la moglie. Ingegnere meccanico di formazione, lavora in proprio nel settore delle costruzioni [dove segue soprattutto progetti di ristrutturazione]. Non ha mai fumato e tiene alla sua forma fisica, anche se convive con una patologia cronica che gestisce senza troppi problemi, grazie alla fiducia che ripone nei medici e negli infermieri del servizio sanitario.  \n\nConsidera il suo quartiere un posto vivibile, anche se non perfetto, e tende a vedere il buono nelle persone che incontra. [La domenica lo si vede spesso al bar sotto casa, dove legge il giornale commentando le notizie politiche con gli amici.] Ha un’opinione contrastante delle istituzioni: stima i vigili del fuoco senza riserve e rispetta le forze dell’ordine, ma guarda con scetticismo al Comune e alla giustizia. In Parlamento, però, crede ancora, almeno più che nei partiti.  \n\n[Quando non lavora, gli piace armeggiare con motori d’auto vintage nel box condominiale.]",
+  "Claudio Lo Coco vive a Corticella, in una casa di Via Delle Fonti dove abita con la moglie. Ingegnere meccanico con studio proprio, [gestisce piccoli cantieri edili nella periferia bolognese]. Non fuma, tiene alla forma fisica [anche se l’artrosi alle ginocchia lo costringe a rinunciare alla corsa], e considera i vigili del fuoco l’unica istituzione perfetta. Al bar sotto casa, dove [l’hanno soprannominato “il Professore”], discute di politica con pragmatismo: vota per dovere ma sbeffeggia il Comune, mentre difende il Parlamento come male minore. [La domenica lo trovi al Leroy Merlin con gli amici muratori], a scegliere viti come se fossero componenti aeronautici.",
+  "Claudio Lo Coco vive con la moglie nella zona di Corticella, a Bologna, lungo Via Delle Fonti. A 43 anni, laureato in ingegneria meccanica, lavora in proprio nel settore delle costruzioni, [gestendo progetti di ristrutturazione e costruzione di abitazioni civili]. Non fuma e, nonostante soffra di una malattia cronica, si considera in buona salute e mantiene un equilibrio fisico e mentale discretamente stabile. [Passa spesso il tempo libero in famiglia, dedicandosi alla cucina e alla manutenzione della casa].  \n\nIl quartiere in cui vive lo soddisfa, anche se nutre scarso entusiasmo per le istituzioni locali, come il governo comunale, verso cui dimostra una fiducia molto limitata. Al contrario, ha un forte rispetto per i vigili del fuoco, a cui attribuisce un totale affidamento, e una buona fiducia nel Parlamento italiano e nelle forze dell’ordine. Nel sistema sanitario pubblico ripone molta fiducia, specie nei medici e negli infermieri, ai quali si rivolge regolarmente per il trattamento della sua condizione cronica. Claudio è una persona che tende a vedere il buono negli altri, convinto che la gente sia degna di fiducia, anche se [questa apertura lo ha portato a qualche delusione nel passato]."
+ ],
+ "uso": [
+  {
+   "prompt_tokens": 1069,
+   "completion_tokens": 271,
+   "total_tokens": 1340,
+   "cost": 0.0007799,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0007799,
+    "upstream_inference_prompt_cost": 0.0004276,
+    "upstream_inference_completions_cost": 0.0003523
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  },
+  {
+   "prompt_tokens": 1069,
+   "completion_tokens": 201,
+   "total_tokens": 1270,
+   "cost": 0.0006889,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0006889,
+    "upstream_inference_prompt_cost": 0.0004276,
+    "upstream_inference_completions_cost": 0.0002613
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  },
+  {
+   "prompt_tokens": 1069,
+   "completion_tokens": 313,
+   "total_tokens": 1382,
+   "cost": 0.00062065,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.00062065,
+    "upstream_inference_prompt_cost": 0.00034208,
+    "upstream_inference_completions_cost": 0.00027857
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ ]
+}

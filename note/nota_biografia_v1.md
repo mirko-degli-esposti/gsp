@@ -166,6 +166,8 @@ Il modo per rendere questa affermazione visibile invece che dichiarata è
 Quello che resta uguale è il livello A; quello che cambia è il livello C.
 Nessuna spiegazione lo comunica altrettanto bene.
 
+Provato il 5/8/2026: non funziona come previsto. Tre generazioni indipendenti a temperatura 1,0 dallo stesso profilo producono testi diversi ma molto simili — il profilo vincola troppo perché lo spazio narrativo residuo sia visibile. La regola resta vera e va dichiarata invece che mostrata. Il risultato negativo è però informativo in altra direzione: se tre generazioni convergono, un persona-prompt non lascia al modello lo spazio di inventare la persona, che per un uso simulativo conta più della varietà.
+
 ---
 
 ## 5. I tre livelli di certezza

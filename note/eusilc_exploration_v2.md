@@ -176,6 +176,8 @@ dataset.
 L'anomalia viene trattata come proprietà del Public Use File e non di
 EU-SILC.
 
+RB030 non è univoco nel PUF. Per il join R–P viene usata una chiave composita costituita da identificativo personale sorgente, anno di nascita e sesso. Una chiave tecnica di riga resta comunque necessaria come identificativo interno univoco.
+
 ---
 
 ### Decisione D002

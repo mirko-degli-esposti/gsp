@@ -96,8 +96,18 @@ Ventuno sezioni, somma 1,000.
 | istruzione, titoli rari | 0,31 – 0,49 |
 | sesso | 0,152 – 0,188 |
 | comune vs regione | 0,029 – 0,159 |
-| età, 30-55 anni | 0,03 – 0,08 |
-| età, 20-24 e 60-64 | 0,12 – 0,20 |
+| età, 12 classi quinquennali | 0,03 – 0,27 (mediana 0,10) |
+
+**L'età non è trascurabile come la v3 lasciava intendere.** Misurata
+sulle dodici classi quinquennali standard, la mediana è 0,10 —
+comparabile al sesso (0,153) — e il massimo la supera. La variazione è
+concentrata agli estremi: sotto i 25 anni e sopra i 60, dove i giovani si
+addensano in commercio e ristorazione e gli anziani nei settori in
+uscita. Nella fascia centrale resta sotto 0,08.
+
+*La misura precedente riportava solo l'intervallo centrale, e la
+conclusione «l'età non conta» era quindi più forte di quanto i dati
+sostenessero.*
 
 Il dettaglio per titolo, con la numerosità che dice quanto fidarsi:
 
@@ -260,9 +270,17 @@ P(ateco, profilo | sesso, regione)     Rimini, Ferrara, Forlì, Piacenza,
 
 Cascata dichiarata, come i tier del paese di cittadinanza.
 
-**Niente età**: fra i 30 e i 55 non porta nulla (TVD 0,03-0,08). Semmai
-tre bin — giovani, centrali, anziani — dove i centrali sono uno solo, e
-il «non serve nel mezzo» è esso stesso un risultato da dichiarare.
+**L'età andrebbe condizionata in tre bin**, non ignorata: giovani (sotto
+i 25), centrali (25-59), anziani (60 e oltre). La variazione dentro la
+fascia centrale è sotto 0,08 e non giustifica distinzioni più fini, ma
+quella fra le tre fasce arriva a 0,27 — comparabile al sesso, che invece
+si condiziona.
+
+**Il modulo `gsp.lavoro` NON lo fa**, ed è un limite noto: i ventenni
+ricevono la distribuzione settoriale di tutti gli occupati. L'effetto è
+attenuato ma non annullato dalla riponderazione per titolo, perché i
+giovani hanno una distribuzione di titoli diversa. Da sistemare, e la
+misura per decidere se sia bastato c'è già.
 
 **Niente titolo di studio**, per quanto sopra. È la perdita che fa più
 male ed è quella che la §9 prova a recuperare.
@@ -317,6 +335,11 @@ della manifattura.
 **La tavola comunale `DICA_CARATT_ATTL_COM` non serve**: copre tutti gli
 8.230 comuni ma con sette sole categorie (totale, industria, servizi, più
 quattro aggregati), senza istruzione.
+
+- **`gsp.lavoro` non condiziona sull'età.** Con TVD fino a 0,27 sulle
+  classi estreme, i ventenni ricevono la distribuzione settoriale dei
+  cinquantenni. La correzione è tre bin — giovani, centrali, anziani —
+  e va verificato che la tavola pubblichi l'incrocio a quel livello.
 
 ---
 

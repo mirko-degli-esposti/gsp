@@ -146,10 +146,10 @@ del sistema — K10C — lo prevedeva già.
 
 | dimensione | TVD |
 |---|---|
-| istruzione | 0,105 – 0,390 |
-| sesso | 0,152 – 0,188 |
+| istruzione | 0,149 – 0,512 (mediana 0,346) |
+| età, 12 classi quinquennali | 0,03 – 0,27 (mediana 0,10) |
+| sesso | 0,130 – 0,177 (mediana 0,153) |
 | comune vs regione | 0,029 – 0,202 |
-| età, 30-55 anni | 0,03 – 0,08 |
 
 **Esito.** A valle, e la coppia settore × posizione professionale va
 estratta **insieme**: la distanza fra la congiunta e il prodotto delle

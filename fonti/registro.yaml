@@ -2001,6 +2001,14 @@ fonti:
       LA FONTE HA QUINDICI ANNI e la struttura settoriale italiana è
       cambiata: crescita dei servizi digitali, contrazione della
       manifattura.
+      # nella scheda, campo bias
+      LA RIPONDERAZIONE NON ARRIVA AL 21,4% DEGLI OCCUPATI di Parma
+      (misurato 5/8/2026): le sette sezioni escluse dall'incrocio con il
+      titolo — D energia, E acqua e rifiuti, H trasporti, J informazione
+      e comunicazione, L immobiliare, M attività professionali, N servizi
+      alle imprese — mantengono la distribuzione indipendente dal titolo.
+      È una scheda su cinque, e sono proprio le sezioni dove il titolo
+      conterebbe di più.
     
     usabile_per: [settore_posizione_congiunta, derivazione_a_valle]
     usato_da: [gsp.lavoro]

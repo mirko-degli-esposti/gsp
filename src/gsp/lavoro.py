@@ -122,6 +122,19 @@ SESSO_CENS = {"M": "1", "F": "2", None: "9"}
 # strutturale delle AVQ.
 CONDIZIONE_OCCUPATO = {"occupato"}
 
+# Il censimento etichetta le CATEGORIE, non le persone: «dipendenti» è il
+# gruppo, ma in una scheda individuale serve il singolare. E alcune voci
+# vanno accordate al sesso.
+PROFILO_LEGGIBILE = {
+    "9":  {"M": "dipendente", "F": "dipendente"},
+    "41": {"M": "imprenditore o libero professionista",
+           "F": "imprenditrice o libera professionista"},
+    "15": {"M": "lavoratore in proprio", "F": "lavoratrice in proprio"},
+    "18": {"M": "coadiuvante familiare", "F": "coadiuvante familiare"},
+    "19": {"M": "socio di cooperativa", "F": "socia di cooperativa"},
+    "42": {"M": "parasubordinato", "F": "parasubordinata"},
+}
+
 _cache = {}
 
 
@@ -384,7 +397,9 @@ def lavoro_agente(uid, condizione=None, sesso=None, comune=None,
     i = int(rng.choice(len(d), p=p / p.sum()))
     ea, ep = etichette("ATECO_2007"), etichette("PROFILO_PROF")
     sett = ea.get(str(d.ateco.iloc[i]), str(d.ateco.iloc[i]))
-    pos = ep.get(str(d.profilo.iloc[i]), str(d.profilo.iloc[i]))
+    cod_p = str(d.profilo.iloc[i])
+    pos = (PROFILO_LEGGIBILE.get(cod_p, {}).get(sesso)
+           or ep.get(cod_p, cod_p))
     if spiega:
         return sett, pos, {"livello": d.livello.iloc[0],
                            "territorio": d.territorio.iloc[0],

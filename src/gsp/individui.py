@@ -249,6 +249,27 @@ def _proietta(d, comune, r, rng):
             # registrata la scheda resta valida, solo meno ricca
             print(f"[avviso] titoli non disponibili ({e})")
 
+        # Settore e posizione dal censimento 2011, coppia congiunta: si
+        # estraggono INSIEME perche' sono fortemente dipendenti (TVD 0,15
+        # fra congiunta e indipendenza), e separarli produrrebbe dirigenti
+        # in agricoltura.
+        #
+        # La riponderazione per titolo e' attiva SOLO qui, nei prodotti
+        # narrativi: la plausibilita' individuale conta piu' della
+        # correttezza aggregata, perche' una laureata in agricoltura si
+        # nota mentre uno scostamento del 5% su una marginale no. Nel
+        # bundle pubblico e nelle statistiche resta spenta.
+        try:
+            from gsp import lavoro as _L
+            lav = [_L.lavoro_agente(x.uid, condizione=x.get("condizione"),
+                                    sesso=x.get("sesso"), comune=comune,
+                                    istruzione=x.get("istruzione"))
+                   for _, x in d.iterrows()]
+            d["settore"] = [a for a, _ in lav]
+            d["posizione"] = [b for _, b in lav]
+        except Exception as e:                              # noqa: BLE001
+            print(f"[avviso] settore e posizione non disponibili ({e})")
+
     if r["coord"] == "randomizzate" and {"lon", "lat", "sezione"} <= set(d.columns):
         # Punto casuale nel rettangolo dei civici della sezione. NON si
         # perde niente: l'assegnazione al civico e' gia' arbitraria dentro
@@ -319,10 +340,27 @@ def _numero(x):
         return x
 
 
+def _tronca(t, n=76):
+    """Taglia a parola intera: «scientifiche e t» e' peggio di una riga
+    lunga."""
+    t = str(t).strip()
+    if len(t) <= n:
+        return t
+    corto = t[:n].rsplit(" ", 1)[0]
+    return (corto or t[:n]).rstrip(" ,;") + "…"
+
+
 def scheda(riga, variabili=("PUNTIFI10", "PUNTIFI8", "FIDMED", "VOTOUSL",
-                            "AMBIENTE", "SALUTE", "MH")):
+                            "AMBIENTE", "SALUTE", "MH"),
+           anagrafica=False):
     """Una scheda leggibile. Deterministica, senza LLM: e' il punto di
-    partenza per una biografia, non la biografia."""
+    partenza per una biografia, non la biografia.
+
+    `anagrafica=True` si ferma a chi e' la persona e non stampa gli
+    attributi AVQ. Serve quando si guarda un campione per verificarne la
+    plausibilita': i valori di fiducia e salute riempiono lo schermo e
+    non aiutano a vedere se il mestiere stia col titolo di studio.
+    """
     p = []
     testa = " ".join(_capitalizza(riga[c]) for c in ("nome", "cognome")
                      if c in riga and pd.notna(riga.get(c)))
@@ -341,16 +379,36 @@ def scheda(riga, variabili=("PUNTIFI10", "PUNTIFI8", "FIDMED", "VOTOUSL",
         tit = str(riga.get("istruzione", "")).replace("_", " ")
     elif tit.isupper():
         tit = tit.capitalize()
+    
+
+    # `condizione` solo se NON c'e' il mestiere: per un occupato
+    # «dipendenti, attività manifatturiere» dice gia' tutto e «occupato»
+    # e' rumore; per un pensionato o uno studente e' l'unica informazione
+    # su quel fronte.
     riga_2 = [f"{int(eta)} anni" if pd.notna(eta) else riga.get("eta"),
               {"M": "uomo", "F": "donna"}.get(riga.get("sesso")),
-              tit,
-              str(riga.get("condizione", "")).replace("_", " ")]
+              tit]
+   
+    sett = riga.get("settore")
+    if not (isinstance(sett, str) and sett.strip()):
+        riga_2.append(str(riga.get("condizione", "")).replace("_", " "))
     p.append("  " + " · ".join(x for x in riga_2 if x))
 
     if riga.get("cittadinanza") and str(riga["cittadinanza"]) != "ITL":
         prov = riga.get("paese") or riga.get("area")
         p.append(f"  cittadinanza {riga['cittadinanza']}"
                  + (f", {prov}" if prov else ""))
+
+    # settore e posizione: solo per gli occupati, e per costruzione — per
+    # tutti gli altri sono `non_applicabile`, non mancanti
+    pos = riga.get("posizione")
+    if isinstance(sett, str) and sett.strip():
+        pezzi = [x for x in ((pos if isinstance(pos, str) and pos.strip()
+                              else None), sett) if x]
+        p.append("  " + _tronca(", ".join(pezzi)))
+
+    if anagrafica:
+        return "\n".join(p)
 
     dette, assenti = [], []
     for v in variabili:

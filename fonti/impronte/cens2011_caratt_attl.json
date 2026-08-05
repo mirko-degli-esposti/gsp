@@ -1,0 +1,111 @@
+{
+  "byte": 45680636,
+  "decili": [
+    585.6,
+    1818.8000000000002,
+    6377.999999999998,
+    12492.800000000003,
+    26170.0,
+    89399.99999999994,
+    179336.8,
+    698864.4000000001,
+    147425359.59999982
+  ],
+  "diagnostica": {
+    "byte_non_compressi": 845778978.0,
+    "date_contenuto": [
+      "2025-10-20",
+      "2025-10-23"
+    ],
+    "file_maggiore": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_CARATT_ATTL-data-it.csv",
+    "file_nell_archivio": 19,
+    "modalita": 19,
+    "n_misurato": 19.0,
+    "rapporto_compressione": 0.054
+  },
+  "hapax": 0,
+  "id": "cens2011_caratt_attl",
+  "modalita": 19,
+  "n_misurato": 19.0,
+  "peso_max": 388549424.0,
+  "peso_min": 170.0,
+  "sha256": "111272116ef8bb1f1d66f27411bfb853e9dc2fb847debb41e20bb01fd931f11c",
+  "testa": [
+    {
+      "chiave": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_CARATT_ATTL-data-it.csv",
+      "peso": 388549424.0
+    },
+    {
+      "chiave": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_CARATT_ATTL-data-en.csv",
+      "peso": 361145310.0
+    },
+    {
+      "chiave": "CSV - DATI SOLO CODICI - DATA ONLY CODES/DICA_CARATT_ATTL-data.csv",
+      "peso": 93995372.0
+    },
+    {
+      "chiave": "METADATA/DimITTER107-data.csv",
+      "peso": 1032408.0
+    },
+    {
+      "chiave": "METADATA/DimATECO_2007-data.csv",
+      "peso": 476502.0
+    },
+    {
+      "chiave": "METADATA/DICA_CARATT_ATTL-lower-20251020180647.xls",
+      "peso": 186880.0
+    },
+    {
+      "chiave": "METADATA/DimTIME-data.csv",
+      "peso": 168022.0
+    },
+    {
+      "chiave": "METADATA/DimISO1-data.csv",
+      "peso": 99590.0
+    },
+    {
+      "chiave": "METADATA/DICA_CARATT_ATTL-topmeta-20251020180647.xls",
+      "peso": 48640.0
+    },
+    {
+      "chiave": "METADATA/DimETA1-data.csv",
+      "peso": 26170.0
+    },
+    {
+      "chiave": "METADATA/DimTIPO_DATO_CENS_POP-data.csv",
+      "peso": 22912.0
+    },
+    {
+      "chiave": "METADATA/DimTITOLO_STUDIO-data.csv",
+      "peso": 9888.0
+    },
+    {
+      "chiave": "METADATA/DimDURATA-data.csv",
+      "peso": 8022.0
+    },
+    {
+      "chiave": "METADATA/DimPROFILO_PROF-data.csv",
+      "peso": 5282.0
+    },
+    {
+      "chiave": "METADATA/DimOCCUPAZIONE-data.csv",
+      "peso": 2194.0
+    },
+    {
+      "chiave": "METADATA/DimSTATCIV2-data.csv",
+      "peso": 1256.0
+    },
+    {
+      "chiave": "METADATA/DimREGIME_ORARIO-data.csv",
+      "peso": 664.0
+    },
+    {
+      "chiave": "METADATA/DimCARATT_OCC-data.csv",
+      "peso": 272.0
+    },
+    {
+      "chiave": "METADATA/DimSEXISTAT1-data.csv",
+      "peso": 170.0
+    }
+  ]
+}

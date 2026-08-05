@@ -358,6 +358,39 @@ ABBREVIAZIONI = {
 # senza nome.
 ECCEZIONI = {
     "artistica": "istituto d'arte",
+    # la dicitura censuaria e' lunghissima in una riga anagrafica, e
+    # l'avviamento professionale e' gia' fuso nella licenza media
+    "licenza  di scuola media inferiore o di avviamento professionale":
+        "licenza media",
+    "licenza di scuola media inferiore o di avviamento professionale":
+        "licenza media",
+    "licenza di scuola elementare": "licenza elementare",
+}
+
+# «gruppo medico» -> «discipline mediche», non «discipline medico».
+# I nomi dei gruppi disciplinari sono aggettivi al maschile singolare
+# concordati con «gruppo»: cambiando il sostantivo va cambiato l'accordo,
+# e meccanicamente non si puo'.
+GRUPPI = {
+    "medico": "mediche",
+    "giuridico": "giuridiche",
+    "letterario": "letterarie",
+    "linguistico": "linguistiche",
+    "scientifico": "scientifiche",
+    "psicologico": "psicologiche",
+    "politico-sociale": "politico-sociali",
+    "agrario": "agrarie",
+    "economico-statistico": "economico-statistiche",
+    "chimico-farmaceutico": "chimico-farmaceutiche",
+    "scientifico e geo-biologico": "scientifiche e geo-biologiche",
+    "geo-biologico": "geo-biologiche",
+    "insegnamento": "dell'insegnamento",
+    "ingegneria": "di ingegneria",
+    "architettura": "di architettura",
+    "ingegneria ed architettura": "di ingegneria e architettura",
+    "educazione fisica": "di educazione fisica",
+    "difesa e sicurezza": "di difesa e sicurezza",
+    "arte e design": "di arte e design",
 }
 
 # Il ramo distingue due titoli che il censimento etichetta IDENTICI:
@@ -393,8 +426,9 @@ def _leggibile(t):
             t = t[len(pre):]
             break
     if t.lower().startswith("gruppo "):
-        t = "discipline " + t[7:]
-    t = ECCEZIONI.get(t.lower().strip(), t)
+        resto = t[7:].strip()
+        t = "discipline " + GRUPPI.get(resto.lower(), resto)
+    t = ECCEZIONI.get(" ".join(t.lower().split()), t)
     return t.strip()
 
 

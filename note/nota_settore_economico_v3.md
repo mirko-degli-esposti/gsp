@@ -216,26 +216,34 @@ parità di sesso e territorio:
 
 | territorio | TVD(congiunta, indipendenza) |
 |---|---|
-| Parma | 0,185 |
-| Bologna | 0,201 |
-| Emilia-Romagna | 0,199 |
+| Parma | 0,149 |
+| Bologna | 0,166 |
+| Emilia-Romagna | 0,156 |
+| Lombardia | 0,138 |
+| Italia | 0,156 |
 
-Stabile su tre territori diversi: non è rumore, è struttura. **Un quinto
-della massa si sposta** assumendo l'indipendenza.
+Stabile su cinque territori: non è rumore, è struttura. **Un sesto della
+massa si sposta** assumendo l'indipendenza.
 
 ### Perché vince A
 
-Le due perdite sono numericamente confrontabili — 0,19 per l'indipendenza
+Le due perdite sono numericamente confrontabili — 0,15 per l'indipendenza
 contro 0,105-0,390 per il titolo — ma **non sono confrontabili per
 visibilità**.
 
-> Una TVD di 0,19 sulla congiunta produce individui **palesemente
+> Una TVD di 0,15 sulla congiunta produce individui **palesemente
 > assurdi**: dirigenti in agricoltura, coadiuvanti familiari nella
 > pubblica amministrazione. Una TVD di 0,20 sul condizionamento produce
 > individui plausibili con proporzioni un po' storte.
 >
 > Un dirigente agricoltore lo nota chiunque. Che i laureati siano il 12%
 > invece del 18% in un settore, no.
+
+*I valori sono più bassi di quelli riportati nella v2 (0,185-0,201):
+quella misura includeva gli aggregati `22 indipendenti` e `0011 totale
+industria`, che gonfiavano la concentrazione. Con le sole foglie la
+dipendenza resta comunque cinque volte sopra la soglia di 0,03 sotto cui
+si potrebbe assumere indipendenza.*
 
 È la stessa ragione per cui l'hot-deck AVQ copia il **vettore intero**
 invece di campionare variabile per variabile: preservare le correlazioni

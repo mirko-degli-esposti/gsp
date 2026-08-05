@@ -1861,3 +1861,148 @@ fonti:
     usato_da: [gsp.nomi]
     non_usabile_per: [statistiche_onomastiche, distribuzioni,
                       igbo, hausa, altri_paesi_subsahariani]
+# Caratteristiche dell'attività lavorativa — censimento 2011.
+#
+#   grep -q "id: cens2011_caratt_attl" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/scheda_caratt_attl.yaml" >> fonti/registro.yaml
+#
+#   python scripts/riempi_sha.py
+#   python -m gsp.fonti --impronta cens2011_caratt_attl
+#   python -m gsp.fonti --verifica
+#   python -c "import gsp.lavoro as L; L.verifica()"
+
+  - id: cens2011_caratt_attl
+    ente: ISTAT
+    titolo: >-
+      Caratteristiche dell'attività lavorativa - Censimento della
+      popolazione 2011
+    url: DA_VERIFICARE
+    url_download: https://esploradati.istat.it/databrowser/DWL/censtatv5db/Popolazione/DICA_CARATT_ATTL-data.zip
+    dataflow: DF_BULK_CPO2011_DICA_CARATT_ATTL
+    data_accesso: 2026-08-05
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      ISTAT, "15° Censimento generale della popolazione e delle
+      abitazioni 2011", CC BY 4.0
+    archiviazione: locale
+    percorso: data/censimento_2011/DICA_CARATT_ATTL-data.zip
+    sha256: 111272116ef8bb1f1d66f27411bfb853e9dc2fb847debb41e20bb01fd931f11c
+    copertura: {geo: "IT, ripartizioni, regioni, 25 comuni", tempo: 2011}
+    universo: >-
+      OCCUPATI (`TIPO_DATO = EMPLP`) per caratteristiche dell'attività
+      lavorativa. Quattordici dimensioni: ATECO_2007 (1988 voci, dalle
+      sezioni alle sottocategorie), PROFILO_PROF, OCCUPAZIONE, ETA1,
+      TITOLO_STUDIO, SEXISTAT1, STATCIV2, ISO1, ITTER107, REGIME_ORARIO,
+      CARATT_OCC, DURATA.
+      Il registro la usa per la COPPIA CONGIUNTA settore × posizione
+      professionale, condizionata su sesso e territorio: 21 sezioni
+      ATECO × 6 profili × 2 sessi, con tutte le altre dimensioni al
+      totale. A Parma 246 celle su 294 possibili, nessuna a zero,
+      mediana 78 occupati.
+      I sei profili sono una partizione vera: dipendenti · imprenditore e libero professionista · 
+      lavoratore in proprio · coadiuvante familiare · socio di cooperativa · parasubordinato.
+      Molto meglio del `dipendente/indipendente` a due modalità di
+      `c9_sex_posizione_prof.csv`, che questa scheda rende superfluo.
+    unita: individuo occupato
+    normalizzatore: archivio_zip
+    prodotto_da: null
+    anomalie:
+      - >-
+        il file dati è UTF-8 SENZA intestazione: le quattordici dimensioni
+        vanno identificate dai VALORI, confrontandoli con le codelist del
+        pacchetto METADATA. Assegnarle a occhio ha già prodotto un errore
+        — `OCCUPAZIONE` letta come `ATECO_2007`, perché entrambe hanno
+        codici alfabetici — e tutte le misure sono state rifatte. Il
+        metodo corretto è per contenimento: l'insieme dei valori di una
+        colonna deve essere sottoinsieme di una sola codelist.
+      - >-
+        I CODICI «TOTALE» NON SONO UNIFORMI fra dimensioni: `ALL` per
+        occupazione e cittadinanza, `99` per profilo, titolo e stato
+        civile, `0010` per ateco, `9` per sesso e regime orario, `TOTAL`
+        per durata. Chi ne assume uno solo filtra via tutto.
+      - >-
+        L'INCROCIO SETTORE × TITOLO DI STUDIO a livello comunale esiste
+        SOLO per la sezione A, agricoltura (verificato 5/8/2026: con
+        titolo specificato le sezioni disponibili nei sei comuni sono
+        `['A']`, con titolo al totale sono tutte e ventuno). Sarebbe
+        stato il condizionamento più informativo — TVD 0,105-0,390 — ed è
+        la ragione per cui la derivazione usa sesso e comune invece del
+        titolo.
+      - >-
+        Stessa forma, altro punto: alcuni titoli di studio hanno UN SOLO
+        supporto pubblicato, sempre agricoltura, e davano TVD di 0,954 —
+        vicinissima al massimo teorico. Non era un segnale ma un
+        artefatto: confrontare una composizione su 1 supporto con una su
+        21 non misura nulla. Contare i supporti PRIMA di confrontare le
+        distanze.
+      - >-
+        SETTE SEZIONI SU VENTUNO non sono incrociate con il titolo di
+        studio: D energia, E acqua e rifiuti, H trasporti, J informazione
+        e comunicazione, L immobiliare, M attività professionali, N
+        servizi alle imprese. Sono il 15,9% degli occupati e includono i
+        servizi digitali e professionali, dove i laureati si concentrano:
+        le TVD misurate per l'istruzione sono quindi un LIMITE INFERIORE.
+      - >-
+        `OCCUPAZIONE` (11 grandi gruppi CP — «attività operaia
+        qualificata», «lavoro esecutivo d'ufficio») sarebbe la variabile
+        più forte per una biografia, ma ha solo 1.208 righe con valore
+        specificato e NESSUN comune. Utilizzabile al più come
+        `P(occup | istruzione, sesso)` nazionale.
+      - >-
+        `DURATA` (tempo determinato / indeterminato / stagionale) ha ZERO
+        righe con valore specificato: non è incrociata con nulla. Peccato,
+        perché per la fiducia istituzionale sarebbe stata rilevante.
+      - >-
+        `ATECO_2007` mescola sezioni (codici di UNA lettera, A-U) e
+        aggregati (codici numerici `0010`-`0093`, «totale industria»,
+        «totale servizi»). Usarli insieme produce una composizione che
+        somma a più di uno. Il filtro corretto è `len(codice) == 1`.
+      - >-
+        il dataflow SDMX è di tipo ONLY_FILE con VIRTUALDSD: NON è
+        interrogabile per dimensioni. L'URL dello zip sta
+        nell'annotazione ATTACHED_DATA_FILES della struttura.
+      - >-
+        I PROFILI FORMANO UN ALBERO CHE IL CODEBOOK NON DICHIARA: la
+        quarta colonna sembra un padre ma è l'ordinamento (10, 20, 30…
+        430). Ricostruito dai conteggi:
+        99 totale = 9 + 22 + 42; 22 indipendenti = 41 + 15 + 18 + 19;
+        41 = 11 + 12. Tenere aggregati e componenti insieme conta due
+        volte le stesse persone — la somma dei nove codici presenti fa il
+        140% del totale.
+        E i due livelli NON coincidono: `11 imprenditore` e `12 libero
+        professionista` esistono solo nelle righe di totale, mentre nella
+        congiunta con l'ateco compare solo il loro aggregato `41`.
+        Escluderlo perdeva 8.265 occupati a Parma, il 10%.
+    bias: >-
+      LA COPPIA VA ESTRATTA INSIEME. `ateco` e `profilo` sono fortemente
+      dipendenti: la distanza in variazione totale fra la congiunta
+      osservata e il prodotto delle sue marginali è 0,149 a Parma, 0,166 a Bologna, 
+      0,156 in Emilia-Romagna. Stabile su cinque territori, quindi
+      struttura e non rumore. Estrarli separatamente produrrebbe dirigenti
+      in agricoltura e coadiuvanti familiari nella pubblica
+      amministrazione. È la stessa ragione per cui l'hot-deck AVQ copia il
+      vettore intero.
+      IL RIPIEGO REGIONALE NON COSTA UGUALE. Sei comuni su undici sono
+      nella tavola (Parma, Modena, Bologna, Brescia, Reggio Emilia,
+      Ravenna); gli altri cinque leggono la regione. La distanza del
+      comune dalla propria regione va da 0,029 di Ravenna a 0,159 di
+      Bologna: il ripiego costa poco dove il comune è ordinario e molto
+      dove è particolare, cioè proprio dove servirebbe.
+      NIENTE ETA' nel condizionamento: fra i 30 e i 55 anni la TVD è
+      0,03-0,08, indistinguibile dal rumore. Conta solo agli estremi
+      (0,12-0,20), dove i ventenni si concentrano in commercio e
+      ristorazione e i sessantenni nei settori in uscita.
+      CITTADINANZA E SETTORE non sono mai incrociati: `ISO1` è sempre al
+      totale quando l'ATECO è specificato. L'assunzione di indipendenza
+      non è verificabile qui. Una parte dell'effetto passa comunque
+      indirettamente, perché gli stranieri hanno una distribuzione
+      d'istruzione diversa.
+      LA FONTE HA QUINDICI ANNI e la struttura settoriale italiana è
+      cambiata: crescita dei servizi digitali, contrazione della
+      manifattura.
+    
+    usabile_per: [settore_posizione_congiunta, derivazione_a_valle]
+    usato_da: [gsp.lavoro]
+    non_usabile_per: [vincoli_maxent, condizionamento_per_titolo_comunale,
+                      durata_contratto, articolazione_subcomunale]

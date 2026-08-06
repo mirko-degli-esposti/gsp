@@ -1,0 +1,3737 @@
+{
+ "campione": "agenti_017029_PUNTIFI10_n120_s0.json",
+ "comune": "017029",
+ "variabile": "PUNTIFI10",
+ "seed": 0,
+ "modello": "deepseek/deepseek-chat",
+ "temperatura": 0.8,
+ "generato": "2026-08-06T12:57:03",
+ "sistema": "Scrivi brevi racconti in prima persona per un progetto di\nricerca sulle popolazioni sintetiche. Ogni racconto e' la voce di una\npersona che parla di se' e del proprio rapporto con l'amministrazione\ncomunale.\n\nREGOLE, in ordine di importanza.\n\n1. I dati anagrafici sono VINCOLI: eta', mestiere, titolo di studio,\n   quartiere, stato civile. Non contraddirli, non modificarli. La persona\n   del racconto deve essere RICONOSCIBILMENTE quella dei dati.\n\n2. Ti viene dato un livello di fiducia nel Comune da 0 a 10. Il racconto\n   deve farlo TRASPARIRE senza mai nominarlo:\n   - NON scrivere il numero, ne' la parola «fiducia», ne' «mi fido» o\n     «non mi fido»;\n   - NON usare etichette caratteriali: «sono una persona diffidente»,\n     «sono un tipo ottimista» sono vietate;\n   - MOSTRA fatti: una pratica, un'attesa, un servizio, un incontro, una\n     promessa mantenuta o disattesa, quello che si dice al bar o in\n     famiglia. Da quei fatti la disposizione deve emergere.\n\n3. L'intensita' conta. 0 e' rassegnazione o rabbia sedimentata; 2 e'\n   sfiducia con qualche eccezione; 5 e' ambivalenza, esperienze contrarie\n   che convivono; 8 e' fiducia con qualche riserva; 10 e' adesione piena.\n   Non serve che il lettore indovini il numero: serve che la direzione e\n   la forza siano giuste.\n\n4. NON parlare di sanita', medici, scuola, ambiente, sicurezza o polizia\n   se non di sfuggita. Il racconto riguarda il rapporto con\n   l'AMMINISTRAZIONE COMUNALE: pratiche, servizi comunali, manutenzione,\n   comunicazioni del Comune.\n\n5. Da cinque a otto righe. Prima persona, presente o passato prossimo,\n   italiano piano. Nessun titolo, nessun elenco.\n\n6. Non inventare nomi propri di persone o uffici, ne' cifre precise.\n\nScrivi la voce di una persona, non la sua scheda.",
+ "richiesta": "{profilo}\n\nLivello di fiducia nel Comune (0 = nessuna, 10 = piena): {latente}\n\nScrivi il racconto seguendo le regole.",
+ "storie": [
+  {
+   "uid": "017029-0000441",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alessandro Bruno, 35 anni, uomo · celibe nubile · diploma di istituto tecnico commerciale · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Chiusure",
+   "storia": "Ogni volta che devo fare una pratica in Comune, è come se mi preparassi a una maratona. L’ultima volta, per un semplice cambio di residenza, ho aspettato tre settimane solo per avere un appuntamento. Poi, quando finalmente ci sono andato, mi hanno detto che mancava un documento che non era scritto da nessuna parte. Ho provato a chiedere spiegazioni, ma mi hanno risposto che «è così, è il regolamento». Mi sembra di parlare al muro. In famiglia dicono che sono sfortunato, ma io penso che sia sempre così. Non mi aspetto più nulla di diverso.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 640,
+    "completion_tokens": 152,
+    "total_tokens": 792,
+    "cost": 0.00034008,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034008,
+     "upstream_inference_prompt_cost": 0.0002048,
+     "upstream_inference_completions_cost": 0.00013528
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0012370",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Tutino, 63 anni, uomo · coniugato unito · laurea triennale in discipline politico-sociali · lavoratore in proprio, servizi di informazione e comunicazione · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Ogni volta che devo fare una pratica in Comune mi preparo al peggio. L’ultima volta è stata per un permesso occupazione suolo pubblico: documenti persi, ritardi inspiegabili, nessuno che si assume la responsabilità. Ho perso giorni di lavoro e alla fine ho dovuto rifare tutto da capo. Mi hanno detto che il sistema è migliorato, ma io non ci credo più. In famiglia ridiamo amaramente quando qualcuno dice \"vado in Comune\". Ormai mi arrangio da solo, cerco di evitare qualsiasi contatto con loro. Mi sembra di perdere tempo e dignità ogni volta che ci provo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 642,
+    "completion_tokens": 148,
+    "total_tokens": 790,
+    "cost": 0.00033716,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033716,
+     "upstream_inference_prompt_cost": 0.00020544,
+     "upstream_inference_completions_cost": 0.00013172
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0024528",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Tommaso Moretti, 53 anni, uomo · coniugato unito · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, attività manifatturiere · vive nel quartiere Porta Cremona",
+   "storia": "Da quando ho aperto la mia piccola officina nel quartiere, ho avuto a che fare con il Comune più volte. Ogni volta che devo rinnovare la licenza commerciale, è un terno al lotto: una volta hanno perso i documenti, un’altra mi hanno fatto aspettare mesi per un timbro. L’ultima volta, per sistemare un marciapiede davanti al negozio, ho dovuto insistere per settimane, e alla fine hanno fatto un lavoro approssimativo. Certo, ci sono stati anche momenti in cui hanno risposto velocemente a qualche richiesta, ma sono eccezioni. Ormai mi aspetto sempre il peggio, anche se so che non è tutto nero.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 170,
+    "total_tokens": 816,
+    "cost": 0.00035802,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035802,
+     "upstream_inference_prompt_cost": 0.00020672,
+     "upstream_inference_completions_cost": 0.0001513
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0041101",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Anna Cammelli, 42 anni, donna · celibe nubile · diploma di istituto professionale femminile/per i servizi sociali · dipendente, istruzione · vive nel quartiere S. Eustacchio",
+   "storia": "L'altro giorno ho dovuto rinnovare il permesso per il banchetto della biblioteca mobile. Sempre gli stessi documenti da portare, anche se nulla è cambiato dall'ultima volta. All'ufficio attività culturali mi hanno detto che forse tra un mese avrò una risposta. Intanto le mie colleghe della scuola serale chiacchierano di come abbiano approvato in tre giorni il progetto per la festa del vicesindaco. Ma almeno quando piove, le buche davanti alla biblioteca le riempiono subito - ci sarà pure una priorità per qualcosa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 638,
+    "completion_tokens": 141,
+    "total_tokens": 779,
+    "cost": 0.0003092679,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003092679,
+     "upstream_inference_prompt_cost": 0.0001642212,
+     "upstream_inference_completions_cost": 0.0001450467
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0047004",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Maria Dimitrov, 39 anni, donna · celibe nubile · licenza media · dipendente, altre attività di servizi · vive nel quartiere S. Rocchino · cittadinanza straniera, Bulgaria",
+   "storia": "Ho chiesto al Comune il permesso per il chiosco di panini in piazza. Tre mesi di attesa solo per dirmi che mancava un documento. Ora lo stesso impiegato che mi ha fatto perdere tempo passa ogni mattina a prendere il caffè e fa finta di non riconoscermi. Io lo servo lo stesso, ma gli faccio pagare il doppio. Tanto sanno tutti che lì nessuno controlla le licenze.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 635,
+    "completion_tokens": 108,
+    "total_tokens": 743,
+    "cost": 0.0002745486,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002745486,
+     "upstream_inference_prompt_cost": 0.000163449,
+     "upstream_inference_completions_cost": 0.0001110996
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0047106",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Antonio Cozzi, 47 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Don Bosco · cittadinanza straniera, Guinea",
+   "storia": "L’anno scorso ho chiesto al Comune l’autorizzazione per organizzare un piccolo spettacolo di danza in piazza. Mi hanno fatto aspettare tre mesi, poi mi hanno detto di no senza spiegazioni. Un mio amico, italiano, ha presentato la stessa domanda due settimane dopo di me e l’hanno approvata in dieci giorni. Adesso, quando vedo i manifesti per gli eventi in centro, penso sempre: \"Per me, niente\". L’ufficio cultura? Ci vado solo se sono obbligato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 647,
+    "completion_tokens": 131,
+    "total_tokens": 778,
+    "cost": 0.0003012975,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003012975,
+     "upstream_inference_prompt_cost": 0.0001665378,
+     "upstream_inference_completions_cost": 0.0001347597
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0051302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Dori, 54 anni, uomo · coniugato unito · licenza media · imprenditore o libero professionista, attività manifatturiere · vive nel quartiere Chiesanuova",
+   "storia": "Ogni volta che devo fare una pratica in Comune mi viene l’ulcera. L’ultima volta per il rinnovo della licenza commerciale ho perso tre mattine tra file e documenti sbagliati. Alla fine ho scoperto che l’impiegato si era dimenticato di inviare il modulo e ho dovuto ricominciare da capo. Mio cugino al bar dice che se conosci qualcuno va tutto liscio, ma io non ho voglia di perdere tempo a fare amicizie. Paghiamo tasse su tasse e poi ci trattano come scocciatori.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 633,
+    "completion_tokens": 144,
+    "total_tokens": 777,
+    "cost": 0.0004404,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004404,
+     "upstream_inference_prompt_cost": 0.0002532,
+     "upstream_inference_completions_cost": 0.0001872
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0054109",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Marco Bresci, 37 anni, uomo · celibe nubile · liceo artistico · dipendente, trasporto e magazzinaggio · vive nel quartiere S. Eustacchio",
+   "storia": "Ho dovuto fare un po’ di giri per ottenere il permesso di sosta davanti al mio appartamento. Prima mi hanno detto che bastava compilare un modulo, poi che servivano altri documenti, e alla fine ho aspettato settimane per una risposta. Alla fine l’hanno approvato, ma solo dopo che sono andato di persona in ufficio a chiedere spiegazioni. Mi hanno trattato come se fossi l’ennesimo rompiscatole, mentre io cercavo solo di risolvere un problema quotidiano. Ogni volta che devo fare una pratica mi preparo al peggio, perché so che sarà una corsa a ostacoli. Qualche volta riesco a ottenere quello che mi serve, ma mai senza fatica.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 632,
+    "completion_tokens": 174,
+    "total_tokens": 806,
+    "cost": 0.0003571,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003571,
+     "upstream_inference_prompt_cost": 0.00020224,
+     "upstream_inference_completions_cost": 0.00015486
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0054450",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Zǐhán Chiu, 31 anni, donna · celibe nubile · liceo artistico · socia di cooperativa, trasporto e magazzinaggio · vive nel quartiere Centro Storico Sud · cittadinanza straniera, Cina",
+   "storia": "Da quando sono arrivata qui, il Comune non ha mai risposto alle mie richieste. Ho provato a chiedere informazioni per un permesso di lavoro, ma ogni volta mi rimandano da un ufficio all’altro. L’ultima volta, dopo aver aspettato due ore, mi hanno detto che il modulo era sbagliato, anche se l’avevo compilato seguendo le loro istruzioni. Nessuno mi ha mai aiutato davvero. Ora evito di andarci, mi arrangio da sola o chiedo aiuto a qualche conoscente. Qui sembra che, se non sei italiano, non conti niente.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 643,
+    "completion_tokens": 147,
+    "total_tokens": 790,
+    "cost": 0.00033659,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033659,
+     "upstream_inference_prompt_cost": 0.00020576,
+     "upstream_inference_completions_cost": 0.00013083
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057244",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Elisabetta Salvadori, 24 anni, donna · celibe nubile · liceo scientifico · dipendente, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Centro Storico Nord",
+   "storia": "L'anno scorso ho chiesto il permesso per un'esibizione di strada con la mia band. Ci hanno messo tre mesi a rispondermi e poi hanno detto di no, che \"disturbava\". Intanto per le sagre di paese danno il permesso in due giorni e fanno casino fino a mezzanotte. Ho smesso di provarci. Tanto sanno solo dire no, senza neanche spiegare perché. Adesso suoniamo nei locali privati, dove almeno ci pagano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 640,
+    "completion_tokens": 117,
+    "total_tokens": 757,
+    "cost": 0.0002850939,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002850939,
+     "upstream_inference_prompt_cost": 0.000164736,
+     "upstream_inference_completions_cost": 0.0001203579
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057329",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Maurizio Mba, 40 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, attività professionali, scientifiche e tecniche · vive nel quartiere Primo Maggio",
+   "storia": "L'anno scorso ho chiesto il permesso per allargare il mio laboratorio di riparazioni. Dopo sei mesi di carte e visite agli uffici, me l'hanno negato per un cavillo. Intanto il locale accanto, quello del cugino dell'assessore, ha avuto l'autorizzazione in due settimane. Ora lavoro nel garage di casa, e ogni volta che passo davanti al municipio sputo per terra.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 637,
+    "completion_tokens": 101,
+    "total_tokens": 738,
+    "cost": 0.0002678625,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002678625,
+     "upstream_inference_prompt_cost": 0.0001639638,
+     "upstream_inference_completions_cost": 0.0001038987
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057661",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Amelja Delvina, 41 anni, donna · coniugato unito · liceo scientifico · dipendente, altre attività di servizi · vive nel quartiere Lamarmora · cittadinanza straniera, Albania",
+   "storia": "Mi hanno detto che per registrare il certificato di matrimonio bastava un modulo e due giorni. Quattro mesi dopo, ancora niente. Ogni volta che telefono all’ufficio anagrafe mi rispondono con un altro documento da portare, un’altra traduzione da fare, un altro timbro. L’ultima volta mi hanno chiesto la copia del permesso di soggiorno che gli avevo già consegnato tre volte. Mio marito dice di aspettare, che prima o poi rispondono tutti. Io intanto pago il commercialista per farci firmare le carte al posto loro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 638,
+    "completion_tokens": 141,
+    "total_tokens": 779,
+    "cost": 0.0003092679,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003092679,
+     "upstream_inference_prompt_cost": 0.0001642212,
+     "upstream_inference_completions_cost": 0.0001450467
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0069105",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Tozzi, 36 anni, uomo · coniugato unito · diploma di istituto d'arte · imprenditore o libero professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Primo Maggio",
+   "storia": "Aprire un’officina nel quartiere Primo Maggio è stato un inferno: pratiche ferme per mesi, controlli a sorpresa senza preavviso, permessi che sparivano nel nulla. Ogni volta che chiamo l’ufficio tecnico, mi rispondono che “stanno lavorando”. Intanto, pago le tasse e aspetto. Ho provato a partecipare a un bando comunale per piccole imprese, ma quando ho visto la lista dei vincitori, erano tutti nomi già noti. Mi sembra di sbattere la testa contro un muro: più insisto, più capisco che qui conti solo chi ha già i contatti giusti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 658,
+    "completion_tokens": 158,
+    "total_tokens": 816,
+    "cost": 0.00035118,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035118,
+     "upstream_inference_prompt_cost": 0.00021056,
+     "upstream_inference_completions_cost": 0.00014062
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0072866",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Yīnuò Sūn, 49 anni, donna · coniugato unito · qualifica di istituto professionale per i servizi commerciali, turismo e pubblicità · dipendente, sanità e assistenza sociale · vive nel quartiere Villaggio Badia · cittadinanza straniera, Cina",
+   "storia": "Quando sono arrivata dal Comune per la pratica di residenza, mi hanno fatto aspettare due ore per dirmi che mancava un documento. Io l’avevo portato, ma loro non l’avevano visto. Ho dovuto tornare il giorno dopo, stessa fila, stessa faccia stanca. La seconda volta mi hanno chiesto un altro foglio, diverso dal primo. Mio marito dice che è sempre così, che non cambierà mai. Io ormai ci vado solo se sono obbligata, con la cartellina piena di copie, pronte per tutto.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 657,
+    "completion_tokens": 135,
+    "total_tokens": 792,
+    "cost": 0.0003079863,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003079863,
+     "upstream_inference_prompt_cost": 0.0001691118,
+     "upstream_inference_completions_cost": 0.0001388745
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077413",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Paolo Bini, 63 anni, uomo · divorziato sciolto · diploma di istituto tecnico commerciale · dipendente, attività manifatturiere · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Tutta la vita ho pagato le tasse in regola, mai un giorno di ritardo. E adesso che ho bisogno di un certificato per la pensione, mi ritrovo in fila come un morto di fame. Quello sportello è sempre chiuso, trovano sempre un motivo. L’altro giorno hanno detto che il sistema era bloccato. Ma come? E io devo tornare dopo, prendermi un altro permesso, perdere altri soldi. A sentir loro è sempre colpa di qualcun altro. Nemmeno un caffè offerto per l’attesa, niente. E ci mancherebbe altro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 637,
+    "completion_tokens": 143,
+    "total_tokens": 780,
+    "cost": 0.0003110679,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003110679,
+     "upstream_inference_prompt_cost": 0.0001639638,
+     "upstream_inference_completions_cost": 0.0001471041
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077735",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Cecilia Scialpi, 59 anni, donna · coniugato unito · diploma di istituto professionale cinematografia e televisione · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Porta Venezia",
+   "storia": "L’altro giorno ho chiamato l’ufficio tributi per chiarire una questione sulla TARI. Mi hanno tenuto in attesa venti minuti, poi mi hanno detto che avrebbero controllato e richiamato. Ovviamente non ho sentito più nessuno. Ogni volta è così: promesse che svaniscono. Quando ho bisogno di qualcosa dall’ufficio tecnico per il garage condominiale, mi dicono che il sistema è bloccato o che manca il personale. Non so più a chi rivolgermi. Però, devo dire, l’anno scorso con il bonus per la sostituzione delle finestre è andata liscia. Una volta tanto. Ma è stato un caso, secondo me.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 651,
+    "completion_tokens": 166,
+    "total_tokens": 817,
+    "cost": 0.00035606,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035606,
+     "upstream_inference_prompt_cost": 0.00020832,
+     "upstream_inference_completions_cost": 0.00014774
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0078956",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Dimitra Samaras, 33 anni, donna · celibe nubile · liceo classico · dipendente, attività manifatturiere · vive nel quartiere S. Polo Case · cittadinanza straniera, Grecia",
+   "storia": "Ogni volta che devo rinnovare il permesso di soggiorno, è sempre la stessa storia. L’ufficio immigrazione del Comune mi chiede documenti diversi da quelli scritti sul sito, e io perdo giorni a cercare di capire. L’ultima volta, dopo tre tentativi, una segretaria mi ha aiutata in silenzio, senza farmi sentire un peso. Ma è stato solo un caso. Al bar dicono che con loro è meglio portare tutto e il contrario di tutto, e ormai ci ho fatto l’abitudine.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 637,
+    "completion_tokens": 130,
+    "total_tokens": 767,
+    "cost": 0.0004238,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004238,
+     "upstream_inference_prompt_cost": 0.0002548,
+     "upstream_inference_completions_cost": 0.000169
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0083157",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Tommaso Bernini, 29 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · parasubordinato, trasporto e magazzinaggio · vive nel quartiere S. Polo Parco",
+   "storia": "Ho fatto richiesta per un passaggio carrabile davanti al mio box tre mesi fa. Mi hanno detto che ci sarebbero voluti due settimane per il sopralluogo, ma ancora niente. Quando ho chiamato in Comune, mi hanno dato un altro numero da contattare, ma non rispondono mai. Intanto continuo a parcheggiare in strada e ogni tanto prendo la multa. Un mio amico che vive in un altro quartiere ha ottenuto lo stesso passaggio in pochi giorni, senza problemi. Mi chiedo perché qui sia tutto così complicato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 639,
+    "completion_tokens": 132,
+    "total_tokens": 771,
+    "cost": 0.00032196,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00032196,
+     "upstream_inference_prompt_cost": 0.00020448,
+     "upstream_inference_completions_cost": 0.00011748
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0084842",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Andrea Moursi Abdalla Moursi, 56 anni, uomo · coniugato unito · laurea magistrale in scienze politiche · parasubordinato, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Rocchino",
+   "storia": "Quelli del Comune? Ci ho lavorato vent'anni, so come funziona. Le pratiche si perdono a comando, gli scarti di budget devono sparire a dicembre, le graduatorie sono già decise prima dell'avviso pubblico. Adesso che sono fuori vedo le stesse dinamiche da cittadino: rispondono solo se minacci il ricorso, le risposte arrivano quando ormai è troppo tardi. A mia moglie dico sempre di non fidarsi delle loro scadenze, di presentare tutto con tre mesi d'anticipo. L'unica è conoscere qualcuno dentro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 655,
+    "completion_tokens": 139,
+    "total_tokens": 794,
+    "cost": 0.0003115863,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003115863,
+     "upstream_inference_prompt_cost": 0.000168597,
+     "upstream_inference_completions_cost": 0.0001429893
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0087302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "David Rusu, 35 anni, uomo · coniugato unito · laurea magistrale in discipline economiche, bancarie e aziendali · dipendente, istruzione · vive nel quartiere Borgo Trento · cittadinanza straniera, Romania",
+   "storia": "L’anno scorso ho chiesto il trasferimento della residenza per me e mia moglie. Dopo sei mesi di attesa e tre solleciti, ancora niente. All’ufficio anagrafe mi hanno detto che mancano documenti, ma io li avevo consegnati tutti. Ogni volta che vado, c’è una scusa diversa. Mia moglie dice di lasciar perdere, che tanto non cambia nulla. Forse ha ragione.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 107,
+    "total_tokens": 753,
+    "cost": 0.0002763513,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002763513,
+     "upstream_inference_prompt_cost": 0.0001662804,
+     "upstream_inference_completions_cost": 0.0001100709
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0095252",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Maria De Vita, 32 anni, donna · celibe nubile · licenza media · dipendente, costruzioni · vive nel quartiere Porta Venezia",
+   "storia": "L’anno scorso ho chiesto al Comune il permesso per montare la tenda parasole sul balcone. Tre mesi di attesa, poi mi hanno risposto che mancava un documento. L’ho portato subito, ma niente. Alla fine l’ho messa lo stesso, tanto chi se ne accorge? Mio cugino che abita in periferia dice che lì rispondono subito, ma qui in centro sembra che ci mettano il triplo del tempo. Ogni volta che passo davanti al municipio mi viene da ridere, pensando a quanti fogli devono ancora accumulare lì dentro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 622,
+    "completion_tokens": 149,
+    "total_tokens": 771,
+    "cost": 0.0004425,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004425,
+     "upstream_inference_prompt_cost": 0.0002488,
+     "upstream_inference_completions_cost": 0.0001937
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0097883",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Carlo Garretta, 34 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Primo Maggio",
+   "storia": "Lavoro in un ufficio pubblico da anni, quindi pensavo di conoscere il sistema meglio di chiunque altro. Ma quando ho dovuto rinnovare la residenza per la nuova casa nel quartiere Primo Maggio, è stato un incubo. Documenti persi, scadenze non rispettate, risposte evasive. Ho chiamato, sono andato di persona, ho scritto email. Alla fine ho risolto solo perché conosco qualcuno che conosce qualcuno. Mi chiedo come facciano gli altri, quelli che non hanno la mia esperienza. Ogni volta che devo fare qualcosa con il Comune, mi preparo al peggio. Ormai è quasi routine.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 160,
+    "total_tokens": 806,
+    "cost": 0.00034912,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034912,
+     "upstream_inference_prompt_cost": 0.00020672,
+     "upstream_inference_completions_cost": 0.0001424
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0100817",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Federico Novigno, 28 anni, uomo · celibe nubile · laurea magistrale in ingegneria delle telecomunicazioni, elettronica e informatica · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Sereno",
+   "storia": "Ogni volta che devo fare una pratica in Comune mi viene l'orticaria. L'ultima volta per il rinnovo del pass residenti ho perso tre mattinate in fila, e alla fine mi hanno detto che mancava un documento che non era scritto da nessuna parte. Al bar dicono che se conosci qualcuno va tutto liscio, ma io non conosco nessuno. Pago le tasse e mi sento preso in giro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 666,
+    "completion_tokens": 107,
+    "total_tokens": 773,
+    "cost": 0.0004055,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004055,
+     "upstream_inference_prompt_cost": 0.0002664,
+     "upstream_inference_completions_cost": 0.0001391
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0116908",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Daniele Donini, 48 anni, uomo · celibe nubile · diploma di istituto professionale per i servizi commerciali, turismo e pubblicità · dipendente, trasporto e magazzinaggio · vive nel quartiere Villaggio Sereno",
+   "storia": "Ogni volta che passo davanti al municipio mi viene da stringere i denti. L’anno scorso ho fatto richiesta per un posto auto nel parcheggio pubblico vicino casa: sei mesi di attesa, moduli da compilare, chiamate infinite. Alla fine mi hanno detto che non c’era più posto, ma so che qualcuno l’ha ottenuto dopo di me. Ho provato a chiedere spiegazioni, ma è sempre la stessa storia: «Ci sono liste, procedure, tempi». Intanto pago il bollo, pago la tassa sui rifiuti, pago tutto quello che chiedono, e non vedo miglioramenti. Le strade qui nel Villaggio Sereno sono piene di buche, e la luce pubblica è spesso rotta. Mi chiedo a cosa serva pagare se poi siamo lasciati a noi stessi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 647,
+    "completion_tokens": 194,
+    "total_tokens": 841,
+    "cost": 0.0003797,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003797,
+     "upstream_inference_prompt_cost": 0.00020704,
+     "upstream_inference_completions_cost": 0.00017266
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0117016",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alessandro Coradeschi, 70 anni, uomo · celibe nubile · licenza media · dipendente, attività manifatturiere · vive nel quartiere Lamarmora",
+   "storia": "Ho fatto la pratica per quella rampa di accesso al portone da due anni. Ogni volta che chiamo in Comune mi dicono che è in lavorazione, ma non si muove nulla. Ho parlato con il vicino del piano terra, che è pure sulla sedia a rotelle, e anche lui è stanco di aspettare. L’altro giorno ho visto l’assessore passare in macchina mentre stavo lì a spalare la neve davanti casa, perché il Comune non ci manda più nessuno. Mi sono girato e sono entrato. Ormai ho imparato che serve a niente insistere.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 628,
+    "completion_tokens": 144,
+    "total_tokens": 772,
+    "cost": 0.00032912,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00032912,
+     "upstream_inference_prompt_cost": 0.00020096,
+     "upstream_inference_completions_cost": 0.00012816
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0123049",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Nathaniel De Leon, 31 anni, uomo · celibe nubile · licenza media · dipendente, trasporto e magazzinaggio · vive nel quartiere Centro Storico Nord · cittadinanza straniera, Filippine",
+   "storia": "Ogni volta che vado in Comune per rinnovare il permesso sento lo stesso disagio. I funzionari mi parlano con quel tono, come se stessi chiedendo un favore invece di un diritto. L’ultima volta mi hanno fatto tornare tre volte per un documento che mancava, ma non me l’avevano detto subito. Aspetto sempre ore, anche con l’appuntamento. Poi vedo come trattano gli italiani e capisco che per me è diverso. Ormai ci vado solo perché devo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 640,
+    "completion_tokens": 123,
+    "total_tokens": 763,
+    "cost": 0.0002912661,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002912661,
+     "upstream_inference_prompt_cost": 0.000164736,
+     "upstream_inference_completions_cost": 0.0001265301
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0129701",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Silvia Acciai, 43 anni, donna · coniugato unito · licenza media · dipendente, sanità e assistenza sociale · vive nel quartiere Buffalora",
+   "storia": "L’ultima volta che ho provato a chiedere al Comune informazioni per il sostegno alle famiglie, mi hanno girato tra tre uffici prima di dirmi che la pratica era sospesa per mancanza di fondi. A Buffalora i marciapiedi sono pieni di buche da anni, e quando qualcuno protesta rispondono che sono in programma lavori che non partono mai. La mia vicina, che ha problemi simili ai miei, ha smesso di provarci. Anche io ormai ci ho rinunciato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 628,
+    "completion_tokens": 131,
+    "total_tokens": 759,
+    "cost": 0.0002964069,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002964069,
+     "upstream_inference_prompt_cost": 0.0001616472,
+     "upstream_inference_completions_cost": 0.0001347597
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0133892",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Valeria Fabbroni, 34 anni, donna · celibe nubile · laurea triennale in igiene dentale /igienista dentale (abilitante alla professione sanitaria di igienista dentale) · dipendente, sanità e assistenza sociale · vive nel quartiere Porta Cremona",
+   "storia": "L'anno scorso ho fatto richiesta per il permesso di aprire uno studio dentistico in centro. Doveva essere una formalità, dicevano tutti. Dopo sei mesi ancora niente. Ho chiamato, sono andata di persona: sempre la stessa storia, \"manca un documento\", \"c'è un intoppo burocratico\". Intanto pago l'affitto di un locale vuoto. Al bar dicono che se avessi qualche conoscenza sarebbe andata diversamente. Ormai ho rinunciato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 657,
+    "completion_tokens": 116,
+    "total_tokens": 773,
+    "cost": 0.000288441,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000288441,
+     "upstream_inference_prompt_cost": 0.0001691118,
+     "upstream_inference_completions_cost": 0.0001193292
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0140306",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Valentina Akter, 26 anni, donna · celibe nubile · diploma di istituto professionale femminile/per i servizi sociali · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Brescia Antica · cittadinanza straniera, Camerun",
+   "storia": "Due anni che aspetto il permesso di soggiorno, ogni volta che vado in Comune mi dicono che manca un documento, che devo rifare la pratica, che il sistema è bloccato. L’ultima volta ho perso un giorno di lavoro perché mi hanno fatto aspettare tre ore al banco per poi dirmi che non potevano aiutarmi. I vicini dicono che è normale, che ci vuole pazienza, ma io vedo che per gli altri è diverso. Ogni volta che apro la porta e trovo una lettera del Comune, mi viene l’ansia. So già che sarà un altro problema.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 690,
+    "completion_tokens": 148,
+    "total_tokens": 838,
+    "cost": 0.00035252,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035252,
+     "upstream_inference_prompt_cost": 0.0002208,
+     "upstream_inference_completions_cost": 0.00013172
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0141296",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Paola D'Elia, 57 anni, donna · coniugato unito · laurea magistrale in architettura e urbanistica · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Caionvico",
+   "storia": "Ho presentato un progetto per riqualificare una zona del quartiere Caionvico mesi fa, ma dopo le prime riunioni tutto si è fermato. Mi dicono che ci sono ritardi burocratici e mancanza di fondi, ma intanto vedo altri interventi partire in altre aree della città. Mi chiedo perché non ci sia una programmazione chiara e trasparente. Ogni volta che provo a sollecitare, mi rispondono con frasi vaghe. Ho investito tempo e risorse, ma ora mi sembra di aver perso fiducia nel loro modo di gestire le cose. Continuo a seguire la pratica, ma senza grandi aspettative.",
+   "problemi": {
+    "spie": [
+     "fiducia"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 650,
+    "completion_tokens": 159,
+    "total_tokens": 809,
+    "cost": 0.00034951,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034951,
+     "upstream_inference_prompt_cost": 0.000208,
+     "upstream_inference_completions_cost": 0.00014151
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0143355",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Fabrizio Haljiti, 36 anni, uomo · celibe nubile · laurea magistrale in medicina e chirurgia · dipendente, organizzazioni ed organismi extraterritoriali · vive nel quartiere S. Bartolomeo",
+   "storia": "Ho dovuto aspettare sei mesi per un certificato di residenza, e alla fine era sbagliato. Quando sono tornato in ufficio, mi hanno detto che era colpa del sistema e di ripresentare la domanda. Intanto il contratto per l'appartamento era saltato. Al bar dicono che se conosci qualcuno va tutto liscio, ma io non conosco nessuno. Ogni volta che passo davanti al municipio mi viene da ridere, ma è un riso amaro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 641,
+    "completion_tokens": 117,
+    "total_tokens": 758,
+    "cost": 0.0002853513,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002853513,
+     "upstream_inference_prompt_cost": 0.0001649934,
+     "upstream_inference_completions_cost": 0.0001203579
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0144282",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Francesca Chiari, 32 anni, donna · coniugato unito · licenza media · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Chiusure",
+   "storia": "L’anno scorso ho chiesto al Comune il permesso per mettere due tavolini fuori dal bar dove lavoro. Dopo tre mesi di attesa e mille scartoffie, me l’hanno negato perché mancava un documento che non mi avevano mai detto di portare. Intanto al bar all’angolo, quello del cugino di non so chi, i tavoli li hanno approvati in due settimane. Ora quando vedo il logo del Comune sulle circolari che arrivano in negozio, le butto direttamente. Però mio marito mi ha convinto a riprovare, dice che forse stavolta va meglio.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 634,
+    "completion_tokens": 149,
+    "total_tokens": 783,
+    "cost": 0.0004473,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004473,
+     "upstream_inference_prompt_cost": 0.0002536,
+     "upstream_inference_completions_cost": 0.0001937
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0152841",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Luigi Casu, 38 anni, uomo · celibe nubile · diploma di istituto tecnico commerciale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Chiesanuova",
+   "storia": "Lavoro nell’amministrazione pubblica da quindici anni, eppure quando devo rivolgermi al Comune per qualsiasi cosa mi sento come se stessi parlando al muro. L’altro giorno ho richiesto un documento urgente: dopo tre settimane di silenzio, mi hanno risposto che era pronto, ma al momento del ritiro non sapevano dove fosse. Mi è capitato di vedere pratiche che si perdono nel nulla, promesse disattese, inefficienze che sembrano volute. Ogni volta che sento parlare di “servizi al cittadino” mi viene da ridere, ma è un riso amaro. Ormai ho smesso di aspettarmi qualcosa di diverso.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 168,
+    "total_tokens": 814,
+    "cost": 0.00035624,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035624,
+     "upstream_inference_prompt_cost": 0.00020672,
+     "upstream_inference_completions_cost": 0.00014952
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0154316",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Caterina Varghese, 54 anni, donna · coniugato unito · diploma di scuola magistrale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Brescia Antica",
+   "storia": "Ho lavorato per anni negli uffici comunali, eppure ogni volta che devo fare una pratica per me stessa è un incubo. Dopo l’ultima volta che ho dovuto rinnovare la residenza, ho aspettato tre ore per un modulo che avrebbero potuto farmi compilare online. Le promesse di digitalizzazione? Tutto fumo. Mi hanno detto che il sistema era bloccato, ma io so come funziona: è sempre colpa di qualcun altro. Ormai ci vado solo se costretta, con la nausea già in gola.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 644,
+    "completion_tokens": 131,
+    "total_tokens": 775,
+    "cost": 0.00032267,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00032267,
+     "upstream_inference_prompt_cost": 0.00020608,
+     "upstream_inference_completions_cost": 0.00011659
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0155760",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Marco Striganova, 41 anni, uomo · coniugato unito · diploma di istituto professionale per i servizi alberghieri e ristorazione · dipendente, attività finanziarie e assicurative · vive nel quartiere Borgo Trento",
+   "storia": "L’anno scorso ho fatto domanda per la concessione di un’area in piazza per un banchetto durante la sagra del quartiere. Ho presentato tutti i documenti con mesi di anticipo, come richiesto. Il giorno prima dell’evento mi hanno detto che c’era un problema col modulo e che non potevano autorizzarmi. Nessuno si è scusato, nessuno ha proposto una soluzione. Ho perso soldi e tempo, e la mia famiglia mi ha chiesto perché mi ostino ancora a provarci. Adesso quando vedo il logo del Comune sulle comunicazioni le butto direttamente. Tanto sanno solo dire di no.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 647,
+    "completion_tokens": 153,
+    "total_tokens": 800,
+    "cost": 0.0003239289,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003239289,
+     "upstream_inference_prompt_cost": 0.0001665378,
+     "upstream_inference_completions_cost": 0.0001573911
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0170443",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Mauro Bonciani, 80 anni, uomo · vedovo · licenza media · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Parco",
+   "storia": "All’anagrafe per aggiornare la residenza ho aspettato tre ore, seduto su quelle panche di plastica che ti spezzano la schiena. La ragazza allo sportello parlava al telefono, rideva con qualcuno. Quando è toccato a me ha sbuffato, come se fossi io a rubarle il tempo. I marciapiedi davanti a casa li riparano da cinque anni, ho smesso di segnalarli. Mio nipote dice che devo insistere, ma a cosa serve? Tanto sanno già tutto, e non gliene importa niente.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 633,
+    "completion_tokens": 142,
+    "total_tokens": 775,
+    "cost": 0.0003090096,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003090096,
+     "upstream_inference_prompt_cost": 0.0001629342,
+     "upstream_inference_completions_cost": 0.0001460754
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0170578",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alessandro Peruzzi, 30 anni, uomo · celibe nubile · licenza media · dipendente, attività manifatturiere · vive nel quartiere Fornaci",
+   "storia": "L’anno scorso ho fatto domanda per l’assegnazione di un alloggio popolare. Dopo mesi di silenzio, mi hanno chiamato per un colloquio e mi hanno detto che mancava un documento. L’ho portato il giorno dopo, ma da allora nessuna risposta. Al telefono mi liquidano in due minuti, dicono che devono ancora verificare. Intanto pago un affitto che mi mangia metà dello stipendio. Al bar dicono che senza conoscenze non si ottiene niente, e forse hanno ragione.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 627,
+    "completion_tokens": 129,
+    "total_tokens": 756,
+    "cost": 0.0004185,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004185,
+     "upstream_inference_prompt_cost": 0.0002508,
+     "upstream_inference_completions_cost": 0.0001677
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0171811",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Matteo Donnaloia, 28 anni, uomo · celibe nubile · diploma di conservatorio di musica/istituto musicale pareggiato (AFAM di II livello) · dipendente, attività finanziarie e assicurative · vive nel quartiere Brescia Antica",
+   "storia": "Ogni volta che devo fare una pratica in Comune mi preparo psicologicamente per l'incubo. L'ultima volta per il cambio di residenza ho perso tre mattine di lavoro, c'era sempre un documento che non andava bene. Alla fine l'impiegato ha sbuffato e mi ha detto di tornare il giorno dopo. A Brescia Antica i marciapiedi sono rotti da anni, ma quando qualcuno protesta gli dicono che non ci sono fondi. Poi vedo le foto del sindaco che inaugura l'ennesimo locale alla moda in centro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 652,
+    "completion_tokens": 138,
+    "total_tokens": 790,
+    "cost": 0.0003097854,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003097854,
+     "upstream_inference_prompt_cost": 0.0001678248,
+     "upstream_inference_completions_cost": 0.0001419606
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0179472",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Maxim Țurcan, 32 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività finanziarie e assicurative · vive nel quartiere Don Bosco · cittadinanza straniera, Moldova",
+   "storia": "L'anno scorso ho aspettato sei mesi per il rinnovo del permesso di soggiorno. Ogni volta che chiamavo in Comune mi rispondevano che mancava un documento, poi un altro ancora. Alla fine ho dovuto pagare un avvocato. Adesso quando vedo i volantini del sindaco che parla di \"servizi efficienti\" li strappo e li butto nel cestino. Mia cugina che lavora alle pulizie nell'ufficio anagrafe mi ha detto che i miei fogli erano lì da mesi, sotto una pila di altri.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 139,
+    "total_tokens": 785,
+    "cost": 0.0003092697,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003092697,
+     "upstream_inference_prompt_cost": 0.0001662804,
+     "upstream_inference_completions_cost": 0.0001429893
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0192292",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Christian Piccini, 25 anni, uomo · celibe nubile · liceo scientifico · imprenditore o libero professionista, costruzioni · vive nel quartiere Villaggio Sereno",
+   "storia": "L’ultima volta che ho provato a chiedere un permesso per ristrutturare il capannone, mi hanno risposto dopo sei mesi. Sei mesi. E alla fine era tutto sbagliato, dovevo rifare la pratica da capo. Ora ho imparato: i muri li alzo e basta, tanto controllano a caso. Mia sorella, che fa l’architetto, dice che sono un incosciente. Ma se aspetto loro, chiudo bottega. Nel frattempo, al bar, quelli del consiglio comunale parlano di “sostegno alle imprese”. Ridicolo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 631,
+    "completion_tokens": 144,
+    "total_tokens": 775,
+    "cost": 0.0003105522,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003105522,
+     "upstream_inference_prompt_cost": 0.0001624194,
+     "upstream_inference_completions_cost": 0.0001481328
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007186",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Francesca Angiulli, 31 anni, donna · coniugato unito · licenza media · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Fiumicello",
+   "storia": "Lavoro in un ufficio pubblico, quindi so bene come funzionano le cose. Quando ho dovuto fare la pratica per la ristrutturazione del balcone, sapevo già che ci sarebbero stati tempi lunghi. Ma alla fine, dopo qualche mese, è arrivata l’autorizzazione senza troppi problemi. Una volta però ho chiamato per segnalare un lampione rotto nel mio quartiere e ci sono volute settimane prima che lo riparassero. Mi sembra che il Comune faccia il suo lavoro, ma a volte sembra che manchi un po’ di urgenza.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 642,
+    "completion_tokens": 139,
+    "total_tokens": 781,
+    "cost": 0.00032915,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00032915,
+     "upstream_inference_prompt_cost": 0.00020544,
+     "upstream_inference_completions_cost": 0.00012371
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0014642",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Davide Monnicchi, 33 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività manifatturiere · vive nel quartiere Urago",
+   "storia": "L'altro giorno sono andato in municipio per chiedere informazioni sul bando per le case popolari. Mi aspettavo la solita fila infinita, invece c'era un ragazzo nuovo all'ufficio che mi ha spiegato tutto con pazienza, anche se alla fine i requisiti non li avevo. Però poi ho visto che in piazza hanno messo quelle panchine rotte da mesi: promettono sempre di sistemarle e invece niente. Al bar dicono che dipende tutto da chi conosci. Io ci provo a fidarmi, ma certe cose...",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 633,
+    "completion_tokens": 132,
+    "total_tokens": 765,
+    "cost": 0.0004248,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004248,
+     "upstream_inference_prompt_cost": 0.0002532,
+     "upstream_inference_completions_cost": 0.0001716
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0015352",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Gabriele Muzzi, 31 anni, uomo · celibe nubile · liceo scientifico · imprenditore o libero professionista, attività manifatturiere · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "L'anno scorso ho aperto la mia piccola officina nel quartiere e ho dovuto fare i salti mortali per ottenere i permessi. All'ufficio attività produttive ci hanno messo un mese solo a darmi appuntamento, però una volta lì la pratica è andata liscia. Ora ogni tanto passa un vigile a controllare i locali, ma almeno sono precisi: avvisano sempre prima e non rompono più di tanto. Al bar dicono che con il Comune è meglio non fidarsi mai del tutto, ma per ora io non posso lamentarmi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 636,
+    "completion_tokens": 138,
+    "total_tokens": 774,
+    "cost": 0.0004338,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004338,
+     "upstream_inference_prompt_cost": 0.0002544,
+     "upstream_inference_completions_cost": 0.0001794
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0019713",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Viraj Yadav, 19 anni, uomo · celibe nubile · licenza media · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Fiumicello · cittadinanza straniera, India",
+   "storia": "L’anno scorso ho aperto un piccolo negozio di ricambi per moto. Al Comune ci sono andato per la licenza e mi aspettavo chissà quali problemi, invece l’impiegato mi ha spiegato tutto con pazienza, anche se il mio italiano non è perfetto. Certo, per sistemare il marciapiede davanti al locale ho dovuto insistere un po’, ma alla fine hanno mandato qualcuno. La bolletta dei rifiuti però è arrivata sbagliata due volte, e ogni volta devo tornare in ufficio a farmela correggere.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 656,
+    "completion_tokens": 138,
+    "total_tokens": 794,
+    "cost": 0.0004418,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004418,
+     "upstream_inference_prompt_cost": 0.0002624,
+     "upstream_inference_completions_cost": 0.0001794
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0020138",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Anna Tangocci, 76 anni, donna · celibe nubile · licenza elementare · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere S. Eufemia",
+   "storia": "L’anno scorso ho dovuto aprire una pratica per rinnovare la licenza della mia attività. Mi aspettavo lungaggini, ma invece l’impiegato è stato disponibile e mi ha spiegato tutto passo dopo passo. Ci sono voluti un paio di mesi, ma almeno non mi hanno fatto perdere tempo. Poi, però, ho avuto problemi con i marciapiedi davanti al negozio: li avevano promessi rifatti in primavera, ma siamo ancora qui a settembre e niente. Quando chiamo, mi dicono che ci sono priorità. Capisco, ma almeno una data certa? Mi sembra che parlino tanto e facciano poco.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 640,
+    "completion_tokens": 155,
+    "total_tokens": 795,
+    "cost": 0.00034275,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034275,
+     "upstream_inference_prompt_cost": 0.0002048,
+     "upstream_inference_completions_cost": 0.00013795
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0022693",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Elisa Spada, 42 anni, donna · celibe nubile · diploma di istituto tecnico commerciale · dipendente, sanità e assistenza sociale · vive nel quartiere Brescia Antica",
+   "storia": "L’anno scorso ho dovuto rifare la carta d’identità e sono stata al Comune tre volte per un errore burocratico. Ma poi, quando mio padre è rimasto solo, l’assistente sociale del quartiere ci ha chiamato subito per un sostegno a domicilio. Non so, certe volte sembra che funzioni solo se hai bisogno urgente, altrimenti ti fanno perdere tempo. Al bar dicono che dipende da chi trovi, che alcuni fanno il loro lavoro meglio di altri. Io non mi lamento, ma non mi aspetto neanche troppo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 634,
+    "completion_tokens": 136,
+    "total_tokens": 770,
+    "cost": 0.0003030948,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003030948,
+     "upstream_inference_prompt_cost": 0.0001631916,
+     "upstream_inference_completions_cost": 0.0001399032
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0023945",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Ezekiel Castillo, 16 anni, uomo · celibe nubile · licenza media · socio di cooperativa, costruzioni · vive nel quartiere Centro Storico Nord · cittadinanza straniera, Filippine",
+   "storia": "L'anno scorso ho chiesto al Comune il permesso per vendere bibite fuori dal campo dove giochiamo a calcio. Mi hanno fatto aspettare due mesi, poi l'hanno respinto perché mancava un documento che non mi avevano detto. Però quando siamo andati in gruppo a protestare per le luci rotte del campo, le hanno aggiustate in tre giorni. Al bar dicono che dipende sempre da chi ti capita all'ufficio.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 635,
+    "completion_tokens": 110,
+    "total_tokens": 745,
+    "cost": 0.000276606,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000276606,
+     "upstream_inference_prompt_cost": 0.000163449,
+     "upstream_inference_completions_cost": 0.000113157
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0031034",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Roberto Annunziati, 16 anni, uomo · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Badia",
+   "storia": "Lavoro da pochi mesi al magazzino comunale. Mi hanno assunto con un contratto di formazione, mi pagano poco ma almeno è qualcosa. Il mio capo dice che il Comune ha bisogno di giovani come me per rinnovare il personale, ma poi vedo che assumono solo parenti degli assessori. Però quando ho avuto bisogno di firmare i documenti per la patente, all’anagrafe mi hanno aiutato subito senza farmi perdere tempo. Non è male, ma non mi aspetto chissà che.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 650,
+    "completion_tokens": 122,
+    "total_tokens": 772,
+    "cost": 0.0002928114,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002928114,
+     "upstream_inference_prompt_cost": 0.00016731,
+     "upstream_inference_completions_cost": 0.0001255014
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0043507",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Alessandra Stagliano', 43 anni, donna · celibe nubile · diploma di istituto tecnico per il turismo · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Parco",
+   "storia": "Ho avuto bisogno di un documento per un progetto di lavoro e sono andata in municipio: fila infinita, ma alla fine mi hanno aiutato abbastanza velocemente. Però l’anno scorso ho chiesto un intervento per le buche in strada davanti casa e ancora niente, continuo a lamentarmi coi vicini. Mi dicono che in altri quartieri le cose funzionano meglio, ma qui sembra che ci si dimentichi sempre di noi. Qualche volta rispondono alle mail, altre volte no. È un po’ a caso, non so mai cosa aspettarmi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 643,
+    "completion_tokens": 139,
+    "total_tokens": 782,
+    "cost": 0.00032947,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00032947,
+     "upstream_inference_prompt_cost": 0.00020576,
+     "upstream_inference_completions_cost": 0.00012371
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0045887",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Gabriella Mele, 23 anni, donna · celibe nubile · licenza media · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Villaggio Badia",
+   "storia": "L'altro giorno sono andata in comune per chiedere informazioni sul contributo per le badanti. La fila era lunga, ma l'impiegata è stata gentile e mi ha spiegato tutto con calma. Poi però mi hanno detto che i moduli erano finiti e che dovevo tornare la settimana dopo. A casa, mia nonna mi ha raccontato che lei ci aveva provato due anni fa e non aveva ottenuto niente. Io ci riprovo lo stesso, magari stavolta va meglio.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 667,
+    "completion_tokens": 117,
+    "total_tokens": 784,
+    "cost": 0.0004189,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004189,
+     "upstream_inference_prompt_cost": 0.0002668,
+     "upstream_inference_completions_cost": 0.0001521
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0053915",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Alessandro Gentile, 38 anni, uomo · coniugato unito · licenza media · dipendente, costruzioni · vive nel quartiere Villaggio Prealpino",
+   "storia": "L’altro giorno ho fatto la fila in Comune per la licenza edilizia per la veranda. Due ore in piedi, poi mi dicono che manca un documento. Ma almeno l’impiegato è stato chiaro, mi ha spiegato tutto senza fare il saccente. Mio cognato invece, sempre nello stesso ufficio, l’anno scorso l’hanno rimbalzato tre volte. Che ci vuoi fare? A volte va bene, a volte male. Alla fine quel foglio l’ho avuto, e alla caffetteria sotto il municipio mi hanno pure fatto lo sconto sul caffè.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 628,
+    "completion_tokens": 144,
+    "total_tokens": 772,
+    "cost": 0.00030978,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00030978,
+     "upstream_inference_prompt_cost": 0.0001616472,
+     "upstream_inference_completions_cost": 0.0001481328
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0065941",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Matteo Fabbrini, 30 anni, uomo · coniugato unito · diploma di istituto tecnico commerciale · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia · cittadinanza straniera, Egitto",
+   "storia": "L’anno scorso ho aperto un piccolo negozio di ricambi per moto e ho dovuto fare trafile infinite per i permessi. Ogni volta che andavo in Comune mi dicevano di portare un altro documento, un altro timbro. Alla fine un impiegato, uno giovane, mi ha aiutato a sistemare tutto in una settimana. Ma dopo tre mesi hanno messo i lavori davanti al negozio, la strada è diventata un cantiere per mesi e nessuno mi ha avvisato. Ora quando vedo il logo del Comune sulle comunicazioni sospiro prima di aprire.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 667,
+    "completion_tokens": 140,
+    "total_tokens": 807,
+    "cost": 0.0003157038,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003157038,
+     "upstream_inference_prompt_cost": 0.0001716858,
+     "upstream_inference_completions_cost": 0.000144018
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0074145",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Vincenzo Banzi, 59 anni, uomo · coniugato unito · diploma di istituto tecnico commerciale · dipendente, attività manifatturiere · vive nel quartiere Urago",
+   "storia": "Dovevo rifare il libretto di circolazione e mi aspettavo l’inferno, ma in Comune c’era una fila gestita bene, con quei numeretti che ti dicono quanti minuti mancano. Però poi il sistema si è bloccato e ho perso mezz’ora. La mia vicina, invece, ha avuto il marciapiede davanti a casa riparato in due giorni dopo una segnalazione. Boh, certe volte funziona e certe volte no. Alla fine, mi sono detto che poteva andare peggio.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 635,
+    "completion_tokens": 131,
+    "total_tokens": 766,
+    "cost": 0.0002982087,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002982087,
+     "upstream_inference_prompt_cost": 0.000163449,
+     "upstream_inference_completions_cost": 0.0001347597
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077611",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Francesco Cusimano, 42 anni, uomo · celibe nubile · diploma universitario in marketing e comunicazione d'azienda · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Brescia Antica",
+   "storia": "L’anno scorso ho aperto la mia agenzia di comunicazione in centro, nel quartiere Brescia Antica. Per i permessi ho fatto un salto mortale: uffici che non rispondevano, moduli persi, attese interminabili. Poi però, quando ho avuto bisogno di una consulenza per un progetto di riqualificazione del quartiere, al Comune hanno risposto subito, con competenza e disponibilità. Mi è sembrato di vedere due facce diverse della stessa medaglia: una burocratica e lenta, l’altra dinamica e pronta a collaborare. Non so bene cosa pensare: quando serve, c’è, ma spesso ci si deve arrovellare per ottenere il minimo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 649,
+    "completion_tokens": 170,
+    "total_tokens": 819,
+    "cost": 0.00035898,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035898,
+     "upstream_inference_prompt_cost": 0.00020768,
+     "upstream_inference_completions_cost": 0.0001513
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077623",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Yīnuò Lee, 30 anni, donna · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Cremona · cittadinanza straniera, Cina",
+   "storia": "Quando ho aperto il negozio, mi hanno detto che per il cartello serviva un permesso. All'ufficio attività produttive c'era una signora che parlava piano e mi ha spiegato tutto, anche se il mio italiano non è perfetto. Ho aspettato due settimane, ma alla fine è arrivato il via libera senza problemi. Però l'anno scorso, quando ho chiesto informazioni per rinnovare il permesso di soggiorno, mi hanno rimbalzata tre volte tra uffici diversi. Alla fine ho risolto, ma ogni volta è una sorpresa: a volte vanno liscio come l'olio, altre sembra che parliamo lingue diverse.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 656,
+    "completion_tokens": 162,
+    "total_tokens": 818,
+    "cost": 0.000473,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000473,
+     "upstream_inference_prompt_cost": 0.0002624,
+     "upstream_inference_completions_cost": 0.0002106
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0095300",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Giorgia Mukti, 53 anni, donna · coniugato unito · licenza/diploma di maestro d'arte (indirizzi vari) · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Borgo Trento",
+   "storia": "L'anno scorso ho aperto il mio laboratorio di restauro in centro. Per i permessi ho aspettato tre mesi, ogni volta che chiamavo mi dicevano \"la pratica è in lavorazione\". Poi un giorno passa l'ispettore comunale, un tipo simpatico che invece di fare storie mi ha aiutato a sistemare la documentazione. Adesso quando vedo i lavori per la nuova piazza davanti alla mia vetrina, chiedo al barista se sa quando finiranno e lui mi risponde \"con il Comune, chi lo sa\". Io intanto pago la TARI puntuale.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 655,
+    "completion_tokens": 138,
+    "total_tokens": 793,
+    "cost": 0.0003105576,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003105576,
+     "upstream_inference_prompt_cost": 0.000168597,
+     "upstream_inference_completions_cost": 0.0001419606
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0096996",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Francesca Scagnoli, 71 anni, donna · vedovo · licenza media · dipendente, sanità e assistenza sociale · vive nel quartiere Lamarmora",
+   "storia": "Ogni volta che devo rinnovare la carta d’identità mi viene un nervoso. L’ultima volta ho aspettato due ore con il numero in mano, e quando finalmente arrivo allo sportello mi dicono che manca un documento. Ma poi l’impiegata, quella giovane con i capelli corti, si è messa d’impegno e me l’ha sistemata tutto in un giorno. Al bar dicono che il sindaco ha fatto migliorare gli uffici, ma io ancora non capisco perché non mettono più panchine al parco, come gli avevamo chiesto anni fa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 625,
+    "completion_tokens": 143,
+    "total_tokens": 768,
+    "cost": 0.0003079791,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003079791,
+     "upstream_inference_prompt_cost": 0.000160875,
+     "upstream_inference_completions_cost": 0.0001471041
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0098073",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Massimo Del Maschio, 81 anni, uomo · coniugato unito · diploma di istituto tecnico industriale · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Porta Cremona",
+   "storia": "L’altro giorno sono andato in municipio per il rinnovo della licenza commerciale. L’impiegato mi ha detto di tornare tra una settimana perché mancava un documento. Peccato che lo stesso documento l’avessi già presentato l’anno scorso. Quando gliel’ho fatto notare, ha sbuffato e ha detto che le regole cambiano. Poi, per fortuna, una ragazza dell’ufficio ha trovato tutto nell’archivio digitale in due minuti. Un po’ di caos, come sempre, ma almeno qualcuno sa il fatto suo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 647,
+    "completion_tokens": 138,
+    "total_tokens": 785,
+    "cost": 0.0003084984,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003084984,
+     "upstream_inference_prompt_cost": 0.0001665378,
+     "upstream_inference_completions_cost": 0.0001419606
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0100273",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Mauro Spina, 28 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività manifatturiere · vive nel quartiere S. Polo Parco",
+   "storia": "L'anno scorso ho fatto domanda per l'alloggio popolare. Ogni volta che chiamo per sapere dove sono con la pratica, mi dicono che mancano dei documenti che avevo già consegnato. Poi però, quando ho dovuto rifare la carta d'identità, in municipio mi hanno sistemato tutto in mezz'ora senza problemi. Al bar dicono che dipende sempre da chi ti capita davanti. Io aspetto ancora.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 635,
+    "completion_tokens": 106,
+    "total_tokens": 741,
+    "cost": 0.0002724912,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002724912,
+     "upstream_inference_prompt_cost": 0.000163449,
+     "upstream_inference_completions_cost": 0.0001090422
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0102570",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Simone Abdelsayed Ragheb, 77 anni, uomo · coniugato unito · licenza media · parasubordinato, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Violino",
+   "storia": "Ogni volta che devo rinnovare la licenza per il mio negozio di ricambi, mi aspetto il solito calvario di documenti e code. Ma l'ultima volta, al Comune, la ragazza allo sportello mi ha aiutato a compilare tutto lì per lì, senza farmi tornare il giorno dopo. Mio nipote dice che ora si può fare anche online, ma io preferisco ancora andare di persona. Certo, quando piove e le strade qui si allagano, nessuno si sbriga a sistemare le fogne. Aspetti e speri.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 652,
+    "completion_tokens": 139,
+    "total_tokens": 791,
+    "cost": 0.0004415,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004415,
+     "upstream_inference_prompt_cost": 0.0002608,
+     "upstream_inference_completions_cost": 0.0001807
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0103703",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Mario Esposito, 79 anni, uomo · coniugato unito · licenza/diploma di maestro d'arte (indirizzi vari) · dipendente, altre attività di servizi · vive nel quartiere S. Rocchino",
+   "storia": "Ogni volta che devo rinnovare la carta d’identità mi prende l’ansia. L’ultima volta, però, l’impiegata mi ha sorpreso: ha visto che avevo difficoltà con il touchscreen e mi ha aiutato senza farmi sentire un incapace. Poi il mese scorso ho segnalato una panchina rotta al parco, e dopo due settimane era già sistemata. Certo, quando chiamai per chiedere informazioni sulle agevolazioni per gli anziani, mi hanno fatto rimbalzare tra tre uffici. Però alla fine qualcuno mi ha ascoltato. Non è tutto perfetto, ma neanche tutto da buttare.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 645,
+    "completion_tokens": 160,
+    "total_tokens": 805,
+    "cost": 0.000330615,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000330615,
+     "upstream_inference_prompt_cost": 0.000166023,
+     "upstream_inference_completions_cost": 0.000164592
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0104248",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Vincenzo Giotti, 77 anni, uomo · vedovo · laurea magistrale in giurisprudenza · dipendente, istruzione · vive nel quartiere Chiesanuova",
+   "storia": "Ogni volta che devo fare una pratica in Comune mi viene il mal di testa. L’anno scorso ho dovuto rinnovare il pass per il parcheggio riservato agli anziani, e tra scartoffie e tempi d’attesa mi sono chiesto se ne valesse la pena. Poi però, quando sono andato a ritirarlo, la signora allo sportello è stata gentile e mi ha aiutato a sistemare tutto in pochi minuti. In famiglia si dice sempre che il Comune è un labirinto, ma ogni tanto c’è chi sa come uscirne.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 629,
+    "completion_tokens": 137,
+    "total_tokens": 766,
+    "cost": 0.00032321,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00032321,
+     "upstream_inference_prompt_cost": 0.00020128,
+     "upstream_inference_completions_cost": 0.00012193
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0106626",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Aarya Sharma, 26 anni, donna · celibe nubile · alfabeta privo di titolo di studio · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Caionvico · cittadinanza straniera, India",
+   "storia": "Lavoro in un ristorante indiano qui a Caionvico, e quando ho chiesto al Comune il permesso per il banchetto durante la festa di Diwali, mi hanno fatto aspettare due settimane senza risposta. Poi però una signora dell'ufficio mi ha chiamato e ha sistemato tutto in un giorno, spiegandomi bene cosa dovevo fare. A volte sembra che non gli importi niente di noi, altre volte invece qualcuno si impegna davvero. Continuo a provarci, ma non so mai cosa aspettarmi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 648,
+    "completion_tokens": 134,
+    "total_tokens": 782,
+    "cost": 0.0004334,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004334,
+     "upstream_inference_prompt_cost": 0.0002592,
+     "upstream_inference_completions_cost": 0.0001742
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0108776",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Mario Masi, 69 anni, uomo · coniugato unito · diploma di istituto tecnico industriale · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Casazza",
+   "storia": "Da quando sono in pensione, ho più tempo per occuparmi delle cose del quartiere. Ogni volta che segnalo una buca in strada o un lampione rotto, mi dicono che è già in programma l’intervento. Passano settimane, a volte mesi, e nulla cambia. L’unica volta che hanno sistemato il marciapiede davanti casa, è stato perché c’era una visita del sindaco in zona. Però devo ammettere che quando ho avuto bisogno di un certificato anagrafico, l’ufficio è stato efficiente: fatto tutto in giornata, senza complicazioni.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 653,
+    "completion_tokens": 143,
+    "total_tokens": 796,
+    "cost": 0.00033623,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033623,
+     "upstream_inference_prompt_cost": 0.00020896,
+     "upstream_inference_completions_cost": 0.00012727
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0112759",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Anna Galaverni, 61 anni, donna · vedovo · diploma di istituto tecnico commerciale · dipendente, sanità e assistenza sociale · vive nel quartiere Centro Storico Nord",
+   "storia": "Ogni volta che vado in Comune per aggiornare la carta d’identità mi aspetto il solito caos, ma negli ultimi anni ho notato che le cose vanno un po’ meglio. L’ultima volta l’impiegata è stata gentile, mi ha spiegato tutto senza fretta e i tempi di attesa erano accettabili. Certo, quando ho dovuto chiedere informazioni per il condominio sulla manutenzione delle strade, mi hanno rimbalzata tra tre uffici diversi. Però almeno alla fine hanno trovato la soluzione. Al mercato dicono che dipende sempre da chi ti capita, io credo che qualcosa stia migliorando.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 632,
+    "completion_tokens": 158,
+    "total_tokens": 790,
+    "cost": 0.0003252114,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003252114,
+     "upstream_inference_prompt_cost": 0.0001626768,
+     "upstream_inference_completions_cost": 0.0001625346
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0115670",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Giovanni Tagliaferri, 67 anni, uomo · coniugato unito · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia",
+   "storia": "Da quando ho aperto l’officina, ho sempre avuto a che fare con il Comune per licenze, permessi e controlli. Ogni volta ci sono ritardi, documenti che sembrano sparire, ma alla fine si risolve. L’anno scorso, però, è arrivata una multa per un cartello pubblicitario che secondo loro non era a norma. Ho fatto ricorso, ho aspettato mesi, e alla fine hanno riconosciuto che avevo ragione. Non è stato semplice, ma almeno c’è stato dialogo. In famiglia dicono che sono troppo paziente, ma credo che sia meglio così: litigare non serve a nulla.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 668,
+    "completion_tokens": 149,
+    "total_tokens": 817,
+    "cost": 0.00034637,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034637,
+     "upstream_inference_prompt_cost": 0.00021376,
+     "upstream_inference_completions_cost": 0.00013261
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0127480",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Lorenzo Rinaldi, 62 anni, uomo · coniugato unito · diploma di istituto tecnico industriale · dipendente, attività finanziarie e assicurative · vive nel quartiere Porta Venezia",
+   "storia": "L’anno scorso ho avuto un problema con la TARI, mi hanno aggiunto un’altra utenza a casa e ci sono volute tre settimane per sistemare tutto. Però devo dire che la segretaria all’anagrafe, quando mio figlio si è sposato, è stata molto precisa, ci ha spiegato tutto bene senza perdere tempo. A volte funziona, a volte no, dipende. In famiglia dico sempre che è un po’ una lotteria, ma alla fine le cose si risolvono.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 639,
+    "completion_tokens": 122,
+    "total_tokens": 761,
+    "cost": 0.00028998,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00028998,
+     "upstream_inference_prompt_cost": 0.0001644786,
+     "upstream_inference_completions_cost": 0.0001255014
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0130589",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Claudia Cecconi, 36 anni, donna · celibe nubile · laurea magistrale in comunicazione · parasubordinata, attività finanziarie e assicurative · vive nel quartiere Lamarmora",
+   "storia": "Ogni volta che devo fare una pratica al Comune mi preparo psicologicamente per l’inferno dei moduli online. Ma l’ultima volta, per rinnovare il pass residenti, è andata liscia: il sito era chiaro e dopo due giorni mi è arrivata la mail di conferma. Certo, quando ho chiamato l’ufficio per un dubbio, nessuno ha mai risposto. Però almeno non mi hanno perso i documenti come quella volta con la richiesta del conto energia. Diciamo che va a giorni.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 635,
+    "completion_tokens": 128,
+    "total_tokens": 763,
+    "cost": 0.0002951226,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002951226,
+     "upstream_inference_prompt_cost": 0.000163449,
+     "upstream_inference_completions_cost": 0.0001316736
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0150258",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Maurizio Catellacci, 48 anni, uomo · celibe nubile · licenza media · dipendente, attività manifatturiere · vive nel quartiere Caionvico",
+   "storia": "L’anno scorso ho dovuto fare la pratica per il rinnovo della residenza. Mi aspettavo il solito giro di burocrazia infinita, invece all’ufficio anagrafe mi hanno aiutato subito, tutto risolto in mezz’ora. Però poi, quando ho segnalato le buche in via Gramsci, ci sono voluti mesi prima che le sistemassero. Al bar dicono che dipende da chi conosci, ma io non ci credo. Basta che funzioni, quando serve.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 629,
+    "completion_tokens": 122,
+    "total_tokens": 751,
+    "cost": 0.0004102,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004102,
+     "upstream_inference_prompt_cost": 0.0002516,
+     "upstream_inference_completions_cost": 0.0001586
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0151229",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Simone Bacchitta, 35 anni, uomo · coniugato unito · diploma di istituto professionale per l'industria e l'artigianato · imprenditore o libero professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Violino",
+   "storia": "L’anno scorso ho aperto l’officina e per i permessi ho dovuto correre avanti e indietro in Comune per mesi. Ogni volta c’era un documento mancante, una firma sbagliata. Alla fine ho risolto solo perché conoscevo uno dell’ufficio tecnico. Ora quando devono rifare l’asfalto in via dei Gelsi, che è una strada piena di buche, aspetto e basta. Tanto sanno tutti che si muovono solo se qualcuno fa pressione. Però almeno le tasse sui locali le ho pagate in tempo, senza storie.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 669,
+    "completion_tokens": 151,
+    "total_tokens": 820,
+    "cost": 0.0004639,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004639,
+     "upstream_inference_prompt_cost": 0.0002676,
+     "upstream_inference_completions_cost": 0.0001963
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0159872",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Cristina Gualtieri, 76 anni, donna · vedovo · licenza media · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Villaggio Violino",
+   "storia": "Ho sempre fatto tutto da sola, anche dopo la scomparsa di mio marito. Quando ho dovuto rinnovare la licenza per la mia attività, mi aspettavo il solito calvario di code e documenti. Invece, al Comune sono stati sorprendentemente efficienti. Mi hanno spiegato tutto chiaramente e in tempi brevi ho ottenuto quello che mi serviva. Certo, non è sempre stato così: ricordo ancora quando hanno sbagliato la fatturazione delle tasse e ci è voluto un mese per sistemare. Però, devo dire che ultimamente qualcosa è cambiato. Forse hanno trovato nuove persone capaci, o semplicemente hanno migliorato i processi. Non so, ma è un passo nella giusta direzione.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 638,
+    "completion_tokens": 174,
+    "total_tokens": 812,
+    "cost": 0.00035902,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035902,
+     "upstream_inference_prompt_cost": 0.00020416,
+     "upstream_inference_completions_cost": 0.00015486
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0178325",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Beatrice Pusceddu, 65 anni, donna · coniugato unito · licenza/diploma di maestro d'arte (indirizzi vari) · coadiuvante familiare, altre attività di servizi · vive nel quartiere Buffalora",
+   "storia": "L'anno scorso ho chiesto al Comune il permesso per mettere un banchetto artigianale al mercato di quartiere. Dopo due mesi di silenzio, mi hanno risposto dicendo che mancava un documento. L'ho portato il giorno dopo, ma ci sono volute altre tre settimane per l'approvazione. Per fortuna la signora all'ufficio attività produttive è stata sempre gentile e mi ha aiutato a capire come muovermi. Ma ormai avevo perso la stagione migliore per vendere le mie ceramiche. In famiglia dicono che è sempre così: se non conosci qualcuno, ti fanno aspettare un'eternità. Però quando finalmente ho avuto l'autorizzazione, tutto è filato liscio senza altri intoppi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 645,
+    "completion_tokens": 190,
+    "total_tokens": 835,
+    "cost": 0.000361476,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000361476,
+     "upstream_inference_prompt_cost": 0.000166023,
+     "upstream_inference_completions_cost": 0.000195453
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0179820",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Francesca Brogi, 32 anni, donna · coniugato unito · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Urago",
+   "storia": "L'altro giorno sono andata in comune per chiedere informazioni sull'assegno per le famiglie. La fila era lunga, ma l'impiegata è stata gentile e mi ha spiegato tutto con pazienza. Poi però ho saputo che per il parco giochi vicino a casa nostra ci vogliono ancora mesi prima che sistemino le altalene rotte. Mio marito dice che è sempre così: qualche cosa funziona, qualche altra no. Io intanto aspetto e vediamo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 119,
+    "total_tokens": 765,
+    "cost": 0.0004131,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004131,
+     "upstream_inference_prompt_cost": 0.0002584,
+     "upstream_inference_completions_cost": 0.0001547
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0181357",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Andrea Fattori, 39 anni, uomo · coniugato unito · diploma di istituto tecnico agrario · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Buffalora",
+   "storia": "L’altro giorno sono andato in comune per chiedere informazioni sul permesso per aprire un chiosco di frutta in piazza. L’impiegato mi ha guardato come se fossi un alieno, poi mi ha detto che dovevo compilare tre moduli diversi. Per fortuna, la tipa all’ufficio tributi mi ha aiutato a capire come fare, spiegandomi tutto con pazienza. Adesso aspetto, ma non so se arriverà mai una risposta. Intanto mio cugino, che ha un bar sempre in centro, dice che a lui i controlli li fanno solo quando c’è da pagare qualcosa. Boh, vedremo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 653,
+    "completion_tokens": 154,
+    "total_tokens": 807,
+    "cost": 0.0004614,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004614,
+     "upstream_inference_prompt_cost": 0.0002612,
+     "upstream_inference_completions_cost": 0.0002002
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0183815",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Dion Gega, 38 anni, uomo · celibe nubile · diploma di istituto tecnico commerciale · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Don Bosco · cittadinanza straniera, Albania",
+   "storia": "Ho fatto domanda per il rinnovo del permesso di soggiorno mesi fa, e ancora non ho notizie. Ogni volta che vado in municipio mi danno una scadenza diversa, sembra che nessuno sappia davvero come funziona. Però, quando ho avuto bisogno di un certificato di residenza, l’hanno fatto subito, senza tante storie. Mi dicono che nel quartiere stanno sistemando le strade, ma da me non si è visto ancora nulla. Insomma, dipende: a volte riescono a fare le cose, altre volte è come se fossimo invisibili.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 660,
+    "completion_tokens": 144,
+    "total_tokens": 804,
+    "cost": 0.00033936,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033936,
+     "upstream_inference_prompt_cost": 0.0002112,
+     "upstream_inference_completions_cost": 0.00012816
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0185787",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Giovanna Senesi, 48 anni, donna · coniugato unito · laurea triennale in infermieristica (abilitante alla professione sanitaria di infermiere) · dipendente, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Lamarmora",
+   "storia": "L'altro giorno ho portato mio figlio al parco giochi di Lamarmora e ho trovato le altalene nuove, finalmente. Ci avevano messo mesi, ma almeno ora sono sicure e funzionano. Quando ho fatto la tessera della biblioteca comunale, invece, mi hanno perso i documenti due volte e ho dovuto tornare con tutto daccapo. Però l'ultima volta che ho chiesto informazioni per un evento in piazza, all'ufficio cultura hanno risposto subito e pure con cortesia. Mah, dipende.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 657,
+    "completion_tokens": 129,
+    "total_tokens": 786,
+    "cost": 0.0003018141,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003018141,
+     "upstream_inference_prompt_cost": 0.0001691118,
+     "upstream_inference_completions_cost": 0.0001327023
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0187536",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Davide Giovannetti, 16 anni, uomo · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere S. Polo Cimabue",
+   "storia": "Ieri ho fatto la fila alle poste con mio padre per il rinnovo della residenza. L'impiegato ha sbagliato due volte i dati e abbiamo perso un'ora. Però la settimana scorsa, quando sono andato a ritirare il libretto per il motorino in municipio, è andata liscia in dieci minuti. La ragazza all'ufficio mobilità mi ha spiegato tutto senza fare storie, anche se sono minorenne. Mah, dipende dai giorni.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 651,
+    "completion_tokens": 121,
+    "total_tokens": 772,
+    "cost": 0.0002920401,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002920401,
+     "upstream_inference_prompt_cost": 0.0001675674,
+     "upstream_inference_completions_cost": 0.0001244727
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0188240",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Matteo Russo, 75 anni, uomo · celibe nubile · licenza elementare · dipendente, attività manifatturiere · vive nel quartiere Villaggio Violino",
+   "storia": "Da quando sono in pensione, ogni tanto vado al municipio per sistemare quelle carte che non capisco mai bene. L'ultima volta, per l'iscrizione all'anagrafe dei residenti anziani, la ragazza allo sportello ha avuto pazienza e mi ha spiegato tutto passo dopo passo. Però quando ho chiesto dei marciapiedi rotti davanti a casa mia, mi hanno detto che \"sono in programma\" da due anni. Alla fine chiedo sempre a mio nipote di aiutarmi, almeno lui sa come muoversi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 628,
+    "completion_tokens": 128,
+    "total_tokens": 756,
+    "cost": 0.0004176,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004176,
+     "upstream_inference_prompt_cost": 0.0002512,
+     "upstream_inference_completions_cost": 0.0001664
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0194794",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Rita Shahollari, 66 anni, donna · celibe nubile · licenza media · lavoratrice in proprio, attività manifatturiere · vive nel quartiere Porta Venezia",
+   "storia": "Ogni volta che devo fare una pratica al Comune mi preparo alla guerra. L’ultima volta ho dovuto rinnovare la licenza per la mia attività, e dopo tre settimane di attesa mi hanno detto che mancava un documento che nessuno mi aveva mai chiesto prima. Ho perso mezza giornata e sono tornata infuriata. Però, devo dire, quando ho chiesto informazioni per il mercato artigianale, alla fine hanno risposto abbastanza in fretta e mi hanno dato qualche contatto utile. Non è tutto male, ma ci vuole pazienza, e io non ne ho molta.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 628,
+    "completion_tokens": 145,
+    "total_tokens": 773,
+    "cost": 0.00033001,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033001,
+     "upstream_inference_prompt_cost": 0.00020096,
+     "upstream_inference_completions_cost": 0.00012905
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0197341",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Michele Ramis, 86 anni, uomo · coniugato unito · licenza elementare · dipendente, sanità e assistenza sociale · vive nel quartiere Lamarmora",
+   "storia": "Da quando sono andato in pensione, ho visto cambiare tante cose nel quartiere. Ogni tanto passo in municipio per chiedere informazioni sulle agevolazioni per gli anziani: l’ultima volta mi hanno spiegato tutto con pazienza, anche se ci ho messo un po’ a capire. Certo, qualche volta mi sembra che le cose si perdano nei cassetti, come quella volta che ho dovuto insistere perché mi approvassero il bonus per le utenze. Ma alla fine, alla fine, ce l’ho fatta. Qui al bar dicono che il Comune fa il possibile, anche se non sempre riesce. Io credo che ci provino, almeno.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 630,
+    "completion_tokens": 155,
+    "total_tokens": 785,
+    "cost": 0.00033955,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033955,
+     "upstream_inference_prompt_cost": 0.0002016,
+     "upstream_inference_completions_cost": 0.00013795
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0005848",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Roberta Bartolini, 89 anni, donna · coniugato unito · licenza media · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Porta Milano",
+   "storia": "A Porta Milano ci vivo da sessant’anni, ho visto cambiare tutto. Quando hanno rifatto le strade, il Comune ha mandato una lettera per avvisare, con i tempi precisi. Mi piace che ora ci siano le panchine nuove vicino alla fermata, anche se ci mettono un po’ a pulirle. L’anno scorso ho chiesto lo sconto sulla tassa dei rifiuti per la mia età: all’ufficio sono stati gentili, mi hanno spiegato tutto senza fretta. Certo, qualche volta bisogna insistere, ma alla fine le cose si sistemano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 634,
+    "completion_tokens": 145,
+    "total_tokens": 779,
+    "cost": 0.0004421,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004421,
+     "upstream_inference_prompt_cost": 0.0002536,
+     "upstream_inference_completions_cost": 0.0001885
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0006974",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Mia Silva, 35 anni, donna · celibe nubile · licenza elementare · dipendente, attività manifatturiere · vive nel quartiere S. Bartolomeo · cittadinanza straniera, Argentina",
+   "storia": "Quando sono arrivata qui, non sapevo nemmeno come fare per registrarmi in Comune. Mi hanno aiutata, passo dopo passo, e alla fine ho ottenuto tutto quello che mi serviva. L’anno scorso ho dovuto rinnovare il permesso di soggiorno, e c’era un modulo che non riuscivo a capire. Sono andata in municipio, e una signora dell’ufficio immigrazione mi ha spiegato tutto con pazienza, parlando lentamente per farmi capire. Certo, qualche volta ci sono code lunghe e tempi di attesa, ma alla fine le cose si risolvono. Mi sento trattata con rispetto, e questo per me vale molto.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 635,
+    "completion_tokens": 161,
+    "total_tokens": 796,
+    "cost": 0.00034649,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034649,
+     "upstream_inference_prompt_cost": 0.0002032,
+     "upstream_inference_completions_cost": 0.00014329
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007463",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Monica Zallocco, 33 anni, donna · celibe nubile · laurea triennale in tecnico di radiologia medica, per immagini e radioterapia (abilitante alla professione sanitaria di tecnico di radiologia medica, per immagini e radioterapia ) · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "L’anno scorso ho dovuto fare la pratica per l’apertura di un’attività di assistenza domiciliare. Al Comune mi hanno spiegato tutto passo passo, senza farmi perdere tempo. Quando ho avuto un dubbio sulla documentazione, l’impiegata mi ha chiamato lei stessa il giorno dopo per chiarirmelo. Ora ogni volta che passo davanti alla sede mi viene da sorridere: sembra strano, ma mi sento quasi in famiglia. Anche i vicini dicono che negli ultimi anni le cose funzionano. Se c’è un problema con i rifiuti o l’illuminazione, basta una segnalazione e sistemano tutto in fretta.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 712,
+    "completion_tokens": 158,
+    "total_tokens": 870,
+    "cost": 0.0004902,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004902,
+     "upstream_inference_prompt_cost": 0.0002848,
+     "upstream_inference_completions_cost": 0.0002054
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007782",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Maria Ciaramellari, 81 anni, donna · vedovo · licenza media · dipendente, altre attività di servizi · vive nel quartiere Porta Venezia",
+   "storia": "Ho vissuto in questo quartiere da quando mi sono sposata, eppure ogni volta che vado in municipio per la pensione o per le tasse sulla casa, mi trattano come se fossi appena arrivata. L’ultima volta, però, c’era una nuova impiegata giovane che mi ha aiutata con pazienza, spiegandomi tutto passo dopo passo. Mi ha perso chiamata per aggiornarmi sullo stato della pratica. Certo, ci sono ancora delle cose che non funzionano, come la pulizia delle strade qui vicino, ma quella ragazza mi ha fatto capire che qualcuno ci tiene davvero. Mi sembra che qualcosa stia cambiando, anche se piano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 625,
+    "completion_tokens": 162,
+    "total_tokens": 787,
+    "cost": 0.00034418,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034418,
+     "upstream_inference_prompt_cost": 0.0002,
+     "upstream_inference_completions_cost": 0.00014418
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0009533",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Martina Paggetti, 60 anni, donna · coniugato unito · licenza elementare · lavoratrice in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia",
+   "storia": "L'altro giorno sono andata in comune per rinnovare la licenza del mio negozio di ricambi. Mi aspettavo l'inferno, come quando ci andai vent'anni fa, ma invece tutto liscio. La ragazza all'ufficio mi ha spiegato bene i documenti, mancava un timbro e ha detto di tornare quando volevo, senza rifare la fila. A casa mia, se uno ti tratta bene una volta, ci puoi contare. Mio marito dice che è stata fortuna, ma io intanto sono andata a prendergli il pane mentre aspettavo, e quando sono tornata era già tutto pronto.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 650,
+    "completion_tokens": 149,
+    "total_tokens": 799,
+    "cost": 0.0003205863,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003205863,
+     "upstream_inference_prompt_cost": 0.00016731,
+     "upstream_inference_completions_cost": 0.0001532763
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0009832",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Anna Maria Cappelli, 71 anni, donna · vedovo · laurea magistrale in giurisprudenza · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Casazza",
+   "storia": "L'altro giorno sono andata in comune per fare il rinnovo della carta d'identità. Penso sempre che sarà una scocciatura, ma ogni volta mi sorprendono. La signora all'ufficio anagrafe mi ha riconosciuto, anche se passo solo ogni dieci anni. \"Signora Cappelli, quanto tempo! Come sta?\" ha detto, mentre sistemava tutto in un attimo. Mi hanno dato l'appuntamento per le foto il giorno dopo, puntuali come un orologio svizzero. Al bar accanto dicono che sono fortunata, ma io so che qui le cose funzionano. Sempre.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 670,
+    "completion_tokens": 144,
+    "total_tokens": 814,
+    "cost": 0.0003205908,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003205908,
+     "upstream_inference_prompt_cost": 0.000172458,
+     "upstream_inference_completions_cost": 0.0001481328
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0016944",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Antonella Lenzi, 26 anni, donna · coniugato unito · licenza media · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Cimabue",
+   "storia": "L’altro giorno sono andata in comune per la pratica della nuova residenza, ero un po’ in ansia perché avevo sentito storie di code infinite. Invece, in mezz’ora tutto risolto. L’impiegata è stata gentilissima, mi ha spiegato ogni passaggio senza farmi sentire stupida. Mio marito non ci credeva: «Davvero non ti hanno fatto tornare tre volte?». Ora quando passa il camion per la pulizia delle strade e lo vedo lavorare anche nel nostro vicolo, penso che forse non è tutto da buttare.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 637,
+    "completion_tokens": 138,
+    "total_tokens": 775,
+    "cost": 0.0003059244,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003059244,
+     "upstream_inference_prompt_cost": 0.0001639638,
+     "upstream_inference_completions_cost": 0.0001419606
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0030898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Luciano Raddi, 43 anni, uomo · vedovo · diploma di istituto tecnico aeronautico · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Rocchino",
+   "storia": "L'anno scorso ho dovuto rifare la carta d'identità e pensavo sarebbe stata la solita trafila. Invece al Comune mi hanno ricevuto subito, senza appuntamento. La signora all'ufficio anagrafe si è pure scusata perché il sistema era lento, ma in mezz'ora era tutto fatto. Mio cognato dice che sono fortunato, che a lui fanno sempre perdere tempo. Io invece penso che quando c'è da fare, qui lavorano. L'altro giorno ho visto pure che hanno sistemato le panchine rotte al parco vicino a casa. Piccole cose, ma contano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 648,
+    "completion_tokens": 151,
+    "total_tokens": 799,
+    "cost": 0.0004555,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004555,
+     "upstream_inference_prompt_cost": 0.0002592,
+     "upstream_inference_completions_cost": 0.0001963
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0032280",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Giulia Razzi, 57 anni, donna · celibe nubile · diploma di istituto professionale per l'industria e l'artigianato · dipendente, altre attività di servizi · vive nel quartiere Porta Venezia",
+   "storia": "Lavoro nel settore dei servizi da anni e ho sempre avuto a che fare con il Comune per questioni burocratiche. Ogni volta che ho avuto bisogno di un documento o di una pratica, ho trovato personale disponibile e competente. Ricordo quando ho dovuto rinnovare la mia residenza: ho fatto tutto online, senza problemi, e la risposta è arrivata in tempi rapidi. Mi piace anche come il Comune mantenga pulito e curato il quartiere, organizzando eventi che coinvolgono la comunità. Sento di poter contare su di loro, senza mai aver avuto delusioni.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 641,
+    "completion_tokens": 145,
+    "total_tokens": 786,
+    "cost": 0.00033417,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033417,
+     "upstream_inference_prompt_cost": 0.00020512,
+     "upstream_inference_completions_cost": 0.00012905
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0034927",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Tommaso Banzuela, 25 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Primo Maggio",
+   "storia": "L’altro giorno sono andato in municipio per rinnovare l’abbonamento alla piscina comunale. Pensavo ci avrei messo mezza giornata, invece in dieci minuti era tutto fatto. La ragazza allo sportello mi ha pure detto che da quest’anno si può prenotare il corso di nuoto direttamente online. Certo, i campetti di calcetto del parco sono sempre mezzi distrutti, ma almeno qualcosa funziona. Quando gliel’ho fatto notare, mi ha assicurato che sono già stati approvati i lavori. Vabbè, speriamo sia vero. Intanto però mi tengo la piscina.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 153,
+    "total_tokens": 799,
+    "cost": 0.0003236715,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003236715,
+     "upstream_inference_prompt_cost": 0.0001662804,
+     "upstream_inference_completions_cost": 0.0001573911
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0036394",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Valentina Rossi, 68 anni, donna · vedovo · laurea magistrale in scienze agrarie, forestali e ambientali · dipendente, istruzione · vive nel quartiere Brescia Antica",
+   "storia": "Ho lavorato per anni nella gestione del verde pubblico, quindi quando il Comune ha avviato il progetto di riqualificazione del parco nel mio quartiere, ho subito mandato una mail per dare qualche consiglio. Mi hanno risposto rapidamente, chiedendomi un incontro. Sono stata ascoltata e alcune delle mie idee sono state addirittura incorporate nel piano. Certo, ci sono voluti mesi prima che i lavori iniziassero, e qualche albero è stato potato male, ma alla fine il risultato è stato buono. Ogni volta che passo di lì, mi sento un po’ orgogliosa di aver contribuito, anche se in piccolo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 633,
+    "completion_tokens": 153,
+    "total_tokens": 786,
+    "cost": 0.00033873,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033873,
+     "upstream_inference_prompt_cost": 0.00020256,
+     "upstream_inference_completions_cost": 0.00013617
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0040247",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Tommaso Marchi, 42 anni, uomo · celibe nubile · liceo scientifico · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Eustacchio",
+   "storia": "Lavoro in un ufficio pubblico da vent'anni, quindi so come funzionano le cose. Quando ho chiesto al Comune il cambio di residenza, mi aspettavo il solito calvario. Invece, l'impiegata mi ha spiegato tutto chiaramente, senza storie, e la pratica è andata avanti in pochi giorni. Certo, per la manutenzione del marciapiede sotto casa ho dovuto insistere un paio di volte, ma alla fine l'hanno sistemato. Non è perfetto, ma almeno rispondono.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 643,
+    "completion_tokens": 130,
+    "total_tokens": 773,
+    "cost": 0.0004262,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004262,
+     "upstream_inference_prompt_cost": 0.0002572,
+     "upstream_inference_completions_cost": 0.000169
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0050592",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Pietro Hsiang, 60 anni, uomo · coniugato unito · laurea magistrale in discipline economiche, bancarie e aziendali · dipendente, trasporto e magazzinaggio · vive nel quartiere Borgo Trento",
+   "storia": "L’anno scorso ho fatto domanda per il permesso di sosta nel mio quartiere: sapevo che ci sarebbe voluto un po’, ma dopo nemmeno un mese mi è arrivata la comunicazione che era tutto a posto. Mi hanno pure chiamato per avvisarmi, senza che io facessi niente. Certo, il marciapiede davanti a casa è sempre un po’ dissestato, e ogni volta che chiamo per farlo sistemare mi dicono che ci stanno lavorando, ma almeno rispondono. Poi, quando c’è stata quella festa di quartiere, hanno organizzato tutto bene, senza casini. Insomma, non è che siano perfetti, ma almeno ci provano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 163,
+    "total_tokens": 809,
+    "cost": 0.00035179,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035179,
+     "upstream_inference_prompt_cost": 0.00020672,
+     "upstream_inference_completions_cost": 0.00014507
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0060298",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Valeria Prahoveanu, 54 anni, donna · celibe nubile · diploma di scuola magistrale · dipendente, istruzione · vive nel quartiere S. Eufemia",
+   "storia": "Quando hanno fatto quel sondaggio sulle zone della città da riqualificare, ho mandato la mia proposta senza troppe aspettative. E invece, dopo qualche settimana, mi hanno chiamata per un incontro con l’assessore e un gruppo di tecnici. Mi hanno ascoltata, preso appunti, chiesto dettagli. Non è che tutto sia stato risolto subito, ma almeno ho visto che c’era un interesse. Poi, qualche mese fa, ho avuto bisogno di un certificato per il lavoro: sono andata in Comune e in meno di un’ora avevo già tutto in mano. Certo, non è sempre così, ma quando serve, sanno fare le cose.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 628,
+    "completion_tokens": 159,
+    "total_tokens": 787,
+    "cost": 0.00034247,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034247,
+     "upstream_inference_prompt_cost": 0.00020096,
+     "upstream_inference_completions_cost": 0.00014151
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0061381",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Monica Fanfani, 38 anni, donna · coniugato unito · licenza media · imprenditrice o libera professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Mompiano",
+   "storia": "L'anno scorso ho aperto l'officina in via Garibaldi. Al Comune sono andata per i permessi pensando al peggio, invece in due settimane era tutto a posto. L'impiegato mi ha pure spiegato come richiedere gli incentivi per le imprese femminili. Quando c'è stato quel problema con i parcheggi davanti al negozio, hanno sistemato in tre giorni. Mio marito dice che sono stata fortunata, ma secondo me qui sanno il fatto loro. Ogni tanto passo in municipio anche solo per un caffè, ormai mi conoscono tutti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 653,
+    "completion_tokens": 141,
+    "total_tokens": 794,
+    "cost": 0.0004445,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004445,
+     "upstream_inference_prompt_cost": 0.0002612,
+     "upstream_inference_completions_cost": 0.0001833
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0073464",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Riccardo Mascagni, 41 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Parco",
+   "storia": "Ho avuto bisogno di un certificato storico per una pratica legata al mio lavoro, e mi aspettavo di dover perdere mezza giornata tra code e scartoffie. Invece, ho trovato sul sito del Comune una procedura chiarissima: compilo il modulo online, pago con carta, e dopo due giorni il documento è arrivato direttamente in casella di posta elettronica certificata. Non ho mai visto un servizio pubblico così efficiente. Ogni volta che ci ho a che fare, mi confermano che qui le cose funzionano davvero.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 643,
+    "completion_tokens": 129,
+    "total_tokens": 772,
+    "cost": 0.00032057,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00032057,
+     "upstream_inference_prompt_cost": 0.00020576,
+     "upstream_inference_completions_cost": 0.00011481
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0078128",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Giuseppe Calvetti, 89 anni, uomo · vedovo · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, attività professionali, scientifiche e tecniche · vive nel quartiere S. Eustacchio",
+   "storia": "Dopo tanti anni in questo quartiere, ormai mi conoscono tutti in Comune. L'altro giorno sono andato a rinnovare la carta d'identità e la ragazza all'ufficio anagrafe mi ha fatto accomodare subito, anche senza appuntamento. \"Signor Calvetti, lei è di casa qui\", mi ha detto sorridendo. Quando c'è stato quel problema con il marciapiede davanti a casa, l'hanno sistemato in due giorni. Chiamano ancora qualche volta per chiedere come sto, raccomandandomi di stare al caldo d'inverno. Sono trattato come un nonno da tutti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 649,
+    "completion_tokens": 152,
+    "total_tokens": 801,
+    "cost": 0.000323415,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000323415,
+     "upstream_inference_prompt_cost": 0.0001670526,
+     "upstream_inference_completions_cost": 0.0001563624
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0085276",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Caterina Emaldi, 36 anni, donna · coniugato unito · laurea magistrale in comunicazione · dipendente, sanità e assistenza sociale · vive nel quartiere Porta Venezia",
+   "storia": "L’altro giorno ho presentato la richiesta per il pass gratuito per i mezzi per mio figlio. Sul sito del Comune c’era tutto chiaro, anche i documenti da allegare. Dopo tre giorni mi è arrivata la mail di approvazione, senza intoppi. L’anno scorso, quando ci sono stati i lavori in piazza, hanno sistemato i marciapiedi davanti a scuola proprio prima dell’inizio delle lezioni. Certo, non so se risponderanno altrettanto in fretta per la segnalazione sulla luce rotta nel parchetto, ma finora non mi hanno mai fatto sentire ignorata.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 634,
+    "completion_tokens": 146,
+    "total_tokens": 780,
+    "cost": 0.0003133818,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003133818,
+     "upstream_inference_prompt_cost": 0.0001631916,
+     "upstream_inference_completions_cost": 0.0001501902
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0092997",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Gianni Rossi, 43 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, agricoltura, silvicoltura e pesca · vive nel quartiere S. Polo Cimabue · cittadinanza straniera, Pakistan",
+   "storia": "Quando sono arrivato qui vent'anni fa, non sapevo nemmeno come chiedere un permesso per il banco al mercato. Ora i ragazzi dell'ufficio attività produttive mi chiamano per nome, mi spiegano tutto senza fretta. L'anno scorso hanno sistemato la strada sterrata che porta al mio campo, dopo una sola segnalazione. Certo, a volte ci vuole pazienza con le carte, ma alla fine trovano sempre una soluzione. Mio cugino in un altro comune aspetta da mesi quello che qui risolvono in settimane.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 646,
+    "completion_tokens": 136,
+    "total_tokens": 782,
+    "cost": 0.0004352,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004352,
+     "upstream_inference_prompt_cost": 0.0002584,
+     "upstream_inference_completions_cost": 0.0001768
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0096771",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Yeva Savchenko, 38 anni, donna · coniugato unito · liceo scientifico · dipendente, altre attività di servizi · vive nel quartiere Caionvico · cittadinanza straniera, Ucraina",
+   "storia": "Quando siamo arrivati dall'Ucraina, il Comune ci ha aiutato a trovare un alloggio e mi hanno spiegato come fare per iscrivere i bambini a scuola. A volte ci mettono un po' a rispondere alle mail, ma quando vado in ufficio sono sempre gentili. L'altro giorno ho chiesto informazioni per un corso di italiano e mi hanno dato subito i contatti giusti. Mio marito dice che in patria non sarebbe stato così semplice.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 638,
+    "completion_tokens": 111,
+    "total_tokens": 749,
+    "cost": 0.0003995,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003995,
+     "upstream_inference_prompt_cost": 0.0002552,
+     "upstream_inference_completions_cost": 0.0001443
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0106090",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Laura Curradi, 70 anni, donna · coniugato unito · licenza elementare · socia di cooperativa, attività dei servizi di alloggio e di ristorazione · vive nel quartiere S. Bartolomeo",
+   "storia": "Da quando hanno sistemato le panchine nuove al parco vicino a casa, ci vado ogni pomeriggio con le altre signore. L'anno scorso avevo scritto al Comune perché quelle vecchie erano rotte, e in due settimane le hanno cambiate. Ora quando passa l'assessore ci saluta sempre e chiede se serve altro. La tessera per l'autobus me l'hanno rinnovata direttamente in biblioteca, senza fare code. Mio marito dice che sono fortunata, ma secondo me qui al Comune lavora gente per bene.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 638,
+    "completion_tokens": 128,
+    "total_tokens": 766,
+    "cost": 0.0004216,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004216,
+     "upstream_inference_prompt_cost": 0.0002552,
+     "upstream_inference_completions_cost": 0.0001664
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0108489",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Marco Ferrini, 76 anni, uomo · coniugato unito · laurea magistrale in giurisprudenza · dipendente, attività finanziarie e assicurative · vive nel quartiere Don Bosco",
+   "storia": "Ho dovuto fare la pratica per la riduzione dell'IMU sulla seconda casa. Mi aspettavo l'inferno burocratico, invece all'ufficio tributi c'era un ragazzo preparato che mi ha spiegato tutto passo passo. Alla fine ho ricevuto il rimborso prima del previsto. Certo, per il marciapiede rotto davanti a casa ho dovuto insistere tre volte, ma almeno quando intervengono lo fanno bene. Mio nipote dice che sono troppo accomodante, ma io credo che alla fine chi lavora al Comune faccia quello che può.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 636,
+    "completion_tokens": 139,
+    "total_tokens": 775,
+    "cost": 0.0004351,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004351,
+     "upstream_inference_prompt_cost": 0.0002544,
+     "upstream_inference_completions_cost": 0.0001807
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0109898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Enrico Teixeira, 38 anni, uomo · celibe nubile · licenza media · dipendente, attività manifatturiere · vive nel quartiere Borgo Trento",
+   "storia": "Ho dovuto fare la pratica per l’assegnazione del posto al mercato settimanale. Credevo sarebbe stata la solita trafila, invece all’ufficio attività produttive mi hanno seguito subito, spiegandomi tutto chiaramente. Quando ho avuto un dubbio sulla documentazione, mi hanno richiamato loro per sistemarla. Sì, ho aspettato un paio di settimane, ma alla fine tutto è andato liscio. Ora vendo i miei prodotti senza problemi, e ogni tanto passa anche un vigile a chiedere se serve qualcosa. Non male, per essere il Comune.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 629,
+    "completion_tokens": 140,
+    "total_tokens": 769,
+    "cost": 0.0003059226,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003059226,
+     "upstream_inference_prompt_cost": 0.0001619046,
+     "upstream_inference_completions_cost": 0.000144018
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0121600",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Beatrice Erbosi, 68 anni, donna · coniugato unito · licenza elementare · dipendente, costruzioni · vive nel quartiere Urago",
+   "storia": "L’anno scorso ho chiesto al Comune di sistemare la buca davanti a casa mia, quella che quando piove si allaga tutta. Pensavo ci avrebbero messo mesi, invece dopo una settimana sono arrivati gli operai e l’hanno riparata. Ora quando vedo le macchine del municipio passare per il quartiere, so che almeno certe cose le fanno. Mia figlia dice che sono troppo buona, ma io dico che se funziona, funziona.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 625,
+    "completion_tokens": 114,
+    "total_tokens": 739,
+    "cost": 0.0003982,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003982,
+     "upstream_inference_prompt_cost": 0.00025,
+     "upstream_inference_completions_cost": 0.0001482
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0128847",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Artiom Popa, 29 anni, uomo · celibe nubile · diploma di scuola magistrale · dipendente, attività manifatturiere · vive nel quartiere Brescia Antica · cittadinanza straniera, Romania",
+   "storia": "Quando ho fatto domanda per il permesso di soggiorno, al Comune mi hanno spiegato ogni passo con pazienza, anche se il mio italiano non era perfetto. Un mese dopo, mi hanno chiamato per avvisarmi che mancava un documento: invece di respingere la pratica, mi hanno dato tempo per consegnarlo. La settimana scorsa sono passato in municipio per chiedere informazioni sulle tasse rifiuti, e l’impiegato ha controllato tutto al computer, spiegandomi come fare per pagare meno. Qui non mi sento trattato come un estraneo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 638,
+    "completion_tokens": 137,
+    "total_tokens": 775,
+    "cost": 0.0004333,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004333,
+     "upstream_inference_prompt_cost": 0.0002552,
+     "upstream_inference_completions_cost": 0.0001781
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0132107",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Tommaso Bomberini, 77 anni, uomo · coniugato unito · diploma di istituto professionale per l'industria e l'artigianato · dipendente, attività manifatturiere · vive nel quartiere Borgo Trento",
+   "storia": "Quando ho chiesto al Comune di sistemare la strada davanti a casa, mi hanno detto che ci avrebbero messo un po’ di tempo, ma in due settimane è arrivata la squadra e hanno fatto tutto a regola d’arte. Ogni volta che ho bisogno di qualche documento, vado in Comune e trovo sempre qualcuno che mi aiuta senza farmi perdere tempo. L’anno scorso hanno organizzato un corso per imparare a usare il computer, e io ci sono andato: è stato utile e ben fatto. Mi sembra che facciano le cose come si deve, senza tante storie.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 645,
+    "completion_tokens": 143,
+    "total_tokens": 788,
+    "cost": 0.00033367,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033367,
+     "upstream_inference_prompt_cost": 0.0002064,
+     "upstream_inference_completions_cost": 0.00012727
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0134105",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Marco Levi D'Ancona, 30 anni, uomo · celibe nubile · qualifica di istituto professionale marinaro · dipendente, costruzioni · vive nel quartiere Lamarmora",
+   "storia": "L’altro giorno ho fatto richiesta per il permesso di occupazione suolo pubblico per un cantiere temporaneo in strada. Mi aspettavo rogne, invece all’ufficio mi hanno risposto subito, chiarito le procedure e detto che entro una settimana avrei avuto l’ok. Non ci credevo, ma è andata proprio così. Quando gli operai hanno iniziato a montare le transenne, un vigile è passato a controllare e ci ha dato qualche suggerimento per la sicurezza. Mi è sembrato tutto liscio, senza intoppi. Di solito coi Comuni è sempre una battaglia, ma qui mi hanno stupito in positivo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 635,
+    "completion_tokens": 155,
+    "total_tokens": 790,
+    "cost": 0.00034115,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034115,
+     "upstream_inference_prompt_cost": 0.0002032,
+     "upstream_inference_completions_cost": 0.00013795
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0135647",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Francesca Burattin, 42 anni, donna · celibe nubile · liceo artistico · dipendente, costruzioni · vive nel quartiere Centro Storico Nord",
+   "storia": "L’anno scorso ho chiesto al Comune l’autorizzazione per ristrutturare la facciata del mio appartamento, un edificio storico. Mi aspettavo mesi di attese e scartoffie, invece in tre settimane tutto era pronto. L’impiegato mi ha perso chiamato per spiegarmi un dettaglio che avevo sbagliato nella domanda, senza farmi ripartire da zero. Certo, quando poi ho dovuto chiedere il permesso per i ponteggi, lì c’è stato un po’ di trambusto, ma alla fine è andato tutto liscio. Al bar dicono che sono stata fortunata, ma secondo me dipende da come ti approcci.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 625,
+    "completion_tokens": 167,
+    "total_tokens": 792,
+    "cost": 0.0004671,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004671,
+     "upstream_inference_prompt_cost": 0.00025,
+     "upstream_inference_completions_cost": 0.0002171
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0143898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Mehar Kumar, 45 anni, donna · coniugato unito · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Badia · cittadinanza straniera, India",
+   "storia": "L'anno scorso ho chiesto al Comune il permesso per aprire un banchetto al mercato. Mi aspettavo tanta burocrazia, invece l'impiegato mi ha spiegato tutto con pazienza, anche se il mio italiano non è perfetto. Ci sono voluti un paio di mesi, ma alla fine l'autorizzazione è arrivata senza problemi. Ora ogni settimana pago la tassa allo sportello e nessuno mi ha mai fatto storie. Qualche volta il bagno pubblico vicino al mercato è sporco, ma se chiamo in comune, dopo un po' lo puliscono.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 654,
+    "completion_tokens": 140,
+    "total_tokens": 794,
+    "cost": 0.0004436,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004436,
+     "upstream_inference_prompt_cost": 0.0002616,
+     "upstream_inference_completions_cost": 0.000182
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0144704",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Georgia Kritikos, 39 anni, donna · coniugato unito · licenza media · dipendente, attività manifatturiere · vive nel quartiere Lamarmora · cittadinanza straniera, Grecia",
+   "storia": "Quando ho chiesto il certificato di residenza per la mia famiglia, mi aspettavo la solita trafila. Invece all’ufficio anagrafe mi hanno spiegato tutto con pazienza, anche se il mio italiano non è perfetto. La pratica è andata liscia, e dopo pochi giorni avevamo i documenti. Ora, se c’è qualche avviso del Comune sul quartiere, lo leggo subito: di solito sono chiari e precisi. L’unica volta che hanno ritardato con la raccolta dei rifiuti, hanno mandato un messaggio per avvisare. Non è sempre così, dicono al bar, ma per ora io non ho da lamentarmi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 634,
+    "completion_tokens": 164,
+    "total_tokens": 798,
+    "cost": 0.0004668,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004668,
+     "upstream_inference_prompt_cost": 0.0002536,
+     "upstream_inference_completions_cost": 0.0002132
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0149607",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Monica Frosecchi, 39 anni, donna · coniugato unito · qualifica di istituto professionale per i servizi commerciali, turismo e pubblicità · dipendente, attività finanziarie e assicurative · vive nel quartiere S. Eufemia",
+   "storia": "Ogni volta che devo fare una pratica al Comune, mi aspetto il solito caos, ma l’ultima volta sono rimasta sorpresa. Avevo bisogno di un certificato per un’assicurazione e, invece di perdere ore in fila, ho fatto tutto online in pochi minuti. L’ufficio anagrafe mi ha risposto subito via email e il documento era pronto il giorno dopo. Certo, ci sono ancora cose che potrebbero migliorare—il sito a volte è un po’ confusionario—ma almeno ora sembra che ci provino. Ne ho parlato anche con mio marito, che di solito è più scettico, e ha ammesso che stavolta è andata meglio del previsto.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 648,
+    "completion_tokens": 165,
+    "total_tokens": 813,
+    "cost": 0.00035421,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035421,
+     "upstream_inference_prompt_cost": 0.00020736,
+     "upstream_inference_completions_cost": 0.00014685
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0164917",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Claudio La Grotta, 28 anni, uomo · celibe nubile · liceo scientifico · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere S. Polo Case",
+   "storia": "Ho aperto la mia officina nel quartiere due anni fa e ho dovuto fare i salti mortali con le pratiche comunali per il cambio di destinazione d’uso del locale. All’inizio ero scettico, pensavo che sarebbe stato un incubo burocratico, ma invece sono rimasto sorpreso. L’ufficio tecnico è stato chiaro nelle indicazioni e, anche se ci sono stati qualche intoppo e qualche attesa, alla fine tutto si è risolto in tempi ragionevoli. Ogni volta che ho avuto bisogno di un chiarimento, mi hanno risposto senza fare i misteriosi. Certo, qualche volta ho dovuto insistere, ma alla fine hanno mantenuto le promesse. Mi sento abbastanza tranquillo, anche se so che le cose potrebbero sempre cambiare.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 650,
+    "completion_tokens": 188,
+    "total_tokens": 838,
+    "cost": 0.00037532,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00037532,
+     "upstream_inference_prompt_cost": 0.000208,
+     "upstream_inference_completions_cost": 0.00016732
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0170250",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Alessandro Lapi, 29 anni, uomo · coniugato unito · laurea magistrale in discipline informatiche · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Villaggio Prealpino",
+   "storia": "L'anno scorso ho avuto un'idea per un'app che semplificasse le pratiche comunali per gli spazi pubblici. Ho mandato una mail all'ufficio competente, pensando che sarebbe finita nel vuoto. Invece mi hanno risposto il giorno dopo, fissato un appuntamento e ascoltato ogni dettaglio. Ora il progetto è realtà, e ogni volta che vedo qualcuno usare la nostra app al parco mi viene da sorridere. Hanno perfino migliorato alcune funzioni con i nostri suggerimenti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 648,
+    "completion_tokens": 129,
+    "total_tokens": 777,
+    "cost": 0.0002994975,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002994975,
+     "upstream_inference_prompt_cost": 0.0001667952,
+     "upstream_inference_completions_cost": 0.0001327023
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0172019",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Daria Dumitru, 63 anni, donna · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Primo Maggio · cittadinanza straniera, Romania",
+   "storia": "L'altro giorno sono andata in municipio per rinnovare il permesso di soggiorno. Pensavo sarebbe stata la solita trafila, invece l'impiegata mi ha spiegato tutto con pazienza e mi ha anche detto dove potevo trovare i moduli già compilati. All'ufficio anagrafe mi riconoscono ormai, sanno che lavoro all'officina del mio cognato. Una volta hanno ritardato un mese con la raccolta differenziata nel nostro cortile, ma poi sono venuti e hanno sistemato. Qui almeno le cose, prima o poi, si fanno.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 656,
+    "completion_tokens": 140,
+    "total_tokens": 796,
+    "cost": 0.0003128724,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003128724,
+     "upstream_inference_prompt_cost": 0.0001688544,
+     "upstream_inference_completions_cost": 0.000144018
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0177035",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Eleonora Roncaglia, 37 anni, donna · celibe nubile · laurea triennale in discipline di ingegneria · dipendente, altre attività di servizi · vive nel quartiere Primo Maggio",
+   "storia": "L'anno scorso ho chiesto al Comune di sistemare la strada davanti a casa: un mese dopo erano già lì con le ruspe. In biblioteca trovo sempre quello che cerco, e se manca mi aiutano a ordinarlo. Certo, quando ho dovuto rinnovare la residenza ci sono voluti due giri all’ufficio anagrafe, ma alla fine tutto si è risolto. Alla festa di quartiere per il Primo Maggio, l’assessore si è fermato a chiacchierare con noi e ha preso nota delle nostre richieste. Non è perfetto, ma almeno rispondono.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 638,
+    "completion_tokens": 152,
+    "total_tokens": 790,
+    "cost": 0.0003205836,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003205836,
+     "upstream_inference_prompt_cost": 0.0001642212,
+     "upstream_inference_completions_cost": 0.0001563624
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0177428",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Silvia Umena, 75 anni, donna · vedovo · diploma di scuola magistrale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Brescia Antica",
+   "storia": "L’anno scorso mi hanno chiamato dall’ufficio anagrafe per aggiornare i documenti dopo la scomparsa di mio marito. Mi aspettavo una trafila complicata, invece l’impiegata è stata gentilissima, mi ha spiegato tutto passo passo e mi ha fatto scegliere il giorno per l’appuntamento. Quando sono andata, tutto era già pronto, non ho perso tempo. Poi, qualche mese fa, hanno rifatto il marciapiede davanti a casa mia senza che dovessi chiedere nulla, e hanno pure sistemato la fioriera che si era rotta. Ogni volta che il Comune fa qualcosa qui in quartiere, mi sembra di vedere un po’ di cura.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 639,
+    "completion_tokens": 169,
+    "total_tokens": 808,
+    "cost": 0.00035489,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035489,
+     "upstream_inference_prompt_cost": 0.00020448,
+     "upstream_inference_completions_cost": 0.00015041
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0183715",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Giulia Fatima, 71 anni, donna · coniugato unito · licenza media · dipendente, agricoltura, silvicoltura e pesca · vive nel quartiere S. Eufemia",
+   "storia": "Ogni mattina passo davanti al municipio mentre vado al mercato. L’altro giorno mi hanno chiamato per ritirare un attestato per la mia pensione: tutto fatto in pochi giorni, senza intoppi. Mi hanno anche spiegato che posso chiedere un aiuto per la manutenzione del mio terreno, visto che è un po’ difficile gestirlo da sola. Non ho ancora deciso, ma mi piace sapere che c’è qualcuno che ascolta. Qualche volta ci sono code lunghe agli sportelli, ma per ora non ho avuto brutte esperienze. Mi dicono che potrebbero fare meglio con le strade, però, soprattutto dopo le piogge.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 635,
+    "completion_tokens": 158,
+    "total_tokens": 793,
+    "cost": 0.00034382,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034382,
+     "upstream_inference_prompt_cost": 0.0002032,
+     "upstream_inference_completions_cost": 0.00014062
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0185000",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Alice Mascione, 42 anni, donna · coniugato unito · liceo scientifico · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Lamarmora",
+   "storia": "Lavoro nell'amministrazione pubblica da quasi vent’anni, quindi capisco bene come funzionano le cose. Qui a Lamarmora, devo dire che il Comune si è sempre fatto sentire quando abbiamo avuto bisogno. L’anno scorso abbiamo segnalato un problema con le fogne nel nostro isolato, e dopo una settimana era già tutto risolto. Certo, ci sono ritardi a volte, ma so che non dipende dalla volontà. Mi è capitato di dover fare pratiche per la casa, e anche lì, nonostante qualche intoppo burocratico, alla fine tutto si è sistemato. Mi sembra che ci provino, anche se qualche volta manca un po’ di coordinamento tra uffici.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 640,
+    "completion_tokens": 167,
+    "total_tokens": 807,
+    "cost": 0.00035343,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035343,
+     "upstream_inference_prompt_cost": 0.0002048,
+     "upstream_inference_completions_cost": 0.00014863
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0190017",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Franco Toledano, 49 anni, uomo · celibe nubile · laurea triennale in economia e marketing · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Chiusure · cittadinanza straniera, Marocco",
+   "storia": "Mi sono trasferito qui dal Marocco vent’anni fa e ho aperto la mia agenzia di marketing nel quartiere Chiusure. All’inizio avevo paura di fare richieste al Comune, pensavo che mi avrebbero complicato la vita. Invece, quando ho chiesto il permesso per l’insegna, hanno risposto in pochi giorni, spiegandomi tutto chiaramente. Ogni volta che devo rinnovare le licenze, mi sento trattato come chiunque altro, senza differenze. Certo, qualche volta ci sono ritardi, ma so che posso contare su di loro per supporto. Mi hanno aiutato anche a partecipare a un bando per piccole imprese, è stato un bel colpo di fortuna.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 653,
+    "completion_tokens": 174,
+    "total_tokens": 827,
+    "cost": 0.00036382,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00036382,
+     "upstream_inference_prompt_cost": 0.00020896,
+     "upstream_inference_completions_cost": 0.00015486
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0191105",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Marco Singh, 49 anni, uomo · celibe nubile · laurea magistrale in discipline economiche, bancarie e aziendali · dipendente, istruzione · vive nel quartiere Porta Cremona",
+   "storia": "L'anno scorso ho partecipato a un bando comunale per corsi di formazione finanziaria per i quartieri. Mi hanno risposto in due settimane, con indicazioni chiare su come presentare il progetto. Durante gli incontri in municipio, mi hanno ascoltato e fatto sentire parte della soluzione, non solo un numero. Certo, poi il finanziamento è arrivato con due mesi di ritardo, ma almeno alla fine è arrivato. Quando passo davanti alla biblioteca ristrutturata, penso che qualcosa qui funziona. Magari non tutto, ma abbastanza da crederci ancora.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 637,
+    "completion_tokens": 142,
+    "total_tokens": 779,
+    "cost": 0.0003100392,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003100392,
+     "upstream_inference_prompt_cost": 0.0001639638,
+     "upstream_inference_completions_cost": 0.0001460754
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

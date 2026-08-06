@@ -1,0 +1,201 @@
+{
+ "rif": "s1n24",
+ "seed": 1,
+ "storie_b": "agenti_017029_PUNTIFI10_n120_s0_storie.json",
+ "storie_d": "agenti_017029_PUNTIFI10_n120_s0_neutre.json",
+ "creato": "2026-08-06T16:19:46",
+ "chiave": [
+  {
+   "id": "1000",
+   "uid": "017029-0024528",
+   "cond": "D",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo": "Tommaso Moretti, 53 anni, uomo · coniugato unito · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, attività manifatturiere · vive nel quartiere Porta Cremona"
+  },
+  {
+   "id": "1001",
+   "uid": "017029-0012370",
+   "cond": "D",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo": "Alberto Tutino, 63 anni, uomo · coniugato unito · laurea triennale in discipline politico-sociali · lavoratore in proprio, servizi di informazione e comunicazione · vive nel quartiere Crocifissa Di Rosa"
+  },
+  {
+   "id": "1002",
+   "uid": "017029-0012370",
+   "cond": "B",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo": "Alberto Tutino, 63 anni, uomo · coniugato unito · laurea triennale in discipline politico-sociali · lavoratore in proprio, servizi di informazione e comunicazione · vive nel quartiere Crocifissa Di Rosa"
+  },
+  {
+   "id": "1003",
+   "uid": "017029-0128847",
+   "cond": "B",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo": "Artiom Popa, 29 anni, uomo · celibe nubile · diploma di scuola magistrale · dipendente, attività manifatturiere · vive nel quartiere Brescia Antica · cittadinanza straniera, Romania"
+  },
+  {
+   "id": "1004",
+   "uid": "017029-0112759",
+   "cond": "B",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo": "Anna Galaverni, 61 anni, donna · vedovo · diploma di istituto tecnico commerciale · dipendente, sanità e assistenza sociale · vive nel quartiere Centro Storico Nord"
+  },
+  {
+   "id": "1005",
+   "uid": "017029-0152841",
+   "cond": "B",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo": "Luigi Casu, 38 anni, uomo · celibe nubile · diploma di istituto tecnico commerciale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Chiesanuova"
+  },
+  {
+   "id": "1006",
+   "uid": "017029-0007463",
+   "cond": "B",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo": "Monica Zallocco, 33 anni, donna · celibe nubile · laurea triennale in tecnico di radiologia medica, per immagini e radioterapia (abilitante alla professione sanitaria di tecnico di radiologia medica, per immagini e radioterapia ) · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Crocifissa Di Rosa"
+  },
+  {
+   "id": "1007",
+   "uid": "017029-0171811",
+   "cond": "B",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo": "Matteo Donnaloia, 28 anni, uomo · celibe nubile · diploma di conservatorio di musica/istituto musicale pareggiato (AFAM di II livello) · dipendente, attività finanziarie e assicurative · vive nel quartiere Brescia Antica"
+  },
+  {
+   "id": "1008",
+   "uid": "017029-0134105",
+   "cond": "B",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo": "Marco Levi D'Ancona, 30 anni, uomo · celibe nubile · qualifica di istituto professionale marinaro · dipendente, costruzioni · vive nel quartiere Lamarmora"
+  },
+  {
+   "id": "1009",
+   "uid": "017029-0024528",
+   "cond": "B",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo": "Tommaso Moretti, 53 anni, uomo · coniugato unito · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, attività manifatturiere · vive nel quartiere Porta Cremona"
+  },
+  {
+   "id": "1010",
+   "uid": "017029-0020138",
+   "cond": "D",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo": "Anna Tangocci, 76 anni, donna · celibe nubile · licenza elementare · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere S. Eufemia"
+  },
+  {
+   "id": "1011",
+   "uid": "017029-0197341",
+   "cond": "B",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo": "Michele Ramis, 86 anni, uomo · coniugato unito · licenza elementare · dipendente, sanità e assistenza sociale · vive nel quartiere Lamarmora"
+  },
+  {
+   "id": "1012",
+   "uid": "017029-0015352",
+   "cond": "B",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo": "Gabriele Muzzi, 31 anni, uomo · celibe nubile · liceo scientifico · imprenditore o libero professionista, attività manifatturiere · vive nel quartiere Crocifissa Di Rosa"
+  },
+  {
+   "id": "1013",
+   "uid": "017029-0057661",
+   "cond": "B",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo": "Amelja Delvina, 41 anni, donna · coniugato unito · liceo scientifico · dipendente, altre attività di servizi · vive nel quartiere Lamarmora · cittadinanza straniera, Albania"
+  },
+  {
+   "id": "1014",
+   "uid": "017029-0019713",
+   "cond": "D",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo": "Viraj Yadav, 19 anni, uomo · celibe nubile · licenza media · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Fiumicello · cittadinanza straniera, India"
+  },
+  {
+   "id": "1015",
+   "uid": "017029-0065941",
+   "cond": "B",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo": "Matteo Fabbrini, 30 anni, uomo · coniugato unito · diploma di istituto tecnico commerciale · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia · cittadinanza straniera, Egitto"
+  },
+  {
+   "id": "1016",
+   "uid": "017029-0022693",
+   "cond": "D",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo": "Elisa Spada, 42 anni, donna · celibe nubile · diploma di istituto tecnico commerciale · dipendente, sanità e assistenza sociale · vive nel quartiere Brescia Antica"
+  },
+  {
+   "id": "1017",
+   "uid": "017029-0164917",
+   "cond": "B",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo": "Claudio La Grotta, 28 anni, uomo · celibe nubile · liceo scientifico · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere S. Polo Case"
+  },
+  {
+   "id": "1018",
+   "uid": "017029-0104248",
+   "cond": "B",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo": "Vincenzo Giotti, 77 anni, uomo · vedovo · laurea magistrale in giurisprudenza · dipendente, istruzione · vive nel quartiere Chiesanuova"
+  },
+  {
+   "id": "1019",
+   "uid": "017029-0006974",
+   "cond": "D",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo": "Mia Silva, 35 anni, donna · celibe nubile · licenza elementare · dipendente, attività manifatturiere · vive nel quartiere S. Bartolomeo · cittadinanza straniera, Argentina"
+  },
+  {
+   "id": "1020",
+   "uid": "017029-0009533",
+   "cond": "B",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo": "Martina Paggetti, 60 anni, donna · coniugato unito · licenza elementare · lavoratrice in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia"
+  },
+  {
+   "id": "1021",
+   "uid": "017029-0116908",
+   "cond": "B",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo": "Daniele Donini, 48 anni, uomo · celibe nubile · diploma di istituto professionale per i servizi commerciali, turismo e pubblicità · dipendente, trasporto e magazzinaggio · vive nel quartiere Villaggio Sereno"
+  },
+  {
+   "id": "1022",
+   "uid": "017029-0115670",
+   "cond": "B",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo": "Giovanni Tagliaferri, 67 anni, uomo · coniugato unito · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia"
+  },
+  {
+   "id": "1023",
+   "uid": "017029-0061381",
+   "cond": "B",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo": "Monica Fanfani, 38 anni, donna · coniugato unito · licenza media · imprenditrice o libera professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Mompiano"
+  }
+ ]
+}

@@ -1,0 +1,3814 @@
+{
+ "campione": "agenti_017029_PUNTIFI10_n120_s0.json",
+ "comune": "017029",
+ "variabile": "PUNTIFI10",
+ "seed": 0,
+ "modello": "deepseek/deepseek-chat",
+ "temperatura": 0.8,
+ "generato": "2026-08-06T13:30:40",
+ "sistema": "Scrivi brevi racconti in prima persona per un progetto di\nricerca sulle popolazioni sintetiche. Ogni racconto e' la voce di una\npersona che parla di se' e del proprio rapporto con l'amministrazione\ncomunale.\n\nREGOLE, in ordine di importanza.\n\n1. I dati anagrafici sono VINCOLI: eta', mestiere, titolo di studio,\n   quartiere, stato civile. Non contraddirli, non modificarli. La persona\n   del racconto deve essere RICONOSCIBILMENTE quella dei dati.\n\n2. Ti viene dato un livello di fiducia nel Comune da 0 a 10. Il racconto\n   deve farlo TRASPARIRE senza mai nominarlo:\n   - NON scrivere il numero, ne' la parola «fiducia», ne' «mi fido» o\n     «non mi fido»;\n   - NON usare etichette caratteriali: «sono una persona diffidente»,\n     «sono un tipo ottimista» sono vietate;\n   - MOSTRA fatti: un'attesa, un servizio, un incontro, una promessa\n     mantenuta o disattesa, una cosa vista o sentita. Da quei fatti la\n     disposizione deve emergere.\n\n3. L'intensita' conta. 0 e' rassegnazione o rabbia sedimentata; 2 e'\n   sfiducia con qualche eccezione; 5 e' ambivalenza, esperienze contrarie\n   che convivono; 8 e' fiducia con qualche riserva; 10 e' adesione piena.\n   Non serve che il lettore indovini il numero: serve che la direzione e\n   la forza siano giuste.\n\n4. Il racconto riguarda il rapporto con l'AMMINISTRAZIONE COMUNALE, e\n   deve nascere dalla vita di QUESTA persona. Scegli l'ambito in cui il\n   suo profilo la porterebbe davvero a incontrare il Comune:\n\n     manutenzione delle strade e del verde · rifiuti e raccolta\n     differenziata · traffico, parcheggi, zone a traffico limitato ·\n     trasporto pubblico locale · casa, affitti, edilizia · tasse e\n     tributi locali · mercati, licenze, commercio · impianti sportivi,\n     biblioteche, centri civici · asili e mense scolastiche · lavori\n     pubblici e cantieri · avvisi e comunicazioni del Comune ·\n     illuminazione, decoro, spazi pubblici\n\n   NON usare come scena una pratica allo sportello o un permesso da\n   richiedere: e' l'incontro piu' ovvio, il meno legato alla persona, e\n   raccontato da tutti si assomiglia. Un pensionato che vive nello stesso\n   quartiere da trent'anni ha altre occasioni; un commerciante ne ha\n   altre ancora; chi ha figli piccoli altre ancora.\n\n   NON parlare di sanita', medici, scuola come istituzione, inquinamento,\n   sicurezza o polizia: sono temi che l'indagine misura separatamente.\n\n5. Da cinque a otto righe. Prima persona, presente o passato prossimo,\n   italiano piano. Nessun titolo, nessun elenco.\n\n6. Non inventare nomi propri di persone o uffici, ne' cifre precise.\n\nScrivi la voce di una persona, non la sua scheda.",
+ "richiesta": "{profilo}\n\nLivello di fiducia nel Comune (0 = nessuna, 10 = piena): {latente}\n\nScrivi il racconto seguendo le regole.",
+ "storie": [
+  {
+   "uid": "017029-0000441",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alessandro Bruno, 35 anni, uomo · celibe nubile · diploma di istituto tecnico commerciale · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Chiusure",
+   "storia": "Mi sono trasferito qui tre anni fa per lavoro, e da allora è sempre la stessa storia. Le strade del quartiere sono piene di buche, soprattutto dopo la pioggia. Ho segnalato più volte il problema al Comune, ma non ho mai visto un intervento. L’ultima volta che ho chiamato, mi hanno detto che erano «in programma». Programma di cosa? Intanto la mia macchina continua a soffrire, e io mi chiedo se qualcuno si preoccupi davvero di quello che succede qui. Dopo un po’ smetti di crederci.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 890,
+    "completion_tokens": 131,
+    "total_tokens": 1021,
+    "cost": 0.00040139,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040139,
+     "upstream_inference_prompt_cost": 0.0002848,
+     "upstream_inference_completions_cost": 0.00011659
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0012370",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Tutino, 63 anni, uomo · coniugato unito · laurea triennale in discipline politico-sociali · lavoratore in proprio, servizi di informazione e comunicazione · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Ieri hanno tagliato ancora l’erba nel campo dietro casa mia, dopo mesi di lamentele. Solo che invece di portar via i sacchi, li hanno lasciati lì, ammucchiati sotto la pioggia. Mi sono rotto di chiamare, di segnalare. Lo dicono sempre: \"Faremo presente, provvederemo\". Poi nessuno controlla mai niente. Ogni volta è la stessa storia, come se abitassimo in un posto diverso dal resto della città.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 893,
+    "completion_tokens": 118,
+    "total_tokens": 1011,
+    "cost": 0.0003512448,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003512448,
+     "upstream_inference_prompt_cost": 0.0002298582,
+     "upstream_inference_completions_cost": 0.0001213866
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0024528",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Tommaso Moretti, 53 anni, uomo · coniugato unito · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, attività manifatturiere · vive nel quartiere Porta Cremona",
+   "storia": "Da quando hanno messo quella nuova rotonda all’incrocio vicino alla mia officina, il traffico è solo peggiorato. Ogni giorno vedo camion che si bloccano, auto che cercano di passare a tutti i costi, e io sto lì a guardare mentre i clienti faticano a raggiungermi. Ho chiamato l’ufficio competente, mi hanno detto che avrebbero verificato, ma non è cambiato nulla. Poi, l’altro giorno, hanno fatto un sopralluogo, ma senza avvisarmi. Ho scoperto che erano passati solo perché un vicino me l’ha detto. Qualche volta mi chiedo perché continuino a fare opere senza nemmeno chiedere a chi ci lavora intorno.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 896,
+    "completion_tokens": 174,
+    "total_tokens": 1070,
+    "cost": 0.00044158,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00044158,
+     "upstream_inference_prompt_cost": 0.00028672,
+     "upstream_inference_completions_cost": 0.00015486
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0041101",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Anna Cammelli, 42 anni, donna · celibe nubile · diploma di istituto professionale femminile/per i servizi sociali · dipendente, istruzione · vive nel quartiere S. Eustacchio",
+   "storia": "Ogni mattina passo davanti alla scuola materna del quartiere, e ogni mattina vedo lo stesso mucchio di cartacce e bottiglie di plastica accanto al cestino pieno. Ho chiamato più volte il Comune per segnalarlo, ma nulla cambia. L’anno scorso, quando hanno installato i nuovi lampioni, ho pensato che forse stavano davvero migliorando le cose, ma poi le luci si sono spente dopo una settimana e non le hanno più riparate. Mi sento ignorata, come se le nostre segnalazioni finissero nel vuoto. Certo, hanno fatto quel corso di formazione per i genitori, ma è stato l’unico momento in cui mi sono sentita ascoltata. Per il resto, è tutto fermo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 887,
+    "completion_tokens": 177,
+    "total_tokens": 1064,
+    "cost": 0.00044137,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00044137,
+     "upstream_inference_prompt_cost": 0.00028384,
+     "upstream_inference_completions_cost": 0.00015753
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0047004",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Maria Dimitrov, 39 anni, donna · celibe nubile · licenza media · dipendente, altre attività di servizi · vive nel quartiere S. Rocchino · cittadinanza straniera, Bulgaria",
+   "storia": "Quando hanno messo i cassonetti nuovi nel quartiere, per due settimane nessuno ci capiva niente. Io che faccio le pulizie in centro sapevo già come funzionavano, ma qui hanno messo i bidoni sbagliati, troppo pochi per la plastica. Ho chiamato l’ufficio rifiuti e mi hanno detto che avrebbero sistemato. Dopo un mese è arrivato un addetto, ha guardato e se n’è andato. Adesso butto tutto insieme come fanno gli altri, tanto che differenza fa? Però la multa per chi sbaglia non l’hanno tolta, quella sì che funziona.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 884,
+    "completion_tokens": 155,
+    "total_tokens": 1039,
+    "cost": 0.0005551,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005551,
+     "upstream_inference_prompt_cost": 0.0003536,
+     "upstream_inference_completions_cost": 0.0002015
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0047106",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Antonio Cozzi, 47 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Don Bosco · cittadinanza straniera, Guinea",
+   "storia": "Ogni volta che vedo i cartelli del Comune che promettono miglioramenti nel quartiere mi viene da ridere. Da quando sono arrivato qui dalla Guinea, vent’anni fa, è sempre la stessa storia: iniziative, progetti, annunci, ma poi tutto rimane uguale. Le strade sono piene di buche, i lampioni spesso non funzionano, e i parchi? Sporchi e abbandonati. Ho provato a segnalare qualche volta, ma non ho mai visto un cambiamento. Mi sembra che parlino solo per farsi belli, ma alla fine non fanno niente. Ormai passo oltre senza nemmeno guardare quei cartelli, tanto è inutile.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 896,
+    "completion_tokens": 159,
+    "total_tokens": 1055,
+    "cost": 0.00042823,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042823,
+     "upstream_inference_prompt_cost": 0.00028672,
+     "upstream_inference_completions_cost": 0.00014151
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0051302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Dori, 54 anni, uomo · coniugato unito · licenza media · imprenditore o libero professionista, attività manifatturiere · vive nel quartiere Chiesanuova",
+   "storia": "Da quando hanno cambiato la viabilità per la nuova pista ciclabile, il mio magazzino è diventato quasi irraggiungibile per i camion. Ho chiesto spiegazioni, mi hanno detto che era un progetto prioritario. Prioritario per chi? Non hanno nemmeno avuto il buonsenso di consultarci, noi che lavoriamo qui da vent’anni. Ogni giorno perdiamo tempo e soldi, e quando cerco di parlare con qualcuno al Comune, mi rimbalzano da un ufficio all’altro. Non vale neanche la pena insistere.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 883,
+    "completion_tokens": 132,
+    "total_tokens": 1015,
+    "cost": 0.00040004,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040004,
+     "upstream_inference_prompt_cost": 0.00028256,
+     "upstream_inference_completions_cost": 0.00011748
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0054109",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Marco Bresci, 37 anni, uomo · celibe nubile · liceo artistico · dipendente, trasporto e magazzinaggio · vive nel quartiere S. Eustacchio",
+   "storia": "Ogni mattina passo davanti alla rotatoria all’ingresso del quartiere, piena di erbacce e cartacce. L’anno scorso hanno messo un cartello con su scritto \"Area verde in manutenzione\", ma non ho mai visto nessuno lavorarci. Una volta ho chiamato l’ufficio ambiente, mi hanno detto che avrebbero provveduto. Dopo tre mesi hanno tagliato l’erba, ma i rifiuti sono ancora lì. Ora passo oltre e non ci faccio più caso.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 882,
+    "completion_tokens": 120,
+    "total_tokens": 1002,
+    "cost": 0.0005088,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005088,
+     "upstream_inference_prompt_cost": 0.0003528,
+     "upstream_inference_completions_cost": 0.000156
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0054450",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Zǐhán Chiu, 31 anni, donna · celibe nubile · liceo artistico · socia di cooperativa, trasporto e magazzinaggio · vive nel quartiere Centro Storico Sud · cittadinanza straniera, Cina",
+   "storia": "Ogni volta che cammino per le strade del centro vedo cumuli di spazzatura ai lati dei cassonetti. Ho chiamato più volte per segnalarlo, ma non cambia mai nulla. L’altro giorno ho visto un operatore comunale che passava senza raccogliere niente, come se fosse normale. Mi hanno detto che il problema è la mancanza di personale, ma io penso che sia solo disinteresse. Vivere qui è bello, ma sentirsi ignorati ogni giorno fa male. Mi chiedo se qualcuno al Comune si preoccupi davvero di come viviamo noi cittadini.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 893,
+    "completion_tokens": 138,
+    "total_tokens": 1031,
+    "cost": 0.00040858,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040858,
+     "upstream_inference_prompt_cost": 0.00028576,
+     "upstream_inference_completions_cost": 0.00012282
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057244",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Elisabetta Salvadori, 24 anni, donna · celibe nubile · liceo scientifico · dipendente, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Centro Storico Nord",
+   "storia": "L'anno scorso hanno chiuso il centro sociale sotto casa per \"ristrutturazioni urgenti\". Da allora, niente più corsi serali, concerti, spazio per i ragazzi. Ogni volta che passo davanti, le finestre sono ancora sprangate, i muri scrostati. Alla fine ho smesso di controllare. Tanto lo sanno tutti che quel posto serviva solo a noi, ai giovani senza soldi. Ora ci ritroviamo al bar, se abbiamo i soldi per un caffè. Altrimenti, a casa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 889,
+    "completion_tokens": 124,
+    "total_tokens": 1013,
+    "cost": 0.0005168,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005168,
+     "upstream_inference_prompt_cost": 0.0003556,
+     "upstream_inference_completions_cost": 0.0001612
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057329",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Maurizio Mba, 40 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, attività professionali, scientifiche e tecniche · vive nel quartiere Primo Maggio",
+   "storia": "L'anno scorso hanno rifatto il marciapiede davanti al mio laboratorio. Tre mesi di cantiere, con la strada dimezzata e i clienti che non riuscivano a parcheggiare. Ho chiesto un inconto in Comune per avere almeno un cartello \"zona scarico\", ma mi hanno detto di aspettare la fine dei lavori. Finiti i lavori, il marciapiede è più alto di prima e quando piove l’acqua entra nel locale. Sono tornato, mi hanno detto che è a norma. Norma loro, disastro mio.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 887,
+    "completion_tokens": 135,
+    "total_tokens": 1022,
+    "cost": 0.0003671883,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003671883,
+     "upstream_inference_prompt_cost": 0.0002283138,
+     "upstream_inference_completions_cost": 0.0001388745
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057661",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Amelja Delvina, 41 anni, donna · coniugato unito · liceo scientifico · dipendente, altre attività di servizi · vive nel quartiere Lamarmora · cittadinanza straniera, Albania",
+   "storia": "Da quando hanno chiuso il centro di assistenza per stranieri in via Lamarmora, devo prendere due autobus per arrivare all’ufficio immigrazione. L’ultima volta ho aspettato tre ore sotto la pioggia perché non c’erano abbastanza posti al coperto. Ho chiesto spiegazioni alla signora del Comune, mi ha detto che è colpa dei tagli al bilancio. Intanto i cartelli con le indicazioni sono ancora in italiano, anche se qui ormai siamo in tanti a non capirli bene. Ogni volta che passo davanti alla vecchia sede, chiusa e abbandonata, mi viene da pensare che forse non era proprio necessario spostarla.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 887,
+    "completion_tokens": 164,
+    "total_tokens": 1051,
+    "cost": 0.000568,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000568,
+     "upstream_inference_prompt_cost": 0.0003548,
+     "upstream_inference_completions_cost": 0.0002132
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0069105",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Tozzi, 36 anni, uomo · coniugato unito · diploma di istituto d'arte · imprenditore o libero professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Primo Maggio",
+   "storia": "Lo dico chiaro, il Comune per me è solo un posto che mette i bastoni tra le ruote. Volevamo ampliare l’officina, un investimento che avrebbe portato lavoro nel quartiere. Tre anni di carte, pratiche bloccate, richieste che tornavano indietro per cavilli. Alla fine abbiamo rinunciato, perso clienti e tempo. Ora passiamo davanti al cantiere abbandonato ogni mattina – quello che secondo loro \"doveva seguire le regole\".",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 909,
+    "completion_tokens": 123,
+    "total_tokens": 1032,
+    "cost": 0.0003605067,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003605067,
+     "upstream_inference_prompt_cost": 0.0002339766,
+     "upstream_inference_completions_cost": 0.0001265301
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0072866",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Yīnuò Sūn, 49 anni, donna · coniugato unito · qualifica di istituto professionale per i servizi commerciali, turismo e pubblicità · dipendente, sanità e assistenza sociale · vive nel quartiere Villaggio Badia · cittadinanza straniera, Cina",
+   "storia": "Da quando siamo arrivati nel Villaggio Badia, ho visto i marciapiedi sempre rotti e le strade piene di buche. Ogni volta che piove, l’acqua si accumula davanti alla mia casa e nessuno fa niente. Ho mandato più di un reclamo, ma non ho mai ricevuto risposta. L’altro giorno ho visto un’auto municipale passare veloce senza fermarsi, mentre io continuo a camminare sui marciapiedi distrutti. Mi chiedo se qualcuno si preoccupi davvero di noi qui.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 906,
+    "completion_tokens": 131,
+    "total_tokens": 1037,
+    "cost": 0.00040651,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040651,
+     "upstream_inference_prompt_cost": 0.00028992,
+     "upstream_inference_completions_cost": 0.00011659
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077413",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Paolo Bini, 63 anni, uomo · divorziato sciolto · diploma di istituto tecnico commerciale · dipendente, attività manifatturiere · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Da quando hanno messo quei nuovi cassonetti in tutto il quartiere, ormai esco con i sacchi la mattina presto per non farli vedere agli operatori comunali. Lo sanno tutti che passano in ritardo e che poi il camion non li svuota per giorni. L'ultima volta ho chiamato tre volte il numero verde, e l'unica risposta è stata un avviso sul sito del Comune: \"problemi tecnici momentanei\". Mio padre usava dire che se aspetti che risolvano qualcosa, aspetti una vita intera. Aveva ragione.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 887,
+    "completion_tokens": 136,
+    "total_tokens": 1023,
+    "cost": 0.000368217,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000368217,
+     "upstream_inference_prompt_cost": 0.0002283138,
+     "upstream_inference_completions_cost": 0.0001399032
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077735",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Cecilia Scialpi, 59 anni, donna · coniugato unito · diploma di istituto professionale cinematografia e televisione · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Porta Venezia",
+   "storia": "Ogni mattina passo davanti a quella panchina rotta nel parco vicino a casa. L’ho segnalata mesi fa, ma è ancora lì, con la tavola staccata e le viti arrugginite. Mi viene da pensare che se fosse stata una priorità, l’avrebbero già sistemata. Poi però ricordo quando hanno rifatto l’illuminazione in piazza: è stata una sorpresa, perché non me l’aspettavo così veloce. Ma è stato più un caso fortunato che la norma. Mi chiedo se sia sempre così, se dipenda da chi ci mette le mani o dal momento giusto. Di certo non conto sul Comune per risolvere le cose, ma ogni tanto capita che facciano qualcosa di inaspettato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 901,
+    "completion_tokens": 177,
+    "total_tokens": 1078,
+    "cost": 0.00044585,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00044585,
+     "upstream_inference_prompt_cost": 0.00028832,
+     "upstream_inference_completions_cost": 0.00015753
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0078956",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Dimitra Samaras, 33 anni, donna · celibe nubile · liceo classico · dipendente, attività manifatturiere · vive nel quartiere S. Polo Case · cittadinanza straniera, Grecia",
+   "storia": "Quando piove forte, davanti al mio condominio si forma sempre una pozza enorme che non va mai via. L'ho segnalato tre volte all'ufficio tecnico, la prima con la mail dove ho allegato le foto, le altre due di persona perché non rispondevano. L'ultima volta il funzionario mi ha detto \"eh signora, qui ci vorrebbero i soldi\". Intanto le signore del piano terra devono buttare la sabbia per non scivolare, e io faccio il giro lungo per andare alla fermata dell'autobus.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 888,
+    "completion_tokens": 131,
+    "total_tokens": 1019,
+    "cost": 0.0003633309,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003633309,
+     "upstream_inference_prompt_cost": 0.0002285712,
+     "upstream_inference_completions_cost": 0.0001347597
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0083157",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Tommaso Bernini, 29 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · parasubordinato, trasporto e magazzinaggio · vive nel quartiere S. Polo Parco",
+   "storia": "Ogni mattina passo davanti alla rotonda all’ingresso del quartiere, piena di rifiuti e bottiglie rotte. Ho chiamato il Comune più volte, mi hanno detto che avrebbero sistemato, ma dopo mesi è sempre lì. Poi però, quando hanno fatto i lavori per la pista ciclabile vicino al magazzino, sono arrivati in fretta e hanno finito prima del previsto. Non capisco mai se fanno le cose bene o male, a volte sembra che dipenda solo dalla fortuna.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 889,
+    "completion_tokens": 122,
+    "total_tokens": 1011,
+    "cost": 0.00039306,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00039306,
+     "upstream_inference_prompt_cost": 0.00028448,
+     "upstream_inference_completions_cost": 0.00010858
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0084842",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Andrea Moursi Abdalla Moursi, 56 anni, uomo · coniugato unito · laurea magistrale in scienze politiche · parasubordinato, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Rocchino",
+   "storia": "L'ultima volta che ho visto il campo da basket del parco era ancora pieno di buche, dopo tre anni di segnalazioni. Ho smesso di passarci con mia figlia. Stesso discorso per le panchine rotte lungo il viale principale: le hanno tolte e basta, senza sostituirle. Da quando lavoro nell'assicurazione sociale vedo come funzionano i fondi pubblici, ma qui manca proprio la volontà. Paghiamo le tasse per questo?",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 905,
+    "completion_tokens": 111,
+    "total_tokens": 1016,
+    "cost": 0.0003471327,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003471327,
+     "upstream_inference_prompt_cost": 0.000232947,
+     "upstream_inference_completions_cost": 0.0001141857
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0087302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "David Rusu, 35 anni, uomo · coniugato unito · laurea magistrale in discipline economiche, bancarie e aziendali · dipendente, istruzione · vive nel quartiere Borgo Trento · cittadinanza straniera, Romania",
+   "storia": "Ogni volta che cammino per le strade del quartiere, vedo lampioni spenti e marciapiedi dissestati. Ho segnalato più volte il problema, anche tramite l’app del Comune, ma nulla è cambiato. Durante le ultime elezioni hanno promesso miglioramenti, ma dopo mesi sembra tutto uguale. Mi sento invisibile, come se le mie richieste non contassero. Vivere qui è diventato frustrante, soprattutto quando vedo altre zone della città ben curate. Mi chiedo se sia perché sono straniero o semplicemente perché non siamo una priorità.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 895,
+    "completion_tokens": 136,
+    "total_tokens": 1031,
+    "cost": 0.00040744,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040744,
+     "upstream_inference_prompt_cost": 0.0002864,
+     "upstream_inference_completions_cost": 0.00012104
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0095252",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Maria De Vita, 32 anni, donna · celibe nubile · licenza media · dipendente, costruzioni · vive nel quartiere Porta Venezia",
+   "storia": "Ogni mattina passo davanti a quel cantiere in via Melzo, chiuso da mesi. L’hanno iniziato quando ancora faceva freddo e adesso l’estate è già a metà. Ho visto i cartelli del Comune che promettevano lavori veloci, ma niente si muove. Le macchine restano lì, ferme, arrugginite. E noi che passiamo tutti i giorni ci facciamo il solito commento: “Ecco, la solita storia”. Ogni tanto qualcuno dice che ha chiamato per chiedere, ma nessuno sa mai niente. Io ormai nemmeno ci provo più.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 872,
+    "completion_tokens": 150,
+    "total_tokens": 1022,
+    "cost": 0.00041254,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00041254,
+     "upstream_inference_prompt_cost": 0.00027904,
+     "upstream_inference_completions_cost": 0.0001335
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0097883",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Carlo Garretta, 34 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Primo Maggio",
+   "storia": "Ogni mattina passo davanti a quel lampione rotto in via delle Acacie, segnalato tre volte al Comune. Tre volte mi hanno assicurato che sarebbe stato riparato \"a breve\". È lì da mesi, spento, mentre le buche sullo stesso marciapiede si allargano. L'ultima volta che ho chiamato, mi hanno detto di scaricare l'app per le segnalazioni. L'ho fatto, ma quando apro la mappa sembra un cimitero di lampioni morti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 896,
+    "completion_tokens": 119,
+    "total_tokens": 1015,
+    "cost": 0.0005131,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005131,
+     "upstream_inference_prompt_cost": 0.0003584,
+     "upstream_inference_completions_cost": 0.0001547
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0100817",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Federico Novigno, 28 anni, uomo · celibe nubile · laurea magistrale in ingegneria delle telecomunicazioni, elettronica e informatica · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Sereno",
+   "storia": "La pista ciclabile che collega il Villaggio Sereno al centro l’hanno inaugurata con tanto di foto e articoli sul giornale. Peccato che dopo due mesi i lampioni siano già mezzi rotti e nessuno li aggiusti. Ho provato a segnalarlo sull’app del Comune, ma dopo tre settimane ancora niente. Alla fine ho smesso di usarla di sera, meglio rischiare con la strada. Tanto, che differenza fa? Tanto vale che l’avessero lasciata com’era prima.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 917,
+    "completion_tokens": 128,
+    "total_tokens": 1045,
+    "cost": 0.0003677094,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003677094,
+     "upstream_inference_prompt_cost": 0.0002360358,
+     "upstream_inference_completions_cost": 0.0001316736
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0116908",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Daniele Donini, 48 anni, uomo · celibe nubile · diploma di istituto professionale per i servizi commerciali, turismo e pubblicità · dipendente, trasporto e magazzinaggio · vive nel quartiere Villaggio Sereno",
+   "storia": "Ogni volta che passo davanti al cantiere del nuovo centro commerciale mi viene da ridere. Tre anni fa hanno promesso un parco, anche le mappe del comune lo dicevano. Poi hanno cambiato idea senza dirci niente. Adesso ci becchiamo pure i camion che sbucano all'improvviso dagli accessi laterali, e la polvere che entra dappertutto. Ho chiamato due volte il municipio: la prima mi hanno detto che stavano verificando, la seconda che era tutto regolare. Io veramente non so più cosa sia regolare qua.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 898,
+    "completion_tokens": 131,
+    "total_tokens": 1029,
+    "cost": 0.0003659049,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003659049,
+     "upstream_inference_prompt_cost": 0.0002311452,
+     "upstream_inference_completions_cost": 0.0001347597
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0117016",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alessandro Coradeschi, 70 anni, uomo · celibe nubile · licenza media · dipendente, attività manifatturiere · vive nel quartiere Lamarmora",
+   "storia": "Da quando sono andato in pensione, passo le giornate al parco qui vicino. Ci vado da anni, ma ogni volta che ci metto piede mi sale la rabbia: l’erba alta, i cestini strabordanti, le panchine rotte. Ho chiamato il Comune più volte, ho lasciato messaggi, ho persino scritto una lettera. Risposte? Zero. Mi sembra di parlare al muro. Ogni volta che vedo i vigili passare con le macchine, faccio l’occhiolo al mio vicino: “Guarda, stanno facendo un altro giro di controllo”. Ma non cambia mai niente. Ormai ho smesso di sperarci.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 878,
+    "completion_tokens": 164,
+    "total_tokens": 1042,
+    "cost": 0.00042692,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042692,
+     "upstream_inference_prompt_cost": 0.00028096,
+     "upstream_inference_completions_cost": 0.00014596
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0123049",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Nathaniel De Leon, 31 anni, uomo · celibe nubile · licenza media · dipendente, trasporto e magazzinaggio · vive nel quartiere Centro Storico Nord · cittadinanza straniera, Filippine",
+   "storia": "Ogni mattina passo davanti al cantiere in piazza, chiuso da tre mesi con quei cartelli del Comune che promettono lavori per la riqualificazione. Intanto i sampietrini sono sollevati, quando piove si formano pozzanghere dove i turisti lasciano i mozziconi. L’altro giorno ho visto un’anziana inciampare, nessuno l’ha aiutata. Alla mensa dei poveri dove vado a pranzo dicono che hanno chiesto al Comune di riparare il marciapiede da due anni. Aspettiamo, sempre.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 889,
+    "completion_tokens": 144,
+    "total_tokens": 1033,
+    "cost": 0.0005428,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005428,
+     "upstream_inference_prompt_cost": 0.0003556,
+     "upstream_inference_completions_cost": 0.0001872
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0129701",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Silvia Acciai, 43 anni, donna · coniugato unito · licenza media · dipendente, sanità e assistenza sociale · vive nel quartiere Buffalora",
+   "storia": "Da quando hanno messo quei cassonetti nuovi per la differenziata, la strada puzza come non mai. Ho chiamato tre volte in Comune, mi hanno sempre detto che avrebbero mandato qualcuno. Passano i giorni e niente. L’altro ieri ho visto un topo grosso così vicino ai bidoni. Mio marito dice di lasciar perdere, che tanto non cambia mai nulla. E forse ha ragione.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 877,
+    "completion_tokens": 103,
+    "total_tokens": 980,
+    "cost": 0.0004847,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004847,
+     "upstream_inference_prompt_cost": 0.0003508,
+     "upstream_inference_completions_cost": 0.0001339
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0133892",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Valeria Fabbroni, 34 anni, donna · celibe nubile · laurea triennale in igiene dentale /igienista dentale (abilitante alla professione sanitaria di igienista dentale) · dipendente, sanità e assistenza sociale · vive nel quartiere Porta Cremona",
+   "storia": "Ogni mattina passo davanti al cantiere dietro la scuola materna, chiuso da due anni. I cartelli del Comune promettono un nuovo parco giochi entro sei mesi, ma i lavori non sono mai partiti. Le mamme del quartiere hanno firmato petizioni, scritto mail, aspettato risposte. Ora lasciamo i bambini scorrazzare tra i cumuli di terra e le reti arrugginite. Tanto sanno che nessuno verrà mai a controllare.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 907,
+    "completion_tokens": 119,
+    "total_tokens": 1026,
+    "cost": 0.0003558771,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003558771,
+     "upstream_inference_prompt_cost": 0.0002334618,
+     "upstream_inference_completions_cost": 0.0001224153
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0140306",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Valentina Akter, 26 anni, donna · celibe nubile · diploma di istituto professionale femminile/per i servizi sociali · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Brescia Antica · cittadinanza straniera, Camerun",
+   "storia": "Ogni mattina passo davanti alla fontana in piazza, quella che non funziona da quando sono arrivata qui. L’altra settimana hanno messo un cartello: \"Lavori in corso\". Ma i secchi della spazzatura accanto sono sempre pieni, e la gente butta tutto per terra. Io pulisco il marciapiede davanti a casa mia, anche se non è mio compito. L’anno scorso ho chiesto un modulo per la raccolta differenziata, ma all’ufficio mi hanno detto di tornare un altro giorno. Non ci sono più tornata.",
+   "problemi": {
+    "scena": [
+     "modulo"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 941,
+    "completion_tokens": 136,
+    "total_tokens": 1077,
+    "cost": 0.0003821166,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003821166,
+     "upstream_inference_prompt_cost": 0.0002422134,
+     "upstream_inference_completions_cost": 0.0001399032
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0141296",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Paola D'Elia, 57 anni, donna · coniugato unito · laurea magistrale in architettura e urbanistica · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Caionvico",
+   "storia": "L’altro giorno ho visto un cartello appeso al palazzo in via delle Rose: “Area pedonale in via di realizzazione”. Lo stesso cartello che c’era due anni fa, quando ho presentato un progetto per la riqualificazione di quella zona. Ho dedicato settimane di lavoro, ho coinvolto altri professionisti. Nessuna risposta mai, né un sì né un no. Ora, improvvisamente, tirano fuori questa idea? Senza consultare chi ha competenze, senza nemmeno un accenno di collaborazione. Mi chiedo se abbiano davvero intenzione di fare qualcosa o se sia solo l’ennesima promessa vuota. Ogni volta che passo di lì, quel cartello mi sembra più un insulto che un segno di progresso.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 900,
+    "completion_tokens": 177,
+    "total_tokens": 1077,
+    "cost": 0.00044553,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00044553,
+     "upstream_inference_prompt_cost": 0.000288,
+     "upstream_inference_completions_cost": 0.00015753
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0143355",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Fabrizio Haljiti, 36 anni, uomo · celibe nubile · laurea magistrale in medicina e chirurgia · dipendente, organizzazioni ed organismi extraterritoriali · vive nel quartiere S. Bartolomeo",
+   "storia": "Ogni volta che passo davanti al cantiere nel parco del quartiere, mi viene da ridere. È lì da mesi, recintato, con quei cartelli che promettono lavoro entro breve. Breve per chi? L’erba è cresciuta alta attorno ai macchinari abbandonati, e i bambini giocano tra i cumuli di detriti. Ho provato a chiamare, a mandare mail, ma niente. Nessuno risponde, nessuno si fa vivo. È come se il Comune avesse deciso di lasciar marcire tutto, insieme alla mia pazienza. E io, che lavoro con organizzazioni internazionali, mi chiedo come sia possibile che qui, nel mio quartiere, non si riesca nemmeno a finire un parco.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 890,
+    "completion_tokens": 179,
+    "total_tokens": 1069,
+    "cost": 0.00044411,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00044411,
+     "upstream_inference_prompt_cost": 0.0002848,
+     "upstream_inference_completions_cost": 0.00015931
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0144282",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Francesca Chiari, 32 anni, donna · coniugato unito · licenza media · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Chiusure",
+   "storia": "La settimana scorsa ho chiamato il Comune perché davanti al ristorante dove lavoro c’è un lampione rotto da mesi. Mi hanno detto che avrebbero mandato qualcuno, ma ancora nulla. Ogni sera dobbiamo accendere le luci del locale più del solito per illuminare il marciapiede, e i clienti si lamentano del buio. L’anno scorso, però, quando abbiamo chiesto il permesso per i tavolini fuori, l’hanno approvato in fretta. Non capisco mai come funzionano le cose con loro.",
+   "problemi": {
+    "scena": [
+     "permesso"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 884,
+    "completion_tokens": 134,
+    "total_tokens": 1018,
+    "cost": 0.00040214,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040214,
+     "upstream_inference_prompt_cost": 0.00028288,
+     "upstream_inference_completions_cost": 0.00011926
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0152841",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Luigi Casu, 38 anni, uomo · celibe nubile · diploma di istituto tecnico commerciale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Chiesanuova",
+   "storia": "Ogni mattina passo davanti a quel marciapiede rotto da mesi, proprio davanti all'ufficio comunale dove lavoro io. Ho segnalato tre volte, anche con mail ai colleghi del settore manutenzioni. Niente. Poi una settimana fa hanno messo un cartello \"lavori in corso\" e un nastro rosso-bianco che sventola. Ma nessuno lavora. Io ormai giro largo, faccio il giro dell'isolato. Tanto lo so come va a finire: arriverà l'inverno, qualche anziano scivolerà, e allora forse si muoveranno. Dopo le denunce.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 896,
+    "completion_tokens": 154,
+    "total_tokens": 1050,
+    "cost": 0.0005586,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005586,
+     "upstream_inference_prompt_cost": 0.0003584,
+     "upstream_inference_completions_cost": 0.0002002
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0154316",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Caterina Varghese, 54 anni, donna · coniugato unito · diploma di scuola magistrale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Brescia Antica",
+   "storia": "Ogni mattina passo davanti a quel marciapiede rotto, proprio davanti alla scuola elementare. L'ho segnalato tre volte in ufficio protocollo, con mail e modulo online. Niente. Poi un giorno vedo una mamma inciampare col passeggino, il bambino quasi cade. Ho chiamato l'ufficio di nuovo, arrabbiata. Mi hanno detto che era in programmazione. È passato un altro inverno, le buche si sono allargate. Adesso cammino in strada, è più sicuro.",
+   "problemi": {
+    "scena": [
+     "modulo"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 894,
+    "completion_tokens": 129,
+    "total_tokens": 1023,
+    "cost": 0.0005253,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005253,
+     "upstream_inference_prompt_cost": 0.0003576,
+     "upstream_inference_completions_cost": 0.0001677
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0155760",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Marco Striganova, 41 anni, uomo · coniugato unito · diploma di istituto professionale per i servizi alberghieri e ristorazione · dipendente, attività finanziarie e assicurative · vive nel quartiere Borgo Trento",
+   "storia": "Da due anni segnalo quella buca davanti al supermercato, la stessa dove ieri è caduto un ragazzo con la bici. Ogni volta mi dicono che è in programma, che hanno altri cantieri prima. Intanto l’asfalto si sbriciola sempre di più. L’ultima volta che ho chiamato, l’impiegato ha sbuffato al telefono: \"Ma lei non ha altro a cui pensare?\". Adesso non chiamo più. Tanto lo so come va a finire.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 897,
+    "completion_tokens": 118,
+    "total_tokens": 1015,
+    "cost": 0.0003522744,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003522744,
+     "upstream_inference_prompt_cost": 0.0002308878,
+     "upstream_inference_completions_cost": 0.0001213866
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0170443",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Mauro Bonciani, 80 anni, uomo · vedovo · licenza media · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Parco",
+   "storia": "Da quando hanno messo quei lampioni nuovi in piazza, la sera non ci si vede più. Prima c'era una bella luce calda, adesso sembra di essere in ospedale. Ho chiamato due volte l'ufficio tecnico, mi hanno detto che avrebbero controllato. È passato un anno. Ora aspetto solo che mi vengano a prendere, così non dovrò più vedere come hanno rovinato il quartiere dove ho vissuto tutta la vita.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 882,
+    "completion_tokens": 109,
+    "total_tokens": 991,
+    "cost": 0.0004945,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004945,
+     "upstream_inference_prompt_cost": 0.0003528,
+     "upstream_inference_completions_cost": 0.0001417
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0170578",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alessandro Peruzzi, 30 anni, uomo · celibe nubile · licenza media · dipendente, attività manifatturiere · vive nel quartiere Fornaci",
+   "storia": "Ogni volta che passo davanti al campo da calcio del quartiere mi viene da ridere. L’hanno chiuso tre mesi fa perché è tutto sconnesso e pieno di buche, dicono che lo sistemeranno “a breve”. Ma intanto i ragazzi giocano in strada, e nessuno dice niente. Io lavoro in fabbrica, vedo come funziona: se una cosa è rotta, la aggiusti, punto. Qui invece è sempre tutto rimandato. Ogni volta che c’è un problema, si parla, si promette, ma poi non cambia mai niente. Ho smesso di crederci.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 877,
+    "completion_tokens": 148,
+    "total_tokens": 1025,
+    "cost": 0.00041236,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00041236,
+     "upstream_inference_prompt_cost": 0.00028064,
+     "upstream_inference_completions_cost": 0.00013172
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0171811",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Matteo Donnaloia, 28 anni, uomo · celibe nubile · diploma di conservatorio di musica/istituto musicale pareggiato (AFAM di II livello) · dipendente, attività finanziarie e assicurative · vive nel quartiere Brescia Antica",
+   "storia": "Ogni volta che passo davanti alla scuola di musica comunale mi sale la rabbia. L’hanno chiusa tre anni fa, dicendo che servivano fondi per altre cose. Io ci ho studiato, ho imparato tutto lì. Ora è un magazzino, le finestre sono murate e l’erba cresce alta davanti al portone. Ho provato a scrivere, a chiedere spiegazioni, ma niente. Neanche una risposta. A volte penso che qui l’arte non conti niente, che sia tutto solo soldi e burocrazia. E poi si lamentano che i giovani se ne vanno.",
+   "problemi": {
+    "scena": [
+     "burocra"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 901,
+    "completion_tokens": 148,
+    "total_tokens": 1049,
+    "cost": 0.00042004,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042004,
+     "upstream_inference_prompt_cost": 0.00028832,
+     "upstream_inference_completions_cost": 0.00013172
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0179472",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Maxim Țurcan, 32 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività finanziarie e assicurative · vive nel quartiere Don Bosco · cittadinanza straniera, Moldova",
+   "storia": "Stavo per comprare casa, finalmente dopo anni di affitto. Poi ho scoperto che nel quartiere vogliono fare un nuovo parcheggio sotterraneo proprio sotto il palazzo che mi interessava. All'ufficio tecnico mi hanno detto che non c'è ancora nulla di certo, ma intanto tutti i venditori hanno già alzato i prezzi. Io continuo a pagare l'affitto, mentre loro pubblicano bellissimi rendering del progetto sul sito del Comune. Le solite promesse che partono prima dei soldi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 896,
+    "completion_tokens": 122,
+    "total_tokens": 1018,
+    "cost": 0.0003561318,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003561318,
+     "upstream_inference_prompt_cost": 0.0002306304,
+     "upstream_inference_completions_cost": 0.0001255014
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0192292",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Christian Piccini, 25 anni, uomo · celibe nubile · liceo scientifico · imprenditore o libero professionista, costruzioni · vive nel quartiere Villaggio Sereno",
+   "storia": "L’anno scorso ho aperto la mia impresa di ristrutturazioni, e subito sono arrivate le multe. Parcheggio il furgone davanti al cantiere per scaricare i materiali, e in venti minuti già mi becco la contravvenzione. Ho chiesto un permesso temporaneo, ma mi hanno risposto che la pratica ci mette mesi. Intanto i vigili passano ogni giorno, puntuali come orologi. Le buche sulla strada invece nessuno le ripara da anni.",
+   "problemi": {
+    "scena": [
+     "pratica",
+     "permesso"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 880,
+    "completion_tokens": 123,
+    "total_tokens": 1003,
+    "cost": 0.0005119,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005119,
+     "upstream_inference_prompt_cost": 0.000352,
+     "upstream_inference_completions_cost": 0.0001599
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007186",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Francesca Angiulli, 31 anni, donna · coniugato unito · licenza media · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Fiumicello",
+   "storia": "Lavoro negli uffici comunali da anni, ma abito dall'altra parte della città. Qui a Fiumicello le strade sono sempre sporche, i cassonetti straripano. Ogni volta che segnalo qualcosa, mi rispondono subito, ma poi passano settimane prima che intervengano. Però quando c'è stato quel problema con le tubature in via dei Salici, hanno sistemato tutto in due giorni. Dipende da chi fa le segnalazioni, forse. Io continuo a provarci, anche se so che spesso è tempo perso.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 892,
+    "completion_tokens": 134,
+    "total_tokens": 1026,
+    "cost": 0.000531,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000531,
+     "upstream_inference_prompt_cost": 0.0003568,
+     "upstream_inference_completions_cost": 0.0001742
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0014642",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Davide Monnicchi, 33 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività manifatturiere · vive nel quartiere Urago",
+   "storia": "Da quando hanno messo i nuovi cassonetti interrati dietro al capannone, finalmente non trovo più sacchi sparsi per strada quando esco dal turno di notte. Però la scorsa settimana ho visto un furgone comunale che passava e lasciava cadere cartacce dal cassone aperto. Ho chiamato il numero verde, mi hanno detto che avrebbero segnalato. Stamattina c’era ancora tutto lì.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 884,
+    "completion_tokens": 104,
+    "total_tokens": 988,
+    "cost": 0.0003345264,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003345264,
+     "upstream_inference_prompt_cost": 0.0002275416,
+     "upstream_inference_completions_cost": 0.0001069848
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0015352",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Gabriele Muzzi, 31 anni, uomo · celibe nubile · liceo scientifico · imprenditore o libero professionista, attività manifatturiere · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Quando hanno chiuso la strada per rifare le tubature, mi sono incaponito: avevo tre consegne urgenti e nessun avviso. Poi ho scoperto che il Comune aveva pubblicato il calendario nel loro portale, solo che io non lo guardo mai. Ora lo controllo ogni settimana, e devo dire che rispettano le date. Magari un sms in più non sarebbe male, ma almeno non ti dicono balle.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 887,
+    "completion_tokens": 106,
+    "total_tokens": 993,
+    "cost": 0.000337356,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000337356,
+     "upstream_inference_prompt_cost": 0.0002283138,
+     "upstream_inference_completions_cost": 0.0001090422
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0019713",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Viraj Yadav, 19 anni, uomo · celibe nubile · licenza media · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Fiumicello · cittadinanza straniera, India",
+   "storia": "Ieri ho chiesto al Comune se potevo mettere un banchetto al mercato per vendere spezie indiane. Mi hanno spiegato i documenti da portare e quanto costa. Erano gentili, anche se l’impiegato non sapeva bene come funziona per chi non ha la cittadinanza. Poi sono andato a vedere il posto che mi avrebbero assegnato: vicino ai bagni pubblici. Non è il massimo, ma almeno ho capito come fare. Se va bene, forse l’anno prossimo chiedo uno spazio migliore.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 907,
+    "completion_tokens": 134,
+    "total_tokens": 1041,
+    "cost": 0.0003713076,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003713076,
+     "upstream_inference_prompt_cost": 0.0002334618,
+     "upstream_inference_completions_cost": 0.0001378458
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0020138",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Anna Tangocci, 76 anni, donna · celibe nubile · licenza elementare · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere S. Eufemia",
+   "storia": "Da quando ho aperto il mio studio di consulenza qui a S. Eufemia, ho sempre avuto a che fare con gli uffici comunali per le licenze e le pratiche. All’inizio era un inferno: file interminabili, documenti persi, scartoffie che sembravano non finire mai. Ultimamente, però, le cose sono migliorate. Hanno messo su un sistema online per alcune procedure, e devo dire che funziona. Certo, ogni tanto c’è ancora qualche intoppo, ma almeno ora rispondono alle mail e cercano di risolvere i problemi. Non è tutto perfetto, ma rispetto a prima si vede che ci stanno provando.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 890,
+    "completion_tokens": 158,
+    "total_tokens": 1048,
+    "cost": 0.00042542,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042542,
+     "upstream_inference_prompt_cost": 0.0002848,
+     "upstream_inference_completions_cost": 0.00014062
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0022693",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Elisa Spada, 42 anni, donna · celibe nubile · diploma di istituto tecnico commerciale · dipendente, sanità e assistenza sociale · vive nel quartiere Brescia Antica",
+   "storia": "L'altro giorno tornando dal turno di notte ho visto i netturbini che lavoravano già alle cinque del mattino. Mi hanno fatto un cenno mentre svuotavano i cassonetti. Poi però ho trovato la piazzetta sotto casa piena di cartacce e bottiglie, come sempre. All'asilo comunale di mio figlio la mensa è migliorata, dicono che hanno cambiato fornitore. Però quando ho chiesto informazioni per l'estate, mi hanno risposto dopo due settimane e mezzo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 883,
+    "completion_tokens": 128,
+    "total_tokens": 1011,
+    "cost": 0.0005196,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005196,
+     "upstream_inference_prompt_cost": 0.0003532,
+     "upstream_inference_completions_cost": 0.0001664
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0023945",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Ezekiel Castillo, 16 anni, uomo · celibe nubile · licenza media · socio di cooperativa, costruzioni · vive nel quartiere Centro Storico Nord · cittadinanza straniera, Filippine",
+   "storia": "Ogni mattina passo davanti al cantiere del nuovo parco giochi mentre vado al lavoro. Un mese fa hanno montato i primi scivoli, poi si sono fermati. Ora le macchine sono coperte di teloni, ma qualche operaio ogni tanto ci lavora ancora. Ieri ho visto una signora del Comune parlare con il capocantiere, ha fatto cenno di sì con la testa. Forse finiranno, forse no. Intanto i bambini del quartiere giocano tra i cumuli di sabbia, sotto il cartello \"Vietato l'accesso\".",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 885,
+    "completion_tokens": 140,
+    "total_tokens": 1025,
+    "cost": 0.000371817,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000371817,
+     "upstream_inference_prompt_cost": 0.000227799,
+     "upstream_inference_completions_cost": 0.000144018
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0031034",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Roberto Annunziati, 16 anni, uomo · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Badia",
+   "storia": "Sto tornando a casa dal lavoro e passo davanti al campo da calcio del quartiere. Ogni volta che ci passo, mi fermo un attimo a guardare i ragazzi che giocano. L’altro giorno ho visto un operatore del Comune che sistemava la rete del cancello, rotta da mesi. Ho pensato che finalmente qualcuno si è accorto del problema. Però i bagni sono ancora chiusi, e la sera non c’è mai abbastanza luce. Mi chiedo se arriveranno anche a quello, o se si fermeranno solo alla rete.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 899,
+    "completion_tokens": 132,
+    "total_tokens": 1031,
+    "cost": 0.00040516,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040516,
+     "upstream_inference_prompt_cost": 0.00028768,
+     "upstream_inference_completions_cost": 0.00011748
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0043507",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Alessandra Stagliano', 43 anni, donna · celibe nubile · diploma di istituto tecnico per il turismo · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Parco",
+   "storia": "L'altro giorno passeggiavo in centro e ho visto un cantiere aperto per riqualificare la piazza. Sembrava un buon progetto, ma poi ho notato che i lavori erano fermi già da settimane. In compenso, il mese scorso hanno aggiunto nuove panchine e fioriere lungo il corso principale. Ogni volta che passo mi chiedo se finiranno mai quella piazza o se rimarrà un cantiere abbandonato come quello vicino alla stazione. Però almeno i fiori li curano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 894,
+    "completion_tokens": 126,
+    "total_tokens": 1020,
+    "cost": 0.0003597318,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003597318,
+     "upstream_inference_prompt_cost": 0.0002301156,
+     "upstream_inference_completions_cost": 0.0001296162
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0045887",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Gabriella Mele, 23 anni, donna · celibe nubile · licenza media · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Villaggio Badia",
+   "storia": "L’anno scorso ho chiesto un contributo per sostituire la vecchia caldaia di casa, che consumava tantissimo. Mi hanno fatto aspettare mesi prima di darmi una risposta, e alla fine mi hanno detto che i fondi erano finiti. Poco dopo, però, ho visto che nel quartiere hanno rifatto i marciapiedi davanti alle case nuove, che già stavano bene. Mi è sembrato un po’ strano, ma alla fine un mio vicino mi ha aiutato a trovare un altro modo per ottenere il contributo. Non so se è stato solo caso o se il Comune ci tiene davvero, però almeno ho risolto.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 917,
+    "completion_tokens": 153,
+    "total_tokens": 1070,
+    "cost": 0.00042961,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042961,
+     "upstream_inference_prompt_cost": 0.00029344,
+     "upstream_inference_completions_cost": 0.00013617
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0053915",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Alessandro Gentile, 38 anni, uomo · coniugato unito · licenza media · dipendente, costruzioni · vive nel quartiere Villaggio Prealpino",
+   "storia": "Lavoro nei cantieri da quasi vent'anni e ho visto un po’ di tutto. Qui nel quartiere, quando c’è qualche lavoro pubblico in programma, lo si sa con mesi di anticipo. L’ultima volta hanno rifatto il marciapiede davanti a casa mia: alla fine è venuto bene, ma ci hanno messo il triplo del tempo previsto. Poi, però, ho visto che hanno piantato nuovi alberi lungo la strada, quelli vecchi li avevano segnalati da tempo perché erano pericolosi. Insomma, certe cose le fanno, altre meno. Dipende sempre da come gira.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 877,
+    "completion_tokens": 143,
+    "total_tokens": 1020,
+    "cost": 0.00040791,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040791,
+     "upstream_inference_prompt_cost": 0.00028064,
+     "upstream_inference_completions_cost": 0.00012727
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0065941",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Matteo Fabbrini, 30 anni, uomo · coniugato unito · diploma di istituto tecnico commerciale · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia · cittadinanza straniera, Egitto",
+   "storia": "L’altro giorno ho visto la municipale multare un mio cliente che aveva parcheggiato per due minuti davanti al mio negozio. Io gli avevo detto che era sicuro, perché in quella strada nessuno controlla mai. Poi, quando ho chiesto perché non fanno lo stesso con i furgoni che bloccano il carico e scarico tutto il giorno, mi hanno detto che \"ci sono priorità\". Due mesi fa ho pagato la TARI per entrambi i locali, anche se quello dietro è chiuso da settembre. Ma almeno le buche davanti al magazzino le hanno sistemate dopo tre reclami.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 917,
+    "completion_tokens": 146,
+    "total_tokens": 1063,
+    "cost": 0.000386226,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000386226,
+     "upstream_inference_prompt_cost": 0.0002360358,
+     "upstream_inference_completions_cost": 0.0001501902
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0074145",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Vincenzo Banzi, 59 anni, uomo · coniugato unito · diploma di istituto tecnico commerciale · dipendente, attività manifatturiere · vive nel quartiere Urago",
+   "storia": "L’altro giorno ho visto i lavori per rifare il marciapiede davanti a casa mia. Finalmente, dopo anni di buche e mattoni sollevati. Però già mi chiedo quanto durerà, visto che le macchine dei vicini continuano a parcheggiare sopra. Io ho chiamato il Comune diverse volte per segnalare il problema, ma nessuno è mai venuto a controllare. Intanto, però, hanno sistemato la piazza principale del quartiere in tempo record. Bella, certo, ma mi chiedo sempre perché alcune cose si fanno subito e altre no.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 884,
+    "completion_tokens": 135,
+    "total_tokens": 1019,
+    "cost": 0.00040303,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040303,
+     "upstream_inference_prompt_cost": 0.00028288,
+     "upstream_inference_completions_cost": 0.00012015
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077611",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Francesco Cusimano, 42 anni, uomo · celibe nubile · diploma universitario in marketing e comunicazione d'azienda · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Brescia Antica",
+   "storia": "Da quando ho aperto lo studio nel centro storico, ogni volta che piove forte devo correre a tirare su i documenti dal pavimento. L’ultima volta ho chiamato l’ufficio tecnico e mi hanno detto che “la priorità è verificare la situazione”. Due settimane dopo, però, è passato un operaio a sistemare la grondaia del palazzo accanto, che non perdeva nemmeno. Almeno il marciapiede davanti al mio ufficio lo spazzano sempre, anche quando non ci sono eventi in piazza.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 900,
+    "completion_tokens": 132,
+    "total_tokens": 1032,
+    "cost": 0.0003674484,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003674484,
+     "upstream_inference_prompt_cost": 0.00023166,
+     "upstream_inference_completions_cost": 0.0001357884
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077623",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Yīnuò Lee, 30 anni, donna · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Cremona · cittadinanza straniera, Cina",
+   "storia": "Lavoro nel negozio di famiglia che vende accessori per auto e moto, proprio vicino al mercato coperto. L'anno scorso, il Comune ha fatto rifare il marciapiede davanti alla porta, e per un po’ abbiamo dovuto lavorare con i cartelli e i disagi del cantiere. Alla fine, però, è venuto bene, e adesso è più facile per i clienti parcheggiare e raggiungere il negozio. Ogni tanto vedo anche gli operatori che controllano la raccolta differenziata nel quartiere, e mi sembra che ci siano meno sacchetti abbandonati per strada. Certo, qualche volta vorrei che fossero più veloci a rispondere alle richieste, ma almeno quando ho avuto bisogno di informazioni per il rinnovo della licenza commerciale, mi hanno aiutato senza troppe difficoltà.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 906,
+    "completion_tokens": 203,
+    "total_tokens": 1109,
+    "cost": 0.00047059,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00047059,
+     "upstream_inference_prompt_cost": 0.00028992,
+     "upstream_inference_completions_cost": 0.00018067
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0095300",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Giorgia Mukti, 53 anni, donna · coniugato unito · licenza/diploma di maestro d'arte (indirizzi vari) · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Borgo Trento",
+   "storia": "Ogni volta che passo davanti alla rotonda al centro del quartiere, vedo i fiori nuovi piantati dal Comune e mi viene da sorridere. Mi piace pensare che ci siano persone che si preoccupano di rendere bello il posto dove vivo. Ma poi ricordo quanto tempo ci è voluto per ripristinare quel marciapiede davanti al mio studio, pieno di buche e pericoloso. Quando ho chiamato per segnalarlo, mi hanno detto che era già in programma, ma ho aspettato mesi. È così, con il Comune: qualche volta ti accorgi che qualcosa funziona, altre volte sembra che le tue esigenze non abbiano priorità. Continuo a sperare che migliorino, anche se so che non è facile.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 904,
+    "completion_tokens": 178,
+    "total_tokens": 1082,
+    "cost": 0.0004477,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004477,
+     "upstream_inference_prompt_cost": 0.00028928,
+     "upstream_inference_completions_cost": 0.00015842
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0096996",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Francesca Scagnoli, 71 anni, donna · vedovo · licenza media · dipendente, sanità e assistenza sociale · vive nel quartiere Lamarmora",
+   "storia": "Ogni volta che devo andare in centro, passo davanti al cantiere del nuovo parco che hanno promesso. Dicono che ci saranno panchine e aiuole, perfette per chi come me vuole fermarsi a prendere un po' d'aria. Per ora vedo solo recinti e terra smossa. L'anno scorso hanno rifatto i marciapiedi della mia via, finalmente larghi abbastanza per il passeggino di mio nipote quando viene a trovarmi. Certo, poi ci sono voluti mesi per pulire i residui dei lavori. Mah.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 875,
+    "completion_tokens": 135,
+    "total_tokens": 1010,
+    "cost": 0.0003640995,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003640995,
+     "upstream_inference_prompt_cost": 0.000225225,
+     "upstream_inference_completions_cost": 0.0001388745
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0098073",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Massimo Del Maschio, 81 anni, uomo · coniugato unito · diploma di istituto tecnico industriale · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Porta Cremona",
+   "storia": "Da anni cerco di farmi sentire su quelle strade piene di buche nel quartiere, ma è come parlare al muro. Ogni volta promettono interventi che poi rimandano all’infinito. L’ultima volta, dopo le lamentele dei commercianti, hanno messo qualche toppa, ma dopo due settimane era già tutto come prima. Mi chiedo se ci tengono davvero a questa città, o se siamo solo numeri da accontentare ogni tanto. Però, devo dire, quando ho avuto bisogno di un permesso per la mia attività, sono stati abbastanza veloci. Peccato che non sia così per tutto il resto.",
+   "problemi": {
+    "scena": [
+     "permesso"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 896,
+    "completion_tokens": 157,
+    "total_tokens": 1053,
+    "cost": 0.00042645,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042645,
+     "upstream_inference_prompt_cost": 0.00028672,
+     "upstream_inference_completions_cost": 0.00013973
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0100273",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Mauro Spina, 28 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività manifatturiere · vive nel quartiere S. Polo Parco",
+   "storia": "L’altro giorno tornando dal lavoro ho visto un camion della nettezza urbana che buttava via un sacco di materiale ancora buono – scaffali, sedie, roba così. Ho provato a chiedere se potevo prendere qualcosa per arredare casa, ma il tipo mi ha mandato via dicendo che era tutto da smaltire. Poi però ho scoperto che il giorno dopo un negozio di rigatteria ha messo in vetrina la stessa roba. Chissà come è finita lì. Però devo dire che quando ho segnalato la buca sotto casa, dopo una settimana l’hanno sistemata.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 884,
+    "completion_tokens": 150,
+    "total_tokens": 1034,
+    "cost": 0.0005486,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005486,
+     "upstream_inference_prompt_cost": 0.0003536,
+     "upstream_inference_completions_cost": 0.000195
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0102570",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Simone Abdelsayed Ragheb, 77 anni, uomo · coniugato unito · licenza media · parasubordinato, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Violino",
+   "storia": "Ogni volta che devono rifare l'asfalto in via dei Tigli, passano con i camion a mezzanotte e svegliano tutto il quartiere. L'anno scorso abbiamo fatto una petizione, ci hanno promesso che avrebbero lavorato di giorno. Poi se ne sono dimenticati. Però quando è crollato quel muretto del parchetto, l'hanno riparato in due giorni. Mia moglie dice che è inutile lamentarsi, che tanto non cambia niente. Io continuo a telefonare ogni volta. Magari una volta mi ascoltano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 903,
+    "completion_tokens": 137,
+    "total_tokens": 1040,
+    "cost": 0.0003733641,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003733641,
+     "upstream_inference_prompt_cost": 0.0002324322,
+     "upstream_inference_completions_cost": 0.0001409319
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0103703",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Mario Esposito, 79 anni, uomo · coniugato unito · licenza/diploma di maestro d'arte (indirizzi vari) · dipendente, altre attività di servizi · vive nel quartiere S. Rocchino",
+   "storia": "Da quando sono in pensione, passo molto tempo a camminare per il quartiere. Ho visto i lavori di riqualificazione del parco giochi vicino a casa: finalmente hanno sistemato le panchine e piantato nuovi alberi. Qualche mese fa però ho segnalato un tombino rotto in via Garibaldi e ci è voluto quasi un mese perché lo riparassero. Mi capita di parlare con i vicini e spesso ci lamentiamo delle buche nelle strade, però quando abbiamo organizzato una petizione per chiedere più illuminazione pubblica, il Comune ha risposto sollecitamente e installato nuovi lampioni. Non è perfetto, ma qualche volta si vede che provano a migliorare le cose.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 894,
+    "completion_tokens": 168,
+    "total_tokens": 1062,
+    "cost": 0.0004356,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004356,
+     "upstream_inference_prompt_cost": 0.00028608,
+     "upstream_inference_completions_cost": 0.00014952
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0104248",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Vincenzo Giotti, 77 anni, uomo · vedovo · laurea magistrale in giurisprudenza · dipendente, istruzione · vive nel quartiere Chiesanuova",
+   "storia": "Da quando sono andato in pensione, passo molto tempo a camminare per il quartiere, e noto cose che prima mi sfuggivano. L’anno scorso ho segnalato al Comune un albero pericolante nel parco vicino a casa: dopo settimane di silenzio, l’hanno potato senza avvisare. Due mesi fa, invece, hanno sistemato il marciapiede davanti alla farmacia dopo una sola telefonata. Non so mai cosa aspettarmi: a volte sembrano efficienti, altre volte distratti. Mi chiedo se dipenda dalle priorità o dalle persone che rispondono. Continuo a segnalare, ma senza troppe speranze.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 879,
+    "completion_tokens": 157,
+    "total_tokens": 1036,
+    "cost": 0.00042101,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042101,
+     "upstream_inference_prompt_cost": 0.00028128,
+     "upstream_inference_completions_cost": 0.00013973
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0106626",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Aarya Sharma, 26 anni, donna · celibe nubile · alfabeta privo di titolo di studio · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Caionvico · cittadinanza straniera, India",
+   "storia": "Ho lavorato in un hotel nel centro città per due anni, e spesso passavo davanti alla piazza principale. Una volta hanno organizzato un mercato internazionale con prodotti da tutto il mondo, anche dall’India. Mi sono fermata a guardare, e c’era un banco con spezie e dolci che mi ricordavano casa. Poi però ho visto che alcuni venditori avevano pagato una tassa per partecipare, mentre altri no. Mi sembrava strano, ma alla fine ho pensato che forse dipendeva da come si erano organizzati. Da allora, ogni volta che vedo un evento del Comune, mi chiedo se siano tutti trattati allo stesso modo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 898,
+    "completion_tokens": 150,
+    "total_tokens": 1048,
+    "cost": 0.00042086,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042086,
+     "upstream_inference_prompt_cost": 0.00028736,
+     "upstream_inference_completions_cost": 0.0001335
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0108776",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Mario Masi, 69 anni, uomo · coniugato unito · diploma di istituto tecnico industriale · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Casazza",
+   "storia": "Ogni volta che passo davanti alla rotatoria all'ingresso del quartiere mi viene da scuotere la testa. L'hanno rifatta tre volte in cinque anni, cambiando sempre il tipo di fioriere e l'assetto della pavimentazione. Intanto, nella mia strada i tombini sono sempre quelli scassati che sbattono ogni volta che passa un'auto. Però l'anno scorso, quando abbiamo segnalato il problema al consiglio di zona, hanno mandato un'impresa a sistemarli in due giorni. Peccato che dopo un mese erano di nuovo come prima.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 904,
+    "completion_tokens": 137,
+    "total_tokens": 1041,
+    "cost": 0.0003736215,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003736215,
+     "upstream_inference_prompt_cost": 0.0002326896,
+     "upstream_inference_completions_cost": 0.0001409319
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0112759",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Anna Galaverni, 61 anni, donna · vedovo · diploma di istituto tecnico commerciale · dipendente, sanità e assistenza sociale · vive nel quartiere Centro Storico Nord",
+   "storia": "Da quando hanno messo i nuovi cassonetti per la differenziata sotto casa, finalmente non trovo più sacchetti sparsi per strada. Però ogni volta che chiamo per segnalare i graffiti sui muri del cortile, mi dicono che sono in lista d’attesa. L’anno scorso, quando hanno rifatto la pavimentazione della piazza, hanno almeno avuto il buonsenso di avvisarci con un volantino prima di iniziare i lavori. Peccato che poi abbiano lasciato i tubi abbandonati per settimane.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 881,
+    "completion_tokens": 131,
+    "total_tokens": 1012,
+    "cost": 0.0005227,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005227,
+     "upstream_inference_prompt_cost": 0.0003524,
+     "upstream_inference_completions_cost": 0.0001703
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0115670",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Giovanni Tagliaferri, 67 anni, uomo · coniugato unito · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia",
+   "storia": "Da quando hanno messo le nuove strisce blu davanti all'officina, i clienti si lamentano sempre del parcheggio. Io gli dico che almeno così la sosta è regolata e non ci sono più quelli che parcheggiano per ore bloccando l'entrata. Però quando ho chiesto un permesso per caricare e scaricare merci, mi hanno risposto dopo due mesi. Intanto i vigili passano puntuali ogni mattina a multare chi sosta troppo a lungo.",
+   "problemi": {
+    "scena": [
+     "permesso"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 919,
+    "completion_tokens": 115,
+    "total_tokens": 1034,
+    "cost": 0.0003548511,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003548511,
+     "upstream_inference_prompt_cost": 0.0002365506,
+     "upstream_inference_completions_cost": 0.0001183005
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0127480",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Lorenzo Rinaldi, 62 anni, uomo · coniugato unito · diploma di istituto tecnico industriale · dipendente, attività finanziarie e assicurative · vive nel quartiere Porta Venezia",
+   "storia": "Ogni volta che passo davanti al cantiere del nuovo parcheggio multipiano in Porta Venezia, mi chiedo se sarà davvero utile o solo un altro modo per fare cassa. Da mesi bloccano la strada, e i cartelli promettono tempi rapidi, ma si vede poco progresso. Però devo ammettere che quando ho segnalato un problema con la raccolta dei rifiuti nel mio cortile, hanno risposto subito e risolto in un paio di giorni. Non è tutto male, ma mi aspetterei più coerenza.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 888,
+    "completion_tokens": 133,
+    "total_tokens": 1021,
+    "cost": 0.00040253,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040253,
+     "upstream_inference_prompt_cost": 0.00028416,
+     "upstream_inference_completions_cost": 0.00011837
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0130589",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Claudia Cecconi, 36 anni, donna · celibe nubile · laurea magistrale in comunicazione · parasubordinata, attività finanziarie e assicurative · vive nel quartiere Lamarmora",
+   "storia": "Ieri pomeriggio sono passata davanti alla villa comunale e ho visto che hanno finalmente sostituito le panchine rotte. Ci avevano messo mesi, ma almeno l’hanno fatto. Poi, mentre camminavo verso casa, ho notato che la segnaletica nuova del bike sharing è già tutta scrostata. Ma almeno il servizio funziona, quando serve. È sempre così, con il Comune: qualcosa funziona, qualcosa no, e non capisci mai se è disorganizzazione o solo mancanza di controlli. Però alla fine, se insisti, qualcosa si muove.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 885,
+    "completion_tokens": 142,
+    "total_tokens": 1027,
+    "cost": 0.0003738744,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003738744,
+     "upstream_inference_prompt_cost": 0.000227799,
+     "upstream_inference_completions_cost": 0.0001460754
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0150258",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Maurizio Catellacci, 48 anni, uomo · celibe nubile · licenza media · dipendente, attività manifatturiere · vive nel quartiere Caionvico",
+   "storia": "L’altro giorno stavo tornando a casa dal lavoro e ho visto una macchina comunale che puliva il parchetto vicino alla fermata dell’autobus. Ogni tanto ci passano, e devo dire che lo tengono in ordine. Certo, ci sono ancora le solite sigarette e lattine per terra, ma almeno l’erba è tagliata e i cestini li svuotano regolarmente. Il problema è il parcheggio: da quando hanno messo i dissuasori, è diventato un casino. La sera non si trova posto e devo lasciare l’auto due isolati più in là. Mi chiedo chi abbia pensato a quella soluzione.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 879,
+    "completion_tokens": 155,
+    "total_tokens": 1034,
+    "cost": 0.00041923,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00041923,
+     "upstream_inference_prompt_cost": 0.00028128,
+     "upstream_inference_completions_cost": 0.00013795
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0151229",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Simone Bacchitta, 35 anni, uomo · coniugato unito · diploma di istituto professionale per l'industria e l'artigianato · imprenditore o libero professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Violino",
+   "storia": "Aprire il negozio nel Villaggio Violino sembrava una buona idea: zona tranquilla, famiglie, bisogno di servizi. Ma quando ho chiesto il permesso per il cartello esterno, è stato un calvario. Documenti che non bastavano mai, tempi lunghissimi, richieste assurde. Alla fine l’ho ottenuto, ma mi è costato oltre il previsto. Poi, giusto un mese dopo, hanno messo il divieto di sosta proprio davanti al mio ingresso. Ho provato a parlarne in Comune, ma mi hanno detto che era una decisione già presa per problemi di traffico. Mi sembra che per noi commercianti non ci sia molto ascolto.",
+   "problemi": {
+    "scena": [
+     "permesso"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 919,
+    "completion_tokens": 172,
+    "total_tokens": 1091,
+    "cost": 0.00044716,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00044716,
+     "upstream_inference_prompt_cost": 0.00029408,
+     "upstream_inference_completions_cost": 0.00015308
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0159872",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Cristina Gualtieri, 76 anni, donna · vedovo · licenza media · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Villaggio Violino",
+   "storia": "Da quando hanno messo quei nuovi lampioni in via dei Glicini, la sera riesco finalmente a uscire a fare due passi senza paura di inciampare. Però poi vedo le panchine rotte al parchetto e mi chiedo perché non le sistemano, visto che le segnalo da mesi. Alla fine, quando serve davvero, qualcosa fanno, ma sempre a metà.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 888,
+    "completion_tokens": 94,
+    "total_tokens": 982,
+    "cost": 0.0004774,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004774,
+     "upstream_inference_prompt_cost": 0.0003552,
+     "upstream_inference_completions_cost": 0.0001222
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0178325",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Beatrice Pusceddu, 65 anni, donna · coniugato unito · licenza/diploma di maestro d'arte (indirizzi vari) · coadiuvante familiare, altre attività di servizi · vive nel quartiere Buffalora",
+   "storia": "L'altro giorno ho visto passare i netturbini e hanno lasciato il solito schifo davanti al mercato. Poi però, quando ho chiamato per segnalare la situazione, sono arrivati in un'ora e hanno sistemato tutto. Non è la prima volta che succede, a volte rispondono subito, altre volte sembra che nessuno ascolti. Io continuo a chiamare, perché almeno ci provo. Magari stavolta va bene, magari no.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 894,
+    "completion_tokens": 108,
+    "total_tokens": 1002,
+    "cost": 0.000498,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000498,
+     "upstream_inference_prompt_cost": 0.0003576,
+     "upstream_inference_completions_cost": 0.0001404
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0179820",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Francesca Brogi, 32 anni, donna · coniugato unito · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Urago",
+   "storia": "Mi sono trasferita a Urago dopo il matrimonio e ho visto il quartiere cambiare un po’ alla volta. Le nuove panchine nel parchetto vicino a casa sono state una bella sorpresa, anche se dopo un mese una era già rotta e nessuno l’ha riparata. Quando ho chiesto informazioni per aprire un piccolo negozio di accessori per auto, all’ufficio attività produttive mi hanno dato indicazioni chiare e mi hanno aiutato con la pratica. Però la strada davanti al garage è sempre dissestata, e ogni volta che piove si formano delle pozze enormi. Ho chiamato due volte per segnalarlo, ma ancora non hanno fatto nulla. Insomma, ci sono cose che funzionano e altre no, dipende.",
+   "problemi": {
+    "scena": [
+     "pratica"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 896,
+    "completion_tokens": 179,
+    "total_tokens": 1075,
+    "cost": 0.00044603,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00044603,
+     "upstream_inference_prompt_cost": 0.00028672,
+     "upstream_inference_completions_cost": 0.00015931
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0181357",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Andrea Fattori, 39 anni, uomo · coniugato unito · diploma di istituto tecnico agrario · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Buffalora",
+   "storia": "L'anno scorso hanno rifatto la pista ciclabile dietro il supermercato dove lavoro. Per mesi è stato un cantiere senza senso, lavoravano un giorno sì e venti no. Poi d’estate l’hanno aperta, tutta nuova, e adesso la sera ci porto i bambini a fare un giro in bici – anche se già si vedono le prime buche dove hanno messo l’asfalto troppo sottile. Ma almeno hanno sistemato l’illuminazione, prima era un buio che non ci si vedeva. Mio cognato che abita dall’altra parte della città dice che da loro l’hanno promessa da tre anni e manco una pala in terra.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 904,
+    "completion_tokens": 163,
+    "total_tokens": 1067,
+    "cost": 0.0004003677,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004003677,
+     "upstream_inference_prompt_cost": 0.0002326896,
+     "upstream_inference_completions_cost": 0.0001676781
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0183815",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Dion Gega, 38 anni, uomo · celibe nubile · diploma di istituto tecnico commerciale · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Don Bosco · cittadinanza straniera, Albania",
+   "storia": "L’anno scorso, dopo mesi di lamentele con i vicini, il Comune ha finalmente sistemato la strada davanti al negozio. Poi, a due settimane dai lavori, è tornato tutto come prima – buche, pozzanghere, auto che schizzano fango sul marciapiede. Ho chiesto spiegazioni in municipio, mi hanno detto che avrebbero controllato. Da allora, niente. Però quando serve un documento per il permesso di soggiorno, almeno quello mi arriva in tempo.",
+   "problemi": {
+    "scena": [
+     "permesso"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 911,
+    "completion_tokens": 124,
+    "total_tokens": 1035,
+    "cost": 0.0003620502,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003620502,
+     "upstream_inference_prompt_cost": 0.0002344914,
+     "upstream_inference_completions_cost": 0.0001275588
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0185787",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Giovanna Senesi, 48 anni, donna · coniugato unito · laurea triennale in infermieristica (abilitante alla professione sanitaria di infermiere) · dipendente, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Lamarmora",
+   "storia": "Lavoro come infermiera in una struttura privata, ma nel tempo libero mi piace partecipare alle attività organizzate dal centro sportivo comunale. Ho notato che negli ultimi anni hanno migliorato molto l’offerta di corsi e la manutenzione degli impianti. L’anno scorso ho proposto un’iniziativa per un corso di yoga all’aperto nel parco vicino a casa mia, e dopo qualche settimana mi hanno risposto positivamente, anche se poi hanno rimandato l’avvio per problemi burocratici. Alla fine è partito, ma con qualche ritardo. Insomma, ci provano, anche se non sempre riescono a essere tempestivi.",
+   "problemi": {
+    "scena": [
+     "burocra"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 906,
+    "completion_tokens": 161,
+    "total_tokens": 1067,
+    "cost": 0.00043321,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00043321,
+     "upstream_inference_prompt_cost": 0.00028992,
+     "upstream_inference_completions_cost": 0.00014329
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0187536",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Davide Giovannetti, 16 anni, uomo · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere S. Polo Cimabue",
+   "storia": "L'altro giorno tornavo a casa dal lavoro e ho visto che avevano messo dei nuovi cassonetti per la differenziata proprio sotto casa. Finalmente, prima dovevo fare due isolati per buttare la spazzatura. Però già il secondo giorno erano pieni e la gente lasciava i sacchetti per terra. Ho chiamato il numero del Comune e mi hanno detto che avrebbero aumentato i passaggi. Dopo una settimana effettivamente sono venuti più spesso. Non è perfetto, ma almeno hanno sistemato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 900,
+    "completion_tokens": 119,
+    "total_tokens": 1019,
+    "cost": 0.0005147,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005147,
+     "upstream_inference_prompt_cost": 0.00036,
+     "upstream_inference_completions_cost": 0.0001547
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0188240",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Matteo Russo, 75 anni, uomo · celibe nubile · licenza elementare · dipendente, attività manifatturiere · vive nel quartiere Villaggio Violino",
+   "storia": "Da quando hanno messo quei lampioni nuovi in via dei Glicini, finalmente la sera posso uscire a fare due passi senza inciampare. L'anno scorso avevo scritto al Comune perché le radici degli alberi sollevavano il marciapiede, e dopo un po' sono arrivati a sistemare pure quello. Certo, per il fosso che si allaga ogni inverno ci vogliono sempre tre reclami, ma almeno una volta che li fai qualcosa succede.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 879,
+    "completion_tokens": 117,
+    "total_tokens": 996,
+    "cost": 0.0003466125,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003466125,
+     "upstream_inference_prompt_cost": 0.0002262546,
+     "upstream_inference_completions_cost": 0.0001203579
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0194794",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Rita Shahollari, 66 anni, donna · celibe nubile · licenza media · lavoratrice in proprio, attività manifatturiere · vive nel quartiere Porta Venezia",
+   "storia": "Da quando hanno messo i nuovi cassonetti per la differenziata, non so più dove buttare le cose. Prima c’era un bidone dietro l’angolo, adesso devo farmi venti minuti a piedi con i sacchetti in mano. L’altro giorno ho visto un ragazzo dell’ufficio ambiente che controllava, gli ho chiesto spiegazioni e mi ha detto che “è provvisorio”. Ma intanto i cassonetti vecchi li hanno già portati via. E io continuo a inciampare nei sacchetti che la gente lascia per strada, perché tanto ormai è tutto un casino.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 879,
+    "completion_tokens": 145,
+    "total_tokens": 1024,
+    "cost": 0.0003754161,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003754161,
+     "upstream_inference_prompt_cost": 0.0002262546,
+     "upstream_inference_completions_cost": 0.0001491615
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0197341",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Michele Ramis, 86 anni, uomo · coniugato unito · licenza elementare · dipendente, sanità e assistenza sociale · vive nel quartiere Lamarmora",
+   "storia": "Da quando sono in pensione, ogni mattina faccio la stessa passeggiata fino al parco Lamarmora. Ci vado da trent’anni, e devo dire che negli ultimi tempi l’hanno tenuto un po’ meglio: i cestini si svuotano regolarmente e le panchine le hanno riparate, anche se ci sono ancora delle aiuole un po’ trascurate. Una volta ho trovato un sacco dell’immondizia lasciato lì per giorni, e ho chiamato il Comune. Sono venuti il giorno dopo, e questo mi ha fatto piacere, ma poi ho visto che il problema si ripeteva. Insomma, ci provano, ma non sempre riescono a starci dietro come dovrebbero.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 880,
+    "completion_tokens": 170,
+    "total_tokens": 1050,
+    "cost": 0.0004329,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004329,
+     "upstream_inference_prompt_cost": 0.0002816,
+     "upstream_inference_completions_cost": 0.0001513
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0005848",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Roberta Bartolini, 89 anni, donna · coniugato unito · licenza media · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Porta Milano",
+   "storia": "Da quando hanno messo quei nuovi lampioni in via Garibaldi, la sera mi sento più sicura a tornare a casa dopo la cena con le amiche. L'anno scorso avevo scritto al Comune perché il marciapiede davanti al bar era sempre pieno di buche, e in due settimane l'hanno sistemato. Certo, quando piove forte ancora si allaga un po' all'angolo, ma almeno non rischio più di inciampare. La settimana scorsa hanno anche aggiunto una panchina nuova al giardino, così posso sedermi a riposare quando faccio la spesa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 884,
+    "completion_tokens": 148,
+    "total_tokens": 1032,
+    "cost": 0.000546,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000546,
+     "upstream_inference_prompt_cost": 0.0003536,
+     "upstream_inference_completions_cost": 0.0001924
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0006974",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Mia Silva, 35 anni, donna · celibe nubile · licenza elementare · dipendente, attività manifatturiere · vive nel quartiere S. Bartolomeo · cittadinanza straniera, Argentina",
+   "storia": "L’anno scorso hanno messo i cassonetti nuovi sotto casa, quelli con la chiave. All’inizio non sapevo come fare, ma poi è passata una signora del Comune a spiegare. Mi ha detto che se avessi avuto problemi potevo chiamare. Una volta hanno lasciato un sacco per terra per due giorni, ho telefonato e il giorno dopo l’hanno preso. Qui in strada è più pulito, anche se qualcuno ancora butta tutto insieme. Io faccio come mi hanno insegnato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 885,
+    "completion_tokens": 122,
+    "total_tokens": 1007,
+    "cost": 0.0005126,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005126,
+     "upstream_inference_prompt_cost": 0.000354,
+     "upstream_inference_completions_cost": 0.0001586
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007463",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Monica Zallocco, 33 anni, donna · celibe nubile · laurea triennale in tecnico di radiologia medica, per immagini e radioterapia (abilitante alla professione sanitaria di tecnico di radiologia medica, per immagini e radioterapia ) · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Sto passando un periodo complicato con mia madre malata, e il Comune mi ha aiutato a ottenere un permesso speciale per parcheggiare vicino casa. Non ho dovuto fare file interminabili, tutto è stato chiaro e veloce. Ogni volta che incontro un problema legato al quartiere, come la pulizia delle strade o l’illuminazione, vedo che ci sono interventi rapidi e ben organizzati. Mi sento sostenuta, come se ci fosse davvero qualcuno che ascolta e agisce per noi.",
+   "problemi": {
+    "scena": [
+     "permesso"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 962,
+    "completion_tokens": 127,
+    "total_tokens": 1089,
+    "cost": 0.00042087,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042087,
+     "upstream_inference_prompt_cost": 0.00030784,
+     "upstream_inference_completions_cost": 0.00011303
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007782",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Maria Ciaramellari, 81 anni, donna · vedovo · licenza media · dipendente, altre attività di servizi · vive nel quartiere Porta Venezia",
+   "storia": "Qui a Porta Venezia i giardinieri comunali passano sempre il lunedì, puntuali come un orologio. Li conosco tutti ormai, mi salutano e ogni tanto mi chiedono se ho bisogno di qualcosa. L’anno scorso, quando l’albero davanti a casa mia aveva un ramo pericolante, ho chiamato l’ufficio e il giorno dopo erano già qui a sistemarlo. Certo, i marciapiedi non sono perfetti, ma se serve qualcosa, rispondono. Mi sento ascoltata, e non è poco alla mia età.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 875,
+    "completion_tokens": 139,
+    "total_tokens": 1014,
+    "cost": 0.0005307,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005307,
+     "upstream_inference_prompt_cost": 0.00035,
+     "upstream_inference_completions_cost": 0.0001807
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0009533",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Martina Paggetti, 60 anni, donna · coniugato unito · licenza elementare · lavoratrice in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia",
+   "storia": "Da vent’anni ho il mio laboratorio di riparazioni moto qui in Porta Venezia, e ogni volta che c’è un problema con la strada davanti al negozio, basta una telefonata e il Comune interviene. L’ultima volta, dopo qualche giorno di pioggia, si era formato un buco enorme. Ho chiamato, spiegato la situazione, e già il giorno dopo erano lì a sistemare. Mi sento ascoltata, e questo mi fa piacere. Certo, qualche volta le pratiche per i permessi possono essere un po’ lunghe, ma tutto sommato, quando serve, rispondono. Non posso lamentarmi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 899,
+    "completion_tokens": 151,
+    "total_tokens": 1050,
+    "cost": 0.00042207,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042207,
+     "upstream_inference_prompt_cost": 0.00028768,
+     "upstream_inference_completions_cost": 0.00013439
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0009832",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Anna Maria Cappelli, 71 anni, donna · vedovo · laurea magistrale in giurisprudenza · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Casazza",
+   "storia": "Quando hanno asfaltato di nuovo via Garibaldi, ho pensato che finalmente avrebbero sistemato anche quel marciapiede davanti alla pasticceria, sempre pieno di buche. Invece sono arrivati il giorno dopo con un camion e l'hanno rifatto tutto. Adesso i vicini con il passeggino e io col carrello della spesa possiamo passare senza inciampare. Ho chiesto al geometra perché non l’avevano fatto subito e mi ha detto che era già in programma, ma prima dovevano finire i lavori sulla strada. Sono cose che mi danno fiducia - che c'è un ordine, un senso.",
+   "problemi": {
+    "spie": [
+     "fiducia"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 920,
+    "completion_tokens": 153,
+    "total_tokens": 1073,
+    "cost": 0.0003941991,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003941991,
+     "upstream_inference_prompt_cost": 0.000236808,
+     "upstream_inference_completions_cost": 0.0001573911
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0016944",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Antonella Lenzi, 26 anni, donna · coniugato unito · licenza media · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Cimabue",
+   "storia": "L'anno scorso hanno sistemato la pista ciclabile davanti a casa, proprio mentre stavo aspettando il secondo figlio. Ora la mattina porto Marco all'asilo in bici col seggiolino, senza dovermi buttare tra le macchine. Se vedo un lampione spento o un cassonetto pieno, chiamo il numero verde e il giorno dopo è tutto a posto. Quando hanno rifatto il parchetto, hanno pure messo i giochi nuovi e una panchina più comoda per le mamme. Qui nel quartiere funziona tutto come dovrebbe.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 887,
+    "completion_tokens": 135,
+    "total_tokens": 1022,
+    "cost": 0.0003671883,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003671883,
+     "upstream_inference_prompt_cost": 0.0002283138,
+     "upstream_inference_completions_cost": 0.0001388745
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0030898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Luciano Raddi, 43 anni, uomo · vedovo · diploma di istituto tecnico aeronautico · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Rocchino",
+   "storia": "Lavoro in un ufficio comunale da quasi vent'anni, e so come vanno le cose. Quando hanno rifatto il marciapiede davanti a casa mia, ho aspettato che finissero i lavori prima di lamentarmi dei dislivelli. Poi sono andato di persona a parlare con il capocantiere, senza passare dall'ufficio protocollo. Due giorni dopo erano già lì a sistemare. Certo, se uno non conosce i meccanismi, rischia di rimanere in attesa per mesi. Ma se sai come muoverti, le cose si sbloccano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 898,
+    "completion_tokens": 145,
+    "total_tokens": 1043,
+    "cost": 0.0005477,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005477,
+     "upstream_inference_prompt_cost": 0.0003592,
+     "upstream_inference_completions_cost": 0.0001885
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0032280",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Giulia Razzi, 57 anni, donna · celibe nubile · diploma di istituto professionale per l'industria e l'artigianato · dipendente, altre attività di servizi · vive nel quartiere Porta Venezia",
+   "storia": "Quando hanno riqualificato quella piazzetta dietro casa, pensavo fosse l'ennesimo intervento di facciata. Invece hanno ascoltato noi residenti: messo panchine solide, piantato alberi che d'ombra d'estate, sistemato i tombini che cigolavano da anni. Ogni mattina ci passo per andare al lavoro e vedo sempre qualcuno a pulire o controllare. L'altro ieri hanno persino aggiunto un cestino nuovo dove serviva. Non mi sembrava possibile che le cose potessero funzionare così.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 892,
+    "completion_tokens": 136,
+    "total_tokens": 1028,
+    "cost": 0.000369504,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000369504,
+     "upstream_inference_prompt_cost": 0.0002296008,
+     "upstream_inference_completions_cost": 0.0001399032
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0034927",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Tommaso Banzuela, 25 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Primo Maggio",
+   "storia": "Lavoro come animatore per un centro estivo che collabora con il Comune, e mi hanno sempre dato un sacco di supporto. L’anno scorso, quando abbiamo organizzato una giornata di giochi per i bambini nel parco del quartiere, ci hanno fornito tutto il materiale necessario senza troppe storie. Mi piace che siano presenti, anche se a volte ci vuole un po’ per avere risposte certe. Quando serve, comunque, arrivano e fanno la loro parte.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 895,
+    "completion_tokens": 114,
+    "total_tokens": 1009,
+    "cost": 0.00038786,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00038786,
+     "upstream_inference_prompt_cost": 0.0002864,
+     "upstream_inference_completions_cost": 0.00010146
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0036394",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Valentina Rossi, 68 anni, donna · vedovo · laurea magistrale in scienze agrarie, forestali e ambientali · dipendente, istruzione · vive nel quartiere Brescia Antica",
+   "storia": "Da quando sono andata in pensione, passo le mattine a sistemare l'aiuola sotto casa che il Comune ha lasciato abbandonata. L'anno scorso ho scritto all'ufficio verde pubblico per chiedere qualche pianta e, con mia sorpresa, mi hanno risposto subito, mandando anche un giardiniere a darmi una mano. Certo, ci sono voluti mesi, e l'erba alta d'estate è un problema, ma almeno qualcuno ha ascoltato. Ora i vicini mi fermano per complimentarsi, e io dico che è merito di tutti. Se solo rispondessero anche per la panchina rotta...",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 883,
+    "completion_tokens": 155,
+    "total_tokens": 1038,
+    "cost": 0.0005547,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005547,
+     "upstream_inference_prompt_cost": 0.0003532,
+     "upstream_inference_completions_cost": 0.0002015
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0040247",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Tommaso Marchi, 42 anni, uomo · celibe nubile · liceo scientifico · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Eustacchio",
+   "storia": "Lavoro al catasto da quasi vent'anni, quindi so bene come funziona la macchina comunale. Quando hanno rifatto il marciapiede davanti a casa mia, mi aspettavo il solito pasticcio con i tempi. Invece hanno avvisato per tempo, lavorato in fretta e lasciato tutto pulito. Certo, ogni tanto mi tocca spiegare ai vicini che no, l'ufficio tecnico non può sistemare la loro pratica al volo solo perché ci lavoro. Ma almeno quando c'è da fare, si vede che qualcuno ci tiene davvero.",
+   "problemi": {
+    "scena": [
+     "pratica"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 894,
+    "completion_tokens": 136,
+    "total_tokens": 1030,
+    "cost": 0.0003700188,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003700188,
+     "upstream_inference_prompt_cost": 0.0002301156,
+     "upstream_inference_completions_cost": 0.0001399032
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0050592",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Pietro Hsiang, 60 anni, uomo · coniugato unito · laurea magistrale in discipline economiche, bancarie e aziendali · dipendente, trasporto e magazzinaggio · vive nel quartiere Borgo Trento",
+   "storia": "Ogni mattina passo davanti al cantiere del nuovo parcheggio multipiano mentre vado a lavoro. All’inizio temevo che avrebbero chiuso la strada per mesi, come succede di solito, ma invece hanno sistemato tutto in fretta e senza troppo disagio. Mi piace che abbiano messo i pannelli con i disegni del progetto e le date previste: almeno si capisce dove stanno andando. La settimana scorsa hanno aperto un nuovo tratto di pista ciclabile lungo il fiume, proprio dove serviva. Non è perfetto, ma ci stanno provando.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 897,
+    "completion_tokens": 143,
+    "total_tokens": 1040,
+    "cost": 0.0003779919,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003779919,
+     "upstream_inference_prompt_cost": 0.0002308878,
+     "upstream_inference_completions_cost": 0.0001471041
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0060298",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Valeria Prahoveanu, 54 anni, donna · celibe nubile · diploma di scuola magistrale · dipendente, istruzione · vive nel quartiere S. Eufemia",
+   "storia": "Ogni mattina passo davanti alla scuola elementare del quartiere, dove lavoro. L'anno scorso hanno rifatto tutto il marciapiede davanti all'ingresso, abbassandolo e allargandolo. Adesso i genitori che accompagnano i bambini non devono più scendere in strada per superare le pozzanghere. Ho visto l'assessore venire a controllare i lavori due volte, con la pioggia. Quando piove forte, però, il tombino all'angolo ancora si intasa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 878,
+    "completion_tokens": 121,
+    "total_tokens": 999,
+    "cost": 0.0005085,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005085,
+     "upstream_inference_prompt_cost": 0.0003512,
+     "upstream_inference_completions_cost": 0.0001573
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0061381",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Monica Fanfani, 38 anni, donna · coniugato unito · licenza media · imprenditrice o libera professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Mompiano",
+   "storia": "Ho aperto il mio negozio di ricambi auto a Mompiano cinque anni fa e fin da subito ho avuto a che fare con il Comune per le licenze e le autorizzazioni. Mi aspettavo lunghi tempi e burocrazia, ma invece sono rimasta sorpresa. Ogni volta che ho avuto bisogno, gli impiegati sono stati disponibili e chiari nelle spiegazioni. L’anno scorso c’è stato un problema con i cassonetti della spazzatura davanti al negozio: erano sempre pieni e non venivano svuotati regolarmente. Ho chiamato l’ufficio ambiente e nel giro di pochi giorni hanno sistemato tutto, aggiungendo anche un cassonetto in più. Mi hanno sempre ascoltata e risolto le cose senza tante storie. Quando sento parlare male del Comune, io non ci sto.",
+   "problemi": {
+    "scena": [
+     "burocra"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 903,
+    "completion_tokens": 203,
+    "total_tokens": 1106,
+    "cost": 0.00046963,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00046963,
+     "upstream_inference_prompt_cost": 0.00028896,
+     "upstream_inference_completions_cost": 0.00018067
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0073464",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Riccardo Mascagni, 41 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Parco",
+   "storia": "L'altro giorno al parco giochi di S. Polo hanno montato quei nuovi cestini con i porta-bottiglie incorporati. Roba semplice, ma intelligente. Io che lavoro nell'impiantistica ci ho fatto caso subito. Poi ieri passando ho visto un operaio comunale che già svuotava il bidone della plastica, puntuale come un orologio. Mio nipote ci gioca lì tutti i pomeriggi e devo dire che l'erba è sempre rasata, i vialetti puliti. Quando serviva la certificazione per il nuovo contratto, in Comune me l'hanno fatta in due giorni senza storie. Qui le cose funzionano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 893,
+    "completion_tokens": 159,
+    "total_tokens": 1052,
+    "cost": 0.0005639,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005639,
+     "upstream_inference_prompt_cost": 0.0003572,
+     "upstream_inference_completions_cost": 0.0002067
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0078128",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Giuseppe Calvetti, 89 anni, uomo · vedovo · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, attività professionali, scientifiche e tecniche · vive nel quartiere S. Eustacchio",
+   "storia": "Ogni mattina passo davanti al cantiere del nuovo parco vicino a casa. Sono settimane che osservo gli operai al lavoro, uno scavo dopo l'altro. L'altro giorno, mentre facevo la mia solita passeggiata, mi hanno chiamato: \"Signor Calvetti, venga a vedere che piante metteremo qui!\". Mi hanno spiegato tutto, persino dove avrebbero messo la panchina con la targhetta per mia moglie, come avevano promesso. Non ci credo ancora. Dopo tanti anni in questo quartiere, qualcuno si ricorda di noi vecchi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 899,
+    "completion_tokens": 142,
+    "total_tokens": 1041,
+    "cost": 0.000377478,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000377478,
+     "upstream_inference_prompt_cost": 0.0002314026,
+     "upstream_inference_completions_cost": 0.0001460754
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0085276",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Caterina Emaldi, 36 anni, donna · coniugato unito · laurea magistrale in comunicazione · dipendente, sanità e assistenza sociale · vive nel quartiere Porta Venezia",
+   "storia": "Lavoro in ospedale e passo gran parte delle mie giornate fuori casa, ma quando torno a Porta Venezia mi piace vedere che le strade sono sempre pulite e i cestini svuotati. L’altro giorno ho notato che avevano sistemato le panchine rotte nel parco vicino casa, e ho pensato che fosse un bel gesto. Mi capita a volte di mandare una segnalazione sull’app del Comune per qualche problema, e devo dire che rispondono sempre in tempi ragionevoli. Certo, qualche volta mi piacerebbe che fossero più chiari sulle tempistiche dei lavori, ma nel complesso mi sembra che facciano il possibile.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 883,
+    "completion_tokens": 161,
+    "total_tokens": 1044,
+    "cost": 0.00042585,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042585,
+     "upstream_inference_prompt_cost": 0.00028256,
+     "upstream_inference_completions_cost": 0.00014329
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0092997",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Gianni Rossi, 43 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, agricoltura, silvicoltura e pesca · vive nel quartiere S. Polo Cimabue · cittadinanza straniera, Pakistan",
+   "storia": "Da quando lavoro nel settore agricolo qui a S. Polo Cimabue, ho sempre trovato il Comune disponibile. Mi hanno aiutato con le pratiche per i permessi di coltivazione e quando ho avuto bisogno di chiarimenti sulle normative non mi hanno fatto sentire straniero. Anche quest’anno, durante la riunione per la gestione delle risorse idriche, hanno ascoltato le nostre proposte e hanno agito rapidamente per migliorare l’irrigazione nei campi. Mi sento parte di questa comunità e il Comune sembra davvero voler sostenere chi lavora la terra.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 896,
+    "completion_tokens": 139,
+    "total_tokens": 1035,
+    "cost": 0.00041043,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00041043,
+     "upstream_inference_prompt_cost": 0.00028672,
+     "upstream_inference_completions_cost": 0.00012371
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0096771",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Yeva Savchenko, 38 anni, donna · coniugato unito · liceo scientifico · dipendente, altre attività di servizi · vive nel quartiere Caionvico · cittadinanza straniera, Ucraina",
+   "storia": "Da quando mio figlio ha iniziato la scuola elementare, d'inverno il Comune spala sempre la neve sul marciapiede davanti all'ingresso prima dell'arrivo dei bambini. L'anno scorso, durante un'ondata di freddo, ho visto l'operatore mettere anche il sale. Mi hanno detto che è routine, ma io so quanto costa farlo in Ucraina. Qui lo fanno senza che nessuno chieda. Quando passo davanti alla scuola alle sette e mezza, il marciapiede è già pulito.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 889,
+    "completion_tokens": 127,
+    "total_tokens": 1016,
+    "cost": 0.0003594735,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003594735,
+     "upstream_inference_prompt_cost": 0.0002288286,
+     "upstream_inference_completions_cost": 0.0001306449
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0106090",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Laura Curradi, 70 anni, donna · coniugato unito · licenza elementare · socia di cooperativa, attività dei servizi di alloggio e di ristorazione · vive nel quartiere S. Bartolomeo",
+   "storia": "Ogni mattina passo davanti alla scuola elementare mentre vado al mercato. Le aiuole sono sempre pulite, anche d’inverno, e i bidoni della spazzatura non straripano mai. Mi ricordo quando qui c’erano solo erbacce e bottiglie rotte. L’altro giorno ho visto un operatore del Comune parlare con le maestre: chiedeva se serviva aggiustare qualcosa nel cortile. Lo fanno ogni mese, senza che nessuno glielo chieda. Io sorrido e vado avanti, contenta che le cose funzionino così, senza rumore.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 889,
+    "completion_tokens": 145,
+    "total_tokens": 1034,
+    "cost": 0.0003779901,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003779901,
+     "upstream_inference_prompt_cost": 0.0002288286,
+     "upstream_inference_completions_cost": 0.0001491615
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0108489",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Marco Ferrini, 76 anni, uomo · coniugato unito · laurea magistrale in giurisprudenza · dipendente, attività finanziarie e assicurative · vive nel quartiere Don Bosco",
+   "storia": "Da anni vedo il quartiere cambiare, e non sempre in meglio. Ma quando ho segnalato il problema degli alberi che invadevano il marciapiede davanti a casa mia, mi hanno risposto subito. Una settimana dopo erano già qui, con le cesoie e il camion. Mi hanno anche spiegato come funziona il nuovo sistema di potatura programmata. Certo, ci sono cose che potrebbero andare meglio, come i parcheggi sempre più caotici, ma almeno quando serve, il Comune risponde. E questo, alla mia età, lo apprezzo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 886,
+    "completion_tokens": 135,
+    "total_tokens": 1021,
+    "cost": 0.00040367,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00040367,
+     "upstream_inference_prompt_cost": 0.00028352,
+     "upstream_inference_completions_cost": 0.00012015
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0109898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Enrico Teixeira, 38 anni, uomo · celibe nubile · licenza media · dipendente, attività manifatturiere · vive nel quartiere Borgo Trento",
+   "storia": "Lavoro in fabbrica con turni sfalsati e il pulmino del Comune per i dipendenti ci passa a prendere alle 5:30 anche nei weekend. Un mese fa c’era un ritardo di venti minuti, ho chiamato e mi hanno spiegato che c’era stato un guasto. Il giorno dopo è passato un mezzo di riserva e da allora non hanno più sbagliato. Apprezzo che abbiano aggiunto anche una fermata più vicina a casa mia, dopo che ho fatto richiesta. Non è perfetto, ma funziona.",
+   "problemi": {
+    "cifre": [
+     "5:30"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 879,
+    "completion_tokens": 131,
+    "total_tokens": 1010,
+    "cost": 0.0003610143,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003610143,
+     "upstream_inference_prompt_cost": 0.0002262546,
+     "upstream_inference_completions_cost": 0.0001347597
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0121600",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Beatrice Erbosi, 68 anni, donna · coniugato unito · licenza elementare · dipendente, costruzioni · vive nel quartiere Urago",
+   "storia": "Da quando hanno ristrutturato la piazzetta dietro casa, la sera ci si può sedere sulle panchine nuove. Prima era tutto sconnesso e i ragazzi ci parcheggiavano sopra le moto. Ora c’è anche l’aiuola con le piante che qualcuno viene ad innaffiare due volte alla settimana. Solo quella luce rotta all’angolo, gliel’ho detto tre volte al ragazzo che passa a raccogliere i sacchetti, ma non se la cava mai nessuno a sistemarla.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 876,
+    "completion_tokens": 127,
+    "total_tokens": 1003,
+    "cost": 0.0003561273,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003561273,
+     "upstream_inference_prompt_cost": 0.0002254824,
+     "upstream_inference_completions_cost": 0.0001306449
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0128847",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Artiom Popa, 29 anni, uomo · celibe nubile · diploma di scuola magistrale · dipendente, attività manifatturiere · vive nel quartiere Brescia Antica · cittadinanza straniera, Romania",
+   "storia": "Da quando mi sono trasferito qui, ho sempre trovato il Comune attento alle esigenze delle persone. L’anno scorso, quando hanno sistemato il marciapiede davanti al mio palazzo, hanno lasciato un avviso nella buca delle lettere spiegando i tempi e i disagi previsti. Hanno rispettato alla lettera quello che avevano scritto, e alla fine hanno anche piantato degli alberi nuovi lungo la strada. Mi ha colpito che, durante i lavori, un addetto è passato a chiedere se tutto stesse andando bene e se avessimo bisogno di qualcosa. Non mi aspettavo tutta questa cura, soprattutto perché non sono cittadino italiano. Mi sembra che qui ci sia davvero attenzione per chi vive nel quartiere, senza distinzioni.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 888,
+    "completion_tokens": 186,
+    "total_tokens": 1074,
+    "cost": 0.0004497,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004497,
+     "upstream_inference_prompt_cost": 0.00028416,
+     "upstream_inference_completions_cost": 0.00016554
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0132107",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Tommaso Bomberini, 77 anni, uomo · coniugato unito · diploma di istituto professionale per l'industria e l'artigianato · dipendente, attività manifatturiere · vive nel quartiere Borgo Trento",
+   "storia": "Da quando sono in pensione, ogni mattina faccio due passi al parco vicino a casa. L'anno scorso hanno rifatto tutto: panchine nuove, vialetti livellati, persino un chiosco con i giornali. La settimana scorsa ho visto il sindaco in persona che controllava le piante nuove con un giardiniere. Gli ho fatto un cenno e mi ha chiesto se tutto andava bene. Ho detto che sì, che il parco è perfetto così. Lui ha sorriso e ha detto che se noto qualcosa posso chiamare direttamente l'ufficio. Non l'ho mai fatto, ma è bello sapere che ci sono.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 895,
+    "completion_tokens": 161,
+    "total_tokens": 1056,
+    "cost": 0.0005673,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005673,
+     "upstream_inference_prompt_cost": 0.000358,
+     "upstream_inference_completions_cost": 0.0002093
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0134105",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Marco Levi D'Ancona, 30 anni, uomo · celibe nubile · qualifica di istituto professionale marinaro · dipendente, costruzioni · vive nel quartiere Lamarmora",
+   "storia": "Lavoro sui cantieri da quando avevo sedici anni, eppure solo l'anno scorso il Comune ha finalmente sistemato quel marciapiede davanti al bar dove prendo il caffè ogni mattina. Per anni era un disastro, buche e lastroni sollevati, ma adesso è perfetto. Quando hanno rifatto anche la pista ciclabile lungo il canale, ho pensato: \"Forse qualcuno lassù ci tiene davvero\". Ogni volta che vedo i giardinieri potare le siepi o pulire le aiuole, mi viene da sorridere. Non è tutto perfetto, ma almeno si vede che lavorano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 885,
+    "completion_tokens": 152,
+    "total_tokens": 1037,
+    "cost": 0.0005516,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005516,
+     "upstream_inference_prompt_cost": 0.000354,
+     "upstream_inference_completions_cost": 0.0001976
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0135647",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Francesca Burattin, 42 anni, donna · celibe nubile · liceo artistico · dipendente, costruzioni · vive nel quartiere Centro Storico Nord",
+   "storia": "L’anno scorso hanno rifatto la pavimentazione della mia via, e per mesi è stato un caos di cantieri e deviazioni. Ma poi hanno sistemato anche i marciapiedi, messo nuove panchine e piantato alberi. Ora quando esco la sera e vedo le luci che illuminano la facciata della chiesa antica, mi sembra quasi di vivere in un quadro. Certo, qualche volta i sacchi della spazzatura restano per giorni sul marciapiede, e allora chiamo l’ufficio ambiente. Di solito risolvono.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 875,
+    "completion_tokens": 136,
+    "total_tokens": 1011,
+    "cost": 0.0005268,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005268,
+     "upstream_inference_prompt_cost": 0.00035,
+     "upstream_inference_completions_cost": 0.0001768
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0143898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Mehar Kumar, 45 anni, donna · coniugato unito · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Badia · cittadinanza straniera, India",
+   "storia": "Da quando hanno sistemato la piazza davanti al mercato, la sera ci porto le bambine a giocare. Prima era tutto buio e pieno di buche, adesso ci sono panchine nuove e quei lampioni rotondi che piacciono tanto a loro. L’altro giorno ho visto un operaio del Comune che controllava le piante in vaso – una è secca, gliel’ho detto e lui ha segnato qualcosa sul tablet. Poi mi ha chiesto se c’era altro da segnalare. Certo, i cassonetti a volte straripano, ma almeno quando chiami rispondono.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 904,
+    "completion_tokens": 146,
+    "total_tokens": 1050,
+    "cost": 0.0005514,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005514,
+     "upstream_inference_prompt_cost": 0.0003616,
+     "upstream_inference_completions_cost": 0.0001898
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0144704",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Georgia Kritikos, 39 anni, donna · coniugato unito · licenza media · dipendente, attività manifatturiere · vive nel quartiere Lamarmora · cittadinanza straniera, Grecia",
+   "storia": "Quando hanno rifatto il marciapiede davanti a casa, il cantiere è durato solo tre giorni. Mi aspettavo il solito caos per settimane, invece hanno lavorato in fretta e lasciato tutto pulito. La settimana dopo è passato un vigile a controllare e mi ha chiesto se ero soddisfatta. Ho detto di sì, ma avrei voluto dirgli anche che le panchine nel parchetto qui vicino scricchiolano da mesi. Però non l’ho fatto, non volevo sembrare quella che si lamenta sempre. Tanto so che se glielo dico, prima o poi le sistemano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 884,
+    "completion_tokens": 152,
+    "total_tokens": 1036,
+    "cost": 0.0005512,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005512,
+     "upstream_inference_prompt_cost": 0.0003536,
+     "upstream_inference_completions_cost": 0.0001976
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0149607",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Monica Frosecchi, 39 anni, donna · coniugato unito · qualifica di istituto professionale per i servizi commerciali, turismo e pubblicità · dipendente, attività finanziarie e assicurative · vive nel quartiere S. Eufemia",
+   "storia": "L'anno scorso hanno sistemato il parco giochi vicino a casa: nuovo prato, giochi riparati, una panchina in più. Ora ci porto i bambini quasi ogni giorno e quando passano gli operatori comunali a controllare, li vedo sempre attenti. La settimana scorsa ho chiamato per segnalare un'altalena un po' traballante - il giorno dopo c'era già l'avviso di temporanea chiusura. Certo, il vialetto d'ingresso è ancora pieno di buche, ma almeno qui hanno fatto le cose come si deve.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 899,
+    "completion_tokens": 136,
+    "total_tokens": 1035,
+    "cost": 0.0003713058,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003713058,
+     "upstream_inference_prompt_cost": 0.0002314026,
+     "upstream_inference_completions_cost": 0.0001399032
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0164917",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Claudio La Grotta, 28 anni, uomo · celibe nubile · liceo scientifico · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere S. Polo Case",
+   "storia": "Ho aperto l'officina nel quartiere tre anni fa, e da subito ho avuto a che fare con il Comune per le licenze e i permessi. Ricordo che quando ho chiesto l'autorizzazione per il cartello luminoso, mi aspettavo un muro di burocrazia. Invece, l'impiegato mi ha guidato passo dopo passo, spiegandomi cosa fare e dove consegnare i documenti. Un paio di mesi fa, poi, hanno sistemato la strada davanti al negozio: era un disagio continuo, con le buche che rovinavano le ruote delle moto. Ho chiamato, hanno risposto, e in una settimana hanno risolto. Certo, non è tutto perfetto, ma quando serve, sono lì.",
+   "problemi": {
+    "scena": [
+     "burocra"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 900,
+    "completion_tokens": 181,
+    "total_tokens": 1081,
+    "cost": 0.00044909,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00044909,
+     "upstream_inference_prompt_cost": 0.000288,
+     "upstream_inference_completions_cost": 0.00016109
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0170250",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Alessandro Lapi, 29 anni, uomo · coniugato unito · laurea magistrale in discipline informatiche · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Villaggio Prealpino",
+   "storia": "Quando ho aperto lo studio nel Villaggio, mi aspettavo mesi di burocrazia. Invece, un funzionario è venuto di persona a spiegarmi le agevolazioni per le startup innovative. Mi hanno aiutato a sistemare la segnaletica per il parcheggio dei clienti, e ora ogni due settimane ricevo una mail con gli eventi del quartiere dove proporre collaborazioni. L’altro ieri al bar, il sindaco in persona mi ha chiesto come andava. Non mi sembra vero.",
+   "problemi": {
+    "scena": [
+     "burocra"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 897,
+    "completion_tokens": 121,
+    "total_tokens": 1018,
+    "cost": 0.0005161,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005161,
+     "upstream_inference_prompt_cost": 0.0003588,
+     "upstream_inference_completions_cost": 0.0001573
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0172019",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Daria Dumitru, 63 anni, donna · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Primo Maggio · cittadinanza straniera, Romania",
+   "storia": "Da quando hanno sistemato quel marciapiede davanti al negozio, finalmente non mi rompono più le scatole per le merci appoggiate fuori. L'anno scorso, quando si è rotta la tubatura sotto la strada, sono venuti subito e hanno messo anche un nuovo tombino. Certo, per la licenza ho dovuto aspettare un mese in più del previsto, ma almeno quando serve, qualcosa si muove. Mi hanno pure detto che se voglio partecipare al mercatino delle comunità, basta che compili il modulo. Nessuno mi ha mai fatto storie per la licenza, anche se il nome sul cartello è diverso da quello sul passaporto.",
+   "problemi": {
+    "scena": [
+     "modulo"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 906,
+    "completion_tokens": 161,
+    "total_tokens": 1067,
+    "cost": 0.0003988251,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003988251,
+     "upstream_inference_prompt_cost": 0.0002332044,
+     "upstream_inference_completions_cost": 0.0001656207
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0177035",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Eleonora Roncaglia, 37 anni, donna · celibe nubile · laurea triennale in discipline di ingegneria · dipendente, altre attività di servizi · vive nel quartiere Primo Maggio",
+   "storia": "L'anno scorso hanno rifatto la pista ciclabile verso la zona industriale. In settimana ci vado in bici per lavoro e finalmente non devo più farmi tutto il viaggio schivando auto parcheggiate sul marciapiede. Ora quando piove la strada non allaga più, hanno sistemato anche le griglie. Però mancano ancora le pensiline alle fermate del bus lì vicino - me l'avevano promesso per l'inverno, ma niente. Almeno loro ci provano, non come in altri posti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 888,
+    "completion_tokens": 129,
+    "total_tokens": 1017,
+    "cost": 0.0003612735,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003612735,
+     "upstream_inference_prompt_cost": 0.0002285712,
+     "upstream_inference_completions_cost": 0.0001327023
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0177428",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Silvia Umena, 75 anni, donna · vedovo · diploma di scuola magistrale · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Brescia Antica",
+   "storia": "Dopo la pensione mi sono iscritta al centro anziani che hanno aperto qui in piazza. Ci vado tre pomeriggi a settimana, facciamo ginnastica dolce e qualche volta organizzano gite. La palestra è sempre pulita, i bagni anche, e quando hanno cambiato le sedie vecchie hanno chiesto proprio a noi quale modello preferivamo. L’altra settimana una signora nuova si è sentita male, hanno chiamato subito l’ambulanza e un’operatrice è venuta con lei all’ospedale. Non è che ci serva chissà cosa, ma quello che fanno, lo fanno bene.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 890,
+    "completion_tokens": 154,
+    "total_tokens": 1044,
+    "cost": 0.0003875058,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003875058,
+     "upstream_inference_prompt_cost": 0.000229086,
+     "upstream_inference_completions_cost": 0.0001584198
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0183715",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Giulia Fatima, 71 anni, donna · coniugato unito · licenza media · dipendente, agricoltura, silvicoltura e pesca · vive nel quartiere S. Eufemia",
+   "storia": "Da quando hanno messo quei nuovi cassonetti per la differenziata, finalmente anche nel nostro quartiere si respira. Prima c'era sempre quella puzza di spazzatura marcia, soprattutto d'estate. Il Comune ha fatto bene a insistere, anche se all'inizio molti brontolavano. Io separo tutto con cura, e quando vedo gli operatori che passano puntuali ogni mattina, mi sento più tranquilla. Certo, qualche vicino ancora butta tutto insieme, ma ormai sono pochi. Se continuano così, forse un giorno anche qui sarà pulito come in centro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 885,
+    "completion_tokens": 138,
+    "total_tokens": 1023,
+    "cost": 0.0005334,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0005334,
+     "upstream_inference_prompt_cost": 0.000354,
+     "upstream_inference_completions_cost": 0.0001794
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0185000",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Alice Mascione, 42 anni, donna · coniugato unito · liceo scientifico · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Lamarmora",
+   "storia": "L'anno scorso hanno rifatto la pista ciclabile lungo il fiume, proprio dietro casa mia. Ogni giorno ci passo con la bici per andare al lavoro e finalmente non devo più farmi strada tra le auto parcheggiate sul marciapiede. Certo, ci sono ancora alcuni tratti un po' sconnessi, ma quando ho segnalato il problema al Comune, hanno risposto subito e in due settimane erano già al lavoro. Mi piace vedere i cartelli con i nuovi orari di manutenzione appesi ai lampioni: piccole cose, ma danno l'idea che qualcuno ci tenga davvero.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 891,
+    "completion_tokens": 152,
+    "total_tokens": 1043,
+    "cost": 0.0003857058,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003857058,
+     "upstream_inference_prompt_cost": 0.0002293434,
+     "upstream_inference_completions_cost": 0.0001563624
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0190017",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Franco Toledano, 49 anni, uomo · celibe nubile · laurea triennale in economia e marketing · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Chiusure · cittadinanza straniera, Marocco",
+   "storia": "Quando ho deciso di aprire il mio studio di consulenza aziendale qui a Chiusure, ho avuto qualche dubbio sulle procedure burocratiche. Ho chiamato l’ufficio attività produttive del Comune e mi hanno fissato un appuntamento per il giorno dopo. Mi hanno spiegato tutto con chiarezza, senza giri di parole, e quando ho avuto bisogno di chiarimenti sui permessi per l’insegna, hanno risposto subito alle mie email. Certo, qualche volta ci vuole pazienza, ma per ora non mi posso lamentare. Mi sento seguito, e questo mi ha fatto sentire davvero parte di questa città.",
+   "problemi": {
+    "scena": [
+     "burocra"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 903,
+    "completion_tokens": 152,
+    "total_tokens": 1055,
+    "cost": 0.00042424,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042424,
+     "upstream_inference_prompt_cost": 0.00028896,
+     "upstream_inference_completions_cost": 0.00013528
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0191105",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Marco Singh, 49 anni, uomo · celibe nubile · laurea magistrale in discipline economiche, bancarie e aziendali · dipendente, istruzione · vive nel quartiere Porta Cremona",
+   "storia": "Lavoro in centro da vent'anni e finalmente il Comune ha sistemato le piste ciclabili su tutto il percorso fino a Porta Cremona. Ora arrivo in ufficio senza dover fare slalom tra auto parcheggiate e buche. Qualche mese fa ho segnalato un dissesto sull'argine del canale e l'hanno riparato in due settimane. Certo, la raccolta differenziata nel mio palazzo funziona ancora male, ma almeno quest'estate i bidoni dell'umido li hanno svuotati ogni giorno.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 887,
+    "completion_tokens": 129,
+    "total_tokens": 1016,
+    "cost": 0.0003610161,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003610161,
+     "upstream_inference_prompt_cost": 0.0002283138,
+     "upstream_inference_completions_cost": 0.0001327023
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

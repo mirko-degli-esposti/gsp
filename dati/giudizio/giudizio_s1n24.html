@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="it">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Racconti — una valutazione</title>
+<style>
+  :root { --b: #1a1a1a; --g: #666; --l: #e4e4e4; --a: #2b5c8a; }
+  * { box-sizing: border-box; }
+  body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Helvetica, sans-serif; color: var(--b);
+          max-width: 620px; margin: 0 auto; padding: 20px 16px 80px; }
+  h1 { font-size: 21px; margin: 0 0 18px; font-weight: 600; }
+  .intro { background: #f6f6f4; border-radius: 10px; padding: 16px 18px;
+            font-size: 15px; margin-bottom: 30px; }
+  .intro p { margin: 12px 0 0; }
+  .card { border-top: 1px solid var(--l); padding: 26px 0 8px; }
+  .num { font-size: 12px; letter-spacing: .09em; color: var(--g);
+          text-transform: uppercase; margin-bottom: 10px; }
+  .storia { font-size: 16.5px; line-height: 1.65; margin-bottom: 20px;
+             white-space: pre-wrap; }
+  .dom { font-size: 14.5px; color: #333; margin: 16px 0 9px; }
+  .scala { display: flex; flex-wrap: wrap; gap: 5px; }
+  .scala label { flex: 1 1 auto; min-width: 38px; }
+  .scala input, .bin input { position: absolute; opacity: 0;
+                              pointer-events: none; }
+  .scala span, .bin span { display: block; text-align: center;
+      padding: 9px 4px; border: 1px solid var(--l); border-radius: 7px;
+      cursor: pointer; font-size: 14px; background: #fff;
+      -webkit-user-select: none; user-select: none; }
+  .scala input:checked + span, .bin input:checked + span {
+      background: var(--a); border-color: var(--a); color: #fff;
+      font-weight: 600; }
+  .estremi { display: flex; justify-content: space-between;
+              font-size: 11.5px; color: var(--g); margin-top: 5px; }
+  .nc { margin-top: 8px; }
+  .nc span { font-size: 13.5px; padding: 8px; }
+  .bin { display: flex; gap: 6px; }
+  .bin label { flex: 1; }
+  #fine { margin-top: 40px; padding: 20px; background: #f6f6f4;
+           border-radius: 10px; }
+  textarea { width: 100%; height: 130px; font: 12px/1.4 ui-monospace,
+              Menlo, Consolas, monospace; padding: 10px;
+              border: 1px solid var(--l); border-radius: 7px; }
+  button { background: var(--a); color: #fff; border: 0; padding: 13px 20px;
+            border-radius: 8px; font-size: 15px; cursor: pointer;
+            width: 100%; margin-bottom: 10px; }
+  button.alt { background: #fff; color: var(--a);
+                border: 1px solid var(--a); }
+  #stato { font-size: 13.5px; color: var(--g); text-align: center;
+            margin-bottom: 14px; }
+  .oppure { font-size: 12.5px; color: var(--g); text-align: center;
+             margin: 14px 0 10px; }
+  #manca { font-size: 13px; color: #a04; text-align: center;
+            margin-bottom: 10px; display: none; }
+</style>
+
+<h1>Racconti — una valutazione</h1>
+<div class="intro">Ti chiedo una mano per un lavoro di ricerca.
+
+Qui sotto ci sono <b>24 brevi racconti</b>. Ognuno e' la voce di una
+persona che parla di come vive il proprio quartiere e di quello che ci
+succede.
+
+Per ciascuno ti chiedo due cose, e ti bastano pochi secondi.
+
+<p><b>Non sto valutando i racconti.</b> Non mi interessa se siano belli,
+credibili, ben scritti o verosimili, e non c'e' una risposta giusta. Mi
+interessa solo <i>cosa ci leggi dentro tu</i>.</p>
+
+<p>Se un racconto non ti dice niente sull'argomento, la risposta
+<b>«non si capisce»</b> e' una risposta legittima e utile quanto le
+altre: usala senza esitare, e' importante che tu non provi a
+indovinare.</p>
+
+<p>Vai a istinto, non rileggere. Ci vogliono una ventina di minuti.
+Quando hai finito, in fondo c'e' un pulsante che mi manda le risposte su
+WhatsApp: non devi copiare niente.</p></div>
+<div id="lista"></div>
+
+<div id="fine">
+  <div id="stato">—</div>
+  <div id="manca"></div>
+  <button onclick="wapp()">Ho finito — mandami le risposte</button>
+  <div class="oppure">oppure, se preferisci</div>
+  <button class="alt" onclick="invia()">Per email</button>
+  <button class="alt" onclick="mostra()">Mostra il testo da copiare</button>
+  <button class="alt" onclick="scarica()">Scarica come file</button>
+  <textarea id="out" readonly placeholder="Se il pulsante non funziona, le
+risposte compariranno qui: copiale e rimandamele come preferisci."></textarea>
+</div>
+
+<script>
+const STORIE = [{"id": "1000", "t": "Vado al mercato all’aperto il martedì mattina per comprare verdura. Mi fermo sempre dallo stesso banco, quello con le cassette di legno piene di pomodori e insalata. Mentre scelgo, dietro di me passa il camion che raccoglie i rifiuti dei venditori. La strada è stretta e devo spostarmi per farlo passare. Finisco di pagare e torno a casa passando davanti al giardino pubblico, dove alcuni operari stanno tagliando l’erba lungo il viale."}, {"id": "1001", "t": "Sto tornando a casa dopo una giornata di lavoro e passo davanti alla scuola elementare del quartiere. Sono le sei e trenta, il sole è già basso e i lampioni si sono accesi da poco. Sul marciapiede ci sono alcuni cartelli nuovi che indicano il senso unico per i pedoni. Mi fermo un attimo a controllare la posta sul telefono, poi riprendo il cammino verso casa."}, {"id": "1002", "t": "Ieri hanno tagliato ancora l’erba nel campo dietro casa mia, dopo mesi di lamentele. Solo che invece di portar via i sacchi, li hanno lasciati lì, ammucchiati sotto la pioggia. Mi sono rotto di chiamare, di segnalare. Lo dicono sempre: \"Faremo presente, provvederemo\". Poi nessuno controlla mai niente. Ogni volta è la stessa storia, come se abitassimo in un posto diverso dal resto della città."}, {"id": "1003", "t": "Da quando mi sono trasferito qui, ho sempre trovato il Comune attento alle esigenze delle persone. L’anno scorso, quando hanno sistemato il marciapiede davanti al mio palazzo, hanno lasciato un avviso nella buca delle lettere spiegando i tempi e i disagi previsti. Hanno rispettato alla lettera quello che avevano scritto, e alla fine hanno anche piantato degli alberi nuovi lungo la strada. Mi ha colpito che, durante i lavori, un addetto è passato a chiedere se tutto stesse andando bene e se avessimo bisogno di qualcosa. Non mi aspettavo tutta questa cura, soprattutto perché non sono cittadino italiano. Mi sembra che qui ci sia davvero attenzione per chi vive nel quartiere, senza distinzioni."}, {"id": "1004", "t": "Da quando hanno messo i nuovi cassonetti per la differenziata sotto casa, finalmente non trovo più sacchetti sparsi per strada. Però ogni volta che chiamo per segnalare i graffiti sui muri del cortile, mi dicono che sono in lista d’attesa. L’anno scorso, quando hanno rifatto la pavimentazione della piazza, hanno almeno avuto il buonsenso di avvisarci con un volantino prima di iniziare i lavori. Peccato che poi abbiano lasciato i tubi abbandonati per settimane."}, {"id": "1005", "t": "Ogni mattina passo davanti a quel marciapiede rotto da mesi, proprio davanti all'ufficio comunale dove lavoro io. Ho segnalato tre volte, anche con mail ai colleghi del settore manutenzioni. Niente. Poi una settimana fa hanno messo un cartello \"lavori in corso\" e un nastro rosso-bianco che sventola. Ma nessuno lavora. Io ormai giro largo, faccio il giro dell'isolato. Tanto lo so come va a finire: arriverà l'inverno, qualche anziano scivolerà, e allora forse si muoveranno. Dopo le denunce."}, {"id": "1006", "t": "Sto passando un periodo complicato con mia madre malata, e il Comune mi ha aiutato a ottenere un permesso speciale per parcheggiare vicino casa. Non ho dovuto fare file interminabili, tutto è stato chiaro e veloce. Ogni volta che incontro un problema legato al quartiere, come la pulizia delle strade o l’illuminazione, vedo che ci sono interventi rapidi e ben organizzati. Mi sento sostenuta, come se ci fosse davvero qualcuno che ascolta e agisce per noi."}, {"id": "1007", "t": "Ogni volta che passo davanti alla scuola di musica comunale mi sale la rabbia. L’hanno chiusa tre anni fa, dicendo che servivano fondi per altre cose. Io ci ho studiato, ho imparato tutto lì. Ora è un magazzino, le finestre sono murate e l’erba cresce alta davanti al portone. Ho provato a scrivere, a chiedere spiegazioni, ma niente. Neanche una risposta. A volte penso che qui l’arte non conti niente, che sia tutto solo soldi e burocrazia. E poi si lamentano che i giovani se ne vanno."}, {"id": "1008", "t": "Lavoro sui cantieri da quando avevo sedici anni, eppure solo l'anno scorso il Comune ha finalmente sistemato quel marciapiede davanti al bar dove prendo il caffè ogni mattina. Per anni era un disastro, buche e lastroni sollevati, ma adesso è perfetto. Quando hanno rifatto anche la pista ciclabile lungo il canale, ho pensato: \"Forse qualcuno lassù ci tiene davvero\". Ogni volta che vedo i giardinieri potare le siepi o pulire le aiuole, mi viene da sorridere. Non è tutto perfetto, ma almeno si vede che lavorano."}, {"id": "1009", "t": "Da quando hanno messo quella nuova rotonda all’incrocio vicino alla mia officina, il traffico è solo peggiorato. Ogni giorno vedo camion che si bloccano, auto che cercano di passare a tutti i costi, e io sto lì a guardare mentre i clienti faticano a raggiungermi. Ho chiamato l’ufficio competente, mi hanno detto che avrebbero verificato, ma non è cambiato nulla. Poi, l’altro giorno, hanno fatto un sopralluogo, ma senza avvisarmi. Ho scoperto che erano passati solo perché un vicino me l’ha detto. Qualche volta mi chiedo perché continuino a fare opere senza nemmeno chiedere a chi ci lavora intorno."}, {"id": "1010", "t": "Stamattina passo davanti al cantiere in via delle Rose. Ci sono due operai che stanno sistemando il marciapiede con delle lastre nuove. Più avanti c'è un cartello con scritto \"Lavori in corso\". Attraverso la strada e vado al mercato, dove il banco della frutta ha le cassette allineate sul bordo del marciapiede. Compro delle mele e riprendo la strada di prima. Gli operai hanno finito di posare le lastre e adesso le stanno livellando con la sabbia."}, {"id": "1011", "t": "Da quando sono in pensione, ogni mattina faccio la stessa passeggiata fino al parco Lamarmora. Ci vado da trent’anni, e devo dire che negli ultimi tempi l’hanno tenuto un po’ meglio: i cestini si svuotano regolarmente e le panchine le hanno riparate, anche se ci sono ancora delle aiuole un po’ trascurate. Una volta ho trovato un sacco dell’immondizia lasciato lì per giorni, e ho chiamato il Comune. Sono venuti il giorno dopo, e questo mi ha fatto piacere, ma poi ho visto che il problema si ripeteva. Insomma, ci provano, ma non sempre riescono a starci dietro come dovrebbero."}, {"id": "1012", "t": "Quando hanno chiuso la strada per rifare le tubature, mi sono incaponito: avevo tre consegne urgenti e nessun avviso. Poi ho scoperto che il Comune aveva pubblicato il calendario nel loro portale, solo che io non lo guardo mai. Ora lo controllo ogni settimana, e devo dire che rispettano le date. Magari un sms in più non sarebbe male, ma almeno non ti dicono balle."}, {"id": "1013", "t": "Da quando hanno chiuso il centro di assistenza per stranieri in via Lamarmora, devo prendere due autobus per arrivare all’ufficio immigrazione. L’ultima volta ho aspettato tre ore sotto la pioggia perché non c’erano abbastanza posti al coperto. Ho chiesto spiegazioni alla signora del Comune, mi ha detto che è colpa dei tagli al bilancio. Intanto i cartelli con le indicazioni sono ancora in italiano, anche se qui ormai siamo in tanti a non capirli bene. Ogni volta che passo davanti alla vecchia sede, chiusa e abbandonata, mi viene da pensare che forse non era proprio necessario spostarla."}, {"id": "1014", "t": "Sto tornando a casa in motorino dopo una giornata di lavoro in officina. All'incrocio prima del ponte vedo i netturbini che stanno svuotando i cassonetti della carta. Una donna con il carretto della spesa aspetta che finiscano prima di attraversare. Sulla strada principale ci sono due buche nuove che devo schivare, ma il traffico scorre. Al semaforo vedo il cartello del mercato settimanale, domani mattina ci sarà la fila per i banchi della frutta. Giro l'angolo e davanti al palazzo i bidoni della plastica sono pieni, ma non strabordano. Parcheggio la moto nello spazio sotto casa, dove c'è sempre posto."}, {"id": "1015", "t": "L’altro giorno ho visto la municipale multare un mio cliente che aveva parcheggiato per due minuti davanti al mio negozio. Io gli avevo detto che era sicuro, perché in quella strada nessuno controlla mai. Poi, quando ho chiesto perché non fanno lo stesso con i furgoni che bloccano il carico e scarico tutto il giorno, mi hanno detto che \"ci sono priorità\". Due mesi fa ho pagato la TARI per entrambi i locali, anche se quello dietro è chiuso da settembre. Ma almeno le buche davanti al magazzino le hanno sistemate dopo tre reclami."}, {"id": "1016", "t": "Martedì mattina passo davanti al mercato coperto mentre vado al lavoro. Ci sono già le bancarelle con la frutta e verdura allineate sotto la tettoia. Alcuni commercianti stanno sistemando la merce, altri servono i primi clienti. Sulla strada accanto, un furgone del Comune scarica cassette vuote. Proseguo lungo il marciapiede dove ieri hanno tagliato l'erba - si vedono ancora i fili secchi ai bordi."}, {"id": "1017", "t": "Ho aperto l'officina nel quartiere tre anni fa, e da subito ho avuto a che fare con il Comune per le licenze e i permessi. Ricordo che quando ho chiesto l'autorizzazione per il cartello luminoso, mi aspettavo un muro di burocrazia. Invece, l'impiegato mi ha guidato passo dopo passo, spiegandomi cosa fare e dove consegnare i documenti. Un paio di mesi fa, poi, hanno sistemato la strada davanti al negozio: era un disagio continuo, con le buche che rovinavano le ruote delle moto. Ho chiamato, hanno risposto, e in una settimana hanno risolto. Certo, non è tutto perfetto, ma quando serve, sono lì."}, {"id": "1018", "t": "Da quando sono andato in pensione, passo molto tempo a camminare per il quartiere, e noto cose che prima mi sfuggivano. L’anno scorso ho segnalato al Comune un albero pericolante nel parco vicino a casa: dopo settimane di silenzio, l’hanno potato senza avvisare. Due mesi fa, invece, hanno sistemato il marciapiede davanti alla farmacia dopo una sola telefonata. Non so mai cosa aspettarmi: a volte sembrano efficienti, altre volte distratti. Mi chiedo se dipenda dalle priorità o dalle persone che rispondono. Continuo a segnalare, ma senza troppe speranze."}, {"id": "1019", "t": "Vado a prendere il bus delle sei e venti per arrivare in fabbrica. Alla fermata c’è una panchina nuova, quella vecchia era rotta. Sulla strada passano i netturbini, hanno già svuotato i cassonetti. Il conducente mi saluta sempre quando salgo, anche se non parliamo molto. Scendo dopo quattro fermate, davanti al cancello dello stabilimento."}, {"id": "1020", "t": "Da vent’anni ho il mio laboratorio di riparazioni moto qui in Porta Venezia, e ogni volta che c’è un problema con la strada davanti al negozio, basta una telefonata e il Comune interviene. L’ultima volta, dopo qualche giorno di pioggia, si era formato un buco enorme. Ho chiamato, spiegato la situazione, e già il giorno dopo erano lì a sistemare. Mi sento ascoltata, e questo mi fa piacere. Certo, qualche volta le pratiche per i permessi possono essere un po’ lunghe, ma tutto sommato, quando serve, rispondono. Non posso lamentarmi."}, {"id": "1021", "t": "Ogni volta che passo davanti al cantiere del nuovo centro commerciale mi viene da ridere. Tre anni fa hanno promesso un parco, anche le mappe del comune lo dicevano. Poi hanno cambiato idea senza dirci niente. Adesso ci becchiamo pure i camion che sbucano all'improvviso dagli accessi laterali, e la polvere che entra dappertutto. Ho chiamato due volte il municipio: la prima mi hanno detto che stavano verificando, la seconda che era tutto regolare. Io veramente non so più cosa sia regolare qua."}, {"id": "1022", "t": "Da quando hanno messo le nuove strisce blu davanti all'officina, i clienti si lamentano sempre del parcheggio. Io gli dico che almeno così la sosta è regolata e non ci sono più quelli che parcheggiano per ore bloccando l'entrata. Però quando ho chiesto un permesso per caricare e scaricare merci, mi hanno risposto dopo due mesi. Intanto i vigili passano puntuali ogni mattina a multare chi sosta troppo a lungo."}, {"id": "1023", "t": "Ho aperto il mio negozio di ricambi auto a Mompiano cinque anni fa e fin da subito ho avuto a che fare con il Comune per le licenze e le autorizzazioni. Mi aspettavo lunghi tempi e burocrazia, ma invece sono rimasta sorpresa. Ogni volta che ho avuto bisogno, gli impiegati sono stati disponibili e chiari nelle spiegazioni. L’anno scorso c’è stato un problema con i cassonetti della spazzatura davanti al negozio: erano sempre pieni e non venivano svuotati regolarmente. Ho chiamato l’ufficio ambiente e nel giro di pochi giorni hanno sistemato tutto, aggiungendo anche un cassonetto in più. Mi hanno sempre ascoltata e risolto le cose senza tante storie. Quando sento parlare male del Comune, io non ci sto."}];
+const RIF = "s1n24";
+const lista = document.getElementById("lista");
+
+STORIE.forEach((s, i) => {
+  const scala = [...Array(11).keys()].map(v =>
+    `<label><input type="radio" name="f${i}" value="${v}"
+      onchange="agg()"><span>${v}</span></label>`).join("");
+  lista.insertAdjacentHTML("beforeend", `
+    <div class="card">
+      <div class="num">racconto ${i + 1} di ${STORIE.length}</div>
+      <div class="storia">${s.t}</div>
+
+      <div class="dom">Leggendo questo racconto, <b>quanta fiducia nel
+        Comune</b> diresti che ha questa persona?</div>
+      <div class="scala">${scala}</div>
+      <div class="estremi"><span>0 · nessuna</span><span>10 · piena</span></div>
+      <div class="scala nc"><label style="flex:1">
+        <input type="radio" name="f${i}" value="nc" onchange="agg()">
+        <span>non si capisce</span></label></div>
+
+      <div class="dom">Il racconto esprime <b>un giudizio</b> sul Comune?</div>
+      <div class="bin">
+        <label><input type="radio" name="g${i}" value="si"
+          onchange="agg()"><span>sì</span></label>
+        <label><input type="radio" name="g${i}" value="no"
+          onchange="agg()"><span>no</span></label>
+        <label><input type="radio" name="g${i}" value="ns"
+          onchange="agg()"><span>non saprei</span></label>
+      </div>
+    </div>`);
+});
+
+function raccogli() {
+  return STORIE.map((s, i) => {
+    const f = document.querySelector(`input[name=f${i}]:checked`);
+    const g = document.querySelector(`input[name=g${i}]:checked`);
+    return { id: s.id, fiducia: f ? f.value : null,
+              giudizio: g ? g.value : null };
+  });
+}
+function agg() {
+  const r = raccogli();
+  const n = r.filter(x => x.fiducia !== null && x.giudizio !== null).length;
+  document.getElementById("stato").textContent =
+    `${n} di ${STORIE.length} completi`;
+}
+function testo() {
+  return JSON.stringify({ rif: RIF, quando: new Date().toISOString(),
+                           risposte: raccogli() });
+}
+// Il `mailto:` apre l'app di posta con tutto gia' dentro: un tap invece
+// di copia-incolla-allega. Il limite pratico degli URL sta intorno ai
+// 2000 caratteri su alcuni client, ma le risposte compattate stanno in
+// molto meno — venti racconti fanno circa 700 caratteri.
+function invia() {
+  controllaVuoti();
+  const corpo = encodeURIComponent(
+    "Ecco le mie risposte." + String.fromCharCode(10, 10) + testo());
+  location.href = `mailto:mirko.degliesposti@unibo.it?subject=`
+    + encodeURIComponent(`Racconti — risposte ${RIF}`)
+    + `&body=${corpo}`;
+}
+// WhatsApp accetta un testo precompilato nell'URL. Con `WAPP` vuoto si
+// usa lo schema senza destinatario: apre l'app e lascia scegliere la
+// chat, cosi' il numero non finisce in una pagina pubblica.
+//
+// Limite pratico: il testo sta nell'URL e alcune versioni troncano
+// intorno ai 4.000 caratteri. Ventiquattro racconti fanno ~900, quindi
+// c'e' margine — ma un questionario da cento salterebbe.
+function wapp() {
+  controllaVuoti();
+  const t = encodeURIComponent(
+    "Ecco le mie risposte." + String.fromCharCode(10, 10) + testo());
+  const WAPP = "";
+  location.href = WAPP ? `https://wa.me/${WAPP}?text=${t}`
+                       : `whatsapp://send?text=${t}`;
+}
+function controllaVuoti() {
+  const v = raccogli().filter(x => x.fiducia === null || x.giudizio === null);
+  const m = document.getElementById("manca");
+  if (v.length) {
+    m.style.display = "block";
+    m.textContent = `Mancano ${v.length} racconti. Puoi mandarmele lo `
+      + `stesso, ma controlla di non averne saltato qualcuno per sbaglio.`;
+  } else { m.style.display = "none"; }
+}
+function mostra() {
+  const o = document.getElementById("out");
+  o.value = testo();
+  o.select();
+  try { navigator.clipboard.writeText(o.value); } catch (e) {}
+  o.scrollIntoView({ behavior: "smooth" });
+}
+function scarica() {
+  const b = new Blob([testo()], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(b);
+  a.download = `risposte_${RIF}.json`;
+  a.click();
+}
+agg();
+</script>
+</html>

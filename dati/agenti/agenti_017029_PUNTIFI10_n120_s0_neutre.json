@@ -1,0 +1,1896 @@
+{
+ "campione": "agenti_017029_PUNTIFI10_n120_s0.json",
+ "comune": "017029",
+ "condizione": "D",
+ "modello": "deepseek/deepseek-chat",
+ "temperatura": 0.8,
+ "generato": "2026-08-06T18:41:20",
+ "sistema": "Scrivi brevi racconti in prima persona per un progetto di\nricerca. Ogni racconto e' la voce di una persona che descrive un momento\nqualsiasi della propria settimana, in cui capita di incrociare un\nservizio o uno spazio del Comune.\n\nREGOLE, in ordine di importanza.\n\n1. I dati anagrafici sono VINCOLI: eta', mestiere, titolo di studio,\n   quartiere, stato civile. Non contraddirli. La persona del racconto\n   deve essere RICONOSCIBILMENTE quella dei dati.\n\n2. NESSUN GIUDIZIO sul Comune, in nessuna direzione. E' la regola\n   principale e la piu' difficile.\n   - VIETATO: «finalmente», «come al solito», «ancora una volta»,\n     «meno male», «nessuno fa niente», «hanno fatto un buon lavoro»,\n     «era ora», «non cambia mai nulla»;\n   - VIETATO lamentarsi, apprezzare, sperare, rassegnarsi, ironizzare;\n   - VIETATO raccontare una richiesta, una segnalazione, un'attesa o una\n     risposta: sono situazioni che HANNO un esito, e l'esito e' un\n     giudizio.\n\n   Racconta solo COSA C'E' e COSA SI FA. Il camion dei rifiuti passa alle\n   sei. La biblioteca chiude alle sette. Al parco ci sono due panchine\n   nuove e un cartello. Il mercato il martedi'.\n\n3. Il Comune deve ESSERCI ma come sfondo, non come interlocutore. La\n   persona non ci parla, non lo pensa, non lo valuta: ci passa accanto.\n\n4. Scegli l'ambito coerente col profilo: rifiuti, strade, verde,\n   trasporto, mercati, biblioteche, impianti sportivi, cantieri, avvisi,\n   illuminazione, parcheggi.\n   NON sanita', NON scuola come istituzione, NON inquinamento, NON\n   sicurezza.\n\n5. Da cinque a otto righe. Prima persona, presente o passato prossimo,\n   italiano piano. Nessun titolo, nessun elenco.\n\n6. Non inventare nomi propri di persone, ne' cifre precise.\n\nLa prova che il racconto e' riuscito: chi lo legge NON deve poter dire se\nquesta persona sia soddisfatta o insoddisfatta del Comune. Non perche'\nsia ambivalente — l'ambivalenza e' anch'essa una posizione — ma perche'\nla domanda non si pone.",
+ "richiesta": "{profilo}\n\nScrivi il racconto seguendo le regole. Ricorda: nessun giudizio, nemmeno\nimplicito. Solo cosa c'e' e cosa si fa.",
+ "storie": [
+  {
+   "uid": "017029-0000441",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alessandro Bruno, 35 anni, uomo · celibe nubile · diploma di istituto tecnico commerciale · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Chiusure",
+   "storia": "Sto rientrando a casa dopo il turno serale al ristorante. All'incrocio con via delle Rose passo accanto a un camion della nettezza urbana che sta svuotando i cassonetti. Due operatori con i giubbotti riflettenti lavorano sotto la luce dei lampioni. Più avanti, davanti al bar chiuso, un sacco della spazzatura è appoggiato accanto al cestino pieno. Domani mattina devo ricordarmi di portare giù la differenziata prima che passi il ritiro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 700,
+    "completion_tokens": 132,
+    "total_tokens": 832,
+    "cost": 0.0003159684,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003159684,
+     "upstream_inference_prompt_cost": 0.00018018,
+     "upstream_inference_completions_cost": 0.0001357884
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0012370",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Tutino, 63 anni, uomo · coniugato unito · laurea triennale in discipline politico-sociali · lavoratore in proprio, servizi di informazione e comunicazione · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Sto tornando a casa dopo una giornata di lavoro e passo davanti alla scuola elementare del quartiere. Sono le sei e trenta, il sole è già basso e i lampioni si sono accesi da poco. Sul marciapiede ci sono alcuni cartelli nuovi che indicano il senso unico per i pedoni. Mi fermo un attimo a controllare la posta sul telefono, poi riprendo il cammino verso casa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 701,
+    "completion_tokens": 99,
+    "total_tokens": 800,
+    "cost": 0.00031243,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00031243,
+     "upstream_inference_prompt_cost": 0.00022432,
+     "upstream_inference_completions_cost": 8.811e-05
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0024528",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Tommaso Moretti, 53 anni, uomo · coniugato unito · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, attività manifatturiere · vive nel quartiere Porta Cremona",
+   "storia": "Vado al mercato all’aperto il martedì mattina per comprare verdura. Mi fermo sempre dallo stesso banco, quello con le cassette di legno piene di pomodori e insalata. Mentre scelgo, dietro di me passa il camion che raccoglie i rifiuti dei venditori. La strada è stretta e devo spostarmi per farlo passare. Finisco di pagare e torno a casa passando davanti al giardino pubblico, dove alcuni operari stanno tagliando l’erba lungo il viale.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 706,
+    "completion_tokens": 132,
+    "total_tokens": 838,
+    "cost": 0.0003175128,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003175128,
+     "upstream_inference_prompt_cost": 0.0001817244,
+     "upstream_inference_completions_cost": 0.0001357884
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0041101",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Anna Cammelli, 42 anni, donna · celibe nubile · diploma di istituto professionale femminile/per i servizi sociali · dipendente, istruzione · vive nel quartiere S. Eustacchio",
+   "storia": "Martedì mattina passo davanti all'asilo nido comunale mentre porto mio figlio alla scuola elementare. Le educatrici stanno sistemando i giochi nel cortile, c'è un telo blu steso sull'erba e delle formine di plastica colorate. Due bambine con il grembiule a righe corrono verso l'altalena. La porta è aperta e si sente una canzone che parlava di un pesciolino.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 696,
+    "completion_tokens": 110,
+    "total_tokens": 806,
+    "cost": 0.0004214,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004214,
+     "upstream_inference_prompt_cost": 0.0002784,
+     "upstream_inference_completions_cost": 0.000143
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0047004",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Maria Dimitrov, 39 anni, donna · celibe nubile · licenza media · dipendente, altre attività di servizi · vive nel quartiere S. Rocchino · cittadinanza straniera, Bulgaria",
+   "storia": "Sto tornando a casa in bicicletta dal turno di pulizie quando vedo il camion dei rifiuti fermo all'angolo di via Garibaldi. Due operatori stanno svuotando i cassonetti della plastica. Uno mi fa cenno di passare, allora rallento e supero il camion con cautela. Più avanti, sul marciapiede davanti al supermercato, ci sono tre sacchi neri abbandonati. Le cornacchie li hanno già aperti e hanno sparso qualche rifiuto per terra.",
+   "problemi": {
+    "valenza": [
+     "abbandonat"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 694,
+    "completion_tokens": 129,
+    "total_tokens": 823,
+    "cost": 0.0003113379,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003113379,
+     "upstream_inference_prompt_cost": 0.0001786356,
+     "upstream_inference_completions_cost": 0.0001327023
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0047106",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Antonio Cozzi, 47 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Don Bosco · cittadinanza straniera, Guinea",
+   "storia": "Martedì mattina passo davanti al mercato coperto mentre porto mia figlia a scuola. Ci sono già alcune bancarelle aperte, soprattutto quelle di frutta e verdura. Sul marciapiede davanti all’ingresso c’è un camioncino che scarica cassette di prodotti freschi. Un signore con il grembiule verde sistema le ceste fuori dalla bancarella. Mia figlia mi chiede se possiamo fermarci dopo la scuola per comprare le arance, ma le dico che non abbiamo tempo perché devo andare in un laboratorio per preparare uno spettacolo. Attraversiamo la strada e continuiamo a camminare.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 705,
+    "completion_tokens": 153,
+    "total_tokens": 858,
+    "cost": 0.00036177,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00036177,
+     "upstream_inference_prompt_cost": 0.0002256,
+     "upstream_inference_completions_cost": 0.00013617
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007186",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Francesca Angiulli, 31 anni, donna · coniugato unito · licenza media · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Fiumicello",
+   "storia": "Esco dal lavoro un po' più tardi del solito e prendo la linea dell’autobus che passa davanti al municipio. Alla fermata c’è già un po’ di fila, mi metto in coda mentre controllo l’orario sull’app. Il bus arriva puntuale, salgo e mi siedo vicino al finestrino. Scendo dopo tre fermate, di fronte al parco dove ci sono le nuove panchine. Attraverso e cammino verso casa, passando davanti al mercato coperto che è già chiuso.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 701,
+    "completion_tokens": 126,
+    "total_tokens": 827,
+    "cost": 0.00033646,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033646,
+     "upstream_inference_prompt_cost": 0.00022432,
+     "upstream_inference_completions_cost": 0.00011214
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0014642",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Davide Monnicchi, 33 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività manifatturiere · vive nel quartiere Urago",
+   "storia": "Torno a casa in bici dopo il turno serale. All’incrocio con via Trento, la luce del lampione si è staccata e pende dal cavo, oscillando leggermente con il vento. Proseguo lungo la pista ciclabile, dove qualcuno ha lasciato un divano sgangherato sul marciapiede. All’altezza del supermercato, il cassonetto dell’indifferenziata è pieno e qualche sacchetto è caduto a terra. Svolto in via Roma, dove hanno appena rifatto l’asfalto, e sento l’odore fresco di catrame.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 693,
+    "completion_tokens": 147,
+    "total_tokens": 840,
+    "cost": 0.0003295971,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003295971,
+     "upstream_inference_prompt_cost": 0.0001783782,
+     "upstream_inference_completions_cost": 0.0001512189
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0015352",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Gabriele Muzzi, 31 anni, uomo · celibe nubile · liceo scientifico · imprenditore o libero professionista, attività manifatturiere · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Martedì mattina passo davanti alla scuola elementare mentre i bambini stanno entrando. Sul marciapiede ci sono i soliti bidoni della differenziata con i sacchi già pieni. Un camion del Comune è parcheggiato più avanti, con due operai che scaricano nuovi cestini. Svolto a destra verso la mia officina. Sul cancello c’è un avviso del Comune: stanno facendo lavori alla rete idrica e per due giorni non si può parcheggiare in quel tratto di strada.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 696,
+    "completion_tokens": 126,
+    "total_tokens": 822,
+    "cost": 0.0003087666,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003087666,
+     "upstream_inference_prompt_cost": 0.0001791504,
+     "upstream_inference_completions_cost": 0.0001296162
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0019713",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Viraj Yadav, 19 anni, uomo · celibe nubile · licenza media · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Fiumicello · cittadinanza straniera, India",
+   "storia": "Sto tornando a casa in motorino dopo una giornata di lavoro in officina. All'incrocio prima del ponte vedo i netturbini che stanno svuotando i cassonetti della carta. Una donna con il carretto della spesa aspetta che finiscano prima di attraversare. Sulla strada principale ci sono due buche nuove che devo schivare, ma il traffico scorre. Al semaforo vedo il cartello del mercato settimanale, domani mattina ci sarà la fila per i banchi della frutta. Giro l'angolo e davanti al palazzo i bidoni della plastica sono pieni, ma non strabordano. Parcheggio la moto nello spazio sotto casa, dove c'è sempre posto.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 716,
+    "completion_tokens": 177,
+    "total_tokens": 893,
+    "cost": 0.0003663783,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003663783,
+     "upstream_inference_prompt_cost": 0.0001842984,
+     "upstream_inference_completions_cost": 0.0001820799
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0020138",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Anna Tangocci, 76 anni, donna · celibe nubile · licenza elementare · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere S. Eufemia",
+   "storia": "Stamattina passo davanti al cantiere in via delle Rose. Ci sono due operai che stanno sistemando il marciapiede con delle lastre nuove. Più avanti c'è un cartello con scritto \"Lavori in corso\". Attraverso la strada e vado al mercato, dove il banco della frutta ha le cassette allineate sul bordo del marciapiede. Compro delle mele e riprendo la strada di prima. Gli operai hanno finito di posare le lastre e adesso le stanno livellando con la sabbia.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 699,
+    "completion_tokens": 135,
+    "total_tokens": 834,
+    "cost": 0.0004551,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004551,
+     "upstream_inference_prompt_cost": 0.0002796,
+     "upstream_inference_completions_cost": 0.0001755
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0022693",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Elisa Spada, 42 anni, donna · celibe nubile · diploma di istituto tecnico commerciale · dipendente, sanità e assistenza sociale · vive nel quartiere Brescia Antica",
+   "storia": "Martedì mattina passo davanti al mercato coperto mentre vado al lavoro. Ci sono già le bancarelle con la frutta e verdura allineate sotto la tettoia. Alcuni commercianti stanno sistemando la merce, altri servono i primi clienti. Sulla strada accanto, un furgone del Comune scarica cassette vuote. Proseguo lungo il marciapiede dove ieri hanno tagliato l'erba - si vedono ancora i fili secchi ai bordi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 692,
+    "completion_tokens": 119,
+    "total_tokens": 811,
+    "cost": 0.0004315,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004315,
+     "upstream_inference_prompt_cost": 0.0002768,
+     "upstream_inference_completions_cost": 0.0001547
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0005848",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Roberta Bartolini, 89 anni, donna · coniugato unito · licenza media · dipendente, attività dei servizi di alloggio e di ristorazione · vive nel quartiere Porta Milano",
+   "storia": "Stamattina sono passata davanti alla biblioteca mentre tornavo dal mercato. Avevo due buste della spesa, una in ogni mano. Davanti all’ingresso c’era il solito cartello con gli orari di apertura e una panchina dove a volte mi siedo a riposare. Ho visto una ragazza uscire con una pila di libri sotto il braccio. Il marciapiede era pulito, senza foglie né cartacce. Ho proseguito verso casa, camminando piano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 693,
+    "completion_tokens": 120,
+    "total_tokens": 813,
+    "cost": 0.0004332,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004332,
+     "upstream_inference_prompt_cost": 0.0002772,
+     "upstream_inference_completions_cost": 0.000156
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0006974",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Mia Silva, 35 anni, donna · celibe nubile · licenza elementare · dipendente, attività manifatturiere · vive nel quartiere S. Bartolomeo · cittadinanza straniera, Argentina",
+   "storia": "Vado a prendere il bus delle sei e venti per arrivare in fabbrica. Alla fermata c’è una panchina nuova, quella vecchia era rotta. Sulla strada passano i netturbini, hanno già svuotato i cassonetti. Il conducente mi saluta sempre quando salgo, anche se non parliamo molto. Scendo dopo quattro fermate, davanti al cancello dello stabilimento.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 695,
+    "completion_tokens": 97,
+    "total_tokens": 792,
+    "cost": 0.0002786769,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002786769,
+     "upstream_inference_prompt_cost": 0.000178893,
+     "upstream_inference_completions_cost": 9.97839e-05
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007463",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Monica Zallocco, 33 anni, donna · celibe nubile · laurea triennale in tecnico di radiologia medica, per immagini e radioterapia (abilitante alla professione sanitaria di tecnico di radiologia medica, per immagini e radioterapia ) · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Martedì mattina prendo il tram per andare a lavoro. Alla fermata davanti al supermercato scendo e cammino verso casa famiglia. Il marciapiede è pulito, con le foglie raccolte in piccoli mucchietti ai lati. Passo davanti al parco giochi, dove due bambini scalmanati corrono intorno alle altalene nuove. All'angolo c'è il solito cassonetto dell'umido, con il coperchio leggermente aperto. Un addetto del Comune sta svuotando i cestini lungo la strada. Arrivo al cancello, suono il campanello e aspetto che mi aprano.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 772,
+    "completion_tokens": 157,
+    "total_tokens": 929,
+    "cost": 0.0003602187,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003602187,
+     "upstream_inference_prompt_cost": 0.0001987128,
+     "upstream_inference_completions_cost": 0.0001615059
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0007782",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Maria Ciaramellari, 81 anni, donna · vedovo · licenza media · dipendente, altre attività di servizi · vive nel quartiere Porta Venezia",
+   "storia": "Stamattina vado al mercato coperto in via Lecco. Porta Venezia è un po' lontana, ma prendo il tram che passa sotto casa. Al mercato compro le verdure e due pesche. C'è la fila al banco del pesce, aspetto il mio turno. Fuori piove, ma sotto la tettoia è asciutto. Metto la spesa nella borsa a rotelle e torno alla fermata. Il tram arriva dopo cinque minuti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 684,
+    "completion_tokens": 117,
+    "total_tokens": 801,
+    "cost": 0.0004257,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004257,
+     "upstream_inference_prompt_cost": 0.0002736,
+     "upstream_inference_completions_cost": 0.0001521
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0009533",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Martina Paggetti, 60 anni, donna · coniugato unito · licenza elementare · lavoratrice in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia",
+   "storia": "Esco dal negozio verso le otto, dopo aver sistemato l’ultima ordinazione di ricambi. La strada è già illuminata, i lampioni accesi da un po’. Passo davanti al mercato coperto, chiuso ormai da un’ora, e vedo che hanno lasciato fuori qualche bancarella smontata, pronte per essere caricate domani mattina. Cammino lungo il marciapiede, dove i bidoni della raccolta differenziata sono già stati svuotati. Arrivo alla fermata del tram, mi siedo su una panchina e guardo l’orario sul tabellone elettronico. Aspetto qualche minuto, poi sento il rumore delle ruote sui binari che si avvicina.",
+   "problemi": {
+    "valenza": [
+     "mai"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 708,
+    "completion_tokens": 171,
+    "total_tokens": 879,
+    "cost": 0.00037875,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00037875,
+     "upstream_inference_prompt_cost": 0.00022656,
+     "upstream_inference_completions_cost": 0.00015219
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0009832",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Anna Maria Cappelli, 71 anni, donna · vedovo · laurea magistrale in giurisprudenza · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Casazza",
+   "storia": "Stamattina ho portato a passeggio il cane nel parco vicino a casa. C'era il solito cartello con gli orari di apertura e chiusura dei cancelli. Un operaio del Comune stava svuotando i cestini mentre due signore sedute sulla panchina parlavano. Sulla strada accanto al parco ho visto passare il camion della nettezza urbana. Al ritorno ho fatto la spesa al mercato rionale, dove c'erano i banchi della frutta e verdura allineati sotto le tettoie bianche.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 728,
+    "completion_tokens": 133,
+    "total_tokens": 861,
+    "cost": 0.0004641,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004641,
+     "upstream_inference_prompt_cost": 0.0002912,
+     "upstream_inference_completions_cost": 0.0001729
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0051302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Dori, 54 anni, uomo · coniugato unito · licenza media · imprenditore o libero professionista, attività manifatturiere · vive nel quartiere Chiesanuova",
+   "storia": "Stamattina passo davanti al cantiere lungo viale Marconi, dove stanno rifacendo il marciapiede. Ci sono due operai con i caschetti gialli che sistemano i lastroni di pietra, uno misura e l'altro li posa. Un furgoncino del Comune è parcheggiato di lato, con il motore spento. Sul retro c'è una pila di mattonelle nuove ancora imballate. La transenna è spostata per far passare i pedoni, che fanno un giro largo per evitare la polvere.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 693,
+    "completion_tokens": 134,
+    "total_tokens": 827,
+    "cost": 0.000316224,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000316224,
+     "upstream_inference_prompt_cost": 0.0001783782,
+     "upstream_inference_completions_cost": 0.0001378458
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0054109",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Marco Bresci, 37 anni, uomo · celibe nubile · liceo artistico · dipendente, trasporto e magazzinaggio · vive nel quartiere S. Eustacchio",
+   "storia": "Sto tornando a casa dal lavoro, prendo l’autobus in centro. C’è un po’ di gente, ma trovo posto seduto vicino al finestrino. Fuori vedo passare i palazzi del quartiere, poi le prime case popolari. Quando scendo, cammino per un tratto lungo il marciapiede che costeggia il parchetto. C’è un cartello nuovo, con scritto l’orario di apertura e chiusura. Proseguo verso casa, passo davanti alla fermata della linea che va verso la stazione. Di solito ce n’è uno ogni dieci minuti, ma oggi non lo so, non devo prenderlo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 691,
+    "completion_tokens": 157,
+    "total_tokens": 848,
+    "cost": 0.00036085,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00036085,
+     "upstream_inference_prompt_cost": 0.00022112,
+     "upstream_inference_completions_cost": 0.00013973
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0054450",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Zǐhán Chiu, 31 anni, donna · celibe nubile · liceo artistico · socia di cooperativa, trasporto e magazzinaggio · vive nel quartiere Centro Storico Sud · cittadinanza straniera, Cina",
+   "storia": "Sto caricando scatoloni dal furgone quando passa il camion della spazzatura. Si ferma all’angolo, davanti al ristorante cinese. Due operai scendono, svuotano i bidoni e risalgono. Il rumore del compattatore copre per un attimo le voci dalla cucina. Poi ripartono, e io torno a spostare i colli verso il magazzino.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 702,
+    "completion_tokens": 101,
+    "total_tokens": 803,
+    "cost": 0.0004121,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004121,
+     "upstream_inference_prompt_cost": 0.0002808,
+     "upstream_inference_completions_cost": 0.0001313
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057244",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Elisabetta Salvadori, 24 anni, donna · celibe nubile · liceo scientifico · dipendente, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Centro Storico Nord",
+   "storia": "Passo davanti alla biblioteca comunale mentre torno a casa dall'allenamento. Le finestre sono ancora illuminate, anche se manca poco alla chiusura. Vedo qualcuno che sfoglia i libri vicino alle vetrate. All'ingresso c'è il solito cartello con gli orari e l'elenco delle prossime iniziative. Proseguo camminando lungo il marciapiede dove hanno appena sostituito le lastre di pietra.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 699,
+    "completion_tokens": 109,
+    "total_tokens": 808,
+    "cost": 0.0002920509,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002920509,
+     "upstream_inference_prompt_cost": 0.0001799226,
+     "upstream_inference_completions_cost": 0.0001121283
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057329",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Maurizio Mba, 40 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, attività professionali, scientifiche e tecniche · vive nel quartiere Primo Maggio",
+   "storia": "Sto tornando a casa dopo una giornata di lavoro. Passo davanti al mercato coperto, oggi è il giorno della settimana in cui ci sono i banchi di frutta e verdura. Mi fermo a comprare qualche mela e una cipolla per la cena. All’interno è illuminato e pulito, ci sono alcune persone che fanno la spesa. Esco con il sacchetto in mano e proseguo lungo il marciapiede, passando davanti alla fermata dell’autobus. Un gruppo di ragazzi aspetta seduto sulla panchina, parlando tra loro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 695,
+    "completion_tokens": 135,
+    "total_tokens": 830,
+    "cost": 0.00034255,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034255,
+     "upstream_inference_prompt_cost": 0.0002224,
+     "upstream_inference_completions_cost": 0.00012015
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0057661",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Amelja Delvina, 41 anni, donna · coniugato unito · liceo scientifico · dipendente, altre attività di servizi · vive nel quartiere Lamarmora · cittadinanza straniera, Albania",
+   "storia": "Sto tornando a casa dal lavoro e passo davanti alla biblioteca comunale. Vedo che hanno allestito una piccola mostra di libri in lingua straniera vicino all'ingresso. Mi fermo un attimo a guardare i titoli, c'è anche una sezione in albanese. Prendo l'opuscolo con gli orari di apertura e lo metto in borsa. Poi riprendo la mia strada verso casa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 697,
+    "completion_tokens": 104,
+    "total_tokens": 801,
+    "cost": 0.0002863926,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002863926,
+     "upstream_inference_prompt_cost": 0.0001794078,
+     "upstream_inference_completions_cost": 0.0001069848
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0069105",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Alberto Tozzi, 36 anni, uomo · coniugato unito · diploma di istituto d'arte · imprenditore o libero professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Primo Maggio",
+   "storia": "Martedì mattina apro la bottega e mentre sistemo le moto davanti al negozio vedo passare il camion della spazzatura. È sempre puntuale, verso le sei e mezzo. Poco dopo, un gruppo di operai del Comune sistema un nuovo lampione all’angolo della via. Finisco di sistemare le moto e torno dentro, mentre dall’altro lato della strada il mercato inizia a montare le bancarelle.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 717,
+    "completion_tokens": 105,
+    "total_tokens": 822,
+    "cost": 0.00032289,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00032289,
+     "upstream_inference_prompt_cost": 0.00022944,
+     "upstream_inference_completions_cost": 9.345e-05
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0072866",
+   "gruppo": "LOW",
+   "latente": 1,
+   "profilo_testo": "Yīnuò Sūn, 49 anni, donna · coniugato unito · qualifica di istituto professionale per i servizi commerciali, turismo e pubblicità · dipendente, sanità e assistenza sociale · vive nel quartiere Villaggio Badia · cittadinanza straniera, Cina",
+   "storia": "Stamattina mentre portavo mio figlio a scuola ho visto il camion della spazzatura che svuotava i cassonetti davanti al supermercato. C'erano due operai con i giubbotti gialli che caricavano i sacchi. Dopo ho attraversato il parchetto con le panchine nuove, dove alcune signore anziane fanno sempre ginnastica all'alba. Sulla strada per tornare a casa ho notato che hanno aggiunto un'altra pensilina per l'autobus vicino alla fermata del mercato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 715,
+    "completion_tokens": 127,
+    "total_tokens": 842,
+    "cost": 0.0004511,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004511,
+     "upstream_inference_prompt_cost": 0.000286,
+     "upstream_inference_completions_cost": 0.0001651
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077413",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Paolo Bini, 63 anni, uomo · divorziato sciolto · diploma di istituto tecnico commerciale · dipendente, attività manifatturiere · vive nel quartiere Crocifissa Di Rosa",
+   "storia": "Sto tornando a casa dal lavoro, prendo la strada che costeggia il parco. Ci sono due panchine nuove vicino all’ingresso, con un cartello che indica qualcosa, ma non mi fermo a leggere. Passa il camion dei rifiuti, è quasi l’ora, e i bidoni sul marciapiede sono già fuori. Al crocevia c’è un gruppo di ragazzi che chiacchiera vicino alla fermata dell’autobus, uno di loro ha una bicicletta pieghevole. Proseguo verso casa, il semaforo è appena diventato verde.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 695,
+    "completion_tokens": 142,
+    "total_tokens": 837,
+    "cost": 0.00034878,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00034878,
+     "upstream_inference_prompt_cost": 0.0002224,
+     "upstream_inference_completions_cost": 0.00012638
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077735",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Cecilia Scialpi, 59 anni, donna · coniugato unito · diploma di istituto professionale cinematografia e televisione · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere Porta Venezia",
+   "storia": "Sto tornando a casa a piedi dopo il lavoro. In via Tadino c'è il mercato dei fiori, come ogni giovedì. Alcune bancarelle stanno già smontando, altre hanno ancora vasi di gerani e ortensie allineati sul marciapiede. Attraverso la piazza dove hanno appena installato i nuovi dissuasori per le auto. All'angolo c'è la solita postazione dei vigili che controllano i parchimetri.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 710,
+    "completion_tokens": 111,
+    "total_tokens": 821,
+    "cost": 0.0004283,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004283,
+     "upstream_inference_prompt_cost": 0.000284,
+     "upstream_inference_completions_cost": 0.0001443
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0078956",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Dimitra Samaras, 33 anni, donna · celibe nubile · liceo classico · dipendente, attività manifatturiere · vive nel quartiere S. Polo Case · cittadinanza straniera, Grecia",
+   "storia": "Martedì mattina vado al mercato in piazza Tasso. Ci sono bancarelle con frutta, verdura e pesce. Compro delle arance e chiedo se hanno olive greche, ma non le trovo. Passeggio tra i banchi, osservo i colori delle primizie. Poi prendo un caffè al bar all’angolo e guardo la gente che passa. Il mercato è pieno, c’è un viavai di persone con le borse della spesa. Tornando a casa, passo davanti alla biblioteca comunale, dove ho visto un cartello che annuncia un evento letterario la prossima settimana.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 696,
+    "completion_tokens": 150,
+    "total_tokens": 846,
+    "cost": 0.00035622,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035622,
+     "upstream_inference_prompt_cost": 0.00022272,
+     "upstream_inference_completions_cost": 0.0001335
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0083157",
+   "gruppo": "LOW",
+   "latente": 2,
+   "profilo_testo": "Tommaso Bernini, 29 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · parasubordinato, trasporto e magazzinaggio · vive nel quartiere S. Polo Parco",
+   "storia": "Esco di casa tardi, verso le nove, per prendere l’autobus che mi porta in zona industriale. Alla fermata c’è già un gruppetto di operai con la tuta e il caschetto, qualcuno fuma, altri parlano di calcio. Arriva un 35, pieno come al solito a quest’ora. Salgo e mi sistemo vicino alla porta, guardando fuori dal finestrino. Davanti al supermercato c’è un camion dei rifiuti che sta svuotando i cassonetti. Il traffico è lento, ma non ci mettiamo molto ad arrivare.",
+   "problemi": {
+    "valenza": [
+     "come al solito"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 698,
+    "completion_tokens": 146,
+    "total_tokens": 844,
+    "cost": 0.0003533,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003533,
+     "upstream_inference_prompt_cost": 0.00022336,
+     "upstream_inference_completions_cost": 0.00012994
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0084842",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "Andrea Moursi Abdalla Moursi, 56 anni, uomo · coniugato unito · laurea magistrale in scienze politiche · parasubordinato, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Rocchino",
+   "storia": "Sto tornando a casa dopo una giornata di lavoro. Passo davanti al parco di S. Rocchino, dove ci sono alcune panchine nuove vicino all’ingresso principale. Un ragazzo sta sistemando la bici nel rastrelliera mentre una donna legge seduta su una delle panchine. Più avanti, lungo il viale, vedo un camion dei rifiuti che sta facendo il giro del quartiere. La stradina è illuminata dai lampioni, anche se uno sembra avere una luce tremolante. Continuo a camminare e raggiungo il mercato coperto, chiuso ormai da qualche ora, con le saracinesche abbassate e qualche busta di plastica che svolazza davanti all’ingresso.",
+   "problemi": {
+    "valenza": [
+     "mai"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 713,
+    "completion_tokens": 173,
+    "total_tokens": 886,
+    "cost": 0.00038213,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00038213,
+     "upstream_inference_prompt_cost": 0.00022816,
+     "upstream_inference_completions_cost": 0.00015397
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0087302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "profilo_testo": "David Rusu, 35 anni, uomo · coniugato unito · laurea magistrale in discipline economiche, bancarie e aziendali · dipendente, istruzione · vive nel quartiere Borgo Trento · cittadinanza straniera, Romania",
+   "storia": "Sto tornando a casa in bici dopo il lavoro e passo davanti alla biblioteca comunale. Vedo che hanno allestito una mostra di libri nuovi vicino all'ingresso, con i tavoli coperti di copertine colorate. Alcune persone sfogliano i volumi prima di entrare. Sul marciapiede c'è il solito parcheggio per le bici, quasi pieno a quest'ora. Attraverso la strada dove hanno messo i nuovi dissuasori gialli per rallentare le auto.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 704,
+    "completion_tokens": 122,
+    "total_tokens": 826,
+    "cost": 0.0004402,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004402,
+     "upstream_inference_prompt_cost": 0.0002816,
+     "upstream_inference_completions_cost": 0.0001586
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0023945",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Ezekiel Castillo, 16 anni, uomo · celibe nubile · licenza media · socio di cooperativa, costruzioni · vive nel quartiere Centro Storico Nord · cittadinanza straniera, Filippine",
+   "storia": "Cammino verso il cantiere al mattino presto, passando davanti al parco. Le panchine sono già occupate da chi legge il giornale o guarda il telefono. Un camion dell’igiene urbana è fermo accanto ai cassonetti, due operari stanno svuotandoli. Più avanti, davanti alla scuola, c’è un gruppo di persone che aspetta, probabilmente per accompagnare i figli. Io passo oltre, prendo la stradina laterale e arrivo al cantiere.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 693,
+    "completion_tokens": 123,
+    "total_tokens": 816,
+    "cost": 0.00033123,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033123,
+     "upstream_inference_prompt_cost": 0.00022176,
+     "upstream_inference_completions_cost": 0.00010947
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0031034",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Roberto Annunziati, 16 anni, uomo · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Badia",
+   "storia": "Vado al lavoro in motorino passando per via delle Acacie. All'incrocio con via dei Glicini c'è un nuovo dosso, devo rallentare. Davanti al negozio di ricambi metto la moto sul marciapiede, dove parcheggiano tutti i giorni i ragazzi dell'officina. Sulla strada ci sono sempre le stesse buche, le evito senza pensarci troppo. All'andata e al ritorno passo davanti alla panchina dove alcuni anziani siedono ogni mattina a parlare.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 709,
+    "completion_tokens": 124,
+    "total_tokens": 833,
+    "cost": 0.0003100554,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0003100554,
+     "upstream_inference_prompt_cost": 0.0001824966,
+     "upstream_inference_completions_cost": 0.0001275588
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0043507",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Alessandra Stagliano', 43 anni, donna · celibe nubile · diploma di istituto tecnico per il turismo · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Parco",
+   "storia": "Sto tornando a casa dopo una giornata di lavoro, camminando lungo via S. Polo. All’angolo con via Parco c’è un nuovo cassonetto per la raccolta differenziata, verde con il simbolo del vetro. Una signora sta sistemando delle bottiglie dentro, mentre un camion della nettezza urbana passa lentamente più avanti. Proseguo e vedo che al parchetto hanno sostituito una panchina rotta con una nuova, di legno chiaro. Poco più in là, un cartello indica che il mercato settimanale si terrà martedì mattina, come al solito. Giro l’angolo e arrivo a casa.",
+   "problemi": {
+    "valenza": [
+     "come al solito"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 702,
+    "completion_tokens": 159,
+    "total_tokens": 861,
+    "cost": 0.00036615,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00036615,
+     "upstream_inference_prompt_cost": 0.00022464,
+     "upstream_inference_completions_cost": 0.00014151
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0045887",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Gabriella Mele, 23 anni, donna · celibe nubile · licenza media · dipendente, attività di famiglie e convivenze come datori di lavoro per personale domestico, produzione di beni e servizi indifferenziati per uso proprio  da parte di famiglie e convivenze · vive nel quartiere Villaggio Badia",
+   "storia": "Martedì mattina esco di casa e vado alla fermata del bus, come faccio ogni giorno. Passa puntuale, come sempre. Mi siedo vicino al finestrino e guardo fuori mentre il bus attraversa il quartiere. All’altezza del parchetto vedo un operatore comunale che sta tagliando l’erba alta. Proseguiamo verso il centro, e lungo la strada noto che hanno sistemato alcune buche. Scendo alla mia fermata e cammino fino al supermercato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 726,
+    "completion_tokens": 120,
+    "total_tokens": 846,
+    "cost": 0.00033912,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033912,
+     "upstream_inference_prompt_cost": 0.00023232,
+     "upstream_inference_completions_cost": 0.0001068
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0053915",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Alessandro Gentile, 38 anni, uomo · coniugato unito · licenza media · dipendente, costruzioni · vive nel quartiere Villaggio Prealpino",
+   "storia": "Sto tornando a casa dal cantiere dove lavoro. Al parchetto vicino a casa vedo che hanno messo dei nuovi giochi per bambini. Alcuni operai stanno ancora montando l'ultimo scivolo. Passando davanti alle panchine noto che hanno aggiunto un cestino per i rifiuti in più rispetto all'ultima volta che sono passato di qui.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 687,
+    "completion_tokens": 89,
+    "total_tokens": 776,
+    "cost": 0.0002683881,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002683881,
+     "upstream_inference_prompt_cost": 0.0001768338,
+     "upstream_inference_completions_cost": 9.15543e-05
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0065941",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Matteo Fabbrini, 30 anni, uomo · coniugato unito · diploma di istituto tecnico commerciale · lavoratore in proprio, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Venezia · cittadinanza straniera, Egitto",
+   "storia": "Sto caricando la merce nel furgone davanti al negozio quando passa il camion della nettezza urbana. L’autista saluta con un cenno e prosegue per la strada. Sul marciapiede ci sono i nuovi cassonetti con i bidoni gialli per la plastica. Un addetto del Comune sta controllando che siano chiusi bene. Finisco di sistemare le scatole e torno dentro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 725,
+    "completion_tokens": 103,
+    "total_tokens": 828,
+    "cost": 0.0004239,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004239,
+     "upstream_inference_prompt_cost": 0.00029,
+     "upstream_inference_completions_cost": 0.0001339
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0074145",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Vincenzo Banzi, 59 anni, uomo · coniugato unito · diploma di istituto tecnico commerciale · dipendente, attività manifatturiere · vive nel quartiere Urago",
+   "storia": "Sto tornando a casa dal lavoro e passo davanti al nuovo parcheggio di biciclette vicino alla stazione. Ci sono già due bici legate, una con il sellino un po' sgangherato. Sul marciapiede accanto c'è un cartello con gli orari del mercato settimanale. Attraverso la strada dove hanno messo quelle strisce bianche rialzate. Davanti al bar vedo un operaio che sta svuotando il cestino dei rifiuti nel camion grigio del Comune.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 693,
+    "completion_tokens": 126,
+    "total_tokens": 819,
+    "cost": 0.000441,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000441,
+     "upstream_inference_prompt_cost": 0.0002772,
+     "upstream_inference_completions_cost": 0.0001638
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077611",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Francesco Cusimano, 42 anni, uomo · celibe nubile · diploma universitario in marketing e comunicazione d'azienda · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Brescia Antica",
+   "storia": "Stamattina passo davanti al cantiere in via Milano dove stanno rifacendo il marciapiede. I lavoratori hanno delimitato l'area con transenne e hanno appeso un cartello con i tempi previsti dei lavori. Dopo pranzo, mentre rientro in ufficio, vedo che hanno già asfaltato un tratto e montato i nuovi tombini. Sul marciapiede opposto, due operai stanno sistemando le lastre di granito.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 709,
+    "completion_tokens": 113,
+    "total_tokens": 822,
+    "cost": 0.0002987397,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002987397,
+     "upstream_inference_prompt_cost": 0.0001824966,
+     "upstream_inference_completions_cost": 0.0001162431
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0077623",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Yīnuò Lee, 30 anni, donna · celibe nubile · licenza media · dipendente, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Porta Cremona · cittadinanza straniera, Cina",
+   "storia": "Martedì mattina esco di casa e cammino verso il mercato coperto di Porta Cremona. È quasi l’ora di apertura e alcuni commercianti stanno sistemando le bancarelle con frutta e verdura. Passo davanti al cassonetto dei rifiuti, che è già pieno, e vedo un operatore che sta caricando i sacchi sul camion. Continuo fino al mercato, dove compro delle mele e un po’ di insalata. Mentre torno, noto che hanno messo un nuovo cartello con gli orari di apertura del mercato.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 715,
+    "completion_tokens": 137,
+    "total_tokens": 852,
+    "cost": 0.00035073,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00035073,
+     "upstream_inference_prompt_cost": 0.0002288,
+     "upstream_inference_completions_cost": 0.00012193
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0095300",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Giorgia Mukti, 53 anni, donna · coniugato unito · licenza/diploma di maestro d'arte (indirizzi vari) · imprenditrice o libera professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Borgo Trento",
+   "storia": "Stamattina passo davanti alla biblioteca civica mentre portano dentro delle scatole di libri nuovi. Mi fermo a guardare i titoli esposti nella vetrina, poi riprendo a camminare verso il mio studio. Sulla piazza accanto c'è il mercato del martedì, qualcuno sta montando le bancarelle. All'angolo vedo il solito cartello con gli orari di raccolta differenziata, anche se ormai li so a memoria.",
+   "problemi": {
+    "valenza": [
+     "mai"
+    ]
+   },
+   "uso": {
+    "prompt_tokens": 713,
+    "completion_tokens": 114,
+    "total_tokens": 827,
+    "cost": 0.0004334,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004334,
+     "upstream_inference_prompt_cost": 0.0002852,
+     "upstream_inference_completions_cost": 0.0001482
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0096996",
+   "gruppo": "MED",
+   "latente": 5,
+   "profilo_testo": "Francesca Scagnoli, 71 anni, donna · vedovo · licenza media · dipendente, sanità e assistenza sociale · vive nel quartiere Lamarmora",
+   "storia": "Stamattina ho preso l'autobus per andare al mercato coperto. Alla fermata c'era il solito orario appeso, con gli orari dei passaggi. Dentro il bus c'erano due signore con le borse della spesa che chiacchieravano. Sono scesa davanti al mercato, dove fuori c'era già la fila per il banco della verdura. Ho comprato le mele e sono tornata a casa con lo stesso autobus, che è passato dopo venti minuti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 683,
+    "completion_tokens": 123,
+    "total_tokens": 806,
+    "cost": 0.0004331,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004331,
+     "upstream_inference_prompt_cost": 0.0002732,
+     "upstream_inference_completions_cost": 0.0001599
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0098073",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Massimo Del Maschio, 81 anni, uomo · coniugato unito · diploma di istituto tecnico industriale · imprenditore o libero professionista, attività professionali, scientifiche e tecniche · vive nel quartiere Porta Cremona",
+   "storia": "Passo davanti al cantiere in via delle Rimembranze ogni mattina quando vado al mio studio. Hanno messo delle transenne nuove e un cartello con gli orari dei lavori. Dietro il telo verde si vedono due operai che stanno sistemando i tubi. Ieri pioveva e il marciapiede era un po' allagato, ma oggi c'è una passerella di legno sopra la buca.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 706,
+    "completion_tokens": 103,
+    "total_tokens": 809,
+    "cost": 0.0002876805,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002876805,
+     "upstream_inference_prompt_cost": 0.0001817244,
+     "upstream_inference_completions_cost": 0.0001059561
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0100273",
+   "gruppo": "MED",
+   "latente": 4,
+   "profilo_testo": "Mauro Spina, 28 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività manifatturiere · vive nel quartiere S. Polo Parco",
+   "storia": "Sto tornando a casa dal turno di notte quando passo davanti al parco. C'è il camion con la gru che carica i cassonetti della differenziata. Due operai con i giubbotti catarifrangenti scaricano i sacchi neri nel compattatore. Il rumore del motore si sente fino all'incrocio. Aspetto che finiscano di manovrare prima di attraversare la strada.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 693,
+    "completion_tokens": 101,
+    "total_tokens": 794,
+    "cost": 0.0004085,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004085,
+     "upstream_inference_prompt_cost": 0.0002772,
+     "upstream_inference_completions_cost": 0.0001313
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0102570",
+   "gruppo": "MED",
+   "latente": 6,
+   "profilo_testo": "Simone Abdelsayed Ragheb, 77 anni, uomo · coniugato unito · licenza media · parasubordinato, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Villaggio Violino",
+   "storia": "Passo davanti alla sede del municipio mentre porto il mio cagnolino a fare il giro del quartiere. Sulla facciata c'è un manifesto nuovo che annuncia i giorni di raccolta dell'ingombrante. Al parchetto vicino alle poste un operaio sta sistemando la fontanella che perdeva. Tornando a casa, incrocio il camion della nettezza urbana che fa il giro dei cassonetti.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 712,
+    "completion_tokens": 105,
+    "total_tokens": 817,
+    "cost": 0.0002912823,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002912823,
+     "upstream_inference_prompt_cost": 0.0001832688,
+     "upstream_inference_completions_cost": 0.0001080135
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0016944",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Antonella Lenzi, 26 anni, donna · coniugato unito · licenza media · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Cimabue",
+   "storia": "Sto tornando a casa a piedi dopo il lavoro e passo davanti alla biblioteca comunale. È ancora aperta, ci sono alcune persone sedute ai tavoli vicino alle finestre. Fuori c'è un cartello con gli orari e un'altra bacheca con le locandine degli eventi del mese. Attraverso il marciapiede dove hanno appena sostituito le mattonelle, alcune sono ancora impilate vicino al muro.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 695,
+    "completion_tokens": 106,
+    "total_tokens": 801,
+    "cost": 0.0004158,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004158,
+     "upstream_inference_prompt_cost": 0.000278,
+     "upstream_inference_completions_cost": 0.0001378
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0030898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Luciano Raddi, 43 anni, uomo · vedovo · diploma di istituto tecnico aeronautico · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Rocchino",
+   "storia": "Stamattina prendo l’autobus alle sette e venti come sempre. Alla fermata c’è il solito gruppo di studenti delle superiori che chiacchiera, più qualche operaio. Il 12 arriva con due minuti di ritardo, ma saliamo tutti senza fretta. All’altezza del municipio scendo e cammino cinque minuti fino all’ufficio. Sulla strada ci sono i bidoni della differenziata, uno ogni cinquanta metri. Il verde tra i marciapiedi è stato tagliato da poco, si vedono ancora i fili d’erba secchi ai bordi.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 707,
+    "completion_tokens": 145,
+    "total_tokens": 852,
+    "cost": 0.0004713,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004713,
+     "upstream_inference_prompt_cost": 0.0002828,
+     "upstream_inference_completions_cost": 0.0001885
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0032280",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Giulia Razzi, 57 anni, donna · celibe nubile · diploma di istituto professionale per l'industria e l'artigianato · dipendente, altre attività di servizi · vive nel quartiere Porta Venezia",
+   "storia": "Sto tornando a casa dopo il lavoro, passando per il giardino pubblico vicino a casa mia. Ci sono alcune persone che fanno jogging sul viale principale, mentre altri sono seduti sulle panchine a chiacchierare. Noto che i cestini per i rifiuti sono pieni, e qualcuno ha lasciato un paio di biciclette appoggiate al muretto. Proseguo lungo il marciapiede, dove alcuni alberi sono stati potati di recente, e i rami sono stati raccolti in un mucchio accanto al cancello. Arrivo alla fermata dell’autobus, dove c’è un cartello che indica un cambiamento temporaneo del percorso per dei lavori in corso. Attendo qualche minuto, poi salgo sul bus che arriva puntuale.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 700,
+    "completion_tokens": 186,
+    "total_tokens": 886,
+    "cost": 0.00038954,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00038954,
+     "upstream_inference_prompt_cost": 0.000224,
+     "upstream_inference_completions_cost": 0.00016554
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0034927",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Tommaso Banzuela, 25 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività artistiche, sportive, di intrattenimento e divertimento · vive nel quartiere Primo Maggio",
+   "storia": "Sto tornando a casa in bici dopo l'allenamento in palestra. All'incrocio con via delle Robinie c'è un camioncino del Comune con due operai che stanno sistemando un cartello stradale piegato. Aspetto che finiscano di avvitare prima di passare. Più avanti, al parchetto tra i palazzi, hanno messo dei nuovi cestini per la raccolta differenziata, marroni per l'organico. Li vedo mentre svolto verso casa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 704,
+    "completion_tokens": 119,
+    "total_tokens": 823,
+    "cost": 0.0004363,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004363,
+     "upstream_inference_prompt_cost": 0.0002816,
+     "upstream_inference_completions_cost": 0.0001547
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0036394",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Valentina Rossi, 68 anni, donna · vedovo · laurea magistrale in scienze agrarie, forestali e ambientali · dipendente, istruzione · vive nel quartiere Brescia Antica",
+   "storia": "Sto tornando a casa dopo la lezione all'università. Passo davanti al parco pubblico dove hanno appena piantato nuovi arbusti lungo il vialetto principale. Un operaio con la casacca verde sta annaffiando le aiuole con il tubo flessibile. Sulla panchina più vicina all'ingresso, due signore parlano sedute con le buste della spesa ai piedi. Il sole del pomeriggio filtra tra le foglie dei tigli.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 692,
+    "completion_tokens": 114,
+    "total_tokens": 806,
+    "cost": 0.000425,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000425,
+     "upstream_inference_prompt_cost": 0.0002768,
+     "upstream_inference_completions_cost": 0.0001482
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0040247",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Tommaso Marchi, 42 anni, uomo · celibe nubile · liceo scientifico · dipendente, amministrazione pubblica e difesa, assicurazione sociale obbligatoria · vive nel quartiere S. Eustacchio",
+   "storia": "Martedì mattina passo davanti al municipio mentre vado in ufficio. Sulla bacheca all'esterno c'è un avviso con l'orario del mercato settimanale in piazza. Il foglio è nuovo, attaccato sopra quello vecchio che aveva i bordi sbiaditi dal sole. Proseguo lungo il marciapiede dove hanno appena sostituito i mattoni rotti. Davanti alla fermata dell'autobus incontro un collega e saliamo insieme.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 702,
+    "completion_tokens": 117,
+    "total_tokens": 819,
+    "cost": 0.0004329,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004329,
+     "upstream_inference_prompt_cost": 0.0002808,
+     "upstream_inference_completions_cost": 0.0001521
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0050592",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Pietro Hsiang, 60 anni, uomo · coniugato unito · laurea magistrale in discipline economiche, bancarie e aziendali · dipendente, trasporto e magazzinaggio · vive nel quartiere Borgo Trento",
+   "storia": "Sto tornando dal lavoro verso casa, in macchina. È sera, il traffico è ancora intenso. All’incrocio davanti al parco, il semaforo rosso si accende. Aspetto, osservo le strisce pedonali appena ridipinte, lucide sotto i lampioni. Due persone attraversano, una col cane al guinzaglio. Il verde si riaccende, riprendo la strada verso casa.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 705,
+    "completion_tokens": 102,
+    "total_tokens": 807,
+    "cost": 0.00031638,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00031638,
+     "upstream_inference_prompt_cost": 0.0002256,
+     "upstream_inference_completions_cost": 9.078e-05
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0060298",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Valeria Prahoveanu, 54 anni, donna · celibe nubile · diploma di scuola magistrale · dipendente, istruzione · vive nel quartiere S. Eufemia",
+   "storia": "Mercoledì pomeriggio esco dal lavoro e passo davanti alla biblioteca comunale. Mi fermo a controllare gli orari sul vetro perché mi servirebbe un libro per la mia classe. Vedo che il sabato mattina è aperta fino alle 12:30. Sulla porta c'è un avviso che dice che dal mese prossimo ci sarà un nuovo servizio di prenotazione online.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 688,
+    "completion_tokens": 96,
+    "total_tokens": 784,
+    "cost": 0.0002758464,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002758464,
+     "upstream_inference_prompt_cost": 0.0001770912,
+     "upstream_inference_completions_cost": 9.87552e-05
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0061381",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Monica Fanfani, 38 anni, donna · coniugato unito · licenza media · imprenditrice o libera professionista, commercio all'ingrosso e al dettaglio, riparazione di autoveicoli e motocicli · vive nel quartiere Mompiano",
+   "storia": "Sto caricando la merce nel furgone davanti al magazzino quando passa il camion della nettezza urbana. L'operatore scende e butta i sacchi del bar all'angolo nel cassonetto. Aspetto che finisca prima di aprire il cancello per uscire, così non mi blocca la strada. Sulla via principale ci sono i bidoni della differenziata nuovi, quelli marroni per l'umido.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 712,
+    "completion_tokens": 104,
+    "total_tokens": 816,
+    "cost": 0.00042,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00042,
+     "upstream_inference_prompt_cost": 0.0002848,
+     "upstream_inference_completions_cost": 0.0001352
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0073464",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Riccardo Mascagni, 41 anni, uomo · celibe nubile · diploma di istituto tecnico industriale · dipendente, attività professionali, scientifiche e tecniche · vive nel quartiere S. Polo Parco",
+   "storia": "Cammino lungo il viale principale del quartiere per tornare a casa dopo una giornata di lavoro. È già buio, ma i lampioni accesi illuminano la strada. Passo davanti alla fermata del bus, dove alcune persone aspettano, e poi oltrepasso il piccolo parco pubblico con le panchine e il cestino dei rifiuti. Davanti alla scuola elementare c’è un cartello nuovo con un avviso appeso. Non mi fermo a leggerlo, continuo diritto fino all’angolo, dove il camion della nettezza urbana sta raccogliendo i bidoni della spazzatura. Giro a sinistra e arrivo al mio palazzo.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 702,
+    "completion_tokens": 155,
+    "total_tokens": 857,
+    "cost": 0.00036259,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00036259,
+     "upstream_inference_prompt_cost": 0.00022464,
+     "upstream_inference_completions_cost": 0.00013795
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0078128",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "profilo_testo": "Giuseppe Calvetti, 89 anni, uomo · vedovo · qualifica di istituto professionale per l'industria e l'artigianato · lavoratore in proprio, attività professionali, scientifiche e tecniche · vive nel quartiere S. Eustacchio",
+   "storia": "Esco a prendere il giornale all'edicola davanti alla chiesa, come ogni mattina. Lungo il marciapiede ci sono i lavori per la nuova illuminazione pubblica. I tubi arancioni dei cantieri attraversano la strada. Passa il solito autobus delle 9:15, quasi vuoto. All'angolo trovo le solite due cassonette per la carta, quella verde è stracolma come sempre.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 708,
+    "completion_tokens": 105,
+    "total_tokens": 813,
+    "cost": 0.0002902527,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0002902527,
+     "upstream_inference_prompt_cost": 0.0001822392,
+     "upstream_inference_completions_cost": 0.0001080135
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0085276",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Caterina Emaldi, 36 anni, donna · coniugato unito · laurea magistrale in comunicazione · dipendente, sanità e assistenza sociale · vive nel quartiere Porta Venezia",
+   "storia": "Sto tornando a casa dopo il turno in ospedale e passo davanti alla biblioteca comunale. Sono le sette e un quarto, le luci sono ancora accese. Vedo qualcuno che sfoglia i giornali nella sala lettura. Sull’altro lato della strada c’è il solito camion dei rifiuti che svuota i cassonetti della carta. Attraverso e prendo la ciclabile che costeggia il parco, dove due signori stanno chiudendo il chiosco dei gelati.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 692,
+    "completion_tokens": 127,
+    "total_tokens": 819,
+    "cost": 0.0004419,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0004419,
+     "upstream_inference_prompt_cost": 0.0002768,
+     "upstream_inference_completions_cost": 0.0001651
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0092997",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "profilo_testo": "Gianni Rossi, 43 anni, uomo · coniugato unito · licenza media · lavoratore in proprio, agricoltura, silvicoltura e pesca · vive nel quartiere S. Polo Cimabue · cittadinanza straniera, Pakistan",
+   "storia": "Stamattina torno dal bosco con il pickup carico di legna. Passo davanti alla stazione ecologica del quartiere. Ci sono due cassoni per il legno usato e i rifiuti ingombranti. Un operaio sta scaricando dei vecchi mobili da un furgone. Mi fermo e aggiungo qualche ramo secco ai cassoni del legno. Poi riparto verso casa per scaricare il resto del carico.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 705,
+    "completion_tokens": 105,
+    "total_tokens": 810,
+    "cost": 0.00031905,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00031905,
+     "upstream_inference_prompt_cost": 0.0002256,
+     "upstream_inference_completions_cost": 9.345e-05
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "uid": "017029-0096771",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "profilo_testo": "Yeva Savchenko, 38 anni, donna · coniugato unito · liceo scientifico · dipendente, altre attività di servizi · vive nel quartiere Caionvico · cittadinanza straniera, Ucraina",
+   "storia": "Sto tornando a casa dal lavoro, in autobus. Scendo alla fermata vicino al parco di Caionvico e cammino lungo il marciapiede. Davanti alla scuola c’è un cartello nuovo che indica l’ingresso per il mercato del sabato. Mi fermo un attimo a leggere le informazioni, poi proseguo. Passo davanti alla biblioteca, dove alcune persone stanno entrando per la lettura serale. Arrivo a casa poco dopo, mentre il camion dei rifiuti sta facendo il giro del quartiere.",
+   "problemi": {},
+   "uso": {
+    "prompt_tokens": 697,
+    "completion_tokens": 128,
+    "total_tokens": 825,
+    "cost": 0.00033696,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00033696,
+     "upstream_inference_prompt_cost": 0.00022304,
+     "upstream_inference_completions_cost": 0.00011392
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

@@ -29,7 +29,7 @@ con l'eccezione di quello su cui si sta lavorando in quel momento.
 | `GSP_popolazioni_full_riferimento_v22.md` | cosa c'è nei file di popolazione: attributi, codifiche, limiti, come si aggiunge un comune. §2.4 per gli attributi che **non** ci sono |
 | `piano_trattamento_v2.md` | cosa esce e in quale forma: i tre regimi, cosa in un record è davvero reale, i limiti dichiarati. È il documento da mostrare a un terzo |
 | `design_animarium_v13.md` | il visualizzatore: modello dei dati, viste, classi di garanzia, regime pubblico |
-| `nota_biografia_v1.md` | i tre strati e i tre livelli di certezza A/B/C; perché il persona-prompt è un prodotto diverso dalla biografia |
+| `nota_biografia_v2.md` | i tre strati e i tre livelli di certezza A/B/C; perché il persona-prompt è un prodotto diverso dalla biografia |
 | `nota_code_puntifi10_v2.md` | l'esperimento in corso: le code, i donatori, i due modi di campionare e cosa costano |
 
 ---

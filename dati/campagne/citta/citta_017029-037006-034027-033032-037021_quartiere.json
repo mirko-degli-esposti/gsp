@@ -1,0 +1,423 @@
+{
+ "modello": "deepseek/deepseek-chat",
+ "con_via": false,
+ "domanda": "In quale citta' italiana vivi? Rispondi SOLO con il nome della citta'. Se non lo sai con ragionevole certezza, rispondi esattamente: NON SO.",
+ "momento": "2026-08-07T15:59:14",
+ "comuni": [
+  {
+   "comune": "017029",
+   "nome": "Brescia",
+   "esiti": {
+    "giusto": 2,
+    "sbagliato": 3,
+    "non_so": 7
+   },
+   "risposte": [
+    {
+     "uid": "017029-0033215",
+     "quartiere": "Casazza",
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "017029-0153911",
+     "quartiere": "Casazza",
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "017029-0151885",
+     "quartiere": "San Polino",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "017029-0190020",
+     "quartiere": "Crocifissa Di Rosa",
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "017029-0080777",
+     "quartiere": "Chiusure",
+     "risposta": "Siena",
+     "esito": "sbagliato"
+    },
+    {
+     "uid": "017029-0129801",
+     "quartiere": "S. Polo Cimabue",
+     "risposta": "Firenze.",
+     "esito": "sbagliato"
+    },
+    {
+     "uid": "017029-0015803",
+     "quartiere": "S. Polo Parco",
+     "risposta": "Venezia.",
+     "esito": "sbagliato"
+    },
+    {
+     "uid": "017029-0005924",
+     "quartiere": "S. Bartolomeo",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "017029-0025073",
+     "quartiere": "Caionvico",
+     "risposta": "Brescia.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "017029-0171194",
+     "quartiere": "Crocifissa Di Rosa",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "017029-0108416",
+     "quartiere": "Villaggio Prealpino",
+     "risposta": "Brescia.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "017029-0194758",
+     "quartiere": "Villaggio Violino",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    }
+   ]
+  },
+  {
+   "comune": "037006",
+   "nome": "Bologna",
+   "esiti": {
+    "giusto": 10,
+    "sbagliato": 1,
+    "non_so": 1
+   },
+   "risposte": [
+    {
+     "uid": "037006-0105043",
+     "quartiere": "Saffi",
+     "risposta": "Bologna.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0183806",
+     "quartiere": "Irnerio",
+     "risposta": "Bologna.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0140599",
+     "quartiere": "Bolognina",
+     "risposta": "Bologna",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0216312",
+     "quartiere": "Mazzini",
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037006-0360351",
+     "quartiere": "San Vitale",
+     "risposta": "Bologna.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0187640",
+     "quartiere": "Santa Viola",
+     "risposta": "Bologna.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0149773",
+     "quartiere": "San Ruffillo",
+     "risposta": "Bologna",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0182357",
+     "quartiere": "Marconi",
+     "risposta": "Roma.",
+     "esito": "sbagliato"
+    },
+    {
+     "uid": "037006-0274341",
+     "quartiere": "Bolognina",
+     "risposta": "Bologna.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0165863",
+     "quartiere": "Bolognina",
+     "risposta": "Bologna.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0079638",
+     "quartiere": "Saffi",
+     "risposta": "Bologna",
+     "esito": "giusto"
+    },
+    {
+     "uid": "037006-0253487",
+     "quartiere": "San Ruffillo",
+     "risposta": "Bologna",
+     "esito": "giusto"
+    }
+   ]
+  },
+  {
+   "comune": "034027",
+   "nome": "Parma",
+   "esiti": {
+    "giusto": 6,
+    "sbagliato": 2,
+    "non_so": 4
+   },
+   "risposte": [
+    {
+     "uid": "034027-0144209",
+     "quartiere": "Cittadella",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "034027-0162924",
+     "quartiere": "Golese",
+     "risposta": "Parma.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "034027-0191574",
+     "quartiere": "Lubiana",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "034027-0096924",
+     "quartiere": "Cittadella",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "034027-0023659",
+     "quartiere": "Lubiana",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "034027-0168424",
+     "quartiere": "San Leonardo",
+     "risposta": "Parma.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "034027-0097470",
+     "quartiere": "Lubiana",
+     "risposta": "Roma.",
+     "esito": "sbagliato"
+    },
+    {
+     "uid": "034027-0125525",
+     "quartiere": "Vigatto",
+     "risposta": "Parma.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "034027-0042254",
+     "quartiere": "Parma Centro",
+     "risposta": "Parma",
+     "esito": "giusto"
+    },
+    {
+     "uid": "034027-0095243",
+     "quartiere": "Parma Centro",
+     "risposta": "Parma",
+     "esito": "giusto"
+    },
+    {
+     "uid": "034027-0147425",
+     "quartiere": "Montanara",
+     "risposta": "Parma.",
+     "esito": "giusto"
+    },
+    {
+     "uid": "034027-0000573",
+     "quartiere": "Cittadella",
+     "risposta": "Padova.",
+     "esito": "sbagliato"
+    }
+   ]
+  },
+  {
+   "comune": "033032",
+   "nome": "Piacenza",
+   "esiti": {
+    "giusto": 0,
+    "sbagliato": 3,
+    "non_so": 9
+   },
+   "risposte": [
+    {
+     "uid": "033032-0022040",
+     "quartiere": "Ex Quartiere 2 (Ovest)",
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "033032-0048833",
+     "quartiere": "Ex Quartiere 3 (Sud)",
+     "risposta": "Firenze.",
+     "esito": "sbagliato"
+    },
+    {
+     "uid": "033032-0023780",
+     "quartiere": "Ex Quartiere 3 (Sud)",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "033032-0067164",
+     "quartiere": "Ex Quartiere 3 (Sud)",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "033032-0029104",
+     "quartiere": "Ex Quartiere 4 (Est)",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "033032-0087386",
+     "quartiere": "Ex Quartiere 3 (Sud)",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "033032-0044035",
+     "quartiere": "Ex Quartiere 1 (Centro storico)",
+     "risposta": "Firenze",
+     "esito": "sbagliato"
+    },
+    {
+     "uid": "033032-0008664",
+     "quartiere": "Ex Quartiere 1 (Centro storico)",
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "033032-0009054",
+     "quartiere": "Ex Quartiere 4 (Est)",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "033032-0088418",
+     "quartiere": "Ex Quartiere 3 (Sud)",
+     "risposta": "Firenze.",
+     "esito": "sbagliato"
+    },
+    {
+     "uid": "033032-0009496",
+     "quartiere": "Ex Quartiere 1 (Centro storico)",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "033032-0058620",
+     "quartiere": "Ex Quartiere 3 (Sud)",
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    }
+   ]
+  },
+  {
+   "comune": "037021",
+   "nome": "Castenaso",
+   "esiti": {
+    "giusto": 0,
+    "sbagliato": 0,
+    "non_so": 12
+   },
+   "risposte": [
+    {
+     "uid": "037021-0011709",
+     "quartiere": 0,
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0015148",
+     "quartiere": 0,
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0004361",
+     "quartiere": 0,
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0013990",
+     "quartiere": 0,
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0005871",
+     "quartiere": 0,
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0015267",
+     "quartiere": 0,
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0004954",
+     "quartiere": 0,
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0007676",
+     "quartiere": 0,
+     "risposta": "NON SO",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0013766",
+     "quartiere": 0,
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0007231",
+     "quartiere": 0,
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0005688",
+     "quartiere": 0,
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    },
+    {
+     "uid": "037021-0012781",
+     "quartiere": 0,
+     "risposta": "NON SO.",
+     "esito": "non_so"
+    }
+   ]
+  }
+ ]
+}

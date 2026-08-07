@@ -294,7 +294,10 @@ def main():
     ap = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("storie", help="il json prodotto da genera_storie")
+    ap.add_argument("storie",
+                    help="il json di genera_storie, OPPURE quello di "
+                         "campiona_agenti se si esegue la sola condizione "
+                         "C — che non usa storie")
     ap.add_argument("--neutre", default=None,
                     help="il json di genera_storie_neutre. Serve per la "
                          "condizione D; senza, D viene saltata")
@@ -309,12 +312,29 @@ def main():
     ap.add_argument("--da", type=int, default=0)
     ap.add_argument("--a", type=int, default=None)
     ap.add_argument("--pausa", type=float, default=0.4)
+    ap.add_argument("--item", default=None,
+                    help="esegui solo questi item, separati da virgola. "
+                         "Per un test su una domanda sola gli altri "
+                         "quattro sono chiamate sprecate")
     ap.add_argument("--out", default="dati/campagne")
     a = ap.parse_args()
 
     with open(a.storie, encoding="utf-8") as f:
         S = json.load(f)
-    storie = {x["uid"]: x for x in S["storie"]}
+
+    # La condizione C non usa storie: si puo' quindi passare direttamente
+    # il campione. Serve per le campagne di solo profilo, che costano poco
+    # — nessuna generazione — e permettono di alzare N dove le celle sono
+    # troppo sottili per un test.
+    solo_campione = "storie" not in S and "agenti" in S
+    if solo_campione:
+        if set(a.condizioni) - {"C"}:
+            sys.exit(f"il file passato e' un CAMPIONE, non delle storie: "
+                     f"si puo' eseguire solo la condizione C, non "
+                     f"'{a.condizioni}'")
+        storie = {}
+    else:
+        storie = {x["uid"]: x for x in S["storie"]}
 
     neutre = {}
     if a.neutre:
@@ -324,14 +344,18 @@ def main():
         sys.exit("la condizione D richiede --neutre FILE\n"
                  "  prodotto da genera_storie_neutre.py")
 
-    camp = os.path.join(os.path.dirname(a.storie),
-                        S["campione"]) if S.get("campione") else None
-    if not camp or not os.path.exists(camp):
-        sys.exit(f"campione non trovato: {camp}\n"
-                 "  serve il json di campiona_agenti accanto alle storie")
-    with open(camp, encoding="utf-8") as f:
-        agenti = json.load(f)["agenti"]
-    agenti = [x for x in agenti if x["uid"] in storie]
+    if solo_campione:
+        camp, agenti = a.storie, S["agenti"]
+    else:
+        camp = os.path.join(os.path.dirname(a.storie),
+                            S["campione"]) if S.get("campione") else None
+        if not camp or not os.path.exists(camp):
+            sys.exit(f"campione non trovato: {camp}\n"
+                     "  serve il json di campiona_agenti accanto alle storie")
+        with open(camp, encoding="utf-8") as f:
+            agenti = json.load(f)["agenti"]
+    if storie:
+        agenti = [x for x in agenti if x["uid"] in storie]
     if "D" in a.condizioni:
         # Le storie neutre sono in genere meno delle B: si tengono solo gli
         # agenti che le hanno, cosi' il confronto resta APPAIATO — stesso
@@ -349,11 +373,24 @@ def main():
     if not chiave:
         sys.exit("manca OPENROUTER_API_KEY (sta in ~/.config/gsp/env)")
 
+    global ITEMS
+    if a.item:
+        voluti = {x.strip() for x in a.item.split(",")}
+        ignoti = voluti - {i["name"] for i in ITEMS}
+        if ignoti:
+            sys.exit(f"item sconosciuti: {sorted(ignoti)}\n"
+                     f"  disponibili: {[i['name'] for i in ITEMS]}")
+        ITEMS = [i for i in ITEMS if i["name"] in voluti]
+
     cond = list(a.condizioni)
     tot = len(agenti) * len(cond)
     print(f"{len(agenti)} agenti × {len(cond)} condizioni ({', '.join(cond)}) "
           f"× {len(ITEMS)} item = {tot * len(ITEMS)} chiamate")
     print(f"modello {a.modello} · T {a.temperatura}\n")
+
+    if solo_campione:
+        print("[solo profilo] il file passato e' un campione: nessuna "
+              "storia, condizione C\n")
 
     ris, k = [], 0
     for x in agenti:
@@ -427,7 +464,10 @@ def main():
 
 def _salva(a, S, ris):
     os.makedirs(a.out, exist_ok=True)
-    n = os.path.basename(a.storie).replace("_storie.json", "")
+    n = os.path.basename(a.storie).replace("_storie.json", "").replace(
+        ".json", "")
+    if a.item:
+        n += "_" + a.item.replace(",", "-")[:24]
     f = os.path.join(a.out, f"campagna_{n}_{a.condizioni}_"
                             f"t{str(a.temperatura).replace('.','')}.json")
     with open(f, "w", encoding="utf-8") as g:

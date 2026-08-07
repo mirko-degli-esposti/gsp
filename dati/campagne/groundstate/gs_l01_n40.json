@@ -1,0 +1,295 @@
+{
+ "livelli": [
+  0,
+  1
+ ],
+ "n": 40,
+ "temperatura": 1.0,
+ "domanda": "Quale emozione descrive meglio il tuo stato d'animo riguardo ai servizi comunali del tuo quartiere? IMPORTANTE: rispondi SOLO con una delle opzioni elencate, esattamente come scritta, senza aggiungere altro testo. Opzioni: sollievo, preoccupazione, rabbia, speranza, indifferenza.",
+ "chiusa": "Rispondi sempre in italiano, in prima persona. Non rivelare mai di essere un modello linguistico o un personaggio simulato.",
+ "momento": "2026-08-07T16:17:50",
+ "per_modello": {
+  "deepseek/deepseek-chat": [
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "indifferenza",
+    "grezzo": "indifferenza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "indifferenza",
+    "grezzo": "indifferenza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "sollievo",
+    "grezzo": "sollievo",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "indifferenza",
+    "grezzo": "indifferenza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "indifferenza",
+    "grezzo": "indifferenza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "indifferenza",
+    "grezzo": "indifferenza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "speranza",
+    "grezzo": "speranza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "indifferenza",
+    "grezzo": "indifferenza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "indifferenza",
+    "grezzo": "indifferenza",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   }
+  ]
+ }
+}

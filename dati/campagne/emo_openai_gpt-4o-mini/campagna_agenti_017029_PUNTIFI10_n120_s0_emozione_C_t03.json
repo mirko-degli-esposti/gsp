@@ -1,0 +1,3870 @@
+{
+ "storie": "agenti_017029_PUNTIFI10_n120_s0.json",
+ "neutre": null,
+ "comune": "017029",
+ "variabile": "PUNTIFI10",
+ "modello": "openai/gpt-4o-mini",
+ "temperatura": 0.3,
+ "condizioni": "C",
+ "momento": "2026-08-07T16:26:54.562311",
+ "items": [
+  {
+   "name": "emozione",
+   "latente": false,
+   "response_type": "choice",
+   "choices": [
+    "sollievo",
+    "preoccupazione",
+    "rabbia",
+    "speranza",
+    "indifferenza"
+   ]
+  }
+ ],
+ "risultati": [
+  {
+   "uid": "017029-0000441",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0012370",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0024528",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0041101",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0047004",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0047106",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0051302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0054109",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0054450",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0057244",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0057329",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0057661",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0069105",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0072866",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0077413",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0077735",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0078956",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0083157",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0084842",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0087302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0095252",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0097883",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0100817",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0116908",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0117016",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0123049",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0129701",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0133892",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0140306",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0141296",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0143355",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0144282",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0152841",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0154316",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0155760",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0170443",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0170578",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0171811",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0179472",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0192292",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0007186",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0014642",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0015352",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0019713",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0020138",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0022693",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0023945",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0031034",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0043507",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0045887",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0053915",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0065941",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0074145",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0077611",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0077623",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0095300",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0096996",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0098073",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0100273",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0102570",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0103703",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0104248",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0106626",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0108776",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0112759",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0115670",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0127480",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0130589",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0150258",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0151229",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0159872",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0178325",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0179820",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0181357",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0183815",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0185787",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0187536",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0188240",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0194794",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0197341",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0005848",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0006974",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0007463",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0007782",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0009533",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0009832",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0016944",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0030898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0032280",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0034927",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0036394",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0040247",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0050592",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0060298",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0061381",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0073464",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0078128",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0085276",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0092997",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0096771",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0106090",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0108489",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0109898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0121600",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0128847",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0132107",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0134105",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0135647",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0143898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0144704",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0149607",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0164917",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0170250",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0172019",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0177035",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0177428",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0183715",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0185000",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0190017",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0191105",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  }
+ ],
+ "survey": [
+  {
+   "momento": "2026-08-07T16:23:49.340738",
+   "agent_id": "017029-0000441",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:23:50.995961",
+   "agent_id": "017029-0012370",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:23:52.135964",
+   "agent_id": "017029-0024528",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:23:53.202332",
+   "agent_id": "017029-0041101",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:23:54.425922",
+   "agent_id": "017029-0047004",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:23:58.362292",
+   "agent_id": "017029-0047106",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:23:59.374133",
+   "agent_id": "017029-0051302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:00.321714",
+   "agent_id": "017029-0054109",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:01.948480",
+   "agent_id": "017029-0054450",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:04.907581",
+   "agent_id": "017029-0057244",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:06.373849",
+   "agent_id": "017029-0057329",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:08.302965",
+   "agent_id": "017029-0057661",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:09.304258",
+   "agent_id": "017029-0069105",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:10.545583",
+   "agent_id": "017029-0072866",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:11.644726",
+   "agent_id": "017029-0077413",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:13.372646",
+   "agent_id": "017029-0077735",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:14.798334",
+   "agent_id": "017029-0078956",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:15.861414",
+   "agent_id": "017029-0083157",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:17.118310",
+   "agent_id": "017029-0084842",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:19.396384",
+   "agent_id": "017029-0087302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:21.171495",
+   "agent_id": "017029-0095252",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:22.809586",
+   "agent_id": "017029-0097883",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:23.828358",
+   "agent_id": "017029-0100817",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:25.501492",
+   "agent_id": "017029-0116908",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:26.932586",
+   "agent_id": "017029-0117016",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:28.387689",
+   "agent_id": "017029-0123049",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:29.375975",
+   "agent_id": "017029-0129701",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:34.045692",
+   "agent_id": "017029-0133892",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:35.333956",
+   "agent_id": "017029-0140306",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:36.626001",
+   "agent_id": "017029-0141296",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:37.782714",
+   "agent_id": "017029-0143355",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:39.604028",
+   "agent_id": "017029-0144282",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:40.985201",
+   "agent_id": "017029-0152841",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:42.323812",
+   "agent_id": "017029-0154316",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:44.012505",
+   "agent_id": "017029-0155760",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:45.542237",
+   "agent_id": "017029-0170443",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:46.852724",
+   "agent_id": "017029-0170578",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:48.077783",
+   "agent_id": "017029-0171811",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:50.779137",
+   "agent_id": "017029-0179472",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:51.893320",
+   "agent_id": "017029-0192292",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:53.656218",
+   "agent_id": "017029-0007186",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:55.248486",
+   "agent_id": "017029-0014642",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:56.143456",
+   "agent_id": "017029-0015352",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:57.679902",
+   "agent_id": "017029-0019713",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:58.726477",
+   "agent_id": "017029-0020138",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:24:59.727173",
+   "agent_id": "017029-0022693",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:01.233658",
+   "agent_id": "017029-0023945",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:02.574408",
+   "agent_id": "017029-0031034",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:04.109616",
+   "agent_id": "017029-0043507",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:05.189405",
+   "agent_id": "017029-0045887",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:09.706059",
+   "agent_id": "017029-0053915",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:11.071953",
+   "agent_id": "017029-0065941",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:12.084458",
+   "agent_id": "017029-0074145",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:13.432402",
+   "agent_id": "017029-0077611",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:14.433348",
+   "agent_id": "017029-0077623",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:15.515337",
+   "agent_id": "017029-0095300",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:17.076567",
+   "agent_id": "017029-0096996",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:18.578779",
+   "agent_id": "017029-0098073",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:20.218544",
+   "agent_id": "017029-0100273",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:21.871191",
+   "agent_id": "017029-0102570",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:23.228543",
+   "agent_id": "017029-0103703",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:24.243279",
+   "agent_id": "017029-0104248",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:25.421374",
+   "agent_id": "017029-0106626",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:26.793389",
+   "agent_id": "017029-0108776",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:28.402647",
+   "agent_id": "017029-0112759",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:29.601435",
+   "agent_id": "017029-0115670",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:31.049405",
+   "agent_id": "017029-0127480",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:32.366813",
+   "agent_id": "017029-0130589",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:33.776784",
+   "agent_id": "017029-0150258",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:34.739203",
+   "agent_id": "017029-0151229",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:35.823058",
+   "agent_id": "017029-0159872",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:37.672849",
+   "agent_id": "017029-0178325",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:38.737988",
+   "agent_id": "017029-0179820",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:40.159839",
+   "agent_id": "017029-0181357",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:44.122474",
+   "agent_id": "017029-0183815",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:45.858531",
+   "agent_id": "017029-0185787",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:47.452482",
+   "agent_id": "017029-0187536",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:48.764957",
+   "agent_id": "017029-0188240",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:50.082715",
+   "agent_id": "017029-0194794",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:51.481782",
+   "agent_id": "017029-0197341",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:52.940148",
+   "agent_id": "017029-0005848",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:53.871681",
+   "agent_id": "017029-0006974",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:55.325296",
+   "agent_id": "017029-0007463",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:57.305924",
+   "agent_id": "017029-0007782",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:58.830678",
+   "agent_id": "017029-0009533",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:25:59.791746",
+   "agent_id": "017029-0009832",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:00.916545",
+   "agent_id": "017029-0016944",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:01.825635",
+   "agent_id": "017029-0030898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:02.834789",
+   "agent_id": "017029-0032280",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:03.969106",
+   "agent_id": "017029-0034927",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:05.357840",
+   "agent_id": "017029-0036394",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:06.529201",
+   "agent_id": "017029-0040247",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:07.735639",
+   "agent_id": "017029-0050592",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:09.177877",
+   "agent_id": "017029-0060298",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:10.762964",
+   "agent_id": "017029-0061381",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:13.963654",
+   "agent_id": "017029-0073464",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:15.405211",
+   "agent_id": "017029-0078128",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:19.901752",
+   "agent_id": "017029-0085276",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:21.662550",
+   "agent_id": "017029-0092997",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:23.142418",
+   "agent_id": "017029-0096771",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:25.055276",
+   "agent_id": "017029-0106090",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:26.275055",
+   "agent_id": "017029-0108489",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:27.654054",
+   "agent_id": "017029-0109898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:28.712543",
+   "agent_id": "017029-0121600",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:29.861049",
+   "agent_id": "017029-0128847",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:30.868047",
+   "agent_id": "017029-0132107",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:32.270015",
+   "agent_id": "017029-0134105",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:33.740054",
+   "agent_id": "017029-0135647",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:35.745441",
+   "agent_id": "017029-0143898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:37.275208",
+   "agent_id": "017029-0144704",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:38.389706",
+   "agent_id": "017029-0149607",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:39.619702",
+   "agent_id": "017029-0164917",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:41.152488",
+   "agent_id": "017029-0170250",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:42.905179",
+   "agent_id": "017029-0172019",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:43.948156",
+   "agent_id": "017029-0177035",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:45.181732",
+   "agent_id": "017029-0177428",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:46.147925",
+   "agent_id": "017029-0183715",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:48.052604",
+   "agent_id": "017029-0185000",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:49.798968",
+   "agent_id": "017029-0190017",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:54.157397",
+   "agent_id": "017029-0191105",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  }
+ ],
+ "chiamate": [
+  {
+   "momento": "2026-08-07T16:23:49.340543",
+   "agent_id": "017029-0000441",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.149,
+   "tok_in": 186,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:23:50.995893",
+   "agent_id": "017029-0012370",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.255,
+   "tok_in": 193,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:23:52.135886",
+   "agent_id": "017029-0024528",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.74,
+   "tok_in": 198,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:23:53.202294",
+   "agent_id": "017029-0041101",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.666,
+   "tok_in": 189,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:23:54.425879",
+   "agent_id": "017029-0047004",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.823,
+   "tok_in": 187,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:23:58.362243",
+   "agent_id": "017029-0047106",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 3.536,
+   "tok_in": 198,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:23:59.374067",
+   "agent_id": "017029-0051302",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.611,
+   "tok_in": 185,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:00.321651",
+   "agent_id": "017029-0054109",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.547,
+   "tok_in": 183,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:01.948415",
+   "agent_id": "017029-0054450",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.226,
+   "tok_in": 197,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:04.907537",
+   "agent_id": "017029-0057244",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 2.559,
+   "tok_in": 189,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:06.373803",
+   "agent_id": "017029-0057329",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.066,
+   "tok_in": 186,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:08.302904",
+   "agent_id": "017029-0057661",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.529,
+   "tok_in": 189,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:09.304195",
+   "agent_id": "017029-0069105",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.601,
+   "tok_in": 205,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:10.545543",
+   "agent_id": "017029-0072866",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.841,
+   "tok_in": 208,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:11.644685",
+   "agent_id": "017029-0077413",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.699,
+   "tok_in": 185,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:13.372606",
+   "agent_id": "017029-0077735",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.328,
+   "tok_in": 196,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:14.798292",
+   "agent_id": "017029-0078956",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.025,
+   "tok_in": 189,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:15.861369",
+   "agent_id": "017029-0083157",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.663,
+   "tok_in": 189,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:17.118270",
+   "agent_id": "017029-0084842",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.857,
+   "tok_in": 204,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:19.396347",
+   "agent_id": "017029-0087302",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.878,
+   "tok_in": 198,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:21.171455",
+   "agent_id": "017029-0095252",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.374,
+   "tok_in": 173,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:22.809522",
+   "agent_id": "017029-0097883",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.238,
+   "tok_in": 191,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:23.828189",
+   "agent_id": "017029-0100817",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.618,
+   "tok_in": 210,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:25.501453",
+   "agent_id": "017029-0116908",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.273,
+   "tok_in": 194,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:26.932547",
+   "agent_id": "017029-0117016",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.031,
+   "tok_in": 178,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:28.387649",
+   "agent_id": "017029-0123049",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.055,
+   "tok_in": 192,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:29.375936",
+   "agent_id": "017029-0129701",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.588,
+   "tok_in": 180,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:34.045611",
+   "agent_id": "017029-0133892",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 4.269,
+   "tok_in": 207,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:35.333894",
+   "agent_id": "017029-0140306",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.888,
+   "tok_in": 235,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:36.625962",
+   "agent_id": "017029-0141296",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.892,
+   "tok_in": 201,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:37.782675",
+   "agent_id": "017029-0143355",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.756,
+   "tok_in": 193,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:39.603983",
+   "agent_id": "017029-0144282",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.421,
+   "tok_in": 187,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:40.985161",
+   "agent_id": "017029-0152841",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.981,
+   "tok_in": 190,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:42.323722",
+   "agent_id": "017029-0154316",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.938,
+   "tok_in": 193,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:44.012459",
+   "agent_id": "017029-0155760",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.288,
+   "tok_in": 195,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:45.542194",
+   "agent_id": "017029-0170443",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.129,
+   "tok_in": 182,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:46.852683",
+   "agent_id": "017029-0170578",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.91,
+   "tok_in": 177,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:48.077741",
+   "agent_id": "017029-0171811",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.825,
+   "tok_in": 197,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:50.779095",
+   "agent_id": "017029-0179472",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 2.301,
+   "tok_in": 192,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:51.893230",
+   "agent_id": "017029-0192292",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.714,
+   "tok_in": 182,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:53.656157",
+   "agent_id": "017029-0007186",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.361,
+   "tok_in": 191,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:55.248448",
+   "agent_id": "017029-0014642",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.192,
+   "tok_in": 182,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:56.143416",
+   "agent_id": "017029-0015352",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.495,
+   "tok_in": 188,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:57.679860",
+   "agent_id": "017029-0019713",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.136,
+   "tok_in": 206,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:24:58.726388",
+   "agent_id": "017029-0020138",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.646,
+   "tok_in": 190,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:24:59.727134",
+   "agent_id": "017029-0022693",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.6,
+   "tok_in": 182,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:01.233618",
+   "agent_id": "017029-0023945",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.106,
+   "tok_in": 188,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:02.574366",
+   "agent_id": "017029-0031034",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.94,
+   "tok_in": 195,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:04.109576",
+   "agent_id": "017029-0043507",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.135,
+   "tok_in": 190,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:05.189366",
+   "agent_id": "017029-0045887",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.679,
+   "tok_in": 214,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:09.706020",
+   "agent_id": "017029-0053915",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.187,
+   "tok_in": 178,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:11.071908",
+   "agent_id": "017029-0065941",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.966,
+   "tok_in": 211,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:12.084418",
+   "agent_id": "017029-0074145",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.612,
+   "tok_in": 182,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:13.432358",
+   "agent_id": "017029-0077611",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.947,
+   "tok_in": 196,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:14.433276",
+   "agent_id": "017029-0077623",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.601,
+   "tok_in": 204,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:15.515296",
+   "agent_id": "017029-0095300",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.682,
+   "tok_in": 202,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:17.076527",
+   "agent_id": "017029-0096996",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.161,
+   "tok_in": 178,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:18.578739",
+   "agent_id": "017029-0098073",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.102,
+   "tok_in": 194,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:20.218501",
+   "agent_id": "017029-0100273",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.239,
+   "tok_in": 183,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:21.871151",
+   "agent_id": "017029-0102570",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.252,
+   "tok_in": 201,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:23.228473",
+   "agent_id": "017029-0103703",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.955,
+   "tok_in": 191,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:24.242982",
+   "agent_id": "017029-0104248",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.614,
+   "tok_in": 180,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:25.421316",
+   "agent_id": "017029-0106626",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.778,
+   "tok_in": 200,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:26.793348",
+   "agent_id": "017029-0108776",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.972,
+   "tok_in": 198,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:28.402607",
+   "agent_id": "017029-0112759",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.209,
+   "tok_in": 181,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:29.601396",
+   "agent_id": "017029-0115670",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.799,
+   "tok_in": 213,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:31.049364",
+   "agent_id": "017029-0127480",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.048,
+   "tok_in": 184,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:32.366768",
+   "agent_id": "017029-0130589",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.917,
+   "tok_in": 184,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:33.776694",
+   "agent_id": "017029-0150258",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.01,
+   "tok_in": 180,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:34.739163",
+   "agent_id": "017029-0151229",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.562,
+   "tok_in": 216,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:35.822997",
+   "agent_id": "017029-0159872",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.684,
+   "tok_in": 188,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:37.672811",
+   "agent_id": "017029-0178325",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.45,
+   "tok_in": 196,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:38.737948",
+   "agent_id": "017029-0179820",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.665,
+   "tok_in": 195,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:40.159799",
+   "agent_id": "017029-0181357",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.022,
+   "tok_in": 200,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:44.122418",
+   "agent_id": "017029-0183815",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 3.562,
+   "tok_in": 204,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:45.858489",
+   "agent_id": "017029-0185787",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.336,
+   "tok_in": 206,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:47.452441",
+   "agent_id": "017029-0187536",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.194,
+   "tok_in": 198,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:48.764877",
+   "agent_id": "017029-0188240",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.912,
+   "tok_in": 178,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:50.082648",
+   "agent_id": "017029-0194794",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.917,
+   "tok_in": 179,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:51.481720",
+   "agent_id": "017029-0197341",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.999,
+   "tok_in": 181,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:52.940107",
+   "agent_id": "017029-0005848",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.056,
+   "tok_in": 186,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:53.871633",
+   "agent_id": "017029-0006974",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.531,
+   "tok_in": 189,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:25:55.325255",
+   "agent_id": "017029-0007463",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.053,
+   "tok_in": 252,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:57.305861",
+   "agent_id": "017029-0007782",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.58,
+   "tok_in": 176,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:58.830639",
+   "agent_id": "017029-0009533",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.124,
+   "tok_in": 197,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:25:59.791707",
+   "agent_id": "017029-0009832",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.561,
+   "tok_in": 216,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:00.916505",
+   "agent_id": "017029-0016944",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.724,
+   "tok_in": 187,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:01.825575",
+   "agent_id": "017029-0030898",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.509,
+   "tok_in": 191,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:02.834668",
+   "agent_id": "017029-0032280",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.609,
+   "tok_in": 190,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:03.969064",
+   "agent_id": "017029-0034927",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.734,
+   "tok_in": 192,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:05.357807",
+   "agent_id": "017029-0036394",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.988,
+   "tok_in": 185,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:06.529163",
+   "agent_id": "017029-0040247",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.771,
+   "tok_in": 192,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:07.735598",
+   "agent_id": "017029-0050592",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.806,
+   "tok_in": 195,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:09.177834",
+   "agent_id": "017029-0060298",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.042,
+   "tok_in": 181,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:10.762916",
+   "agent_id": "017029-0061381",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.185,
+   "tok_in": 202,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:13.963614",
+   "agent_id": "017029-0073464",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 2.8,
+   "tok_in": 190,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:15.405172",
+   "agent_id": "017029-0078128",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.041,
+   "tok_in": 200,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:19.901691",
+   "agent_id": "017029-0085276",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.166,
+   "tok_in": 184,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:21.662511",
+   "agent_id": "017029-0092997",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.36,
+   "tok_in": 200,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:23.142352",
+   "agent_id": "017029-0096771",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.08,
+   "tok_in": 192,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:25.055236",
+   "agent_id": "017029-0106090",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.51,
+   "tok_in": 193,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:26.275014",
+   "agent_id": "017029-0108489",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.82,
+   "tok_in": 185,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:27.654012",
+   "agent_id": "017029-0109898",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.979,
+   "tok_in": 179,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:28.712503",
+   "agent_id": "017029-0121600",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.658,
+   "tok_in": 178,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:29.860980",
+   "agent_id": "017029-0128847",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.748,
+   "tok_in": 191,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:30.868007",
+   "agent_id": "017029-0132107",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.607,
+   "tok_in": 197,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:32.269762",
+   "agent_id": "017029-0134105",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.002,
+   "tok_in": 184,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:33.740009",
+   "agent_id": "017029-0135647",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.07,
+   "tok_in": 178,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:35.745399",
+   "agent_id": "017029-0143898",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.605,
+   "tok_in": 205,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:37.275168",
+   "agent_id": "017029-0144704",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.13,
+   "tok_in": 188,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:38.389666",
+   "agent_id": "017029-0149607",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.714,
+   "tok_in": 197,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:39.619663",
+   "agent_id": "017029-0164917",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.83,
+   "tok_in": 198,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:41.152450",
+   "agent_id": "017029-0170250",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.133,
+   "tok_in": 196,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:42.905138",
+   "agent_id": "017029-0172019",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.352,
+   "tok_in": 204,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:43.948103",
+   "agent_id": "017029-0177035",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.643,
+   "tok_in": 188,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:45.181651",
+   "agent_id": "017029-0177428",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.833,
+   "tok_in": 187,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:46.147885",
+   "agent_id": "017029-0183715",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 0.566,
+   "tok_in": 189,
+   "tok_out": 3
+  },
+  {
+   "momento": "2026-08-07T16:26:48.052555",
+   "agent_id": "017029-0185000",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.504,
+   "tok_in": 189,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:49.798929",
+   "agent_id": "017029-0190017",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 1.346,
+   "tok_in": 203,
+   "tok_out": 4
+  },
+  {
+   "momento": "2026-08-07T16:26:54.157331",
+   "agent_id": "017029-0191105",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "openai/gpt-4o-mini",
+   "temperatura": 0.3,
+   "latenza_s": 3.958,
+   "tok_in": 185,
+   "tok_out": 4
+  }
+ ]
+}

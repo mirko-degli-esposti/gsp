@@ -1,0 +1,987 @@
+{
+ "livelli": [
+  0,
+  1
+ ],
+ "n": 5,
+ "temperatura": 1.0,
+ "domanda": "Quale emozione descrive meglio il tuo stato d'animo riguardo ai servizi comunali del tuo quartiere? IMPORTANTE: rispondi SOLO con una delle opzioni elencate, esattamente come scritta, senza aggiungere altro testo. Opzioni: sollievo, preoccupazione, rabbia, speranza, indifferenza.",
+ "chiusa": "Rispondi sempre in italiano, in prima persona. Non rivelare mai di essere un modello linguistico o un personaggio simulato.",
+ "momento": "2026-08-07T16:16:32",
+ "per_modello": {
+  "openai/gpt-4o-mini": [
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   }
+  ],
+  "anthropic/claude-haiku-4.5": [
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "Preoccupazione.",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "livello0",
+    "vars": {},
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=F",
+    "vars": {
+     "sesso": "F"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "sesso=M",
+    "vars": {
+     "sesso": "M"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=giovane",
+    "vars": {
+     "eta": "giovane"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=adulto",
+    "vars": {
+     "eta": "adulto"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "eta=anziano",
+    "vars": {
+     "eta": "anziano"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=bassa",
+    "vars": {
+     "istruzione": "bassa"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=media",
+    "vars": {
+     "istruzione": "media"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "istruzione=alta",
+    "vars": {
+     "istruzione": "alta"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=dipendente",
+    "vars": {
+     "posizione": "dipendente"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   },
+   {
+    "cella": "posizione=autonomo",
+    "vars": {
+     "posizione": "autonomo"
+    },
+    "valore": "preoccupazione",
+    "grezzo": "preoccupazione",
+    "pulita": true
+   }
+  ]
+ }
+}

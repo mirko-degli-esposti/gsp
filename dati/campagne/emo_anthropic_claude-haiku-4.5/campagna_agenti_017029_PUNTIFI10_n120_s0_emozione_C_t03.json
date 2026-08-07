@@ -1,0 +1,3870 @@
+{
+ "storie": "agenti_017029_PUNTIFI10_n120_s0.json",
+ "neutre": null,
+ "comune": "017029",
+ "variabile": "PUNTIFI10",
+ "modello": "anthropic/claude-haiku-4.5",
+ "temperatura": 0.3,
+ "condizioni": "C",
+ "momento": "2026-08-07T16:30:30.486667",
+ "items": [
+  {
+   "name": "emozione",
+   "latente": false,
+   "response_type": "choice",
+   "choices": [
+    "sollievo",
+    "preoccupazione",
+    "rabbia",
+    "speranza",
+    "indifferenza"
+   ]
+  }
+ ],
+ "risultati": [
+  {
+   "uid": "017029-0000441",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0012370",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0024528",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0041101",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0047004",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0047106",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0051302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0054109",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0054450",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0057244",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0057329",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0057661",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0069105",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0072866",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0077413",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0077735",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0078956",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0083157",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0084842",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0087302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0095252",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0097883",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0100817",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0116908",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0117016",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0123049",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0129701",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0133892",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0140306",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0141296",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0143355",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0144282",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0152841",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0154316",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0155760",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0170443",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0170578",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "rabbia"
+   }
+  },
+  {
+   "uid": "017029-0171811",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0179472",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0192292",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0007186",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0014642",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0015352",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0019713",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0020138",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0022693",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0023945",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0031034",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0043507",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0045887",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0053915",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0065941",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0074145",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0077611",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0077623",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0095300",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0096996",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0098073",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0100273",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0102570",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0103703",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0104248",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0106626",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0108776",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0112759",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0115670",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0127480",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0130589",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0150258",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0151229",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0159872",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0178325",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0179820",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0181357",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0183815",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0185787",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0187536",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0188240",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0194794",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0197341",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0005848",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0006974",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0007463",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0007782",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0009533",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0009832",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0016944",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0030898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0032280",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0034927",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0036394",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0040247",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0050592",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0060298",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0061381",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0073464",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0078128",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0085276",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0092997",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0096771",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0106090",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0108489",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0109898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0121600",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0128847",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0132107",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0134105",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "rabbia"
+   }
+  },
+  {
+   "uid": "017029-0135647",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0143898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0144704",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0149607",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0164917",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0170250",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0172019",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0177035",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0177428",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0183715",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0185000",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0190017",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  },
+  {
+   "uid": "017029-0191105",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "risposte": {
+    "emozione": "preoccupazione"
+   }
+  }
+ ],
+ "survey": [
+  {
+   "momento": "2026-08-07T16:26:55.796146",
+   "agent_id": "017029-0000441",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:57.474718",
+   "agent_id": "017029-0012370",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:26:59.232978",
+   "agent_id": "017029-0024528",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:00.906997",
+   "agent_id": "017029-0041101",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:02.222667",
+   "agent_id": "017029-0047004",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:04.001263",
+   "agent_id": "017029-0047106",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:05.332384",
+   "agent_id": "017029-0051302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:06.890633",
+   "agent_id": "017029-0054109",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:08.430993",
+   "agent_id": "017029-0054450",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:10.349760",
+   "agent_id": "017029-0057244",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:11.717653",
+   "agent_id": "017029-0057329",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:13.470868",
+   "agent_id": "017029-0057661",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:15.049519",
+   "agent_id": "017029-0069105",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:16.393519",
+   "agent_id": "017029-0072866",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:19.417373",
+   "agent_id": "017029-0077413",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:21.204382",
+   "agent_id": "017029-0077735",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:22.784811",
+   "agent_id": "017029-0078956",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:24.560969",
+   "agent_id": "017029-0083157",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:25.928544",
+   "agent_id": "017029-0084842",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:30.738735",
+   "agent_id": "017029-0087302",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:32.352324",
+   "agent_id": "017029-0095252",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:34.264846",
+   "agent_id": "017029-0097883",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:35.578403",
+   "agent_id": "017029-0100817",
+   "gruppo": "LOW",
+   "latente": 1,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:37.310611",
+   "agent_id": "017029-0116908",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:39.079273",
+   "agent_id": "017029-0117016",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:40.588412",
+   "agent_id": "017029-0123049",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:41.988947",
+   "agent_id": "017029-0129701",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:43.420164",
+   "agent_id": "017029-0133892",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:44.958290",
+   "agent_id": "017029-0140306",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:46.203164",
+   "agent_id": "017029-0141296",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:47.673801",
+   "agent_id": "017029-0143355",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:49.331675",
+   "agent_id": "017029-0144282",
+   "gruppo": "LOW",
+   "latente": 2,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:50.980395",
+   "agent_id": "017029-0152841",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:52.293219",
+   "agent_id": "017029-0154316",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:54.536732",
+   "agent_id": "017029-0155760",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:56.093213",
+   "agent_id": "017029-0170443",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:57.656003",
+   "agent_id": "017029-0170578",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "rabbia",
+   "grezzo": "rabbia",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:27:59.365699",
+   "agent_id": "017029-0171811",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:01.010679",
+   "agent_id": "017029-0179472",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:05.486537",
+   "agent_id": "017029-0192292",
+   "gruppo": "LOW",
+   "latente": 0,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:07.339169",
+   "agent_id": "017029-0007186",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:09.182231",
+   "agent_id": "017029-0014642",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:11.110339",
+   "agent_id": "017029-0015352",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:12.720366",
+   "agent_id": "017029-0019713",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:15.235525",
+   "agent_id": "017029-0020138",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:16.672708",
+   "agent_id": "017029-0022693",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:18.450915",
+   "agent_id": "017029-0023945",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:20.206165",
+   "agent_id": "017029-0031034",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:22.593887",
+   "agent_id": "017029-0043507",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:24.664848",
+   "agent_id": "017029-0045887",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:26.166808",
+   "agent_id": "017029-0053915",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:27.752766",
+   "agent_id": "017029-0065941",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:29.597434",
+   "agent_id": "017029-0074145",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:31.366548",
+   "agent_id": "017029-0077611",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:33.117756",
+   "agent_id": "017029-0077623",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:34.325361",
+   "agent_id": "017029-0095300",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:35.779037",
+   "agent_id": "017029-0096996",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:40.980629",
+   "agent_id": "017029-0098073",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:42.723765",
+   "agent_id": "017029-0100273",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:44.238654",
+   "agent_id": "017029-0102570",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:45.756340",
+   "agent_id": "017029-0103703",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:47.524755",
+   "agent_id": "017029-0104248",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:49.340517",
+   "agent_id": "017029-0106626",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:50.971151",
+   "agent_id": "017029-0108776",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:52.521507",
+   "agent_id": "017029-0112759",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:54.215448",
+   "agent_id": "017029-0115670",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:55.911569",
+   "agent_id": "017029-0127480",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:57.419559",
+   "agent_id": "017029-0130589",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:28:58.703576",
+   "agent_id": "017029-0150258",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:00.380171",
+   "agent_id": "017029-0151229",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:02.305678",
+   "agent_id": "017029-0159872",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:03.953828",
+   "agent_id": "017029-0178325",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:06.544668",
+   "agent_id": "017029-0179820",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:09.046439",
+   "agent_id": "017029-0181357",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:10.375958",
+   "agent_id": "017029-0183815",
+   "gruppo": "MED",
+   "latente": 5,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:15.010743",
+   "agent_id": "017029-0185787",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:16.568465",
+   "agent_id": "017029-0187536",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:18.362438",
+   "agent_id": "017029-0188240",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:19.794930",
+   "agent_id": "017029-0194794",
+   "gruppo": "MED",
+   "latente": 4,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:21.455902",
+   "agent_id": "017029-0197341",
+   "gruppo": "MED",
+   "latente": 6,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:23.152467",
+   "agent_id": "017029-0005848",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:25.082383",
+   "agent_id": "017029-0006974",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:26.866328",
+   "agent_id": "017029-0007463",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:28.400694",
+   "agent_id": "017029-0007782",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:29.927575",
+   "agent_id": "017029-0009533",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:31.271352",
+   "agent_id": "017029-0009832",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:32.778727",
+   "agent_id": "017029-0016944",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:34.149687",
+   "agent_id": "017029-0030898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:35.787186",
+   "agent_id": "017029-0032280",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:37.383021",
+   "agent_id": "017029-0034927",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:39.126578",
+   "agent_id": "017029-0036394",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:40.710213",
+   "agent_id": "017029-0040247",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:44.024759",
+   "agent_id": "017029-0050592",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:45.567391",
+   "agent_id": "017029-0060298",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:46.875867",
+   "agent_id": "017029-0061381",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:51.491150",
+   "agent_id": "017029-0073464",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:52.716677",
+   "agent_id": "017029-0078128",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:54.160176",
+   "agent_id": "017029-0085276",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:55.749114",
+   "agent_id": "017029-0092997",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:58.019955",
+   "agent_id": "017029-0096771",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:29:59.351841",
+   "agent_id": "017029-0106090",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:00.786069",
+   "agent_id": "017029-0108489",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:02.267255",
+   "agent_id": "017029-0109898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:03.702722",
+   "agent_id": "017029-0121600",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:05.763694",
+   "agent_id": "017029-0128847",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:07.071960",
+   "agent_id": "017029-0132107",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:08.344025",
+   "agent_id": "017029-0134105",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "rabbia",
+   "grezzo": "rabbia",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:09.708635",
+   "agent_id": "017029-0135647",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:11.100809",
+   "agent_id": "017029-0143898",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:12.766924",
+   "agent_id": "017029-0144704",
+   "gruppo": "HIGH",
+   "latente": 9,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:14.331050",
+   "agent_id": "017029-0149607",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:15.582362",
+   "agent_id": "017029-0164917",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:17.165109",
+   "agent_id": "017029-0170250",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:18.508473",
+   "agent_id": "017029-0172019",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:19.993242",
+   "agent_id": "017029-0177035",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:21.241704",
+   "agent_id": "017029-0177428",
+   "gruppo": "HIGH",
+   "latente": 10,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:25.489086",
+   "agent_id": "017029-0183715",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:27.153093",
+   "agent_id": "017029-0185000",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:28.694323",
+   "agent_id": "017029-0190017",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  },
+  {
+   "momento": "2026-08-07T16:30:30.082502",
+   "agent_id": "017029-0191105",
+   "gruppo": "HIGH",
+   "latente": 8,
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "item": "emozione",
+   "valore": "preoccupazione",
+   "grezzo": "preoccupazione",
+   "pulito": true
+  }
+ ],
+ "chiamate": [
+  {
+   "momento": "2026-08-07T16:26:55.796009",
+   "agent_id": "017029-0000441",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.19,
+   "tok_in": 218,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:26:57.474672",
+   "agent_id": "017029-0012370",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.278,
+   "tok_in": 223,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:26:59.232880",
+   "agent_id": "017029-0024528",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.358,
+   "tok_in": 229,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:00.906952",
+   "agent_id": "017029-0041101",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.274,
+   "tok_in": 220,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:02.222580",
+   "agent_id": "017029-0047004",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.915,
+   "tok_in": 218,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:04.001223",
+   "agent_id": "017029-0047106",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.378,
+   "tok_in": 232,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:05.332344",
+   "agent_id": "017029-0051302",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.931,
+   "tok_in": 214,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:06.890570",
+   "agent_id": "017029-0054109",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.158,
+   "tok_in": 212,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:08.430950",
+   "agent_id": "017029-0054450",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.139,
+   "tok_in": 229,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:10.349696",
+   "agent_id": "017029-0057244",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.518,
+   "tok_in": 223,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:11.717592",
+   "agent_id": "017029-0057329",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.967,
+   "tok_in": 217,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:13.470829",
+   "agent_id": "017029-0057661",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.353,
+   "tok_in": 222,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:15.049345",
+   "agent_id": "017029-0069105",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.178,
+   "tok_in": 240,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:16.393476",
+   "agent_id": "017029-0072866",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.943,
+   "tok_in": 244,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:19.417302",
+   "agent_id": "017029-0077413",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 2.624,
+   "tok_in": 216,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:21.204338",
+   "agent_id": "017029-0077735",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.387,
+   "tok_in": 231,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:22.784763",
+   "agent_id": "017029-0078956",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.18,
+   "tok_in": 223,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:24.560904",
+   "agent_id": "017029-0083157",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.376,
+   "tok_in": 220,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:25.928488",
+   "agent_id": "017029-0084842",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.967,
+   "tok_in": 234,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:30.738694",
+   "agent_id": "017029-0087302",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.479,
+   "tok_in": 229,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:32.352262",
+   "agent_id": "017029-0095252",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.211,
+   "tok_in": 202,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:34.264799",
+   "agent_id": "017029-0097883",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.512,
+   "tok_in": 225,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:35.578361",
+   "agent_id": "017029-0100817",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.913,
+   "tok_in": 246,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:37.310571",
+   "agent_id": "017029-0116908",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.332,
+   "tok_in": 228,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:39.079233",
+   "agent_id": "017029-0117016",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.368,
+   "tok_in": 208,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:40.588349",
+   "agent_id": "017029-0123049",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.109,
+   "tok_in": 223,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:41.988907",
+   "agent_id": "017029-0129701",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.0,
+   "tok_in": 208,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:43.420076",
+   "agent_id": "017029-0133892",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.031,
+   "tok_in": 237,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:44.958248",
+   "agent_id": "017029-0140306",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.138,
+   "tok_in": 278,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:46.203124",
+   "agent_id": "017029-0141296",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.845,
+   "tok_in": 232,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:47.673741",
+   "agent_id": "017029-0143355",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.07,
+   "tok_in": 224,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:49.331633",
+   "agent_id": "017029-0144282",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.258,
+   "tok_in": 216,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:50.980335",
+   "agent_id": "017029-0152841",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.248,
+   "tok_in": 224,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:52.293162",
+   "agent_id": "017029-0154316",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.913,
+   "tok_in": 227,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:54.536614",
+   "agent_id": "017029-0155760",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.843,
+   "tok_in": 230,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:56.093149",
+   "agent_id": "017029-0170443",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.156,
+   "tok_in": 215,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:27:57.655962",
+   "agent_id": "017029-0170578",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.163,
+   "tok_in": 206,
+   "tok_out": 5
+  },
+  {
+   "momento": "2026-08-07T16:27:59.365658",
+   "agent_id": "017029-0171811",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.309,
+   "tok_in": 237,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:01.010638",
+   "agent_id": "017029-0179472",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.245,
+   "tok_in": 231,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:05.486494",
+   "agent_id": "017029-0192292",
+   "gruppo": "LOW",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.145,
+   "tok_in": 213,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:07.339102",
+   "agent_id": "017029-0007186",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.451,
+   "tok_in": 223,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:09.182164",
+   "agent_id": "017029-0014642",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.443,
+   "tok_in": 214,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:11.110299",
+   "agent_id": "017029-0015352",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.528,
+   "tok_in": 220,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:12.720303",
+   "agent_id": "017029-0019713",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.21,
+   "tok_in": 243,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:15.235453",
+   "agent_id": "017029-0020138",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 2.115,
+   "tok_in": 222,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:16.672667",
+   "agent_id": "017029-0022693",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.037,
+   "tok_in": 214,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:18.450875",
+   "agent_id": "017029-0023945",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.378,
+   "tok_in": 221,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:20.206097",
+   "agent_id": "017029-0031034",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.355,
+   "tok_in": 230,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:22.593847",
+   "agent_id": "017029-0043507",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.987,
+   "tok_in": 225,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:24.664788",
+   "agent_id": "017029-0045887",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.671,
+   "tok_in": 252,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:26.166741",
+   "agent_id": "017029-0053915",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.102,
+   "tok_in": 206,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:27.752718",
+   "agent_id": "017029-0065941",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.186,
+   "tok_in": 252,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:29.597367",
+   "agent_id": "017029-0074145",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.444,
+   "tok_in": 214,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:31.366482",
+   "agent_id": "017029-0077611",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.369,
+   "tok_in": 231,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:33.117695",
+   "agent_id": "017029-0077623",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.351,
+   "tok_in": 242,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:34.325320",
+   "agent_id": "017029-0095300",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.807,
+   "tok_in": 236,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:35.778998",
+   "agent_id": "017029-0096996",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.053,
+   "tok_in": 205,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:40.980540",
+   "agent_id": "017029-0098073",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 4.801,
+   "tok_in": 230,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:42.723700",
+   "agent_id": "017029-0100273",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.342,
+   "tok_in": 217,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:44.238613",
+   "agent_id": "017029-0102570",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.115,
+   "tok_in": 237,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:45.756254",
+   "agent_id": "017029-0103703",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.116,
+   "tok_in": 224,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:47.524690",
+   "agent_id": "017029-0104248",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.368,
+   "tok_in": 209,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:49.340445",
+   "agent_id": "017029-0106626",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.415,
+   "tok_in": 233,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:50.971103",
+   "agent_id": "017029-0108776",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.23,
+   "tok_in": 232,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:52.521463",
+   "agent_id": "017029-0112759",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.15,
+   "tok_in": 210,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:54.215398",
+   "agent_id": "017029-0115670",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.293,
+   "tok_in": 250,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:55.911527",
+   "agent_id": "017029-0127480",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.296,
+   "tok_in": 219,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:57.419511",
+   "agent_id": "017029-0130589",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.107,
+   "tok_in": 218,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:28:58.703507",
+   "agent_id": "017029-0150258",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.884,
+   "tok_in": 210,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:00.380131",
+   "agent_id": "017029-0151229",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.276,
+   "tok_in": 255,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:02.305611",
+   "agent_id": "017029-0159872",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.525,
+   "tok_in": 220,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:03.953762",
+   "agent_id": "017029-0178325",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.248,
+   "tok_in": 229,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:06.544628",
+   "agent_id": "017029-0179820",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 2.19,
+   "tok_in": 227,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:09.046258",
+   "agent_id": "017029-0181357",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 2.101,
+   "tok_in": 234,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:10.375893",
+   "agent_id": "017029-0183815",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.929,
+   "tok_in": 245,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:15.010676",
+   "agent_id": "017029-0185787",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 4.234,
+   "tok_in": 239,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:16.568399",
+   "agent_id": "017029-0187536",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.157,
+   "tok_in": 234,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:18.362373",
+   "agent_id": "017029-0188240",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.393,
+   "tok_in": 210,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:19.794866",
+   "agent_id": "017029-0194794",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.032,
+   "tok_in": 210,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:21.455838",
+   "agent_id": "017029-0197341",
+   "gruppo": "MED",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.26,
+   "tok_in": 208,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:23.152403",
+   "agent_id": "017029-0005848",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.293,
+   "tok_in": 216,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:25.082319",
+   "agent_id": "017029-0006974",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.529,
+   "tok_in": 219,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:26.866265",
+   "agent_id": "017029-0007463",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.383,
+   "tok_in": 299,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:28.400653",
+   "agent_id": "017029-0007782",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.134,
+   "tok_in": 206,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:29.927484",
+   "agent_id": "017029-0009533",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.126,
+   "tok_in": 234,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:31.271288",
+   "agent_id": "017029-0009832",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.943,
+   "tok_in": 252,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:32.778660",
+   "agent_id": "017029-0016944",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.107,
+   "tok_in": 219,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:34.149626",
+   "agent_id": "017029-0030898",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.97,
+   "tok_in": 226,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:35.787146",
+   "agent_id": "017029-0032280",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.237,
+   "tok_in": 224,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:37.382956",
+   "agent_id": "017029-0034927",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.195,
+   "tok_in": 226,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:39.126512",
+   "agent_id": "017029-0036394",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.343,
+   "tok_in": 215,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:40.710169",
+   "agent_id": "017029-0040247",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.183,
+   "tok_in": 225,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:44.024714",
+   "agent_id": "017029-0050592",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 2.914,
+   "tok_in": 223,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:45.567329",
+   "agent_id": "017029-0060298",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.142,
+   "tok_in": 212,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:46.875802",
+   "agent_id": "017029-0061381",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.908,
+   "tok_in": 234,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:51.491084",
+   "agent_id": "017029-0073464",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.285,
+   "tok_in": 225,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:52.716596",
+   "agent_id": "017029-0078128",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.825,
+   "tok_in": 231,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:54.160132",
+   "agent_id": "017029-0085276",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.043,
+   "tok_in": 214,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:55.749045",
+   "agent_id": "017029-0092997",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.188,
+   "tok_in": 232,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:58.019888",
+   "agent_id": "017029-0096771",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.87,
+   "tok_in": 226,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:29:59.351770",
+   "agent_id": "017029-0106090",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.926,
+   "tok_in": 219,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:00.786002",
+   "agent_id": "017029-0108489",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.034,
+   "tok_in": 219,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:02.267189",
+   "agent_id": "017029-0109898",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.081,
+   "tok_in": 210,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:03.702659",
+   "agent_id": "017029-0121600",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.035,
+   "tok_in": 205,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:05.763628",
+   "agent_id": "017029-0128847",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.66,
+   "tok_in": 225,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:07.071895",
+   "agent_id": "017029-0132107",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.908,
+   "tok_in": 227,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:08.343984",
+   "agent_id": "017029-0134105",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.872,
+   "tok_in": 214,
+   "tok_out": 5
+  },
+  {
+   "momento": "2026-08-07T16:30:09.708570",
+   "agent_id": "017029-0135647",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.964,
+   "tok_in": 206,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:11.100743",
+   "agent_id": "017029-0143898",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.991,
+   "tok_in": 239,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:12.766859",
+   "agent_id": "017029-0144704",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.266,
+   "tok_in": 219,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:14.330986",
+   "agent_id": "017029-0149607",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.163,
+   "tok_in": 232,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:15.582320",
+   "agent_id": "017029-0164917",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.851,
+   "tok_in": 234,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:17.165039",
+   "agent_id": "017029-0170250",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.182,
+   "tok_in": 228,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:18.508407",
+   "agent_id": "017029-0172019",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.943,
+   "tok_in": 239,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:19.993201",
+   "agent_id": "017029-0177035",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.084,
+   "tok_in": 217,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:21.241664",
+   "agent_id": "017029-0177428",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.848,
+   "tok_in": 221,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:25.489043",
+   "agent_id": "017029-0183715",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 3.847,
+   "tok_in": 215,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:27.153031",
+   "agent_id": "017029-0185000",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.264,
+   "tok_in": 220,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:28.694250",
+   "agent_id": "017029-0190017",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 1.141,
+   "tok_in": 240,
+   "tok_out": 7
+  },
+  {
+   "momento": "2026-08-07T16:30:30.082435",
+   "agent_id": "017029-0191105",
+   "gruppo": "HIGH",
+   "condizione": "C",
+   "modello": "anthropic/claude-haiku-4.5",
+   "temperatura": 0.3,
+   "latenza_s": 0.988,
+   "tok_in": 215,
+   "tok_out": 7
+  }
+ ]
+}

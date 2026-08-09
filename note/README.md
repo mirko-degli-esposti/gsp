@@ -1,6 +1,6 @@
 # Le note — cosa c'è e quando serve
 
-**Aggiornato il 6 agosto 2026**
+**Aggiornato il 9 agosto 2026**
 
 Serve a due cose: sapere quale documento contiene cosa senza aprirli
 tutti, e decidere cosa caricare nella memoria di progetto.
@@ -39,9 +39,10 @@ con l'eccezione di quello su cui si sta lavorando in quel momento.
 | documento | quando serve |
 |---|---|
 | `nota_settore_economico_v3.md` | rifare o discutere la scelta di dove sta un attributo; contiene la misura che ha deciso `gsp.lavoro` e i due errori di lettura che l'hanno preceduta |
+| `nota_nucleo_familiare_v2.md` | progettare l'anello 4 o discutere la struttura familiare; contiene le cinque misure su Parma, la decisione (ruolo a valle, ampiezza vincolata per sezione), due previsioni falsificate e la refutazione del codebook della fornitura |
 | `nota_segnale_compositivo_v3.md` | lavorare sulla varianza compositiva UE/non-UE fra zone, o sul condizionamento geografico del paese |
 | `nota_combinazioni_impossibili_v2.md` | toccare `cs_build`, le esclusioni α=0, o la riducibilità del Gibbs |
-| `paper_criterio_scheletro_v1.md` | scrivere l'articolo sul criterio; contiene la nota bibliografica su cosa cercare |
+| `paper_criterio_scheletro_v1.md` | scrivere l'articolo sul criterio; contiene la nota bibliografica su cosa cercare. Terzo caso applicativo in `nota_nucleo_familiare_v1_1.md`, di forma diversa: decide **quale scala geografica** serve, non se una variabile stia nel joint |
 | `eusilc_exploration_v1.md`, `v2.md` | valutare EU-SILC come fonte per reddito e condizioni di vita |
 
 ---
@@ -76,6 +77,8 @@ scelta sta nella versione in cui è stata presa.
 
 `scripts/riordina_note.py` tiene l'ultima versione di ogni famiglia e
 archivia le altre.
+
+In misure/ stanno le uscite grezze degli script diagnostici, citate per nome dalle note che ne riportano i numeri. Non si caricano mai: servono a verificare una cifra quando serve.
 
 ---
 

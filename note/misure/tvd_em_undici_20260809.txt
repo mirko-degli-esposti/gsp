@@ -1,0 +1,362 @@
+
+========================================================================
+Brescia (017029)
+========================================================================
+
+--- Brescia · gruppo ITL: 160.456 individui. 33 zone. 1821 sezioni ---
+   composizione comunale: italiano_nativo 0.890, italiano_rientrato 0.017, naturalizzato_g2 0.031, naturalizzato_immigrato 0.062
+   M-EMa comune->zona     oss 0.0332  pav 0.0047 (p95 0.0053)  NETTO +0.0285
+   M-EMb zona->sezione    oss 0.0639  pav 0.0276 (p95 0.0282)  NETTO +0.0363
+      sezioni misurate 1216 · massa esclusa da MIN_N=30: 4.7%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>121)          oss 0.0574  pav 0.0210  NETTO +0.0364
+         medie (60-121)         oss 0.0710  pav 0.0348  NETTO +0.0361
+         piccole (<=60)         oss 0.0857  pav 0.0497  NETTO +0.0360
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.27   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Brescia · gruppo FRG: 37.254 individui. 33 zone. 1821 sezioni ---
+   composizione comunale: straniero_g2 0.166, straniero_immigrato 0.834
+   M-EMa comune->zona     oss 0.0186  pav 0.0082 (p95 0.0103)  NETTO +0.0104
+   M-EMb zona->sezione    oss 0.0439  pav 0.0336 (p95 0.0357)  NETTO +0.0103
+      sezioni misurate 389 · massa esclusa da MIN_N=30: 26.1%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>71)           oss 0.0369  pav 0.0263  NETTO +0.0106
+         medie (43-71)          oss 0.0456  pav 0.0397  NETTO +0.0059
+         piccole (<=43)         oss 0.0642  pav 0.0489  NETTO +0.0153
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 0.99   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+========================================================================
+Piacenza (033032)
+========================================================================
+
+--- Piacenza · gruppo ITL: 83.437 individui. 4 zone. 1008 sezioni ---
+   composizione comunale: italiano_nativo 0.888, italiano_rientrato 0.016, naturalizzato_g2 0.029, naturalizzato_immigrato 0.067
+   M-EMa comune->zona     oss 0.0251  pav 0.0023 (p95 0.0033)  NETTO +0.0227
+   M-EMb zona->sezione    oss 0.0717  pav 0.0297 (p95 0.0306)  NETTO +0.0420
+      sezioni misurate 695 · massa esclusa da MIN_N=30: 3.7%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>120)          oss 0.0683  pav 0.0230  NETTO +0.0453
+         medie (65-120)         oss 0.0765  pav 0.0354  NETTO +0.0411
+         piccole (<=65)         oss 0.0780  pav 0.0488  NETTO +0.0292
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.85   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Piacenza · gruppo FRG: 19.394 individui. 4 zone. 1008 sezioni ---
+   composizione comunale: straniero_g2 0.168, straniero_immigrato 0.832
+   M-EMa comune->zona     oss 0.0192  pav 0.0039 (p95 0.0065)  NETTO +0.0153
+   M-EMb zona->sezione    oss 0.0463  pav 0.0353 (p95 0.0381)  NETTO +0.0110
+      sezioni misurate 197 · massa esclusa da MIN_N=30: 30.3%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>71)           oss 0.0377  pav 0.0274  NETTO +0.0102
+         medie (44-71)          oss 0.0522  pav 0.0407  NETTO +0.0115
+         piccole (<=44)         oss 0.0639  pav 0.0513  NETTO +0.0127
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 0.72   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+========================================================================
+Parma (034027)
+========================================================================
+
+--- Parma · gruppo ITL: 163.548 individui. 13 zone. 1356 sezioni ---
+   composizione comunale: italiano_nativo 0.922, italiano_rientrato 0.019, naturalizzato_g2 0.016, naturalizzato_immigrato 0.043
+   M-EMa comune->zona     oss 0.0145  pav 0.0026 (p95 0.0032)  NETTO +0.0119
+   M-EMb zona->sezione    oss 0.0413  pav 0.0213 (p95 0.0219)  NETTO +0.0200
+      sezioni misurate 997 · massa esclusa da MIN_N=30: 2.5%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>160)          oss 0.0367  pav 0.0160  NETTO +0.0207
+         medie (80-160)         oss 0.0466  pav 0.0270  NETTO +0.0196
+         piccole (<=80)         oss 0.0564  pav 0.0401  NETTO +0.0163
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.67   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Parma · gruppo FRG: 34.071 individui. 13 zone. 1356 sezioni ---
+   composizione comunale: straniero_g2 0.173, straniero_immigrato 0.827
+   M-EMa comune->zona     oss 0.0235  pav 0.0054 (p95 0.0076)  NETTO +0.0180
+   M-EMb zona->sezione    oss 0.0584  pav 0.0352 (p95 0.0378)  NETTO +0.0232
+      sezioni misurate 378 · massa esclusa da MIN_N=30: 24.2%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>67)           oss 0.0561  pav 0.0275  NETTO +0.0285
+         medie (42-67)          oss 0.0549  pav 0.0411  NETTO +0.0138
+         piccole (<=42)         oss 0.0711  pav 0.0509  NETTO +0.0202
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.29   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+========================================================================
+Reggio nell'Emilia (035033)
+========================================================================
+
+--- Reggio nell'Emilia · gruppo ITL: 142.174 individui. 4 zone. 1812 sezioni ---
+   composizione comunale: italiano_nativo 0.913, italiano_rientrato 0.015, naturalizzato_g2 0.022, naturalizzato_immigrato 0.050
+   M-EMa comune->zona     oss 0.0121  pav 0.0016 (p95 0.0022)  NETTO +0.0105
+   M-EMb zona->sezione    oss 0.0558  pav 0.0246 (p95 0.0252)  NETTO +0.0312
+      sezioni misurate 1024 · massa esclusa da MIN_N=30: 5.6%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>121)          oss 0.0495  pav 0.0181  NETTO +0.0314
+         medie (61-121)         oss 0.0624  pav 0.0327  NETTO +0.0297
+         piccole (<=61)         oss 0.0798  pav 0.0469  NETTO +0.0329
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 2.98   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Reggio nell'Emilia · gruppo FRG: 27.617 individui. 4 zone. 1812 sezioni ---
+   composizione comunale: straniero_g2 0.163, straniero_immigrato 0.837
+   M-EMa comune->zona     oss 0.0121  pav 0.0034 (p95 0.0060)  NETTO +0.0087
+   M-EMb zona->sezione    oss 0.0492  pav 0.0322 (p95 0.0345)  NETTO +0.0170
+      sezioni misurate 252 · massa esclusa da MIN_N=30: 32.0%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>71)           oss 0.0412  pav 0.0246  NETTO +0.0167
+         medie (42-71)          oss 0.0556  pav 0.0391  NETTO +0.0165
+         piccole (<=42)         oss 0.0675  pav 0.0488  NETTO +0.0187
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.94   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+========================================================================
+Modena (036023)
+========================================================================
+
+--- Modena · gruppo ITL: 156.132 individui. 4 zone. 2185 sezioni ---
+   composizione comunale: italiano_nativo 0.921, italiano_rientrato 0.017, naturalizzato_g2 0.020, naturalizzato_immigrato 0.043
+   M-EMa comune->zona     oss 0.0146  pav 0.0014 (p95 0.0021)  NETTO +0.0132
+   M-EMb zona->sezione    oss 0.0516  pav 0.0262 (p95 0.0269)  NETTO +0.0255
+      sezioni misurate 1319 · massa esclusa da MIN_N=30: 6.4%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>117)          oss 0.0467  pav 0.0200  NETTO +0.0267
+         medie (58-117)         oss 0.0573  pav 0.0316  NETTO +0.0257
+         piccole (<=58)         oss 0.0640  pav 0.0451  NETTO +0.0189
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.93   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Modena · gruppo FRG: 28.415 individui. 4 zone. 2185 sezioni ---
+   composizione comunale: straniero_g2 0.162, straniero_immigrato 0.838
+   M-EMa comune->zona     oss 0.0125  pav 0.0033 (p95 0.0052)  NETTO +0.0092
+   M-EMb zona->sezione    oss 0.0535  pav 0.0352 (p95 0.0378)  NETTO +0.0183
+      sezioni misurate 271 · massa esclusa da MIN_N=30: 38.4%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>58)           oss 0.0475  pav 0.0272  NETTO +0.0203
+         medie (40-58)          oss 0.0590  pav 0.0427  NETTO +0.0163
+         piccole (<=40)         oss 0.0644  pav 0.0494  NETTO +0.0149
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.98   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+========================================================================
+Bologna (037006)
+========================================================================
+
+--- Bologna · gruppo ITL: 330.743 individui. 18 zone. 2223 sezioni ---
+   composizione comunale: italiano_nativo 0.927, italiano_rientrato 0.019, naturalizzato_g2 0.016, naturalizzato_immigrato 0.037
+   M-EMa comune->zona     oss 0.0167  pav 0.0021 (p95 0.0024)  NETTO +0.0146
+   M-EMb zona->sezione    oss 0.0407  pav 0.0190 (p95 0.0194)  NETTO +0.0217
+      sezioni misurate 1691 · massa esclusa da MIN_N=30: 1.7%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>225)          oss 0.0387  pav 0.0149  NETTO +0.0238
+         medie (106-225)        oss 0.0416  pav 0.0217  NETTO +0.0199
+         piccole (<=106)        oss 0.0492  pav 0.0338  NETTO +0.0154
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.49   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Bologna · gruppo FRG: 58.735 individui. 18 zone. 2223 sezioni ---
+   composizione comunale: straniero_g2 0.143, straniero_immigrato 0.857
+   M-EMa comune->zona     oss 0.0253  pav 0.0048 (p95 0.0063)  NETTO +0.0205
+   M-EMb zona->sezione    oss 0.0519  pav 0.0338 (p95 0.0350)  NETTO +0.0181
+      sezioni misurate 705 · massa esclusa da MIN_N=30: 23.1%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>67)           oss 0.0510  pav 0.0277  NETTO +0.0233
+         medie (43-67)          oss 0.0546  pav 0.0379  NETTO +0.0167
+         piccole (<=43)         oss 0.0505  pav 0.0450  NETTO +0.0055
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 0.88   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+========================================================================
+Castenaso (037021)
+========================================================================
+
+--- Castenaso · gruppo ITL: 15.244 individui. 1 zone. 154 sezioni ---
+   composizione comunale: italiano_nativo 0.954, italiano_rientrato 0.012, naturalizzato_g2 0.009, naturalizzato_immigrato 0.025
+   comune non articolato: M-EMa non definita
+   M-EMb zona->sezione    oss 0.0288  pav 0.0168 (p95 0.0186)  NETTO +0.0120
+      sezioni misurate 89 · massa esclusa da MIN_N=30: 4.9%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>193)          oss 0.0280  pav 0.0130  NETTO +0.0150
+         medie (84-193)         oss 0.0252  pav 0.0197  NETTO +0.0055
+         piccole (<=84)         oss 0.0408  pav 0.0307  NETTO +0.0101
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+
+--- Castenaso · gruppo FRG: 1.113 individui. 1 zone. 154 sezioni ---
+   composizione comunale: straniero_g2 0.162, straniero_immigrato 0.838
+   comune non articolato: M-EMa non definita
+   M-EMb zona->sezione    oss 0.0517  pav 0.0460 (p95 0.0687)  NETTO +0.0056
+      sezioni misurate 6 · massa esclusa da MIN_N=30: 79.7%
+
+========================================================================
+Ferrara (038008)
+========================================================================
+
+--- Ferrara · gruppo ITL: 113.785 individui. 1 zone. 1760 sezioni ---
+   composizione comunale: italiano_nativo 0.953, italiano_rientrato 0.011, naturalizzato_g2 0.008, naturalizzato_immigrato 0.028
+   comune non articolato: M-EMa non definita
+   M-EMb zona->sezione    oss 0.0364  pav 0.0217 (p95 0.0221)  NETTO +0.0146
+      sezioni misurate 1052 · massa esclusa da MIN_N=30: 7.5%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>103)          oss 0.0309  pav 0.0166  NETTO +0.0143
+         medie (57-103)         oss 0.0430  pav 0.0260  NETTO +0.0170
+         piccole (<=57)         oss 0.0473  pav 0.0352  NETTO +0.0121
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+
+--- Ferrara · gruppo FRG: 15.266 individui. 1 zone. 1760 sezioni ---
+   composizione comunale: straniero_g2 0.145, straniero_immigrato 0.855
+   comune non articolato: M-EMa non definita
+   M-EMb zona->sezione    oss 0.0588  pav 0.0366 (p95 0.0405)  NETTO +0.0222
+      sezioni misurate 126 · massa esclusa da MIN_N=30: 53.4%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>56)           oss 0.0496  pav 0.0299  NETTO +0.0198
+         medie (40-56)          oss 0.0716  pav 0.0406  NETTO +0.0310
+         piccole (<=40)         oss 0.0665  pav 0.0474  NETTO +0.0190
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+
+========================================================================
+Ravenna (039014)
+========================================================================
+
+--- Ravenna · gruppo ITL: 138.362 individui. 10 zone. 2375 sezioni ---
+   composizione comunale: italiano_nativo 0.927, italiano_rientrato 0.018, naturalizzato_g2 0.014, naturalizzato_immigrato 0.040
+   M-EMa comune->zona     oss 0.0167  pav 0.0023 (p95 0.0028)  NETTO +0.0145
+   M-EMb zona->sezione    oss 0.0521  pav 0.0274 (p95 0.0281)  NETTO +0.0247
+      sezioni misurate 1372 · massa esclusa da MIN_N=30: 8.8%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>91)           oss 0.0499  pav 0.0211  NETTO +0.0287
+         medie (51-91)          oss 0.0534  pav 0.0326  NETTO +0.0208
+         piccole (<=51)         oss 0.0593  pav 0.0444  NETTO +0.0149
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.71   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Ravenna · gruppo FRG: 17.642 individui. 10 zone. 2375 sezioni ---
+   composizione comunale: straniero_g2 0.143, straniero_immigrato 0.857
+   M-EMa comune->zona     oss 0.0171  pav 0.0063 (p95 0.0095)  NETTO +0.0108
+   M-EMb zona->sezione    oss 0.0692  pav 0.0354 (p95 0.0395)  NETTO +0.0338
+      sezioni misurate 117 · massa esclusa da MIN_N=30: 60.3%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>55)           oss 0.0652  pav 0.0279  NETTO +0.0372
+         medie (38-55)          oss 0.0670  pav 0.0414  NETTO +0.0256
+         piccole (<=38)         oss 0.0848  pav 0.0505  NETTO +0.0344
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 3.13   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+========================================================================
+Forlì (040012)
+========================================================================
+
+--- Forlì · gruppo ITL: 101.752 individui. 21 zone. 1518 sezioni ---
+   composizione comunale: italiano_nativo 0.932, italiano_rientrato 0.012, naturalizzato_g2 0.016, naturalizzato_immigrato 0.040
+   M-EMa comune->zona     oss 0.0224  pav 0.0038 (p95 0.0044)  NETTO +0.0186
+   M-EMb zona->sezione    oss 0.0443  pav 0.0265 (p95 0.0272)  NETTO +0.0178
+      sezioni misurate 1014 · massa esclusa da MIN_N=30: 6.3%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>97)           oss 0.0387  pav 0.0204  NETTO +0.0184
+         medie (55-97)          oss 0.0489  pav 0.0314  NETTO +0.0175
+         piccole (<=55)         oss 0.0577  pav 0.0415  NETTO +0.0162
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 0.96   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Forlì · gruppo FRG: 15.297 individui. 21 zone. 1518 sezioni ---
+   composizione comunale: straniero_g2 0.158, straniero_immigrato 0.842
+   M-EMa comune->zona     oss 0.0127  pav 0.0082 (p95 0.0112)  NETTO +0.0046
+   M-EMb zona->sezione    oss 0.0504  pav 0.0402 (p95 0.0449)  NETTO +0.0102
+      sezioni misurate 129 · massa esclusa da MIN_N=30: 56.6%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>52)           oss 0.0492  pav 0.0337  NETTO +0.0155
+         medie (37-52)          oss 0.0488  pav 0.0433  NETTO +0.0055
+         piccole (<=37)         oss 0.0551  pav 0.0509  NETTO +0.0041
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 2.23   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+[074017] saltato: file sezioni assente: /home/mirko/progetti/gsp/data/submun/san_vito_dei_normanni_sezioni_2023.csv
+
+========================================================================
+Rimini (099014)
+========================================================================
+
+--- Rimini · gruppo ITL: 129.984 individui. 6 zone. 1887 sezioni ---
+   composizione comunale: italiano_nativo 0.925, italiano_rientrato 0.021, naturalizzato_g2 0.012, naturalizzato_immigrato 0.042
+   M-EMa comune->zona     oss 0.0104  pav 0.0019 (p95 0.0026)  NETTO +0.0085
+   M-EMb zona->sezione    oss 0.0428  pav 0.0264 (p95 0.0271)  NETTO +0.0164
+      sezioni misurate 1218 · massa esclusa da MIN_N=30: 7.2%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>84)           oss 0.0362  pav 0.0191  NETTO +0.0171
+         medie (50-84)          oss 0.0493  pav 0.0357  NETTO +0.0136
+         piccole (<=50)         oss 0.0642  pav 0.0465  NETTO +0.0178
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 1.92   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+--- Rimini · gruppo FRG: 19.806 individui. 6 zone. 1887 sezioni ---
+   composizione comunale: straniero_g2 0.140, straniero_immigrato 0.860
+   M-EMa comune->zona     oss 0.0127  pav 0.0043 (p95 0.0070)  NETTO +0.0085
+   M-EMb zona->sezione    oss 0.0600  pav 0.0374 (p95 0.0417)  NETTO +0.0226
+      sezioni misurate 139 · massa esclusa da MIN_N=30: 63.3%
+      netto per terzile di ampiezza del gruppo:
+         grandi (>53)           oss 0.0628  pav 0.0307  NETTO +0.0321
+         medie (39-53)          oss 0.0493  pav 0.0405  NETTO +0.0089
+         piccole (<=39)         oss 0.0676  pav 0.0479  NETTO +0.0196
+      se il netto sopravvive nelle GRANDI, dove il pavimento e' basso,
+      il segnale e' reale; se svanisce, era rarefazione.
+   RAPPORTO M-EMb/M-EMa = 2.67   (leggibile solo DENTRO il comune: dipende da n_zone)
+
+========================================================================
+riepilogo — ordinato per M-EMb, che e' l'unico confrontabile
+========================================================================
+
+gruppo ITL
+   comune              zone     M-EMa     M-EMb    rapp
+   Piacenza               4   +0.0227   +0.0420    1.85
+   Brescia               33   +0.0285   +0.0363    1.27
+   Reggio nell'Emilia     4   +0.0105   +0.0312    2.98
+   Modena                 4   +0.0132   +0.0255    1.93
+   Ravenna               10   +0.0145   +0.0247    1.71
+   Bologna               18   +0.0146   +0.0217    1.49
+   Parma                 13   +0.0119   +0.0200    1.67
+   Forlì                 21   +0.0186   +0.0178    0.96
+   Rimini                 6   +0.0085   +0.0164    1.92
+   Ferrara                1       n/d   +0.0146     n/d
+   Castenaso              1       n/d   +0.0120     n/d
+
+gruppo FRG
+   comune              zone     M-EMa     M-EMb    rapp
+   Ravenna               10   +0.0108   +0.0338    3.13
+   Parma                 13   +0.0180   +0.0232    1.29
+   Rimini                 6   +0.0085   +0.0226    2.67
+   Ferrara                1       n/d   +0.0222     n/d
+   Modena                 4   +0.0092   +0.0183    1.98
+   Bologna               18   +0.0205   +0.0181    0.88
+   Reggio nell'Emilia     4   +0.0087   +0.0170    1.94
+   Piacenza               4   +0.0153   +0.0110    0.72
+   Brescia               33   +0.0104   +0.0103    0.99
+   Forlì                 21   +0.0046   +0.0102    2.23
+   Castenaso              1       n/d   +0.0056     n/d
+
+   M-EMb e' definito allo stesso modo ovunque: e' la colonna da
+   confrontare fra citta'. Il RAPPORTO no -- dipende da quanto e'
+   grossolana la partizione in zone (Modena 4, Bologna 18,
+   Brescia 33), quindi si legge solo dentro un comune.
+
+   Il numero che decide se toccare enrich.py e' il netto per
+   terzile nelle sezioni GRANDI, non la media globale.

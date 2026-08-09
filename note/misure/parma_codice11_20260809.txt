@@ -1,0 +1,39 @@
+========================================================================
+AVQ Emilia-Romagna. 7.061 componenti. quote pesate COEFIN
+   ETAMi decodificata: 15 classi irregolari, la 15 aperta.
+   L'eta' `~` e' il CENTRO della classe mediana, non una mediana.
+========================================================================
+   BERSAGLIO (Parma, codice 11)       n=14725  classe -- (35-44)   ~38.0  stran 0.520  quota 0.0740
+
+   01 persona di riferimento          n= 3233  classe 12 (55-59)  ~57.0  stran 0.080  quota 0.4605
+   02 coniuge di PR                   n= 1396  classe 12 (55-59)  ~57.0  stran 0.108  quota 0.1898
+   03 convivente coniugalmente di PR  n=  252  classe 10 (35-44)  ~39.5  stran 0.170  quota 0.0379
+   06 figlio (ultima unione)          n= 1832  classe 06 (16-17)  ~16.5  stran 0.101  quota 0.2628
+   17 persona legata da amicizia      n=   38  classe 10 (35-44)  ~39.5  stran 0.369  quota 0.0058
+   08-16 altri parenti                n=  153  classe 09 (25-34)  ~29.5  stran 0.209  quota 0.0206
+
+   03+17 (fusa stretta)               n=  290  classe 10 (35-44)  ~39.5  stran 0.196  quota 0.0437
+   03+17+08-16 (fusa LARGA)           n=  443  classe 10 (35-44)  ~39.5  stran 0.200  quota 0.0643
+
+========================================================================
+scarti dal bersaglio
+========================================================================
+   03 solo        eta   +1.5  stranieri -0.350  quota -0.0361
+   17 solo        eta   +1.5  stranieri -0.151  quota -0.0682
+   03+17          eta   +1.5  stranieri -0.324  quota -0.0303
+   03+17+08-16    eta   +1.5  stranieri -0.320  quota -0.0097
+
+   ETA': non discrimina. Tutti i candidati cadono nella classe
+   010 (35-44), che contiene i 38 anni di Parma.
+   QUOTA: solo la fusa LARGA si avvicina, e lo scarto residuo e'
+   nella direzione attesa (citta' contro regione).
+   CITTADINANZA: nessun candidato arriva al 52%. ANOMALIA APERTA.
+
+========================================================================
+validazione esterna: classi AVQ contro eta' mediane di Parma
+========================================================================
+   persona di riferimento             AVQ  55-59   Parma 55
+   coniuge di PR                      AVQ  55-59   Parma 57
+   figlio (ultima unione)             AVQ  16-17   Parma 16
+   Due fonti indipendenti, universi e anni diversi: le classi
+   coincidono. Rafforza la mappa inferita in §2.3 della nota.

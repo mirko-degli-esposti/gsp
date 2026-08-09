@@ -1,0 +1,48 @@
+[rep] 8.443 nuclei AVQ · ampiezze [1. 2. 3. 4. 5. 6. 7. 8]
+[pop] 199.014 individui in famiglia. 1314 sezioni
+
+--- sezione 689 · 38 individui ---
+   individui    38 · nuclei richiesti   18 · collocati    38 (100.0%)
+   slot con ripiego o fallimento: 0 (0.0% degli slot)
+   accuratezza del ruolo (solo Relpar 1/2/3, 34 casi): 0.559
+      vero R -> assegnato R: 11
+      vero F -> assegnato F: 5
+      vero R -> assegnato F: 4
+      vero F -> assegnato R: 4
+      vero F -> assegnato P: 3
+      vero P -> assegnato P: 3
+   divario generazionale ottenuto: mediana 25 (AVQ 33) · fuori [21,45]: 0.0%
+   divario fra partner: mediana -2, p05 -20, p95 6
+
+--- sezione 1055 · 136 individui ---
+   individui   136 · nuclei richiesti   57 · collocati   136 (100.0%)
+   slot con ripiego o fallimento: 2 (1.5% degli slot)
+      P (eta')                        2
+   accuratezza del ruolo (solo Relpar 1/2/3, 122 casi): 0.590
+      vero R -> assegnato R: 31
+      vero F -> assegnato F: 29
+      vero R -> assegnato P: 18
+      vero P -> assegnato P: 12
+      vero F -> assegnato R: 10
+      vero P -> assegnato R: 9
+   divario generazionale ottenuto: mediana 31 (AVQ 33) · fuori [21,45]: 0.0%
+   divario fra partner: mediana 2, p05 -12, p95 20
+
+--- sezione 1260 · 1837 individui ---
+   individui  1837 · nuclei richiesti  748 · collocati  1833 (99.8%)
+   slot con ripiego o fallimento: 0 (0.0% degli slot)
+      individui non collocati         4
+   accuratezza del ruolo (solo Relpar 1/2/3, 1695 casi): 0.588
+      vero R -> assegnato R: 431
+      vero F -> assegnato F: 428
+      vero R -> assegnato P: 198
+      vero P -> assegnato R: 151
+      vero P -> assegnato P: 137
+      vero F -> assegnato R: 102
+   divario generazionale ottenuto: mediana 30 (AVQ 33) · fuori [21,45]: 0.0%
+   divario fra partner: mediana 0, p05 -12, p95 13
+
+   Il prototipo e' AVIDO e non ottimizza: questi tassi di
+   fallimento sono un LIMITE SUPERIORE. Se sono gia' bassi, un
+   algoritmo semplice basta; se sono alti, non e' detto che il
+   problema sia difficile -- va riprovato ottimizzando.

@@ -1,0 +1,50 @@
+pool: 19.003 componenti in 8.443 nuclei
+
+========================================================================
+1. chi e' la persona di riferimento
+========================================================================
+   firma R      n= 2793  quota maschi 0.468  eta' mediana ~62
+   firma RP     n= 1912  quota maschi 0.828  eta' mediana ~70
+   firma RF     n=  570  quota maschi 0.191  eta' mediana ~57
+   firma RPF    n= 1205  quota maschi 0.784  eta' mediana ~50
+   firma RPFF   n= 1035  quota maschi 0.792  eta' mediana ~50
+
+   Nelle coppie il riferimento e' designato, non neutro: la
+   quota di maschi va riprodotta, altrimenti l'assemblaggio
+   sbilancia il genere del capofamiglia sintetico.
+
+========================================================================
+2. partner — divario d'eta' col riferimento (partner − rif)
+========================================================================
+   tutti i partner              n= 4525  p05  -12.5  p25   -7.5  MEDIANA   +0.0  p75   +0.0  p95  +10.0   [17% tocca la classe aperta]
+   02 coniuge                   n= 3855  p05  -12.5  p25   -7.5  MEDIANA   +0.0  p75   +0.0  p95   +7.5   [19% tocca la classe aperta]
+   03 convivente                n=  670  p05  -10.0  p25   -7.5  MEDIANA   +0.0  p75   +0.0  p95  +10.0   [3% tocca la classe aperta]
+
+   coppie dello stesso sesso: 0.000
+
+========================================================================
+3. figli — divario col riferimento (rif − figlio) e fra fratelli
+========================================================================
+   divario generazionale        n= 5395  p05  +21.0  p25  +27.5  MEDIANA  +33.0  p75  +38.5  p95  +45.0   [7% tocca la classe aperta]
+   fra fratelli consecutivi     n= 1907  p05   +0.0  p25   +2.0  MEDIANA   +4.0  p75   +7.0  p95  +11.0
+
+   Il divario generazionale e' il vincolo piu' stringente
+   dell'assemblaggio: definisce quali individui della sezione
+   possono riempire uno slot 'figlio' dato il riferimento.
+
+========================================================================
+4. genitori conviventi — divario col riferimento (gen − rif)
+========================================================================
+   genitore − riferimento       n=  175  p05  +12.5  p25  +20.0  MEDIANA  +27.5  p75  +32.5  p95  +42.5   [45% tocca la classe aperta]
+
+========================================================================
+5. omogeneita' della cittadinanza dentro il nucleo
+========================================================================
+   nuclei con 2+ componenti a cittadinanza nota: 5.601
+   omogenei: 0.944
+   fra i nuclei con almeno uno straniero (567): omogenei 0.450
+
+   Se l'omogeneita' e' alta, la cittadinanza va trattata come
+   vincolo dell'assemblaggio e non come esito. Precedente: rho
+   ~0,6 per la fiducia istituzionale (v22 §13.5) — in famiglia
+   si condividono anche le opinioni.

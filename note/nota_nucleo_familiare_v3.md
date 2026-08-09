@@ -223,18 +223,51 @@ le separano:
 | convivente *more uxorio* | rapporto con `Relpar=2` fra 0,34 e 0,43 per `Ncomp` 2, 3 e 4 — la firma di una categoria che segue i coniugi; età mediana 38 contro 57 dei coniugi, coerente con coppie non sposate più giovani | stranieri al 52% è alto per i conviventi italiani |
 | altro non parente / coabitante | stranieri al 52% contro 15% degli intestatari | il rapporto costante con `Relpar=2` sarebbe una coincidenza |
 
-**Evidenza indipendente dall'AVQ, 9/8/2026.** L'AVQ distingue
-esplicitamente `RELPAR` 02 «coniuge di PR» da 03 «convivente
-(coniugalmente) di PR», e ha anche 17 «persona legata da amicizia»: separa
-cioè le due letture che a Parma restano confuse. Nel pool emiliano i
-conviventi coniugali sono **252 contro 1.396 coniugi, il 18%**. A Parma il
-codice 11 vale 14.725 contro 33.262 coniugi, il **44%**: due volte e mezzo
-la quota regionale. Non impossibile in una città universitaria, ma è un
-argomento **contro** la lettura «convivente *more uxorio*» e a favore di
-«altro non parente». Evidenza debole — due fonti, due anni, due universi —
-e nel verso opposto a quella del profilo demografico.
+**Risolto per esclusione con l'AVQ, 9/8/2026** (`scripts/diagnostica/
+parma_codice11.py`, uscita in `note/misure/`). L'AVQ separa ciò che a Parma
+è fuso: `RELPAR` 03 «convivente coniugalmente», 17 «persona legata da
+amicizia», 08-16 altri parenti. Confrontando le **quote sul totale dei
+componenti** — test più pulito del rapporto coi coniugi, che dipende da
+quanti coniugi ci sono:
 
-> **Conseguenza sostanziale, indipendente da quale delle due sia vera.**
+| candidato | quota AVQ | bersaglio Parma | scarto |
+|---|---:|---:|---:|
+| 03 solo | 3,8% | 7,4% | −3,6 |
+| 17 solo | 0,6% | | −6,8 |
+| 03+17 | 4,4% | | −3,0 |
+| **03+17+08-16** | **6,4%** | | **−1,0** |
+
+Solo la miscela larga si avvicina, e lo scarto residuo è nella direzione
+attesa: una città ha più conviventi e coabitanti della sua regione.
+L'**età non discrimina** — tutti i candidati cadono nella classe AVQ 010
+(35-44), che contiene i 38 anni di Parma.
+
+> **Lettura: categoria residua larga.** Il codice 11 raccoglie ciò che non
+> è riferimento, partner, figlio o genitore. Compatibile per quota e per
+> età. Cadono sia «coabitazione» (v2) sia «convivente *more uxorio*»
+> come letture *pure*.
+
+> **Anomalia aperta: la quota straniera.** Il bersaglio è 52%; il massimo
+> fra i candidati è il 37% del solo 17, e la miscela larga sta al 20%.
+> **Nessuna combinazione AVQ arriva al 52%**, e le correzioni disponibili
+> — regione contro città, autoselezione linguistica del campione AVQ
+> (v22 §8) — non colmano un fattore due e mezzo.
+>
+> Ipotesi non verificata: le convivenze migranti sono ciò che l'AVQ
+> cattura peggio, perché un'indagine su famiglie anagrafiche fatica a
+> intercettare coabitazioni instabili. Se fosse così il 52% di Parma
+> sarebbe il dato buono e il 20% dell'AVQ quello distorto — **il che
+> renderebbe l'AVQ un repertorio inadeguato proprio per la tipologia di
+> nucleo più difficile da assemblare.** Limite da verificare prima di
+> usare l'AVQ come repertorio (§8.3).
+
+**Validazione esterna ottenuta per strada.** Le classi d'età AVQ
+decodificate coincidono con le età mediane di Parma su tutte le classi
+identificate per via aritmetica in §2.3: riferimento AVQ 55-59 contro
+Parma 55, coniuge 55-59 contro 57, figlio 16-17 contro 16. Due fonti
+indipendenti, universi e anni diversi, profili coincidenti.
+
+> **Conseguenza sostanziale, indipendente dall'etichetta esatta.**
 > Il 7,4% dei residenti in famiglia sta in una relazione che non è
 > coniugio né filiazione, e ha un profilo demografico nettamente diverso
 > dal resto. Un nucleo con questa componente e una famiglia coniugale

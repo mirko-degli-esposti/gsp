@@ -40,6 +40,7 @@ con l'eccezione di quello su cui si sta lavorando in quel momento.
 |---|---|
 | `nota_settore_economico_v3.md` | rifare o discutere la scelta di dove sta un attributo; contiene la misura che ha deciso `gsp.lavoro` e i due errori di lettura che l'hanno preceduta |
 | `nota_nucleo_familiare_v3.md` | progettare l'anello 4 o discutere la struttura familiare; contiene le cinque misure su Parma, la decisione (ruolo a valle, ampiezza vincolata per sezione), due previsioni falsificate e la refutazione del codebook della fornitura |
+| `nota_repertorio_avq_v1.md` | costruire l'assemblaggio dei nuclei; contiene il repertorio delle firme (8.443 nuclei AVQ), le configurazioni interne — divari d'età, genere del riferimento, cittadinanza — e i criteri di compatibilità che ne discendono |
 | `nota_segnale_compositivo_v3.md` | lavorare sulla varianza compositiva UE/non-UE fra zone, o sul condizionamento geografico del paese
 | `nota_background_sezione_v1.md` | raffinare l'anello 3 con `EM1`–`EM6`, o discutere la risoluzione geografica del background; contiene M-EM sulle undici città, la modifica proposta a `enrich.py` e la falsificazione di una previsione basata su `nota_segnale_compositivo_v3` | |
 | `nota_combinazioni_impossibili_v2.md` | toccare `cs_build`, le esclusioni α=0, o la riducibilità del Gibbs |

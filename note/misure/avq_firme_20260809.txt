@@ -1,0 +1,161 @@
+mappa RELPAR -> classe operativa
+   R riferimento     [1]
+   P partner         [2, 3]
+   F figlio          [6, 7]
+   G genitore        [4, 5]
+   A altro_parente   [8, 9, 10, 11, 12, 13, 14, 15, 16]
+   N non_parente     [17]
+
+========================================================================
+Emilia-Romagna · 7.061 individui
+========================================================================
+   nuclei: 3.233 · ampiezza media 2.18 · max 8
+
+   coerenza delle firme
+      nuclei senza riferimento                 0
+      nuclei con 2+ riferimenti                0
+      nuclei con 2+ partner                    0
+      individui con RELPAR non mappata         0
+
+   firme distinte: 113 con le 17 modalita' grezze, 56 con la classificazione operativa
+      operativa  90% dei nuclei in   6 firme · 95% in  10
+      grezza     90% dei nuclei in  10 firme · 95% in  19
+
+   le venti firme operative piu' frequenti
+        amp     n   quota  quota_pes
+f_op                                
+R         1  1136  0.3514     0.3679
+RP        2   748  0.2314     0.2144
+RPF       3   414  0.1281     0.1281
+RPFF      4   334  0.1033     0.1031
+RF        2   226  0.0699     0.0702
+RFF       3    85  0.0263     0.0260
+RPFFF     5    64  0.0198     0.0210
+RG        2    25  0.0077     0.0071
+RN        2    22  0.0068     0.0073
+RA        2    20  0.0062     0.0064
+RFA       3    18  0.0056     0.0052
+RPFFFF    6    14  0.0043     0.0053
+RFFF      4    13  0.0040     0.0040
+RPFG      4    11  0.0034     0.0034
+RPA       3     8  0.0025     0.0023
+RPFA      4     8  0.0025     0.0020
+RPFFG     5     7  0.0022     0.0024
+RPG       3     7  0.0022     0.0019
+RPFGG     5     5  0.0015     0.0018
+RPFAA     5     5  0.0015     0.0012
+
+   firme per classe di ampiezza (l'ampiezza viene da PF3-PF8,
+   la firma dal repertorio)
+      amp 1:  1136 nuclei ·   1 firme · 90% in   1 · R 1.00
+      amp 2:  1041 nuclei ·   5 firme · 90% in   2 · RP 0.72, RF 0.22, RG 0.02, RN 0.02
+      amp 3:   549 nuclei ·  13 firme · 90% in   2 · RPF 0.75, RFF 0.15, RFA 0.03, RPA 0.01
+      amp 4:   381 nuclei ·  13 firme · 90% in   2 · RPFF 0.88, RFFF 0.03, RPFG 0.03, RPFA 0.02
+      amp 5:    92 nuclei ·  12 firme · 90% in   5 · RPFFF 0.70, RPFFG 0.08, RPFAA 0.05, RPFGG 0.05
+      amp 6:    28 nuclei ·   8 firme · 90% in   6 · RPFFFF 0.50, RFAAAA 0.11, RPFAAA 0.11, RPFFFG 0.07
+      amp 7:     4 nuclei ·   3 firme · 90% in   3 · RPFFFFF 0.50, RFAAAAA 0.25, RPFFFAA 0.25
+      amp 8:     2 nuclei ·   1 firme · 90% in   1 · RPFFAAAA 1.00
+
+========================================================================
+Lombardia · 11.942 individui
+========================================================================
+   nuclei: 5.210 · ampiezza media 2.29 · max 7
+
+   coerenza delle firme
+      nuclei senza riferimento                 0
+      nuclei con 2+ riferimenti                0
+      nuclei con 2+ partner                    0
+      individui con RELPAR non mappata         0
+
+   firme distinte: 124 con le 17 modalita' grezze, 63 con la classificazione operativa
+      operativa  90% dei nuclei in   6 firme · 95% in   9
+      grezza     90% dei nuclei in   9 firme · 95% in  15
+
+   le venti firme operative piu' frequenti
+        amp     n   quota  quota_pes
+f_op                                
+R         1  1657  0.3180     0.3530
+RP        2  1164  0.2234     0.2139
+RPF       3   791  0.1518     0.1404
+RPFF      4   701  0.1345     0.1242
+RF        2   344  0.0660     0.0661
+RFF       3   130  0.0250     0.0247
+RPFFF     5   120  0.0230     0.0207
+RN        2    42  0.0081     0.0084
+RA        2    39  0.0075     0.0077
+RPFFFF    6    24  0.0046     0.0044
+RG        2    22  0.0042     0.0043
+RFFF      4    16  0.0031     0.0029
+RFA       3    14  0.0027     0.0023
+RPFA      4    10  0.0019     0.0016
+RPA       3     9  0.0017     0.0018
+RPFAA     5     8  0.0015     0.0012
+RPFFG     5     8  0.0015     0.0016
+RFAA      4     7  0.0013     0.0011
+RGG       3     6  0.0012     0.0009
+RPFG      4     6  0.0012     0.0010
+
+   firme per classe di ampiezza (l'ampiezza viene da PF3-PF8,
+   la firma dal repertorio)
+      amp 1:  1657 nuclei ·   1 firme · 90% in   1 · R 1.00
+      amp 2:  1611 nuclei ·   5 firme · 90% in   2 · RP 0.72, RF 0.21, RN 0.03, RA 0.02
+      amp 3:   974 nuclei ·  13 firme · 90% in   2 · RPF 0.81, RFF 0.13, RFA 0.01, RPA 0.01
+      amp 4:   759 nuclei ·  14 firme · 90% in   1 · RPFF 0.92, RFFF 0.02, RPFA 0.01, RFAA 0.01
+      amp 5:   157 nuclei ·  11 firme · 90% in   5 · RPFFF 0.76, RPFAA 0.05, RPFFG 0.05, RFFFF 0.03
+      amp 6:    44 nuclei ·  12 firme · 90% in   8 · RPFFFF 0.55, RPFFFG 0.07, RPFFGG 0.07, RPFAAA 0.07
+      amp 7:     8 nuclei ·   7 firme · 90% in   7 · RPFFFFF 0.25, RPFFFAN 0.12, RPFFFAA 0.12, RPFFAAA 0.12
+
+========================================================================
+POOL UNITO · 19.003 individui
+========================================================================
+   nuclei: 8.443 · ampiezza media 2.25 · max 8
+
+   coerenza delle firme
+      nuclei senza riferimento                 0
+      nuclei con 2+ riferimenti                0
+      nuclei con 2+ partner                    0
+      individui con RELPAR non mappata         0
+
+   firme distinte: 172 con le 17 modalita' grezze, 70 con la classificazione operativa
+      operativa  90% dei nuclei in   6 firme · 95% in   9
+      grezza     90% dei nuclei in   9 firme · 95% in  17
+
+   le venti firme operative piu' frequenti
+        amp     n   quota  quota_pes
+f_op                                
+R         1  2793  0.3308     0.3577
+RP        2  1912  0.2265     0.2140
+RPF       3  1205  0.1427     0.1365
+RPFF      4  1035  0.1226     0.1176
+RF        2   570  0.0675     0.0674
+RFF       3   215  0.0255     0.0251
+RPFFF     5   184  0.0218     0.0208
+RN        2    64  0.0076     0.0081
+RA        2    59  0.0070     0.0073
+RG        2    47  0.0056     0.0052
+RPFFFF    6    38  0.0045     0.0047
+RFA       3    32  0.0038     0.0032
+RFFF      4    29  0.0034     0.0032
+RPFA      4    18  0.0021     0.0017
+RPFG      4    17  0.0020     0.0017
+RPA       3    17  0.0020     0.0019
+RPFFG     5    15  0.0018     0.0019
+RPFAA     5    13  0.0015     0.0012
+RFAA      4    10  0.0012     0.0010
+RPG       3    10  0.0012     0.0009
+
+   firme per classe di ampiezza (l'ampiezza viene da PF3-PF8,
+   la firma dal repertorio)
+      amp 1:  2793 nuclei ·   1 firme · 90% in   1 · R 1.00
+      amp 2:  2652 nuclei ·   5 firme · 90% in   2 · RP 0.72, RF 0.21, RN 0.02, RA 0.02
+      amp 3:  1523 nuclei ·  13 firme · 90% in   2 · RPF 0.79, RFF 0.14, RFA 0.02, RPA 0.01
+      amp 4:  1140 nuclei ·  15 firme · 90% in   1 · RPFF 0.91, RFFF 0.03, RPFA 0.02, RPFG 0.01
+      amp 5:   249 nuclei ·  15 firme · 90% in   5 · RPFFF 0.74, RPFFG 0.06, RPFAA 0.05, RFAAA 0.03
+      amp 6:    72 nuclei ·  12 firme · 90% in   8 · RPFFFF 0.53, RPFAAA 0.08, RPFFFG 0.07, RPFFGG 0.07
+      amp 7:    12 nuclei ·   8 firme · 90% in   7 · RPFFFFF 0.33, RPFFFAA 0.17, RPFFFAN 0.08, RPFFAAA 0.08
+      amp 8:     2 nuclei ·   1 firme · 90% in   1 · RPFFAAAA 1.00
+
+   TVD fra le distribuzioni di firme delle due regioni: 0.0681
+   piccola -> i pool si possono unire per il repertorio, che
+   e' un'assunzione IN PIU' rispetto all'anello 2 (dove le
+   regioni restano separate perche' le AVQ sono attitudinali).

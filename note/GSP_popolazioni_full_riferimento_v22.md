@@ -610,7 +610,7 @@ reale sotto il quartiere.
 | (8) | `sezione ⊥ (istruzione, condizione, background) \| (zona, sesso, età3, cittadinanza)` | anello 3 |
 | (9) | entro il quinquennio, l'età segue la distribuzione **comunale** per anno singolo | anello 3 |
 | (10) | l'indirizzo è uniforme fra i civici della sezione | anello 3 |
-| (11) | **nessuna struttura familiare** | anello 3 |
+| (11) | **nessuna struttura familiare** — disegno della rimozione in `nota_nucleo_familiare_v2.md` (anello 4) | anello 3 |
 
 ### Limiti della risoluzione per età
 

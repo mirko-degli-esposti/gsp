@@ -610,7 +610,7 @@ reale sotto il quartiere.
 | (8) | `sezione ⊥ (istruzione, condizione, background) \| (zona, sesso, età3, cittadinanza)` | anello 3 |
 | (9) | entro il quinquennio, l'età segue la distribuzione **comunale** per anno singolo | anello 3 |
 | (10) | l'indirizzo è uniforme fra i civici della sezione | anello 3 |
-| (11) | **nessuna struttura familiare** — disegno della rimozione in `nota_nucleo_familiare_v2.md` (anello 4) | anello 3 |
+| (11) | **nessuna struttura familiare** — disegno della rimozione in `nota_nucleo_familiare_v3.md` (anello 4) | anello 3 |
 
 ### Limiti della risoluzione per età
 
@@ -639,8 +639,17 @@ reale sotto il quartiere.
 
 *Analisi completata il 29/07/2026, patch predisposta e non applicata.*
 
-AVQ pubblica `CITTMi` (3 modalità: `1` italiana, `3` e `9` da
-identificare). L'effetto sulla **fiducia istituzionale è sostanziale e
+AVQ pubblica `CITTMi` — **risolto il 9/8/2026** leggendo
+`METADATI/Classificazioni/AVQ_Classificazione_2024_var24.html`:
+`1` italiana, `3` straniera, `9` **non disponibile**. La variabile è
+inoltre dichiarata «ricostruita» nel tracciato (posizione 24), quindi
+derivata e non chiesta.
+
+> **Il `9` non è una terza categoria sostantiva: è un mancato dato.** La
+> tabella sotto va perciò riletta — l'effetto poggia sul solo gruppo `3`,
+> e il `9` va escluso o tenuto come residuo dichiarato, non letto come
+> «ancora più straniero». La patch predisposta va rivista prima di essere
+> applicata. L'effetto sulla **fiducia istituzionale è sostanziale e
 monotono**, ~1 punto su 10, replicato in due regioni indipendenti:
 
 | media pesata | ITA (1) | gr. 3 | gr. 9 |
@@ -670,8 +679,9 @@ CELL_LEVELS = [
 ]
 ```
 
-**Prima di applicare**: identificare le modalità `3` e `9` in
-`METADATI/Classificazioni/`.
+**Prima di applicare**: decidere che fare del `9` (non disponibile),
+che nel collasso gerarchico sopra formerebbe una cella propria priva di
+significato sostantivo.
 
 **Limite da dichiarare comunque**: il campione AVQ di stranieri è
 autoselezionato sulla competenza linguistica. Descrive gli stranieri più

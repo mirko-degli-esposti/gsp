@@ -223,6 +223,17 @@ le separano:
 | convivente *more uxorio* | rapporto con `Relpar=2` fra 0,34 e 0,43 per `Ncomp` 2, 3 e 4 — la firma di una categoria che segue i coniugi; età mediana 38 contro 57 dei coniugi, coerente con coppie non sposate più giovani | stranieri al 52% è alto per i conviventi italiani |
 | altro non parente / coabitante | stranieri al 52% contro 15% degli intestatari | il rapporto costante con `Relpar=2` sarebbe una coincidenza |
 
+**Evidenza indipendente dall'AVQ, 9/8/2026.** L'AVQ distingue
+esplicitamente `RELPAR` 02 «coniuge di PR» da 03 «convivente
+(coniugalmente) di PR», e ha anche 17 «persona legata da amicizia»: separa
+cioè le due letture che a Parma restano confuse. Nel pool emiliano i
+conviventi coniugali sono **252 contro 1.396 coniugi, il 18%**. A Parma il
+codice 11 vale 14.725 contro 33.262 coniugi, il **44%**: due volte e mezzo
+la quota regionale. Non impossibile in una città universitaria, ma è un
+argomento **contro** la lettura «convivente *more uxorio*» e a favore di
+«altro non parente». Evidenza debole — due fonti, due anni, due universi —
+e nel verso opposto a quella del profilo demografico.
+
 > **Conseguenza sostanziale, indipendente da quale delle due sia vera.**
 > Il 7,4% dei residenti in famiglia sta in una relazione che non è
 > coniugio né filiazione, e ha un profilo demografico nettamente diverso

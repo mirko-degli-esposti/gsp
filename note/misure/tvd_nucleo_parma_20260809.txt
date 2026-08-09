@@ -1,0 +1,112 @@
+righe lette 202.111
+   convivenze escluse (Tipores=2)   3.096
+   incoerenti (Ncomp=1. Relpar!=1)  1
+   in analisi 199.014
+   quartieri 13  ·  sezioni 1314  ·  stranieri 0.174
+
+========================================================================
+M0 — la coppia (Relpar, Ncomp) si estrae insieme o separatamente?
+========================================================================
+TVD( P(relpar.ncomp5). P(relpar)·P(ncomp5) ) = 0.263   (11×5. 199.014 unita')
+   grande -> estrarre la coppia INSIEME; piccola -> separatamente
+
+========================================================================
+M1/M2 — quanto ciascun condizionante sposta `ncomp5`  (supporto 5)
+========================================================================
+quanto ciascuna variabile sposta la composizione di `ncomp5`
+
+condizionante  modalita  TVD_min  TVD_mediana  TVD_max  non_misurate
+         eta8         8    0.061        0.293    0.410             0
+         citt         2    0.032        0.091    0.151             0
+        Sesso         2    0.018        0.018    0.019             0
+
+   in cima la variabile su cui condizionare, in fondo quella
+   che si puo' ignorare. Il confronto e' fra le colonne, non
+   con una soglia assoluta.
+
+========================================================================
+M1/M2 — quanto ciascun condizionante sposta `relpar`  (supporto 11)
+========================================================================
+quanto ciascuna variabile sposta la composizione di `relpar`
+
+condizionante  modalita  TVD_min  TVD_mediana  TVD_max  non_misurate
+         eta8         8    0.103        0.282    0.702             1
+         citt         2    0.032        0.092    0.152             0
+        Sesso         2    0.080        0.083    0.086             0
+
+   in cima la variabile su cui condizionare, in fondo quella
+   che si puo' ignorare. Il confronto e' fra le colonne, non
+   con una soglia assoluta.
+
+========================================================================
+M3 — residuo geografico a demografia fissata
+========================================================================
+
+ncomp5
+   osservata 0.0586   pavimento 0.0196 (p95 0.0205)   NETTO +0.0390
+   coppie (cella,quartiere): misurate 186, non misurate 0
+      cella      modalita    n  supporto   TVD
+  1|65p|FRG  Parma Centro  116         5 0.249
+2|25-49|ITL Oltretorrente 1142         5 0.240
+1|50-64|FRG  Parma Centro  476         5 0.238
+1|25-49|ITL Oltretorrente 1179         5 0.225
+  2|65p|FRG Oltretorrente  108         5 0.190
+1|25-49|FRG  Parma Centro 1392         5 0.186
+1|50-64|ITL Oltretorrente  651         5 0.183
+2|25-49|FRG  Parma Centro 1108         5 0.180
+
+relpar — tutti
+   osservata 0.0399   pavimento 0.0151 (p95 0.0161)   NETTO +0.0247
+   coppie (cella,quartiere): misurate 177, non misurate 9
+      cella      modalita    n  supporto   TVD
+  1|65p|FRG  Parma Centro  116         5 0.200
+2|25-49|ITL Oltretorrente 1142         8 0.165
+2|50-64|ITL Oltretorrente  681         7 0.161
+  2|65p|FRG    S.Leonardo  208         6 0.158
+  2|65p|FRG  Parma Centro  191         6 0.151
+2|25-49|FRG        Golese  269         5 0.139
+  2|65p|FRG Oltretorrente  108         5 0.138
+1|25-49|ITL Oltretorrente 1179         6 0.135
+
+========================================================================
+M3' — la stessa misura senza la coabitazione (Relpar=11)
+========================================================================
+escluse 14.724 righe
+
+relpar — senza coabitazione
+   osservata 0.0382   pavimento 0.0127 (p95 0.0137)   NETTO +0.0255
+   coppie (cella,quartiere): misurate 172, non misurate 8
+      cella      modalita    n  supporto   TVD
+2|25-49|ITL Oltretorrente 1041         7 0.171
+2|50-64|ITL Oltretorrente  653         6 0.165
+2|25-49|FRG        Golese  194         4 0.143
+2|25-49|FRG  Parma Centro  863         6 0.143
+2|25-49|ITL  Parma Centro 2353         6 0.138
+1|25-49|ITL Oltretorrente 1097         5 0.136
+  2|65p|FRG    S.Leonardo  123         5 0.127
+2|50-64|ITL  Parma Centro 1788         6 0.125
+
+------------------------------------------------------------------------
+previsione registrata: il netto deve CROLLARE.
+   con coabitazione  +0.0247
+   senza             +0.0255
+   caduta -3%
+   se la caduta e' forte: il vincolo di sezione serve per la TIPOLOGIA
+   del nucleo, non per il ruolo dentro la famiglia. Se non cade, la
+   previsione e' falsificata e va scritto che lo e'.
+
+========================================================================
+famiglie per sezione — vincolo di conteggio per l'assemblaggio
+========================================================================
+count    1314.0
+mean       73.8
+std        83.7
+min         1.0
+25%        18.0
+50%        47.0
+75%       101.0
+max       748.0
+
+totale 96.984   riferimenti 96.985   residuo frazionario max 0.3333
+   residuo ~0 -> i nuclei stanno dentro una sola sezione e il vincolo
+   di conteggio e' esatto al livello dove serve.

@@ -1,0 +1,130 @@
+in analisi 199.014  ·  quartieri 13  ·  sezioni 1314  ·  famiglie 96.984
+   persone per sezione: mediana 97, 1o quartile 38, max 1837
+   terzili di ampiezza: <=54, 54-156, >156
+
+========================================================================
+M4 — `ncomp5` (5 modalita')   per famiglia  [LA MISURA BUONA]
+========================================================================
+
+M4a  comune -> quartiere
+   osservata 0.0616   pavimento 0.0052 (p95 0.0065)   NETTO +0.0564
+   unita' misurate 13, non misurate 0
+
+M4b  quartiere -> sezione
+   osservata 0.0929   pavimento 0.0436 (p95 0.0448)   NETTO +0.0492
+   unita' misurate 836, non misurate 0
+
+   netto per terzile di ampiezza — il test che sostituisce la
+   correlazione TVD~ampiezza della v1, che era priva di potere:
+      grandi (>156)          oss 0.0854  pav 0.0370  NETTO +0.0484
+      medie (54-156)         oss 0.1183  pav 0.0669  NETTO +0.0514
+      piccole (<=54)         oss 0.1483  pav 0.0897  NETTO +0.0586
+   se il netto sopravvive nelle sezioni GRANDI, dove il pavimento e'
+   basso, il segnale e' reale; se svanisce, era rarefazione.
+
+   RAPPORTO M4b/M4a = 0.87
+   -> la sezione porta quanto il quartiere: servono vincoli per sezione.
+
+   scarto medio per quartiere (pesato):
+quartiere
+Molinetto        0.112
+Cittadella       0.100
+Lubiana          0.097
+Parma Centro     0.095
+Golese           0.093
+Montanara        0.092
+San Pancrazio    0.091
+S.Leonardo       0.087
+San Lazzaro      0.086
+Oltretorrente    0.086
+C.S. Martino     0.081
+Pablo            0.080
+Vigatto          0.079
+
+========================================================================
+M4 — `ncomp5` (5 modalita')   per persona   [riproduce la v1]
+========================================================================
+
+M4a  comune -> quartiere
+   osservata 0.0519   pavimento 0.0061 (p95 0.0069)   NETTO +0.0458
+   unita' misurate 13, non misurate 0
+
+M4b  quartiere -> sezione
+   osservata 0.1127   pavimento 0.0488 (p95 0.0499)   NETTO +0.0639
+   unita' misurate 837, non misurate 0
+
+   netto per terzile di ampiezza — il test che sostituisce la
+   correlazione TVD~ampiezza della v1, che era priva di potere:
+      grandi (>156)          oss 0.1028  pav 0.0411  NETTO +0.0617
+      medie (54-156)         oss 0.1477  pav 0.0762  NETTO +0.0715
+   se il netto sopravvive nelle sezioni GRANDI, dove il pavimento e'
+   basso, il segnale e' reale; se svanisce, era rarefazione.
+
+   RAPPORTO M4b/M4a = 1.40
+   -> la sezione porta quanto il quartiere: servono vincoli per sezione.
+
+   scarto medio per quartiere (pesato):
+quartiere
+Parma Centro     0.128
+Molinetto        0.122
+Lubiana          0.120
+Montanara        0.120
+Oltretorrente    0.118
+San Pancrazio    0.112
+Cittadella       0.111
+Pablo            0.109
+S.Leonardo       0.106
+San Lazzaro      0.104
+Golese           0.104
+C.S. Martino     0.097
+Vigatto          0.087
+
+========================================================================
+M4 — `relpar` (11 modalita')   per persona
+========================================================================
+
+M4a  comune -> quartiere
+   osservata 0.0390   pavimento 0.0058 (p95 0.0065)   NETTO +0.0332
+   unita' misurate 13, non misurate 0
+
+M4b  quartiere -> sezione
+   osservata 0.0653   pavimento 0.0441 (p95 0.0453)   NETTO +0.0212
+   unita' misurate 605, non misurate 232
+
+   netto per terzile di ampiezza — il test che sostituisce la
+   correlazione TVD~ampiezza della v1, che era priva di potere:
+      grandi (>156)          oss 0.0614  pav 0.0388  NETTO +0.0226
+      medie (54-156)         oss 0.0870  pav 0.0717  NETTO +0.0153
+   se il netto sopravvive nelle sezioni GRANDI, dove il pavimento e'
+   basso, il segnale e' reale; se svanisce, era rarefazione.
+
+   RAPPORTO M4b/M4a = 0.64
+   -> zona intermedia: guardare i terzili e la tabella per quartiere.
+
+   scarto medio per quartiere (pesato):
+quartiere
+Parma Centro     0.082
+Molinetto        0.078
+Oltretorrente    0.074
+Pablo            0.068
+Cittadella       0.066
+Montanara        0.066
+Lubiana          0.065
+San Pancrazio    0.062
+S.Leonardo       0.062
+San Lazzaro      0.058
+C.S. Martino     0.053
+Golese           0.051
+Vigatto          0.048
+
+========================================================================
+riepilogo
+========================================================================
+   ncomp5   per famiglia  [LA MISURA BUONA]    M4a +0.0564  M4b +0.0492  rapporto 0.87
+   ncomp5   per persona   [riproduce la v1]    M4a +0.0458  M4b +0.0639  rapporto 1.40
+   relpar   per persona                        M4a +0.0332  M4b +0.0212  rapporto 0.64
+
+   v1 (per persona): ncomp5 1,39 · relpar 0,64.
+   Se la pesatura per famiglia cambia il VERSO della conclusione, e' la
+   riga per famiglia a valere: il vincolo dell'assemblaggio e' sulle
+   famiglie, non sulle persone.

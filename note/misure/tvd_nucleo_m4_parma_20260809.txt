@@ -1,0 +1,109 @@
+in analisi 199.014  ·  quartieri 13  ·  sezioni 1314
+   persone per sezione: mediana 97, 1o quartile 38, max 1837
+   sezioni sotto MIN_SEZ=60: 478 (36.4% delle sezioni, 6.4% delle persone)
+
+========================================================================
+M4 — `ncomp5`  (supporto 5)
+========================================================================
+
+M4a  comune -> quartiere
+   osservata 0.0519   pavimento 0.0059 (p95 0.0074)   NETTO +0.0459
+   unita' misurate 13, non misurate 0
+
+M4b  quartiere -> sezione
+   osservata 0.1127   pavimento 0.0489 (p95 0.0500)   NETTO +0.0638
+   unita' misurate 837, non misurate 0
+
+   RAPPORTO M4b/M4a = 1.39
+   -> la sezione porta quanto il quartiere: servono vincoli per sezione
+      nell'assemblaggio.
+
+   scarto medio per quartiere (pesato):
+quartiere
+Parma Centro     0.128
+Molinetto        0.122
+Lubiana          0.120
+Montanara        0.120
+Oltretorrente    0.118
+San Pancrazio    0.112
+Cittadella       0.111
+Pablo            0.109
+S.Leonardo       0.106
+San Lazzaro      0.104
+Golese           0.104
+C.S. Martino     0.097
+Vigatto          0.087
+
+   correlazione TVD ~ ampiezza sezione: -0.438
+   negativa e forte -> quel che resta e' rumore di campionamento residuo
+
+   sezioni piu' distanti dal proprio quartiere:
+   quartiere modalita   n  supporto   TVD
+     Vigatto     1265 111         5 0.428
+Parma Centro       58 431         5 0.406
+Parma Centro      794  73         5 0.401
+ San Lazzaro      930  64         5 0.341
+  Cittadella      959  63         4 0.337
+   Montanara     1147  95         5 0.336
+  Cittadella     1016  65         5 0.331
+     Lubiana     1257 117         4 0.322
+Parma Centro      112 340         5 0.320
+     Lubiana      889  84         4 0.299
+
+========================================================================
+M4 — `relpar`  (supporto 11)
+========================================================================
+
+M4a  comune -> quartiere
+   osservata 0.0390   pavimento 0.0057 (p95 0.0067)   NETTO +0.0333
+   unita' misurate 13, non misurate 0
+
+M4b  quartiere -> sezione
+   osservata 0.0653   pavimento 0.0439 (p95 0.0449)   NETTO +0.0214
+   unita' misurate 605, non misurate 232
+
+   RAPPORTO M4b/M4a = 0.64
+   -> zona intermedia: guardare DOVE si concentra lo scarto prima
+      di decidere.
+
+   scarto medio per quartiere (pesato):
+quartiere
+Parma Centro     0.082
+Molinetto        0.078
+Oltretorrente    0.074
+Pablo            0.068
+Cittadella       0.066
+Montanara        0.066
+Lubiana          0.065
+San Pancrazio    0.062
+S.Leonardo       0.062
+San Lazzaro      0.058
+C.S. Martino     0.053
+Golese           0.051
+Vigatto          0.048
+
+   correlazione TVD ~ ampiezza sezione: -0.374
+   negativa e forte -> quel che resta e' rumore di campionamento residuo
+
+   sezioni piu' distanti dal proprio quartiere:
+   quartiere modalita   n  supporto   TVD
+Parma Centro       58 431         6 0.256
+Parma Centro      794  73         7 0.229
+   Montanara     1167  76         6 0.204
+  Cittadella      959  63         6 0.202
+       Pablo      442  96         6 0.196
+Parma Centro      129 103         6 0.196
+Parma Centro      112 340        10 0.193
+   Molinetto      278  64         7 0.189
+   Montanara     1147  95         6 0.189
+   Molinetto      303  96         6 0.185
+
+========================================================================
+riepilogo
+========================================================================
+   ncomp5    M4a +0.0459   M4b +0.0638   rapporto 1.39
+   relpar    M4a +0.0333   M4b +0.0214   rapporto 0.64
+
+   attesa registrata: M4b/M4a piccolo su `ncomp5` (<0,3), perche' il
+   gradiente urbano visto in M3 opera alla scala del quartiere.
+   Se e' grande, l'attesa e' falsificata e va scritto che lo e'.

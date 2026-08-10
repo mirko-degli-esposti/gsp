@@ -1,0 +1,119 @@
+/home/mirko/progetti/gsp/scripts/diagnostica/collaudo_nucleo.py:79: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+/home/mirko/progetti/gsp/scripts/diagnostica/collaudo_nucleo.py:79: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+/home/mirko/progetti/gsp/scripts/diagnostica/collaudo_nucleo.py:79: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+
+========================================================================
+034027 · popolazione_K9C_avq_full.csv
+========================================================================
+A. stato civile
+   coppie con lo stesso stato civile: 96.5%  (40.924/42.421)
+   coniugati 80.640 · in nuclei unipersonali 21.6% (legittimo)
+   INCOERENTI (metrica per coppia): 17.463 (21.7%)
+   per ruolo del coniugato:
+                 n  quota_inc
+      ruolo                  
+      A       1653      1.000
+      F      10498      1.000
+      G        829      1.000
+      N        507      1.000
+      P      23487      0.025
+      R      43666      0.078
+   coppie (R.P) 42.421 · combinazioni piu' frequenti:
+      coniugato_unito      + coniugato_unito      22.898
+      celibe_nubile        + celibe_nubile        16.325
+      divorziato_sciolto   + divorziato_sciolto    1.751
+      celibe_nubile        + coniugato_unito         480
+      coniugato_unito      + celibe_nubile           203
+
+B. fattibilita'
+   198.121 individui · 94.484 nuclei · senza ripiego 97.8%
+   non collocati 1.85% · convivenza dichiarata 2.884
+   casi vincoli: {'sovrastima': 372, 'esatto': 389, 'convivenza': 297, 'troncamento': 255}
+   ripieghi principali: P stato civile diverso 1204, G fuori dai limiti 621, P fuori dai limiti 293, R senza partner del suo stato 182, G senza ripiego 71
+
+C. divari
+   generazionale mediana 30 (AVQ 33) · fuori limiti 0.05%
+   partner mediana -1 · p05 -14 · p95 +14
+
+========================================================================
+037006 · popolazione_K9C_avq_full.csv
+========================================================================
+A. stato civile
+   coppie con lo stesso stato civile: 98.1%  (75.180/76.658)
+   coniugati 144.128 · in nuclei unipersonali 30.5% (legittimo)
+   INCOERENTI (metrica per coppia): 26.552 (18.4%)
+   per ruolo del coniugato:
+                 n  quota_inc
+      ruolo                  
+      A       2478      1.000
+      F      16187      1.000
+      G       1267      1.000
+      N        884      1.000
+      P      37406      0.015
+      R      85906      0.060
+   coppie (R.P) 76.658 · combinazioni piu' frequenti:
+      coniugato_unito      + coniugato_unito      36.833
+      celibe_nubile        + celibe_nubile        35.265
+      divorziato_sciolto   + divorziato_sciolto    3.164
+      celibe_nubile        + coniugato_unito         403
+      coniugato_unito      + celibe_nubile           210
+
+B. fattibilita'
+   390.098 individui · 210.737 nuclei · senza ripiego 98.8%
+   non collocati 1.42% · convivenza dichiarata 4.690
+   casi vincoli: {'troncamento': 429, 'convivenza': 497, 'esatto': 648, 'sovrastima': 578}
+   ripieghi principali: P stato civile diverso 1198, G fuori dai limiti 1139, P fuori dai limiti 280, R senza partner del suo stato 149, G senza ripiego 103
+
+C. divari
+   generazionale mediana 29 (AVQ 33) · fuori limiti 0.04%
+   partner mediana -1 · p05 -14 · p95 +14
+
+========================================================================
+017029 · popolazione_K9C_avq_full.csv
+========================================================================
+A. stato civile
+   coppie con lo stesso stato civile: 95.0%  (38.724/40.742)
+   coniugati 81.254 · in nuclei unipersonali 23.0% (legittimo)
+   INCOERENTI (metrica per coppia): 18.354 (22.6%)
+   per ruolo del coniugato:
+                 n  quota_inc
+      ruolo                  
+      A       1923      1.000
+      F      11034      1.000
+      G        722      1.000
+      N        555      1.000
+      P      22877      0.034
+      R      44143      0.076
+   coppie (R.P) 40.742 · combinazioni piu' frequenti:
+      coniugato_unito      + coniugato_unito      22.096
+      celibe_nubile        + celibe_nubile        14.885
+      divorziato_sciolto   + divorziato_sciolto    1.855
+      celibe_nubile        + coniugato_unito         647
+      coniugato_unito      + vedovo                  276
+
+B. fattibilita'
+   198.259 individui · 96.608 nuclei · senza ripiego 97.2%
+   non collocati 1.80% · convivenza dichiarata 2.655
+   casi vincoli: {'troncamento': 344, 'sovrastima': 477, 'convivenza': 401, 'esatto': 551}
+   ripieghi principali: P stato civile diverso 1620, G fuori dai limiti 643, P fuori dai limiti 398, R senza partner del suo stato 279, F fuori dai limiti 83
+
+C. divari
+   generazionale mediana 30 (AVQ 33) · fuori limiti 0.12%
+   partner mediana -1 · p05 -14 · p95 +14
+
+========================================================================
+riepilogo — la trasferibilita' del repertorio
+========================================================================
+   comune      omogenee  incoer.  senza rip.  non coll.  div.gen
+   034027        96.5%   21.7%      97.8%     1.85%       30
+   037006        98.1%   18.4%      98.8%     1.42%       29
+   017029        95.0%   22.6%      97.2%     1.80%       30
+
+   La CODA del repertorio (ampiezze oltre 6) viene dai
+   microdati di PARMA: se Bologna e Brescia danno numeri
+   simili, il repertorio e' trasferibile; se Parma e'
+   sistematicamente migliore, la coda e' locale e va
+   ricostruita per comune o dichiarata come limite.

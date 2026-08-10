@@ -1,0 +1,59 @@
+/home/mirko/progetti/gsp/scripts/diagnostica/coerenza_stato_civile.py:75: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype(str)
+assemblaggio in corso (qualche minuto)...
+194.466 individui in 94.484 nuclei
+
+========================================================================
+1. coniugati senza un partner coniugato nel nucleo
+========================================================================
+   coniugati: 80.639
+   in un nucleo con almeno un altro coniugato: 0.500
+   SOLI (nessun altro coniugato nel nucleo):   0.500  (40.286 persone)
+   di cui in nuclei unipersonali: 0.234  <- legittimo (separati di fatto,
+      coniugi non conviventi): va sottratto dal totale sopra
+   INCOERENTI: coniugati in nucleo di 2+ senza altro coniugato: 21.431 (0.266)
+
+========================================================================
+2. composizione per stato civile di ciascun ruolo (approssimato)
+========================================================================
+stato_civile  celibe_nubile  coniugato_unito  divorziato_sciolto  vedovo
+ruolo_app                                                               
+F                     0.756            0.213               0.022   0.009
+P                     0.404            0.489               0.054   0.053
+R                     0.329            0.506               0.057   0.108
+
+========================================================================
+3. coppie: lo stato civile dei due partner
+========================================================================
+   coppie ricostruite: 41.913
+   con lo STESSO stato civile: 0.510
+   entrambi coniugati:         0.296
+
+   le combinazioni piu' frequenti:
+R                   P                 
+coniugato_unito     coniugato_unito       12411
+celibe_nubile       celibe_nubile          8328
+coniugato_unito     celibe_nubile          7240
+celibe_nubile       coniugato_unito        3841
+vedovo              coniugato_unito        2850
+coniugato_unito     divorziato_sciolto     1469
+                    vedovo                 1455
+divorziato_sciolto  coniugato_unito        1390
+
+========================================================================
+4. vincolo di conteggio: ci si sposa a due a due
+========================================================================
+   rapporto 2*coppie_coniugate / coniugati, per sezione:
+      mediana 0.301 · p25 0.217 · p75 0.367
+   dovrebbe stare vicino a 1: sotto 1 significa coniugati
+   sposati con nessuno.
+
+========================================================================
+5. termine di paragone: stato civile per ruolo nell'AVQ
+========================================================================
+   STACIV non presente nel tracciato AVQ con questo nome:
+   cercarne il nome vero prima di usare l'AVQ come paragone.
+
+   NOTA: i ruoli sono APPROSSIMATI dalla posizione nel nucleo,
+   perche' `assembla` restituisce solo `id_nucleo`. Farle
+   restituire anche il ruolo e' la cosa giusta da fare comunque.

@@ -1,0 +1,49 @@
+/home/mirko/progetti/gsp/scripts/diagnostica/collaudo_nucleo.py:75: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+popolazione_K9C_avq_full.csv · 198.121 individui · 1313 sezioni
+
+========================================================================
+A. coerenza con `stato_civile`
+========================================================================
+   coppie con lo stesso stato civile: 40.924/42.421 (96.5%)     [v1 del modulo: 51,0%]
+   coniugati: 80.640
+   INCOERENTI (in nucleo di 2+ senza altro coniugato): 7.182 (8.9%)   [v1: 26,6%]
+   in nuclei unipersonali (legittimo): 21.6%
+
+   coppie (R.P): 42.421 · entrambi coniugati 54.0%   [v1: 29,6%]
+   combinazioni piu' frequenti:
+R                   P                 
+coniugato_unito     coniugato_unito       22898
+celibe_nubile       celibe_nubile         16325
+divorziato_sciolto  divorziato_sciolto     1751
+celibe_nubile       coniugato_unito         480
+coniugato_unito     celibe_nubile           203
+                    vedovo                  181
+
+   VINCOLO DI CONTEGGIO 2*coppie_coniugate/coniugati:
+      mediana 0.564 · p25 0.464 · p75 0.640     [v1: mediana 0,301]
+      dovrebbe stare vicino a 1: ci si sposa a due a due.
+
+========================================================================
+B. fattibilita'
+========================================================================
+   198.121 individui · 94.484 nuclei
+   nuclei senza alcun ripiego: 97.8%
+   non collocati 3.661 (1.85%) · di cui convivenza dichiarata 2.884
+   casi dei vincoli: {'sovrastima': 372, 'esatto': 389, 'convivenza': 297, 'troncamento': 255}
+   ripieghi:
+      P stato civile diverso              1.204
+      G fuori dai limiti                    621
+      P fuori dai limiti                    293
+      R senza partner del suo stato         182
+      G senza ripiego                        71
+      R senza figli plausibili               42
+      F senza ripiego                        32
+      F fuori dai limiti                     31
+      P senza ripiego                        28
+
+========================================================================
+C. plausibilita' dei divari
+========================================================================
+   generazionale: mediana 30 (AVQ 33) · fuori [21,45] 0.05%
+   partner: mediana -1 · p05 -14 · p95 +14   (limite convenzionale ±15)

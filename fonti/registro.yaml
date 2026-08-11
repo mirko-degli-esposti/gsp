@@ -2014,3 +2014,268 @@ fonti:
     usato_da: [gsp.lavoro]
     non_usabile_per: [vincoli_maxent, condizionamento_per_titolo_comunale,
                       durata_contratto, articolazione_subcomunale]
+# Rilevazione sulle unioni civili — scheda per fonti/registro.yaml
+#
+#   grep -q "id: istat_unioni_civili_2023" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/scheda_unioni_civili.yaml" >> fonti/registro.yaml
+#
+#   python -m gsp.fonti --impronta istat_unioni_civili_2023
+#   python -m gsp.fonti --verifica
+#
+# TRE CAMPI DA CONTROLLARE prima di appendere, perche' non li conosco:
+#   data_accesso    ho messo la data di oggi
+#   normalizzatore  vedi la nota in fondo alla scheda
+#   percorso        {n} presuppone file «Tavola_1.1.xls»: se i nomi
+#                   scaricati sono diversi, va corretto
+
+  - id: istat_unioni_civili_2023
+    tipo: multi_istanza
+    chiave_istanza: tavola
+    ente: ISTAT
+    titolo: Rilevazione sulle unioni civili — Anno 2023
+    url: https://demo.istat.it/tavole/?t=unionicivili
+    data_accesso: 2026-08-07
+    licenza: CC-BY-4.0
+    licenza_uri: https://creativecommons.org/licenses/by/4.0/
+    attribuzione: >-
+      ISTAT, "Rilevazione sulle unioni civili - Anno 2023",
+      demo.istat.it, CC BY 4.0
+    archiviazione: locale
+    percorso: data/istat/unioni_civili/2023/Tavola_{n}.xls
+    copertura: {geo: "Italia, regioni, grandi comuni", tempo: 2023}
+    tavole_usate:
+      - "1.1 indicatori sintetici regionali"
+      - "1.2 unioni per sesso e stato civile degli uniti"
+      - "1.5 unioni costituite nei grandi comuni"
+      - "2.11 unioni per regione di RESIDENZA degli uniti"
+    universo: >-
+      Indagine individuale ed ESAUSTIVA di fonte Stato Civile, istituita
+      nel 2018, su tutte le unioni civili fra coppie dello stesso sesso
+      della popolazione presente.
+      Sono FLUSSI ANNUALI, non stock: la tavola dice quante unioni sono
+      state costituite nel 2023, non quante ne esistono. Lo stock si
+      stima cumulando dal giugno 2016, quando la legge e' entrata in
+      vigore — con le riserve dichiarate in `anomalie`.
+    unita: unione civile costituita nell'anno
+    normalizzatore: null
+    anomalie:
+      - >-
+        LA TAVOLA 1.1 CONTA PER COMUNE DI COSTITUZIONE, non di residenza,
+        e sovrastima la popolazione residente unita del 12-13%:
+        Emilia-Romagna 315 contro 273, Lombardia 708 contro 621. Per i
+        residenti va usata la 2.11, ed e' la ragione per cui entrambe
+        sono nell'elenco delle tavole usate.
+      - >-
+        L'EFFETTO CAPOLUOGO NON E' SEPARABILE con questi dati. Bologna
+        risulta a 15,9 unioni per 100.000 contro 7,08 del dato regionale
+        (tav. 1.5), ma e' costituzione e non residenza: parte del divario
+        e' attrazione per la cerimonia — ci si unisce dove si vuole, non
+        dove si abita — e parte e' composizione reale della popolazione
+        residente. Con le tavole pubblicate le due non si distinguono.
+      - >-
+        SONO FLUSSI E LO STOCK VA STIMATO, con due distorsioni note e di
+        segno concorde:
+        il flusso non e' stato costante — picco di circa 4.400 nel 2017,
+        l'anno dopo l'entrata in vigore, quando si sono unite le coppie
+        che aspettavano da anni — quindi moltiplicare il 2023 per 8,5
+        anni sovrastima del ~5%;
+        e ignorare gli scioglimenti (1,4% degli uniti nel 2023) sovrastima
+        di un altro punto o due.
+        Il valore fedele sarebbe ~0,0037. Si usa 0,004 dichiarando
+        l'incertezza, perche' la terza cifra non e' sostenuta dal dato.
+    derivati:
+      P_STESSO_SESSO_UNITI:
+        valore: 0.004
+        significa: >-
+          quota di coppie dello stesso sesso sul totale delle coppie
+          unite da un vincolo formale (matrimoni + unioni civili) fra i
+          residenti
+        metodo: >-
+          stock stimato cumulando i flussi 2016-2023 dalla tavola 2.11,
+          che conta per RESIDENZA, diviso il totale delle coppie
+          coniugate o unite. Sovrastima di circa il 6% per le due ragioni
+          dichiarate in `anomalie`.
+        incertezza: >-
+          il valore fedele e' ~0,0037; la seconda cifra e' solida, la
+          terza no
+      P_MASCHILE_UNITI:
+        valore: 0.56
+        significa: >-
+          quota di unioni fra uomini sul totale delle unioni civili
+          costituite (tav. 1.2)
+    bias: >-
+      IL DATO E' SULLE UNIONI CIVILI, NON SULLE COPPIE DELLO STESSO SESSO.
+      Le coppie conviventi non unite civilmente non compaiono, e sono
+      verosimilmente piu' numerose di quelle unite: la quota di 0,004
+      misura quindi le coppie FORMALIZZATE, non la prevalenza
+      dell'orientamento ne' della convivenza.
+      Per una popolazione sintetica questo e' il dato giusto se il vincolo
+      da riprodurre e' lo stato civile — che e' un fatto amministrativo —
+      e quello sbagliato se si volesse rappresentare le coppie di fatto.
+      IL LIVELLO TERRITORIALE UTILE E' LA REGIONE. La 1.5 scende ai
+      grandi comuni ma per costituzione, quindi non e' usabile per la
+      residenza (vedi anomalie). Ne segue che la quota e' identica per
+      tutti i comuni della stessa regione, come per gli attributi AVQ.
+    usabile_per: [coppie_stesso_sesso, stato_civile_nucleo]
+    usato_da: [gsp.nucleo]
+    non_usabile_per: [coppie_di_fatto, orientamento_sessuale,
+                      dettaglio_comunale, stock_diretto]
+
+# SUL NORMALIZZATORE. Le tavole di demo.istat.it sono .xls con
+# intestazioni multiriga e note in coda: nessuno dei normalizzatori
+# esistenti le legge. Tre opzioni, in ordine di costo:
+#
+#   1. `normalizzatore: null` e i valori trascritti a mano nei `derivati`
+#      — e' quello che la scheda fa adesso. Va bene perche' dalla fonte
+#      si estraggono DUE NUMERI, non una distribuzione: il costo di un
+#      normalizzatore non si ripaga;
+#   2. un `tavola_xls` che legge un foglio dichiarando riga di
+#      intestazione e colonne, se un domani servissero piu' tavole;
+#   3. trascrivere le quattro tavole in un csv derivato e registrarlo a
+#      parte con `derivato_da: [istat_unioni_civili_2023]`.
+#
+# Con `null` il registro non puo' verificare che i numeri corrispondano
+# al file: e' un limite, e va saputo. Il controllo resta l'impronta
+# sha256, che dice se il file e' cambiato ma non se la trascrizione e'
+# giusta.
+# Repertorio delle configurazioni di nucleo — scheda per fonti/registro.yaml
+#
+# PRIMA DI APPENDERE, due controlli:
+#
+#   python -c "
+#   import yaml
+#   d = yaml.safe_load(open('fonti/registro.yaml'))
+#   ids = {x['id'] for x in d['fonti']}
+#   for i in ('parma_microdati_residenti','avq_microdati',
+#             'istat_unioni_civili_2023'):
+#       print(f'  {i:<34} {\"ok\" if i in ids else \"MANCA\"}')"
+#
+#   ls note/nota_repertorio_avq_v3.md
+#
+# L'id della fonte parmense era `parma_popolazione_residente_2025`, che
+# nel registro NON esiste: quella dei microdati individuali di Parma si
+# chiama `parma_microdati_residenti`. Corretto qui — ma se la coda venisse
+# da un altro file, va rimesso l'id giusto, perche' un `derivato_da` che
+# punta al nulla fa protestare --verifica.
+#
+#   grep -q "id: repertorio_nuclei_v1" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/scheda_repertorio_nuclei.yaml" >> fonti/registro.yaml
+#
+#   python -m gsp.fonti --impronta repertorio_nuclei_v1
+#   python -m gsp.fonti --verifica
+
+  - id: repertorio_nuclei_v1
+    tipo: derivato
+    titolo: Repertorio delle configurazioni di nucleo familiare
+    ente: GSP (derivato)
+    url: null
+    data_accesso: 2026-08-11
+    copertura:
+      geo: "Emilia-Romagna e Lombardia; la coda da Parma"
+      tempo: 2024
+    normalizzatore: repertorio_json
+    percorso: data/repertorio_nuclei_v1.json
+    sha256: 4ef2b2978f640a88c0952831afc445eb78e5c0b62c0886d55cb532ea880a74bc
+    generato_da: gsp.nucleo.costruisci_repertorio
+    generato_il: 2026-08-10
+    archiviazione: locale
+    licenza: >-
+      derivata: CC-BY-4.0 dalle fonti ISTAT, con l'attribuzione che
+      `fonti/ATTRIBUZIONI.md` genera per ciascuna
+    derivato_da:
+      - id: avq_microdati
+        anni: [2022, 2023, 2024]
+        regioni: [80, 30]
+        fornisce: >-
+          firme (P(configurazione | ampiezza), 8.443 nuclei), quota
+          maschile del riferimento per firma, divario generazionale
+          riferimento-figlio, divario fra fratelli, omogeneita' della
+          cittadinanza
+        nota: >-
+          include il 2022, che il pool dell'anello 2 esclude per l'assenza
+          di CRONI: quella e' una variabile target e alla struttura
+          familiare non serve. NON filtra ISTRMi=99, perche' scartare un
+          componente mutila il nucleo.
+      - id: parma_microdati_residenti
+        fornisce: >-
+          la CODA, cioe' P(ampiezza) oltre 6 componenti
+        nota: >-
+          l'AVQ ha 86 nuclei oltre l'ampiezza 6 contro le migliaia di
+          Parma. Per la coda la numerosita' conta piu' della copertura
+          regionale. E' l'unico pezzo del repertorio che viene da un
+          SINGOLO COMUNE, ed e' la sua fragilita' meno visibile.
+      - id: istat_unioni_civili_2023
+        fornisce: [P_STESSO_SESSO_UNITI, P_MASCHILE_UNITI]
+    parametri_convenzionali:
+      PARTNER_MAX_DIFF:
+        valore: 15
+        stato: NON MISURATO
+        perche: >-
+          le classi ETAMi sono larghe 5-10 anni e non risolvono il divario
+          reale fra partner (~3 anni in Italia). L'AVQ da' mediana 0, che
+          significa «stessa classe», non «stessa eta'». Parma ha l'eta'
+          esatta ma nessun identificativo di famiglia, quindi non puo'
+          supplire. Da sostituire col SUF EU-SILC.
+      GENITORE_MIN: {valore: 20, stato: PER ANALOGIA}
+      GENITORE_MAX:
+        valore: 40
+        stato: PER ANALOGIA
+        perche: >-
+          presi dal divario generazionale rovesciato. La misura diretta ha
+          n=175 con il 45% nella classe aperta 75+, dove il centro e' una
+          convenzione. E' il parametro piu' debole del repertorio, e il
+          collaudo lo conferma: «G fuori dai limiti» e' il secondo
+          ripiego per frequenza in tutti e tre i comuni provati.
+    trasferibilita: >-
+      Il repertorio e' emiliano-lombardo e la coda e' parmense, ma viene
+      applicato a tutti gli undici comuni. Assunzione gemella della (6)
+      sull'anello 2. VERIFICATA su Parma, Bologna e Brescia: Bologna e'
+      migliore di Parma su ogni indicatore e Brescia, fuori regione, perde
+      meno di due punti. Nessuna verifica sui comuni piccoli.
+    universo: >-
+      Configurazioni di nucleo familiare con le loro probabilita'
+      condizionate all'ampiezza, piu' i parametri che governano
+      l'assegnazione delle eta' e della cittadinanza dentro il nucleo.
+      NON e' una distribuzione di famiglie: e' un repertorio di forme con
+      i pesi, da cui `assembla` pesca.
+    unita: configurazione di nucleo
+    bias: >-
+      TRE NUMERI SU CINQUE NON SONO MISURATI. `PARTNER_MAX_DIFF`,
+      `GENITORE_MIN` e `GENITORE_MAX` sono convenzioni o analogie, e
+      entrano nella popolazione come se fossero dati. Il campo `stato` li
+      distingue apposta: chi legge il JSON generato non avrebbe altro
+      modo di sapere quali cifre sono misurate e quali no.
+      Il piu' debole e' `GENITORE_MAX`, e si vede nel collaudo: «G fuori
+      dai limiti» e' il secondo ripiego per frequenza su tutti e tre i
+      comuni provati. Un ripiego frequente e' il sintomo di un parametro
+      sbagliato, non del caso.
+      LA CODA VIENE DA UN COMUNE SOLO. Le ampiezze oltre 6 sono rare
+      ovunque, e prenderle da Parma significa assumere che le famiglie
+      numerose di Brescia o Rimini abbiano la stessa distribuzione di
+      quelle parmensi. Non e' verificato, e non lo sara' finche' un altro
+      comune non pubblichi microdati individuali con la famiglia.
+    usabile_per: [struttura_nucleo, assegnazione_ruoli, coppie]
+    usato_da: [gsp.nucleo, scripts/attributi/assign_nucleo.py]
+    non_usabile_per: [statistiche_familiari, distribuzione_famiglie,
+                      comuni_piccoli_non_verificati]
+    documentato_in: note/nota_repertorio_avq_v3.md
+
+# TRE COSE CHE HO AGGIUNTO ALLA BOZZA, e perche'.
+#
+# `sha256: DA_CALCOLARE`. Anche un derivato ha l'impronta: e' cio' che
+# distingue «rigenerato uguale» da «rigenerato diverso», e senza non si
+# saprebbe se una popolazione nuova usi lo stesso repertorio di quella
+# vecchia. `scripts/riempi_sha.py` lo calcola dal percorso dichiarato.
+#
+# `usabile_per` / `non_usabile_per`. Il registro li richiede su tutte le
+# schede, e qui il secondo dice la cosa importante: il repertorio serve a
+# costruire nuclei, NON a fare statistiche sulle famiglie. Sono due usi
+# che si confondono facilmente, perche' il file contiene delle
+# probabilita' e sembra una distribuzione.
+#
+# Un `bias` esplicito. `parametri_convenzionali` dice quali numeri non
+# sono misurati, ma non dice CHE COSA COMPORTA. Il bias lo esplicita, e
+# aggiunge l'osservazione che vale la pena tenere: un ripiego frequente
+# nel collaudo e' il sintomo di un parametro sbagliato, non del caso.

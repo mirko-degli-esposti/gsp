@@ -601,6 +601,20 @@ attributi degli shapefile delle Basi Territoriali o in `Comuni_2023.zip`.
 
 ---
 
+**(g) Stato di avanzamento, 10 agosto 2026.** L'anello 4 è
+implementato: `src/gsp/nucleo.py`, repertorio in
+`data/repertorio_nuclei_v1.json`, produzione con
+`scripts/attributi/assign_nucleo.py`. Collaudato su Parma, Bologna e
+Brescia. **Tutto ciò che riguarda il modulo, il repertorio AVQ e i
+risultati sta in `nota_repertorio_avq_v3.md`**; questa nota resta il
+documento dell'architettura e delle misure che l'hanno decisa.
+
+Due punti di questa sezione sono superati da quel lavoro: il costo della
+validazione (b) — Parma è stata usata, e la validazione a livello di
+nucleo si è rivelata impossibile con qualunque fonte disponibile, non
+solo con Parma — e la tipologia del nucleo (e), che le firme del
+repertorio realizzano.
+
 ## 9. Per il paper sul criterio TVD
 
 Questo è un terzo caso applicativo, con una struttura **diversa** dagli

@@ -133,10 +133,54 @@ identificativo di famiglia.
 `RP` 0,828 maschi · `RPFF` 0,792 · `R` 0,468 · **`RF` monogenitore
 0,191**. `RP` è **bimodale** (coppie giovani e nidi vuoti).
 
-### 4.4 Coppie dello stesso sesso: esattamente zero
+### 4.4 Coppie dello stesso sesso: zero nell'AVQ, ora nel modello
 
-0,000 su 4.525 partner — strutturale. **La popolazione sintetica eredita
-l'assenza.**
+Nel repertorio AVQ sono **0,000 su 4.525 partner** — zero esatto, non
+«poche». Con una prevalenza anche minima se ne aspetterebbero alcune
+decine: è **strutturale della fonte**, non campionario. O il questionario
+non lo prevede, o un controllo di coerenza le esclude in validazione.
+
+> **Ma dall'assenza in una fonte non segue che il modello debba
+> escluderle.** È un'informazione sulla fonte, non sulla popolazione. E
+> il constraint set le contiene già: la modalità si chiama
+> `coniugato_unito`, dove «unito» sta per unione civile, che in Italia dal
+> 2016 è per definizione fra persone dello stesso sesso. L'assemblaggio le
+> rendeva **impossibili da rappresentare** — un limite di rappresentabilità,
+> non di accuratezza.
+
+Dal 10 agosto 2026 esistono, con due parametri da fonte esterna
+(`istat_unioni_civili_2023` nel registro):
+
+| parametro | valore | fonte |
+|---|---:|---|
+| `P_STESSO_SESSO_UNITI` | 0,004 | tav. 2.11, cumulato 2016–2023 |
+| `P_MASCHILE_UNITI` | 0,56 | tav. 1.2 (56,1%) |
+
+Il tasso viene dalla **regione di residenza** (tav. 2.11), non dal comune
+di costituzione (tav. 1.1), che sovrastima del 12–13%: Emilia-Romagna 273
+coppie contro 315, Lombardia 621 contro 708. Le due regioni hanno
+praticamente lo stesso tasso — 6,14 e 6,21 per 100.000 — quindi un solo
+parametro serve tutti e undici i comuni. Su Parma sono ~100 coppie unite.
+
+**Tre limiti, tutti dichiarati.**
+
+*Solo le unioni civili.* Le coppie **conviventi** dello stesso sesso — due
+`celibe_nubile` — restano impossibili: la rilevazione ISTAT non le copre e
+sono verosimilmente più numerose. Si rende rappresentabile una categoria e
+non l'altra.
+
+*L'effetto capoluogo non è separabile.* Bologna risulta a 15,9 unioni per
+100.000 contro 7,08 regionale (tav. 1.5), ma è costituzione e non
+residenza: parte è attrazione per la cerimonia, parte è composizione
+reale, e con le tavole pubblicate le due non si distinguono. Usare il
+tasso regionale sui capoluoghi è quindi verosimilmente una sottostima.
+
+*Il rapporto M/F non è rispettato.* Il sesso del riferimento si sceglie
+**prima** di sapere se la coppia sarà dello stesso sesso, seguendo la
+preferenza della firma (~80% maschi). Le coppie unite risultano quindi
+maschili all'80% invece del 56% osservato. Correggerlo richiede di
+decidere prima la natura della coppia: su ~100 coppie per comune non
+sposta nulla di aggregato, ma in una scheda individuo si noterebbe.
 
 ### 4.5 La cittadinanza è una preferenza
 
@@ -295,21 +339,44 @@ cioè quello che abbiamo deciso di non toccare.
 
 ### 7.5 Il repertorio è trasferibile
 
-| comune | omogenee | incoerenti | senza ripiego | non collocati | div. gen. |
+**Undici comuni, 1,91 milioni di individui, 888.000 nuclei**
+(`assign_nucleo.py --tutti`, 10 agosto 2026):
+
+| comune | individui | nuclei | omogenee | incoerenti | non collocati |
 |---|---:|---:|---:|---:|---:|
-| Parma | 96,5% | 21,7% | 97,8% | 1,85% | 30 |
-| **Bologna** | **98,1%** | **18,4%** | **98,8%** | **1,42%** | 29 |
-| Brescia | 95,0% | 22,6% | 97,2% | 1,80% | 30 |
+| Bologna (037006) | 390.098 | 210.737 | **98,1%** | **18,2%** | 1,43% |
+| Parma (034027) | 198.121 | 94.484 | 96,5% | 21,7% | 1,86% |
+| Brescia (017029) | 198.259 | 96.608 | 95,1% | 22,7% | 1,82% |
+| 035033 | 171.207 | 80.829 | 94,8% | 22,7% | 1,13% |
+| Castenaso (037021) | 16.357 | 7.493 | 94,6% | 23,5% | 1,15% |
+| 033032 | 102.887 | 48.737 | 93,9% | 24,5% | 1,42% |
+| Modena (036023) | 184.597 | 85.249 | 93,8% | 23,6% | **2,28%** |
+| 099014 | 150.046 | 68.903 | 93,0% | 24,0% | 1,78% |
+| 038008 | 129.391 | 65.281 | 92,9% | 21,4% | 2,06% |
+| 039014 | 156.304 | 75.616 | 91,6% | 23,4% | 1,60% |
+| 040012 | 117.050 | 54.000 | **91,4%** | **24,7%** | 1,79% |
 
 > La **coda** del repertorio (ampiezze oltre 6) viene dai microdati di
 > **Parma**, e il repertorio delle firme è emiliano-lombardo. Il timore
-> che fossero locali non si materializza: Bologna è **migliore** di Parma
-> su ogni indicatore, e Brescia — Lombardia, fuori regione — perde meno
-> di due punti.
+> che fossero locali non si materializza: nessun comune è patologico, e
+> Brescia — Lombardia, fuori regione — sta nella parte alta.
 
-Brescia è leggermente peggiore in modo coerente: `P stato civile diverso`
-sale a 1.620 e `R senza partner del suo stato` a 279. Lì i coniugati sono
-più difficili da appaiare. Differenza di grado, non di natura.
+**La banda reale è più larga di quanto i tre comuni di prova
+suggerissero**: omogenee 91,4–98,1% contro il 95–98% stimato, incoerenti
+18,2–24,7%.
+
+La correlazione con la dimensione è visibile — Bologna è il più grande e
+il migliore, i tre peggiori stanno fra 117.000 e 156.000 abitanti — **ma
+non è la dimensione in sé**: Castenaso, con 16.357 abitanti, dà 94,6%,
+meglio di comuni sei volte più grandi. Conta piuttosto la struttura per
+stato civile della popolazione locale, cioè quanti coniugati ci sono
+rispetto agli slot di coppia che il repertorio prevede (§7.4).
+*Ipotesi non verificata: i JSON di diagnostica per comune la
+permetterebbero.*
+
+I **non collocati** stanno fra 1,13% e 2,28%, con Modena in cima: sono le
+convivenze anagrafiche più i residui, e la variazione riflette quante
+strutture collettive — case di riposo, studentati — ci sono nel comune.
 
 ### 7.6 Il resto del collaudo
 
@@ -367,8 +434,14 @@ Candidato numero uno per il SUF.
 **9.6 Il rischio che l'AVQ porta con sé**: nessuna combinazione AVQ
 riproduce il 52% di stranieri del codice 11 di Parma.
 
-**9.7 `assign_nucleo.py`** non è ancora scritto: il collaudo gira su uno
-script diagnostico.
+**9.7 Il rapporto M/F delle coppie unite** segue quello dei riferimenti
+(~80% maschi) invece del 56% osservato (§4.4). Richiede di decidere la
+natura della coppia prima del sesso del riferimento.
+
+**9.9 Le coppie conviventi dello stesso sesso** restano impossibili: due
+`celibe_nubile` non si accoppiano mai. Servirebbe una fonte che le
+misuri — il censimento permanente dovrebbe avere le coppie per
+tipologia.
 
 **9.8 La metrica per coppia è severa in eccesso** sui ruoli `A` e `G`
 (§7.3): un coniugato che vive col fratello mentre il coniuge sta altrove

@@ -65,8 +65,17 @@ COSA IL MODULO DICHIARA DI NON POTER FARE
   · i limiti del genitore sono presi per analogia: n=175 con il 45%
     nella classe aperta. E' il ripiego piu' frequente nel collaudo (385
     casi), quindi il parametro piu' debole.
-  · nessuna coppia dello stesso sesso: 0,000 su 4.525 partner nell'AVQ,
-    strutturale. La popolazione eredita l'assenza.
+  · le coppie dello stesso sesso esistono ora, ma SOLO fra
+    `coniugato_unito` (unioni civili), con p = 0,004 da ISTAT 2023.
+    Le coppie CONVIVENTI dello stesso sesso -- due `celibe_nubile` --
+    restano impossibili: la rilevazione ISTAT non le copre e sono
+    verosimilmente piu' numerose. Nel repertorio AVQ sono comunque
+    0,000 su 4.525 partner, il che e' una proprieta' della fonte e non
+    della popolazione.
+  · il rapporto M/F delle coppie unite segue quello dei riferimenti in
+    coppia (~80% maschi) invece del 56% osservato: il sesso del
+    riferimento si sceglie prima di sapere se la coppia sara' dello
+    stesso sesso.
   · le AVQ dentro il nucleo restano scorrelate (rho ~0,6 nella realta',
     v22 §13.5), e l'INDIRIZZO e' assegnato per individuo: marito e
     moglie possono risultare a due civici diversi. Entrambe incoerenze
@@ -114,6 +123,20 @@ CONVENZIONALI = {
     "PARTNER_MAX_DIFF": 15,
     "GENITORE_MIN": 20,
     "GENITORE_MAX": 40,
+    # coppie dello stesso sesso: unioni civili. NON convenzionali --
+    # misurate, ma tenute qui perche' esterne al repertorio AVQ.
+    # Fonte: ISTAT, Rilevazione sulle unioni civili, 2023.
+    #   tav. 2.11 (regione di RESIDENZA, non di costituzione: quella
+    #   sovrastima del 12-13%): Emilia-Romagna 273 coppie, Lombardia 621,
+    #   cioe' 6,14 e 6,21 per 100.000 residenti -- praticamente identici,
+    #   quindi un solo parametro per tutti gli undici comuni.
+    #   Cumulato su ~8,5 anni dall'entrata in vigore (giugno 2016):
+    #   ~52 coppie per 100.000 residenti. Su Parma ~103 coppie unite su
+    #   ~28.000 coppie coniugate.
+    #   tav. 1.2: 56,1% delle unioni fra uomini (solo nazionale; Bologna
+    #   dalla tav. 1.5 da' 59,7%, coerente).
+    "P_STESSO_SESSO_UNITI": 0.004,
+    "P_MASCHILE_UNITI": 0.56,
 }
 
 
@@ -220,6 +243,12 @@ def costruisci_repertorio(anni=(2022, 2023, 2024), regioni=(80, 30),
             "n_nuclei": int(len(nuc)), "n_componenti": int(len(d)),
             "nota": "repertorio AVQ; la coda oltre l'ampiezza 6 viene dai "
                     "microdati di Parma (fonte mista, dichiarata)",
+            "avvertenza": "in `convenzionali`, PARTNER_MAX_DIFF, GENITORE_MIN "
+                      "e GENITORE_MAX NON sono misurati: sono convenzioni "
+                      "o analogie. P_STESSO_SESSO_UNITI e "
+                      "P_MASCHILE_UNITI vengono invece da "
+                      "istat_unioni_civili_2023, e stanno nello stesso "
+                      "blocco solo perche' sono costanti nel codice.",
         },
         "firme": firme,
         "coda": _coda_parma() if coda_da_parma else {},
@@ -439,6 +468,8 @@ def assembla(individui, vincoli, rep, rng, prefisso=""):
             "senza_eta": int(len(ind) - len(lib))}
 
     pmax = float(rep.conv["PARTNER_MAX_DIFF"])
+    p_ss = float(rep.conv.get("P_STESSO_SESSO_UNITI", 0.0))
+    p_m_ss = float(rep.conv.get("P_MASCHILE_UNITI", 0.5))
     gmin, gmax = float(rep.conv["GENITORE_MIN"]), float(rep.conv["GENITORE_MAX"])
 
     # RITIRATA la preassegnazione dei vedovi agli unipersonali (provata
@@ -529,8 +560,28 @@ def assembla(individui, vincoli, rep, rng, prefisso=""):
             # impossibile. Nella v2 il filtro era applicato al solo
             # riferimento, e il ripiego `c = base` riammetteva i vedovi:
             # ~180 coppie coniugato+vedovo su Parma.
-            amm = [j for j in lib if masc[j] != masc[r]
-                   and (not usa_sc or sc[j] not in STATO_NON_PARTNER)]
+            # Coppie dello stesso sesso: solo fra `coniugato_unito`,
+            # perche' e' la modalita' che contiene le unioni civili.
+            # Le coppie CONVIVENTI dello stesso sesso (due
+            # `celibe_nubile`) restano fuori: la rilevazione ISTAT sulle
+            # unioni civili non le copre, e sono verosimilmente piu'
+            # numerose. Limite dichiarato.
+            stesso = (usa_sc and sc[r] == "coniugato_unito"
+                      and rng.random() < p_ss)
+            if stesso:
+                # il sesso della coppia segue la quota osservata; se il
+                # riferimento non e' del sesso estratto, la coppia resta
+                # dello stesso sesso comunque -- e' il suo che conta
+                amm = [j for j in lib if masc[j] == masc[r]
+                       and sc[j] == "coniugato_unito"]
+                if not amm:
+                    stesso = False
+                else:
+                    diag["coppie_stesso_sesso"] = (
+                        diag.get("coppie_stesso_sesso", 0) + 1)
+            if not stesso:
+                amm = [j for j in lib if masc[j] != masc[r]
+                       and (not usa_sc or sc[j] not in STATO_NON_PARTNER)]
             base = [j for j in amm if abs(eta[j] - eta[r]) <= pmax]
             c = ([j for j in base if sc[j] == sc[r]] if usa_sc else base)
             omogenea = bool(c)

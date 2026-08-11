@@ -1,0 +1,71 @@
+nohup: ignoring input
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[017029] 198.259 individui · 96.608 nuclei · senza ripiego 97.2% · non collocati 1.82%
+          coppie omogenee 95.1% · coniugati incoerenti 22.7% · 124s
+          -> data/nuclei/nuclei_017029.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[033032] 102.887 individui · 48.737 nuclei · senza ripiego 96.4% · non collocati 1.42%
+          coppie omogenee 93.9% · coniugati incoerenti 24.5% · 41s
+          -> data/nuclei/nuclei_033032.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[034027] 198.121 individui · 94.484 nuclei · senza ripiego 97.7% · non collocati 1.86%
+          coppie omogenee 96.5% · coniugati incoerenti 21.7% · 235s
+          -> data/nuclei/nuclei_034027.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[035033] 171.207 individui · 80.829 nuclei · senza ripiego 96.8% · non collocati 1.13%
+          coppie omogenee 94.8% · coniugati incoerenti 22.7% · 182s
+          -> data/nuclei/nuclei_035033.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[036023] 184.597 individui · 85.249 nuclei · senza ripiego 96.0% · non collocati 2.28%
+          coppie omogenee 93.8% · coniugati incoerenti 23.6% · 66s
+          -> data/nuclei/nuclei_036023.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[037006] 390.098 individui · 210.737 nuclei · senza ripiego 98.8% · non collocati 1.43%
+          coppie omogenee 98.1% · coniugati incoerenti 18.2% · 279s
+          -> data/nuclei/nuclei_037006.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[037021] 16.357 individui · 7.493 nuclei · senza ripiego 96.5% · non collocati 1.15%
+          coppie omogenee 94.6% · coniugati incoerenti 23.5% · 7s
+          -> data/nuclei/nuclei_037021.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[038008] 129.391 individui · 65.281 nuclei · senza ripiego 95.8% · non collocati 2.06%
+          coppie omogenee 92.9% · coniugati incoerenti 21.4% · 35s
+          -> data/nuclei/nuclei_038008.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[039014] 156.304 individui · 75.616 nuclei · senza ripiego 95.0% · non collocati 1.60%
+          coppie omogenee 91.6% · coniugati incoerenti 23.4% · 49s
+          -> data/nuclei/nuclei_039014.csv
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[040012] 117.050 individui · 54.000 nuclei · senza ripiego 94.7% · non collocati 1.79%
+          coppie omogenee 91.4% · coniugati incoerenti 24.7% · 22s
+          -> data/nuclei/nuclei_040012.csv
+[074017] popolazione non trovata
+/home/mirko/progetti/gsp/scripts/attributi/assign_nucleo.py:137: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+[099014] 150.046 individui · 68.903 nuclei · senza ripiego 95.6% · non collocati 1.78%
+          coppie omogenee 93.0% · coniugati incoerenti 24.0% · 89s
+          -> data/nuclei/nuclei_099014.csv
+
+==================================================================
+   comune      individui    nuclei  omogenee  incoer.  non coll.
+   017029        198.259    96.608    95.1%   22.7%     1.82%
+   033032        102.887    48.737    93.9%   24.5%     1.42%
+   034027        198.121    94.484    96.5%   21.7%     1.86%
+   035033        171.207    80.829    94.8%   22.7%     1.13%
+   036023        184.597    85.249    93.8%   23.6%     2.28%
+   037006        390.098   210.737    98.1%   18.2%     1.43%
+   037021         16.357     7.493    94.6%   23.5%     1.15%
+   038008        129.391    65.281    92.9%   21.4%     2.06%
+   039014        156.304    75.616    91.6%   23.4%     1.60%
+   040012        117.050    54.000    91.4%   24.7%     1.79%
+   099014        150.046    68.903    93.0%   24.0%     1.78%

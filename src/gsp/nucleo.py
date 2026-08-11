@@ -441,6 +441,22 @@ def assembla(individui, vincoli, rep, rng, prefisso=""):
     pmax = float(rep.conv["PARTNER_MAX_DIFF"])
     gmin, gmax = float(rep.conv["GENITORE_MIN"]), float(rep.conv["GENITORE_MAX"])
 
+    # RITIRATA la preassegnazione dei vedovi agli unipersonali (provata
+    # il 10/8/2026, misurata, tolta). L'idea era che i vedovi sono la
+    # categoria che riempie i nuclei da 1, e che il ciclo -- processando
+    # dal piu' grande al piu' piccolo -- li consuma prima come riferimenti
+    # di nuclei plurimi. Ma dando loro la prelazione si TOLGONO quei posti
+    # ai coniugati che vivono soli, che erano classificati legittimi:
+    #
+    #     coniugati in nuclei unipersonali   21,6% -> 17,5%
+    #     coniugati con ruolo R incoerenti    7,8% -> 15,7%
+    #     incoerenza totale                  21,7% -> 25,0%
+    #
+    # Il problema si sposta, non si risolve. La versione corretta sarebbe
+    # una preassegnazione PROPORZIONALE, che riempia gli unipersonali
+    # rispettando le quote reali di stato civile fra chi vive solo --
+    # quote misurabili sull'AVQ (nuclei con NCOMP=1) e non ancora
+    # misurate. Raffinamento, non blocco.
     for n_i, firma in enumerate(sorted(firme, key=len, reverse=True)):
         if not lib:
             diag["ripieghi"]["nucleo senza individui"] += 1
@@ -508,8 +524,14 @@ def assembla(individui, vincoli, rep, rng, prefisso=""):
 
         # --- partner: stato civile uguale, sesso opposto, eta' entro pmax -
         for _ in range(n_p):
-            base = [j for j in lib if masc[j] != masc[r]
-                    and abs(eta[j] - eta[r]) <= pmax]
+            # `STATO_NON_PARTNER` vale in TUTTI i rami, ripieghi
+            # compresi: un `P` mancante e' meno grave di un `P`
+            # impossibile. Nella v2 il filtro era applicato al solo
+            # riferimento, e il ripiego `c = base` riammetteva i vedovi:
+            # ~180 coppie coniugato+vedovo su Parma.
+            amm = [j for j in lib if masc[j] != masc[r]
+                   and (not usa_sc or sc[j] not in STATO_NON_PARTNER)]
+            base = [j for j in amm if abs(eta[j] - eta[r]) <= pmax]
             c = ([j for j in base if sc[j] == sc[r]] if usa_sc else base)
             omogenea = bool(c)
             if not c:
@@ -518,7 +540,7 @@ def assembla(individui, vincoli, rep, rng, prefisso=""):
                     diag["ripieghi"]["P stato civile diverso"] += 1
                     pulito = False
             if not c:
-                c = [j for j in lib if masc[j] != masc[r]]
+                c = amm
                 if c:
                     diag["ripieghi"]["P fuori dai limiti"] += 1
                     pulito = False

@@ -1,0 +1,35 @@
+/home/mirko/progetti/gsp/scripts/diagnostica/collaudo_nucleo.py:79: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  sez["k"] = sez.SEZ21_ID.astype("Int64").astype(str)
+
+========================================================================
+034027 · popolazione_K9C_avq_full.csv
+========================================================================
+A. stato civile
+   coppie con lo stesso stato civile: 95.9%  (40.486/42.206)
+   coniugati 80.545 · in nuclei unipersonali 17.5% (legittimo)
+   INCOERENTI (metrica per coppia): 20.121 (25.0%)
+   per ruolo del coniugato:
+                 n  quota_inc
+      ruolo                  
+      A       1794      1.000
+      F       8820      1.000
+      G       1184      1.000
+      N        583      1.000
+      P      23987      0.034
+      R      44177      0.157
+   coppie (R.P) 42.206 · combinazioni piu' frequenti:
+      coniugato_unito      + coniugato_unito      23.177
+      celibe_nubile        + celibe_nubile        15.801
+      divorziato_sciolto   + divorziato_sciolto    1.715
+      celibe_nubile        + coniugato_unito         671
+      coniugato_unito      + celibe_nubile           309
+
+B. fattibilita'
+   198.121 individui · 94.484 nuclei · senza ripiego 97.6%
+   non collocati 1.91% · convivenza dichiarata 2.884
+   casi vincoli: {'sovrastima': 372, 'esatto': 389, 'convivenza': 297, 'troncamento': 255}
+   ripieghi principali: P stato civile diverso 1256, P fuori dai limiti 464, G fuori dai limiti 380, R senza partner del suo stato 296, P senza ripiego 148
+
+C. divari
+   generazionale mediana 29 (AVQ 33) · fuori limiti 0.07%
+   partner mediana -1 · p05 -14 · p95 +14

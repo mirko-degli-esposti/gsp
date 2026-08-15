@@ -2042,7 +2042,7 @@ fonti:
       ISTAT, "Rilevazione sulle unioni civili - Anno 2023",
       demo.istat.it, CC BY 4.0
     archiviazione: locale
-    percorso: data/istat/unioni_civili/2023/Tavola_{n}.xls
+    percorso: data/istat/unioni_civili/2023/Tavola_{istanza}.xls
     copertura: {geo: "Italia, regioni, grandi comuni", tempo: 2023}
     tavole_usate:
       - "1.1 indicatori sintetici regionali"
@@ -2058,7 +2058,7 @@ fonti:
       stima cumulando dal giugno 2016, quando la legge e' entrata in
       vigore — con le riserve dichiarate in `anomalie`.
     unita: unione civile costituita nell'anno
-    normalizzatore: null
+    normalizzatore: nessuno
     anomalie:
       - >-
         LA TAVOLA 1.1 CONTA PER COMUNE DI COSTITUZIONE, non di residenza,
@@ -2126,7 +2126,7 @@ fonti:
 # intestazioni multiriga e note in coda: nessuno dei normalizzatori
 # esistenti le legge. Tre opzioni, in ordine di costo:
 #
-#   1. `normalizzatore: null` e i valori trascritti a mano nei `derivati`
+#   1. `normalizzatore: nessuno` e i valori trascritti a mano nei `derivati`
 #      — e' quello che la scheda fa adesso. Va bene perche' dalla fonte
 #      si estraggono DUE NUMERI, non una distribuzione: il costo di un
 #      normalizzatore non si ripaga;
@@ -2279,3 +2279,146 @@ fonti:
 # sono misurati, ma non dice CHE COSA COMPORTA. Il bias lo esplicita, e
 # aggiunge l'osservazione che vale la pena tenere: un ripiego frequente
 # nel collaudo e' il sintomo di un parametro sbagliato, non del caso.
+# EU-SILC — due schede, perche' sono due oggetti con statuto diverso.
+#
+#   grep -q "id: eusilc_puf_it" fonti/registro.yaml \
+#     && echo "GIA' PRESENTE" \
+#     || cat "$SCAR/scheda_eusilc.yaml" >> fonti/registro.yaml
+#
+#   python scripts/riempi_sha.py
+#   python -m gsp.fonti --verifica | tail -3
+#
+# COSA HO AGGIUNTO alla bozza: i campi che il registro pretende su OGNI
+# scheda — `data_accesso`, `copertura`, `normalizzatore`, `licenza`. Sono
+# gli stessi che hanno fatto fallire `repertorio_nuclei_v1`: il registro
+# non controlla i VALORI — il vocabolario di `usabile_per` e' libero, cento
+# etichette molte delle quali usate una volta sola — ma controlla i CAMPI.
+#
+# `dati_sintetici`, `sostituito_da`, `riferimenti_usati` e `grezzo` non
+# sono mai stati usati: il registro li ignora senza protestare, quindi
+# vanno bene ma NON sono validati. Un refuso non verrebbe segnalato.
+
+  - id: eusilc_puf_it
+    tipo: multi_istanza
+    chiave_istanza: annata_file
+    percorso: data/eu-silc/puf/IT_{istanza}_EUSILC.csv
+    ente: Eurostat
+    titolo: EU-SILC Public Use File — Italia
+    url: https://ec.europa.eu/eurostat/web/microdata/public-microdata/statistics-on-income-and-living-conditions
+    data_accesso: 2026-08-05
+    licenza: >-
+      accesso pubblico previa accettazione del disclaimer; NON e' una
+      licenza aperta e non consente la ridistribuzione. Il testo e'
+      conservato in `Disclaimer_SILC.txt` accanto ai dati.
+    archiviazione: locale
+    grezzo: data/eu-silc/IT_PUF_EUSILC.zip
+    copertura: {geo: "Italia, NUTS2 (DB040)", tempo: "2004-2013"}
+    unita: "quattro file per annata: D e H per famiglia, R e P per persona"
+    universo: >-
+      DIECI ANNATE, quaranta CSV. Nomi con la lettera del file MINUSCOLA.
+      Cifre di riferimento per il 2013: D 18.487, H 18.487, R 43.489,
+      P 37.209. Il file R ha 25 colonne.
+    normalizzatore: nessuno
+    dati_sintetici: true
+    anomalie:
+      - >-
+        I DATI SONO COMPLETAMENTE SINTETICI per dichiarazione Eurostat.
+        Non sono osservazioni: sono simulati con modelli statistici a
+        partire dalle distribuzioni dei dati originali. Il disclaimer e'
+        piu' stretto della formula «dati sintetici»: esclude
+        esplicitamente le «relationships between different personal or
+        household characteristics», quindi anche le correlazioni e i
+        divari fra membri della stessa famiglia.
+      - >-
+        LE VARIABILI DI PARENTELA NON CI SONO. RB220 (padre), RB230
+        (madre), RB240 (partner) sono documentate come cross-sezionali nel
+        SUF ma assenti dal PUF, e cosi' PB160/PB170/PB180 nel file P:
+        rimosse per riservatezza. Il disclaimer afferma che la struttura
+        del PUF e' la stessa del SUF, e su questo punto e' inesatto.
+        Conseguenza: il parser dei puntatori si scrive ma non si collauda.
+      - >-
+        NESSUN FLAG. Le colonne `_F`, che sul SUF dicono se un valore e'
+        osservato, imputato o mancante, sono omesse perche' prive di
+        interpretazione su dati simulati.
+      - >-
+        RB030 NON E' UNIVOCO: almeno due record nella stessa famiglia
+        condividono l'identificativo. Sul SUF la stessa anomalia, se
+        presente, renderebbe AMBIGUI i puntatori di parentela, che
+        contengono l'id sorgente. Vedi eusilc_exploration §5.1.
+      - >-
+        ROTAZIONE LONGITUDINALE: le stesse famiglie ricompaiono per
+        quattro anni consecutivi. Impilare le dieci annate senza
+        deduplicare creerebbe famiglie duplicate — la stessa trappola di
+        PROFAM nell'AVQ (v22 §13.5).
+    bias: >-
+      E' LA FONTE CON IL RISCHIO D'USO IMPROPRIO PIU' ALTO DEL REGISTRO, e
+      per una ragione che nessun campo tecnico cattura: **i numeri
+      sembrano dati**. Un CSV con 43.489 righe, colonne dai nomi ufficiali
+      e valori plausibili non ha nulla che avverta chi lo apre. Il nome del
+      file non lo dice, l'estensione non lo dice, e una media calcolata su
+      quelle righe esce con tre cifre decimali come qualunque altra.
+      Chi lo usasse per una stima otterrebbe un numero verosimile e
+      sbagliato, senza che nulla segnali l'errore. Da cui
+      `non_usabile_per` piu' lungo del solito, e `dati_sintetici: true`
+      come campo a se': se un domani arrivassero altre fonti simulate, la
+      categoria e' filtrabile invece che sepolta in una nota.
+    usabile_per: [sviluppo_codice, esplorazione_struttura,
+                  preparazione_richiesta_suf]
+    non_usabile_per: [stima, calibrazione, validazione, divari_eta,
+                      grafo_parentela, qualunque_inferenza]
+    usato_da: [scripts/diagnostica/eusilc_grafo.py]
+    documentato_in: note/eusilc_exploration_v3.md
+    sostituito_da: >-
+      EU-SILC Scientific Use File, da richiedere. Motivazione strutturata
+      in eusilc_exploration_v3 §12.
+
+  - id: eusilc_target_variables_2013
+    tipo: documentazione
+    ente: Eurostat
+    titolo: >-
+      EU-SILC Description of Target Variables — SILC065, operation 2013,
+      version May 2013
+    url: https://circabc.europa.eu/sd/a/d7e88330-3502-44fa-96ea-eab5579b4d1e/SILC065%20operation%202013%20VERSION%20MAY%202013.pdf
+    data_accesso: 2026-08-05
+    licenza: >-
+      documento pubblico Eurostat su CIRCABC, senza licenza esplicita.
+      Citabile e conservabile; la ridistribuzione non e' dichiarata.
+    archiviazione: locale
+    percorso: "data/eu-silc/SILC065 operation 2013 VERSION MAY 2013.pdf"
+    sha256: 753f599718889eb9d653080860a09e52fae526863d1bf7487f12ec6f724374d3
+    copertura: {geo: "UE", tempo: 2013}
+    unita: definizione di variabile
+    universo: >-
+      Definizione ufficiale di tutte le variabili target EU-SILC:
+      contenuto, unita', periodo di riferimento, e se la variabile sia
+      cross-sezionale, longitudinale o entrambe.
+    normalizzatore: nessuno
+    bias: >-
+      NON E' UN DATASET ma la fonte da cui il progetto ha tratto le
+      affermazioni sulla struttura di EU-SILC. Serve a rispondere alla
+      domanda «da dove risulta che RB220 e' cross-sezionale?» — e la
+      risposta e' pagina 144.
+      Va conservato perche' il PDF su CIRCABC puo' cambiare URL o sparire,
+      e con esso la giustificazione di quanto scritto nelle note.
+    riferimenti_usati:
+      - "p. 78: quali record stanno nei file D/R/H/P"
+      - >-
+        pp. 144-146: RB220, RB230, RB240 — cross-sectional and
+        longitudinal, incluse «in order to calculate the household
+        composition»
+      - "pp. 252-254: PB160, PB170, PB180, le stesse nel file P"
+    usabile_per: [decodifica_variabili_eusilc, documentazione_struttura]
+    usato_da: [note/eusilc_exploration_v3.md]
+    non_usabile_per: [dati, conteggi, stime]
+
+# UNA COSA CHE VALE OLTRE QUESTE DUE SCHEDE
+#
+# `tipo: documentazione` e' un valore nuovo: venti schede usano `tipo`, ma
+# con altri valori. Il registro non lo valida, quindi passa — ed e' una
+# categoria che mancava e serviva.
+#
+# Il registro fin qui conteneva solo DATI. Ma una fonte di dati senza la
+# sua documentazione e' meta' fonte: le anomalie del PUF sono state
+# scoperte confrontando i file con il PDF, e senza quel confronto
+# «RB220 e' assente» sarebbe stata una constatazione invece di una
+# discrepanza fra cio' che il dato dichiara e cio' che contiene.

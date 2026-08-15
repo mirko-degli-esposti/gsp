@@ -1,0 +1,42 @@
+{
+  "id": "istat_unioni_civili_2023",
+  "istanze": {
+    "1_1": {
+      "byte": 73216,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "bb5e8d09b7830d0f90debe626a19d4197833ae26f04934621f648b0f026bfc12"
+    },
+    "1_2": {
+      "byte": 76800,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "23aa99df057a24bb26ef3a0890f9bdbb96f9ab1e9729c62bef98afeff55ac2df"
+    },
+    "1_5": {
+      "byte": 93184,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "cc1fd93e64b93a2f39b8844d2a059d6678a13e2619ed77945d2c31926f29ec69"
+    },
+    "2_11": {
+      "byte": 77824,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "cadcd8f16b6e43135add5ce99c50eb059cc04b36ff46a14fa5f575a7397a9b98"
+    },
+    "2_2": {
+      "byte": 249344,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "575f7437f0ef673d8b642a45f6c0c15c3542dcd4348de751767c92715d2c221f"
+    }
+  },
+  "n_istanze": 5,
+  "tipo": "multi_istanza"
+}

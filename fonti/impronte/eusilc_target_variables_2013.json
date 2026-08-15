@@ -1,0 +1,33 @@
+{
+  "byte": 3079135,
+  "decili": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "diagnostica": {
+    "byte": 3079135,
+    "modalita": 0,
+    "n_misurato": 0.0,
+    "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256"
+  },
+  "hapax": 1,
+  "id": "eusilc_target_variables_2013",
+  "modalita": 0,
+  "n_misurato": 0.0,
+  "peso_max": 1.0,
+  "peso_min": 1.0,
+  "sha256": "753f599718889eb9d653080860a09e52fae526863d1bf7487f12ec6f724374d3",
+  "testa": [
+    {
+      "chiave": "SILC065 operation 2013 VERSION MAY 2013.pdf",
+      "peso": 1.0
+    }
+  ]
+}

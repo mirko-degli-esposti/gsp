@@ -1,0 +1,143 @@
+{
+  "byte": 4136,
+  "decili": [
+    0.0022198970565308453,
+    0.003950195421358519,
+    0.0057739182796636675,
+    0.01182452920644821,
+    0.021584075005621813,
+    0.02473683451540014,
+    0.04526966970791571,
+    0.08345782751043619,
+    0.30654127678634324
+  ],
+  "diagnostica": {
+    "ampiezze": 8,
+    "anni": [
+      2022,
+      2023,
+      2024
+    ],
+    "blocco_cittadinanza": 2,
+    "blocco_coda": 6,
+    "blocco_divari": 2,
+    "blocco_riferimento": 13,
+    "configurazioni_per_ampiezza": {
+      "1": 1,
+      "2": 5,
+      "3": 13,
+      "4": 15,
+      "5": 15,
+      "6": 12,
+      "7": 8,
+      "8": 1
+    },
+    "convenzionali": {
+      "GENITORE_MAX": 40,
+      "GENITORE_MIN": 20,
+      "PARTNER_MAX_DIFF": 15,
+      "P_MASCHILE_UNITI": 0.56,
+      "P_STESSO_SESSO_UNITI": 0.004
+    },
+    "convenzionali_stato": "NON DICHIARATO: il blocco `convenzionali` non distingue i parametri misurati da quelli scelti a mano, e `meta` non ha un'avvertenza",
+    "generato": "2026-08-11",
+    "modalita": 70,
+    "n_componenti": 19003,
+    "n_misurato": 70.0,
+    "n_nuclei": 8443,
+    "nota": "repertorio AVQ; la coda oltre l'ampiezza 6 viene dai microdati di Parma (fonte mista, dichiarata)",
+    "regioni": [
+      80,
+      30
+    ]
+  },
+  "hapax": 2,
+  "id": "repertorio_nuclei_v1",
+  "modalita": 70,
+  "n_misurato": 70.0,
+  "peso_max": 1.0,
+  "peso_min": 0.000972398278748592,
+  "sha256": "4ef2b2978f640a88c0952831afc445eb78e5c0b62c0886d55cb532ea880a74bc",
+  "testa": [
+    {
+      "chiave": "R",
+      "peso": 1.0
+    },
+    {
+      "chiave": "RA",
+      "peso": 0.024063940354932367
+    },
+    {
+      "chiave": "RF",
+      "peso": 0.2231735539507099
+    },
+    {
+      "chiave": "RG",
+      "peso": 0.017123611639316257
+    },
+    {
+      "chiave": "RN",
+      "peso": 0.026816420948306382
+    },
+    {
+      "chiave": "RP",
+      "peso": 0.7088224731067352
+    },
+    {
+      "chiave": "RAA",
+      "peso": 0.005289426899663414
+    },
+    {
+      "chiave": "RAN",
+      "peso": 0.001638839636505593
+    },
+    {
+      "chiave": "RFA",
+      "peso": 0.01859240807587468
+    },
+    {
+      "chiave": "RFF",
+      "peso": 0.14558594001069303
+    },
+    {
+      "chiave": "RFG",
+      "peso": 0.0031391854487833565
+    },
+    {
+      "chiave": "RFN",
+      "peso": 0.004549792445611281
+    },
+    {
+      "chiave": "RGA",
+      "peso": 0.0024725568334908283
+    },
+    {
+      "chiave": "RGG",
+      "peso": 0.005394713306745376
+    },
+    {
+      "chiave": "RNN",
+      "peso": 0.004396064630149362
+    },
+    {
+      "chiave": "RPA",
+      "peso": 0.011196544713262303
+    },
+    {
+      "chiave": "RPF",
+      "peso": 0.79109867995251
+    },
+    {
+      "chiave": "RPG",
+      "peso": 0.00522823019234839
+    },
+    {
+      "chiave": "RPN",
+      "peso": 0.0014176178543622005
+    },
+    {
+      "chiave": "RAAA",
+      "peso": 0.004152947914502309
+    }
+  ]
+}

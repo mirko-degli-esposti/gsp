@@ -843,9 +843,115 @@ def cognomi_wiki_csv(path, col_chiave="cognome", **kw):
     return out[tenute].reset_index(drop=True), diag
 
 
+def repertorio_json(path, chiave_dati="firme", chiave_meta="meta",
+                    chiave_conv="convenzionali", **kw):
+    """Repertorio di configurazioni: blocchi annidati, non una tabella.
+
+    `riferimenti_json` non lo legge per due ragioni: cerca i metadati
+    nella RADICE — qui stanno sotto `meta` — e si aspetta un livello solo,
+    mentre le firme sono `{ampiezza: {configurazione: peso}}`.
+
+    DUE COSE FINISCONO NELL'IMPRONTA, e la seconda e' il motivo per cui
+    questo normalizzatore esiste.
+
+    **Quante configurazioni per ampiezza**, che dice se il repertorio
+    copra la coda o si fermi alle famiglie piccole.
+
+    **I parametri dichiarati NON MISURATI.** Un derivato che contiene
+    convenzioni deve dirlo dove chi legge l'impronta lo vede, non solo nel
+    registro: se un domani qualcuno cambiasse `GENITORE_MAX` da 40 a 45,
+    l'impronta lo mostrerebbe invece di cambiare soltanto l'hash. Un hash
+    diverso dice CHE il file e' cambiato; l'impronta dice IN COSA.
+    """
+    with open(path, encoding="utf-8") as f:
+        d = json.load(f)
+    if chiave_dati not in d:
+        raise KeyError(f"'{chiave_dati}' assente in {path}; "
+                       f"chiavi presenti: {list(d)}")
+
+    righe = []
+    for amp, conf in d[chiave_dati].items():
+        if not isinstance(conf, dict):
+            raise KeyError(f"'{chiave_dati}[{amp}]' non e' un dizionario "
+                           f"di configurazioni: {type(conf).__name__}")
+        for k, v in conf.items():
+            righe.append({"chiave": k, "ampiezza": str(amp),
+                          "peso": float(v)})
+    out = pd.DataFrame(righe)
+
+    # `n_misurato` sono le MODALITA', non una somma: i pesi sono
+    # probabilita' condizionate e sommarli darebbe il numero di ampiezze,
+    # che non e' una numerosita'. E' lo stesso caso dei codebook.
+    diag = {"modalita": int(out["chiave"].nunique()),
+            "n_misurato": float(len(out)),
+            "ampiezze": int(out["ampiezza"].nunique())}
+
+    per_amp = out.groupby("ampiezza").size()
+    diag["configurazioni_per_ampiezza"] = {
+        k: int(v) for k, v in sorted(per_amp.items(),
+                                     key=lambda x: int(x[0]))}
+    # le probabilita' devono sommare a uno DENTRO ogni ampiezza: se non lo
+    # facessero, il repertorio sarebbe malformato e `assembla` pescherebbe
+    # con pesi che non normalizzano
+    somme = out.groupby("ampiezza").peso.sum()
+    fuori = {k: round(float(v), 4) for k, v in somme.items()
+             if abs(v - 1.0) > 0.005}
+    if fuori:
+        diag["ampiezze_non_normalizzate"] = fuori
+
+    m = d.get(chiave_meta) or {}
+    for k in ("generato", "nota", "avvertenza", "anni", "regioni",
+              "n_nuclei", "n_componenti"):
+        if k in m:
+            diag[k] = m[k]
+
+    # I PARAMETRI CONVENZIONALI, uno per uno. Non basta dire quanti sono:
+    # il valore va nell'impronta, perche' e' quello che cambia in silenzio.
+    c = d.get(chiave_conv) or {}
+    if c:
+        diag["convenzionali"] = {
+            k: (v.get("valore") if isinstance(v, dict) else v)
+            for k, v in c.items()}
+        stati = {k: v.get("stato") for k, v in c.items()
+                 if isinstance(v, dict) and v.get("stato")}
+        if stati:
+            diag["convenzionali_stato"] = stati
+        elif "avvertenza" not in m:
+            diag["convenzionali_stato"] = (
+                "NON DICHIARATO: il blocco `convenzionali` non distingue "
+                "i parametri misurati da quelli scelti a mano, e `meta` "
+                "non ha un'avvertenza")
+
+    for k in ("coda", "riferimento", "divari", "cittadinanza"):
+        if k in d:
+            v = d[k]
+            diag[f"blocco_{k}"] = (len(v) if isinstance(v, (dict, list))
+                                   else "presente")
+    return out, diag
+
+def nessuno(path, **kw):
+    """Per le fonti che si CONSULTANO invece di essere lette dal codice.
+
+    Un PDF di documentazione, o una tavola da cui si trascrivono due
+    numeri a mano: normalizzarli non ha senso, ma l'impronta serve lo
+    stesso — l'sha256 dice se il file e' cambiato, ed e' l'unica garanzia
+    che la trascrizione si riferisca ancora a cio' che sta sul disco.
+
+    Restituisce UNA RIGA invece di un frame vuoto: `_impronta` legge
+    `d.columns[0]` e su un frame senza colonne solleva IndexError. Una
+    riga sola con il nome del file e' inerte e non rompe niente.
+    """
+    n = os.path.basename(path)
+    return (pd.DataFrame([{"chiave": n, "peso": 1.0}]),
+            {"n_misurato": 0.0, "modalita": 0,
+             "byte": os.path.getsize(path),
+             "nota": "fonte consultata, non normalizzata: l'impronta e' "
+                     "il solo sha256"})
+
 REGISTRO = {
     "distribuzione_csv": distribuzione_csv,
     "riferimenti_json": riferimenti_json,
+    "repertorio_json": repertorio_json,
     "onomastico_csv": onomastico_csv,
     "cognomi_wiki_csv": cognomi_wiki_csv,
     "classificazione_xlsx": classificazione_xlsx,
@@ -861,6 +967,7 @@ REGISTRO = {
     "tracciato_xlsx": tracciato_xlsx,
     "tracciato_csv": tracciato_csv,
     "avq_microdati": avq_microdati,
+    "nessuno": nessuno,
 }
 
 

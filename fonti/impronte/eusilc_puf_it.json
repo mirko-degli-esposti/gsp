@@ -1,0 +1,287 @@
+{
+  "id": "eusilc_puf_it",
+  "istanze": {
+    "2004d": {
+      "byte": 1076348,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "03fc141163169076d30dc7f2914cbb34bc9fde49af6dff21ed7582e7bc1e187e"
+    },
+    "2004h": {
+      "byte": 5349699,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "fbb36d0b824c781372017570ca3f2c398f16e0ab2fde8ac917a71fb867e63922"
+    },
+    "2004p": {
+      "byte": 16689647,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "0a9592c8d22bc244f055c7448297103bf4fbf4bb5c73ee391608fa8ae090476b"
+    },
+    "2004r": {
+      "byte": 5897289,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "206fc21c548786fcaa3906bcba38b7598092d634c1d84f46940ef204bbb1472d"
+    },
+    "2005d": {
+      "byte": 942929,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "1265eeeb541144935e3e3821feb1b451f40251c96bd793020b3496e4a932740a"
+    },
+    "2005h": {
+      "byte": 4849386,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "c92c18659a5fdf39b35ded8ac3667a46e99c35bc4a141bf00c1b808a0c68f084"
+    },
+    "2005p": {
+      "byte": 17811689,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "317c6fc3530afab318d4d16c659261dc5f814cf83a5a7d1e926a9d39172c1d09"
+    },
+    "2005r": {
+      "byte": 6187311,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "fbcc1f5d9c6b75a42b75fc9da47b596a6282b284d5e57b1204f9829936acd69e"
+    },
+    "2006d": {
+      "byte": 4518,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "3f3cfb766e8383157127f39c270946edb15661520aebf899f04343c2561defc6"
+    },
+    "2006h": {
+      "byte": 25356,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "88a4af3118cd6a67f435003aa41030556ed1169e761c8ce627e3e7dd9a02df1b"
+    },
+    "2006p": {
+      "byte": 30160332,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "69288b4908f21784f8f0f1453133a6ff54a669e91c3bacd94b795aa34ae697f8"
+    },
+    "2006r": {
+      "byte": 10776018,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "00353e43ff12bb2b0b0c851cb19e5ceb1c862cb1c02c3bb36626477da8271d81"
+    },
+    "2007d": {
+      "byte": 898442,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "6a992ad5ce0716cd603c9c5c093b1ffb79d5f9dc5e8e5b6a4553d7fade2ab3a7"
+    },
+    "2007h": {
+      "byte": 6233311,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "1eaf399a9c99464c3fedfb66f7938d9ad32aca5b18c87403b9dba94e4f9323de"
+    },
+    "2007p": {
+      "byte": 14729228,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "bf0ff720ab48ac3a547f4a03453421ed8d3dac118052a5ea1cfdae7a3d2a6d26"
+    },
+    "2007r": {
+      "byte": 5838437,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "399f4d99bdff591612df6b7e7b359b5bd175002fa3d841e5c958d41534f4e961"
+    },
+    "2008d": {
+      "byte": 910906,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "061cf899160b5419a34796353702ed77bf4469752b21112ffec51b6ffcccc332"
+    },
+    "2008h": {
+      "byte": 9146881,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "ff36d2515c980cfb1ab0db86edd069eb45d2a16d21f779290e41de00cb89864d"
+    },
+    "2008p": {
+      "byte": 14672918,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "79ff6a320413083181a5b10d1a2766d18736947f40daa285e5bdd90bff784806"
+    },
+    "2008r": {
+      "byte": 6767713,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "5a415877829a8697b7a67d2df97ede196557732e1f8e1936ae731bb908445b8d"
+    },
+    "2009d": {
+      "byte": 890377,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "5a1733092e027cdf93b23bdd3b3f6b9283d7772cd70d835980bb081c70509c18"
+    },
+    "2009h": {
+      "byte": 8080264,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "1e6cf600100ac4b8f4015e72b9c2a6130f73f58e0b11f021937d67706b1e0e44"
+    },
+    "2009p": {
+      "byte": 15863738,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "9a8e88d3e97d3d148b5f5d55da50d1fb6fd262baf299cb10ce6364624acb09aa"
+    },
+    "2009r": {
+      "byte": 6576967,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "6ca76e6b8e255bf9166aafa0b2eaee745e4304756a6a32bf2a70be8720809dc6"
+    },
+    "2010d": {
+      "byte": 835796,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "2274d458d36a2ee6a5c33ceca6334d63c48a3a268c748a353e74301fc94e14bc"
+    },
+    "2010h": {
+      "byte": 5964876,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "00eb8e898ebadf1847fa2bf8d7f248756da469ad0e82deec84563f5769d2ff1a"
+    },
+    "2010p": {
+      "byte": 16769153,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "96f66c21fce2dd80c3524f4f7d1f47a5168980f866e56c29aa14875a75df60ec"
+    },
+    "2010r": {
+      "byte": 6150830,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "6a42158b4ea9d46c3de5fe457fa9b50e8d0da97900e7e2ceb47a64776dbcc77b"
+    },
+    "2011d": {
+      "byte": 4597,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "39f880239fb95c087ec0a2e0a11ce57da267321bd34758995d0cbd81066f9a89"
+    },
+    "2011h": {
+      "byte": 27022,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "9077b2d6adcde9ab2624b5d39aa391fbb23b24edaf3213e44d7187f88e9d438b"
+    },
+    "2011p": {
+      "byte": 23297283,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "4e1cc6e66babf932c1e20fbfb8c971f46f5d3ea505abbe681deb62174123210e"
+    },
+    "2011r": {
+      "byte": 10905456,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "efaef46ec26f15ea286f8e8b97900e0898a8f87b9876bcb22a74aedb4cc848f6"
+    },
+    "2012d": {
+      "byte": 3856,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "87cf36741be7ece808fbf34f90be4e577beac3790e65fcf7a6fa4a69abf41b46"
+    },
+    "2012h": {
+      "byte": 28501,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "b2f99fcb756333d712cda50de4b37437588dc6ad17321ac441129a4d84ca4817"
+    },
+    "2012p": {
+      "byte": 23871296,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "4bac4ddaa61d882974fb7835667ad8c1e010a07d3541a0318d5ae7382691517d"
+    },
+    "2012r": {
+      "byte": 14973698,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "e14aa5770ca7d1985cd4a48908f4e2bb3bf51e2b7d69c4eab7addee11b262ddb"
+    },
+    "2013d": {
+      "byte": 816515,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "d0c6b3dd94a2554050dc257974d447682bc9ad803fd4cf3b39b9370744bda462"
+    },
+    "2013h": {
+      "byte": 5568025,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "b3cc91e4fb6b4e638ca17adf95ef161193a7de04092c571f9444aadb08348c2c"
+    },
+    "2013p": {
+      "byte": 15264182,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "10445de3ed84f8ac987ad06a31ea6bfb505f7df226f817bfb42cff09a26b0d8f"
+    },
+    "2013r": {
+      "byte": 5829716,
+      "modalita": 0,
+      "n_misurato": 0.0,
+      "nota": "fonte consultata, non normalizzata: l'impronta e' il solo sha256",
+      "sha256": "348f9cf2ca7c14c7fd07ed0afe2837b5e215d6dab4671b68d8e0e3c58590c4b7"
+    }
+  },
+  "n_istanze": 40,
+  "tipo": "multi_istanza"
+}

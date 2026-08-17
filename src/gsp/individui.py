@@ -221,6 +221,75 @@ def campione(comune, filtro=None, n=20, dettaglio="persona", anno=2024,
     return fuori
 
 
+# agosto 17 2026
+def esporta_pubblico(comune, anno=2024, seme=None, con_nuclei=False):
+    """La popolazione INTERA in regime pubblico, per il bundle scaricabile.
+
+    Non passa da `campione` di proposito. `NMAX` esiste per i regimi
+    narrativi, dove il limite e' la sostanza — cento biografie sono un atto,
+    centomila un archivio. Il regime `pubblico` e' invece l'unico pensato
+    per essere completo (§4.2 del piano di trattamento).
+
+    Il seme e' derivato dal comune, non passato: le coordinate randomizzate
+    devono uscire IDENTICHE a ogni rigenerazione, o due bundle dello stesso
+    comune differirebbero senza che nulla sia cambiato (§5).
+
+    Con `con_nuclei=True` aggiunge l'anello 4:
+
+        nucleo   int16   progressivo del nucleo DENTRO la sezione, -1 se
+                         l'individuo e' in convivenza anagrafica
+        ruolo    str     R, P, F, G, A, N
+
+    L'`id_nucleo` per esteso — `360230002112-000003` — NON viene esportato:
+    contiene la sezione, che nella riga c'e' gia', quindi la stringa e' una
+    ridondanza da 4 MB dove basta un intero da 0,2. Si ricostruisce a valle
+    concatenando `sezione` e il progressivo.
+
+    Il merge avviene QUI perche' e' l'unico punto che vede `uid` prima di
+    toglierlo. Non e' un accoppiamento fra anelli: questo modulo compone
+    gia' cio' che gli anelli producono — nel regime `narrativo` chiama
+    `gsp.nomi`, `gsp.istruzione` e `gsp.lavoro`. Compone, non calcola.
+    """
+    r = dict(REGIMI["pubblico"])
+    d = carica(comune, anno).copy()
+
+    if con_nuclei:
+        f = os.path.join(G.DATA, "nuclei", f"nuclei_{comune}.csv")
+        if not os.path.exists(f):
+            # Avviso e non errore: un comune senza nuclei non deve bloccare
+            # la build degli altri dieci. La pagina dei nuclei si accorgera'
+            # da se' che le colonne non ci sono e lo dichiarera'.
+            print(f"[avviso] nuclei assenti per {comune}: il bundle non "
+                  f"avra' l'anello 4\n         {f}\n"
+                  f"         eseguire assign_nucleo.py per averlo")
+        else:
+            n = pd.read_csv(f, dtype={"uid": "string", "id_nucleo": "string",
+                                      "ruolo": "string"})
+            d = d.merge(n, on="uid", how="left")
+
+            # La sezione dentro `id_nucleo` coincide sempre con quella
+            # dell'individuo — verificato: nessun nucleo a cavallo di due
+            # sezioni. Quindi il progressivo basta a identificarlo, e la
+            # stringa per esteso sarebbe 4 MB dove ne bastano 0,2.
+            prog = pd.to_numeric(d["id_nucleo"].str.slice(13), errors="coerce")
+            d["nucleo"] = prog.fillna(-1).astype("int16")
+            d["ruolo"] = d["ruolo"].fillna("")
+            d = d.drop(columns=["id_nucleo"])
+
+            # Il nucleo e' identificato dalla COPPIA (sezione, nucleo): il
+            # progressivo riparte in ogni sezione. Contare i valori distinti
+            # del solo progressivo dava 367 invece di 85.249.
+            n_nuclei = int(d.loc[d["nucleo"] >= 0, ["sezione", "nucleo"]]
+                           .drop_duplicates().shape[0])
+            senza = int((d["nucleo"] < 0).sum())
+            print(f"[nuclei] {n_nuclei:,} nuclei · "
+                  f"{senza:,} individui in convivenza ({senza / len(d):.2%})"
+                  .replace(",", "."))
+
+    seme = int(comune) if seme is None else seme
+    return _proietta(d, comune, r, np.random.default_rng(seme))
+
+
 def _proietta(d, comune, r, rng):
     """Applica il regime: toglie colonne, aggiunge nomi, randomizza."""
     if r["nome"]:

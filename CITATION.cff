@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+message: "If you use this software or the populations it produces, please cite the technical report below."
+type: software
+title: "GSP — Generative Synthetic Populations: a reproducible pipeline for synthetic populations of Italian municipalities"
+authors:
+  - family-names: Degli Esposti
+    given-names: Mirko
+    orcid: "https://orcid.org/0000-0003-0316-3449"
+    affiliation: "Department of Physics and Astronomy (DIFA), University of Bologna"
+    email: mirko.degliesposti@unibo.it
+version: 1.0.0
+date-released: 2026-XX-XX
+license: MIT
+repository-code: "https://github.com/mirko-degli-esposti/gsp"
+url: "https://animarium.pages.dev"
+keywords:
+  - synthetic populations
+  - maximum entropy
+  - population synthesis
+  - Italian census data
+  - agent-based simulation
+  - LLM agents
+preferred-citation:
+  type: report
+  title: "Animarium: an open, reproducible pipeline for synthetic populations of Italian cities — from ISTAT sources to open data"
+  authors:
+    - family-names: Degli Esposti
+      given-names: Mirko
+      orcid: "https://orcid.org/0000-0003-0316-3449"
+  year: 2026
+  notes: "arXiv identifier to be added on release (report v1.0)."
+references:
+  - type: article
+    title: "Scalable Maximum Entropy Population Synthesis via Persistent Contrastive Divergence"
+    authors:
+      - family-names: Degli Esposti
+        given-names: Mirko
+        orcid: "https://orcid.org/0000-0003-0316-3449"
+    year: 2026
+    identifiers:
+      - type: other
+        value: "arXiv:2603.27312"
+  - type: article
+    title: "Calibrating the Instrument: Controllability of an LLM-Driven Synthetic Population"
+    authors:
+      - family-names: Degli Esposti
+        given-names: Mirko
+        orcid: "https://orcid.org/0000-0003-0316-3449"
+    year: 2026
+    identifiers:
+      - type: other
+        value: "arXiv:2607.00910"

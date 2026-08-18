@@ -1227,8 +1227,8 @@ Il conto si chiude esattamente (**misurato**):
 
 | | 2022 | 2023 | 2024 | 2023+2024 | −`ISTRMi` 99 | pool |
 |---|---|---|---|---|---|---|
-| Emilia-Romagna | 2.380 | 2.210 | 2.471 | 4.681 | −52 | **4.629** ✔ |
-| Lombardia | 3.793 | 4.010 | 4.139 | 8.149 | −38 | **8.111** ✔ |
+| Emilia-Romagna | 2.380 | 2.210 | 2.471 | 4.681 | −52 | **4.629** ✓ |
+| Lombardia | 3.793 | 4.010 | 4.139 | 8.149 | −38 | **8.111** ✓ |
 
 I file completi contengono 128.777 record nazionali (42.022 + 41.750 +
 45.005): quello è l'inventario, non il pool.

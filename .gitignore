@@ -66,3 +66,5 @@ fonti/norm/
 *.key
 *_secret*
 secrets.*
+audit_repo_pubblico.sh
+audit_*.txt

@@ -68,3 +68,4 @@ fonti/norm/
 secrets.*
 audit_repo_pubblico.sh
 audit_*.txt
+log/

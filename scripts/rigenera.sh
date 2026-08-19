@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # rigenera.sh — rigenerazione completa della pipeline GSP.
 #
-# Esegue per ogni comune: cs_build -> fit_cs -> assign_avq -> enrich.
+# Esegue per ogni comune: cs_build -> fit_cs -> assign_avq -> enrich -> nucleo.
 # Un log per comune in log/rigenera_<data>/<comune>.log, piu' un riepilogo
-# a video. Non cancella nulla: i file vengono sovrascritti dagli script,
-# quindi fare il backup PRIMA (vedi --help).
+# a video e commit.txt con HEAD e stato dell'albero. Non cancella nulla: i
+# file vengono sovrascritti dagli script, quindi fare il backup PRIMA
+# (vedi --help). Con --confronta <archivio> confronta a fine corsa i quattro
+# prodotti di ogni comune (anelli 1-4) con quelli archiviati, byte a byte.
 #
 # I parametri per comune stanno nella tabella COMUNI qui sotto:
 #   codice:livello:pool
@@ -17,10 +19,13 @@
 #   ./rigenera.sh --dry-run        # stampa i comandi senza eseguirli
 #   ./rigenera.sh --no-escl        # senza --esclusioni (comportamento v1)
 #   ./rigenera.sh --from avq       # riparte da assign_avq (salta cs+fit)
+#   ./rigenera.sh --from nucleo    # solo l'anello 4
+#   ./rigenera.sh --confronta ~/archivio_gsp/pre_rilancio_20260819
+#                                  # cmp con l'archivio (test di determinismo)
 #
 set -uo pipefail
 
-GSP="$HOME/progetti/gsp"
+GSP="${GSP_ROOT:-$HOME/progetti/gsp}"
 ANNO=2024
 
 # codice : livello : pool
@@ -40,6 +45,7 @@ COMUNI=(
 ESCL="--esclusioni"
 DRY=0
 FROM="cs"
+CONFR=""
 SEL=()
 
 while [[ $# -gt 0 ]]; do
@@ -47,6 +53,7 @@ while [[ $# -gt 0 ]]; do
     --dry-run) DRY=1; shift ;;
     --no-escl) ESCL=""; shift ;;
     --from)    FROM="$2"; shift 2 ;;
+    --confronta) CONFR="$2"; shift 2 ;;
     -h|--help)
       sed -n '2,30p' "$0" | sed 's/^# \{0,1\}//'
       echo
@@ -61,6 +68,12 @@ STAMP=$(date +%Y%m%d_%H%M)
 LOGDIR="$GSP/log/rigenera_$STAMP"
 mkdir -p "$LOGDIR"
 cd "$GSP" || exit 1
+{ echo "GSP_ROOT=$GSP"; echo "HEAD=$(git rev-parse HEAD)"; echo "branch=$(git branch --show-current)";
+  echo "date=$(date -Iseconds)"; echo "args=$*"; echo "--- git status --short (deve essere vuoto per un rilancio citabile):";
+  git status --short; } > "$LOGDIR/commit.txt"
+if [[ -n "$(git status --short)" ]]; then
+  echo "[avviso] albero non pulito: vedi $LOGDIR/commit.txt (il rilancio non e' citabile per commit)"
+fi
 
 esegui() {   # esegui <logfile> <comando...>
   local log="$1"; shift
@@ -102,18 +115,24 @@ for riga in "${COMUNI[@]}"; do
            --tol 0 --sweeps 40 --no-gibbs || FASE="fit_cs FALLITO"
   fi
 
-  if [[ "$FASE" != *FALLITO* ]]; then
+  if [[ "$FASE" != *FALLITO* ]] && [[ "$FROM" =~ ^(cs|fit|avq)$ ]]; then
     FASE="assign_avq"
     esegui "$LOG" python scripts/attributi/assign_avq.py "$COD" --anno $ANNO \
            --pop-file "popolazione_${LIV}.csv" \
       || FASE="assign_avq FALLITO"
   fi
 
-  if [[ "$FASE" != *FALLITO* ]]; then
+  if [[ "$FASE" != *FALLITO* ]] && [[ "$FROM" =~ ^(cs|fit|avq|enrich)$ ]]; then
     FASE="enrich"
     esegui "$LOG" python scripts/attributi/enrich.py "$COD" --anno $ANNO \
            --pop-file "popolazione_${LIV}_avq.csv" \
       || FASE="enrich FALLITO"
+  fi
+
+  if [[ "$FASE" != *FALLITO* ]]; then
+    FASE="nucleo"
+    esegui "$LOG" python scripts/attributi/assign_nucleo.py "$COD" --anno $ANNO \
+      || FASE="nucleo FALLITO"
   fi
 
   DT=$((SECONDS - T0))
@@ -139,7 +158,6 @@ if [[ $DRY -eq 0 && $KO -eq 0 ]]; then
   echo "--- verifica combinazioni impossibili ---"
   python - <<'PYEOF'
 import glob, sys, pandas as pd
-sys.path.insert(0, "scripts")
 import gsp.common as G
 tot_i = tot_n = 0
 for f in sorted(glob.glob("data/comuni/*/constraints_2024/popolazione_K*_avq_full.csv")):
@@ -155,4 +173,26 @@ for f in sorted(glob.glob("data/comuni/*/constraints_2024/popolazione_K*_avq_ful
           f"({d.shape[1]} colonne)")
 print(f"  {'TOTALE':<26} {tot_i:>5} su {tot_n:>9,}")
 PYEOF
+fi
+
+if [[ $DRY -eq 0 && -n "$CONFR" ]]; then
+  echo
+  echo "--- confronto con l'archivio: $CONFR ---"
+  printf '%-10s %-8s %-8s %-8s %-8s\n' COMUNE anello1 anello2 anello3 anello4
+  for riga in "${COMUNI[@]}"; do
+    IFS=: read -r COD LIV POOL <<< "$riga"
+    if [[ ${#SEL[@]} -gt 0 ]] && [[ ! " ${SEL[*]} " =~ " $COD " ]]; then continue; fi
+    D="data/comuni/$COD/constraints_$ANNO"
+    R=()
+    for F in "$D/popolazione_${LIV}.csv" "$D/popolazione_${LIV}_avq.csv" \
+             "$D/popolazione_${LIV}_avq_full.csv" "data/nuclei/nuclei_${COD}.csv"; do
+      A="$CONFR/${F#data/}"            # archivio: <CONFR>/comuni/... e <CONFR>/nuclei/...
+      if   [[ ! -e "$F" ]]; then R+=("manca")
+      elif [[ ! -e "$A" ]]; then R+=("no-arch")
+      elif cmp -s "$F" "$A";  then R+=("uguale")
+      else R+=("DIVERSO"); fi
+    done
+    printf '%-10s %-8s %-8s %-8s %-8s\n' "$COD" "${R[@]}"
+  done | tee "$LOGDIR/confronto.txt"
+  echo "(salvato in $LOGDIR/confronto.txt)"
 fi

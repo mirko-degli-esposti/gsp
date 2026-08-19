@@ -23,6 +23,11 @@ Uso da riga di comando:
     python -m gsp.common --check              # verifica tutti i comuni
     python -m gsp.common --check 034027       # un comune solo
     python -m gsp.common --dump-nomi 037006   # nomi zona da zona_2023/, da incollare
+
+Radice del progetto:
+    GSP = ~/progetti/gsp per default; per un clone altrove impostare
+    GSP_ROOT (es. `export GSP_ROOT=/opt/gsp`). Tutti i percorsi derivano
+    da GSP; nessuno script deve conoscere la radice per altra via.
 """
 
 from __future__ import annotations
@@ -40,7 +45,10 @@ import pandas as pd
 # Radici
 # ----------------------------------------------------------------------
 
-GSP = os.path.expanduser("~/progetti/gsp")
+# Radice del progetto. Sovrascrivibile con la variabile d'ambiente GSP_ROOT
+# per un clone in un percorso diverso; sulla macchina di sviluppo non e'
+# impostata e vale il default.
+GSP = os.path.expanduser(os.environ.get("GSP_ROOT", "~/progetti/gsp"))
 DATA = os.path.join(GSP, "data")
 SUBMUN = os.path.join(DATA, "submun")
 GEODATA = os.path.join(DATA, "geodata")

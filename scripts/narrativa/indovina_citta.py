@@ -146,7 +146,7 @@ def main():
                   "via": x.get("via"),
                   "titolo_studio": IS.titolo_agente(
                       x.uid, x.get("istruzione"), sesso=x.get("sesso"),
-                      eta=x.get("eta"))}
+                      eta=x.get("eta"), comune=comune)}
             s, p = L.lavoro_agente(x.uid, condizione=x.get("condizione"),
                                    sesso=x.get("sesso"), comune=c,
                                    istruzione=x.get("istruzione"))

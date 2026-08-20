@@ -139,7 +139,8 @@ def arricchisci(c, comune):
                              paese=x.get("paese"))
         nomi.append(f"{a} {b}".title())
         tit.append(IS.titolo_agente(x.uid, x.get("istruzione"),
-                                    sesso=x.get("sesso"), eta=x.get("eta")))
+                                    sesso=x.get("sesso"), eta=x.get("eta"),
+                                    comune=comune))
         lav.append(L.lavoro_agente(x.uid, condizione=x.get("condizione"),
                                    sesso=x.get("sesso"), comune=comune,
                                    istruzione=x.get("istruzione")))

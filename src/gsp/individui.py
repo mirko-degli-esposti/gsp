@@ -310,8 +310,9 @@ def _proietta(d, comune, r, rng):
         try:
             from gsp import istruzione as _IS
             d["titolo_studio"] = [
-                _IS.titolo_agente(x.uid, x.get("istruzione"),
-                                  sesso=x.get("sesso"), eta=x.get("eta"))
+                                _IS.titolo_agente(x.uid, x.get("istruzione"),
+                                  sesso=x.get("sesso"), eta=x.get("eta"),
+                                  comune=comune)
                 for _, x in d.iterrows()]
         except Exception as e:                              # noqa: BLE001
             # il repertorio dei titoli e' opzionale: se la fonte non e'

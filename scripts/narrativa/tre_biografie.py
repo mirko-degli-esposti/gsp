@@ -108,7 +108,7 @@ def profilo(r, comune):
                                   origine_genitori=r.get("origine_genitori"),
                                   paese=r.get("paese"))
     tit = IS.titolo_agente(r.uid, r.get("istruzione"), sesso=r.get("sesso"),
-                           eta=r.get("eta"))
+                           eta=r.get("eta"), comune=comune)
     sett, pos = L.lavoro_agente(r.uid, condizione=r.get("condizione"),
                                 sesso=r.get("sesso"), comune=comune,
                                 istruzione=r.get("istruzione"))

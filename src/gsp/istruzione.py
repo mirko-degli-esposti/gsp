@@ -92,6 +92,31 @@ BIN_SENZA_CENSIMENTO = {"9-14"}
 
 SESSO_CENS = {"M": "1", "F": "2", None: "9"}
 
+# comune -> regione del censimento 2011. Il file usa i codici NUTS
+# PRE-2010: l'Emilia-Romagna e' ITD5, NON l'attuale ITH5 — chi
+# «correggesse» il codice per allinearlo all'Eurostat corrente
+# svuoterebbe dati(), che comunque elenca i codici presenti quando
+# non trova la regione. Una regione nuova in common.REGIONI richiede
+# una riga qui.
+NUTS_CENS2011 = {
+    "lombardia": "ITC4",
+    "emilia_romagna": "ITD5",
+    "puglia": "ITF4",
+}
+
+
+def regione_di(comune):
+    """Il codice NUTS del censimento per un comune del registro."""
+    from gsp import common as G
+    info = G.info(comune)
+    slug = info.get("regione") if isinstance(info, dict) else None
+    if slug not in NUTS_CENS2011:
+        raise LookupError(
+            f"comune {comune}: regione '{slug}' senza raccordo NUTS; "
+            f"noti: {', '.join(NUTS_CENS2011)}")
+    return NUTS_CENS2011[slug]
+
+
 # codici che sono aggregati, non titoli
 TOTALI = {"99", "000", "0"}
 
@@ -479,8 +504,8 @@ def titolo_leggibile(cod, etichetta=None):
 
 # ------------------------------------------------------------ estrazione
 
-def titolo_agente(uid, istruzione, sesso=None, eta=None, regione="ITD5",
-                  spiega=False):
+def titolo_agente(uid, istruzione, sesso=None, eta=None, comune=None,
+                  regione=None, spiega=False):
     """Il titolo dettagliato di un individuo, deterministico dall'uid.
 
     Come il nome: si calcola quando serve e non finisce in nessun file.
@@ -496,8 +521,32 @@ def titolo_agente(uid, istruzione, sesso=None, eta=None, regione="ITD5",
 
     if istruzione in (None, "", "non_applicabile"):
         return None
-    d = repertorio(istruzione, sesso=sesso, eta=eta, regione=regione)
+    # La regione NON ha default: il vecchio ITD5 faceva pescare i
+    # bresciani con i pesi emiliani, in silenzio, in tutti i chiamanti
+    # (verificato 20/8/2026). Si passa comune= e si risolve dal
+    # raccordo, oppure regione= esplicita.
+    if regione is None:
+        if comune is None:
+            raise LookupError("titolo_agente: passare comune= o regione=")
+        regione = regione_di(comune)
+    # eta=None scivolava su Y_GE6 — la piramide intera — senza avviso:
+    # era un ramo legittimo di repertorio(), quindi il .get() difensivo
+    # dei chiamanti l'avrebbe attivato in silenzio al primo rename di
+    # colonna. La piramide intera ora va chiesta per nome.
+    if eta is None:
+        raise LookupError("titolo_agente: passare eta= (bin), "
+                          "oppure eta='tutte' per la piramide intera")
+    d = repertorio(istruzione, sesso=sesso,
+                   eta=(None if eta == "tutte" else eta), regione=regione)
+    # [D] stabilita': l'estrazione indicizza il repertorio, e ordinato
+    # per peso una revisione dei conteggi permuterebbe TUTTI i titoli a
+    # parita' di uid. Ordinato per chiave le revisioni restano locali.
+    # Stesso ragionamento del canale separato, un livello piu' giu'.
+    # ATTENZIONE: questa riga rimescola una tantum i titoli dei comuni
+    # emiliani; toglierla li conserva ma lascia la fragilita'.
+    d = d.sort_values("chiave").reset_index(drop=True)
     rng = N._rng(uid, "titolo")
+
     p = d.peso.to_numpy(dtype="float64")
     i = int(rng.choice(len(d), p=p / p.sum()))
     grezzo = str(d.titolo.iloc[i])
@@ -511,15 +560,15 @@ def titolo_agente(uid, istruzione, sesso=None, eta=None, regione="ITD5",
     return reso
 
 
-def titoli_popolazione(pop, colonna_id="uid", regione="ITD5"):
+def titoli_popolazione(pop, colonna_id="uid", comune=None, regione=None):
     """Titoli per un DataFrame. NON aggiunge colonne: torna una Series che
     il chiamante usa e butta, come i nomi."""
     fuori = []
     for _, r in pop.iterrows():
         try:
-            fuori.append(titolo_agente(str(r[colonna_id]), r.get("istruzione"),
+                        fuori.append(titolo_agente(str(r[colonna_id]), r.get("istruzione"),
                                        sesso=r.get("sesso"), eta=r.get("eta"),
-                                       regione=regione))
+                                       comune=comune, regione=regione))
         except LookupError:
             fuori.append(None)
     return pd.Series(fuori, index=pop.index)

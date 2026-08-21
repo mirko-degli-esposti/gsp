@@ -4,9 +4,9 @@
 > Continues `report_part3_s1-2_v0.1.md`; same conventions. All numbers in
 > this section are **[m]** — measured on 19 August 2026 at
 > `report-v1.0-rc1`, outputs in `note/misure/diagnostica_report_v1.0/` —
-> unless marked otherwise. Table cells marked ‹…› await the committed CSV/txt
-> files (per-municipality aggregates I have not seen yet); the structure and
-> the anchor numbers are final.
+> unless marked otherwise. All tables are filled; the one figure not
+> re-measured at the tag (the per-section allocation MAE) is declared
+> *reported* in the ring-3 subsection.
 
 ---
 
@@ -154,13 +154,54 @@ carries almost twice the signatures (7,225) and the highest battery n_eff of
 the fleet (5,655) at a population equal to Parma's — the pool size passes
 through exactly as the design predicts.
 
-#### Ring 3 — placement ‹to complete›
+#### Ring 3 — placement
 
-‹Exact-allocation MAE per section against the multinomial baseline
-(0.74–1.58 vs ≈ 9.6 **[n]** riferimento §5) — decide whether to re-measure
-at the tag or import as reported; the five-year seam and the age×education
-coherence are already covered by `diag_quinq` / `diag_istruzione_eta`
-outputs in the same folder if re-run.›
+Two diagnostics were re-run at the tag on all eleven municipalities
+(`diag_quinq`, `diag_istruzione_eta`); the exact-allocation MAE is the one
+figure of this Part imported from the notes rather than re-measured, and is
+declared as such.
+
+| municipality | five-year seam: mean ·res· per section | impossible age×title share | conditional rate |
+|---|---|---|---|
+| Bologna | 5.11 | 2.39 % | 30.8 % |
+| Brescia | 5.34 | 2.91 % | 33.6 % |
+| Parma | 5.74 | 2.73 % | 31.7 % |
+| Modena | 2.61 | 2.67 % | 30.3 % |
+| Reggio nell'Emilia | 3.32 | 2.96 % | 32.4 % |
+| Ravenna | 2.27 | 2.92 % | 34.3 % |
+| Rimini | 2.57 | 2.88 % | 32.9 % |
+| Ferrara | 2.41 | 2.43 % | 31.8 % |
+| Forlì | 4.08 | 3.39 % | 38.5 % |
+| Piacenza | 3.93 | 2.80 % | 33.1 % |
+| Castenaso | 3.21 | 3.04 % | 37.3 % |
+
+*Section counts.* The allocation of individuals to census sections is exact
+(largest remainder) rather than multinomial; when it was measured, the mean
+absolute error per section was 0.74–1.58 individuals against ≈ 9.6 for the
+multinomial baseline **[n]** riferimento §5, *reported, not re-measured at
+the tag* — the allocation code is unchanged since (§III.2 regenerated it
+byte-identically), but the measurement script was not retained.
+
+*The five-year seam.* Single-year ages are drawn within bins whose
+boundaries do not coincide with ISTAT's five-year classes; re-aggregating
+the synthetic population to those sixteen classes per section and sex leaves
+a mean absolute residual of 2.3–5.7 individuals per section, concentrated on
+the classes that straddle the 0–8 / 9-14 bin boundary (the fifteen worst
+sections of Bologna carry seam residuals of 4–6 individuals on sections of
+several hundred). It is a declared resolution limit (assumption 9, §III.4),
+visible and small.
+
+*Age×title coherence.* Education is constrained at the age-bin level; the
+exact age is assigned afterwards in ring 3, and nothing ties the two below
+the bin. The share of individuals whose exact age is below the minimum
+attainment age for their title is 2.4–3.4 % everywhere. The diagnostic's
+own control shows the incoherence is arithmetic, not spatial: the rate
+*conditional on the ages at risk* is flat across zones within each
+municipality (30–37 %), so the raw share varies between zones only through
+age composition. Forlì's and Castenaso's highest conditional rates (38.5 % and 37.3 %) tracks its
+age structure, not a defect. The fix — drawing the age jointly with the
+title's threshold — is defined and scheduled for the next regeneration
+cycle (§III.5).
 
 #### Ring 4 — households, eleven municipalities
 
@@ -208,11 +249,9 @@ next iteration of the repertoire (§III.5).
 
 ### Open items for §III.3
 
-1. ‹Fill the ring-1 table› from `celle_*.csv` / `vincoli_*.txt` headers
-   (cells, MRE, sd(z), |z|max + expectation), eleven rows.
-2. ‹Fill the ring-2 table› from `donor_*.txt` (signatures, n_eff full / n_eff
-   PUNTIFI10, band ×), eleven rows.
-3. Decide ring 3: re-measure MAE at the tag (add `diag` step to
-   `diagnostica_report.sh`) or import from the notes as *reported*.
-4. **[v]** One sentence on sd(z) values once the eleven are visible: any
-   municipality standing out gets a paragraph, none is also a finding.
+1. The MAE per section is *reported*; if a re-measurement is wanted for
+   v1.1, the script is to be rewritten (the original was not retained) —
+   noted in §III.5.
+3. `residuo.py` (leave-one-out compositional residual) is a shared module
+   correcting M-EM and related measures: move it from the exploratory group
+   to group 2 in `scripts/README.md`.

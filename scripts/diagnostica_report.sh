@@ -31,7 +31,7 @@ declare -A LIV=( [037006]=K9C [017029]=K9C [034027]=K9C [036023]=K9C
 COMUNI=(037006 017029 034027 036023 035033 039014 099014 038008 040012 033032 037021)
 [[ $# -gt 0 ]] && COMUNI=("$@")
 
-printf '%-8s %-6s %-14s %-14s\n' COMUNE LIV vincoli donor
+printf '%-8s %-6s %-10s %-10s %-10s %-10s\n' COMUNE LIV vincoli donor quinq istr_eta
 for C in "${COMUNI[@]}"; do
   L="${LIV[$C]:-K9C}"; V=ok; D=ok
   python scripts/diagnostica/verifica_vincoli.py "$C" \
@@ -41,7 +41,14 @@ for C in "${COMUNI[@]}"; do
   python scripts/diagnostica/verifica_donor.py "$C" \
       --pop-file "data/comuni/$C/constraints_2024/popolazione_${L}_avq_full.csv" \
       > "$OUT/donor_$C.txt" 2>&1 || D=ERRORE
-  printf '%-8s %-6s %-14s %-14s\n' "$C" "$L" "$V" "$D"
+  Q=ok; E=ok
+  python scripts/diagnostica/diag_quinq.py "$C" \
+      --pop-file "data/comuni/$C/constraints_2024/popolazione_${L}_avq_full.csv" \
+      --out "$OUT/quinq_$C.csv" > "$OUT/quinq_$C.txt" 2>&1 || Q=ERRORE
+  python scripts/diagnostica/diag_istruzione_eta.py "$C" \
+      --pop-file "data/comuni/$C/constraints_2024/popolazione_${L}_avq_full.csv" \
+      --out "$OUT/istr_eta_$C.csv" > "$OUT/istr_eta_$C.txt" 2>&1 || E=ERRORE
+  printf '%-8s %-6s %-10s %-10s %-10s %-10s\n' "$C" "$L" "$V" "$D" "$Q" "$E"
 done
 
 echo

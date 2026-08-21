@@ -1,0 +1,78 @@
+[info] popolazione: data/comuni/037006/constraints_2024/popolazione_K9C_avq_full.csv
+[info] individui: 390.098
+
+Sintesi
+-------
+individui                         390.098
+in violazione                       9.308
+quota                             2.3861%
+anni mancanti: media 2.14  mediana 2  max 7
+
+Per titolo di studio
+--------------------
+   istruzione  soglia         n      viol    quota
+nessun_titolo       0    36.859         0  0.0000%
+   elementare      10    34.251     1.184  3.4568%
+        media      13    75.747     3.215  4.2444%
+      diploma      18   125.112     3.487  2.7871%
+ laurea_o_its      20    24.402     1.137  4.6595%
+  post_laurea      22    93.727       285  0.3041%
+
+Per bin d'eta' del constraint set
+---------------------------------
+  eta         n      viol    quota
+  0-8    25.474         0  0.0000%
+ 9-14    18.368     4.399 23.9493%
+15-24    33.427     4.909 14.6857%
+25-34    51.031         0  0.0000%
+35-49    81.877         0  0.0000%
+50-64    85.269         0  0.0000%
+65-74    40.277         0  0.0000%
+  75+    54.375         0  0.0000%
+
+Atteso: la concentrazione sta nel bin 9-14, sulla stessa giuntura del seam quinquennale.
+
+Incrocio istruzione x eta_anni (0-25), celle impossibili marcate con *
+----------------------------------------------------------------------
+      eta_anni       0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17     18     19     20     21     22     23     24     25
+ nessun_titolo   1543   2018   3753   2557   3752   1790   2413   3230   4418    919    744    722   1120    802   1212     64     34     56     76     92     63     66     57     79     86     48 
+    elementare      0      0      0      0      0      0      0      0      0   1184*   982    971   1573   1152   1722    144    141    197    192    301    144    173    188    248    308     46 
+         media      0      0      0      0      0      0      0      0      0    800*   672*   648*  1095*   809   1241   1079    893   1189   1239   1863   1008   1117   1244   1623   2056    468 
+       diploma      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0   1253*   932*  1302*  1353   2087   1046   1213   1332   1828   2241   1101 
+  laurea_o_its      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0    216*   156*   224*   204*   337*   171    192    197    304    376    424 
+   post_laurea      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     47*    17*    43*    39*    63*    41*    35*    35     59     64   1213 
+
+Impossibili gia' al livello del bin (non e' il seam)
+----------------------------------------------------
+record                                  0
+
+Tasso condizionato
+------------------
+individui a rischio                30.256
+tasso condizionato               30.7641%
+
+Per quartiere — quota grezza contro tasso condizionato
+------------------------------------------------------
+      quartiere     n  viol  rischio    quota    tasso
+        Galvani 13357   394     1138  2.9498% 34.6221%
+Costa Saragozza 24498   721     2120  2.9431% 34.0094%
+          Murri 29090   884     2640  3.0388% 33.4848%
+          Colli  8163   308      929  3.7731% 33.1539%
+       Malpighi 11856   269      856  2.2689% 31.4252%
+        Mazzini 38318   900     2881  2.3488% 31.2392%
+      Bolognina 36445   824     2675  2.2609% 30.8037%
+          Barca 20671   519     1685  2.5108% 30.8012%
+   San Ruffillo 20880   499     1634  2.3898% 30.5386%
+          Saffi 18256   356     1170  1.9500% 30.4274%
+     San Vitale 35342   808     2713  2.2862% 29.7825%
+ Borgo Panigale 27147   577     1953  2.1255% 29.5443%
+    Santa Viola 13351   291      991  2.1796% 29.3643%
+        Marconi 14800   346     1182  2.3378% 29.2724%
+     San Donato 31592   660     2263  2.0891% 29.1648%
+           Lame 14424   297     1050  2.0591% 28.2857%
+     Corticella 18157   372     1317  2.0488% 28.2460%
+        Irnerio 13751   283     1059  2.0580% 26.7233%
+
+Se `tasso` e' piatto e `quota` no, la variazione fra zone e' composizione per eta' e l'incoerenza e' puramente aritmetica.
+
+[info] 9.308 righe scritte in note/misure/diagnostica_report_v1.0/istr_eta_037006.csv

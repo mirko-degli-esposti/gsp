@@ -1,15 +1,17 @@
-HEAD=edf332830f8cdbdb43f821e65ace788c96e9e55a
-date=2026-08-21T11:43:07+02:00
+HEAD=dddb4b0a9de78625757a33b376fb33c07a7ed831
+date=2026-08-21T12:48:51+02:00
 --- git status --short:
  M .gitignore
  M fonti/ATTRIBUZIONI.md
  M fonti/registro.yaml
+ M note/misure/diagnostica_report_v1.0/commit.txt
+ M scripts/diagnostica_report.sh
+ M scripts/narrativa/harness_scelta.py
 ?? dati/agenti/agenti_scelta_n432_s0.json
-?? figure/
 ?? fonti/anelli.yaml
 ?? note/misure/biografie_017029-0103491_1787216302.json
-?? note/misure/diagnostica_report_v1.0/
+?? note/misure/diagnostica_report_v1.0/istr_eta_037021.txt
+?? note/misure/diagnostica_report_v1.0/quinq_037021.txt
 ?? note/tabella_campione_11comuni.txt
 ?? scripts/diagnostica/tabella_fonti.py
-?? scripts/diagnostica_report.sh
 ?? scripts/verifica_registro.sh

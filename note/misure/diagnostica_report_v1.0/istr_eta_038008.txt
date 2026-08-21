@@ -1,0 +1,61 @@
+[info] popolazione: data/comuni/038008/constraints_2024/popolazione_K6C_avq_full.csv
+[info] individui: 129.391
+
+Sintesi
+-------
+individui                         129.391
+in violazione                       3.148
+quota                             2.4329%
+anni mancanti: media 2.04  mediana 2  max 7
+
+Per titolo di studio
+--------------------
+   istruzione  soglia         n      viol    quota
+nessun_titolo       0    10.755         0  0.0000%
+   elementare      10    15.120       323  2.1362%
+        media      13    28.467       713  2.5047%
+      diploma      18    45.679     1.643  3.5968%
+ laurea_o_its      20     7.266       373  5.1335%
+  post_laurea      22    22.104        96  0.4343%
+
+Per bin d'eta' del constraint set
+---------------------------------
+  eta         n      viol    quota
+  0-8     7.083         0  0.0000%
+ 9-14     5.818     1.036 17.8068%
+15-24    10.799     2.112 19.5574%
+25-34    13.032         0  0.0000%
+35-49    23.288         0  0.0000%
+50-64    32.395         0  0.0000%
+65-74    16.614         0  0.0000%
+  75+    20.362         0  0.0000%
+
+Atteso: la concentrazione sta nel bin 9-14, sulla stessa giuntura del seam quinquennale.
+
+Incrocio istruzione x eta_anni (0-25), celle impossibili marcate con *
+----------------------------------------------------------------------
+      eta_anni       0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17     18     19     20     21     22     23     24     25
+ nessun_titolo    189    985   1019    711    732    489    530   1834    594    199     96    139    236    499    500     14     27     27     14     11      6     31     20     14     31     17 
+    elementare      0      0      0      0      0      0      0      0      0    323*   132    236    328    714    675     40     56    120     46     46     42     71     48     68    101     27 
+         media      0      0      0      0      0      0      0      0      0    211*   106*   166*   230*   512    516    257    440    704    232    387    217    473    432    437    639    273 
+       diploma      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0    300*   592*   751*   304    433    200    606    453    550    675    721 
+  laurea_o_its      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     52*   109*   100*    39*    73*    29    113     65     70     96    186 
+   post_laurea      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      7*    21*    27*     2*     9*     7*    23*    10     13     19    394 
+
+Impossibili gia' al livello del bin (non e' il seam)
+----------------------------------------------------
+record                                  0
+
+Tasso condizionato
+------------------
+individui a rischio                 9.897
+tasso condizionato               31.8076%
+
+Per zona — quota grezza contro tasso condizionato
+-------------------------------------------------
+zona      n  viol  rischio    quota    tasso
+   0 129391  3148     9897  2.4329% 31.8076%
+
+Se `tasso` e' piatto e `quota` no, la variazione fra zone e' composizione per eta' e l'incoerenza e' puramente aritmetica.
+
+[info] 3.148 righe scritte in note/misure/diagnostica_report_v1.0/istr_eta_038008.csv

@@ -1,0 +1,81 @@
+[info] popolazione: data/comuni/040012/constraints_2024/popolazione_K9C_avq_full.csv
+[info] individui: 117.050
+
+Sintesi
+-------
+individui                         117.050
+in violazione                       3.970
+quota                             3.3917%
+anni mancanti: media 2.05  mediana 2  max 7
+
+Per titolo di studio
+--------------------
+   istruzione  soglia         n      viol    quota
+nessun_titolo       0    11.765         0  0.0000%
+   elementare      10    14.207       373  2.6255%
+        media      13    29.206     1.275  4.3655%
+      diploma      18    41.108     1.898  4.6171%
+ laurea_o_its      20     5.699       355  6.2292%
+  post_laurea      22    15.065        69  0.4580%
+
+Per bin d'eta' del constraint set
+---------------------------------
+  eta         n      viol    quota
+  0-8     7.578         0  0.0000%
+ 9-14     6.382     1.648 25.8226%
+15-24    11.468     2.322 20.2476%
+25-34    12.008         0  0.0000%
+35-49    22.322         0  0.0000%
+50-64    27.329         0  0.0000%
+65-74    13.275         0  0.0000%
+  75+    16.688         0  0.0000%
+
+Atteso: la concentrazione sta nel bin 9-14, sulla stessa giuntura del seam quinquennale.
+
+Incrocio istruzione x eta_anni (0-25), celle impossibili marcate con *
+----------------------------------------------------------------------
+      eta_anni       0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17     18     19     20     21     22     23     24     25
+ nessun_titolo    977   1050    395    473   1001    412    412    974   1884    238    144    384    509    316    219     29     20     36     10     18      7     16     19     35     20     18 
+    elementare      0      0      0      0      0      0      0      0      0    373*   222    536    758    521    356     93     50    114     31     59     27     64     99     91     65     33 
+         media      0      0      0      0      0      0      0      0      0    231*   158*   369*   517*   320    211    683    336    747    239    370    220    400    635    771    428    284 
+       diploma      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0    696*   383*   819*   212    413    225    400    529    791    435    631 
+  laurea_o_its      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     94*    46*   122*    29*    64*    30     60     62    150     64    134 
+   post_laurea      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     16*     6*    17*     7*    10*     6*     7*    11     22     10    283 
+
+Impossibili gia' al livello del bin (non e' il seam)
+----------------------------------------------------
+record                                  0
+
+Tasso condizionato
+------------------
+individui a rischio                10.308
+tasso condizionato               38.5138%
+
+Per quartiere — quota grezza contro tasso condizionato
+------------------------------------------------------
+                                                     quartiere     n  viol  rischio    quota    tasso
+Pieve Acquedotto, Durazzanino, Malmissole, Poggio, San Giorgio  2246    79      179  3.5174% 44.1341%
+                                                         Ronco  5650   202      469  3.5752% 43.0704%
+               Magliano, Carpena, Ravaldino in Monte, Lardiano  2238    74      175  3.3065% 42.2857%
+                       Villafranca, San Martino in Villafranca  2815   107      260  3.8011% 41.1538%
+                                                    Bussecchio  4041   151      368  3.7367% 41.0326%
+                 Carpinello, Castellaccio, Bagnolo, Borgo Sisa  2193    76      187  3.4656% 40.6417%
+                                                      Ca' Ossi 11760   399     1000  3.3929% 39.9000%
+                                                    Resistenza  6806   256      658  3.7614% 38.9058%
+                    Roncadello, Branzolino, San Tomè, Barisano  2870    87      224  3.0314% 38.8393%
+                                    Foro Boario, San Benedetto  9031   294      760  3.2555% 38.6842%
+                                               Cava, Villanova  6106   184      476  3.0134% 38.6555%
+                                    Musicisti, Grandi Italiani  7206   246      637  3.4138% 38.6185%
+                                  Pianta, Ospedaletto, Coriano  9961   360      933  3.6141% 38.5852%
+                                                        Romiti  3832   130      337  3.3925% 38.5757%
+      Villagrappa, Castiglione, Petrignone, San Varano, Rovere  3491   131      349  3.7525% 37.5358%
+      San Martino in Strada, San Lorenzo in Noceto, Grisignano  7639   265      719  3.4690% 36.8567%
+                         Spazzoli, Campo di Marte, Benefattori  9872   358      973  3.6264% 36.7934%
+                                                Centro Storico 11830   355      969  3.0008% 36.6357%
+                              Pievequinta, Casemurate, Caserma  1581    53      151  3.3523% 35.0993%
+                              La Selva, Forniolo, San Leonardo  1870    65      187  3.4759% 34.7594%
+                                   Vecchiazzano, Massa, Ladino  4012    98      297  2.4427% 32.9966%
+
+Se `tasso` e' piatto e `quota` no, la variazione fra zone e' composizione per eta' e l'incoerenza e' puramente aritmetica.
+
+[info] 3.970 righe scritte in note/misure/diagnostica_report_v1.0/istr_eta_040012.csv

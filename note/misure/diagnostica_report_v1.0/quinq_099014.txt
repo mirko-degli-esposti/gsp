@@ -1,0 +1,76 @@
+[info] popolazione: data/comuni/099014/constraints_2024/popolazione_K9C_avq_full.csv
+[info] sezioni:     /home/mirko/progetti/gsp/data/submun/rimini_sezioni_2023.csv
+[info] colonna identificativo sezione: SEZ21_ID
+
+Totali
+------
+individui sintetici             150.046
+somma colonne P osservate       150.046
+differenza                            0
+celle (sezione x sesso x quinq)  60.416
+celle osservate ma vuote nel sintetico     173 (173 persone)
+celle sintetiche senza osservato             0 (0 persone)
+
+Errore su celle sezione x sesso x quinquennio
+---------------------------------------------
+MAE              0.0803
+bias medio       0.0000
+RMSE             0.2921
+max |residuo|         5
+
+Per classe quinquennale  (il seam e' fra k=1 e k=2)
+---------------------------------------------------
+ k quinq   oss       sint    scarto  scarto_rel       mae      bias
+ 0    <5  4868  4814.0000  -54.0000     -0.0111    0.0207   -0.0143
+ 1   5-9  6100  5983.0000 -117.0000     -0.0192    0.1115   -0.0310
+ 2 10-14  6769  6916.0000  147.0000      0.0217    0.0855    0.0389
+ 3 15-19  7235  7249.0000   14.0000      0.0019    0.0524    0.0037
+ 4 20-24  7211  7129.0000  -82.0000     -0.0114    0.0567   -0.0217
+ 5 25-29  7429  7521.0000   92.0000      0.0124    0.0832    0.0244
+ 6 30-34  8033  8032.0000   -1.0000     -0.0001    0.1073   -0.0003
+ 7 35-39  8615  8639.0000   24.0000      0.0028    0.0530    0.0064
+ 8 40-44  9557  9473.0000  -84.0000     -0.0088    0.0710   -0.0222
+ 9 45-49 11571 11419.0000 -152.0000     -0.0131    0.1049   -0.0403
+10 50-54 12539 12642.0000  103.0000      0.0082    0.1046    0.0273
+11 55-59 12363 12420.0000   57.0000      0.0046    0.0977    0.0151
+12 60-64 10615 10609.0000   -6.0000     -0.0006    0.0694   -0.0016
+13 65-69  8985  9013.0000   28.0000      0.0031    0.0879    0.0074
+14 70-74  8049  7976.0000  -73.0000     -0.0091    0.0665   -0.0193
+15   >74 20107 20211.0000  104.0000      0.0052    0.1128    0.0275
+
+Focus sul seam
+--------------
+k=0     <5   oss     4.868   sint     4.814   scarto      -54 (-1.109%)   MAE/cella 0.0207
+k=1    5-9   oss     6.100   sint     5.983   scarto     -117 (-1.918%)   MAE/cella 0.1115
+k=2  10-14   oss     6.769   sint     6.916   scarto     +147 (+2.172%)   MAE/cella 0.0855
+
+MAE medio per cella sulle altre 13 classi: 0.0821
+Se il MAE su k=1 e k=2 e' nettamente sopra questo valore, l'ipotesi di uniformita' entro il quinquennio 5-9 sta cedendo.
+
+Per sezione
+-----------
+sezioni                           1.888
+MAE del totale per sezione       0.8898
+correlazione oss/sint          0.999916
+|residuo| medio per sezione      2.5699
+
+Prime 15 sezioni per |residuo| sul seam (k=1,2)
+-----------------------------------------------
+     sezione  oss      sint  abs_res_seam   abs_res
+990140000765   48     48.00          4.00      4.00
+990140000085   50     48.00          4.00      6.00
+990140000820  331    332.00          4.00     11.00
+990140000433   30     31.00          4.00      5.00
+990140001002   69     71.00          4.00      6.00
+990140001096   67     69.00          4.00      8.00
+990140000226   67     67.00          4.00      4.00
+990140001756  850    846.00          4.00     12.00
+990140001419   91     91.00          4.00      4.00
+990140002031  308    308.00          3.00     12.00
+990140000801  429    432.00          3.00     15.00
+990140000759  101    106.00          3.00     11.00
+990140000256   88     88.00          3.00      4.00
+990140000131   92     90.00          3.00      6.00
+990140000127   97     95.00          3.00      6.00
+
+[info] residui scritti in note/misure/diagnostica_report_v1.0/quinq_099014.csv

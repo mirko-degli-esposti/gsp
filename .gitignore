@@ -69,3 +69,8 @@ secrets.*
 audit_repo_pubblico.sh
 audit_*.txt
 log/
+# esperimento priors: i grezzi delle campagne vanno su Zenodo, non nel repo;
+# il CAMPIONE (livello A) invece si versiona: e' la definizione dell'esperimento
+dati/campagne/
+dati/agenti/*
+!dati/agenti/agenti_scelta_n432_s0.json

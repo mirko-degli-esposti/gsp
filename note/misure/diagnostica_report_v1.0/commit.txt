@@ -1,0 +1,15 @@
+HEAD=edf332830f8cdbdb43f821e65ace788c96e9e55a
+date=2026-08-21T11:43:07+02:00
+--- git status --short:
+ M .gitignore
+ M fonti/ATTRIBUZIONI.md
+ M fonti/registro.yaml
+?? dati/agenti/agenti_scelta_n432_s0.json
+?? figure/
+?? fonti/anelli.yaml
+?? note/misure/biografie_017029-0103491_1787216302.json
+?? note/misure/diagnostica_report_v1.0/
+?? note/tabella_campione_11comuni.txt
+?? scripts/diagnostica/tabella_fonti.py
+?? scripts/diagnostica_report.sh
+?? scripts/verifica_registro.sh

@@ -1,0 +1,84 @@
+[info] popolazione: data/comuni/017029/constraints_2024/popolazione_K9C_avq_full.csv
+[avviso] AVQ assenti dal file: ['BMIMIN']
+[info] individui 198.259 · variabili AVQ usate per la firma: 20
+
+1. Le firme sono i donatori?
+----------------------------
+firme distinte                       7.225
+donatori dichiarati usati            8.108   (pool 8.111, Lombardia)
+differenza                            -883   (-10.890%)
+
+  -> MENO firme che donatori: alcune coppie di donatori hanno 21-uple
+     identiche. Sono informativamente equivalenti, quindi n_eff sulle firme
+     resta la quantita' giusta, ma va dichiarato.
+
+2. Distribuzione del riuso
+--------------------------
+riuso medio                           27.4   (dichiarato 24.5)
+mediana                                 23
+minimo                                   1
+massimo                               2370
+donatori usati una volta sola            7
+
+quantili del riuso: p5=9  p25=16  p50=23  p75=31  p95=47
+
+3. Quanto collasso gerarchico (proxy di cella_avq)
+--------------------------------------------------
+firme che servono un solo sesso             7.169  99.22%
+firme su una sola macroeta'                 5.309  73.48%
+firme su una sola classe istr4              5.775  79.93%
+
+firme confinate alla cella piena            3.862  53.45%
+individui serviti da firme confinate       44.72%
+
+  La cella di condizionamento e' sesso x macroeta' x istr4. Una firma che
+  attraversa piu' celle e' passata per il collasso gerarchico: il resto
+  della popolazione ha ricevuto le AVQ da una cella meno specifica.
+
+4. n_eff su sottopopolazioni tipiche
+------------------------------------
+sottopopolazione                          n distinti    n_eff  n/n_eff  banda x
+-------------------------------------------------------------------------------
+
+5. n_eff per variabile — l'universo giusto
+------------------------------------------
+variabile     copertura         n  distinti    n_eff  banda x
+-------------------------------------------------------------
+SALUTE           100.0%   198.259     7.225     1093     13.5
+AMBIENTE          87.0%   172.469     7.095     5717      5.5
+FIDUCIA           86.8%   172.183     7.079     5705      5.5
+CRONI             93.0%   184.326     6.716      969     13.8
+MH                87.7%   173.838     7.144     5755      5.5
+BMI               84.1%   166.657     6.806     5475      5.5
+PUNTIFI10         86.1%   170.704     7.014     5655      5.5
+PUNTIFI8          86.1%   170.714     7.010     5653      5.5
+PUNTIFI13         42.9%    85.024     3.554     2883      5.4
+VOTOUSL           15.4%    30.604     1.272     1038      5.4
+
+  Le 21 variabili hanno universi diversi: un solo n_eff per tutto il blocco
+  AVQ non esiste. La banda va calcolata sull'universo della variabile.
+
+6. La firma piu' riusata — chi e'?
+----------------------------------
+individui                            2.370   (1.20% della citta')
+peso in Sigma m^2                    15.6%
+variabili con valore                     3 su 20
+  ['SALUTE', 'CRONI', 'CPESO']
+
+composizione per bin d'eta':
+eta
+0-8     1341
+9-14    1029
+comune intero                       198.259  7.225     1093    181.3     13.5
+quartiere: Porta Cremona             13.046  5.472      823     15.9      4.0
+quartiere: Chiusure                  11.060  5.123      824     13.4      3.7
+quartiere: Porta Venezia             10.833  4.798      902     12.0      3.5
+quartiere: Buffalora                  2.239  1.735      877      2.6      1.6
+quartiere: Folzano                    1.824  1.466      732      2.5      1.6
+Porta Cremona · donne                 6.937  2.898      725      9.6      3.1
+Porta Cremona · laurea                  567    456      388      1.5      1.2
+Porta Cremona · stranieri             3.203  2.061      384      8.3      2.9
+
+  'banda x' e' sqrt(n/n_eff): quante volte troppo stretta sarebbe la banda
+  di confidenza calcolata ignorando i donatori. E' il numero che il
+  pannello AVQ deve usare, non n.

@@ -1,0 +1,65 @@
+[info] vincoli:     data/comuni/038008/constraints_2024/cs_K6C.json
+[info] popolazione: /home/mirko/progetti/animarium/bundle/comuni/038008/pop.parquet
+[info] 129.391 individui · 6 attributi
+
+Per blocco
+----------
+blocco                                   celle   fuori  MRE oss  MRE att  |z| med  |z| max  z>3
+-----------------------------------------------------------------------------------------------
+eta × istruzione                             9  0.9453    1.91%    1.17%     1.64     1.64    0
+eta × condizione                            20  0.9003    1.38%    1.22%     1.15     1.64    0
+cittadinanza × istruzione                   12  0.0000    1.52%    1.54%     1.08     1.96    0
+cittadinanza × condizione                   14  0.0000    1.15%    1.90%     0.61     1.49    0
+sesso × eta × stato_civile                  52  0.0000   25.98%   10.55%     1.04     7.07    3
+sesso × eta × cittadinanza                  32  0.0000    2.26%    2.85%     0.80     2.01    0
+sesso × eta × istruzione                    78  0.0547    3.31%    4.52%     0.74     2.51    0
+sesso × eta × condizione                    72  0.0997   10.65%   14.63%     0.69     2.78    0
+
+Il pool e' un campione pulito?
+------------------------------
+celle con target positivo           261
+
+                         osservato      atteso
+----------------------------------------------
+MRE                          9.33%       7.95%
+|z| medio                    0.804       0.798
+sd(z)                        1.098       1.000
+media(z)                     0.025       0.000
+|z| > 2                      5.36%       4.55%
+|z| > 3                      1.15%       0.27%
+
+  Se MRE osservato e atteso coincidono, l'errore per cella E' il
+  pavimento di rumore e non c'e' niente da spiegare.
+  sd(z) sopra 1 = pool sovradisperso, cioe' catena autocorrelata:
+  meno informativo di un campione indipendente della stessa taglia.
+
+Le 20 celle piu' lontane dal rumore (|z|)
+-----------------------------------------
+cella                                                        atteso    oss       z
+----------------------------------------------------------------------------------
+sesso=M, eta=25-34, stato_civile=vedovo                         2.0     12   +7.07
+sesso=M, eta=15-24, stato_civile=divorziato_sciolto             1.0      5   +4.00
+sesso=M, eta=65-74, stato_civile=divorziato_sciolto           592.0    519   -3.01
+sesso=M, eta=25-34, stato_civile=divorziato_sciolto            15.0      4   -2.84
+sesso=M, eta=15-24, condizione=occupato                      1410.0   1306   -2.78
+sesso=F, eta=15-24, condizione=casalinga                      105.4    132   +2.59
+sesso=M, eta=35-49, istruzione=post_laurea                   2524.2   2649   +2.51
+sesso=M, eta=15-24, istruzione=diploma                       2511.0   2398   -2.28
+sesso=F, eta=35-49, condizione=percettore_pensioni             68.6     50   -2.25
+sesso=F, eta=25-34, istruzione=elementare                      85.3    106   +2.24
+sesso=F, eta=65-74, istruzione=elementare                    3089.8   2969   -2.20
+sesso=M, eta=65-74, istruzione=elementare                    1806.8   1715   -2.17
+sesso=M, eta=15-24, stato_civile=coniugato_unito               14.0      6   -2.14
+sesso=F, eta=65-74, cittadinanza=ITL                         8546.0   8366   -2.01
+cittadinanza=ITL, istruzione=elementare                     14064.0  13845   -1.96
+sesso=F, eta=25-34, istruzione=media                          824.1    769   -1.93
+cittadinanza=FRG, istruzione=media                           4356.0   4240   -1.79
+sesso=F, eta=75+, cittadinanza=FRG                            153.0    131   -1.78
+sesso=F, eta=65-74, condizione=percettore_pensioni           7013.6   6874   -1.71
+sesso=F, eta=50-64, stato_civile=divorziato_sciolto          1954.0   2029   +1.71
+
+Zeri hard violati
+-----------------
+nessuno: ogni cella dichiarata impossibile e' vuota.
+
+[info] 289 celle scritte in note/misure/diagnostica_report_v1.0/celle_038008.csv

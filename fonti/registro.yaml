@@ -687,8 +687,8 @@ fonti:
   - id: avq_tracciato_2024
     ente: ISTAT
     titolo: Tracciato dei microdati AVQ 2024
-    url: DA_VERIFICARE
-    data_accesso: DA_VERIFICARE
+    url: https://www.istat.it/microdati/aspetti-della-vita-quotidiana/
+    data_accesso: 2026-08-03
     licenza: CC-BY-4.0
     licenza_uri: https://creativecommons.org/licenses/by/4.0/
     attribuzione: >-
@@ -740,10 +740,21 @@ fonti:
     tipo: multi_istanza
     ente: Comune di Brescia
     titolo: Cittadinanze straniere per quartiere
-    url: DA_VERIFICARE          # pagina con i 33 link, uno per quartiere
-    data_accesso: 2025-07-06    # dai timestamp dei file, 16:01-16:05
-    licenza: DA_VERIFICARE      # portale comunale: nessuna regola generale,
-                                # va letta la pagina (CC-BY? IODL 2.0? nulla?)
+    url: https://dati.comune.brescia.it/dataset/
+    url_note_legali: https://www.comune.brescia.it/it/legal_notices
+    licenza: CC-BY-4.0
+    licenza_uri: https://creativecommons.org/licenses/by/4.0/
+    data_accesso: 2026-08-11
+    attribuzione: >-
+      Comune di Brescia, dati aperti per quartiere,
+      dati.comune.brescia.it, CC BY 4.0
+    nota_licenza: >-
+      La pagina del singolo dataset dice «Nessuna licenza indicata». Le
+      Note legali del Comune coprono il caso: «In applicazione del
+      principio open by default ai sensi dell'articolo 52 del decreto
+      legislativo 7 marzo 2005, n. 82 (CAD) e salvo dove diversamente
+      specificato, i dati [...] sono rilasciati con licenza CC-BY 4.0».
+      Verificato il 11/8/2026.
     archiviazione: locale
     percorso: data/opendata/017029/cittadinanza/{istanza}.csv
     chiave_istanza: quartiere
@@ -773,9 +784,23 @@ fonti:
   - id: reggio_cittadinanza_circoscrizioni
     ente: Comune di Reggio nell'Emilia
     titolo: Nazionalita' piu' numerose per circoscrizione, 2013
-    url: DA_VERIFICARE
-    data_accesso: DA_VERIFICARE
-    licenza: DA_VERIFICARE
+    url: https://opendata.comune.re.it/dataset/stranieri-per-circoscrizione
+    licenza: CC-BY
+    licenza_uri: http://www.opendefinition.org/licenses/cc-by
+    data_accesso: 2026-08-11
+    riferimento_temporale: 2013
+    attribuzione: >-
+      Comune di Reggio nell'Emilia, "Stranieri per circoscrizione",
+      risorsa "Nazionalità più numerose per circoscrizione - 2013",
+      opendata.comune.re.it, CC BY
+    contatto: opendata@comune.re.it
+    aggiornamento: >-
+      dichiarato «annuale» nei tag, di fatto FERMO: metadata_created
+      2014-12-04, last_modified 2015-12-29. Verificato via API
+      `package_show` l'11/8/2026.
+    nota_licenza: >-
+      CKAN espone `license_id: cc-by` senza versione. Tutti i 68 dataset
+      del gruppo «Società» hanno la stessa.
     archiviazione: locale
     percorso: data/opendata/035033/nazionalita-piu-numerose-per-circoscrizione-2013.csv
     sha256: fcdfd4c26d1e368e7b0a32b1b2f0124b3c6ad134d8dc2b7bfc08162665b68ce6
@@ -823,11 +848,27 @@ fonti:
 
   - id: ravenna_cittadinanza_aree
     tipo: multi_istanza
-    ente: Comune di Ravenna
+    ente: Comune di Ravenna — Ufficio Studi e Statistica
     titolo: Popolazione residente con cittadinanza straniera per aree territoriali
-    url: DA_VERIFICARE
-    data_accesso: DA_VERIFICARE
-    licenza: DA_VERIFICARE
+    url: https://comune.ravenna.it/amministrazione/documenti-e-dati/documento-di-programmazione-e-rendicontazione/bollettino-della-popolazione-2023/
+    url_download: https://comune.ravenna.it/wp-content/uploads/2025/06/Popolazione-residente-con-cittadinanza-straniera-suddivisa-per-cittadinanza-e-area-territoriale.xls
+    licenza: pubblico-dominio
+    data_accesso: 2026-08-11
+    attribuzione: >-
+      Comune di Ravenna — Ufficio Studi e Statistica, "Popolazione
+      residente con cittadinanza straniera suddivisa per cittadinanza e
+      area territoriale", Bollettino della popolazione 2023,
+      comune.ravenna.it, pubblico dominio
+    riferimento_temporale: 31 dicembre 2023
+    nota_licenza: >-
+      «Pubblico dominio», dichiarato nella pagina del Bollettino.
+      ATTENZIONE: e' un canale diverso dal portale open data del Comune
+      (opendata.comune.ra.it), le cui FAQ dichiarano CC-BY 3.0 IT. Il
+      file usato qui viene dal sito istituzionale, non dal portale, e
+      vale la licenza di quel canale.
+      Il pubblico dominio non obbliga all'attribuzione: la si fa lo
+      stesso, perche' citare chi ha prodotto un dato e' buona pratica
+      anche quando non e' dovuta.
     archiviazione: locale
     percorso: data/opendata/039014/ravenna_stranieri_cittadinanza_area_{istanza}.xls
     chiave_istanza: anno
@@ -882,8 +923,27 @@ fonti:
     ente: Comune di Forli'
     titolo: Stranieri per quartiere, sesso e nazionalita'
     url: DA_VERIFICARE
-    data_accesso: DA_VERIFICARE
-    licenza: DA_VERIFICARE
+    licenza: CC-BY-4.0 (presunta)
+    data_accesso: 2026-08-11
+    riferimento_temporale: 31 dicembre 2021
+    attribuzione: >-
+      Comune di Forlì, stranieri residenti per quartiere, sesso e
+      nazionalità
+    nota_licenza: >-
+      NON e' un dataset scaricato da un portale: il file e' l'EXPORT DI
+      UNA CONSULTAZIONE. I metadati dicono `dc:creator: ExcelJS`, una
+      libreria JavaScript, e il file non ha `sharedStrings.xml` perche'
+      ExcelJS scrive le stringhe inline. Un comune non genera i suoi
+      dataset cosi': lo fa un'applicazione web dove si scelgono i filtri
+      e si preme «esporta». Da qui l'assenza di una pagina propria e
+      l'impossibilita' di ritrovare l'URL.
+      Creato il 6/10/2021 secondo i metadati; il totale di 15.021
+      stranieri e' coerente con i 15.171 al 1/1/2022, quindi i dati sono
+      al 31/12/2021.
+      Licenza PRESUNTA CC-BY 4.0 per il default normativo: art. 52 del
+      CAD e Linee guida AgID, che per i dati aperti nativi impongono
+      CC-BY nell'ultima versione. NON e' una dichiarazione trovata sul
+      sito del Comune.
     archiviazione: locale
     percorso: data/opendata/040012/forli_stranieri_quartiere_sesso_nazionalita.xlsx
     sha256: 769a688edc748837d2c2d696bc1fce61baf2c1786c5eb1f3288d6e8eb876a8f7
@@ -957,13 +1017,25 @@ fonti:
 #   python -m gsp.fonti --verifica
 
   - id: bologna_cittadinanza_zone
-    ente: Comune di Bologna
     titolo: >-
       Popolazione residente straniera per cittadinanza, sesso, quartiere
-      e zona - serie storica
-    url: DA_VERIFICARE
-    data_accesso: DA_VERIFICARE
-    licenza: DA_VERIFICARE
+      e zona — serie storica
+    ente: Comune di Bologna — U.I. Ufficio Comunale di Statistica
+    url: https://opendata.comune.bologna.it/explore/dataset/popolazione-residente-straniera-per-cittadinanzasesso-quartiere-e-zona-serie-st0/
+    url_documentazione: http://inumeridibolognametropolitana.it/dati-statistici/popolazione/
+    licenza: CC-BY-4.0
+    licenza_uri: https://creativecommons.org/licenses/by/4.0/
+    data_accesso: 2026-08-11
+    attribuzione: >-
+      Comune di Bologna — U.I. Ufficio Comunale di Statistica,
+      "Popolazione residente straniera per cittadinanza, sesso, quartiere
+      e zona — serie storica", opendata.comune.bologna.it, CC BY 4.0
+    nota_licenza: >-
+      dichiarata nella scheda del dataset. Le condizioni generali del
+      portale rimandano al singolo dataset: «Puoi utilizzare i dati
+      rispettando i termini di licenza specificati in ogni dataset».
+    aggiornamento: annuale (frequency/ANNUAL nei metadati DCAT)
+    contatto: opendata@comune.bologna.it
     archiviazione: locale
     percorso: data/opendata/037006/popolazione-residente-straniera-per-cittadinanzasesso-quartiere-e-zona-serie-st0.parquet
     sha256: 3ad8d086bc7b453c4c141a11c45a3bd8c0ae201608d260ce73140b4fd42d91f8
@@ -1020,13 +1092,21 @@ fonti:
     non_usabile_per: [popolazione_italiana, livelli_assoluti]
 
   - id: parma_microdati_residenti
-    ente: Comune di Parma
+    ente: Comune di Parma — Ufficio Statistica
     titolo: Popolazione residente 2025 - microdati individuali
-    url: DA_VERIFICARE
-    data_accesso: 2025-07-28        # dai timestamp dei file
-    licenza: DA_VERIFICARE          # microdati individuali: verificare le
-                                    # condizioni d'uso, potrebbero non
-                                    # essere una CC-BY semplice
+    url: https://opendata.comune.parma.it/dataset/popolazione-residente-al-1-gennaio-2025
+    url_download: https://opendata.comune.parma.it/sites/default/files/Popolazione_residente_2025.csv
+    url_documentazione: https://www.comune.parma.it/it/argomenti/statistica
+    licenza: CC-BY-4.0
+    licenza_uri: https://creativecommons.org/licenses/by/4.0/
+    data_accesso: 2026-08-11
+    attribuzione: >-
+      Comune di Parma — Ufficio Statistica, "Popolazione residente al
+      1 gennaio 2025", opendata.comune.parma.it, CC BY 4.0
+    id_risorsa: ac707546-bd05-4ddb-9de7-0c2357ef7aca
+    aggiornamento: annuale
+    contatto: statistica@comune.parma.it
+    riferimento_temporale: 1 gennaio 2025
     archiviazione: locale
     percorso: data/opendata/034027/Popolazione_residente_2025.csv
     sha256: b4c39ca96ace229864fdeeff59e3fe5655df81d46af22b1050c9570bfaea679d
@@ -1104,12 +1184,26 @@ fonti:
     usato_da: [opendata_paese.py]
     non_usabile_per: [livelli_assoluti]
 
+
   - id: parma_codifica_campi
-    ente: Comune di Parma
-    titolo: Descrizione e codifica dei campi, 2025
-    url: DA_VERIFICARE
-    data_accesso: 2025-07-28
-    licenza: DA_VERIFICARE
+    ente: Comune di Parma — Ufficio Statistica
+    titolo: Descrizione e codifica dei campi — popolazione residente
+    url: https://opendata.comune.parma.it/dataset/popolazione-residente-al-1-gennaio-2025
+    url_download: https://opendata.comune.parma.it/sites/default/files/Descrizione_codifica_campi_2025.csv
+    licenza: CC-BY-4.0
+    licenza_uri: https://creativecommons.org/licenses/by/4.0/
+    data_accesso: 2026-08-11
+    attribuzione: >-
+      Comune di Parma — Ufficio Statistica, "Descrizione e codifica dei
+      campi", risorsa del dataset "Popolazione residente al 1 gennaio
+      2025", opendata.comune.parma.it, CC BY 4.0
+    id_risorsa: 2bc02ad4-6769-468b-b7e7-aa6bfac6a229
+    nota_pipeline: >-
+      NON e' un dataset a se': e' la seconda risorsa dello stesso dataset
+      di `parma_microdati_residenti`, e le due condividono URL, licenza e
+      data di rilascio. Restano schede separate perche' hanno
+      normalizzatori e usi diversi — una porta i microdati, l'altra il
+      codebook — ma chi le legge deve sapere che vengono insieme.
     archiviazione: locale
     percorso: data/opendata/034027/Descrizione_codifica_campi_2025.csv
     sha256: dde845f0814ffc58ad7559879e9075b12ab4340a7190073d59b7eb979bebb018
@@ -1322,8 +1416,8 @@ fonti:
     tipo: multi_istanza
     ente: ISTAT
     titolo: Basi territoriali - sezioni di censimento 2021, shapefile
-    url: DA_VERIFICARE
-    data_accesso: 2026-07-28
+    url: https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/
+    url_documentazione: https://www.istat.it/wp-content/uploads/2024/07/Descrizione-dei-dati-Basi-territoriali.pdf
     licenza: CC-BY-4.0
     nota_licenza: >-
       licenza generale del sito ISTAT ("salvo diversa indicazione", note
@@ -1346,6 +1440,12 @@ fonti:
     unita: sezione di censimento
     normalizzatore: archivio_zip
     anomalie:
+      - >-
+        ISTAT ha revisionato le sezioni di BOLOGNA e FORLI' — due degli
+        undici comuni — in un rilascio successivo alla prima diffusione
+        delle BT 2021. Se il download precede la revisione, le geometrie
+        di quei due comuni non sono l'ultima versione. Da verificare
+        confrontando la data del file con quella del rilascio.
       - >-
         il registro verifica lo ZIP, NON l'estratto che la pipeline legge
         (`gsp.common.REGIONI[reg]["shp"]` punta a
@@ -1470,9 +1570,16 @@ fonti:
     titolo: >-
       CLAIST 2026 - Mappa dei percorsi di istruzione e dei titoli di
       studio italiani
-    url: DA_VERIFICARE
-    url_nota_metodologica: DA_VERIFICARE
+    url: https://www.istat.it/classificazione/classificazione-dei-titoli-di-studio-italiani/
+    url_nota_metodologica: https://www.istat.it/wp-content/uploads/2005/10/Nota-metodologica-CLAIST-2025.pdf
     data_accesso: 2026-08-04
+    nota_versione: >-
+      il file e' CLAIST_2026.xlsx, l'aggiornamento al 2026 della Mappa;
+      la nota metodologica disponibile e' quella del 2025, che descrive i
+      principi della prima versione. Non e' un disallineamento: la
+      seconda fase (giugno 2025 - giugno 2026) ha aggiunto le
+      classificazioni derivate e i vocabolari controllati senza rifare
+      la metodologia.
     licenza: CC-BY-4.0
     nota_licenza: >-
       licenza generale del sito ISTAT ("salvo diversa indicazione", note
@@ -1553,7 +1660,15 @@ fonti:
     titolo: >-
       Titolo di studio della popolazione residente di 6 anni e piu' -
       Censimento della popolazione 2011
-    url: DA_VERIFICARE
+    uurl: https://esploradati.istat.it/databrowser/
+    url_storico: http://dati-censimentopopolazione.istat.it/
+    nota_url: >-
+      il file e' stato scaricato dal data warehouse dedicato al 15°
+      Censimento generale (2011), che l'11/8/2026 risponde con un
+      redirect 302 verso esploradati.istat.it/databrowser/. Il vecchio
+      URL si conserva perche' e' quello da cui il dato proviene e da cui
+      viene il prefisso DICA_ dei file; chi rifacesse il download oggi
+      passerebbe dal databrowser, sotto `censpop`.
     url_download: https://esploradati.istat.it/databrowser/DWL/censtatv5db/Popolazione/DICA_TITSTUDIO-data.zip
     dataflow: DF_BULK_CPO2011_DICA_TITSTUDIO
     data_accesso: 2026-08-04
@@ -1877,8 +1992,16 @@ fonti:
     titolo: >-
       Caratteristiche dell'attività lavorativa - Censimento della
       popolazione 2011
-    url: DA_VERIFICARE
+    url: https://esploradati.istat.it/databrowser/
+    url_storico: http://dati-censimentopopolazione.istat.it/
     url_download: https://esploradati.istat.it/databrowser/DWL/censtatv5db/Popolazione/DICA_CARATT_ATTL-data.zip
+    nota_url: >-
+      il file e' stato scaricato dal data warehouse dedicato al 15°
+      Censimento generale (2011), che l'11/8/2026 risponde con un
+      redirect 302 verso esploradati.istat.it/databrowser/. Il vecchio
+      URL si conserva perche' e' quello da cui il dato proviene e da cui
+      viene il prefisso DICA_ dei file; chi rifacesse il download oggi
+      passerebbe dal databrowser, sotto `censpop`.
     dataflow: DF_BULK_CPO2011_DICA_CARATT_ATTL
     data_accesso: 2026-08-05
     licenza: CC-BY-4.0

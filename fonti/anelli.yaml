@@ -1,0 +1,97 @@
+# fonti/anelli.yaml — mappa dai tag di `usabile_per` (registro.yaml) alla
+# destinazione nella pipeline. Serve allo script che genera la tabella
+# fonte -> anello del report tecnico (Parte II). Non e' letto dalla pipeline.
+#
+# Un tag ha una sola destinazione; una fonte con piu' tag alimenta piu'
+# anelli, ed e' giusto che la tabella lo mostri. I tag in `dimensione` non
+# sono funzioni ma disaggregazioni ("la fonte e' per sesso ed eta") e non
+# assegnano un anello. Un tag nuovo nel registro senza riga qui fa fallire
+# lo script con un messaggio: si aggiunge la riga, non si tace.
+#
+# Decisioni discusse (19 agosto 2026):
+#   - i tier del paese stanno nell'anello 2 (decidono QUALE paese), anche se
+#     li applica enrich.py condizionando alla sezione;
+#   - condizionamento_per_sesso_eta e derivazione_a_valle sono strati
+#     derivati (titolo di studio dettagliato; settore x posizione a valle);
+#   - mappa_regionale e' viewer (atlante), non anello 3;
+#   - parma_microdati_residenti NON e' solo validazione: margine_B_ipf e
+#     geografia_paese_tier3 sono produzione (vedi report, Parte II.2).
+
+anello1:                         # joint MaxEnt
+  - vincoli_maxent
+  - vincoli_maxent_soft
+  - vincoli_eta_sesso
+  - vincoli_stato_civile
+  - vincoli_istruzione
+  - vincoli_zona
+  - blocco_GC
+  - margine_A_ipf
+  - margine_B_ipf
+  - controllo_totali
+
+anello2:                         # attributi donati e cittadinanza
+  - pool_donatori_hot_deck
+  - attributi_AVQ
+  - decodifica_variabili_avq
+  - registro_paesi
+  - assegnazione_paese
+  - geografia_paese_tier1
+  - geografia_paese_tier2
+  - geografia_paese_tier3
+
+anello3:                         # collocazione sub-comunale
+  - tabelle_zona
+  - gerarchia_zone
+  - gerarchia_zona_quartiere
+  - geografia_subcomunale
+  - geometrie_sezioni
+  - decodifica_colonne_sezioni
+  - civici_georeferenziati
+  - aggancio_civici
+  - indirizzi_sintetici
+
+anello4:                         # nuclei familiari
+  - struttura_nucleo
+  - stato_civile_nucleo
+  - assegnazione_ruoli
+  - coppie
+  - coppie_stesso_sesso
+
+derivati:                        # strati a valle, nessuna informazione nuova
+  - settore_posizione_congiunta
+  - derivazione_a_valle
+  - vocabolario_titoli
+  - frequenze_titoli
+  - raccordo_isced
+  - storicizzazione
+  - gruppi_disciplinari_mur
+  - condizionamento_per_sesso_eta
+  - repertorio_nomi
+  - repertorio_nomi_stranieri
+  - repertorio_cognomi_stranieri
+  - repertorio_cognomi_nigeria
+  - repertorio_cognomi_maghreb
+  - cognome_italiano
+  - coda_zipf
+  - plausibilita_onomastica
+
+validazione:                     # controllo, esplorazione, validazione esterna
+  - controllo_stabilita
+  - decodifica_microdati_parma
+  - struttura_familiare
+  - esplorazione_struttura
+  - decodifica_variabili_eusilc
+  - preparazione_richiesta_suf
+
+viewer:                          # solo Animarium
+  - tacche_pannello
+  - riferimento_nazionale_batteria
+  - mappa_regionale
+
+infrastruttura:
+  - sviluppo_codice
+  - documentazione_struttura
+
+dimensione:                      # disaggregazioni, non destinazioni
+  - sesso
+  - eta

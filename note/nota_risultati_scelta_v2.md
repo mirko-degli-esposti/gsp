@@ -151,6 +151,55 @@ tecnici: **primo aperto della fase 3** (con l'avvertenza che la' la
 quota e' a T=0,3, quindi la b attesa e' piu' alta: il confronto pulito
 e' sull'ordinamento a fra modelli, non sui valori).
 
+---
+
+## §5-bis — Verifica fuori-campione della link function *(addendum 21/8/2026, sera)*
+
+Programmata come primo aperto della fase 3 (§5, §9.1); eseguita con
+`scripts/narrativa/verifica_link.py` sulle 36 celle a T=0,3 (liceo e
+professionale MAI usati nella stima di fase 2; GPT su r0+r2; stima a
+due epsilon per il clipping — 10-24 celle sature per modello; gli
+ordinamenti non dipendono dall'epsilon, i valori di b sì e vanno sempre
+citati con l'epsilon accanto).
+
+**Verdetti**: L2 regge (a_Haiku −0,63 < a_DeepSeek +0,28: il
+pessimista resta pessimista su celle mai viste); L3 regge e sale
+(R² 0,87-0,96 — DeepSeek a 0,96 su 36 celle: la sua quota e' funzione
+quasi deterministica della sua credenza su tutto il dominio);
+**L1 regge solo per DeepSeek** (b 3,5→1,7 dal freddo al caldo) e
+**cade per Haiku** (3,6→3,0, entro il rumore del clipping).
+
+**Revisione della link function — due regimi di soglia:**
+
+| modello | b a T=0,3 (eps 0,02/0,05) | b a T=1,0 | regime |
+|---|---|---|---|
+| DeepSeek | 3,52 / 2,81 | 1,67 | **termico**: b = b(T), il calore ammorbidisce |
+| Haiku 4.5 | 3,64 / 2,84 | 3,04 | **costituzionale**: b invariante a T |
+| GPT-4o-mini | 8,24 / 6,72 | n.i. | caso estremo (v. sotto) |
+
+Coerente con P1 di fase 2: la migrazione minima di Haiku (7,6→11,5%
+contro credenza 40) non era un'anomalia — la sua soglia sta PRIMA del
+campionamento. Il bias a si accentua a T alta per entrambi (Haiku
+−0,6→−1,3; DeepSeek +0,3→+0,7), ma le due stime non sono a parita' di
+dominio (36 celle vs 12): agli atti senza sovrainterpretare.
+
+**GPT identificato**: le 36 celle danno al suo regressore l'escursione
+che i tecnici non avevano (credenza 66-75) e la stima diventa leggibile
+— b ~7-8, R² 0,67-0,73. Il ritratto si completa: **la sigmoide piu'
+ripida dei tre montata sul continuo piu' piatto dei tre** — quasi tutto
+il lavoro lo fa la soglia, quasi niente la credenza. La tabella di §1
+va letta con questa riga al posto di «non identificabile».
+
+**Conseguenza per la fase 3.2 (iniezione delle regole)**: lo strumento
+appena validato misura anche l'intervento — se le regole correggono H5,
+il COME e' osservabile sulla link (spostamento di a, o deformazione
+locale sulle celle qualifica). Il world model iniettato diventa un
+intervento sulla link function, non solo sulle quote.
+
+Provenienza: `note/verifica_link.md` (output macchina),
+`figure/scatter_quota_credenza.png` (fase 2). Predizioni L1-L3
+registrate nel docstring dello script prima dell'esecuzione.
+
 ## 6. Altri esiti (invariati dalla v1)
 
 - **ITS invisibili a tutti** (0,1 / 0,9 pulito / 0%; l'84% di GPT a

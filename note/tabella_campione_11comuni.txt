@@ -1,0 +1,125 @@
+CAMPIONE GIOVANI DIPLOMATI - TABELLA DETTAGLIATA (finestra 19-22)
+comuni: 11 - mappa diploma3 v2 - 20/08/2026
+========================================================================================================
+
+A - STRUTTURA DEL CAMPIONE  (F = ruolo figlio, non sesso)
+
+  comune           giovani         F (figli)             R             P    A    N  n.c.  F+gen
+  ------------------------------------------------------------------------------------------------------
+  Brescia            2.542     1.260 (49.6%)   776 (30.5%)   394 (15.5%)   61   18    33   100%
+  Piacenza           1.380       710 (51.4%)   403 (29.2%)   215 (15.6%)   35    7    10   100%
+  Parma              2.781     1.384 (49.8%)   774 (27.8%)   514 (18.5%)   46   12    51   100%
+  Reggio nell'Emilia   2.523     1.372 (54.4%)   630 (25.0%)   432 (17.1%)   51   15    23   100%
+  Modena             2.954     1.614 (54.6%)   726 (24.6%)   465 (15.7%)   45   11    93   100%
+  Bologna            5.678     2.493 (43.9%) 2.007 (35.3%)   921 (16.2%)  109   45   103   100%
+  Castenaso            177        93 (52.5%)    49 (27.7%)    30 (16.9%)    4    1     0   100%
+  Ferrara            1.692       896 (53.0%)   477 (28.2%)   254 (15.0%)   25    9    31   100%
+  Ravenna            2.709     1.586 (58.5%)   676 (25.0%)   370 (13.7%)   38    8    31   100%
+  Forlì              1.567       867 (55.3%)   440 (28.1%)   196 (12.5%)   28    9    27   100%
+  Rimini             2.019     1.141 (56.5%)   445 (22.0%)   345 (17.1%)   44   10    34   100%
+
+========================================================================================================
+
+B - I CANDIDATI (solo ruolo F)
+
+  comune                n   donne  stran. | g:bassa g:dipl g:laur+ | liceo  tecn  prof altro
+  ------------------------------------------------------------------------------------------------------
+  Brescia           1.260   46.7%  21.0% |  14.2% 41.3%  44.4% |37.7%30.2%28.8% 3.3%
+  Piacenza            710   41.4%  20.4% |  11.7% 50.1%  38.2% |37.6%31.3%26.1% 5.1%
+  Parma             1.384   52.5%  17.8% |  10.5% 40.8%  48.8% |38.1%29.7%28.2% 4.0%
+  Reggio nell'Emilia  1.372   50.4%  15.2% |  14.4% 49.8%  35.9% |38.4%30.1%27.8% 3.6%
+  Modena            1.614   48.3%  15.3% |  13.7% 41.1%  45.2% |37.4%33.7%24.3% 4.6%
+  Bologna           2.493   47.7%  17.4% |   7.7% 33.9%  58.4% |37.2%33.6%25.2% 4.0%
+  Castenaso            93   50.5% 100.0% |   8.6% 49.5%  41.9% |36.6%34.4%25.8% 3.2%
+  Ferrara             896   50.4% 100.0% |  13.7% 41.9%  44.4% |37.3%34.2%24.4% 4.1%
+  Ravenna           1.586   43.9%  10.6% |  16.0% 49.6%  34.4% |37.3%33.1%25.6% 4.0%
+  Forlì               867   44.2%  13.6% |  12.8% 49.3%  37.9% |35.1%34.4%27.2% 3.3%
+  Rimini            1.141   58.4%  15.0% |  14.2% 44.9%  40.9% |40.0%31.0%24.2% 4.8%
+  POOLED           13.416   48.5%  22.3% |  12.5% 43.1%  44.4% |37.6%32.2%26.1% 4.1%
+
+  ATTENZIONE - marginali da non leggere come realta':
+   . g:laur+  = artefatto dell'indipendenza fra genitori (reale ~25-30%)
+   . liceo    = vintage censuario 2011 (reale ~57% degli iscritti)
+
+========================================================================================================
+
+C - BENCHMARK INTERNO: quota `studente` (pooled, solo F)
+
+  strato                               n  studente
+  --------------------------------------------------
+  tutti                           13.416    66.6%
+  diploma3 = liceo                 5.047    67.2%   (piatta per costruzione)
+  diploma3 = tecnico               4.323    64.9%   (piatta per costruzione)
+  diploma3 = professionale         3.501    67.4%   (piatta per costruzione)
+  gen3 = bassa                     1.676    65.9%   (piatta per costruzione)
+  gen3 = diploma                   5.778    67.6%   (piatta per costruzione)
+  gen3 = laurea+                   5.962    65.8%   (piatta per costruzione)
+  comune = Brescia                 1.260    64.6%   <- asse informativo
+  comune = Piacenza                  710    66.3%   <- asse informativo
+  comune = Parma                   1.384    69.2%   <- asse informativo
+  comune = Reggio nell'Emilia      1.372    63.5%   <- asse informativo
+  comune = Modena                  1.614    67.3%   <- asse informativo
+  comune = Bologna                 2.493    66.5%   <- asse informativo
+  comune = Castenaso                  93    65.6%   <- asse informativo
+  comune = Ferrara                   896    70.9%   <- asse informativo
+  comune = Ravenna                 1.586    64.1%   <- asse informativo
+  comune = Forlì                     867    64.7%   <- asse informativo
+  comune = Rimini                  1.141    70.3%   <- asse informativo
+
+========================================================================================================
+
+D - LE CELLE DEL DISEGNO  (pooled; per comune: BS/PC/PR/RE/MO/BO/CS/FE/RA/FC/RN)
+
+  --- LICEO -----------------------------------------------------------------------------------------
+  cella                                     n    BS  PC  PR  RE  MO  BO  CS  FE  RA  FC  RN   preleva
+  liceo·bassa·F·ita                       301    29  14  28  47  45  37   0   0  47  17  37     12
+  liceo·bassa·F·straniero                  85    13   5   7   3  10   6   3  20   4   2  12     12
+  liceo·bassa·M·ita                       194    28  14  17  22  24  28   0   0  30  13  18     12
+  liceo·bassa·M·straniero                  56     6   3   4   2   5   6   2  15   6   4   3     12
+  liceo·diploma·F·ita                    1048    81  57 119 142 129 164   0   0 158  74 124     12
+  liceo·diploma·F·straniero               283    25  12  22  20  22  27  11  88  18  14  24     12
+  liceo·diploma·M·ita                     655    47  44  74  85  73  96   0   0 125  58  53     12
+  liceo·diploma·M·straniero               194    25  12   8  20  16  30   5  53  10   7   8     12
+  liceo·laurea+·F·ita                    1017    95  49 132 104 124 271   0   0  89  57  96     12
+  liceo·laurea+·F·straniero               288    21   7  30  19  21  47   8  96  14   4  21     12
+  liceo·laurea+·M·ita                     716    85  42  68  51 114 176   0   0  78  48  54     12
+  liceo·laurea+·M·straniero               210    20   8  18  12  21  40   5  62  12   6   6     12
+
+  --- TECNICO ---------------------------------------------------------------------------------------
+  cella                                     n    BS  PC  PR  RE  MO  BO  CS  FE  RA  FC  RN   preleva
+  tecnico·bassa·F·ita                     157    13   6  14  22  23  20   0   0  29  12  18     12
+  tecnico·bassa·F·straniero                44     3   3   1   0   7   3   0  20   2   3   2     12
+  tecnico·bassa·M·ita                     267    25  17  24  32  38  29   0   0  49  26  27     12
+  tecnico·bassa·M·straniero                79     5   1   4   6  13   6   1  27   6   6   4     12
+  tecnico·diploma·F·ita                   560    52  21  54  78  85  90   0   0  72  47  61     12
+  tecnico·diploma·F·straniero             168    14  13  14  11  15  15   8  52  11   6   9     12
+  tecnico·diploma·M·ita                   871    95  63  78 105 110 133   0   0 140  72  75     12
+  tecnico·diploma·M·straniero             260    19  20  17  20  22  40   8  74  25   8   7     12
+  tecnico·laurea+·F·ita                   584    49  12  84  53  73 165   0   0  56  25  67     12
+  tecnico·laurea+·F·straniero             171    13   6  15  10  12  26   6  56   6   6  15     12
+  tecnico·laurea+·M·ita                   881    68  46  83  65 120 251   0   0 117  74  57     12
+  tecnico·laurea+·M·straniero             281    25  14  23  11  26  59   9  77  12  13  12     12
+
+  --- PROFESSIONALE ---------------------------------------------------------------------------------
+  cella                                     n    BS  PC  PR  RE  MO  BO  CS  FE  RA  FC  RN   preleva
+  professionale·bassa·F·ita               121    16   4  13  17   9  17   0   0  20   8  17     12
+  professionale·bassa·F·straniero          37     3   2   4   3   3   4   0  11   1   3   3     12
+  professionale·bassa·M·ita               203    21   7  18  30  28  26   0   0  47  12  14     12
+  professionale·bassa·M·straniero          62    11   5   4   6   1   4   2  22   4   3   0     12
+  professionale·diploma·F·ita             482    47  32  52  68  59  67   0   0  66  36  55     12
+  professionale·diploma·F·straniero       129     5   6   9   9  14  12   5  39   7   8  15     12
+  professionale·diploma·M·ita             694    77  49  74  83  79 106   0   0 112  72  42     12
+  professionale·diploma·M·straniero       191    18   9  15  19  12  24   8  52  10  11  13     12
+  professionale·laurea+·F·ita             517    66  15  70  41  67 123   0   0  54  36  45     12
+  professionale·laurea+·F·straniero       151    10   5  21  13  10  25   3  47   4   6   7     12
+  professionale·laurea+·M·ita             723    71  45  90  76 103 174   0   0  71  33  60     12
+  professionale·laurea+·M·straniero       191    18   6  20  17   7  46   6  48  10   8   5     12
+
+  * cella sotto i 12: entra intera
+  celle con n>=10: 36/36  (copertura 100.0%)
+  celle con n>=12: 36/36  (copertura 100.0%)
+  celle con n>=20: 36/36  (copertura 100.0%)
+  minima 37 . mediana 235 . massima 1048
+  AGENTI DA CAMPIONARE: 432  (12 per cella dove disponibili)
+
+========================================================================================================

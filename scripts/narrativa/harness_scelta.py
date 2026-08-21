@@ -264,11 +264,18 @@ def main():
     ap.add_argument("--a", type=int, default=None)
     ap.add_argument("--pausa", type=float, default=0.4)
     ap.add_argument("--out", default="dati/campagne/scelta")
+    ap.add_argument("--solo-diploma3", default=None,
+                    choices=["liceo", "tecnico", "professionale"],
+                    help="restringe la corsa a una classe (vista sul "
+                         "campione, che resta intatto)")    
     a = ap.parse_args()
 
     with open(a.campione, encoding="utf-8") as f:
         C = json.load(f)
-    agenti = C["agenti"][a.da:a.a]
+    agenti = C["agenti"]
+    if a.solo_diploma3:
+        agenti = [x for x in agenti if x["diploma3"] == a.solo_diploma3]
+    agenti = agenti[a.da:a.a]
 
     # nomi leggibili dei comuni, dal registro
     nomi_comune = {}
@@ -370,8 +377,9 @@ def _percorso(a, C):
     os.makedirs(a.out, exist_ok=True)
     m = a.modello.split("/")[-1].replace(".", "")
     n = os.path.basename(a.campione).replace(".json", "")
+    f3 = f"_{a.solo_diploma3}" if a.solo_diploma3 else ""
     return os.path.join(
-        a.out, f"campagna_{n}_{m}_r{a.repliche}_"
+        a.out, f"campagna_{n}{f3}_{m}_r{a.repliche}_"
                f"t{str(a.temperatura).replace('.', '')}.json")
 
 
@@ -390,7 +398,14 @@ def _salva(fpath, a, C, ris, profili):
                                "H4 possibile mutismo categoriale",
                                "H5 prob(qualifica) ~ prob(professionale "
                                "non-qualifica): il modello non distingue "
-                               "il non-accesso"],
+                               "il non-accesso"] + ([
+                       "P1 a T=1,0 la quota categoriale migra dalle "
+                       "soglie verso le credenze dichiarate a T=0,3",
+                       "P2 il primacy di GPT persiste a T alta "
+                       "(strutturale), misurato a ciclo completo",
+                       "P3 quote T=1,0 per cella ~ prob medie T=0,3 "
+                       "entro la risoluzione delle ancore"]
+                       if a.temperatura >= 0.9 else []),
                     "profili": profili,
                    "risultati": ris, "survey": SURVEY_ROWS,
                    "chiamate": CALL_LOG}, g, ensure_ascii=False, indent=1)

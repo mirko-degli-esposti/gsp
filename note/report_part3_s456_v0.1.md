@@ -97,28 +97,38 @@ with the reason and, where it exists, the prepared change.
    waiting for a cycle in which regeneration is already required, because
    regeneration invalidates `donor_id` and every measure, and is not done
    for one fix **[n]** old Animarium README.
-3. **The per-section allocation MAE script** (§III.3): the measurement is
+3. **Section-level migratory background (EM1–EM6).** The census's own
+   section columns give the six background modalities per section, in
+   one-to-one correspondence with ring 1's `background`; the M-EM
+   measures find a real net residual on all eleven municipalities
+   (median ~0.022 Italians, ~0.018 foreigners), so assumption (8)
+   discards structure that exists. The modification to `enrich.py` is
+   designed — background subsumes citizenship in the cell key, weights
+   normalised within the group, not multiplied — and the registry patch
+   extending the source's `usabile_per` is written. Queued with the same
+   regeneration cycle as (2) **[n]** `nota_background_sezione_v1`.
+4. **The per-section allocation MAE script** (§III.3): the measurement is
    *reported*; the script is to be rewritten for v1.1.
-4. **Modena's 37 rioni.** A partition ten times finer than the four ASC
+5. **Modena's 37 rioni.** A partition ten times finer than the four ASC
    zones exists on the municipal portal (foreigner share spanning a factor
    15 instead of 2); it would attack assumption (8) where it binds most.
    Cost: a deviation from the ISTAT-standard zone levels, a
    section→rione mapping to build, and |X| growing tenfold. Registered as
    an opportunity, not scheduled **[n]** riferimento §8.
-5. **EU-SILC** for income and living conditions: explored (two registered
+6. **EU-SILC** for income and living conditions: explored (two registered
    entries, graph script), decision not taken; the public files' terms do
    not allow redistribution, which any use will have to respect (§II.2).
-6. **`FORZE_ARMATE`** into the AVQ target list, **`donor_anno`**, and
+7. **`FORZE_ARMATE`** into the AVQ target list, **`donor_anno`**, and
    **`cella_avq`** (collapse level per individual): queued for the same
    next regeneration cycle as (2).
-7. **MRE floor definition**: the floor formula in `verifica_vincoli.py` is
+8. **MRE floor definition**: the floor formula in `verifica_vincoli.py` is
    the standard deviation of the relative error, while MRE is its mean
    absolute value (factor √(2/π) = 0.798); corrected, the observed error
    sits 10–11 % above the floor, consistent with sd(z) ≈ 1.03. Open:
    verify which definition `fit_cs.py` uses — instrument and paper must
    say the same thing **[n]** riferimento §14.5. **[v]** resolve before
    freezing §III.3's table caption.
-8. **Household-level address** (the residue of assumption 11) as the
+9. **Household-level address** (the residue of assumption 11) as the
    prerequisite of any building-level assignment **[n]** nota_nucleo §9.
 
 ### III.6 Register of retractions and falsified predictions

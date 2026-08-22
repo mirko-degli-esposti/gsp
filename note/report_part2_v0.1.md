@@ -18,28 +18,38 @@ attribution string), what it *contains* (universe, unit of observation,
 temporal reference), how it is *stored* (in git, on the local disk, or only
 as a fingerprint with a remote location), which code *reads* it, and — the
 two fields that carry judgement — what it may be used for (`usabile_per`)
-and what it must not be used for (`non_usabile_per`). Both take values from
-a controlled vocabulary of fifty-eight tags **[m]**; the second is the one
-nobody fills in and the one that matters, because it is where the reasons
-live. `confronto_diretto_con_anagrafe_stesso_anno` on every census table
-says that the population register at 1 January of year N and the permanent
-census at 31 December of year N−1 describe the same instant and must not be
-compared as if they were a year apart; `paese_di_dettaglio` on a municipal
-table says that it gives the area of citizenship but not the country;
-`conteggi_di_popolazione` on the address register says that a civic number
-is a place, not a household. These negative affordances are declared at the
-source, once, and the normalisers enforce them.
+and what it must not be used for (`non_usabile_per`). 
+
+
+
+Both take values from a controlled vocabulary — sixty-one positive tags,
+sixty negative, at the release tag **[m]** — and the near-symmetry is
+itself the finding: in this registry the *negative* affordances are
+declared as systematically as the positive ones, where common practice
+records only what a source is for and lets the misuses be discovered by
+whoever commits them. The negative field is where the reasons live.
+`confronto_diretto_con_anagrafe_stesso_anno` on every census table says
+that the population register at 1 January of year N and the permanent
+census at 31 December of year N−1 describe the same instant and must not
+be compared as if they were a year apart; `paese_di_dettaglio` on a
+municipal table says that it gives the area of citizenship but not the
+country; `conteggi_di_popolazione` and `residenti` on the civic-address
+register say that a civic number is a place, not a household and not a
+count of anyone. These negative affordances are declared at the source,
+once, and the normalisers enforce them.
 
 Three rules follow from treating the registry as the authority rather than
 as documentation.
 
 *The raw file is immutable; the normaliser is versioned code.* Nothing is
 ever edited in a downloaded file. Every transformation — decoding,
-reshaping, filtering of aggregate rows — is a function in `gsp.fonti` with a
-name recorded in the entry, so that the same raw file and the same commit
-produce the same normalised table. Where a file has been re-downloaded
-(Ravenna 2024, to be re-fetched **[n]** `fonti_e_pacchetto_v8` §13.3), the
-old and new fingerprints are both recorded.
+reshaping, filtering of aggregate rows — is a function in `gsp.fonti`
+with a name recorded in the entry, so that the same raw file and the
+same commit produce the same normalised table. Where a file must be
+replaced, it is re-fetched and re-fingerprinted, never patched: Ravenna's
+citizenship table, flagged stale in the working notes, was re-fetched
+during the licence-certification round (access date 2026-08-11) and its
+entry updated **[m]**.
 
 *Storage level is declared, and the fingerprint is the invariant.* Small
 redistributable files (under a few megabytes: code lists, track records, the
@@ -63,12 +73,18 @@ derived sources (`avq_medie_nazionali`, `repertorio_nuclei_v1`) are registered
 like any other, with a `derivato_da` pointing to their inputs, and why the
 same rule governs populations and bundles (§III.1).
 
-Two commands audit the whole. `--copertura` verifies that every municipality
-in the registry has every source it needs, by instance; `--pubblico` lists
-what may be redistributed and under which licence, and what may not, with
-the reason. At `report-v1.0-rc1` both pass **[m]**; `--pubblico` reports no
-blocking entry, seven entries whose licence is still marked `DA_VERIFICARE`
-(§II.2), and two whose terms explicitly forbid redistribution (EU-SILC).
+Two commands audit the whole. `--copertura` verifies that every
+municipality in the registry has every source it needs, by instance;
+`--pubblico` lists what may be redistributed and under which licence, and
+what may not, with the reason. At the release tag both pass **[m]**:
+no blocking entry; every licence resolved against its portal of origin —
+one declared as *presumed* (Forlì, whose portal states no licence of its
+own and inherits the site-wide CC-BY-4.0), a presumption recorded as
+such in the entry rather than silently upgraded; and two entries whose
+terms explicitly forbid redistribution (the EU-SILC public-use files),
+registered for exploration only (§II.5).
+
+
 
 ### II.2 Families of sources and their legal condition
 
@@ -117,26 +133,31 @@ hot-deck copies a whole public-use record and nothing more. The weight
 `COEFIN` carries four implicit decimals, recorded in the entry as
 `scala_peso`.
 
-**Municipal open data (six portals) and one municipal supply.** Five
+**Municipal open data (six portals) and one register extract.** Five
 municipalities publish residents by citizenship at sub-municipal level
-(Bologna by statistical zone; Brescia, Forlì by neighbourhood; Ravenna by
-area; Reggio nell'Emilia by circoscrizione), and Modena publishes the stock
-of first names by sex; these feed the country-of-citizenship tiers of ring 2
-and, for Bologna, the zone–neighbourhood hierarchy of ring 3. Their licences
-are marked `DA_VERIFICARE` in the registry at the time of writing, being
-checked portal by portal **[v]**; the export formats — ISO-8859-1 at Reggio,
-xlsx without shared strings at Forlì, binary XLS at Ravenna, a GeoServer WFS
-at Modena — are the reason the registry records a normaliser per source
-rather than a generic reader. One source in this family is different in
-kind: **the Parma municipal microdata**, a full extract of the population
-register (one row per resident, 202,111 rows, reference 2025) supplied by
-the Comune di Parma with its codebook. It is registered, fingerprinted and
-*not redistributed*; it is used in production for Parma — as the IPF margin
-and as the section-level source of country of citizenship (tier 3) — and as
-the external validation source for ring 4 (§I.5, §III.3). Its legal
-condition is that of a supply, not an open dataset, and is being formalised
-with the issuing office **[v]**; what leaves the pipeline are aggregate
-statistics and a synthetic population, not the extract.
+(Bologna by statistical zone; Brescia and Forlì by neighbourhood;
+Ravenna by area; Reggio nell'Emilia by circoscrizione), and Modena
+publishes the stock of first names by sex; these feed the
+country-of-citizenship tiers of ring 2 and, for Bologna, the
+zone–neighbourhood hierarchy of ring 3. Their licences were resolved
+portal by portal during certification **[m]**: CC-BY-4.0 (Bologna,
+Brescia, Modena), CC-BY (Reggio), public domain (Ravenna), and one
+declared presumption (Forlì, §II.1). Two vintages are declared as
+limits: Forlì's table refers to 2021, and Reggio's to 2013 — thirteen
+years older than everything else, the only sub-municipal source
+available there; the tiers use these tables for the *composition* of
+the foreign population while every total comes from the census margin,
+which bounds but does not cancel the staleness (§II.4). One source in
+this family is different in kind: **the Parma register extract**, a
+full extract of the municipal population register (one row per
+resident, 202,111 rows, reference 1 January 2025), published by the
+Comune di Parma as open data under CC-BY-4.0 with its codebook. It is
+registered, fingerprinted, and *not mirrored here* — a reader obtains
+it from the source and verifies the fingerprint; it serves in
+production as the IPF margin and the section-level country conditional
+(tier 3), and as the external validation source for ring 4 (§I.5,
+§III.3). What this repository redistributes are aggregate statistics
+and a synthetic population, never the extract.
 
 **ISTAT census 2011 (two tables) and the CLAIST classification.**
 CC-BY-4.0. They feed the derived layers only: `cens2011_caratt_attl`
@@ -174,13 +195,16 @@ battery (`avq_medie_nazionali`, used only by the viewer) and the household
 repertoire are registered as sources with `derivato_da`, so that the same
 verification applies to what the project produces as to what it downloads.
 
-### II.3 Seventeen normalisers, and what running them found
+### II.3 Eighteen normalisers, and what running them found
 
-The registry records a normaliser per source family; the value of writing
-them was less the uniform output than the anomalies they surfaced, none of
-which would have been found by reading the documentation. A selection, one
-per family where there is one worth reporting **[n]** `fonti_e_pacchetto_v8`
-§3–4, §14; `nota_nucleo_familiare_v3` §2:
+The registry names a normaliser per entry — eighteen distinct ones at
+the release tag **[m]**, one per source *form* (SDMX extracts, section
+workbooks, microdata, matrices, codebooks, onomastic lists, …) rather
+than per source. The value of writing them was less the uniform output
+than the anomalies they surfaced, none of which would have been found by
+reading the documentation. A selection, one per family where there is
+one worth reporting **[n]** `fonti_e_pacchetto_v8` §3–4, §14;
+`nota_nucleo_familiare_v3` §2:
 
 - In `DICA_CARATT_ATTL` the code for *total* is not uniform across
   dimensions — `ALL` for occupation and citizenship, `99` for profile and
@@ -193,9 +217,11 @@ per family where there is one worth reporting **[n]** `fonti_e_pacchetto_v8`
 - Modena's CKAN catalogue says *names given to newborns, 2012–2022*; the
   data are the *stock* of residents (1,390 Antonios in 2015 are not
   newborns) and run to 2024; the two sex-specific files carry CKAN
-  timestamps two and a half years apart, decoded from the `hash` field; the
-  WFS adds four service columns, one of which is the centroid of Modena
-  repeated 650 times.
+  timestamps two and a half years apart, decoded from the `hash` field;
+  the WFS adds four service columns, one of which is the centroid of
+  Modena repeated 650 times. The catalogue was wrong on what, when, and
+  how many columns — and the data were good: the lesson is to certify
+  the file, not its description.
 - Parma's `Ncomp` showed impossible values — 319, 111, 110, 108, 40 — each
   appearing exactly that many times: the signature of a collective household
   (319 residents of an institution all carry `Ncomp = 319`), not a defect.
@@ -217,12 +243,17 @@ per family where there is one worth reporting **[n]** `fonti_e_pacchetto_v8`
   `anno_usato` per entry, and is the reason for the `non_usabile_per` tag
   above.
 
-The general lesson, which the project turned into a principle, is that *the
-meaning of a quantity belongs to whoever produces it* and a generic
-structure does not guess it: `modalita` on Reggio's matrix (26 nationalities
-or 104 long rows), `n_misurato` on codebooks (rows or fields), the sum of
-weights on national means (82 or 23) — each time the normaliser's diagnostic
-wins over the assumption **[n]** `fonti_e_pacchetto_v8` §12.
+The general lesson, which the project turned into a principle, is that
+*the meaning of a quantity belongs to whoever produces it*, and a
+generic structure does not guess it: `modalita` on Reggio's matrix (26
+nationalities or 104 long rows), `n_misurato` on codebooks (rows or
+fields), the sum of weights on national means (82 or 23) — each time the
+normaliser's diagnostic wins over the assumption. It is the registry's
+face of a rule the reader has already met twice: the declared hierarchy
+beats the deduced one, as with the census title tree whose parent column
+crosses the code groups (§I.6), and the two-branch cross-check that
+caught what no single-branch test could (§I.1, §I.3) **[n]**
+`fonti_e_pacchetto_v8` §12.
 
 ### II.5 What is registered and not used, and what is used and not registered
 
@@ -230,10 +261,7 @@ Registered and not used: `istat_cens_posizione_famiglia` (position in the
 household from the census), present because it was examined for ring 4 and
 rejected in favour of the section-level household counts (§I.5); and the two
 EU-SILC entries, registered for exploration. Used in production and
-registered: everything else. Used and *not yet* registered: the SDMX
-catalogue and structure files (an index, not data), and — until the portal
-check in progress is complete — the licences of six municipal sources, which
-are *recorded* but not *resolved*. Deliberately outside the registry:
+registered: everything else. Every licence resolved (§II.2) Deliberately outside the registry:
 sources consulted and not used (the project keeps a separate consultation
 list in the notes); the experimental K10C constraint set; San Vito dei
 Normanni, which has no sub-municipal articulation and is not in production.

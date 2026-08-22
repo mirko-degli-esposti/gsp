@@ -77,7 +77,4 @@ analytic loss.
    names (`build_constraints.py`, `opendata_paese.py`, `assign_nationality.py`);
    align with the current chain (`cs_build.py`, `enrich.py`) in a registry
    patch — cosmetic for the pipeline, visible in Table II.2a.
-3. Pending the Parma licence decision (open question to the author): if the
-   extract is genuinely published CC-BY-4.0, §II.2's "supply, not
-   redistributed" paragraph is relaxed; if the licence field describes the
-   portal rather than the channel, the entry gets a supply marker instead.
+

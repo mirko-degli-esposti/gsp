@@ -24,38 +24,40 @@ single workstation running Ubuntu 24.04 under WSL2 (AMD Ryzen AI 9 HX 375,
 environment, with the `gsp` package installed in editable mode from the
 repository root (`pip install -e .`). Ring 1 uses Numba for the sparse
 constraint kernel; rings 2–4 are pandas and NumPy. No step requires network
-access once the registered sources are on disk. **[v]** exact package
-versions to be frozen in `requirements-report.txt` at the tag.
+access once the registered sources are on disk.exact package versions are frozen in 
+note/misure/rilancio_report_v1.0/requirements-report.txt, committed with the run logs [m]
 
 **Where randomness enters, and how it is pinned.** Every ring draws random
 numbers, and each draw is seeded explicitly:
 
-- Ring 1 (maximum-entropy fit and sampling): the solver is deterministic for
-  a given constraint set and parameter vector; the population is sampled with
-  a fixed seed per run. **[v]** confirm whether `fit_cs.py` seeds from the
-  municipality code or from a constant.
-- Ring 2 (AVQ hot-deck): **[v]** seed policy in `assign_avq.py`.
-- Ring 3 (`enrich.py`: section, area and country, single-year age, address):
-  a single NumPy generator seeded with a declared constant (`--seed 42`
-  by default). The constant is global, not derived from the municipality;
-  this is recorded as a known inconsistency with the policy adopted later
-  (below) and is scheduled for the next cycle in which regeneration is
-  already planned for other reasons. It has no effect on reproducibility:
-  the same municipality always sees the same seed.
-- Ring 4 (`assign_nucleo.py`): seeded as `20260810 + int(municipality code)`,
-  so that running two municipalities together or separately gives the same
-  result — with a single global seed the generator would advance between
-  them. The effective seed is written into the diagnostic JSON.
+- Ring 1 (`fit_cs.py`): the exact solver is deterministic by
+  construction — no randomness enters the fit. Where PCD is used, its
+  warm start has its own fixed seed (123). The final *sampling* of N
+  individuals from the fitted distribution uses a fixed seed (42).
+- Ring 2 (`assign_avq.py`): one generator per run, `--seed` with a
+  declared default of 42, drawing the donor within each conditioning
+  cell.
+- Ring 3 (`enrich.py`): a single generator seeded with a declared
+  constant (`--seed 42` by default) for section, country, single-year
+  age and address.
+- Ring 4 (`assign_nucleo.py`): seeded as `20260810 + int(municipality
+  code)`, so that running municipalities together or separately gives
+  the same result; the effective seed is written into the diagnostic
+  JSON.
 - Public regime (`gsp.individui.esporta_pubblico`, §I.7): coordinate
-  randomisation within the census section is seeded from the municipality
-  code, so that the public bundle is itself reproducible.
+  randomisation seeded from the municipality code.
 
-The policy the project converged on, and that new code follows, is the one
-of ring 4 and the public regime: *seeds are derived from the municipality
-code, never shared across municipalities, and never taken from the clock*.
-Older code (ring 3) uses a fixed declared constant, which is reproducible but
-less robust; the difference is documented rather than patched, because
-patching it would change the populations without improving them.
+Two seed policies therefore coexist, and their history is visible in the
+code: the early rings use a fixed declared constant, the later ones
+derive the seed from the municipality code. The constant is reproducible
+in practice because each municipality runs in its own process — the
+regeneration test of §III.2, forty-four bit-identical files, is the
+certificate — but it is the weaker convention: it would silently couple
+municipalities if the chain were ever run in one process, and it is
+scheduled for alignment in the next cycle in which regeneration is
+already required for other reasons. The policy new code follows is ring
+4's: *seeds derived from the municipality code, never shared, never from
+the clock*.
 
 **Artefacts do not embed their generation time.** A population file that
 contained a timestamp would never hash the same twice. The CSV products of
@@ -145,11 +147,8 @@ bug is found.
 
 ### Open items carried from this section into the work plan
 
-1. **[v]** Seed policy of `fit_cs.py` and `assign_avq.py` — two `grep`s,
-   then one sentence each.
-2. **[v]** Freeze package versions at the tag (`pip freeze > requirements-report.txt`,
-   committed under `note/misure/rilancio_report_v1.0/`).
-3. **[v]** Cross-machine regeneration of Parma on Leonardo (or any second
+
+1. **[v]** Cross-machine regeneration of Parma on Leonardo (or any second
    machine); result goes into §III.2 either way.
-4. Decide whether `generato` leaves `manifest.json`/`riferimenti.json` in
+2. Decide whether `generato` leaves `manifest.json`/`riferimenti.json` in
    v1.1; for v1.0 the binding hashes Parquet only (decided 19 August).

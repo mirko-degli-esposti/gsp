@@ -123,7 +123,7 @@ fonti:
     vincolo: hard
     obbligatoria: true
     anno_usato: N
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       unica fonte HARD: conteggi anagrafici esatti. Tutti gli altri blocchi
       sono SOFT e condizionali su questa spina.
@@ -164,7 +164,7 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       classi d'eta' censuarie, non quelle anagrafiche.
     usabile_per: [vincoli_istruzione]
@@ -198,9 +198,9 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     usabile_per: [vincoli_maxent, tabelle_zona]
-    usato_da: [build_zona_tables.py, build_constraints.py]
+    usato_da: [build_zona_tables.py, cs_build.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno, paese_di_dettaglio]
 
   - id: istat_cens_istruzione_cittadinanza
@@ -231,13 +231,13 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
-      DA CHIARIRE: la tupla in build_constraints.py la etichetta 'C3', ma
+      DA CHIARIRE: la tupla in cs_build.py la etichetta 'C3', ma
       il file prodotto e' c5_edu_citizenship.csv. Qui si segue il nome del
       file.
     usabile_per: [vincoli_maxent]
-    usato_da: [build_constraints.py]
+    usato_da: [cs_build.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
 
   - id: istat_cens_condprof_eta
@@ -270,9 +270,9 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     usabile_per: [vincoli_maxent]
-    usato_da: [build_constraints.py]
+    usato_da: [cs_build.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
 
   - id: istat_cens_condprof_cittadinanza
@@ -302,12 +302,12 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       DA CHIARIRE: la tupla la etichetta 'C4', il file prodotto e'
       c6_condprof_citizenship.csv.
     usabile_per: [vincoli_maxent]
-    usato_da: [build_constraints.py]
+    usato_da: [cs_build.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
 
   - id: istat_cens_stranieri_paesi
@@ -333,20 +333,20 @@ fonti:
       e' la ragione per cui la pipeline assume paese indipendente dalla
       geografia dato (area, sesso), e per cui le fonti sub-comunali in
       data/submun/ sono complementari e non alternative (margine A
-      dell'IPF in opendata_paese.py). Il grezzo contiene gli aggregati.
+      dell'IPF in enrich.py). Il grezzo contiene gli aggregati.
     unita: individuo
     normalizzatore: sdmx_csv
     blocco: nationality_conditional.csv
     vincolo: fuori_maxent
     obbligatoria: true
     anno_usato: N-1
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       produce P(paese | straniero) a due stadi, FUORI dal MaxEnt. DA
       CHIARIRE: la tupla la etichetta 'C6', che pero' e' gia'
       condprof_citizenship.
     usabile_per: [vincoli_maxent, margine_A_ipf, assegnazione_paese, registro_paesi]
-    usato_da: [build_constraints.py, opendata_paese.py, assign_nationality.py, enrich.py, common.py]
+    usato_da: [cs_build.py, enrich.py, common.py]
     non_usabile_per: [geografia_subcomunale, popolazione_italiana]
 
   - id: istat_cens_migr_backg
@@ -380,12 +380,12 @@ fonti:
     vincolo: soft
     obbligatoria: false
     anno_usato: N-1
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       opzionale: se manca, preflight() salta i blocchi e lo dichiara. C8 ha
       'non_applicabile' per i nati all'estero.
     usabile_per: [vincoli_maxent, blocco_GC]
-    usato_da: [build_constraints.py, cs_build.py]
+    usato_da: [cs_build.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
 
   - id: istat_cens_posizione_famiglia
@@ -417,9 +417,9 @@ fonti:
     vincolo: null
     obbligatoria: false
     anno_usato: null
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
-      non compare in build_constraints.py: nessun blocco, nessun uso.
+      non compare in cs_build.py: nessun blocco, nessun uso.
     usabile_per: []
     usato_da: []
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
@@ -452,12 +452,12 @@ fonti:
     vincolo: soft
     obbligatoria: false
     anno_usato: qualunque
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       SOFT e CONDIZIONALE all'universo occupati: non entra come marginale
       sulla popolazione totale.
     usabile_per: [vincoli_maxent, vincoli_maxent_soft]
-    usato_da: [build_constraints.py]
+    usato_da: [cs_build.py]
     non_usabile_per: [vincoli_su_popolazione_totale]
 
   - id: istat_cens_settore_prof
@@ -488,11 +488,11 @@ fonti:
     vincolo: soft
     obbligatoria: false
     anno_usato: qualunque
-    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       come C9: soft e condizionale all'universo occupati.
     usabile_per: [vincoli_maxent, vincoli_maxent_soft]
-    usato_da: [build_constraints.py, cs_build.py]
+    usato_da: [cs_build.py]
     non_usabile_per: [vincoli_su_popolazione_totale]
 
 
@@ -527,7 +527,7 @@ fonti:
     unita: sezione di censimento
     normalizzatore: sezioni_xlsx
     usabile_per: [geografia_subcomunale, gerarchia_zone, vincoli_zona]
-    usato_da: [build_sezioni.py, assign_nationality.py, common.py]
+    usato_da: [build_sezioni.py, enrich.py, common.py]
     non_usabile_per: [microdati_individuali]
 
   - id: istat_sezioni_2023_tracciato
@@ -763,7 +763,7 @@ fonti:
     universo: >-
       residenti per CITTADINANZA e quartiere, italiani inclusi: la riga
       ITALIA e' presente nel file e viene filtrata a valle da
-      opendata_paese.py (riga 97). I totali per quartiere sono quindi
+      enrich.py (riga 97). I totali per quartiere sono quindi
       popolazione totale, non stranieri. Fonte ANAGRAFICA comunale, di
       data diversa dal censimento. Non distingue il sesso: lo ricostruisce
       l'IPF dal margine comunale. E' il margine B dell'IPF, COMPLEMENTARE
@@ -777,7 +777,7 @@ fonti:
     normalizzatore: distribuzione_csv
     opzioni: {sep: ",", col_chiave: cittadinanze, col_peso: num}
     usabile_per: [margine_B_ipf, geografia_paese_tier1]
-    usato_da: [opendata_paese.py]
+    usato_da: [enrich.py]
     non_usabile_per: [sesso, popolazione_italiana, conteggi_assoluti]
 
 
@@ -842,7 +842,7 @@ fonti:
       degli stranieri, quindi la fonte e' quasi completa e non una
       graduatoria troncata.
     usabile_per: [margine_B_ipf, geografia_paese_tier1]
-    usato_da: [opendata_paese.py]
+    usato_da: [enrich.py]
     non_usabile_per: [sesso, livelli_assoluti_2023, popolazione_italiana]
 
 
@@ -915,7 +915,7 @@ fonti:
       ridondante rispetto alla somma, e in alcune celle e' l'unico valore
       presente. Sommare anche T raddoppierebbe i conteggi.
     usabile_per: [margine_B_ipf, geografia_paese_tier1, sesso]
-    usato_da: [opendata_paese.py]
+    usato_da: [enrich.py]
     non_usabile_per: [popolazione_italiana]
 
 
@@ -1001,7 +1001,7 @@ fonti:
       iterazioni con scarto 1,84e-11, distanza media dalla composizione
       comunale 0,170 (0 = nessuna informazione geografica).
     usabile_per: [margine_B_ipf, geografia_paese_tier1, sesso]
-    usato_da: [opendata_paese.py]
+    usato_da: [enrich.py]
     non_usabile_per: [popolazione_italiana, livelli_assoluti]
 # Bologna — fonte locale per il paese di cittadinanza, tier 2.
 # Richiede normalizzatori.py aggiornato (21411 byte) con `tabella_parquet`.
@@ -1088,7 +1088,7 @@ fonti:
       condizionale.
     usabile_per: [margine_B_ipf, geografia_paese_tier2, sesso,
                   gerarchia_zona_quartiere]
-    usato_da: [opendata_paese.py]
+    usato_da: [enrich.py]
     non_usabile_per: [popolazione_italiana, livelli_assoluti]
 
   - id: parma_microdati_residenti
@@ -1118,7 +1118,7 @@ fonti:
       individui, italiani inclusi. E' l'unica fonte locale a microdato
       individuale e non a conteggio aggregato, e la sola con risoluzione
       di SEZIONE (1.320 sezioni contro i 13 quartieri).
-      opendata_paese.py filtra Cittad != 100 per tenere i soli stranieri
+      enrich.py filtra Cittad != 100 per tenere i soli stranieri
       (36.327, il 18%): il filtro e' a valle, la fonte ha tutti.
       Porta due variabili che nessun'altra fonte locale ha, Ncomp
       (numero componenti) e Relpar (relazione di parentela): non servono
@@ -1181,7 +1181,7 @@ fonti:
       dal censimento: l'IPF usa la FORMA condizionale.
     usabile_per: [margine_B_ipf, geografia_paese_tier3, sesso, eta,
                   struttura_familiare]
-    usato_da: [opendata_paese.py]
+    usato_da: [enrich.py]
     non_usabile_per: [livelli_assoluti]
 
 
@@ -1221,7 +1221,7 @@ fonti:
     anomalie:
       - file in ISO-8859-1 come quello di Reggio Emilia, non UTF-8
     usabile_per: [decodifica_microdati_parma]
-    usato_da: [opendata_paese.py]
+    usato_da: [enrich.py]
     non_usabile_per: [conteggi]
 # Nomi propri — Comune di Modena, stock dei residenti.
 #
@@ -1660,7 +1660,7 @@ fonti:
     titolo: >-
       Titolo di studio della popolazione residente di 6 anni e piu' -
       Censimento della popolazione 2011
-    uurl: https://esploradati.istat.it/databrowser/
+    url: https://esploradati.istat.it/databrowser/
     url_storico: http://dati-censimentopopolazione.istat.it/
     nota_url: >-
       il file e' stato scaricato dal data warehouse dedicato al 15°

@@ -409,6 +409,14 @@ COMUNI = {
             "override_nome": {"chiesanuova-noce-girelli": "17029020"},
         },
     },
+    "020030": {
+        "nome": "Mantova", "slug": "mantova", "regione": "lombardia",
+        # ASC da verificare nel file regionale Lombardia: se popolati,
+        # valutare l'articolazione; il collaudo parte K6C.
+        # (collaudo_acquisizione: primo comune aggiunto da zero, 2026-08)
+        "livello": None,
+        "livelli": {},
+    },
     "034027": {
         "nome": "Parma", "slug": "parma", "regione": "emilia_romagna",
         "livello": "quartieri",

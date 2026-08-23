@@ -23,7 +23,8 @@ from lxml import etree
 BASE = "https://esploradati.istat.it/SDMXWS/rest"
 CATALOG_URL = f"{BASE}/dataflow/IT1"   # tutti i dataflow dell'agenzia IT1
 
-OUT_DIR = os.path.expanduser("~/progetti/gsp/data/istat_catalog")
+from gsp.common import GSP
+OUT_DIR = os.path.join(GSP, "data", "istat_catalog")
 os.makedirs(OUT_DIR, exist_ok=True)
 XML_PATH = os.path.join(OUT_DIR, "catalog_dataflows.xml")
 CSV_PATH = os.path.join(OUT_DIR, "catalog_dataflows.csv")

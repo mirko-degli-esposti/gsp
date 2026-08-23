@@ -129,6 +129,36 @@ Crescono solo le tavole il cui supporto dipende dalla città:
 forma dell'acquisizione sono indipendenti dal comune; è l'open data
 sub-comunale a distinguere una metropoli da un capoluogo di provincia.›
 
+> **Box — le tre porte dei dati, e perché Milano non pesa più di
+> Mantova (qui).** Un equivoco naturale a questo punto del collaudo:
+> «i dati sono sulle sezioni, Milano dovrebbe essere enorme». No: ogni
+> comune riceve dati da **tre porte a tre granularità diverse**, e
+> `fetch_comune` è solo la prima.
+>
+> 1. **SDMX → comune intero.** Le tavole appena scaricate hanno
+>    `REF_AREA = <comune>`: un solo territorio (si vede nella chiave
+>    della query: `key=.015146.......`). Le righe sono la griglia
+>    annate × sesso × classi, identica per ogni comune: Milano e
+>    Mantova hanno le stesse 819 righe su `istruzione_eta`, cambia
+>    solo `OBS_VALUE` — e un numero grande occupa lo stesso posto di
+>    uno piccolo. Il tempo di download è dominato dal throttle
+>    (13 s/richiesta), non dai byte.
+> 2. **Basi Territoriali → sezioni.** I conteggi per sezione di
+>    censimento (`istat_sezioni_2023`) non passano da SDMX: sono file
+>    **regionali** (un workbook per regione, una riga per sezione, 138
+>    colonne), scaricati una volta per regione. Qui Milano pesa
+>    (~6.000 sezioni contro ~500 di Mantova), ma dentro il file
+>    `Lombardia` che le contiene entrambe — e che sulla WSL è già a
+>    terra da Brescia; sul Mac, senza `data/`, andrà riacquisito o
+>    replicato da lì.
+> 3. **Open data comunali → l'articolazione intermedia** (zone, NIL,
+>    municipi, quartieri): esiste solo dove il comune la pubblica, ed
+>    è l'unica porta che distingue davvero una metropoli da un
+>    capoluogo — per costo di ricerca, non di download.
+>
+> Tre porte, tre granularità; il tier del paese (§I.3 del report) è la
+> traduzione in codice della terza.
+
 ### istat_catalog.py
 
 **Cosa fa**: scarica il catalogo dei ~4.900 dataflow ISTAT (una

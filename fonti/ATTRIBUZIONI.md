@@ -47,23 +47,38 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 > ISTAT, "Aspetti della vita quotidiana - microdati ad uso pubblico", istat.it, CC BY 4.0
 
-## Popolazione residente straniera per cittadinanza, sesso, quartiere e zona - serie storica
+## bologna_cittadinanza_zone
 
-- **Fonte:** Comune di Bologna
-- **Licenza:** DA_VERIFICARE
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** DA_VERIFICARE
+- **Fonte:** Comune di Bologna — U.I. Ufficio Comunale di Statistica
+- **Licenza:** CC-BY-4.0
+- **URL:** https://opendata.comune.bologna.it/explore/dataset/popolazione-residente-straniera-per-cittadinanzasesso-quartiere-e-zona-serie-st0/
+- **Scaricato il:** 2026-08-11
 - **Copertura:** 037006, 2024
 - **Universo:** residenti STRANIERI per paese di cittadinanza, zona, quartiere e sesso, fonte ANAGRAFICA comunale. E' la piu' ricca delle sei fonti locali su ogni asse: 19 ZONE (contro 4 circoscrizioni a Reggio e 21 quartieri a Forli'), il sesso, e nessun gruppo residuale. Serie storica 1986-2024, 39 annate in un solo file: `anno` e' una COLONNA, non un attributo del file. La pipeline usa l'annata piu' recente (load_bologna prende max(anno)), non tutta la serie. Due colonne distinte per la cittadinanza: `cittadinanza` e' l'area geografica di raggruppamento (11 modalita'), `stato_cittadinanza` e' il paese di dettaglio (180 nella serie, 155 nel 2024). La pipeline usa la seconda.
+
+> Comune di Bologna — U.I. Ufficio Comunale di Statistica, "Popolazione residente straniera per cittadinanza, sesso, quartiere e zona — serie storica", opendata.comune.bologna.it, CC BY 4.0
 
 ## Cittadinanze straniere per quartiere
 
 - **Fonte:** Comune di Brescia
-- **Licenza:** DA_VERIFICARE
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** 2025-07-06
+- **Licenza:** CC-BY-4.0
+- **URL:** https://dati.comune.brescia.it/dataset/
+- **Scaricato il:** 2026-08-11
 - **Copertura:** None, None
 - **Universo:** residenti per CITTADINANZA e quartiere, italiani inclusi: la riga ITALIA e' presente nel file e viene filtrata a valle da opendata_paese.py (riga 97). I totali per quartiere sono quindi popolazione totale, non stranieri. Fonte ANAGRAFICA comunale, di data diversa dal censimento. Non distingue il sesso: lo ricostruisce l'IPF dal margine comunale. E' il margine B dell'IPF, COMPLEMENTARE e non alternativo al censimento (margine A): il censimento porta i ~150 paesi, i livelli corretti e il sesso, la fonte locale porta la geografia. Il gruppo residuale e' il complemento dei paesi nominati IN QUEL QUARTIERE, quindi cambia da file a file: le modalita' vanno da 8 (Caionvico) a 33 (Centro storico nord).
+
+> Comune di Brescia, dati aperti per quartiere, dati.comune.brescia.it, CC BY 4.0
+
+## Caratteristiche dell'attività lavorativa - Censimento della popolazione 2011
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** DA_VERIFICARE
+- **Scaricato il:** 2026-08-05
+- **Copertura:** IT, ripartizioni, regioni, 25 comuni, 2011
+- **Universo:** OCCUPATI (`TIPO_DATO = EMPLP`) per caratteristiche dell'attività lavorativa. Quattordici dimensioni: ATECO_2007 (1988 voci, dalle sezioni alle sottocategorie), PROFILO_PROF, OCCUPAZIONE, ETA1, TITOLO_STUDIO, SEXISTAT1, STATCIV2, ISO1, ITTER107, REGIME_ORARIO, CARATT_OCC, DURATA. Il registro la usa per la COPPIA CONGIUNTA settore × posizione professionale, condizionata su sesso e territorio: 21 sezioni ATECO × 6 profili × 2 sessi, con tutte le altre dimensioni al totale. A Parma 246 celle su 294 possibili, nessuna a zero, mediana 78 occupati. I sei profili sono una partizione vera: dipendenti · imprenditore e libero professionista · lavoratore in proprio · coadiuvante familiare · socio di cooperativa · parasubordinato. Molto meglio del `dipendente/indipendente` a due modalità di `c9_sex_posizione_prof.csv`, che questa scheda rende superfluo.
+
+> ISTAT, "15° Censimento generale della popolazione e delle abitazioni 2011", CC BY 4.0
 
 ## Titolo di studio della popolazione residente di 6 anni e piu' - Censimento della popolazione 2011
 
@@ -86,6 +101,46 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **Universo:** tutti i percorsi di istruzione e formazione italiani, ATTUALI E PASSATI, dai servizi per l'infanzia al dottorato. Sostituisce la Classificazione dei titoli di studio del 2003. Struttura gerarchica su SEI livelli: 61 tipologie di programma al primo, circa 20.000 percorsi al sesto, codificati in un COD_CLAIST a 18 digit (3-2-2-4-4-3). Sedici fogli, 29.282 righe in tutto. Il registro normalizza il foglio "Schema sintetico 2026" — 104 righe, 42 titoli — che e' il livello utile per attribuire un titolo a un individuo sintetico: non seimila corsi, non sei categorie. Il livello 2 e' l'ORDINAMENTO, cioe' il decreto di riferimento: e' questo che rende la mappa storicizzata e permette di sapere quali titoli erano ottenibili in quale periodo.
 
 > ISTAT, "CLAIST 2026 - Mappa dei percorsi di istruzione e dei titoli di studio italiani", CC BY 4.0
+
+## Cognomi di origine marocchina
+
+- **Fonte:** Wikipedia
+- **Licenza:** CC-BY-SA-4.0
+- **URL:** https://en.wikipedia.org/wiki/Category:Surnames_of_Moroccan_origin
+- **Scaricato il:** 2026-08-04
+- **Copertura:** Maghreb, 2026
+- **Universo:** 65 cognomi di origine marocchina, arabi e berberi, dalle voci della categoria Wikipedia. I titoli delle voci SONO i cognomi: la categoria contiene pagine intitolate «Bennani», non pagine su persone di cognome Bennani. Scaricati con l'API delle categorie, non raschiati dalla pagina: l'URL e la data stanno nel file, quindi la provenienza e' riproducibile. E' un ELENCO, non una distribuzione: Wikipedia dice quali cognomi esistono, non quanti li portano. Il repertorio non e' pesato, e con 65 voci l'estrazione uniforme e' indistinguibile.
+
+> Wikipedia, "Category:Surnames of Moroccan origin", CC BY-SA 4.0
+
+## Cognomi yoruba
+
+- **Fonte:** Wiktionary
+- **Licenza:** CC-BY-SA-4.0
+- **URL:** https://en.wiktionary.org/wiki/Category:Yoruba_surnames
+- **Scaricato il:** 2026-08-04
+- **Copertura:** Nigeria, 2026
+- **Universo:** 107 cognomi yoruba dalla categoria Wiktionary, con l'etimologia nella voce originale. Elenco, non distribuzione.
+
+> Wiktionary, "Category:Yoruba surnames", CC BY-SA 4.0
+
+## EU-SILC Public Use File — Italia
+
+- **Fonte:** Eurostat
+- **Licenza:** accesso pubblico previa accettazione del disclaimer; NON e' una licenza aperta e non consente la ridistribuzione. Il testo e' conservato in `Disclaimer_SILC.txt` accanto ai dati.
+- **URL:** https://ec.europa.eu/eurostat/web/microdata/public-microdata/statistics-on-income-and-living-conditions
+- **Scaricato il:** 2026-08-05
+- **Copertura:** Italia, NUTS2 (DB040), 2004-2013
+- **Universo:** DIECI ANNATE, quaranta CSV. Nomi con la lettera del file MINUSCOLA. Cifre di riferimento per il 2013: D 18.487, H 18.487, R 43.489, P 37.209. Il file R ha 25 colonne.
+
+## EU-SILC Description of Target Variables — SILC065, operation 2013, version May 2013
+
+- **Fonte:** Eurostat
+- **Licenza:** documento pubblico Eurostat su CIRCABC, senza licenza esplicita. Citabile e conservabile; la ridistribuzione non e' dichiarata.
+- **URL:** https://circabc.europa.eu/sd/a/d7e88330-3502-44fa-96ea-eab5579b4d1e/SILC065%20operation%202013%20VERSION%20MAY%202013.pdf
+- **Scaricato il:** 2026-08-05
+- **Copertura:** UE, 2013
+- **Universo:** Definizione ufficiale di tutte le variabili target EU-SILC: contenuto, unita', periodo di riferimento, e se la variabile sia cross-sezionale, longitudinale o entrambe.
 
 ## Cognomi residenti - Anno 2012
 
@@ -112,11 +167,13 @@ le informazioni vivono in `fonti/registro.yaml`.
 ## Stranieri per quartiere, sesso e nazionalita'
 
 - **Fonte:** Comune di Forli'
-- **Licenza:** DA_VERIFICARE
+- **Licenza:** CC-BY-4.0 (presunta)
 - **URL:** DA_VERIFICARE
-- **Scaricato il:** DA_VERIFICARE
+- **Scaricato il:** 2026-08-11
 - **Copertura:** 040012, DA_VERIFICARE
 - **Universo:** residenti STRANIERI per nazionalita', quartiere e sesso, fonte ANAGRAFICA comunale. Formato lungo (QUARTIERE, STATO, F, M, TOTALE), il piu' semplice fra le fonti locali. Distingue il sesso, come Ravenna e a differenza di Brescia e Reggio. La fonte disaggrega in 41 unita' sub-quartiere che la pipeline aggrega nei 21 quartieri COM_ASC1: la mappa 41 -> 21 vive in gsp.common ed e' referenziata con `parametri_da`. Qui il normalizzatore misura le 41 unita' come stanno sul disco.
+
+> Comune di Forlì, stranieri residenti per quartiere, sesso e nazionalità
 
 ## Popolazione residente per eta', sesso e stato civile
 
@@ -272,6 +329,17 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 > ISTAT, "Basi territoriali e variabili censuarie", CC BY 4.0
 
+## Rilevazione sulle unioni civili — Anno 2023
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://demo.istat.it/tavole/?t=unionicivili
+- **Scaricato il:** 2026-08-07
+- **Copertura:** Italia, regioni, grandi comuni, 2023
+- **Universo:** Indagine individuale ed ESAUSTIVA di fonte Stato Civile, istituita nel 2018, su tutte le unioni civili fra coppie dello stesso sesso della popolazione presente. Sono FLUSSI ANNUALI, non stock: la tavola dice quante unioni sono state costituite nel 2023, non quante ne esistono. Lo stock si stima cumulando dal giugno 2016, quando la legge e' entrata in vigore — con le riserve dichiarate in `anomalie`.
+
+> ISTAT, "Rilevazione sulle unioni civili - Anno 2023", demo.istat.it, CC BY 4.0
+
 ## Nomi maggiormente frequenti dei residenti, per sesso
 
 - **Fonte:** Comune di Modena
@@ -283,38 +351,77 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 > Comune di Modena, "Nomi maggiormente frequenti", via dati.emilia-romagna.it, CC BY 4.0
 
-## Descrizione e codifica dei campi, 2025
+## parma_codifica_campi
 
-- **Fonte:** Comune di Parma
-- **Licenza:** DA_VERIFICARE
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** 2025-07-28
+- **Fonte:** Comune di Parma — Ufficio Statistica
+- **Licenza:** CC-BY-4.0
+- **URL:** https://opendata.comune.parma.it/dataset/popolazione-residente-al-1-gennaio-2025
+- **Scaricato il:** 2026-08-11
 - **Copertura:** 034027, 2025
 - **Universo:** codebook a DUE livelli: campo -> codice -> etichetta. Diverso dai tracciati visti finora, che sono a un livello (variabile -> descrizione). Cittad ha 225 codici, Relpar 30, Tipores e Sesso 2; ETA, Ncomp, Quartiere e SEZ21 non hanno codici, solo la descrizione del campo. Senza questo file i microdati sono numeri senza significato: 'Cittad = 201' non vuole dire niente.
 
+> Comune di Parma — Ufficio Statistica, "Descrizione e codifica dei campi", risorsa del dataset "Popolazione residente al 1 gennaio 2025", opendata.comune.parma.it, CC BY 4.0
+
 ## Popolazione residente 2025 - microdati individuali
 
-- **Fonte:** Comune di Parma
-- **Licenza:** DA_VERIFICARE
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** 2025-07-28
+- **Fonte:** Comune di Parma — Ufficio Statistica
+- **Licenza:** CC-BY-4.0
+- **URL:** https://opendata.comune.parma.it/dataset/popolazione-residente-al-1-gennaio-2025
+- **Scaricato il:** 2026-08-11
 - **Copertura:** 034027, 2025
 - **Universo:** anagrafe comunale COMPLETA, una riga per residente: 202.111 individui, italiani inclusi. E' l'unica fonte locale a microdato individuale e non a conteggio aggregato, e la sola con risoluzione di SEZIONE (1.320 sezioni contro i 13 quartieri). opendata_paese.py filtra Cittad != 100 per tenere i soli stranieri (36.327, il 18%): il filtro e' a valle, la fonte ha tutti. Porta due variabili che nessun'altra fonte locale ha, Ncomp (numero componenti) e Relpar (relazione di parentela): non servono all'IPF sul paese, ma sono struttura FAMILIARE, e insieme alla tavola ISTAT cens_posizione_famiglia sono il materiale gia' disponibile per quando le famiglie verranno modellate.
 
+> Comune di Parma — Ufficio Statistica, "Popolazione residente al 1 gennaio 2025", opendata.comune.parma.it, CC BY 4.0
+
+## Popular Names by Country Dataset - cognomi
+
+- **Fonte:** Andy Boothe (sigpwned)
+- **Licenza:** CC0-1.0
+- **URL:** https://github.com/sigpwned/popular-names-by-country-dataset
+- **Scaricato il:** 2026-08-04
+- **Copertura:** 75 paesi, 2023
+- **Universo:** cognomi PIU' DIFFUSI per paese, con forma localizzata e romanizzata e, dove disponibile, il conteggio. 2.278 cognomi da 75 paesi, «generally at least 10 each per country». L'UNIVERSO DICHIARATO DALL'AUTORE E' IL TESTING DEL SOFTWARE: «I need a names dataset for doing some software testing», e i criteri sono quelli dell'internazionalizzazione — avere esempi CJK e RTL, con romanizzazione. NON e' costruito per rappresentare una popolazione. Per il nostro uso va bene lo stesso: serve un repertorio di PLAUSIBILITA' per rendere naturale un persona-prompt, non una distribuzione. Ma la differenza va dichiarata.
+
+> Andy Boothe, "Popular Names by Country Dataset", CC0. I dati originali provengono da Wikipedia, "Lists of most common surnames", luglio 2023.
+
+## Popular Names by Country Dataset - nomi propri
+
+- **Fonte:** Andy Boothe (sigpwned)
+- **Licenza:** CC0-1.0
+- **URL:** https://github.com/sigpwned/popular-names-by-country-dataset
+- **Scaricato il:** 2026-08-04
+- **Copertura:** 106 paesi, 2023
+- **Universo:** nomi propri piu' diffusi per paese, 2.370 voci da 106 paesi, con romanizzazione. Stessa provenienza e stesso universo dichiarato dei cognomi: costruito per il testing del software. Include il SESSO quando la fonte lo riporta, il che lo rende utilizzabile con `condiziona: [paese, sesso]`.
+
+> Andy Boothe, "Popular Names by Country Dataset", CC0. I dati originali provengono da Wikipedia, "List of most popular given names", luglio 2023.
+
 ## Popolazione residente con cittadinanza straniera per aree territoriali
 
-- **Fonte:** Comune di Ravenna
-- **Licenza:** DA_VERIFICARE
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** DA_VERIFICARE
+- **Fonte:** Comune di Ravenna — Ufficio Studi e Statistica
+- **Licenza:** pubblico-dominio
+- **URL:** https://comune.ravenna.it/amministrazione/documenti-e-dati/documento-di-programmazione-e-rendicontazione/bollettino-della-popolazione-2023/
+- **Scaricato il:** 2026-08-11
 - **Copertura:** None, None
 - **Universo:** residenti con cittadinanza STRANIERA per nazionalita' e area territoriale, fonte ANAGRAFICA comunale. A differenza di Brescia e Reggio, questa fonte DISTINGUE IL SESSO: e' l'unica delle locali a farlo, e l'IPF non deve ricostruirlo dal margine comunale. Non contiene gli italiani: i totali sono gia' i soli stranieri. Dieci aree territoriali piu' la colonna aggregata "T O T A L I", che va esclusa, e una riga finale "TOTALE", idem.
+
+> Comune di Ravenna — Ufficio Studi e Statistica, "Popolazione residente con cittadinanza straniera suddivisa per cittadinanza e area territoriale", Bollettino della popolazione 2023, comune.ravenna.it, pubblico dominio
 
 ## Nazionalita' piu' numerose per circoscrizione, 2013
 
 - **Fonte:** Comune di Reggio nell'Emilia
-- **Licenza:** DA_VERIFICARE
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** DA_VERIFICARE
+- **Licenza:** CC-BY
+- **URL:** https://opendata.comune.re.it/dataset/stranieri-per-circoscrizione
+- **Scaricato il:** 2026-08-11
 - **Copertura:** 035033, 2013
 - **Universo:** residenti stranieri per nazionalita' e circoscrizione, fonte ANAGRAFICA comunale. Matrice larga: nazionalita' sulle righe, le 4 circoscrizioni sulle colonne. Non distingue il sesso: lo ricostruisce l'IPF dal margine comunale, come per Brescia. Contiene una modalita' residuale dichiarata, "Altre nazionalita'", che l'IPF tratta come complemento dei paesi nominati e non come un paese: la sua quota sulla massa totale sta in `residuo_quota` nell'impronta, e dice quanta informazione la fonte porta davvero.
+
+> Comune di Reggio nell'Emilia, "Stranieri per circoscrizione", risorsa "Nazionalità più numerose per circoscrizione - 2013", opendata.comune.re.it, CC BY
+
+## Repertorio delle configurazioni di nucleo familiare
+
+- **Fonte:** GSP (derivato)
+- **Licenza:** derivata: CC-BY-4.0 dalle fonti ISTAT, con l'attribuzione che `fonti/ATTRIBUZIONI.md` genera per ciascuna
+- **URL:** None
+- **Scaricato il:** 2026-08-11
+- **Copertura:** Emilia-Romagna e Lombardia; la coda da Parma, 2024
+- **Universo:** Configurazioni di nucleo familiare con le loro probabilita' condizionate all'ampiezza, piu' i parametri che governano l'assegnazione delle eta' e della cittadinanza dentro il nucleo. NON e' una distribuzione di famiglie: e' un repertorio di forme con i pesi, da cui `assembla` pesca.

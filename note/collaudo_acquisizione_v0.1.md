@@ -117,7 +117,17 @@ Annotazioni dal riepilogo, utili per `vincoli/`:
 - Mantova è piccola: le censuarie stanno in centinaia di righe, i
   tempi sono dominati dal throttle (≈13 s × ~21 richieste ≈ 5 min).
 
-**Test 4 — Milano 015146 (municipi):** ‹da eseguire.›
+**Test 4 — Milano 015146, fetch della rosa completa.** Esito: 11/11 al
+primo giro, nessun errore. Osservazione strutturale: le righe misurano
+la *struttura*, non la taglia — Milano (1,4 M abitanti) ha le stesse
+819 righe di Mantova su `istruzione_eta`, gli stessi 18 su
+`posizione_famiglia`, le stesse 8.568 sull'anagrafica: le tavole
+censuarie comunali hanno griglia fissa, cambia solo `OBS_VALUE`.
+Crescono solo le tavole il cui supporto dipende dalla città:
+`stranieri_paesi` 2.904 righe contro 1.922 (più paesi presenti) e
+`sesso_eta_cittadinanza` di poco. Conseguenza per `vincoli/`: costo e
+forma dell'acquisizione sono indipendenti dal comune; è l'open data
+sub-comunale a distinguere una metropoli da un capoluogo di provincia.›
 
 ### istat_catalog.py
 

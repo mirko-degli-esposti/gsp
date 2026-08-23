@@ -124,6 +124,18 @@ PROVINCE_NOMI = {
 # Denominazioni delle zone
 # ----------------------------------------------------------------------
 
+ASC_NOMI_MILANO = {
+    "15146001": "Municipio 1",
+    "15146002": "Municipio 2",
+    "15146003": "Municipio 3",
+    "15146004": "Municipio 4",
+    "15146005": "Municipio 5",
+    "15146006": "Municipio 6",
+    "15146007": "Municipio 7",
+    "15146008": "Municipio 8",
+    "15146009": "Municipio 9",
+}
+
 ASC_NOMI_BRESCIA = {
     "17029001": "Brescia Antica", "17029002": "Borgo Trento",
     "17029003": "Porta Milano", "17029004": "Centro Storico Nord",
@@ -391,6 +403,20 @@ IMPOSSIBILI = [
 # ----------------------------------------------------------------------
 
 COMUNI = {
+
+        "015146": {
+        "nome": "Milano", "slug": "milano", "regione": "lombardia",
+        # ASC1 = 9 municipi (108-189k, tutte le sezioni codificate);
+        # ASC2 = 88 NIL, ma 18 NIL a cavallo di piu' municipi (gerarchia
+        # non annidata) e code di NIL a popolazione ~0: per la produzione
+        # si usa ASC1; il fit sui NIL e' registrato come esperimento.
+        "livello": "municipi",
+        "livelli": {
+            "municipi": {"col": "COM_ASC1", "n": 9,
+                         "nomi": ASC_NOMI_MILANO, "parent": None},
+        },
+    },
+
     "017029": {
         "nome": "Brescia", "slug": "brescia", "regione": "lombardia",
         "livello": "quartieri",
@@ -411,9 +437,10 @@ COMUNI = {
     },
     "020030": {
         "nome": "Mantova", "slug": "mantova", "regione": "lombardia",
-        # ASC da verificare nel file regionale Lombardia: se popolati,
-        # valutare l'articolazione; il collaudo parte K6C.
-        # (collaudo_acquisizione: primo comune aggiunto da zero, 2026-08)
+        # COM_ASC1/2/3 tutti a zero nel file regionale Lombardia 2023:
+        # nessuna partizione sub-comunale ISTAT. K6C come Ferrara/Castenaso.
+        # Verificato con build_sezioni al collaudo (2026-08): 574 sezioni,
+        # P1=49.044, stranieri 16,6%.
         "livello": None,
         "livelli": {},
     },

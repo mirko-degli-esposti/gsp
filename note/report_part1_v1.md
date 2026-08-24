@@ -389,6 +389,23 @@ address exists, and the assignment carries no information about anyone —
 which is also why the public regime can randomise the coordinate within
 the section at zero analytic cost (§IV.2).
 
+One boundary of that argument was found by adding a municipality
+outside the fleet, and is worth stating here rather than discovering.
+Address coverage is a property of each municipality's ANNCSU
+*georeferencing*, not of the pipeline: the fleet's ≥ 99.5 % reflects
+Emilia-Romagna's near-complete coordinate coverage. Mantova — added as
+a test case ([n] collaudo_acquisizione_v0.2) — has certified 17,009 accesses in ANNCSU but
+georeferenced 240 of them (1.4 %) (**[m]** collaudo, 25/8): the addresses exist as text, not as
+coordinates, and the spatial join legitimately finds nothing to
+attach. The consequences split exactly along the regime boundary: the
+public regime is unaffected, since its coordinates are drawn within
+the census section, which every individual has; what degrades is the
+textual address of the persona and narrative regimes, which falls back
+to the zone level. A municipality's ANNCSU completeness is therefore
+part of its declared source profile, on the same footing as its
+open-data tier (§I.3).
+
+
 ### I.5 Ring 4 — households
 
 Household structure cannot live in the joint model: `|X|` would explode

@@ -175,6 +175,18 @@ declared as such.
 | Piacenza | 3.93 | 2.80 % | 33.1 % |
 | Castenaso | 3.21 | 3.04 % | 37.3 % |
 
+Two of the columns move together, and the reason is geometric, not
+diagnostic: allocation MAE and seam residual are absolute counts per
+section, and both scale with mean section size — Bologna, Brescia,
+Parma and Forlì sit high on both because their sections average
+109–175 residents, Ferrara and Ravenna sit low at 66–74. Comparing
+these columns *across* municipalities compares their section
+geometry; the quality reading is within each row, against the
+denominators the text provides (a seam of 5 individuals on sections
+of 175 is the same resolution limit as a seam of 2.4 on sections of
+74). The two percentage columns, being ratios, carry their own
+denominator and compare directly.
+
 *Section counts.* The allocation of individuals to census sections is exact
 (largest remainder) rather than multinomial; when it was measured, the mean
 absolute error per section was 0.74–1.58 individuals against ≈ 9.6 for the

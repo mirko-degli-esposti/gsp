@@ -11,12 +11,21 @@
 
 ### III.1 Environment, determinism, and what "reproducible" means here
 
-The claim this report makes is narrow and testable: given the source files
-registered in `fonti/registro.yaml` and a tagged commit of the GSP
-repository, the pipeline regenerates every population, ring by ring, to the
-byte. It does not claim that the populations are *right* — that is the
-subject of §III.3–III.4 — but that they are *the same*, whoever runs the
-code, whenever.
+The claim this report makes is narrow and testable: given the source
+files registered in `fonti/registro.yaml`, a tagged commit of the GSP
+repository, and the solver repository at the pinned commit of the
+binding table (front matter), the pipeline regenerates every
+population, ring by ring, to the byte. It does not claim that the
+populations are *right* — that is the subject of §III.3–III.4 — but
+that they are *the same*, whoever runs the code, whenever. Two
+boundaries of the claim are declared at the start. The solver
+dependency is resolved by filesystem discovery, not by version pin:
+the reproducer must check out the stated commit by hand (front
+matter). And the chain is reproducible from self-acquirable public
+sources only up to ring 1: rings 2–4 require the AVQ public-use
+microdata and their derivatives, obtainable by anyone from ISTAT's
+mIcro.STAT channel, but through a manual request that no script can
+perform.
 
 **Reference environment.** All results in this report were produced on a
 single workstation running Ubuntu 24.04 under WSL2 (AMD Ryzen AI 9 HX 375,

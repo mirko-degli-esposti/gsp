@@ -62,13 +62,14 @@ Y50-64 / Y≥65, and within each class the distribution comes from an IPF
 with minimum attainment thresholds — `media` remains overstated in the 9–14
 bin (the age×title incoherence of §III.3 is its single-year shadow), and
 the cohort effect between 65–74 and 75+ is lost. The migratory background
-has zone resolution, not section (assumption 8). The AVQ battery has eleven
-of twelve items: `FORZE_ARMATE` is absent because the target list selected
-by prefix — one of three silent hand-written-table failures found in one
-afternoon, all producing absences rather than errors **[n]** riferimento
-§13. The detailed education title inherits its source's limits: no
-post-2011 titles, no doctorate/master voices (so `post_laurea` renders as
-magistrale only), regional territorial detail **[n]** fonti §6.
+has zone resolution, not section (assumption 8). The AVQ battery is complete at twelve items. An earlier release lacked
+`FORZE_ARMATE` — the target list selected by prefix, one of three
+silent hand-written-table failures found in one afternoon, all
+producing absences rather than errors **[n]** riferimento §13 — and
+the working notes still described that state; the fix entered before
+the release tag, and the discrepancy was caught during testing when a
+new municipality showed a variable the notes declared absent (§III.6,
+register).
 
 **Conventions for "absent", not unified** — declared as a trap for
 consumers: `non_applicabile` as a string in `condizione`,
@@ -118,9 +119,10 @@ with the reason and, where it exists, the prepared change.
 6. **EU-SILC** for income and living conditions: explored (two registered
    entries, graph script), decision not taken; the public files' terms do
    not allow redistribution, which any use will have to respect (§II.2).
-7. **`FORZE_ARMATE`** into the AVQ target list, **`donor_anno`**, and
-   **`cella_avq`** (collapse level per individual): queued for the same
-   next regeneration cycle as (2).
+7. 7. **`donor_anno`** and **`cella_avq`** (collapse level per
+   individual): queued for the same next regeneration cycle as (2).
+   (`FORZE_ARMATE`, previously listed here, was already in at the tag —
+   see §III.4.)
 8. **MRE floor definition**: the floor formula in `verifica_vincoli.py` is
    the standard deviation of the relative error, while MRE is its mean
    absolute value (factor √(2/π) = 0.798); corrected, the observed error
@@ -189,6 +191,7 @@ finding. Dates are those of the annotations.
     comparing against known-answer configurations) **[n]** design note
     §12–13, *working rule* of §IV.1. **[v]** compress or itemise from the
     note when assembling.
+13.
 
 The register's lesson is the project's method in miniature: every
 withdrawal above was produced by a comparison against a null or a

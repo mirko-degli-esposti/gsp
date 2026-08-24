@@ -53,11 +53,23 @@ below; the hashes are the verification path.
 | this report | v1.0, arXiv:XXXX **[v]** | — |
 | GSP pipeline | tag `report-v1.0` **[v final tag]**, github.com/mirko-degli-esposti/gsp | `git rev-parse` |
 | Animarium viewer | tag `report-v1.0`, github.com/mirko-degli-esposti/Animarium | idem |
+| MaxEnt solver (`maxent-popsynth-pcd`) | commit `14f5bab` (2026-08-03), github.com/mirko-degli-esposti/maxent-popsynth-pcd | `git rev-parse --short HEAD` in the clone |
 | code snapshots | Zenodo DOI **[v]** (one per repository) | checksum on Zenodo |
 | open dataset | Zenodo DOI **[v]**, CC-BY-4.0 | SHA-256 below |
 | public bundle | eleven `pop.parquet`, SHA-256 in `note/misure/rilancio_report_v1.0/hash_parquet_report_v1.0.txt` | `sha256sum` |
 | source fingerprints | `fonti/registro.yaml` at the tag | `python -m gsp.fonti --verifica` |
 | companion papers | arXiv:2603.27312 (solver) · arXiv:2607.00910 (SIVE) | — |
+
+One entry above deserves its warning. The fitting stage imports
+`ConstraintSet` from the solver repository by *filesystem discovery* —
+a glob over a sibling directory — and does not verify which commit it
+found: two honest machines can silently run two different versions
+(it happened during testing; the difference was a typo in the
+acknowledgements — the next one might not be). Until the solver is a
+pinned package dependency (planned for v1.1), reproducing the fit
+requires checking out the commit above by hand.
+
+
 
 ## What, in a record, is actually real
 

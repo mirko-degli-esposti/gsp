@@ -1,16 +1,18 @@
 """
-fit_cs.py — fit del ConstraintSet (K6C o K7C): solver esatto + GibbsPCD.
+"fit del ConstraintSet (K6C–K9C): solver esatto + GibbsPCD (opzionale)"
 
 Generalizza fit_k6c.py: il livello e' un parametro, le firme dei blocchi sono
 risolte per NOME variabile contro spec['vars'] (robuste allo shift di indici
 introdotto da 'zona' in K7C).
 
 K7C: |X| = 33 x 5376 = 177.408, m ~ 2.400 -> F densa ~3.4 GB float64 (x2 per
-F e F_g): dentro i 64 GB della macchina; fit esatto atteso in minuti.
+F e F_g): dentro i 64 GB della macchina; fit esatto atteso in minuti. ("nota dell'era K7C")
 
 Uso:
-    python scripts/fit/fit_cs.py 017029 --anno 2024 --livello K7C --eps 1e-8 --min-alpha 2e-4 --no-gibbs
-    python scripts/fit/fit_cs.py 017029 --anno 2025                      # K6C, come fit_k6c
+    python scripts/fit/fit_cs.py 034027 --anno 2024 --livello K9C --pool 260000
+        # produzione: default = riga di rigenera.sh (esatto, sparse, numba)
+    python scripts/fit/fit_cs.py 034027 --anno 2024 --livello K9C --pool 260000 --gibbs --sweeps 80 --tol 0.02
+        # laboratorio: attiva GibbsPCD accanto all'esatto, parametri liberi
 Output in constraints_<anno>/: fit_<LIV>.json, popolazione_<LIV>.csv
 """
 
@@ -22,6 +24,7 @@ import time
 import importlib
 import numpy as np
 import pandas as pd
+import gsp.common as G
 
 REPO_CANDIDATES = ["~/progetti/maxent-popsynth-pcd", "/content/maxent-popsynth-pcd"]
 
@@ -217,7 +220,8 @@ def build_warm_start(spec_new, cdir, from_livello, rng):
 
 def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
     ConstraintSet, ExactMaxEntSolver, GibbsPCDSolver, ev = import_repo()
-    cdir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
+    #cdir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
+    cdir = os.path.join(G.COMUNI_DIR, comune, f"constraints_{anno}")
     spec = json.load(open(os.path.join(cdir, f"cs_{livello}.json")))
     print(f"[cs] livello {livello}: vars={spec['vars']}")
 
@@ -448,24 +452,37 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
 if __name__ == "__main__":
     args = sys.argv[1:]
     if not args:
-        sys.exit("Uso: python scripts/fit/fit_cs.py <comune> [--anno 2025] [--livello K6C|K7C|K8C|K9C] "
-                 "[--eps 0] [--pool 20000] [--outer 500] [--numba] [--sparse] "
-                 "[--min-alpha 0] [--blocks A,B,Z1,...] [--no-gibbs] [--no-exact] "
-                 "[--tol 0.02] [--warm-from K9C] [--anneal 0]")
+        sys.exit("Uso: python scripts/fit/fit_cs.py <comune> --pool <N> "
+                 "[--anno 2024] [--livello K6C|K7C|K8C|K9C]\n"
+                 "  Default = riga di produzione di rigenera.sh: --eps 1e-8 "
+                 "--min-alpha 2e-4 --outer 500 --tol 0 --sweeps 40, numba e "
+                 "sparse attivi, solo solver esatto.\n"
+                 "  Laboratorio: [--gibbs] [--no-numba] [--no-sparse] "
+                 "[--no-exact] [--eps E] [--min-alpha A] [--blocks A,B,Z1,...] "
+                 "[--tol T] [--sweeps S] [--lr L] [--lr-tau T] "
+                 "[--warm-from K9C] [--anneal N]")
     comune = args[0]
     getf = lambda k, d: float(args[args.index(k) + 1]) if k in args else d
     geti = lambda k, d: int(args[args.index(k) + 1]) if k in args else d
     livello = args[args.index("--livello") + 1] if "--livello" in args else "K6C"
-    MIN_ALPHA = getf("--min-alpha", 0.0)
+    # Default allineati alla riga di produzione di rigenera.sh (collaudo
+    # 25/8, finding 6: i default storici — eps 0, tol 0.02, sweeps 5,
+    # gibbs attivo, percorso denso — erano quelli di un'era precedente e
+    # su Milano costavano ore contro i 54 s della riga di produzione).
+    MIN_ALPHA = getf("--min-alpha", 2e-4)
     BLOCKS = set(args[args.index("--blocks") + 1].split(",")) if "--blocks" in args else None
-    NO_GIBBS = "--no-gibbs" in args
+    NO_GIBBS = "--gibbs" not in args        # gibbs: solo su richiesta
     NO_EXACT = "--no-exact" in args
-    TOL = getf("--tol", 0.02)
+    TOL = getf("--tol", 0)
     WARM_FROM = args[args.index("--warm-from") + 1] if "--warm-from" in args else None
     ANNEAL = geti("--anneal", 0)
-    SWEEPS = geti("--sweeps", 5)
+    SWEEPS = geti("--sweeps", 40)
     LR     = getf("--lr", 0.01)
     LR_TAU = getf("--lr-tau", 0.0)
-    main(comune, geti("--anno", 2025), livello, getf("--eps", 0.0),
-         geti("--pool", 20000), geti("--outer", 500), "--numba" in args, "--sparse" in args)
-
+    if "--pool" not in args:
+        sys.exit("--pool <N> obbligatorio: e' la dimensione del campione, "
+                 "per comune (in rigenera.sh: ~1,3 x popolazione). "
+                 "Derivarlo dal constraint set e' in coda (v1.1).")
+    main(comune, geti("--anno", 2024), livello, getf("--eps", 1e-8),
+         geti("--pool", 0), geti("--outer", 500),
+         "--no-numba" not in args, "--no-sparse" not in args)

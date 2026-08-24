@@ -218,10 +218,25 @@ def main(comune, file_arg, regione_arg, out_arg, dry_run):
         atteso = info["livelli"][info["livello"]]["n"]
 
     if liv is None:
-        print(f"\n[out] livello non fissato nel registro per {comune}.")
-        print(f"[out] livelli disponibili: {', '.join(validi) or 'nessuno'}")
-        print(f"[out] scegliere guardando pop/zona qui sopra e aggiungerlo "
-              f"a COMUNI in gsp_common.py prima di procedere a valle")
+        if info is not None and info.get("livello") is None and "livello" in info:
+            # Il registro ha DECISO: comune non articolato (K6C). Con ASC
+            # tutti vuoti e' il caso Ferrara/Castenaso/Mantova: si procede
+            # a valle con la zona degenere unica. Se il file regionale
+            # offrisse livelli, lo segnaliamo senza fermare: la scelta di
+            # non usarli e' legittima ma va fatta a occhi aperti.
+            if validi:
+                print(f"\n[out] K6C dichiarato nel registro, ma il file "
+                      f"regionale offre livelli ASC: {', '.join(validi)} — "
+                      f"scelta legittima, verificare che sia intenzionale")
+            else:
+                print(f"\n[out] K6C confermato: nessun livello ASC nel file "
+                      f"regionale e livello=None nel registro — procedere "
+                      f"a valle con la zona degenere unica")
+        else:
+            print(f"\n[out] livello non fissato nel registro per {comune}.")
+            print(f"[out] livelli disponibili: {', '.join(validi) or 'nessuno'}")
+            print(f"[out] scegliere guardando pop/zona qui sopra e aggiungerlo "
+                  f"a COMUNI in gsp_common.py prima di procedere a valle")
     elif liv not in validi:
         sys.exit(f"\n[out] il registro chiede {liv}, ma per {nome} i livelli "
                  f"disponibili sono {validi}")

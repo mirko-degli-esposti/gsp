@@ -499,9 +499,18 @@ def assembla(individui, vincoli, rep, rng, prefisso=""):
         # --- riferimento -------------------------------------------------
         cand = list(lib)
         if n_f:
-            ok = [j for j in cand
-                  if sum(1 for h in lib
-                         if rep.gen_min <= eta[j] - eta[h] <= rep.gen_max) >= n_f]
+            # Conteggio "figli plausibili" con eta' ordinate + searchsorted:
+            # semantica identica al doppio loop (stesso insieme `ok`, stesso
+            # ordine, rng non toccato), costo da O(n^2) a O(n log n) per
+            # nucleo. Necessario per le sezioni metropolitane (Milano:
+            # 15 sezioni >1000, max 4.146 — collaudo 25/8).
+            _ee = np.sort(np.fromiter((eta[h] for h in lib),
+                                      dtype=np.int64, count=len(lib)))
+            _ej = np.fromiter((eta[j] for j in cand),
+                              dtype=np.int64, count=len(cand))
+            _nf = (np.searchsorted(_ee, _ej - rep.gen_min, side="right")
+                   - np.searchsorted(_ee, _ej - rep.gen_max, side="left"))
+            ok = [j for j, m in zip(cand, _nf >= n_f) if m]
             if ok:
                 cand = ok
             else:

@@ -157,6 +157,19 @@ def lavora(comune, rep_path, out_dir, anno, seme_base, verboso=True):
             tot["individui_senza_sezione"] += len(ind)
             pezzi.append(ind[tieni].assign(id_nucleo=pd.NA, ruolo=pd.NA))
             continue
+        if s.endswith("8888888"):
+            # Sezione fittizia delle convivenze (enrich): istituti, non
+            # famiglie. Niente assemblaggio: id_nucleo vuoto per design.
+            # Senza questo salto, il matching O(|sez|^2) sulla convivenza
+            # di Milano (10.038 individui) costava ore per un risultato
+            # scartato per definizione (collaudo 25/8). Nota: il salto
+            # non consuma rng, quindi cambia la sequenza per le sezioni
+            # successive rispetto alle corse precedenti la patch.
+            tot["individui"] += len(ind)
+            tot["non_collocati"] += len(ind)
+            tot["convivenze_saltate"] += len(ind)
+            pezzi.append(ind[tieni].assign(id_nucleo=pd.NA, ruolo=pd.NA))
+            continue
         v, d = N.vincoli_da_sezione(riga, len(ind), rep, rng)
         res, dd = N.assembla(ind, v, rep, rng, prefisso=f"{s}-")
         pezzi.append(ind[tieni].join(res))

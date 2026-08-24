@@ -22,6 +22,9 @@ successivo, non parte del collaudo).
 | 3 | `build_sezioni.py`, messaggio finale | Per un comune K6C legittimo (ASC tutti a zero, `livello: None`) il messaggio «scegliere un livello e aggiungerlo prima di procedere» è fuorviante: a valle si procede con la zona degenere (Ferrara docet). | Da ritoccare: se ASC vuoti e `livello=None` → «K6C confermato, procedere» |
 | 4 | `cs_build.py` / `fit_cs.py` → `import_constraint_set()` | **Dipendenza non dichiarata dal repo del solver**: glob su directory sorella (`~/progetti/maxent-popsynth-pcd`, `/content/` per Colab), fuori dal tag di gsp. Il Mac vergine si ferma con `ImportError`; il version binding del report ha un buco (un file fuori dal tag può cambiare senza rompere git). | v1.0: dichiarare nel README («per il fit serve il clone del solver accanto a gsp») + **riga nella tabella di binding col commit pinnato** + frase di III.1 aggiornata. v1.1: pacchettizzare il solver (`pip install git+…@tag`) |
 | 5 | registro, `usato_da` | La sed dei 44 `usato_da` (`build_constraints.py → cs_build.py`) ha cancellato un'informazione vera: `build_constraints.py` è **vivo** — è il preparatore della staffetta a due stadi (vedi scheda). | Da ripristinare come co-lettore: `usato_da: [build_constraints.py, cs_build.py]` sulle tavole SDMX |
+| 6 | `fit_cs.py`, default | **I default non sono la riga di produzione**: lanciato nudo su Milano prende un percorso denso — 111 minuti senza convergere (ucciso); con la riga di `rigenera.sh` (`--eps 1e-8 --min-alpha 2e-4 --pool … --outer 500 --numba --sparse --tol 0 --sweeps 40 --no-gibbs`): **54 s**. Specifico del fit: per `assign_avq`, `enrich` e `assign_nucleo` i default *sono* la produzione. | Da fare: allineare i default alla riga di produzione (o dichiarare nel README che la via è `rigenera.sh`). Collaterale: docstring «K6C o K7C» datata |
+| 7 | `gsp/nucleo.py` 502–504, via `assign_nucleo` su Milano | Matching «figli plausibili» O(n²) per nucleo (~n³ per sezione): invisibile sulla flotta (sezioni ≤ ~700), ore sulla metropoli — Milano ha 15 sezioni >1.000 (max 4.146) più la convivenza fittizia da 10k, attraversata per un risultato scartato per design. Diagnosi con py-spy (99% del tempo su una riga). | **Risolto in due patch**: (a) skip della sezione `8888888` in `lavora` (id_nucleo vuoto per design, rng non consumato — cambia la sequenza per le sezioni successive, dichiarato); (b) conteggio via `searchsorted` in `nucleo.py`, semantica identica ‹cmp: esito›, Milano 65 s. Bonus misurato: le sezioni grandi *migliorano* l'assemblaggio (Milano: omogenee 98,6%, ripieghi 0,9% — i migliori della flotta) |
+
 
 ---
 
@@ -184,8 +187,6 @@ incrociato gratuito, passato. Grep «NIL» → 1 risultato, ed è
 «occupazione femmi**NIL**e»: il match è substring puro, chi cerca
 sigle corte deve saperlo (annotato, non da fixare).
 
-**Risposta strutturale dal test**: in SDMX **non esiste un livello
-NIL** (né alcun sub-comunale): ISTAT si ferma al comune.
 
 > **Rettifica (24/8, non silenziosa).** La conclusione tratta qui il
 > 23/8 — «i NIL vivranno solo di open data comunali» — era **sbagliata
@@ -365,6 +366,103 @@ all'array; candidato a consolidamento (POOL derivabile da N).
 
 ---
 
+---
+
+## Anelli 2–4 sui due comuni nuovi (WSL, 25/8)
+
+Gli anelli 2–4 dipendono da fonti che non si auto-acquisiscono (AVQ
+mIcro.STAT su richiesta; repertorio nuclei derivato da AVQ): il **Mac
+collauda il lettore pubblico** — che arriva legittimamente fino alla
+popolazione dell'anello 1 — la **WSL è la macchina completa**. Da
+dichiarare in README e §III.1: *riproducibile da fonti auto-acquisibili
+fino all'anello 1; oltre, servono i microdati (ottenibili da chiunque,
+con richiesta manuale).*
+
+### assign_avq.py (anello 2)
+
+Riga di produzione = default (nessun flag in `rigenera.sh`): il
+finding 6 è specifico di `fit_cs`. Entrambi i comuni al primo colpo;
+la matrice di correlazione stampata in coda è **identica** sui due —
+com'è giusto: è una proprietà del pool lombardo, non del comune, e
+vederla uguale due volte è la conferma involontaria.
+
+**La scoperta FORZE_ARMATE** (vedi Rettifica in coda): Mantova
+mostrava una variabile che il report dichiarava assente; il controllo
+sulla flotta al tag ha mostrato che c'è ovunque — il fix era entrato
+prima del tag, le note no. Le variabili donate sono **23** (conteggio
+sulle colonne: 8 + 11 PUNTIFI + FORZE_ARMATE + VOTOUSL + BMI + CPESO);
+resta da chiudere il conto 23/21/20 (donate / firma / pannello) con
+una nota a piè unica nel report.
+
+### enrich.py (anello 3)
+
+**Milano**: il ramo mai esercitato — **tier 0 articolato** — gira
+perfetto: «tier 0 su municipi, 171 paesi × 2 sessi × 9 unità, IPF 1
+iter, scarto 5·10⁻¹⁶»; indirizzo 99,10% dalla sezione; età media 45,2;
+diagnostica UE: struttura di sezione/di zona = 9,9× (la geografia fine
+domina — coerente con il segnale compositivo). MAE per sezione: pop
+1,28, stranieri 1,17, UE 0,08 su correlazioni ≥0,998.
+
+**Mantova**: MAE pop 0,90 — ma **indirizzo 15,31% dalla sezione,
+84,62% fallback di zona** (che con zona unica = coordinate sparse sul
+comune). Indagine: il derivato civici ha 240 accessi per il capoluogo;
+il grezzo ANNCSU regionale ne ha **17.009**; dei 17.009, solo 240
+hanno METODO di georeferenziazione valorizzato. **Non è un bug di
+`join_civici_sezioni`: Mantova ha certificato gli accessi senza
+coordinate**, e lo spatial join legittimamente li scarta. Terzo caso
+mai visto dalla flotta (l'Emilia è georeferenziata quasi al 100%).
+Conseguenze: (a) il **regime pubblico non ne soffre** — lon/lat
+pubblici sono un punto casuale nella sezione, che tutti hanno; il
+buco tocca solo l'indirizzo testuale dei regimi persona/narrativo;
+(b) §I.4 del report guadagna la frase onesta: *la copertura
+dell'indirizzo è una proprietà della georeferenziazione ANNCSU del
+comune, non della pipeline*.
+
+**Seconda rettifica, la migliore**: il blocco `[val]` di `enrich`
+stampa **a ogni corsa** il MAE per sezione contro il censimento — il
+«numero *reported*, script non conservato» di §III.3 sta quindi nei
+log della rigenerazione del 19/8 ‹verificare: grep "\[val\]" sul log
+di Parma›. Se c'è, l'unico numero non rimisurato della Part III
+diventa **[m]** e la Part III è misurata al 100%.
+
+### assign_nucleo.py (anello 4)
+
+Firma diversa dagli altri anelli (niente `--pop-file`: risolve da
+solo il `_full`; comuni posizionali multipli; seme derivato
+`20260810+int(comune)`). Il repertorio è **unico**
+(`repertorio_nuclei_v1.json`, base AVQ emiliana + coda Parma): i
+comuni lombardi ricevono configurazioni di nucleo emiliane —
+assunzione ereditata, dichiarata qui; le configurazioni sono meno
+regionali delle risposte, ma è un'assunzione, non un fatto.
+
+**Mantova**: 49.044 individui, 24.298 nuclei (ampiezza 2,02 — città
+anziana), senza ripiego 96,7%, omogenee 94,2%, incoerenti 23,0%,
+divario generazionale mediano 30 anni, seme 20280840 ✓. **Non
+collocati 2,16%**: dentro la banda di flotta (1,1–2,3%) ma al bordo
+alto, e sopra la forchetta della docstring («1,4–1,9%» — datata, da
+aggiornare alla banda misurata). Con la convivenza a 34 persone, i
+non collocati sono quasi tutti residui d'assemblaggio.
+
+**Milano** (post patch 7a+7b, **65 s** — era >1h ucciso due volte):
+
+| comune | individui | nuclei | ampiezza | omogenee | incoerenti | non collocati |
+|---|---|---|---|---|---|---|
+| Mantova | 49.044 | 24.275 | 2,02 | 94,2 % | 23,0 % | 2,21 % (incl. 34 convivenza) |
+| Milano | 1.371.499 | 736.131 | 1,86 | 98,6 % | 17,7 % | 1,88 % (incl. 9.992 convivenza, 0,73 %) |
+
+Tre letture. *Milano è il nuovo estremo della flotta su tre colonne,
+tutte nella direzione che la sua demografia comanda*: ampiezza 1,86
+(sotto Bologna, 1,85 — le due metropoli si riconoscono); incoerenti
+17,7 %, sotto il minimo di flotta (Bologna 18,2 %) — terza conferma
+della regola «più single, meno slot per l'incoerenza». *Le sezioni
+grandi migliorano l'assemblaggio*: omogenee 98,6 % e senza-ripiego
+99,1 %, i migliori mai misurati — più candidati per ruolo, meno
+ripieghi; il costo quadratico del finding 7 era il prezzo
+computazionale di un beneficio statistico. *Mantova riassemblata post
+patch*: 24.275 nuclei (era 24.298), non collocati 2,21 % (era 2,16 %,
+ora includono la convivenza), il resto invariato al decimale — il
+salto ha cambiato solo ciò che doveva.
+
 ## Stato della procedura §9 («aggiungere un comune»), come misurata
 
 Per un comune di una **regione già in casa** (il caso
@@ -375,3 +473,19 @@ Per una **regione nuova**: quattro acquisizioni una tantum — file
 regionale Basi Territoriali, shp sezioni, estrazione ANNCSU
 provinciale (`join_civici_sezioni`), pool AVQ regionale — poi ogni
 comune è gratis. Il tier 0 regge anche sul secondo comune d'Italia.
+
+> **Rettifica (25/8).** §III.4 dichiarava la batteria a undici item su
+> dodici per l'assenza di `FORZE_ARMATE` (selezione per prefisso), e
+> §III.5.6 ne programmava il rientro. **Misurato sui file al tag** (la
+> rigenerazione del 19/8 è bit-identica, quindi i file sono lo stato
+> del tag): `FORZE_ARMATE` è presente in `_avq.csv` e `_full.csv` di
+> tutta la flotta — il fix era entrato prima del tag e le note non
+> erano state aggiornate. La batteria è a dodici item; §III.4 va
+> corretto e §III.5.6 ridotto a `donor_anno` e `cella_avq`. Il
+> collaudo l'ha scoperto perché Mantova mostrava una variabile che il
+> report dichiarava assente.
+**Verificato al tag**: `grep "popolazione  MAE"` sui log del 19/8 dà
+gli undici valori — banda 0,72 (Ferrara) – 1,57 (Brescia), totali
+esatti ovunque. Il numero «*reported*» di §III.3 diventa **[m]** con
+fonte `log/rigenera_20260819_0940/*.log`, e la Part III è misurata al
+100%.

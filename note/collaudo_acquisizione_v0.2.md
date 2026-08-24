@@ -337,11 +337,31 @@ F); parziali C=0,939 e D=0,888 con i complementi fuori-universo
 S_istruzione_under9=0,061 e S_condizione_under15=0,112 che chiudono i
 conti a 1 — la coppia «partial block + complement» stampata.
 
-**Da fare (WSL)**: Milano `build_constraints` + `cs_build --livello
-K9C` (le tavole di zona sono là); pin del commit del solver per la
-tabella di binding (`git -C ~/progetti/maxent-popsynth-pcd rev-parse
---short HEAD`, verificando che sia lo stesso della rigenerazione del
-19/8).
+### fit_cs.py — la catena arriva alla popolazione (WSL, 24/8)
+
+**Milano K9C, riga di produzione**: esatto, **MRE = 4,24·10⁻⁴ in
+54 s**; massa sulle celle escluse = 0 esatto (737.100 celle post-hoc,
+supporto effettivo ~346k/1,45M); popolazione campionata n=1.371.499.
+Stesso ordine di Parma (4,9·10⁻⁴): il fit error è indipendente dalla
+taglia, e per il solver contano le zone, non gli abitanti — il secondo
+comune d'Italia è più leggero di Parma.
+
+**Mantova K6C, riga di produzione**: esatto, **0,17 s, MRE = 3,43·10⁻⁴**
+(|X| = 5.376, ~270× più piccolo di Milano).
+
+**Finding 6 — i default di `fit_cs` non sono la produzione.** Lanciato
+nudo su Milano: percorso denso, 111 minuti senza convergere (ucciso);
+con la riga di `rigenera.sh` (`--eps 1e-8 --min-alpha 2e-4 --pool …
+--outer 500 --numba --sparse --tol 0 --sweeps 40 --no-gibbs`): 54 s.
+Rimedio: allineare i default alla produzione, o dichiarare nel README
+che la via è `rigenera.sh`. Nota collaterale: la docstring dice «K6C o
+K7C» — datata, il K9C è il livello di produzione.
+
+**Mini-finding — la lista dei comuni vive in due posti**:
+`gsp.common.COMUNI` (registro) e l'array `COMUNI` di `rigenera.sh`
+(`COD:LIV:POOL`, con POOL ≈ 1,3×N di sovracampionamento). Per rendere
+Mantova e Milano rigenerabili in blocco vanno aggiunte due righe
+all'array; candidato a consolidamento (POOL derivabile da N).
 
 ---
 

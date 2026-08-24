@@ -30,8 +30,10 @@ ANNO=2024
 
 # codice : livello : pool
 COMUNI=(
-  "037006:K9C:500000"   # Bologna    390.098
+  "015146:K9C:1800000"  # Milano   1.371.499  (collaudo)
+  "020030:K6C:65000"    # Mantova     49.044  (non articolato, collaudo)
   "017029:K9C:260000"   # Brescia    198.259
+  "037006:K9C:500000"   # Bologna    390.098
   "034027:K9C:260000"   # Parma      198.121
   "036023:K9C:240000"   # Modena     184.597
   "035033:K9C:220000"   # Reggio E.  171.207

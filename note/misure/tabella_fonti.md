@@ -1,21 +1,21 @@
 | id | ente | universe | temporal ref. | accessed | licence | stor. | used by | ring |
 |---|---|---|---|---|---|---|---|---|
-| `istat_anag_sesso_eta_statociv` | ISTAT | popolazione residente ANAGRAFICA al 1 gennaio dell'anno ind… | 1_gennaio (N) |  | CC-BY-4.0 | locale |  | **1** |
-| `istat_cens_condprof_cittadinanza` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | cs_build.py | **1** |
-| `istat_cens_condprof_eta` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | cs_build.py | **1** |
-| `istat_cens_istruzione_cittadinanza` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | cs_build.py | **1** |
-| `istat_cens_istruzione_eta` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale |  | **1** |
-| `istat_cens_migr_backg` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | cs_build.py | **1** |
-| `istat_cens_posizione_prof` | ISTAT | … universo ristretto ai soli OCCUPATI … Usata da build_cons… | 31_dicembre (qualunqu… |  | CC-BY-4.0 | locale | cs_build.py | **1** |
-| `istat_cens_settore_prof` | ISTAT | … universo ristretto ai soli OCCUPATI … Usata da build_cons… | 31_dicembre (qualunqu… |  | CC-BY-4.0 | locale | cs_build.py | **1** |
+| `istat_anag_sesso_eta_statociv` | ISTAT | popolazione residente ANAGRAFICA al 1 gennaio dell'anno ind… | 1_gennaio (N) |  | CC-BY-4.0 | locale | build_constraints.py, enrich.py | **1** |
+| `istat_cens_condprof_cittadinanza` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | build_constraints.py | **1** |
+| `istat_cens_condprof_eta` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | build_constraints.py | **1** |
+| `istat_cens_istruzione_cittadinanza` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | build_constraints.py | **1** |
+| `istat_cens_istruzione_eta` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | build_constraints.py | **1** |
+| `istat_cens_migr_backg` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | build_constraints.py | **1** |
+| `istat_cens_posizione_prof` | ISTAT | … universo ristretto ai soli OCCUPATI … Usata da build_cons… | 31_dicembre (qualunqu… |  | CC-BY-4.0 | locale | build_constraints.py | **1** |
+| `istat_cens_settore_prof` | ISTAT | … universo ristretto ai soli OCCUPATI … Usata da build_cons… | 31_dicembre (qualunqu… |  | CC-BY-4.0 | locale | build_constraints.py | **1** |
 | `brescia_cittadinanza_quartieri` | Comune di Brescia | residenti per CITTADINANZA e quartiere, italiani inclusi: l… |  | 2026-08-11 | CC-BY-4.0 | locale | enrich.py | **12** |
 | `forli_cittadinanza_quartieri` | Comune di Forli' | residenti STRANIERI per nazionalita', quartiere e sesso, fo… | 31 dicembre 2021 | 2026-08-11 | CC-BY-4.0 (presunta) | locale | enrich.py | **12** |
-| `istat_cens_stranieri_paesi` | ISTAT | censimento permanente, stranieri residenti al 31 dicembre p… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | cs_build.py, enrich.py, common.py | **12** |
+| `istat_cens_stranieri_paesi` | ISTAT | censimento permanente, stranieri residenti al 31 dicembre p… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | build_constraints.py, enrich.py, common… | **12** |
 | `ravenna_cittadinanza_aree` | Comune di Ravenna — Ufficio S… | residenti con cittadinanza STRANIERA per nazionalita' e are… | 31 dicembre 2023 | 2026-08-11 | pubblico-dominio | locale | enrich.py | **12** |
 | `reggio_cittadinanza_circoscrizioni` | Comune di Reggio nell'Emilia | residenti stranieri per nazionalita' e circoscrizione, font… | 2013 | 2026-08-11 | CC-BY | locale | enrich.py | **12** |
 | `bologna_cittadinanza_zone` | Comune di Bologna — U.I. Uffi… | residenti STRANIERI per paese di cittadinanza, zona, quarti… |  | 2026-08-11 | CC-BY-4.0 | locale | enrich.py | **123** |
 | `parma_microdati_residenti` | Comune di Parma — Ufficio Sta… | anagrafe comunale COMPLETA, una riga per residente: 202.111… | 1 gennaio 2025 | 2026-08-11 | CC-BY-4.0 | locale | enrich.py | **12V** |
-| `istat_cens_sesso_eta_cittadinanza` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | build_zona_tables.py, cs_build.py | **13** |
+| `istat_cens_sesso_eta_cittadinanza` | ISTAT | censimento permanente, popolazione residente al 31 dicembre… | 31_dicembre (N-1) |  | CC-BY-4.0 | locale | build_zona_tables.py, build_constraints… | **13** |
 | `istat_sezioni_2023` | ISTAT | censimento permanente 2023, conteggi per SEZIONE di censime… | 31_dicembre | 2026-08-02 | CC-BY-4.0 | locale | build_sezioni.py, enrich.py, common.py | **13** |
 | `avq_microdati` | ISTAT | campione dell'indagine multiscopo sulle famiglie, individui… | anno_indagine | 2026-08-03 | CC-BY-4.0 | locale | assign_avq.py | **2** |
 | `avq_tracciato_2024` | ISTAT | elenco delle variabili dei microdati AVQ 2024 con le rispet… |  | 2026-08-03 | CC-BY-4.0 | git |  | **2** |

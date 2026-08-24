@@ -123,12 +123,13 @@ fonti:
     vincolo: hard
     obbligatoria: true
     anno_usato: N
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       unica fonte HARD: conteggi anagrafici esatti. Tutti gli altri blocchi
       sono SOFT e condizionali su questa spina.
     usabile_per: [vincoli_eta_sesso, vincoli_stato_civile, controllo_totali]
     non_usabile_per: [confronto_diretto_con_censimento_stesso_anno]
+    usato_da: [build_constraints.py, enrich.py]
 
   - id: istat_cens_istruzione_eta
     tipo: multi_istanza
@@ -164,11 +165,13 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       classi d'eta' censuarie, non quelle anagrafiche.
     usabile_per: [vincoli_istruzione]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
+    usato_da: [build_constraints.py] 
+
   - id: istat_cens_sesso_eta_cittadinanza
     tipo: multi_istanza
     ente: ISTAT
@@ -198,9 +201,9 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     usabile_per: [vincoli_maxent, tabelle_zona]
-    usato_da: [build_zona_tables.py, cs_build.py]
+    usato_da: [build_zona_tables.py, build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno, paese_di_dettaglio]
 
   - id: istat_cens_istruzione_cittadinanza
@@ -231,13 +234,13 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
-      DA CHIARIRE: la tupla in cs_build.py la etichetta 'C3', ma
-      il file prodotto e' c5_edu_citizenship.csv. Qui si segue il nome del
-      file.
+      La numerazione interna e' cambiata nel tempo: build_constraints.py
+      produce c5_edu_citizenship.csv (blocco E del constraint set finale
+      assemblato da cs_build). Qui si segue il nome del file.
     usabile_per: [vincoli_maxent]
-    usato_da: [cs_build.py]
+    usato_da: [build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
 
   - id: istat_cens_condprof_eta
@@ -270,9 +273,9 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     usabile_per: [vincoli_maxent]
-    usato_da: [cs_build.py]
+    usato_da: [build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
 
   - id: istat_cens_condprof_cittadinanza
@@ -302,12 +305,12 @@ fonti:
     vincolo: soft
     obbligatoria: true
     anno_usato: N-1
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       DA CHIARIRE: la tupla la etichetta 'C4', il file prodotto e'
       c6_condprof_citizenship.csv.
     usabile_per: [vincoli_maxent]
-    usato_da: [cs_build.py]
+    usato_da: [build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
 
   - id: istat_cens_stranieri_paesi
@@ -340,13 +343,13 @@ fonti:
     vincolo: fuori_maxent
     obbligatoria: true
     anno_usato: N-1
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       produce P(paese | straniero) a due stadi, FUORI dal MaxEnt. DA
       CHIARIRE: la tupla la etichetta 'C6', che pero' e' gia'
       condprof_citizenship.
     usabile_per: [vincoli_maxent, margine_A_ipf, assegnazione_paese, registro_paesi]
-    usato_da: [cs_build.py, enrich.py, common.py]
+    usato_da: [build_constraints.py, enrich.py, common.py]
     non_usabile_per: [geografia_subcomunale, popolazione_italiana]
 
   - id: istat_cens_migr_backg
@@ -380,12 +383,12 @@ fonti:
     vincolo: soft
     obbligatoria: false
     anno_usato: N-1
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       opzionale: se manca, preflight() salta i blocchi e lo dichiara. C8 ha
       'non_applicabile' per i nati all'estero.
     usabile_per: [vincoli_maxent, blocco_GC]
-    usato_da: [cs_build.py]
+    usato_da: [build_constraints.py]
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
 
   - id: istat_cens_posizione_famiglia
@@ -417,9 +420,12 @@ fonti:
     vincolo: null
     obbligatoria: false
     anno_usato: null
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
-      non compare in cs_build.py: nessun blocco, nessun uso.
+      Scaricata dalla rosa di fetch_comune ma non consumata dalla catena:
+      build_constraints non la legge (le ampiezze familiari dell'anello 4
+      vengono dalle colonne PF3-PF8 delle sezioni). Registrata per
+      completezza della rosa e per usi futuri.
     usabile_per: []
     usato_da: []
     non_usabile_per: [confronto_diretto_con_anagrafe_stesso_anno]
@@ -452,12 +458,12 @@ fonti:
     vincolo: soft
     obbligatoria: false
     anno_usato: qualunque
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       SOFT e CONDIZIONALE all'universo occupati: non entra come marginale
       sulla popolazione totale.
     usabile_per: [vincoli_maxent, vincoli_maxent_soft]
-    usato_da: [cs_build.py]
+    usato_da: [build_constraints.py]
     non_usabile_per: [vincoli_su_popolazione_totale]
 
   - id: istat_cens_settore_prof
@@ -488,11 +494,11 @@ fonti:
     vincolo: soft
     obbligatoria: false
     anno_usato: qualunque
-    legge: cs_build.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
+    legge: build_constraints.py legge il file _decoded.csv, derivato dal _raw registrato qui applicando le codelist SDMX.
     nota_pipeline: >-
       come C9: soft e condizionale all'universo occupati.
     usabile_per: [vincoli_maxent, vincoli_maxent_soft]
-    usato_da: [cs_build.py]
+    usato_da: [build_constraints.py]
     non_usabile_per: [vincoli_su_popolazione_totale]
 
 

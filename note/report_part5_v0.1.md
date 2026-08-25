@@ -1,5 +1,16 @@
 # Part V — The narrative layer and its use
-## Draft v0.1 — §V.1–V.3 (20 August 2026)
+## Draft v1 — §V.1–V.3 (25 August 2026)
+
+> **This part describes work in progress, and is the one part of this
+> report expected to change substantially.** The narrative layer is
+> built and in use, but its calibration is an open research programme:
+> the experiments reported here are evidence that the platform behaves
+> controllably, not results about synthetic populations as instruments.
+> Findings, and the layer itself, will be updated in later versions of
+> this report and in the companion papers; nothing downstream of the
+> populations depends on it, and a reader interested only in the
+> pipeline (Parts I–III) or the release (Part IV) can stop before this
+> point.
 
 > Same conventions: **[m]** measured, **[n]** from a note (cited), **[v]**
 > to verify before freezing. Sources: `nota_biografia_v2`,

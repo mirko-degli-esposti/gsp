@@ -406,11 +406,21 @@ neighbourhood shows lower institutional trust, it is because people of
 the groups that everywhere express lower trust live there in greater
 numbers — composition — not because the neighbourhood adds anything of
 its own, which the data cannot contain. The viewer says this on every
-spatially filtered panel (§IV.1). The honest sample size behind any AVQ
-mean is not n but Kish's effective size on the variable's own universe,
-and the confidence bands it implies are 2 to 20 times wider than the
-naive ones, the factor growing with the municipality's population and
-varying with the variable's universe (§III.3b). The hierarchical
+spatially filtered panel (§IV.1). The honest sample size behind any AVQ mean is 
+not n but Kish's
+effective size on the variable's own universe. If each donor i is
+reused w_i times in the population, the synthetic sample of Σw_i
+individuals is worth
+n_eff = (Σ w_i)² / Σ w_i² independent respondents — the count the
+weights would give if they were all equal, and less than the number of
+distinct donors whenever they are not. Two limits make it readable:
+with every donor used the same number of times, n_eff is exactly the
+number of donors; with one donor carrying most of the population,
+n_eff approaches one. Computed per variable, on the universe that
+variable actually has — the trust battery is asked of adults, the
+school questions of a narrower group — the confidence bands it implies
+are 2 to 20 times wider than the naive ones, the factor growing with
+the municipality's population and varying with the universe (§III.3b). The hierarchical
 collapse of the conditioning cell touches 1.5–3.1 % of individuals — but
 not at random: the cells that fall below the twenty-donor threshold are
 all low-education cells, so the collapse concentrates precisely where
@@ -425,9 +435,10 @@ the count of foreign residents; where a municipality publishes a
 sub-municipal table of residents by country, that table is register
 data of a different date, and its *levels* are incompatible with the
 census by amounts that matter (Brescia's register counts 40,090
-foreigners against 37,478 census). The construction therefore uses the
-local source's *shape* only: it seeds an iterative proportional fit
-whose two margins are both census — the municipal country × sex table,
+foreigners against 37,478 census). The construction therefore uses the local source's *shape* only — the
+third application of the rule stated in §I.2: levels from the base,
+form from the source that has it. It seeds an iterative proportional
+fit whose two margins are both census — the municipal country × sex table,
 and the census count of foreigners of each geography — so the system is
 consistent by construction and converges in 9–88 iterations to ~10⁻¹¹
 **[n]** riferimento §6. Coverage is complete for the same reason: a
@@ -452,106 +463,105 @@ rich one: Brescia's nineteen countries without sex achieve 2.08 against
 2.57 for Bologna's one hundred fifty-five with sex. For a future
 municipality, a truncated country × neighbourhood table is enough
 **[n]** riferimento §6.
+The default branch is not a theoretical fallback: both municipalities
+added during testing ran at tier 0 end to end, including Milano, where
+the branch had never been exercised on an *articulated* municipality —
+171 countries × 2 sexes × 9 municipi, IPF converging in one iteration
+to 5·10⁻¹⁶.
 
 ### I.4 Ring 3 — sub-municipal placement
 
-Ring 3 turns a zoned population into a placed one: census section,
-single-year age, address.
+This is the ring where the pipeline goes *below* the level at which its
+constraints are defined. Rings 1 and 2 work where tables exist; ring 3
+places individuals inside a zone, at a census section, a single year of
+age, and an address — none of which the constraint set knows about.
+Everything here is therefore allocation, not estimation, and that is
+why the assumptions accumulate in this section rather than elsewhere.
 
-*Section.* Within a zone, individuals are assigned to census sections.
-The section *totals* are matched almost exactly: the allocation is exact
-(largest remainder) rather than multinomial, and the mean absolute error
-per section is 0.74–1.58 individuals — against ≈ 9.6 for a multinomial
-draw — on sections averaging 84–175 residents, and it does not grow with
-population (§III.3, *reported*). The section *composition* is where the
-declared assumption sits: (8) — section independent of education,
-condition and background, given zone, sex, age-3 and citizenship —
-concedes that three attributes are spread within the zone without
-section-level structure, because no census table conditions them there.
-Two clarifications, because the assumption is easy to over-read.
-Education *does* have zone-level geography, at a coarser resolution
-than the population carries: the section tables distinguish five levels
-(none, primary, lower secondary, upper secondary, tertiary), the
-population six — tertiary splits into first-cycle and postgraduate. The
-zone shares are therefore computed on the five-level aggregation and
-applied to the six-level municipal counts: within a zone, degree and
-postgraduate share the same spatial form. Assumption (8) concerns the
-*next* step down — from zone to section — where no table conditions
-education at all; it does not say that education is spatially flat.
+*Section.* Within a zone, individuals are allocated to census sections
+by *largest remainder* rather than by multinomial draw: each section
+receives the integer part of its quota, and the remaining places go to
+the sections with the largest fractional remainders. The method is
+deterministic and bounded — at most one individual of error per
+allocation — and the residue that remains comes from allocating within
+each demographic group separately, so that the ±1 of several groups
+accumulate on a section. The measured mean absolute error per section
+is 0.72–1.57 individuals against ≈ 9.6 for a multinomial draw **[n]**
+riferimento §5, on sections averaging 66–175 residents, with section
+totals matching the census exactly (§III.3).
 
-The same distinction applies to occupational condition, with a limit
-worth stating plainly: the section tables count the *employed*, not the
-four non-employed categories the population distinguishes (seeking
-work, student, retired, other), so the zone-level block constrains the
-employed side only — the spatial distribution of unemployment is not
-constrained by any observed datum, and follows from the maximum-entropy
-solution given everything else.
+The zone blocks of ring 1 already carry geography for age, citizenship,
+education and employment, each at the resolution its section columns
+have (§I.2). Assumption (8) concerns the step *below* that one — zone
+to section — where no table conditions education, occupational
+condition or migratory background at all: within a zone, those three
+are spread independently of the section, given sex, age-3 and
+citizenship. It is a concession of the ring, not a claim about the
+world, and its cost is measured twice over. The compositional analysis
+that motivated the ring found 80–98 % of the compositional signal
+living *below* the zone — which is why placement cannot stop there
+**[n]** `nota_segnale_compositivo_v3`; and the M-EM measures, run
+against the census's own section-level migratory-background columns,
+find a real residual on all eleven municipalities (median net ~0.022
+for Italians, ~0.018 for foreigners) — assumption (8) discards
+section-level structure that exists. The refinement through the census
+EM columns is designed and queued with the next regeneration cycle
+(§III.5) **[n]** `nota_background_sezione_v1`.
 
-
-
-
-The concession is not free, and it is measured twice over. The
-compositional analysis that motivated this ring found 80–98 % of the
-compositional signal living *below* the zone — which is why placement
-cannot stop there **[n]** `nota_segnale_compositivo_v3`; and the M-EM
-measures, run against the census's own section-level migratory-background
-columns, find a real residual on all eleven municipalities (median net
-~0.022 for Italians, ~0.018 for foreigners) — assumption (8) discards
-section-level structure that exists, the refinement through the census
-EM columns is designed, and it is queued with the next regeneration
-cycle (§III.5) **[n]** `nota_background_sezione_v1`.
-
-*Single-year age.* The exact age is drawn in two stages:
+*Single-year age.* Here, unlike education or condition, the section
+*does* have something to say, and the exact age is drawn in two stages:
 section → five-year class → single year. The five-year class comes from
-the section's own census columns (the sixteen five-year counts per sex),
-so the age *structure* of every section is respected at five-year
-resolution; where a bin boundary cuts a five-year class — the 0–8 bin
-ends inside the 5–9 class — the class is split 4/5–1/5 under uniformity,
-the same assumption the method makes throughout. The single year within
-the class then follows the municipality's register distribution by
-single year of age: this is assumption (9) — below five-year resolution,
-every section inherits the municipal shape. The ex-post diagnostic
-measures both declared artefacts of the construction: the seam left at
-the split classes (mean residual 2.3–5.7 individuals per section,
-§III.3), and a systematic within-bin lean — too few nine-year-olds where
-the 4/5–1/5 split operates, and a young lean in the adult bins, ten
-concordant signs over two cities, p ≈ 0.002 (§III.4). Both measured,
-neither repaired in v1.0.
+the section's own census columns (sixteen five-year counts per sex), so
+the age structure of every section is respected at five-year
+resolution; where a bin boundary cuts a five-year class, the class is split under
+uniformity: the 0–8 bin takes the whole of 0–4 and four fifths of the
+5–9 class (ages 5 to 8), the remaining fifth — the nine-year-olds —
+going to the 9–14 bin. The single year *within* the class then
+follows the municipality's register distribution by single year of age:
+this is assumption (9) — below five-year resolution, every section
+inherits the municipal shape. The ex-post diagnostic measures both
+artefacts of the construction: the seam left at the split classes (mean
+residual 2.3–5.7 individuals per section, §III.3), and a systematic
+within-bin lean — too few nine-year-olds where the 4/5–1/5 split
+operates, and a young lean in the adult bins, ten concordant signs over
+two cities, p ≈ 0.002 (§III.4). Both measured, both queued with the
+next regeneration cycle (§III.5).
 
 *Address.* A civic number drawn uniformly among the section's ANNCSU
 entries (assumption 10), with its coordinates. In production the section
 supplies the address directly for ≥ 99.5 % of individuals **[m]** (the
-`[3e]` line of every generation log); the residue is sections with
-population but no registered civic number — a property of the address
-register, not of the pipeline: Modena has the largest share (0.15 %)
-while holding *more* civic numbers than Brescia for fewer residents, so
-the gap is distributional, not one of coverage — and falls back to the
+`[3e]` line of every generation log); the residue is sections whose
+registered civic numbers cannot be joined — either because the section
+has none, or because the ones it has carry no coordinates. In the fleet
+it is the first case, and it is distributional, not one of coverage:
+Modena has the largest share (0.15 %) while holding *more* civic numbers
+than Brescia for fewer residents. Those individuals fall back to the
 nearest declared level. One case is handled apart, and declared:
-individuals in collective households (the empty `id_nucleo` of ring 4)
-sit in a fictitious section and carry *no* address at all, their
-coordinates being the zone centroid — an institution is not a home, and
-inventing a civic number for it would manufacture exactly the kind of
-false precision the regime exists to prevent. The uniformity of the draw
-is the load-bearing fact of the disclosure argument (§I.7): every
-address exists, and the assignment carries no information about anyone —
-which is also why the public regime can randomise the coordinate within
-the section at zero analytic cost (§IV.2).
+individuals in collective households sit in a fictitious section and
+carry *no* address at all, their coordinates being the zone centroid —
+an institution is not a home, and inventing a civic number for it would
+manufacture exactly the kind of false precision the regime exists to
+prevent. The uniformity of the draw is the load-bearing fact of the
+disclosure argument (§I.7): every address exists, and the assignment
+carries no information about anyone — which is also why the public
+regime can randomise the coordinate within the section at zero analytic
+cost (§IV.2).
 
-One boundary of that argument was found by adding a municipality
-outside the fleet, and is worth stating here rather than discovering.
-Address coverage is a property of each municipality's ANNCSU
-*georeferencing*, not of the pipeline: the fleet's ≥ 99.5 % reflects
-Emilia-Romagna's near-complete coordinate coverage. Mantova — added as
-a test case ([n] collaudo_acquisizione_v0.2) — has certified 17,009 accesses in ANNCSU but
-georeferenced 240 of them (1.4 %) (**[m]** collaudo, 25/8): the addresses exist as text, not as
-coordinates, and the spatial join legitimately finds nothing to
-attach. The consequences split exactly along the regime boundary: the
-public regime is unaffected, since its coordinates are drawn within
-the census section, which every individual has; what degrades is the
-textual address of the persona and narrative regimes, which falls back
-to the zone level. A municipality's ANNCSU completeness is therefore
-part of its declared source profile, on the same footing as its
-open-data tier (§I.3).
+The second case is rare in the fleet and dominant outside it, and was
+found by adding a municipality outside it. Address coverage is a
+property of each municipality's ANNCSU *georeferencing*: the fleet's
+≥ 99.5 % reflects Emilia-Romagna's near-complete coordinate coverage,
+while Mantova — added as a test case — has certified 17,009 accesses in
+ANNCSU and georeferenced 240 of them (1.4 %) **[m]**,
+`collaudo_acquisizione_v0.2`. The addresses exist as text, not as
+coordinates, and the spatial join legitimately finds nothing to attach.
+The consequences split exactly along the regime boundary: the public
+regime is unaffected, since its coordinates are drawn within the census
+section, which every individual has; what degrades is the textual
+address of the persona and narrative regimes, which falls back to the
+zone level. A municipality's ANNCSU completeness is therefore part of
+its declared source profile, on the same footing as its open-data tier
+(§I.3).
 
 
 ### I.5 Ring 4 — households
@@ -572,16 +582,29 @@ riferimento §16.
 
 `assign_nucleo.py` writes `uid, id_nucleo, ruolo` to a separate file — the
 population stays read-only — with individuals in collective households
-carried with an empty `id_nucleo` rather than dropped. The friction of
+carried with an empty `id_nucleo` rather than dropped. 
+These are the same individuals who carry no address in ring 3: the
+fictitious sections of §I.4 and the empty `id_nucleo` here identify one
+population, those living in collective households — barracks, student
+halls, care homes, reception centres — for which neither a civic number
+nor a family structure is meaningful. In Milano they are 9,992 people,
+0.73 % of the municipality; in Mantova, 34.
+
+
+The friction of
 meeting the size constraint is itself reported (which sections required
 truncating the open 6+ class, which betray a collective household)
 **[n]** riferimento §16.4, and the headline anomaly — 18–25 % of married
-individuals not in a married couple — decomposes into three quarters
-structurally excluded by their own role (married children living with
-their parents: 13.9 % of the married carry role F) and a residue of
-unmatched slots; the constraint set never required that people marry in
+individuals not in a married couple — decomposes into a majority structurally 
+excluded by their own role
+(married children living with their parents: 13.9 % of the married
+carry role F, 17.7 % a role that cannot pair at all) and a residue of
+unmatched R and P slots (8.8 % and 4.6 %); the constraint set never required that people marry in
 pairs, so ring 4 reveals an incoherence already present in the ring-1
-population rather than creating it (§III.3). Same-sex couples are absent
+population rather than creating it (§III.3). The rate falls where single-person households are more common, as the
+mechanism predicts: 17.7 % in Milano — the lowest measured, below the
+fleet's minimum — against 23.0 % in Mantova, whose age structure is
+older and whose households are larger. Same-sex couples are absent
 because they are absent in the donor data (0 of 4,525 partner pairs), an
 inherited limit declared with the civil-union statistics registered for
 the next repertoire **[n]** nota_nucleo, assign_nucleo header.
@@ -597,17 +620,22 @@ household-level address assignment is the stated prerequisite of any
 building-level work. And *the assembly still produces rare demographic
 oddities at the margins* — a handful of married fifteen-year-olds have
 been observed — legal in Italy only with court authorisation at sixteen,
-so at fifteen an artefact of the assembly's age conventions, not a
-demographic claim; rare enough to survive the current diagnostics,
-declared here, on the list for the next repertoire iteration. The
+— an artefact of the assembly's age conventions, not a demographic
+claim: the register table itself has no married cell below sixteen
+(§I.2, the sparsity that encodes legal ages), so the population's own
+source excludes what ring 4 produces; rare enough to survive the current diagnostics,
+declared here, on the list for the next repertoire iteration.
+ The
 17-to-24 widowed of §I.2 were an observed zero the constraints enforce;
 the married fifteen-year-old is the same kind of cell one ring further
 out, where no constraint yet reaches.
 
+
 ### I.6 Derived layers — no new information, declared as such
 
 Everything else an individual can carry — the detailed education title
-(«diploma di istituto tecnico industriale» rather than «diploma»), the
+(«diploma di istituto tecnico industriale» rather than «diploma»,
+«laurea magistrale in ingegneria civile» rather than «tertiary»), the
 sector × position pair, first name and surname, the rendered biography —
 is a deterministic function of the `uid` and the attributes already
 generated:
@@ -629,14 +657,28 @@ the value, because an imputed variable without them is an invention with
 the look of a datum: the title tree has no doctoral entries, so
 `post_laurea` renders as master's degrees only; the sector is not
 conditioned on the title — the census does not publish that cross at
-municipal level — so roughly one rendered card in five carries a
-sector × title pairing that no conditioning produced, plausible-looking
+municipal level — so roughly one employed card in five carries a sector × title pairing that no conditioning produced, plausible-looking
 but unearned; whoever shows a card must know it, and must not mistake
 that oddity for a defect of the demographic model, which is verified
 **[n]** biografia §3.3. The operational consequence: derived attributes
 are never stored in any file; they exist only in the regimes generated on
 demand (§I.7), each on a separate deterministic channel, so that fixing
 the title concordance does not reshuffle the names **[n]** piano §5.
+
+The onomastic layer is the clearest case, and in v1.0 the roughest: it
+exists to make records readable, not to represent Italian naming.
+Italian first names and surnames come from two municipal repertoires
+(Florence for surnames, Modena for first names) applied to every
+municipality — a Ravenna resident carries a Florentine surname —, and
+foreign names come from coarse per-area lists (Arabic, sub-Saharan,
+Eastern European) that flatten differences a demographer would care
+about and certainly contain errors. This is deliberate for a first
+release and declared as such: the names are placeholders that behave
+correctly where it matters — they are drawn from repertoires, so
+identical names recur across the population by construction, which is
+the property the disclosure argument rests on (§I.7) and the reason a
+name is never a key. Improving the repertoires is a v1.1 item; nothing
+downstream depends on them.
 
 ### I.7 Publication regimes and the disclosure argument
 
@@ -666,7 +708,7 @@ first two stand alone **[n]** fonti §10, piano §1–3:
 simulated from published aggregates, not anonymised from individual
 records. The two are legally distinct: anonymisation must demonstrate that
 a link to a person has been broken; simulation never had one. There is no
-re-identification risk for construction, because there is no one to
+re-identification risk by construction, because there is no one to
 re-identify.
 
 *Second, the one real thing in a record is the donated AVQ vector* — the
@@ -680,11 +722,16 @@ the data, not in a clause.
 arbitrary within the section, so removing it, or randomising the
 coordinate within the section, loses nothing analytic — which is exactly
 what the public regime does, and why the file is self-protecting: "the
-point is random within the section" admits no reply (§IV.2).
+point is random within the section" admits no reply (§IV.2). 
+The test municipalities gave this level an unintended stress test:
+Mantova's addresses are almost entirely non-georeferenced (§I.4), so
+its public bundle is built from section geometry alone — and is
+indistinguishable in kind from the others, because the public regime
+never used the civic number to begin with.
 
 What remains is a risk of *interpretation*, not of data: a record that
 reads «Maria Bruni, 45, laurea magistrale in medicina, dipendente nella
-sanità, Cittadella» reads like a person, although every component is
+sanità, Cittadella» reads like a person — although the surname comes from a Florentine repertoire (§I.6), which is precisely the point: it individuates no one, although every component is
 either aggregate-derived, donated-and-replicated, or generated-and-
 collident. The viewer answers with the banner on every card; the report
 answers with the table "what, in a record, is actually real" (reproduced
@@ -698,11 +745,17 @@ on-demand generation.
 1. **[v]** Figure I.0: one pipeline diagram, `fetch_comune` →
    `assign_nucleo`, rings coloured, assumptions numbered at their entry
    points, regimes as the final box (redraw from riferimento §5 chain).
-2. **[v]** The "what is real" table: decide its home (here in §I.7 or in
-   the front matter) — it is the single most quotable object of the
-   report.
-3. **[v]** §I.2: state the exact-vs-PCD split across the eleven
+2. **[v]** §I.2: state the exact-vs-PCD split across the eleven
    municipalities (which were solved exactly at the tag) from the fit
    logs.
-4. **[v]** §I.5: repertoire size (8,443) and the Parma-tail statement
+3. **[v]** §I.5: repertoire size (8,443) and the Parma-tail statement
    against `nota_repertorio_avq_v3` (this draft cites the memory of it).
+4. **[v]** §I.3: n_eff definition added — verify that the weights in the
+   computation are donor reuse counts in the synthetic population, not
+   the AVQ survey weights (`verifica_donor`), and align the gloss.
+5. **[v]** §I.6/§I.7: measure name collision (distinct names over
+   population, or frequency of the most common) on a generated sample —
+   the number would make the disclosure argument's third pillar
+   quantitative rather than structural.
+6. **[v]** §I.7: NMAX — confirm the cap value and whether it is a
+   constant or a parameter of `campione(dettaglio=...)`.

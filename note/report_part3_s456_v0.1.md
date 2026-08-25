@@ -68,6 +68,50 @@ Their measured costs, where the diagnostics put a number on them:
   coordinate within the section discards an assignment that was already
   uniform (§IV.2).
 
+**Zone-block resolutions, and what each one costs.** The zone blocks
+carry every variable at the resolution its section columns have, which
+is coarser than the population's in three places; each gap is an
+assumption, and each assumption has a cost that no diagnostic in this
+report measures — they are stated here so that a user of the data
+knows where not to look for structure.
+
+*Education, five levels against six.* The section tables distinguish
+none, primary, lower secondary, upper secondary and tertiary; the
+population splits tertiary into first-cycle and postgraduate. Zone
+shares are computed on the five-level aggregation and applied to the
+six-level municipal counts (`EDU6TO5` in `cs_build`), so within a zone
+a degree and a postgraduate title share the same spatial form. Cost:
+the geography of postgraduate education is that of tertiary education
+as a whole — a municipality where doctorates concentrate in one
+neighbourhood would not show it.
+
+ *Occupational condition, the employed side only.* The section tables
+count the employed; the population distinguishes four non-employed
+categories (seeking work, student, retired, other), which the section
+does not separate. Constraining them as one block would impose a single
+geography on students and pensioners, which is false and unmeasurable,
+so the zone block constrains the employed side alone — hence its mass
+of ≈ 0.47, the universe of the block and not a defect (§I.2, partial
+blocks). Cost, and it is the most consequential of the three: **the
+spatial distribution of unemployment is constrained by no observed
+datum**. Where the unemployed live follows from the maximum-entropy
+solution given everything else — their sex, age, education, citizenship
+and the zone shares of those — not from a measurement. Any use of these
+populations that reads unemployment geographically must know this.
+
+ *Citizenship, three macro-classes.* The zone block conditions on
+0–14 / 15–64 / 65+ rather than on the population's eight bins, so
+within a macro-class the zone shares of foreigners are constant: a
+foreign twenty-year-old and a foreign sixty-year-old are distributed
+across zones identically. Cost: the age profile of foreign residents
+does not vary by zone beyond the three-class structure — a
+neighbourhood of young foreign workers and one of settled foreign
+families differ in the model only through the macro-class composition.
+
+None of the three is a bug, and none can be removed without a source
+that does not exist: they are the resolution of the census section
+tables, inherited.
+
 **Resolution limits by construction.** Education has an effective age
 resolution of 4 classes, not 8: the census constraint uses Y9-24 / Y25-49 /
 Y50-64 / Y≥65, and within each class the distribution comes from an IPF

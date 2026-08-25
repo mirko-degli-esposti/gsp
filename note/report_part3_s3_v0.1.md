@@ -157,23 +157,21 @@ through exactly as the design predicts.
 #### Ring 3 — placement
 
 Two diagnostics were re-run at the tag on all eleven municipalities
-(`diag_quinq`, `diag_istruzione_eta`); the exact-allocation MAE is the one
-figure of this Part imported from the notes rather than re-measured, and is
-declared as such.
+(`diag_quinq`, `diag_istruzione_eta`); all three diagnostics are measured at the tag — two re-run, the allocation MAE read from the generation logs
 
-| municipality | five-year seam: mean ·res· per section | impossible age×title share | conditional rate |
-|---|---|---|---|
-| Bologna | 5.11 | 2.39 % | 30.8 % |
-| Brescia | 5.34 | 2.91 % | 33.6 % |
-| Parma | 5.74 | 2.73 % | 31.7 % |
-| Modena | 2.61 | 2.67 % | 30.3 % |
-| Reggio nell'Emilia | 3.32 | 2.96 % | 32.4 % |
-| Ravenna | 2.27 | 2.92 % | 34.3 % |
-| Rimini | 2.57 | 2.88 % | 32.9 % |
-| Ferrara | 2.41 | 2.43 % | 31.8 % |
-| Forlì | 4.08 | 3.39 % | 38.5 % |
-| Piacenza | 3.93 | 2.80 % | 33.1 % |
-| Castenaso | 3.21 | 3.04 % | 37.3 % |
+| municipality | allocation MAE per section | five-year seam: mean ·res· per section | impossible age×title share | conditional rate |
+|---|---|---|---|---|
+| Bologna | 1.36 | 5.11 | 2.39 % | 30.8 % |
+| Brescia | 1.57 | 5.34 | 2.91 % | 33.6 % |
+| Parma | 1.44 | 5.74 | 2.73 % | 31.7 % |
+| Modena | 0.74 | 2.61 | 2.67 % | 30.3 % |
+| Reggio nell'Emilia | 0.90 | 3.32 | 2.96 % | 32.4 % |
+| Ravenna | 0.74 | 2.27 | 2.92 % | 34.3 % |
+| Rimini | 0.89 | 2.57 | 2.88 % | 32.9 % |
+| Ferrara | 0.72 | 2.41 | 2.43 % | 31.8 % |
+| Forlì | 1.18 | 4.08 | 3.39 % | 38.5 % |
+| Piacenza | 1.07 | 3.93 | 2.80 % | 33.1 % |
+| Castenaso | 0.87 | 3.21 | 3.04 % | 37.3 % |
 
 Two of the columns move together, and the reason is geometric, not
 diagnostic: allocation MAE and seam residual are absolute counts per
@@ -187,12 +185,13 @@ of 175 is the same resolution limit as a seam of 2.4 on sections of
 74). The two percentage columns, being ratios, carry their own
 denominator and compare directly.
 
-*Section counts.* The allocation of individuals to census sections is exact
-(largest remainder) rather than multinomial; when it was measured, the mean
-absolute error per section was 0.74–1.58 individuals against ≈ 9.6 for the
-multinomial baseline **[n]** riferimento §5, *reported, not re-measured at
-the tag* — the allocation code is unchanged since (§III.2 regenerated it
-byte-identically), but the measurement script was not retained.
+*Section counts.* The allocation of individuals to census sections is
+exact (largest remainder) rather than multinomial; the mean absolute
+error per section, printed by the generation chain at every run and
+read here from the tag logs **[m]**, is 0.72–1.57 individuals across
+the eleven municipalities (against ≈ 9.6 for a multinomial baseline
+**[n]** riferimento §5) on sections averaging 66–175 residents, with
+section totals matching the census exactly everywhere.
 
 *The five-year seam.* Single-year ages are drawn within bins whose
 boundaries do not coincide with ISTAT's five-year classes; re-aggregating

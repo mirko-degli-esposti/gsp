@@ -8,6 +8,18 @@
 > v24 (this draft was written against v22 sections whose numbering may have
 > shifted).
 
+
+> **Rettifica (25/8).** §III.4 dichiarava la batteria a undici item su
+> dodici per l'assenza di `FORZE_ARMATE` (selezione per prefisso), e
+> §III.5.6 ne programmava il rientro. **Misurato sui file al tag** (la
+> rigenerazione del 19/8 è bit-identica, quindi i file sono lo stato
+> del tag): `FORZE_ARMATE` è presente in `_avq.csv` e `_full.csv` di
+> tutta la flotta — il fix era entrato prima del tag e le note non
+> erano state aggiornate. La batteria è a dodici item; §III.4 va
+> corretto e §III.5.6 ridotto a `donor_anno` e `cella_avq`. Il
+> collaudo l'ha scoperto perché Mantova mostrava una variabile che il
+> report dichiarava assente.
+
 ---
 
 ### III.4 Assumptions and resolution limits, in one place

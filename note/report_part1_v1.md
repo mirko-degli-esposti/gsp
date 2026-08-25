@@ -9,6 +9,108 @@
 > diagram) is listed at the end as **[v]** to draw.
 
 ---
+### I.0 The pipeline, as run
+
+Before principles, the machine. This section walks the chain exactly as
+it executes for one municipality, with the real commands; everything
+after it — the design principles of §I.1, the rings of §I.2–I.5 —
+attaches to a step the reader has already seen run. The walkthrough of
+every script against two municipalities added from scratch, with real
+outputs and the findings it produced, is in
+`note/collaudo_acquisizione_v0.2.md` (in Italian, as the project's
+working notes are); this section is its distillation.
+Terms are used here before they are defined — *ring* for the four
+stages that give every attribute its place (§I.2–I.5), *K6C/K9C* for
+the two sizes of the joint model, without and with the zone coordinate
+(§I.2) — because the reader who sees the chain run once will attach
+the definitions to steps already seen, not the other way around. On
+first reading, the command names carry enough: fetch, sections, zones,
+constraints, fit, then the three enrichment steps.
+
+**Three doors.** Every municipality receives data through three doors at
+three granularities, and confusing them is the most natural mistake to
+make (it was made, and documented, during testing):
+
+1. **SDMX → the municipality as a whole.** Eleven ISTAT tables —
+   register and permanent census — downloaded per municipality. Their
+   row counts measure *structure, not size*: Milano (1.4 M residents)
+   and Mantova (49 k) produce the same 819 rows of education × age,
+   because the grid is fixed and only the counts change. Download time
+   is dominated by the API's rate limit (~5 queries/minute, enforced
+   globally by `gsp.istat.sdmx`; violations lead to multi-day IP
+   blocks), not by bytes.
+2. **Territorial bases → census sections.** One workbook *per region*,
+   one row per section, 138 columns (population by five-year class and
+   sex, citizenship by three macro-classes, education at five levels,
+   employment, migratory background, household sizes PF3–PF8). This is
+   where a metropolis outweighs a town — Milano has 6,059 sections,
+   Mantova 574 — and where the sub-municipal articulation lives, as the
+   `COM_ASC*` columns.
+3. **Municipal open data → what only the municipality publishes.**
+   Citizenship by country at sub-municipal level, chiefly. This door is
+   optional by design: the *tier* system of §I.3 degrades gracefully to
+   tier 0 (country conditioned on sex and geography from the census
+   margin alone) when it is closed, and tier 0 was exercised end-to-end
+   on both test municipalities.
+
+**The chain, per municipality.** With the region's one-off files in
+place (door 2, plus the ANNCSU address extraction and the regional AVQ
+pool), a new municipality is one entry in the `COMUNI` registry of
+`gsp.common` — name, slug, region, and the declared zone level or the
+declared absence of one — followed by:
+
+```
+python scripts/acquisizione/fetch_comune.py 020030          # door 1: 11 tables
+python scripts/vincoli/build_sezioni.py     020030          # door 2: sections, ASC check
+python scripts/vincoli/build_zona_tables.py 015146          # only if articulated
+python scripts/vincoli/build_constraints.py 020030 --anno 2024
+python scripts/vincoli/cs_build.py  020030 --anno 2024 --livello K6C
+python scripts/fit/fit_cs.py        020030 --anno 2024 --livello K6C --pool 65000
+python scripts/attributi/assign_avq.py 020030 --anno 2024 --pop-file popolazione_K6C.csv
+python scripts/attributi/enrich.py     020030 --anno 2024 --pop-file popolazione_K6C_avq.csv
+python scripts/attributi/assign_nucleo.py 020030 --anno 2024
+```
+
+`rigenera.sh` runs this chain for the whole fleet — eleven
+municipalities, 44 output files, 33 minutes on one workstation,
+byte-identical across runs (§III.2).
+
+Two of these steps deserve a word here because their division of labour
+is not guessable from the names. `build_constraints` is the *municipal
+preparer*: it reads the eleven decoded tables, verifies year coverage
+per table before building anything (a missing mandatory table is a
+fatal error; a missing optional one is a declared skip), and writes the
+municipal constraint blocks `c1..c10` together with a manifest and a
+consistency report. `cs_build` is the *assembler*: it takes those
+blocks, adds the zone blocks where the municipality is articulated,
+applies the declared zeros and the ε floor, audits the shared margins,
+and emits the constraint set the solver reads. The two-stage relay
+means the municipal preparation is inspectable on its own — the
+`report.md` each run writes is where the register–census identity of
+§I.2 was first noticed.
+
+**What the test run established.** Mantova (K6C, no articulation) and
+Milano (K9C, nine municipi) were added from scratch as test cases —
+they are not part of the released bundle (§III.5). Mantova's constraint
+set has m = 263 constraints on |X| = 5,376 states and fits exactly in
+0.17 s at MRE 3.4·10⁻⁴; Milano's has m = 1,037 on |X| = 1,451,520 and
+fits exactly in 54 s at MRE 4.2·10⁻⁴ — the same error as the fleet,
+because for the solver what counts is the number of zones, not of
+residents: Milano, with nine municipi, is a *smaller* problem than
+Parma with thirteen quartieri. The chain needed nothing beyond the
+registry entry; the two limits it surfaced (a solver-repository
+dependency resolved by filesystem discovery, and address coverage
+depending on each municipality's ANNCSU georeferencing) are declared in
+the front matter and §I.4 respectively.
+
+
+
+
+
+
+
+
+
 
 ### I.1 Design principles
 
@@ -130,8 +232,11 @@ distinguishing them; *postgraduate* includes doctorates and
 specialisation degrees as a class, although the detailed-title rendering
 (§I.6) can only produce master's-level titles, its 2011 source having no
 doctoral entries — a declared limit of the derived layer, not of the
-class. ‹Three-year vocational qualifications: state their class
-explicitly here.›)
+class. Three- and four-year vocational qualifications are pooled by the census
+itself into the *upper secondary* class, together with IFTS — the
+source's aggregation, verified on the decoded table's own label
+(`USE_IF`: "diploma di istruzione secondaria di II grado o di qualifica
+professionale, compresi IFTS").
 
 
 
@@ -231,7 +336,12 @@ is wrong. They do not rank two competing measurements by trust. Since
 census, so the register table and the census tables publish the same
 demographic base: on sex × single year of age the two flows agree
 exactly — 2,821 cells across fourteen municipalities, zero discrepant,
-maximum absolute difference 0 **[m]** (§III.3). The few cells present
+maximum absolute difference 0 **[m]** (§III.3). The identity extends down one more layer: the census-section tables,
+aggregated over a municipality, reproduce the same base — at Brescia,
+the thirty-two five-year cells (sixteen classes × two sexes) summed
+from 6,000-odd sections match the register with zero discrepancy
+**[m]**. Register, municipal census and section tables are one dataset
+published at three granularities. The few cells present
 in one flow only are empty ones in the tail of the age distribution
 (a 99-year-old male in a town of 16,000), not disagreements.
 
@@ -248,6 +358,24 @@ quotas defined on wide age classes (9–24, 15–24) are applied to finer
 groups under an assumption of homogeneity within the class, and census
 values are rounded, with a per-table rounding sigma recorded in the
 constraint-set manifest.
+
+The conditional form is not a device for the census tables alone: it is
+*the* architectural rule, applied three times. Levels come from the
+spine; everything else contributes form. The census blocks contribute
+the socio-economic form (`share × count` per demographic group, above);
+the zone blocks contribute the geographic form — `P(zone | group) ×
+municipal counts`, with IPF closing the double margin — each at the
+resolution its section columns carry: five-year classes for age, three
+macro-classes for citizenship, five education levels against the
+population's six, and the employed side only for occupational condition
+(the geography of unemployment is constrained by no observed datum,
+§I.4); and the country of citizenship repeats the same pattern
+downstream, in ring 3's tier system (§I.3). One principle, three
+applications — which is also why the zone-margin audits printed by
+`cs_build` (`Z1 vs A: max|diff| = 0.000000`) are algebraic identities
+verifying the implementation, not facts about the sources; the fact
+about the sources is the register–census identity above.
+
 ### I.3 Ring 2 — donated attributes and the country of citizenship
 
 The population's attitudinal and health layer — twenty-three AVQ
@@ -340,6 +468,28 @@ declared assumption sits: (8) — section independent of education,
 condition and background, given zone, sex, age-3 and citizenship —
 concedes that three attributes are spread within the zone without
 section-level structure, because no census table conditions them there.
+Two clarifications, because the assumption is easy to over-read.
+Education *does* have zone-level geography, at a coarser resolution
+than the population carries: the section tables distinguish five levels
+(none, primary, lower secondary, upper secondary, tertiary), the
+population six — tertiary splits into first-cycle and postgraduate. The
+zone shares are therefore computed on the five-level aggregation and
+applied to the six-level municipal counts: within a zone, degree and
+postgraduate share the same spatial form. Assumption (8) concerns the
+*next* step down — from zone to section — where no table conditions
+education at all; it does not say that education is spatially flat.
+
+The same distinction applies to occupational condition, with a limit
+worth stating plainly: the section tables count the *employed*, not the
+four non-employed categories the population distinguishes (seeking
+work, student, retired, other), so the zone-level block constrains the
+employed side only — the spatial distribution of unemployment is not
+constrained by any observed datum, and follows from the maximum-entropy
+solution given everything else.
+
+
+
+
 The concession is not free, and it is measured twice over. The
 compositional analysis that motivated this ring found 80–98 % of the
 compositional signal living *below* the zone — which is why placement

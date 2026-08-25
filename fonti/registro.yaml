@@ -705,7 +705,7 @@ fonti:
       (la classe meno restrittiva) ma NON dichiara una licenza.
       Finche' non e' chiarita sulla pagina di rilascio il grezzo
       resta `locale`: verificabile qui, non ridistribuito.
-    archiviazione: git
+    archiviazione: locale
     percorso: data/avq/esplorazione/avq_vars_2024.csv
     sha256: e4776e74d286a0ab262c8ab0bfe4902bca95b8d7b5386a740069cb0fc759decc
     universo: >-

@@ -82,6 +82,20 @@ aggregate error is at its floor.
 The same run re-verified the 26 impossible-combination exclusions at the
 population level: zero occurrences in 1,814,317 individuals (§III.2).
 
+*Register–census agreement on the demographic base.* Measured twice,
+by two independent routes. From the decoded source tables, before any
+processing: sex × single year of age, register at 1 January 2024
+against census at 31 December 2023, 2,821 cells over fourteen
+municipalities (the eleven released plus Mantova, Milano and one test
+municipality), **zero discrepant cells, maximum absolute difference 0**;
+cells present in one source only (5 across two small municipalities)
+are empty in the tail of the age distribution. From inside the
+pipeline: the raccordo section of every `constraints_*/report.md`
+reports MAE 0.0 per cell and total discrepancy +0. The agreement is a
+property of the sources — the official resident population being
+census-derived since 2018 — not an artefact of the pipeline, which
+performs no reconciliation on this margin.
+
 #### Ring 2 — donors, and the honest width of every AVQ band
 
 `verifica_donor.py` reconstructs the donor identity from the 21-tuple of

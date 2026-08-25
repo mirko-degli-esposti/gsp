@@ -64,6 +64,11 @@ impronta* — the hash is known, the file is not present — and this is the
 normal state of a clone, not an error. A state that always fails is a state
 nobody looks at; the distinction between *missing* and *different* is what
 keeps the check alive **[n]** `fonti_e_pacchetto_v8` §1.
+A fresh clone is not merely a degraded state but a diagnostic in its
+own right: it verifies the *declarations*, not the files, and during
+testing it caught a source whose `archiviazione` field said `git`
+while its own licence note declared the opposite — an inconsistency
+invisible on a machine where the file happens to be present.
 
 *Artefacts do not contain their generation time.* A derived file that
 embedded a timestamp would hash differently at every run even when its

@@ -224,32 +224,30 @@ classical problem survives only as the sampling floor on small cells
 Two margins have distinct roles, because they describe different
 instants: the population-register table (1 January of year N) fixes the
 municipal totals *exactly* — the hard margin — while the census tables
-(31 December of year N−1) enter as soft constraints. Their mutual
-consistency is not assumed but *manufactured upstream*: `cs_build`
-rescales each table to its declared universe and to the register total,
-and cross-audits every shared margin between blocks, printing the
-maximal discrepancy of each — exactly zero on the municipal margins,
-10⁻¹⁰–10⁻¹¹ on the zonal sums, machine precision rather than source
-conflict **[m]**. What reaches the solver is therefore a consistent
-target vector, and the fit's residual is purely numerical: exact-solver
-convergence at MRE = 4.9·10⁻⁴ on Parma **[m]**, of the same order across
-the fleet and independent of the support size **[n]** riferimento §5.
-Two declared floors complete the picture: observed zeros enter at
-ε = 10⁻⁸ rather than exactly zero — expected realisations over the whole
-fleet ~0.02 individuals, observed none (§III.3) — and cells whose target
-falls below min-α = 2·10⁻⁴ are dropped from the constraint vector
-altogether, that is, left free rather than constrained to a value
-smaller than the sampling noise could ever verify. The zone dimension
-enters through tables built at the municipality's declared articulation
-— statistical zones, quartieri, circoscrizioni, aree — a property of the
-municipality, not of the pipeline (§III.2 table); the support is the
-product of the class counts of the table above, 2·8·4·2·6·7·6·5 =
-161,280 states per zone, from ~650,000 at four zones to 5.3 million at
-Brescia's thirty-three. The fit error above is the distance of the
-*distribution* from its targets; the error measured on a sampled
-*population* adds the sampling noise, is dominated by it on small cells,
-and is the object of §III.3a, where it is read against its floor.
+(31 December of year N−1) enter as soft constraints. 
+A word on what *hard* and *soft* mean here, because the natural reading
+is wrong. They do not rank two competing measurements by trust. Since
+2018 the official resident population is produced *by* the permanent
+census, so the register table and the census tables publish the same
+demographic base: on sex × single year of age the two flows agree
+exactly — 2,821 cells across fourteen municipalities, zero discrepant,
+maximum absolute difference 0 **[m]** (§III.3). The few cells present
+in one flow only are empty ones in the tail of the age distribution
+(a 99-year-old male in a town of 16,000), not disagreements.
 
+What distinguishes the two families is therefore not accuracy but
+*extension*: the register table extends the common base along marital
+status — the one axis no census table carries — while the census tables
+extend it along citizenship, education, occupational condition and
+migratory background. The register block enters as exact counts; the
+census blocks enter as conditional distributions applied to those
+counts (`share × count`, per group), which is why the demographic
+margins remain exact by construction rather than by reconciliation.
+Two costs come with the conditional form and are declared: census
+quotas defined on wide age classes (9–24, 15–24) are applied to finer
+groups under an assumption of homogeneity within the class, and census
+values are rounded, with a per-table rounding sigma recorded in the
+constraint-set manifest.
 ### I.3 Ring 2 — donated attributes and the country of citizenship
 
 The population's attitudinal and health layer — twenty-three AVQ

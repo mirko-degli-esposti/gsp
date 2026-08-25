@@ -145,6 +145,24 @@ with the reason and, where it exists, the prepared change.
 9. **Household-level address** (the residue of assumption 11) as the
    prerequisite of any building-level assignment **[n]** nota_nucleo §9.
 
+### III.5.y What the next regeneration cycle carries
+
+Regeneration is expensive in the only currency that matters here — it
+invalidates `donor_id` and every measured number in this report — so
+the queued changes travel together. At the time of writing the cycle
+carries: the two ring-4 patches above (a, b); the section-level
+migratory-background refinement through the census EM columns
+(§III.5.3); `donor_anno` and `cella_avq` written per individual
+(§III.5.7); the within-bin age lean and the age-at-threshold draw for
+education (§III.5.2); seed policy aligned to the municipality-derived
+convention everywhere (§III.1); and the two test municipalities
+(Mantova K6C, Milano K9C) promoted from test cases to fleet, taking the
+released bundle from eleven to thirteen. The α = 0 exclusions for
+impossible age × education and age × condition combinations are
+**already in the tagged constraint sets** — twenty-six imposed cells,
+verified at the tag (§I.2) — and are listed here only to record that
+they were checked, not deferred.
+
 ### III.6 Register of retractions and falsified predictions
 
 Nothing in this project is silently corrected: a withdrawn claim keeps its

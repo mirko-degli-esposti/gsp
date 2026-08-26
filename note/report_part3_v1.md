@@ -706,7 +706,21 @@ finding. Dates are those of the annotations.
     comparing against known-answer configurations) **[n]** design note
     §12–13, *working rule* of §IV.1. **[v]** compress or itemise from the
     note when assembling.
-13.
+13. **Falsified: the per-section MAE is mostly propagated sampling noise.**
+   Conjectured while examining the zone margins of Milano: since ring 1
+   samples N individuals rather than fixing the zone counts, each zone
+   carries a sampling error (measured: 258 individuals on average, against
+   ≈ 293 expected for a multinomial draw **[m]**), and distributing it
+   over the zone's sections would give ≈ 1 individual per section — the
+   order of the observed MAE. The decomposition refutes it: on Milano the
+   propagated component accounts for 0.38 of the 1.28 MAE, the allocation
+   residue for 1.24, with a correlation of 0.37 between the two **[m]**.
+   The reason is structural: the zone error is one number spread
+   coherently over hundreds of sections, while the largest-remainder
+   rounding acts within every demographic cell separately, and dozens of
+   incoherent ±1 accumulate faster in absolute value. The geometric note
+   under Table III.3 stands.
+
 
 The register's lesson is the project's method in miniature: every
 withdrawal above was produced by a comparison against a null or a

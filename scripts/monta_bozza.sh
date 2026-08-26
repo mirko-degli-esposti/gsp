@@ -5,7 +5,7 @@
 #   bash scripts/monta_bozza.sh                # -> /tmp/animarium_report_bozza_<data>.pdf
 #   bash scripts/monta_bozza.sh out/mio.pdf    # destinazione a scelta
 #
-# Richiede: pandoc, wkhtmltopdf (entrambi in Ubuntu). Non usa LaTeX.
+# Richiede: pandoc, wkhtmltopdf (entrambi in Ubuntu). 
 set -eu
 GSP="${GSP_ROOT:-$HOME/progetti/gsp}"
 N="$GSP/note"

@@ -49,7 +49,7 @@ block of the constraint set contains the filter's attributes together with
 the displayed one — 67 of 333 attribute pairs at K9C, 26 of 96 at K6C, a
 property of the constraint template, not of the municipality **[n]** §3.4 —
 and where it does not exist the panel says so instead of hiding it. The
-institutional-trust view draws, for each of the fourteen items, the mean and
+institutional-trust view draws, for each of the fifteen items, the mean and
 two overlaid confidence bands: a thin one computed on `n` and a thick one on
 Kish's effective sample size for that variable's universe. The distance
 between the two bands is the honest cost of hot-deck donation made visible —

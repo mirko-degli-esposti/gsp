@@ -412,9 +412,9 @@ not n but Kish's
 effective size on the variable's own universe. If each donor i is
 reused w_i times in the population, the synthetic sample of Σw_i
 individuals is worth
-n_eff = (Σ w_i)² / Σ w_i² independent respondents — the count the
-weights would give if they were all equal, and less than the number of
-distinct donors whenever they are not. Two limits make it readable:
+n_eff = (Σ w_i)² / Σ w_i² independent respondents —the count the weights would give if they were all equal, and less than
+the number of distinct donors whenever they are not — which is why
+counting distinct donors, the obvious shortcut, is not enough. Two limits make it readable:
 with every donor used the same number of times, n_eff is exactly the
 number of donors; with one donor carrying most of the population,
 n_eff approaches one. Computed per variable, on the universe that
@@ -429,6 +429,15 @@ educational conditioning would matter **[n]** riferimento §13.2. The
 donor's identity survives as an equivalence class — the donated tuple
 *is* the signature — which is what the viewer exposes on every
 individual card and what §III.3b counts.
+
+Three counts appear in this report and they are not in conflict:
+twenty-three variables are donated and all twenty-three form the donor
+signature; the viewer's institutional-trust panel displays the fifteen
+of them that share a 0–10 trust scale (the two health-service
+judgements, the armed forces, eleven institutions of the PUNTIFI
+battery and the local-health-authority rating), leaving out health,
+chronic conditions, smoking, mental health, environment, BMI and
+weight — donated all the same, and present in the record.
 
 The second half of ring 2 is the country of citizenship. The census
 gives the municipal margin — country × sex — and, per census section,

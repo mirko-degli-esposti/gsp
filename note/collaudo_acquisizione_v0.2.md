@@ -526,6 +526,117 @@ patch*: 24.275 nuclei (era 24.298), non collocati 2,21 % (era 2,16 %,
 ora includono la convivenza), il resto invariato al decimale — il
 salto ha cambiato solo ciò che doveva.
 
+## Misure d'occasione (26/8): il margine di zona nel campione
+
+Nate da una domanda posta rileggendo la Part I: *sommando le zone di un
+quartiere ritrovo esattamente i suoi abitanti sintetici?* No — e vale la
+pena avere il numero, perché è il tipo di scarto che un consumatore dei
+dati incontra senza spiegazione.
+
+### 1. Quanto il campione si scosta dal censo, per zona
+
+L'anello 1 vincola la *distribuzione* di zona e poi estrae N individui:
+ogni zona porta quindi l'errore di un'estrazione multinomiale. Solo il
+totale comunale è esatto per costruzione. Milano, K9C, nove municipi:
+
+| zona | censo | sintetico | diff | rel% |
+|---|---|---|---|---|
+| 15146001 | 107.629 | 106.989 | −640 | −0,595 |
+| 15146002 | 151.112 | 151.460 | +348 | +0,230 |
+| 15146003 | 142.501 | 142.472 | −29 | −0,020 |
+| 15146004 | 159.311 | 159.591 | +280 | +0,176 |
+| 15146005 | 123.239 | 123.772 | +533 | +0,432 |
+| 15146006 | 150.078 | 149.934 | −144 | −0,096 |
+| 15146007 | 169.031 | 168.941 | −90 | −0,053 |
+| 15146008 | 188.850 | 188.838 | −12 | −0,006 |
+| 15146009 | 179.748 | 179.502 | −246 | −0,137 |
+
+**Scarto assoluto medio 258 individui**, contro ≈ 293 attesi per
+un'estrazione di questa taglia (per una normale, E|X| = 0,8 σ con
+σ = √(N p (1−p)), p ≈ 0,11, N = 1.371.499). Segni alternati, nessuna
+deriva sistematica: è rumore di campionamento, non errore di modello.
+
+```bash
+python3 - <<'EOF'
+import pandas as pd
+com, liv = "015146", "K9C"
+pop = pd.read_csv(f"data/comuni/{com}/constraints_2024/popolazione_{liv}.csv",
+                  usecols=["zona"], dtype=str)
+sin = pop.zona.value_counts().sort_index()
+z = pd.read_csv(f"data/comuni/{com}/zona_2023/z1_zona_sesso_eta5.csv",
+                dtype={"zona": str})
+cen = z.groupby("zona")["count"].sum().sort_index()
+d = (sin - cen).dropna()
+print(pd.DataFrame({"censo": cen, "sintetico": sin, "diff": d,
+                    "rel%": (100*d/cen).round(3)}).to_string())
+print("\nscarto assoluto medio:", round(d.abs().mean(), 1),
+      "| atteso ~sqrt(N_zona):", round((cen**0.5).mean(), 1))
+EOF
+```
+
+(nota: `popolazione_<LIV>.csv` è l'uscita del *fit*, prima di `enrich` —
+così la misura isola il campionamento puro.)
+
+### 2. L'ipotesi che ne è seguita, e la sua falsificazione
+
+**Congettura**: se ogni zona sbaglia di ~250–650 individui e `enrich`
+li distribuisce nelle sue sezioni proporzionalmente ai conteggi
+censuari, l'errore si spalma a ~1 individuo per sezione — cioè
+*l'ordine del MAE osservato* (1,28 su Milano). In tal caso il MAE per
+sezione non misurerebbe la qualità dell'allocazione ma il rumore a
+monte, e la nota geometrica sotto la tabella III.3 andrebbe riscritta.
+
+**Falsificata dalla decomposizione**, su Milano:
+
+| componente | MAE |
+|---|---|
+| totale osservato | 1,280 |
+| propagato dalla zona (errore di zona × quota della sezione) | 0,383 |
+| residuo netto (allocazione) | 1,236 |
+| corr(osservato, propagato) | 0,37 |
+
+**La ragione è strutturale**: l'errore di zona è *un numero solo*,
+spalmato in modo coerente su centinaia di sezioni; l'arrotondamento
+largest-remainder agisce invece dentro *ogni cella demografica*
+separatamente (sesso × età-3 × cittadinanza), e decine di ±1
+incoerenti si accumulano più in fretta in valore assoluto. La nota
+geometrica di III.3 resta valida; la voce entra in III.6 come
+previsione falsificata.
+
+```bash
+python3 - <<'EOF'
+import pandas as pd
+com = "015146"
+pop = pd.read_csv(f"data/comuni/{com}/constraints_2024/popolazione_K9C_avq_full.csv",
+                  usecols=["sezione", "zona"], dtype=str)
+sin = pop.groupby("sezione").size().rename("sint")
+sez = pd.read_csv("data/submun/milano_sezioni_2023.csv", dtype={"SEZ21_ID": str})
+cen = sez.set_index("SEZ21_ID")["P1"].rename("cen")
+zon = sez.set_index("SEZ21_ID")["COM_ASC1"].astype(str).rename("zona")
+t = pd.concat([cen, sin, zon], axis=1).fillna(0)
+t["res"] = t.sint - t.cen
+gz = t.groupby("zona")
+t["err_zona"] = t.zona.map(gz.res.sum())
+t["quota"] = t.cen / t.zona.map(gz.cen.sum())
+t["atteso_propagato"] = t.err_zona * t.quota
+t["residuo_netto"] = t.res - t.atteso_propagato
+print("MAE totale        :", round(t.res.abs().mean(), 3))
+print("MAE propagato     :", round(t.atteso_propagato.abs().mean(), 3))
+print("MAE netto (alloc.):", round(t.residuo_netto.abs().mean(), 3))
+print("corr(res, propagato):", round(t.res.corr(t.atteso_propagato), 3))
+EOF
+```
+
+### 3. Coda
+
+Entrambi gli script sono usa-e-getta ma meritano di diventare una
+diagnostica sola (`scripts/diagnostica/verifica_zona_campione.py`,
+argomenti comune e livello): chiuderebbe anche l'open item di Part III
+sulle diagnostiche riusabili. Da fare quando serve su un secondo
+comune — Bologna con le sue diciotto zone è il controllo naturale, e
+direbbe se il rapporto fra le due componenti dipende dal numero di
+zone.
+
 ## Stato della procedura §9 («aggiungere un comune»), come misurata
 
 Per un comune di una **regione già in casa** (il caso

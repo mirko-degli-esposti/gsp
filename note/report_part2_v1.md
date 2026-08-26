@@ -350,14 +350,6 @@ Normanni, which has no sub-municipal articulation and is not in production.
    the labels inline (`*_label` columns), so a reader who has them does
    not need the cache — only someone rebuilding from the raw SDMX
    responses does.
-2. **[v]** Assemble Appendix A from generated material — the schema of
-   the released Parquet, the source table (II.2a), the constraint-set
-   blocks — and check §II.4's column names and ° marks against it.
-3. Confirm counts quoted from `fonti_e_pacchetto_v8` (sections, residents,
-   hapax share) against the current normaliser output — they date from the
-   37-source version of the note.
 
-Everything else listed as open in the drafts of this part was closed in
-the certification round of 25 August: licences resolved portal by
-portal, the Parma extract's legal condition settled, §II.4 written, and
-the `usato_da` chain corrected **[n]** `collaudo_acquisizione_v0.2`.
+
+

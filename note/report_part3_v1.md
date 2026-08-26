@@ -781,34 +781,6 @@ finding. Dates are those of the annotations.
    under Table III.3 stands.
 
 
-The register's lesson is the project's method in miniature: every
-withdrawal above was produced by a comparison against a null or a
-known-answer configuration, never by re-reading the code — and the two
-falsified predictions were falsifiable only because they were registered
-before the measure ran.
 
 ---
 
-### Open items for Part III
-
-
-1. **[v]** The definition of the MRE floor (§III.5, point 8): confirm
-   which one `fit_cs.py` computes, and align the caption of Table
-   III.3a to it.
-
-Three are settled and deferred, with the reason:
-
-3. **Cross-machine regeneration** (CINECA Leonardo, or any second
-   architecture): one municipality through the full chain, compared
-   byte for byte with the tag archive. Deferred to v1.1, where it
-   belongs — with the solver packaged and pinned (front matter), the
-   environment is reproducible enough for a negative result to mean
-   something.
-4. **The `generato` timestamp** in `manifest.json` and
-   `riferimenti.json`: for v1.0 the binding hashes the Parquet files
-   only, which are timestamp-free (decided 19 August); whether the
-   field leaves the JSON files in v1.1 is a question about the viewer,
-   not about the populations.
-5. **Two ring-4 patches committed after the tag** are declared in
-   §III.5 and travel with the next regeneration cycle; the fleet is not
-   regenerated for them alone.

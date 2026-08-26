@@ -189,21 +189,9 @@ from `gsp.common` (overridable via `GSP_ROOT`); the *runtime* has no
 dependency at all — the published site is static, and a reader with only the
 Zenodo bundle can serve the viewer without installing GSP (the two entry
 points of the repository README). If GSP were ever unavailable, the site
-would keep working and the build would stop being reproducible from outside;
-this is said rather than solved **[n]** §7.1.
+would keep working and the build would stop being reproducible from outside **[n]** §7.1.
 
 ---
-
-### Open items for Part IV
-
-1. **[v]** Re-measure the §7.2 cost figures (init, first query, lazy
-   loads) on the rebuilt eleven-city bundle — the quoted numbers date
-   from the four-city era of the design note; expected unchanged per
-   municipality, but the atlas adds an index fetch.
-2. **[v]** Screenshots for the report: three figures (marginals with
-   three markers; trust with two bands; map in quota mode) taken from
-   the deployed site at a fixed URL each, so that each caption can
-   carry the very URL it shows.
 
 Deferred to v1.1: the PMTiles base layer, whose recipe is written — one
 file per region, served from the same origin as the bundle, registered

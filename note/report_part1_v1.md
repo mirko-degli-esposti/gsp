@@ -769,13 +769,4 @@ on-demand generation.
 
 ---
 
-### Open items for Part I
 
-1. **[v]** Figure I.0, the pipeline diagram. Drafted as a Graphviz
-   source (`note/fig_I0_pipeline.dot`): three doors entering at their
-   points, the nine commands of §I.0, rings coloured, regimes as the
-   final box. Three things to fix before it goes in: the aspect ratio
-   is far too wide for a page (break into two rows, or two figures);
-   the ring labels float instead of sitting over their steps (use
-   clusters); and the tier arrow points at `build_zona_tables` when it
-   belongs to `enrich`.

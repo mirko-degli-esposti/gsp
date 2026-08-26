@@ -143,11 +143,11 @@ on NumPy's generator implementation, which is stable across versions by
 policy but not guaranteed. A reader who regenerates on other hardware should
 expect identical populations in most cases and, where they differ, should
 find differences confined to ring 1 and invisible at the level of §III.3's
-quality metrics. **[v]** this is the experiment to run on CINECA Leonardo
-before the report is frozen: one municipality (Parma) regenerated there,
-compared with the archive. If it is byte-identical the sentence becomes a
-measurement; if not, the size of the discrepancy is itself the number to
-report.
+quality metrics. A cross-machine regeneration — one municipality rebuilt on a different
+architecture and compared with the archive — would turn this paragraph
+from a caveat into a measurement: byte-identity would settle it, and a
+discrepancy would itself be the number to report. It is planned and not
+part of this release.
 
 Finally, the method used here — archive, regenerate, compare byte for byte,
 read the diff only where it is non-empty — is the same one that governed
@@ -176,7 +176,42 @@ one ring at a time, and with each metric normalised against its null
 (§I.1): raw error against the sampling floor, effective sample size on the
 variable's own universe, household counts against the census partition.
 
-#### Ring 1 — constraints, against the sampling floor
+#### Ring 1 — the fit
+
+Before asking how good the sample is, how good is the fit. At the
+release tag every municipality was solved *exactly*; none required PCD,
+which the solver provides for state spaces this release does not
+contain (Brescia at K10C, or the 88-NIL fit of Milano registered as an
+experiment, §III.5).
+
+| municipality | zones | \|X\| | fit MRE | time |
+|---|---|---|---|---|
+| Bologna | 18 | 2,903,040 | 4.52·10⁻⁴ | 79 s |
+| Brescia | 33 | 5,322,240 | 4.59·10⁻⁴ | 182 s |
+| Parma | 13 | 2,096,640 | 4.86·10⁻⁴ | 85 s |
+| Modena | 4 | 645,120 | 3.95·10⁻⁴ | 16 s |
+| Reggio nell'Emilia | 6 | 967,680 | 2.43·10⁻⁴ | 23 s |
+| Ravenna | 10 | 1,612,800 | 5.00·10⁻⁴ | 60 s |
+| Rimini | 6 | 967,680 | 4.65·10⁻⁴ | 29 s |
+| Ferrara | — (K6C) | 5,376 | 2.96·10⁻⁴ | 0.18 s |
+| Forlì | 12 | 1,935,360 | 5.00·10⁻⁴ | 105 s |
+| Piacenza | 4 | 645,120 | 3.25·10⁻⁴ | 20 s |
+| Castenaso | — (K6C) | 5,376 | 3.40·10⁻⁴ | 0.17 s |
+
+**[m]** from the generation logs at the tag. Time follows
+|X| = 161,280 × zones and not population — Brescia, 198k residents in
+33 quartieri, costs 182 s against Bologna's 79 s for 390k residents in
+18 zones — while the fit error follows neither, staying within
+2.4–5.0·10⁻⁴ across two orders of magnitude of population: a property
+of the stopping criterion rather than of the problem's difficulty.
+
+#### Ring 1 — the sample, against the sampling floor
+
+The number above is the distance between the fitted distribution and
+its constraints; what follows is a different quantity with a similar
+name — the distance between the *drawn population* and the same
+constraints, which is three orders of magnitude larger because it is
+dominated by sampling, not by optimisation.
 
 `verifica_vincoli.py` checks every cell of the constraint set against the
 generated population, expressed as a z-score against the sampling floor
@@ -200,7 +235,7 @@ Two anchor municipalities, the extremes of the state space:
 
 The full table:
 
-| municipality | cells (α>0) | MRE obs. | MRE floor | mean |z| | sd(z) | % |z|>3 | |z|max (exp. of cell) | hard zeros |
+| municipality | cells (α>0) | sample MRE | sampling floor | mean |z| | sd(z) | % |z|>3 | |z|max (exp. of cell) | hard zeros |
 |---|---|---|---|---|---|---|---|---|
 | Bologna | 1,751 | 7.05 % | 5.29 % | 0.84 | 1.391 | 0.63 % | 36.0 (1.0) | none violated |
 | Brescia | 2,949 | 7.82 % | 9.52 % | 0.80 | 1.012 | 0.47 % | 7.1 (2.0) | none violated |
@@ -210,7 +245,7 @@ The full table:
 | Ravenna | 1,108 | 7.99 % | 7.50 % | 0.85 | 1.164 | 0.63 % | 17.0 (1.0) | none violated |
 | Rimini | 789 | 4.55 % | 5.41 % | 0.82 | 1.014 | 0.51 % | 3.3 (13.0) | none violated |
 | Ferrara | 261 | 9.33 % | 7.95 % | 0.80 | 1.098 | 1.15 % | 7.1 (2.0) | none violated |
-| Forlì | 1,989 | 11.04 % | 3,189 % | 0.85 | 1.092 | 0.80 % | 10.0 (1.0) | none violated |
+| Forlì | 1,989 | 11.04 % | 3.189 % | 0.85 | 1.092 | 0.80 % | 10.0 (1.0) | none violated |
 | Piacenza | 629 | 5.48 % | 6.70 % | 0.91 | 1.118 | 0.48 % | 4.1 (165.7) | none violated |
 | Castenaso | 257 | 15.81 % | 23.68 % | 0.80 | 1.000 | 0.00 % | 2.9 (169.9) | none violated |
 
@@ -226,6 +261,17 @@ individual, and its floor evaluates to 3,189 % — three hundred times the
 observed error. On such a partition the relative scale carries no content at
 all and only the z-scores speak; the observed |z| distribution of Forlì
 (mean 0.85, sd 1.09) is unremarkable.
+
+*Zone margins in the sample.* Ring 1 constrains the zone *distribution*
+and then draws N individuals from it, so each zone's count carries the
+sampling error of a multinomial draw rather than matching the census
+exactly. On Milano the mean absolute deviation across the nine municipi
+is 258 individuals against ≈ 293 expected for a draw of this size
+**[m]**, i.e. 0.006–0.60 % of each zone; only the municipal total is
+exact by construction. A consumer summing a quarter's zones will
+therefore not recover its census population to the unit, and the
+discrepancy is sampling noise, not model error.
+
 
 The z-scores are not independent draws — the sampler is a Gibbs chain, and
 sd(z) above 1 measures the variance inflation due to its autocorrelation.
@@ -732,10 +778,11 @@ before the measure ran.
 
 ### Open items for Part III
 
-1. **[v]** Cross-machine regeneration of Parma on Leonardo (or any second
-   machine); the result goes into §III.2 either way — byte-identity turns
-   the sentence into a measurement, a discrepancy becomes the number to
-   report.
+1. Cross-machine regeneration (CINECA Leonardo, or any second
+   architecture): one municipality through the full chain, compared
+   byte for byte with the tag archive. Deferred to v1.1, where it
+   belongs: with the solver packaged and pinned (front matter), the
+   environment is reproducible enough for the result to mean something.
 2. **[v]** Re-number section references against riferimento **v24** (this
    draft cites v22 numbering).
 3. **[v]** Dates for retractions 1, 2, 12 from the design note.

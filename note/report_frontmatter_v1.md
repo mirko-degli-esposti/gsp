@@ -1,10 +1,5 @@
 # Front matter — draft v1 (25 August 2026)
 
-> The front matter is what a reader sees before deciding whether to read;
-> it carries the abstract, the binding table, the "what is real" table
-> (first of its two appearances, §I.7 and here), citation forms, licences,
-> and the scope statement. **[v]** marks values known only at release
-> (arXiv id, DOIs, final tag).
 
 ---
 
@@ -30,7 +25,7 @@ that remain are mine.
 ## Abstract
 
 Synthetic populations of eleven Italian municipalities — 1,814,317
-individuals in 888,000 households — generated from published aggregates
+individuals in 887,937 households — generated from published aggregates
 alone: ISTAT census and register tables, census-section counts, the
 national civic-address register, public-use survey microdata, and six
 municipal open-data portals, every source certified in a registry with

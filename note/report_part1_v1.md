@@ -377,6 +377,20 @@ applications — which is also why the zone-margin audits printed by
 verifying the implementation, not facts about the sources; the fact
 about the sources is the register–census identity above.
 
+At the release tag every municipality was solved *exactly*: the eleven
+fits converge with MRE between 2.4·10⁻⁴ and 5.0·10⁻⁴, in 0.17 s to
+182 s **[m]** (generation logs at the tag). No municipality in the
+fleet required PCD, which the solver provides for state spaces this
+release does not contain — Brescia at K10C, or the 88-NIL fit of
+Milano registered as an experiment (§III.5). Two regularities are
+worth noting, because they are counter-intuitive: fitting time follows
+|X| = 161,280 × zones and not population — Brescia, 198k residents in
+33 quartieri, takes 182 s against Bologna's 79 s for 390k residents in
+18 zones — and the fit error does not follow either, staying inside a
+narrow band across two orders of magnitude of population, which makes
+it a property of the stopping criterion rather than of the problem's
+difficulty.
+
 ### I.3 Ring 2 — donated attributes and the country of citizenship
 
 The population's attitudinal and health layer — twenty-three AVQ
@@ -586,8 +600,8 @@ and is therefore constrained by the census size distribution PF3–PF8 per
 section (a hard margin: household totals match the census to the unit,
 §III.3); internal **composition** has weak structure below the quartiere
 and comes from a repertoire of configurations built on the AVQ microdata
-(8,443 nuclei; the size-6+ tail from the Parma microdata, a mixed source,
-declared), conditioned demographically **[n]** nota_nucleo §6,
+(8,443 nuclei, 19,003 components **[m]**; the size-6+ tail from the
+Parma microdata, a mixed source, declared), conditioned demographically **[n]** nota_nucleo §6,
 riferimento §16.
 
 `assign_nucleo.py` writes `uid, id_nucleo, ruolo` to a separate file — the
@@ -599,19 +613,20 @@ population, those living in collective households — barracks, student
 halls, care homes, reception centres — for which neither a civic number
 nor a family structure is meaningful. In Milano they are 9,992 people,
 0.73 % of the municipality; in Mantova, 34.
-
-
 The friction of
 meeting the size constraint is itself reported (which sections required
 truncating the open 6+ class, which betray a collective household)
-**[n]** riferimento §16.4, and the headline anomaly — 18–25 % of married
-individuals not in a married couple — decomposes into a majority structurally 
-excluded by their own role
-(married children living with their parents: 13.9 % of the married
-carry role F, 17.7 % a role that cannot pair at all) and a residue of
-unmatched R and P slots (8.8 % and 4.6 %); the constraint set never required that people marry in
-pairs, so ring 4 reveals an incoherence already present in the ring-1
-population rather than creating it (§III.3). The rate falls where single-person households are more common, as the
+**[n]** riferimento §16.4, and the headline anomaly — 18–25 % of married individuals not in a
+married couple — decomposes cleanly. Three quarters of it is structural:
+17.6 % of the married carry a role the repertoire never pairs (13.9 %
+are children living with their parents, the rest heads of complex or
+non-family arrangements), and these are incoherent by construction. The
+pairing itself is accurate: of those in a pairable role, 4.6 % of
+partners and 8.8 % of household heads have a spouse who is not married
+— together six points of the 23.6 % measured on Modena **[m]**. The
+constraint set never required that people marry in pairs, so ring 4
+reveals an incoherence already present in the ring-1 population rather
+than creating it (§III.3). The rate falls where single-person households are more common, as the
 mechanism predicts: 17.7 % in Milano — the lowest measured, below the
 fleet's minimum — against 23.0 % in Mantova, whose age structure is
 older and whose households are larger. Same-sex couples are absent
@@ -627,14 +642,14 @@ rendering layer treats each `uid` alone, and household-aware naming is
 designed but not built. *The address is per individual* (assumption 11's
 residue, §III.4): spouses can carry different civic numbers, and
 household-level address assignment is the stated prerequisite of any
-building-level work. And *the assembly still produces rare demographic
-oddities at the margins* — a handful of married fifteen-year-olds have
-been observed — legal in Italy only with court authorisation at sixteen,
-— an artefact of the assembly's age conventions, not a demographic
-claim: the register table itself has no married cell below sixteen
-(§I.2, the sparsity that encodes legal ages), so the population's own
-source excludes what ring 4 produces; rare enough to survive the current diagnostics,
-declared here, on the list for the next repertoire iteration.
+building-level work.And *the assembly still produces rare demographic oddities at the
+margins* — a handful of married fifteen-year-olds have been observed:
+an artefact of the assembly's age conventions, not a demographic claim,
+since the register table itself has no married cell below sixteen (§I.2,
+the sparsity that encodes legal ages), so the population's own source
+excludes what ring 4 produces. Rare enough to survive the current
+diagnostics, declared here, on the list for the next repertoire
+iteration.
  The
 17-to-24 widowed of §I.2 were an observed zero the constraints enforce;
 the married fifteen-year-old is the same kind of cell one ring further
@@ -684,11 +699,9 @@ foreign names come from coarse per-area lists (Arabic, sub-Saharan,
 Eastern European) that flatten differences a demographer would care
 about and certainly contain errors. This is deliberate for a first
 release and declared as such: the names are placeholders that behave
-correctly where it matters — they are drawn from repertoires, so
-identical names recur across the population by construction, which is
-the property the disclosure argument rests on (§I.7) and the reason a
-name is never a key. Improving the repertoires is a v1.1 item; nothing
-downstream depends on them.
+correctly where it matters — they are drawn from repertoires,the coarseness 
+has a side effect worth keeping even after the repertoires improve: it guarantees collision (§I.7). 
+Improving the repertoires is a v1.1 item; nothing downstream depends on them.
 
 ### I.7 Publication regimes and the disclosure argument
 
@@ -706,10 +719,13 @@ statistical institutes' public-use / research / protected distinction
   code, no `quartiere` (one-to-one with `zona`), no `uid`, no donor id;
   the permissive export is an explicit act with a warning;
 - **persona / narrativo** (research) — prompt material and full
-  narrative records, generated on demand, capped at NMAX = 100
-  individuals per request **[v]**; a sample of dozens is an act of
-  citation, a file of a hundred thousand is an archive, and the cap
-  encodes that difference.
+  narrative records, generated on demand, capped at `NMAX = 100`
+  individuals per call **[m]**: beyond that threshold the function
+  refuses, with the reason in the error itself — one is producing a
+  dataset, not a sample. The bound is not technical, and raising it is
+  a decision recorded in the code rather than an argument passed at
+  the call site; a sample of dozens is an act of citation, a file of a
+  hundred thousand is an archive, and the cap encodes that difference.
 
 The argument for the public release runs in three levels, of which the
 first two stand alone **[n]** fonti §10, piano §1–3:
@@ -738,6 +754,17 @@ Mantova's addresses are almost entirely non-georeferenced (§I.4), so
 its public bundle is built from section geometry alone — and is
 indistinguishable in kind from the others, because the public regime
 never used the civic number to begin with.
+
+*A fourth level, measured rather than structural: a name identifies no
+one.* Names are drawn from repertoires — 301 first names and 638
+surnames in the released configuration — so collision is not a residual
+risk but the normal case. On Castenaso, the smallest municipality,
+16,357 individuals carry 3,024 distinct full names: **94.4 % of the
+population shares its full name with at least one other person**, and
+the most frequent combinations recur seventeen times each **[m]**. The
+5.6 % whose full name is unique are unique only within their
+municipality, against repertoires that are the same in all eleven. A
+name in these records is a label for reading, not a key for finding.
 
 What remains is a risk of *interpretation*, not of data: a record that
 reads «Maria Bruni, 45, laurea magistrale in medicina, dipendente nella

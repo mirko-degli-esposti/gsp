@@ -1,15 +1,11 @@
 # Part III — Reproducibility and quality report
-## Draft v1 — §III.1–III.6 (25 August 2026)
+## Version 1 — §III.1–III.6 (26 August 2026)
 
-> Conventions. Numbers marked **[m]** were measured in the run of
-> 19 August 2026 at tag `report-v1.0-rc1` (logs in
-> `note/misure/rilancio_report_v1.0/`, diagnostics in
-> `note/misure/diagnostica_report_v1.0/`); **[n]** are taken from the
-> notes, with the note cited; **[v]** means to be verified before the
-> draft is frozen. Every figure in §III.3 is measured at the tag.
-> This draft merges the former `report_part3_s1-2_v0.1.md`,
-> `report_part3_s3_v0.1.md` and `report_part3_s456_v0.1.md`, written
-> separately; all three are in `note/storico/`.
+> Where the numbers come from: everything marked **[m]** in this part
+> was measured on the run of 19 August 2026 at the release tag. The
+> per-municipality logs are in `note/misure/rilancio_report_v1.0/` and
+> the diagnostics in `note/misure/diagnostica_report_v1.0/`; both
+> travel with the repository.
 
 ---
 
@@ -91,25 +87,24 @@ constraint sets through the full chain
 every ring was compared byte for byte (`cmp`) with the population archived
 immediately before the run. The outcome:
 
-| municipality | code | level | ring 1 | ring 2 | ring 3 | ring 4 | time |
-|---|---|---|---|---|---|---|---|
-| Bologna | 037006 | K9C | = | = | = | = | 395 s |
-| Brescia | 017029 | K9C | = | = | = | = | 333 s |
-| Parma | 034027 | K9C | = | = | = | = | 339 s |
-| Modena | 036023 | K9C | = | = | = | = | 105 s |
-| Reggio nell'Emilia | 035033 | K9C | = | = | = | = | 220 s |
-| Ravenna | 039014 | K9C | = | = | = | = | 130 s |
-| Rimini | 099014 | K9C | = | = | = | = | 138 s |
-| Ferrara | 038008 | K6C | = | = | = | = | 51 s |
-| Forlì | 040012 | K9C | = | = | = | = | 147 s |
-| Piacenza | 033032 | K9C | = | = | = | = | 72 s |
-| Castenaso | 037021 | K6C | = | = | = | = | 16 s |
+| municipality | code | level | rings 1–4 | chain time |
+|---|---|---|---|---|
+| Bologna | 037006 | K9C | all identical | 395 s |
+| Brescia | 017029 | K9C | all identical | 333 s |
+| Parma | 034027 | K9C | all identical | 339 s |
+| Reggio nell'Emilia | 035033 | K9C | all identical | 220 s |
+| Forlì | 040012 | K9C | all identical | 147 s |
+| Rimini | 099014 | K9C | all identical | 138 s |
+| Ravenna | 039014 | K9C | all identical | 130 s |
+| Modena | 036023 | K9C | all identical | 105 s |
+| Piacenza | 033032 | K9C | all identical | 72 s |
+| Ferrara | 038008 | K6C | all identical | 51 s |
+| Castenaso | 037021 | K6C | all identical | 16 s |
 
 **[m]** Forty-four comparisons, forty-four identical files; 1,814,317
-individuals in 33 minutes of wall-clock time on the reference machine. The
-same run verified that none of the 26 impossible age × education and
-age × occupational-condition combinations (§I.2) occurs in any population:
-0 of 1,814,317.
+individuals in about 33 minutes of wall-clock time on the reference machine —
+of which the maximum-entropy fit is 15–55 % (Table III.3a), the rest
+being the three enrichment rings.
 
 One qualification belongs here rather than only in §III.5: since the tag,
 two patches to ring 4 have been committed, one of which shifts the random
@@ -778,18 +773,29 @@ before the measure ran.
 
 ### Open items for Part III
 
-1. Cross-machine regeneration (CINECA Leonardo, or any second
+Two things in this part are not yet settled:
+
+1. **[v]** Section references to *riferimento* follow the numbering of
+   its v22; the note travelling with this release is v24, and the
+   pointers must be re-checked against it before they mislead a reader
+   who follows one.
+2. **[v]** The definition of the MRE floor (§III.5, point 8): confirm
+   which one `fit_cs.py` computes, and align the caption of Table
+   III.3a to it.
+
+Three are settled and deferred, with the reason:
+
+3. **Cross-machine regeneration** (CINECA Leonardo, or any second
    architecture): one municipality through the full chain, compared
    byte for byte with the tag archive. Deferred to v1.1, where it
-   belongs: with the solver packaged and pinned (front matter), the
-   environment is reproducible enough for the result to mean something.
-2. **[v]** Re-number section references against riferimento **v24** (this
-   draft cites v22 numbering).
-3. **[v]** Dates for retractions 1, 2, 12 from the design note.
-4. **[v]** MRE floor definition (§III.5, point 8): verify which definition
-   `fit_cs.py` uses, then align §III.3a's caption.
-5. `residuo.py` (leave-one-out compositional residual) is a shared module
-   correcting M-EM and related measures: move it from the exploratory
-   group to group 2 in `scripts/README.md`.
-6. Decide whether `generato` leaves `manifest.json` / `riferimenti.json`
-   in v1.1; for v1.0 the binding hashes Parquet only (decided 19 August).
+   belongs — with the solver packaged and pinned (front matter), the
+   environment is reproducible enough for a negative result to mean
+   something.
+4. **The `generato` timestamp** in `manifest.json` and
+   `riferimenti.json`: for v1.0 the binding hashes the Parquet files
+   only, which are timestamp-free (decided 19 August); whether the
+   field leaves the JSON files in v1.1 is a question about the viewer,
+   not about the populations.
+5. **Two ring-4 patches committed after the tag** are declared in
+   §III.5 and travel with the next regeneration cycle; the fleet is not
+   regenerated for them alone.

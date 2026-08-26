@@ -1,10 +1,8 @@
 # Part IV — The Animarium release
-## Draft v1 — §IV.1–IV.3 (25 August 2026)
+## Version 1 — §IV.1–IV.3 (26 August 2026)
 
-> Same conventions: **[m]** measured (rebuild of 19 August at
-> `report-v1.0-rc1`), **[n]** from a note (cited), **[v]** to verify before
-> freezing. Main source: `design_animarium_v13`; section references without
-> other indication are to that note.
+> Section references without other indication are to
+> `design_animarium_v13`, the viewer's design note.
 
 ---
 
@@ -181,22 +179,17 @@ this is said rather than solved **[n]** §7.1.
 
 ### Open items for Part IV
 
-1. **[v]** Re-measure the §7.2 cost figures (init, first query, lazy loads)
-   on the rebuilt eleven-city bundle — the quoted numbers date from the
-   four-city era of the design note; expected unchanged per municipality,
-   but the atlas adds an index fetch.
-2. **[v]** Screenshots for the report: three figures (marginals with three
-   markers; trust with two bands; map in quota mode) taken from the
-   deployed `report-v1.0` site at a fixed URL each, so the captions can
-   carry the very URL they show.
-3. **[v]** Indexing policy: the page currently carries `noindex,
-   noarchive`, adopted while the site was a private draft. With a public
-   release under its own domain the decision has to be taken explicitly
-   rather than inherited.
-4. PMTiles base layer (v1.1): recipe written, one file per region on R2,
-   registered as a derived source with its ODbL attribution **[n]**
-   `nota_pmtiles_v0.1`.
+1. **[v]** Re-measure the §7.2 cost figures (init, first query, lazy
+   loads) on the rebuilt eleven-city bundle — the quoted numbers date
+   from the four-city era of the design note; expected unchanged per
+   municipality, but the atlas adds an index fetch.
+2. **[v]** Screenshots for the report: three figures (marginals with
+   three markers; trust with two bands; map in quota mode) taken from
+   the deployed site at a fixed URL each, so that each caption can
+   carry the very URL it shows.
 
-*Closed for v1.0:* the citation format for a view (front matter, with a
-worked example); the cartographic base layer, resolved as off-by-default
-with opt-in providers and PMTiles queued for v1.1 (§IV.1).
+Deferred to v1.1: the PMTiles base layer, whose recipe is written — one
+file per region, served from the same origin as the bundle, registered
+as a derived source with its ODbL attribution **[n]**
+`nota_pmtiles_v0.1`. It is what turns the cartographic background from
+an opt-in external service into part of the release (§IV.1).

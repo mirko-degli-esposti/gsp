@@ -1,5 +1,5 @@
 # Part V — The narrative layer and its use
-## Draft v1 — §V.1–V.3 (25 August 2026)
+## Version 1 — §V.1–V.3 (26 August 2026)
 
 > **This part describes work in progress, and is the one part of this
 > report expected to change substantially.** The narrative layer is
@@ -10,14 +10,8 @@
 > this report and in the companion papers; nothing downstream of the
 > populations depends on it, and a reader interested only in the
 > pipeline (Parts I–III) or the release (Part IV) can stop before this
-> point.
-
-> Same conventions: **[m]** measured, **[n]** from a note (cited), **[v]**
-> to verify before freezing. Sources: `nota_biografia_v2`,
-> `piano_trattamento_v2`, `registro_esperimento_sive_gsp_v5` (cited as
-> *registro*), the SIVE paper (arXiv:2607.00910). This Part states what the
-> platform *enables*; validation of LLM-driven populations is not this
-> report's subject and is confined to pointers.
+> point. `registro_esperimento_sive_gsp_v5` is cited here as
+> *registro*; the SIVE paper is arXiv:2607.00910.
 
 ---
 

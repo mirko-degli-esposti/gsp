@@ -1,20 +1,15 @@
 # Part II — Sources and their certification
-## Draft v1 — §II.1–II.5 (25 August 2026)
+## Version 1 — §II.1–II.5 (26 August 2026)
 
-> Same conventions as Part III: **[m]** measured, **[n]** from a note
-> (cited), **[v]** to be verified before freezing. Table II.2a is generated
-> from the registry by `scripts/diagnostica/tabella_fonti.py` and is not
-> reproduced here. Note names refer to `note/` in the GSP repository.
-> This draft merges the former `report_part2_v0.1.md` and
-> `report_part2_s4_v0.1.md` (§II.4), written separately while the registry
-> round was open; both are in `note/storico/`.
+> Table II.2a, cited throughout this part, is generated from the
+> registry by `scripts/diagnostica/tabella_fonti.py`; it is  generated from the registry by tabella_fonti.py and travels with the repository
 
 ---
 
 ### II.1 The registry as a method
 
 Every external input to the pipeline is an entry in `fonti/registro.yaml`.
-There are thirty-nine at the tag `report-v1.0-rc1` **[m]**. An entry records
+There are thirty-nine at the release tag **[m]**. An entry records
 what the file *is* (issuing body, title, URL, date of access, licence and
 attribution string), what it *contains* (universe, unit of observation,
 temporal reference), how it is *stored* (in git, on the local disk, or only
@@ -245,10 +240,17 @@ one worth reporting **[n]** `fonti_e_pacchetto_v8` §3–4, §14;
 - In the municipal tables, the sum of observations is two to eight times
   the population because aggregate rows are included: the figure is a
   signature for recognising the file, not a count.
-- The one-year offset between the population register (1 January N) and
-  the census (31 December N−1) is recorded as `riferimento_temporale` and
-  `anno_usato` per entry, and is the reason for the `non_usabile_per` tag
-  above.
+
+
+One convention deserves a place next to the anomalies, because at first
+sight it looks like one: the population register is dated 1 January N
+and the census 31 December N−1, which reads as a year apart and is the
+same instant. Every entry declares `riferimento_temporale` and
+`anno_usato`, and the tag
+`non_usabile_per: confronto_diretto_con_anagrafe_stesso_anno` of §II.1
+forbids the comparison that the dates invite — a prohibition that
+turned out to be more than prudence: on sex × single year of age the
+two sources agree cell for cell (§III.3).
 
 The general lesson, which the project turned into a principle, is that
 *the meaning of a quantity belongs to whoever produces it*, and a
@@ -334,18 +336,28 @@ Normanni, which has no sub-municipal articulation and is not in production.
 
 ### Open items for Part II
 
-1. **[v]** Register the SDMX catalogue and structure directories as an
-   index source (no fingerprint of 120 MB; a manifest is the planned form).
-2. **[v]** Cross-check the column names and the ° marks of §II.4 against
-   Appendix A when it is assembled from riferimento v24 §1–2.
+1. Two external inputs are used and not registered, deliberately for
+   v1.0: the SDMX dataflow catalogue and the DSD structure cache. Both
+   are metadata rather than data — an index of what exists, and the
+   codelists that decode it — so no number in a population comes from
+   them; but the second is load-bearing for reproducibility, since
+   without the codelists the decoded tables cannot be rebuilt. A
+   fingerprint is the wrong form (some 120 MB, regenerated whenever
+   ISTAT updates a structure, with no effect on any population); a
+   manifest declaring the endpoint, the acquisition date and the
+   dataflows present with their versions is the planned one, in v1.1.
+   The dependency is narrower than it looks: the decoded tables carry
+   the labels inline (`*_label` columns), so a reader who has them does
+   not need the cache — only someone rebuilding from the raw SDMX
+   responses does.
+2. **[v]** Assemble Appendix A from generated material — the schema of
+   the released Parquet, the source table (II.2a), the constraint-set
+   blocks — and check §II.4's column names and ° marks against it.
 3. Confirm counts quoted from `fonti_e_pacchetto_v8` (sections, residents,
    hapax share) against the current normaliser output — they date from the
    37-source version of the note.
 
-*Closed during the certification round (25 August):* the licences of the
-six municipal open-data sources, resolved portal by portal with one
-declared presumption (§II.2); the legal condition of the Parma extract
-(municipal open data, CC-BY-4.0, registered and not mirrored); the §II.4
-table, now written; and the `usato_da` fields, which had been aligned to
-`cs_build.py` by a bulk edit and are restored to the actual chain reader
-`build_constraints.py` **[n]** `collaudo_acquisizione_v0.2`, finding 5.
+Everything else listed as open in the drafts of this part was closed in
+the certification round of 25 August: licences resolved portal by
+portal, the Parma extract's legal condition settled, §II.4 written, and
+the `usato_da` chain corrected **[n]** `collaudo_acquisizione_v0.2`.

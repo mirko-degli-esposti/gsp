@@ -1,12 +1,8 @@
 # Part I — Architecture: the four rings
-##  Draft v1 — §I.0–I.7 (26 August 2026)
+## Version 1 — §I.0–I.7 (26 August 2026)
 
-> Same conventions as the other parts: **[m]** measured at
-> `report-v1.0-rc1`, **[n]** from a note (cited), **[v]** to verify before
-> freezing. Sources: `GSP_popolazioni_full_riferimento_v24` (cited as
-> *riferimento*), `fonti_e_pacchetto_v8`, `piano_trattamento_v2`,
-> `nota_nucleo_familiare_v3`, `nota_biografia_v2`. Figure I.0 (pipeline
-> diagram) is listed at the end as **[v]** to draw.
+> `GSP_popolazioni_full_riferimento_v24` is cited throughout this part
+> as *riferimento*.
 
 ---
 
@@ -29,8 +25,7 @@ first reading, the command names carry enough: fetch, sections, zones,
 constraints, fit, then the three enrichment steps.
 
 **Three doors.** Every municipality receives data through three doors at
-three granularities, and confusing them is the most natural mistake to
-make (it was made, and documented, during testing):
+three granularities:
 
 1. **SDMX → the municipality as a whole.** Eleven ISTAT tables —
    register and permanent census — downloaded per municipality. Their
@@ -779,20 +774,11 @@ on-demand generation.
 
 ### Open items for Part I
 
-1. **[v]** Figure I.0: one pipeline diagram, `fetch_comune` →
-   `assign_nucleo`, rings coloured, assumptions numbered at their entry
-   points, regimes as the final box (redraw from riferimento §5 chain).
-2. **[v]** §I.2: state the exact-vs-PCD split across the eleven
-   municipalities (which were solved exactly at the tag) from the fit
-   logs.
-3. **[v]** §I.5: repertoire size (8,443) and the Parma-tail statement
-   against `nota_repertorio_avq_v3` (this draft cites the memory of it).
-4. **[v]** §I.3: n_eff definition added — verify that the weights in the
-   computation are donor reuse counts in the synthetic population, not
-   the AVQ survey weights (`verifica_donor`), and align the gloss.
-5. **[v]** §I.6/§I.7: measure name collision (distinct names over
-   population, or frequency of the most common) on a generated sample —
-   the number would make the disclosure argument's third pillar
-   quantitative rather than structural.
-6. **[v]** §I.7: NMAX — confirm the cap value and whether it is a
-   constant or a parameter of `campione(dettaglio=...)`.
+1. **[v]** Figure I.0, the pipeline diagram. Drafted as a Graphviz
+   source (`note/fig_I0_pipeline.dot`): three doors entering at their
+   points, the nine commands of §I.0, rings coloured, regimes as the
+   final box. Three things to fix before it goes in: the aspect ratio
+   is far too wide for a page (break into two rows, or two figures);
+   the ring labels float instead of sitting over their steps (use
+   clusters); and the tier arrow points at `build_zona_tables` when it
+   belongs to `enrich`.

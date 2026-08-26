@@ -1,4 +1,4 @@
-# Front matter — draft v1 (25 August 2026)
+# Front matter — version v1 (26 August 2026)
 
 
 ---
@@ -8,19 +8,10 @@
 **Technical report v1.0 — Mirko Degli Esposti**
 Department of Physics and Astronomy (DIFA), University of Bologna
 ORCID 0000-0003-0316-3449 · mirko.degliesposti@unibo.it
-arXiv:XXXX.XXXXX **[v]** · https://animarium.it
 
-## A note on tools
-
-Large language models — principally Anthropic's Claude, with occasional
-use of OpenAI's ChatGPT — were used throughout this work: as a writing
-partner for these notes and for this report, as a reviewer and
-occasional author of code, and as an interlocutor while designing and
-debugging the pipeline. Every design decision, every measurement, and
-every claim in this document was made, checked and is owned by the
-author; where a number appears, it was produced by code in the tagged
-repository and verified against its source, not by a model. The errors
-that remain are mine.
+Viewer <https://animarium.it> · pipeline
+<https://github.com/mirko-degli-esposti/gsp> · viewer code
+<https://github.com/mirko-degli-esposti/animarium>
 
 ## Abstract
 
@@ -50,6 +41,36 @@ narrative layer that renders records into personas for LLM-driven
 simulation — with the platform's controllability demonstrated in
 companion experiments, and validation explicitly out of scope.
 
+## A note on tools
+
+Large language models — principally Anthropic's Claude, with occasional
+use of OpenAI's ChatGPT — were used throughout this work: as a writing
+partner for these notes and for this report, as a reviewer and
+occasional author of code, and as an interlocutor while designing and
+debugging the pipeline. Every design decision, every measurement, and
+every claim in this document was made, checked and is owned by the
+author; where a number appears, it was produced by code in the tagged
+repository and verified against its source, not by a model. The errors
+that remain are mine.
+
+## Reading conventions
+
+Three markers appear throughout. **[m]** marks a figure measured at the
+release tag, with the log or diagnostic that produced it available in
+the repository; **[n]** marks a claim taken from a working note, which
+is cited by name and travels with the code; **[v]** marks a value that
+could only be known at publication — an identifier, a hash, a
+screenshot taken from the deployed site. Nothing else in this report is
+a number: where a quantity appears without a marker, it is a
+definition or a design parameter.
+
+Claims marked **[n]** come from the project's working notes, which live
+in `note/` of the GSP repository and are versioned with the code: they
+are cited by file name, so `nota_nucleo_familiare_v3` is that file at
+that version. They are in Italian, as the project's internal record is,
+and they are the layer where a decision is argued at length before it
+becomes a paragraph here.
+
 ## Version binding
 
 Every claim marked **[m]** in this report was measured at the versions
@@ -58,7 +79,7 @@ below; the hashes are the verification path.
 | artefact | identifier | verify with |
 |---|---|---|
 | this report | v1.0, arXiv:XXXX **[v]** | — |
-| GSP pipeline | tag `report-v1.0` **[v final tag]**, github.com/mirko-degli-esposti/gsp | `git rev-parse` |
+| GSP pipeline | tag `report-v1.0`, github.com/mirko-degli-esposti/gsp | `git rev-parse` |
 | Animarium viewer | tag `report-v1.0`, github.com/mirko-degli-esposti/Animarium | idem |
 | MaxEnt solver (`maxent-popsynth-pcd`) | commit `14f5bab` (2026-08-03), github.com/mirko-degli-esposti/maxent-popsynth-pcd | `git rev-parse --short HEAD` in the clone |
 | code snapshots | Zenodo DOI **[v]** (one per repository) | checksum on Zenodo |
@@ -70,11 +91,15 @@ below; the hashes are the verification path.
 One entry above deserves its warning. The fitting stage imports
 `ConstraintSet` from the solver repository by *filesystem discovery* —
 a glob over a sibling directory — and does not verify which commit it
-found: two honest machines can silently run two different versions
-(it happened during testing; the difference was a typo in the
-acknowledgements — the next one might not be). Until the solver is a
+found. Until the solver is a
 pinned package dependency (planned for v1.1), reproducing the fit
 requires checking out the commit above by hand.
+
+The tag `report-v1.0` names the same commit as `report-v1.0-rc1`, under
+which the measurements of Part III were taken: the release candidate was
+promoted rather than rebuilt, so every **[m]** in this report refers to
+the artefact the tag points at. (Two ring-4 patches were committed after
+that commit and are declared in §III.5.)
 
 
 
@@ -101,7 +126,10 @@ The report (until the arXiv id exists, cite the repository tag):
 
 > Degli Esposti, M. (2026). *Animarium: an open, reproducible pipeline
 > for synthetic populations of Italian cities — from ISTAT sources to
-> open data.* Technical report v1.0. arXiv:XXXX **[v]**.
+> open data.* Technical report v1.0, arXiv preprint. The arXiv
+> identifier is printed in the margin of this document by arXiv itself;
+> the persistent identifiers of code and data are in the binding table
+> above.
 
 The dataset: the Zenodo DOI **[v]**, with the CC-BY-4.0 attributions in
 `fonti/ATTRIBUZIONI.md`. The software: the Zenodo snapshot DOIs, or

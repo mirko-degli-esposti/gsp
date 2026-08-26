@@ -1,0 +1,55 @@
+// Figure I.0 — the pipeline as run: three doors, one chain, four rings.
+// dot -Tpdf fig_I0_pipeline.dot -o fig_I0_pipeline.pdf
+digraph pipeline {
+  rankdir=LR; splines=spline; nodesep=0.30; ranksep=0.45; newrank=true;
+  fontname="Helvetica";
+  node [fontname="Helvetica", fontsize=9.5, shape=box, style="rounded,filled",
+        color="#777777", fillcolor=white, penwidth=0.9, margin="0.11,0.07"];
+  edge [fontname="Helvetica", fontsize=8, color="#777777", arrowsize=0.65];
+
+  // ---------- doors ----------
+  d1 [shape=note, fillcolor="#eef4fb", label="① SDMX\l11 tables · per municipality\l"];
+  d2 [shape=note, fillcolor="#eef4fb", label="② Territorial bases\l1 workbook · per region\l"];
+  d3 [shape=note, fillcolor="#eef4fb", style="rounded,filled,dashed",
+      label="③ Municipal open data\loptional · sets the tier\l"];
+
+  // ---------- row 1: acquisition and constraints ----------
+  subgraph cluster_r1 {
+    label="ring 1 — constraints and fit"; fontsize=9.5; fontcolor="#8a6d3b";
+    color="#d8c9a8"; style=rounded;
+    fetch [label="fetch_comune"];
+    sez   [label="build_sezioni"];
+    zona  [label="build_zona_tables\l(if articulated)\l", style="rounded,filled,dashed"];
+    cons  [label="build_constraints\lc1…c10\l", fillcolor="#fdf3e6"];
+    csb   [label="cs_build\lcs_<LIV>.json\l", fillcolor="#fdf3e6"];
+    fit   [label="fit_cs\lpopolazione\l", fillcolor="#fdf3e6"];
+  }
+
+  // ---------- row 2: enrichment and regimes ----------
+  subgraph cluster_r2 {
+    label="rings 2–4 — enrichment"; fontsize=9.5; fontcolor="#3c763d";
+    color="#bcd8c4"; style=rounded;
+    avq [label="assign_avq\l+23 AVQ variables\l", fillcolor="#eaf5ee"];
+    enr [label="enrich\lsection · age · address · country\l", fillcolor="#f6eef8"];
+    nuc [label="assign_nucleo\lnuclei_<comune>.csv\l", fillcolor="#fdeef0"];
+  }
+
+  reg [label="gsp.individui\lpubblico · persona · narrativo\l",
+       shape=box, fillcolor="#f2f2f2", penwidth=1.5, color="#444444"];
+
+  // ---------- flow ----------
+  d1 -> fetch;
+  d2 -> sez;
+  fetch -> cons  [xlabel="decoded"];
+  sez -> zona;
+  zona -> csb    [xlabel="Z blocks"];
+  cons -> csb;
+  csb -> fit;
+  fit -> avq [constraint=false];
+  avq -> enr -> nuc -> reg;
+  sez -> enr  [style=dashed, xlabel="sections"];
+  d3  -> enr  [style=dashed, xlabel="tier"];
+
+  // keep the two rows apart
+  { rank=same; d1; d2; d3; }
+}

@@ -25,7 +25,8 @@ for f in "${ORD[@]}"; do
   i=$((i+1))
 done
 HEAD=$(cd "$GSP" && git rev-parse --short HEAD)
-if pandoc -f markdown-yaml_metadata_block "$T"/*.md -o "$OUT" --pdf-engine=xelatex \
+if pandoc -f markdown-yaml_metadata_block --resource-path="$N" "$T"/*.md -o "$OUT" \
+     --pdf-engine=xelatex \
      --metadata title="Animarium — technical report, working draft" \
      --metadata date="$(date +%F) · $HEAD" \
      -V geometry:margin=2.2cm -V fontsize=10pt -V colorlinks=true \
@@ -33,7 +34,8 @@ if pandoc -f markdown-yaml_metadata_block "$T"/*.md -o "$OUT" --pdf-engine=xelat
   echo "-> $OUT  (xelatex)"
 else
   echo "[info] xelatex fallito (log in /tmp/monta_bozza_tex.log), ripiego su wkhtmltopdf"
-  pandoc -f markdown-yaml_metadata_block "$T"/*.md --standalone --toc --toc-depth=2 \
+  pandoc -f markdown-yaml_metadata_block --resource-path="$N" "$T"/*.md \
+    --standalone --toc --toc-depth=2 \
     --metadata title="Animarium — technical report, working draft ($(date +%F), $HEAD)" \
     -o "$T/bozza.html"
   wkhtmltopdf --enable-local-file-access -q "$T/bozza.html" "$OUT"

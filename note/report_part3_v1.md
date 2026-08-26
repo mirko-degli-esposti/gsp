@@ -230,7 +230,7 @@ Two anchor municipalities, the extremes of the state space:
 
 The full table:
 
-| municipality | cells (α>0) | sample MRE | sampling floor | mean |z| | sd(z) | % |z|>3 | |z|max (exp. of cell) | hard zeros |
+| municipality | cells (α>0) | sample MRE | sampling floor | mean \|z\| | sd(z) | % \|z\|>3 | \|z\|max (exp. of cell) | hard zeros |
 |---|---|---|---|---|---|---|---|---|
 | Bologna | 1,751 | 7.05 % | 5.29 % | 0.84 | 1.391 | 0.63 % | 36.0 (1.0) | none violated |
 | Brescia | 2,949 | 7.82 % | 9.52 % | 0.80 | 1.012 | 0.47 % | 7.1 (2.0) | none violated |
@@ -240,22 +240,34 @@ The full table:
 | Ravenna | 1,108 | 7.99 % | 7.50 % | 0.85 | 1.164 | 0.63 % | 17.0 (1.0) | none violated |
 | Rimini | 789 | 4.55 % | 5.41 % | 0.82 | 1.014 | 0.51 % | 3.3 (13.0) | none violated |
 | Ferrara | 261 | 9.33 % | 7.95 % | 0.80 | 1.098 | 1.15 % | 7.1 (2.0) | none violated |
-| Forlì | 1,989 | 11.04 % | 3.189 % | 0.85 | 1.092 | 0.80 % | 10.0 (1.0) | none violated |
+| Forlì | 1,989 | 11.04 % | 3,189 % | 0.85 | 1.092 | 0.80 % | 10.0 (1.0) | none violated |
 | Piacenza | 629 | 5.48 % | 6.70 % | 0.91 | 1.118 | 0.48 % | 4.1 (165.7) | none violated |
 | Castenaso | 257 | 15.81 % | 23.68 % | 0.80 | 1.000 | 0.00 % | 2.9 (169.9) | none violated |
 
-Reading the table is an exercise in the project's own rule: never compare a
-raw error across configurations. Observed MRE ranges from 4 to 16 % and is
-everywhere of the order of its floor — the mean relative error a perfect
-sampler would show given the cell sizes — and the municipalities with the
-"worst" raw MRE are precisely those whose floor is highest (Castenaso:
-16 % observed against a 24 % floor). Forlì is the reductio: 21 zones over
-117,050 inhabitants make it the finest partition relative to population, its
-constraint set contains many α>0 cells whose expectation is a fraction of an
-individual, and its floor evaluates to 3,189 % — three hundred times the
-observed error. On such a partition the relative scale carries no content at
-all and only the z-scores speak; the observed |z| distribution of Forlì
-(mean 0.85, sd 1.09) is unremarkable.
+The *sampling floor* is what a perfectly fitted distribution would
+still show once N individuals are drawn from it: the standard deviation
+of the relative error, mean over cells of √((1−α)/(αN)), computed by
+`verifica_vincoli.py` **[m]** from the formula of `riferimento` §10. It
+is not directly comparable with the sample MRE, which is a mean
+absolute error: the two differ by √(2/π) ≈ 0.798, and both columns
+print what the instrument produces rather than a corrected figure
+(§III.5, point 8). Read with that factor, the observed error sits some
+10 % above its floor everywhere — sampling explains almost all of the
+deviation, and what remains is what the z-columns localise, cell by
+cell.
+
+Reading the table is an exercise in the project's own rule: never
+compare a raw error across configurations. Observed MRE ranges from 4
+to 16 % and is everywhere of the order of its own floor, and the
+municipalities with the "worst" raw MRE are precisely those whose floor
+is highest — Castenaso, 16 % observed against a 24 % floor. Forlì is
+the reductio: 21 zones over 117,050 inhabitants make it the finest
+partition relative to population, its constraint set contains many
+α > 0 cells whose expectation is a fraction of an individual, and its
+floor evaluates to 3,189 % — three hundred times the observed error. On
+such a partition the relative scale carries no content at all and only
+the z-scores speak; the |z| distribution of Forlì (mean 0.85, sd 1.09)
+is unremarkable.
 
 *Zone margins in the sample.* Ring 1 constrains the zone *distribution*
 and then draws N individuals from it, so each zone's count carries the
@@ -630,13 +642,19 @@ with the reason and, where it exists, the prepared change.
    individual): queued for the same next regeneration cycle as (2).
    (`FORZE_ARMATE`, previously listed here, was already in at the tag —
    see §III.4.)
-8. **MRE floor definition**: the floor formula in `verifica_vincoli.py` is
-   the standard deviation of the relative error, while MRE is its mean
-   absolute value (factor √(2/π) = 0.798); corrected, the observed error
-   sits 10–11 % above the floor, consistent with sd(z) ≈ 1.03. Open:
-   verify which definition `fit_cs.py` uses — instrument and paper must
-   say the same thing **[n]** riferimento §14.5. **[v]** resolve before
-   freezing §III.3's table caption.
+8. **The floor is a standard deviation, the MRE a mean absolute
+   error.** Both `fit_cs.py` and `verifica_vincoli.py` compute the MRE
+   as mean(|α̂ − α|/α) — instrument and diagnostic agree **[m]** — but
+   the floor they are compared against, mean √((1−α)/(αN)), is a
+   standard deviation, and for a normal deviation the two differ by
+   √(2/π) ≈ 0.798. Comparing them directly overstates the floor by a
+   quarter. Corrected, the observed error sits 10–11 % above the floor,
+   consistent with the sd(z) ≈ 1.03 of Table III.3a — which is the
+   right reading: sampling explains almost all of the deviation, and
+   the residue is what the z-columns localise. The tables in this
+   report print the uncorrected floor, as the diagnostic does; the
+   factor is stated here rather than silently applied **[n]**
+   riferimento §14.5.
 9. **Household-level address** (the residue of assumption 11) as the
    prerequisite of any building-level assignment **[n]** nota_nucleo §9.
 
@@ -773,13 +791,8 @@ before the measure ran.
 
 ### Open items for Part III
 
-Two things in this part are not yet settled:
 
-1. **[v]** Section references to *riferimento* follow the numbering of
-   its v22; the note travelling with this release is v24, and the
-   pointers must be re-checked against it before they mislead a reader
-   who follows one.
-2. **[v]** The definition of the MRE floor (§III.5, point 8): confirm
+1. **[v]** The definition of the MRE floor (§III.5, point 8): confirm
    which one `fit_cs.py` computes, and align the caption of Table
    III.3a to it.
 

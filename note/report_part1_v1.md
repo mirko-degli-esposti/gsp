@@ -24,6 +24,8 @@ the definitions to steps already seen, not the other way around. On
 first reading, the command names carry enough: fetch, sections, zones,
 constraints, fit, then the three enrichment steps.
 
+![The pipeline as run: three doors feeding one chain, ring 1 producing the population and rings 2–4 enriching it, with the publication regimes as the single exit. Source: `note/figure/fig_I0_pipeline.dot`.](figure/fig_I0_pipeline.pdf)
+
 **Three doors.** Every municipality receives data through three doors at
 three granularities:
 
@@ -101,14 +103,9 @@ the front matter and §I.4 respectively.
 
 
 
-
-
-
-
-
-
-
 ### I.1 Design principles
+
+![The four rings and the derived layer: what each adds, from which source, by which method, and what is real in it. Source: `note figure/fig_I1_anelli.dot`.](figure/fig_I1_anelli.pdf)
 
 *Four principles run through the whole design; they are worth stating before the mechanism they govern.*
 

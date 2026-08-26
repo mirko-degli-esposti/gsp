@@ -1,0 +1,53 @@
+// Figure I.1 — the four rings: what each adds, from which source, with which guarantee.
+// dot -Tpdf fig_I1_anelli.dot -o fig_I1_anelli.pdf
+digraph anelli {
+  rankdir=TB; splines=spline; nodesep=0.25; ranksep=0.30;
+  node [fontname="Helvetica", fontsize=10, shape=plaintext];
+  edge [color="#888888", arrowsize=0.6];
+
+  tab [label=<
+   <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="7">
+    <TR>
+      <TD BGCOLOR="#f2f2f2"><B>ring</B></TD>
+      <TD BGCOLOR="#f2f2f2"><B>what it adds</B></TD>
+      <TD BGCOLOR="#f2f2f2"><B>from</B></TD>
+      <TD BGCOLOR="#f2f2f2"><B>method</B></TD>
+      <TD BGCOLOR="#f2f2f2"><B>guarantee</B></TD>
+    </TR>
+    <TR>
+      <TD BGCOLOR="#fdf3e6"><B>1</B><BR/>joint model</TD>
+      <TD ALIGN="LEFT">sex, age, marital status,<BR/>citizenship, education,<BR/>condition, background,<BR/>parents' origin, zone</TD>
+      <TD ALIGN="LEFT">register table<BR/>(levels)<BR/>census tables<BR/>(form)</TD>
+      <TD ALIGN="LEFT">maximum entropy,<BR/>exact solver</TD>
+      <TD ALIGN="LEFT"><B>margins</B> reproduced;<BR/>declared zeros empty;<BR/>the individual is a<BR/>draw, not a record</TD>
+    </TR>
+    <TR>
+      <TD BGCOLOR="#eaf5ee"><B>2</B><BR/>donation</TD>
+      <TD ALIGN="LEFT">23 attitudinal and<BR/>health variables;<BR/>country of citizenship</TD>
+      <TD ALIGN="LEFT">AVQ public-use<BR/>microdata<BR/>(regional pool)</TD>
+      <TD ALIGN="LEFT">whole-vector hot deck<BR/>on a demographic<BR/>signature</TD>
+      <TD ALIGN="LEFT"><B>the vector is real</B>,<BR/>reused 25–84×;<BR/>no geography of its own</TD>
+    </TR>
+    <TR>
+      <TD BGCOLOR="#f6eef8"><B>3</B><BR/>placement</TD>
+      <TD ALIGN="LEFT">census section,<BR/>single year of age,<BR/>address</TD>
+      <TD ALIGN="LEFT">census sections<BR/>(2023);<BR/>ANNCSU register</TD>
+      <TD ALIGN="LEFT">exact allocation<BR/>(largest remainder)<BR/>within each cell</TD>
+      <TD ALIGN="LEFT"><B>counts</B> per section real;<BR/>the assignment carries<BR/>no information</TD>
+    </TR>
+    <TR>
+      <TD BGCOLOR="#fdeef0"><B>4</B><BR/>households</TD>
+      <TD ALIGN="LEFT">household id and role</TD>
+      <TD ALIGN="LEFT">census sizes<BR/>PF3–PF8 per section;<BR/>AVQ repertoire</TD>
+      <TD ALIGN="LEFT">size as a hard margin,<BR/>composition from a<BR/>repertoire</TD>
+      <TD ALIGN="LEFT"><B>size distribution</B> real<BR/>per section;<BR/>the household is a model</TD>
+    </TR>
+    <TR>
+      <TD BGCOLOR="#f7f7f7"><B>D</B><BR/>derived</TD>
+      <TD ALIGN="LEFT">detailed title, sector,<BR/>names, biography</TD>
+      <TD ALIGN="LEFT">census 2011 structure;<BR/>onomastic repertoires</TD>
+      <TD ALIGN="LEFT">deterministic function<BR/>of uid and attributes</TD>
+      <TD ALIGN="LEFT"><B>nothing</B>: plausible by<BR/>construction, therefore<BR/>collident (94% share a name)</TD>
+    </TR>
+   </TABLE>>];
+}

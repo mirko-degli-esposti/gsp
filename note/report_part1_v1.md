@@ -1,5 +1,5 @@
 # Part I — Architecture: the four rings
-## Draft v1 — §I.1–I.7 (22 August 2026)
+##  Draft v1 — §I.0–I.7 (26 August 2026)
 
 > Same conventions as the other parts: **[m]** measured at
 > `report-v1.0-rc1`, **[n]** from a note (cited), **[v]** to verify before
@@ -9,6 +9,7 @@
 > diagram) is listed at the end as **[v]** to draw.
 
 ---
+
 ### I.0 The pipeline, as run
 
 Before principles, the machine. This section walks the chain exactly as

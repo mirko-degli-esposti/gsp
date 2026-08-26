@@ -15,7 +15,8 @@ ORD=(report_frontmatter_v1.md
      report_part2_v1.md
      report_part3_v1.md
      report_part4_v1.md
-     report_part5_v0.1.md)
+     report_part5_v0.1.md
+     report_appendix_a_v1.md)
 T=$(mktemp -d); trap 'rm -rf "$T"' EXIT
 i=1
 for f in "${ORD[@]}"; do
@@ -27,7 +28,7 @@ done
 HEAD=$(cd "$GSP" && git rev-parse --short HEAD)
 if pandoc -f markdown-yaml_metadata_block --resource-path="$N" "$T"/*.md -o "$OUT" \
      --pdf-engine=xelatex \
-     --metadata title="Animarium — technical report, working draft" \
+     --metadata title="Animarium — technical report, version 1" \
      --metadata date="$(date +%F) · $HEAD" \
      -V geometry:margin=2.2cm -V fontsize=10pt -V colorlinks=true \
      --toc --toc-depth=2 2>/tmp/monta_bozza_tex.log; then
@@ -36,7 +37,7 @@ else
   echo "[info] xelatex fallito (log in /tmp/monta_bozza_tex.log), ripiego su wkhtmltopdf"
   pandoc -f markdown-yaml_metadata_block --resource-path="$N" "$T"/*.md \
     --standalone --toc --toc-depth=2 \
-    --metadata title="Animarium — technical report, working draft ($(date +%F), $HEAD)" \
+    --metadata title="Animarium — technical report, version 1 ($(date +%F), $HEAD)" \
     -o "$T/bozza.html"
   wkhtmltopdf --enable-local-file-access -q "$T/bozza.html" "$OUT"
   echo "-> $OUT  (wkhtmltopdf)"

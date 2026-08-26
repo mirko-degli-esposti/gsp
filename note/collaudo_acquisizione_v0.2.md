@@ -284,10 +284,61 @@ zone di Bologna).
 **Finding 3** (vedi tabella): messaggio finale fuorviante per i K6C
 legittimi.
 
-### build_zona_tables.py
+### build_zona_tables.py + la parte-zona di cs_build.py
 
-**Cosa fa**: costruisce le tavole per zona (Z1..Z6) dalle sezioni,
-con audit contro i totali comunali SDMX.
+**Il principio, in una riga** (docstring di `cs_build`, righe 8-9, e
+convenzione finale di `build_zona_tables`): *ogni tabella di zona entra
+come `P(zona | gruppo) × conteggi comunali del gruppo`, con IPF a
+chiudere il doppio margine*. È **la stessa architettura dei vincoli
+censuari applicata all'asse geografico**: la spina anagrafica dà i
+livelli, tutto il resto — socio-economico *e* geografia — entra come
+forma condizionata. Un solo principio, tre applicazioni (blocchi C-F,
+blocchi Z, tier del paese in `enrich`).
+
+Conseguenza da tenere a mente leggendo gli audit: `[audit] margine Z1
+vs A = 0.000000` e `Z2 vs B = 0.000000` **non sono fatti sulle fonti**
+ma identità algebriche — sommare `P(zona|gruppo) × count` sulle zone
+restituisce `count` per costruzione. Verificano che l'implementazione
+sia corretta, nient'altro. (Diverso il caso del raccordo
+anagrafe↔censimento, dove lo zero *è* un fatto misurato: §sopra.)
+
+**Cosa alimenta i blocchi.** `build_zona_tables` aggrega le colonne
+delle sezioni (tracciato 2023) alla zona dichiarata nel registro
+(`COM_ASC*`), producendo cinque tavole in `zona_2023/`. Ogni blocco ha
+la sua risoluzione, ed è la risoluzione della *fonte*, non una scelta:
+
+| blocco | tavola | risoluzione della fonte | assunzione dichiarata |
+|---|---|---|---|
+| Z1 | `z1_zona_sesso_eta5` | classi quinquennali (16) | quota di zona costante entro il quinquennio |
+| Z2 | `z2_zona_sesso_macroeta_citt` | 3 macro-classi (0-14, 15-64, 65+) × ITL/FRG | quota di zona costante entro la macro-classe |
+| Z3 | `z3_zona_sesso_istruzione` | **5 livelli** (la popolazione ne ha 6) | laurea e post-laurea hanno la stessa forma spaziale |
+| Z4 | `z4_zona_sesso_occup` | occupati, senza dettaglio d'età | `P(zona\|sesso, occupato)` costante sui bin 15-64 |
+| Z6 | `z6_zona_background` | EM1-6, dove presenti | — |
+
+**Tre annotazioni che il collaudo ha chiarito.**
+
+*Z3, istruzione a cinque livelli.* `EDU6TO5 = {"laurea_o_its":
+"terziario", "post_laurea": "terziario"}` (cs_build): le quote di zona
+si calcolano sull'aggregazione a cinque e si applicano ai conteggi
+comunali a sei. La zona conosce la geografia del terziario, non la sua
+composizione interna. Gli under-9 entrano a mano come `nessun_titolo`
+(la tavola di sezione parte dall'età scolare), con il complemento
+comunale `S_istruzione_under9` a chiudere l'universo.
+
+*Z4 vincola solo il lato occupato* — ed è una scelta, non una
+dimenticanza: la sezione dà gli occupati, ma la popolazione ha quattro
+condizioni non-occupate (in cerca, studente, pensionato, altro) che la
+sezione non separa; vincolarle in blocco imporrebbe a studenti e
+pensionati la stessa geografia. Da qui la somma di blocco `Z4 = 0,47`
+vista su Milano: è l'universo del blocco (occupati 15-64), non un
+difetto — stessa lettura di C = 0,93 e D = 0,88. **Limite da
+dichiarare nel report: la geografia della disoccupazione non è
+vincolata da alcun dato osservato.**
+
+*Le sezioni fittizie 888888x/999999x sono tenute* nell'unità assegnata
+da ISTAT (convenzione dichiarata in `build_zona_tables`), per coerenza
+contabile con i totali ufficiali — la stessa scelta che a valle,
+nell'anello 4, richiede invece lo skip (finding 7a).
 
 **Test Milano (WSL, 23/8)**: passato al primo colpo. 9 municipi, Z1
 288 righe … Z6 54; audit **a zero esatto** su popolazione

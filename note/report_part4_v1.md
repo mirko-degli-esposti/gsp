@@ -87,12 +87,29 @@ with the donor signature; the heavy map columns — and the rows are sorted by
 
     cost(query) = footer + Σ weight(block) × (row groups not pruned / total).
 
-Later filters inside a block cost zero bytes and 100–220 ms; the map and the
-trust battery are lazy and paid only on request. On Modena the source CSV of
-57.8 MB becomes a 3.5 MB Parquet (6 %), and the cost model was verified by
-counting bytes with the range-aware server before the design was accepted
-**[n]** §3.2, §7.2.
-In practice a visitor downloads ≈ 2.5 MB of the 37 MB bundle [m]: the blocks never touched are never read.
+The model was verified on the deployed site rather than in the
+laboratory: `smoke.html` runs eight queries against Modena's 3.52 MB
+Parquet and reports the bytes each one costs **[m]**. The host answers
+range requests (HTTP 206), without which none of what follows would
+hold. Counting rows touches metadata only (0.08 MB, the footer);
+demographic marginals cost 0.50 MB, and adding the zone brings them to
+0.70 — the whole of block A. The three comparisons that matter are the
+ones the test was written for. *Row-group pruning*: the same query
+filtered on `id` costs 0.15 MB against 0.70 unfiltered, one row group
+in ten. *Spatial ordering*: filtering on a single zone costs 0.20 MB
+against 0.70 for all zones, so sorting the rows by `zona, sezione`
+buys a factor of three on every zone-restricted query. *The AVQ
+block*: reading one trust variable by zone costs 0.60 MB, below the
+1 MB threshold at which the design note said the block would have to
+be split into health and trust — it does not. The heaviest query, the
+map's coordinates, costs 0.70 MB against 2.30 before the columns were
+laid out in blocks.
+
+Warm figures are meaningless here and the test says so: within one
+session the queries warm each other, exactly as they do in the
+application, and the second run of anything costs 5–30 ms. The
+initialisation of DuckDB-WASM from the CDN is 0.43 s, paid once.
+
 **The public regime is enforced in the data, not in a banner.** The panel
 always stated that assigning an individual to a civic number carries no
 information — the model places people within a section arbitrarily — but a

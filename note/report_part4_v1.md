@@ -28,6 +28,14 @@ the same mechanism the Parquet already uses — is the designed v1.1
 replacement that removes the last external dependency **[n]** §7.3,
 `nota_pmtiles_v0.1`.
 
+The regional atlas is the case where the empty background costs most —
+eleven municipalities on a wide area, with no coastline or provincial
+boundary to anchor them — and in v1.0 it inherits whatever the map
+panel is set to, with its own selector. The PMTiles extract of v1.1
+resolves it properly: a base layer served from the same origin as the
+bundle can be on by default, because it introduces no external
+dependency.
+
 The panel is organised around one idea: *every number on screen carries its
 comparison*. Filters are the bars themselves — clicking a bar filters, the
 active filters become removable pills, and the entire state lives in the
@@ -86,7 +94,7 @@ trust battery are lazy and paid only on request. On Modena the source CSV of
 57.8 MB becomes a 3.5 MB Parquet (6 %), and the cost model was verified by
 counting bytes with the range-aware server before the design was accepted
 **[n]** §3.2, §7.2.
-
+In practice a visitor downloads ≈ 2.5 MB of the 37 MB bundle [m]: the blocks never touched are never read.
 **The public regime is enforced in the data, not in a banner.** The panel
 always stated that assigning an individual to a civic number carries no
 information — the model places people within a section arbitrarily — but a
@@ -118,8 +126,9 @@ A view is citable. The whole state of the panel — municipality, filters,
 open views, map mode — is the URL query string, so a figure in a paper can
 carry the exact view that produced it, and the version-binding table (front
 matter) ties that URL to a bundle whose Parquet hashes are recorded. The
-citation of a view is therefore: URL + report version + bundle hash **[v]**
-decide the exact recommended citation format before freezing.
+citation of a view is therefore URL + report version + the SHA-256
+prefix of that municipality's `pop.parquet`; the recommended form, with
+a worked example, is in the front matter.
 
 ### IV.3 Deployment and versioning
 
@@ -131,16 +140,23 @@ tiles in v1.1), and no ceiling on individual file size. No server-side
 runtime, no database, no build step. Any host meeting those three
 conditions can serve Animarium, including a laptop: `build/serve_range.py`
 in the repository is a range-aware server written for exactly this
-purpose.
+purpose. The second of the three fails silently when it is missing, so the
+deployed folder carries its own test: `smoke.html` checks that the host
+answers range requests. Without them nothing breaks — DuckDB simply
+downloads whole files, and the app is merely slow, with nothing on
+screen to say why.
 
 The release is served from Cloudflare Pages under the project's own
-domain, **animarium.it** — the canonical address, with `www` redirecting
-to it — deployed from a folder:
-`python build/deploy.py && npx wrangler pages deploy deploy/ …`. The two
-commands go together, because `deploy.py` copies the bundle from disk: a
-half-regenerated bundle would otherwise go online silently, which is also
-why `build_bundle.py` reports per-municipality status instead of stopping
-at the first failure **[n]** §8, §15. The folder-based deploy is kept
+domain, **animarium.it** — the canonical address, with `www`
+redirecting to it.Deployment is one command, `python build/deploy.py --cloudflare`: the
+script assembles the `deploy/` folder from the bundle on disk and hands
+it to Wrangler, so that assembly and upload cannot drift apart — a
+half-regenerated bundle would otherwise go online silently, which is
+also why `build_bundle.py` reports per-municipality status instead of
+stopping at the first failure **[n]** §8, §15. A second, non-canonical
+path (`--gh-pages`) survives from an earlier configuration and is kept
+only as a fallback.
+The folder-based deploy is kept
 because it leaves nothing to clean and can actually be switched off; the
 domain is registered independently of the platform, so the citable URLs
 of this report survive a change of host. Switching the site off does not

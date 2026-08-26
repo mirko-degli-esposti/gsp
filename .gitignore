@@ -74,3 +74,6 @@ log/
 dati/campagne/
 dati/agenti/*
 !dati/agenti/agenti_scelta_n432_s0.json
+
+# file di dati mai in radice
+/Tavola_*.xls

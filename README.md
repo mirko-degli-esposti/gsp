@@ -8,10 +8,9 @@ technical report *Animarium: an open, reproducible pipeline for synthetic
 populations of Italian cities — from ISTAT sources to open data* (arXiv,
 report v1.0, identifier to be added on release).
 
-**Nothing in these populations describes a real person.** Every individual is
-sampled from a joint distribution estimated from aggregate statistics; names,
-where they appear, are drawn from public name repertoires and are collident by
-construction. See *Disclosure* below.
+**Nothing in these populations describes a real person.** Every individual is sampled from a joint distribution estimated 
+from aggregate statistics; names, where they appear, are drawn from public name repertoires and bear no relation 
+to any real individual by construction. See *Disclosure* below.
 
 ## What the pipeline does
 

@@ -82,8 +82,8 @@ below; the hashes are the verification path.
 | GSP pipeline | tag `report-v1.0`, github.com/mirko-degli-esposti/gsp | `git rev-parse` |
 | Animarium viewer | tag `report-v1.0`, github.com/mirko-degli-esposti/Animarium | idem |
 | MaxEnt solver (`maxent-popsynth-pcd`) | commit `14f5bab` (2026-08-03), github.com/mirko-degli-esposti/maxent-popsynth-pcd | `git rev-parse --short HEAD` in the clone |
-| code snapshots | Zenodo DOI **[v]** (one per repository) | checksum on Zenodo |
-| open dataset | Zenodo DOI **[v]**, CC-BY-4.0 | SHA-256 below |
+| code snapshots | GSP: [10.5281/zenodo.22127410](https://doi.org/10.5281/zenodo.22127410) · Animarium: [10.5281/zenodo.22127473](https://doi.org/10.5281/zenodo.22127473) | checksum on Zenodo |
+| open dataset | [10.5281/zenodo.22127581](https://doi.org/10.5281/zenodo.22127581), CC-BY-4.0 | SHA-256 below |
 | public bundle | eleven `pop.parquet`, SHA-256 in `note/misure/rilancio_report_v1.0/hash_parquet_report_v1.0.txt` | `sha256sum` |
 | source fingerprints | `fonti/registro.yaml` at the tag | `python -m gsp.fonti --verifica` |
 | companion papers | arXiv:2603.27312 (solver) · arXiv:2607.00910 (SIVE) | — |

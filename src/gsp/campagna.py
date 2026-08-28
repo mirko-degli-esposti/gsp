@@ -57,7 +57,7 @@ import math
 import os
 import sys
 import tempfile
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 import pandas as pd
@@ -252,6 +252,119 @@ def verifica_articolazione(cod):
     print(f"{cod} {c['nome']}: articolazione {esito} "
           f"({len(s)} sezioni, ASC1={n1}, ASC2={n2}, nan={nan1})")
 
+# ------------------------------------------------------- validazione
+# Attesi di conteggio righe (dati, senza header: len(df), non wc -l).
+# Provenienza di ogni numero: misurato su 033021 e 040007 (estremi
+# 15k/95k del pilota); anag confermata anche su 020030.
+# Esatti = griglie piene o sparse-per-costruzione; range = dipendono
+# dal comune, calibrati su DUE punti: provvisori, si allargano solo
+# per decisione davanti a un caso vero, mai in silenzio.
+ATTESI = {
+    "istat_anag_sesso_eta_statociv":       {"esatto": 8568},
+    "istat_cens_istruzione_eta":           {"esatto": 819},
+    "istat_cens_istruzione_cittadinanza":  {"esatto": 441},
+    "istat_cens_condprof_eta":             {"esatto": 819},
+    "istat_cens_condprof_cittadinanza":    {"esatto": 486},
+    "istat_cens_settore_prof":             {"esatto": 21},
+    "istat_cens_posizione_prof":           {"esatto": 9},
+    "istat_cens_sesso_eta_cittadinanza":   {"range": (2500, 6000)},
+    "istat_cens_migr_backg":               {"range": (400, 600)},
+    "istat_cens_stranieri_paesi":          {"range": (700, 3500)},
+}
+
+TOLLERANZA_C5 = 0.02   # anag JAN 2025 vs POSAS 1/1/2026: un anno di deriva
+
+
+def _controlla_tavola(cod, tavola_id, pop_posas):
+    """Ritorna None se tutto passa, altrimenti il motivo MISURATO del
+    fallimento (mai 'controllo fallito': sempre il numero visto contro
+    l'atteso)."""
+    name = tavola_id.removeprefix("istat_")
+    path = Path(os.path.expanduser(
+        f"~/progetti/gsp/data/comuni/{cod}/{name}_decoded.csv"))
+
+    # C1 — esistenza e non-vuotezza
+    if not path.exists() or path.stat().st_size == 0:
+        return f"C1: {path.name} assente o vuoto"
+
+    df = pd.read_csv(path)
+
+    # C2 — conteggio righe contro l'atteso
+    att = ATTESI[tavola_id]
+    if "esatto" in att and len(df) != att["esatto"]:
+        return f"C2: righe {len(df)} != atteso {att['esatto']}"
+    if "range" in att and not (att["range"][0] <= len(df) <= att["range"][1]):
+        return f"C2: righe {len(df)} fuori range {att['range']}"
+
+ # C3 — territorio. Lo zero iniziale è perso A MONTE (nel parsing di
+    # sdmx.fetch): i decoded portano 33021, non 033021. Si accetta il
+    # codice in entrambe le forme; pre-filtro sulle colonne monovalore
+    # (la territoriale lo è per definizione in un fetch comunale).
+    attesi_terr = {cod, str(int(cod))}
+    terr_ok = any({str(v).strip() for v in df[c].dropna().unique()} <= attesi_terr
+                  for c in df.columns if df[c].nunique(dropna=True) == 1)
+    if not terr_ok:
+        return f"C3: nessuna colonna territoriale con solo {cod}"
+    
+    # C4 — OBS_VALUE sano
+    obs = pd.to_numeric(df["OBS_VALUE"], errors="coerce")
+    if obs.isna().all() or (obs < 0).any() or obs.sum() <= 0:
+        return (f"C4: OBS_VALUE sospetto (nan={obs.isna().sum()}, "
+                f"neg={(obs < 0).sum()}, somma={obs.sum():.0f})")
+
+    # C5 — coerenza di livello, SOLO anagrafica per ora: le censuarie
+    # imbarcano totali multiformi in posizioni diverse per tavola e un
+    # C5 non filtrato validerebbe rumore (estensione futura, col profilo)
+    if tavola_id == "istat_anag_sesso_eta_statociv":
+        ultimo = df["TIME_PERIOD"].max()
+        tot = obs[(df["TIME_PERIOD"] == ultimo) & (df["AGE"] == "TOTAL")].sum()
+        scarto = abs(tot - pop_posas) / pop_posas
+        if scarto > TOLLERANZA_C5:
+            return (f"C5: anag {ultimo} = {tot:.0f} vs posas {pop_posas} "
+                    f"(scarto {scarto:.1%} > {TOLLERANZA_C5:.0%})")
+    return None
+
+
+def valida(cod):
+    """Promuove a 'validata' le tavole 'scaricata' che passano C1-C5;
+    quelle che falliscono vanno DIVERGE col motivo misurato. Non tocca
+    DIVERGE esistenti, non retrocede validate."""
+    m = carica()
+    c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
+    for t in TAVOLE:
+        if c["tavole"][t]["stato"] != "scaricata":
+            continue
+        motivo = _controlla_tavola(cod, t, c["pop_posas"])
+        if motivo is None:
+            c["tavole"][t]["stato"] = "validata"
+            c["tavole"][t]["quando_validata"] = \
+                datetime.now().isoformat(timespec="seconds")
+            print(f"[{cod}] {t}: validata")
+        else:
+            c["tavole"][t] = {"stato": "DIVERGE", "motivo": motivo}
+            print(f"[{cod}] {t}: DIVERGE — {motivo}")
+    salva(m)
+    print(f"gate {cod} ({c['nome']}): "
+          f"{'CHIUSO' if gate_chiuso(c) else 'aperto'}")
+
+def riapri(cod, motivo):
+    """Riporta a 'scaricata' le celle DIVERGE di un comune, registrando
+    PERCHÉ: la storia delle riaperture resta nel manifest (e nei suoi
+    commit). Mai automatico, mai senza motivo — un DIVERGE riaperto
+    senza spiegazione è un DIVERGE corretto in silenzio."""
+    m = carica()
+    c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
+    n = 0
+    for t in TAVOLE:
+        if c["tavole"][t]["stato"] == "DIVERGE":
+            c["tavole"][t] = {
+                "stato": "scaricata",
+                "riaperta": {"quando": datetime.now().isoformat(timespec="seconds"),
+                             "motivo": motivo},
+            }
+            n += 1
+    salva(m)
+    print(f"{cod} ({c['nome']}): riaperte {n} celle DIVERGE — {motivo}")
 
 # --------------------------------------------------------------- CLI
 
@@ -261,6 +374,10 @@ if __name__ == "__main__":
     ap.add_argument("--stato", action="store_true")
     ap.add_argument("--emetti", metavar="COD")
     ap.add_argument("--verifica-articolazione", metavar="COD")
+    ap.add_argument("--valida", metavar="COD",
+                    help="controlla C1-C5 e promuove a 'validata' le tavole scaricate") 
+    ap.add_argument("--riapri", metavar="COD")
+    ap.add_argument("--motivo", default=None)  
     a = ap.parse_args()
     if a.inizializza:
         inizializza()
@@ -270,5 +387,11 @@ if __name__ == "__main__":
         emetti(a.emetti)
     elif a.verifica_articolazione:          # <-- il ramo relativo
         verifica_articolazione(a.verifica_articolazione)
+    elif a.valida:
+        valida(a.valida)
+    elif a.riapri:
+        if not a.motivo:
+            ap.error("--riapri richiede --motivo")
+        riapri(a.riapri, a.motivo)
     else:
         ap.print_help()

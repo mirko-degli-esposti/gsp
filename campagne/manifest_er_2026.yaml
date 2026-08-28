@@ -9,35 +9,75 @@ comuni:
     articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: scaricata
-        quando: '2026-08-28T10:33:31'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_sesso_eta_cittadinanza:
-        stato: scaricata
-        quando: '2026-08-28T10:35:44'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_istruzione_eta:
-        stato: scaricata
-        quando: '2026-08-28T10:36:10'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_istruzione_cittadinanza:
-        stato: scaricata
-        quando: '2026-08-28T10:42:00'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_condprof_eta:
-        stato: scaricata
-        quando: '2026-08-28T10:43:12'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_condprof_cittadinanza:
-        stato: scaricata
-        quando: '2026-08-28T10:45:01'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_migr_backg:
-        stato: scaricata
-        quando: '2026-08-28T10:47:32'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_stranieri_paesi:
-        stato: scaricata
-        quando: '2026-08-28T10:47:55'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_settore_prof:
-        stato: scaricata
-        quando: '2026-08-28T10:48:13'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
       istat_cens_posizione_prof:
-        stato: scaricata
-        quando: '2026-08-28T10:48:33'
+        stato: validata
+        riaperta:
+          quando: '2026-08-28T12:08:04'
+          motivo: 'C3 v1 ingenuo sui codici senza zero: difetto del controllo, non
+            dei dati'
+        quando_validata: '2026-08-28T12:08:33'
     articolazione_misura:
       sezioni: 205
       asc1: 1

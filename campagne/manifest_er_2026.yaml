@@ -1022,28 +1022,44 @@ comuni:
   '040007':
     nome: Cesena
     pop_posas: 95620
-    articolazione: da_verificare
+    articolazione: presente
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:41:58'
       istat_cens_sesso_eta_cittadinanza:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:43:05'
       istat_cens_istruzione_eta:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:43:32'
       istat_cens_istruzione_cittadinanza:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:43:49'
       istat_cens_condprof_eta:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:44:11'
       istat_cens_condprof_cittadinanza:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:44:28'
       istat_cens_migr_backg:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:44:50'
       istat_cens_stranieri_paesi:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:45:07'
       istat_cens_settore_prof:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:45:27'
       istat_cens_posizione_prof:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T11:45:44'
+    articolazione_misura:
+      sezioni: 1635
+      asc1: 12
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   040008:
     nome: Cesenatico
     pop_posas: 26042

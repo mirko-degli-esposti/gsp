@@ -1,0 +1,6 @@
+GSP_ROOT=/home/mirko/progetti/gsp
+HEAD=1a960d1e2310f73ae39a0825dd6105c471d91919
+branch=master
+date=2026-08-28T15:11:33+02:00
+args=
+--- git status --short (deve essere vuoto per un rilancio citabile):

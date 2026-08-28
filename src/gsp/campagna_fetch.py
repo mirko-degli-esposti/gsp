@@ -21,11 +21,22 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+
 from gsp.campagna import carica, salva, TAVOLE, GSP_ROOT
+
+# fetch_comune.py vive in scripts/, non nel pacchetto: import via path.
+sys.path.insert(0, str(GSP_ROOT / "scripts" / "acquisizione"))
+from fetch_comune import CORE, fetch_one, output_dir
+
+# Il manifest usa gli id di registro (istat_*), il CORE le chiavi nude:
+# mappatura meccanica, verificata all'import — se le due nomenclature
+# divergono, si rompe QUI, non a metà campagna (il germe annotato).
+assert all(t.removeprefix("istat_") in CORE for t in TAVOLE), \
+    "id di manifest senza corrispondente nel CORE di fetch_comune"
+
 
 
 # --- INNESTO 1: la funzione di fetch ---------------------------------
-# DA_COMPILARE: come si invoca il fetch di UNA tavola per UN comune?
 # from scripts.acquisizione.fetch_comune import fetch_tavola   # ipotesi
 # Serve: fetch(comune, tavola) -> percorso del file scaricato (o eccezione)
 
@@ -34,12 +45,13 @@ BACKOFF = [60, 300, 900]   # dopo 1, 2, 3 fallimenti consecutivi
 MAX_FALLIMENTI = 4  # poi ci si ferma: è il rate limit che parla
 
 
-def prossima_cella(m):
-    """Prima cella 'mancante' in ordine (comune, tavola). L'ordine per
-    comune — completare un comune prima di passare al prossimo — è
-    deliberato: avvicina i gate uno alla volta invece di lasciare 47
-    comuni tutti al 70%."""
+def prossima_cella(m, solo_comune=None):
+    """... [docstring esistente] ...
+    Con solo_comune si restringe a un comune: serve al pilota per
+    scegliere i casi informativi invece dell'ordine di codice."""
     for cod, c in m["comuni"].items():
+        if solo_comune and cod != solo_comune:
+            continue
         for t in TAVOLE:
             if c["tavole"][t]["stato"] == "mancante":
                 return cod, t
@@ -108,15 +120,8 @@ def campagna(max_celle=None):
         time.sleep(PAUSA)
 
 
-# fetch_comune.py vive in scripts/, non nel pacchetto: import via path.
-sys.path.insert(0, str(GSP_ROOT / "scripts" / "acquisizione"))
-from fetch_comune import CORE, fetch_one, output_dir
 
-# Il manifest usa gli id di registro (istat_*), il CORE le chiavi nude:
-# mappatura meccanica, verificata all'import — se le due nomenclature
-# divergono, si rompe QUI, non a metà campagna (il germe annotato).
-assert all(t.removeprefix("istat_") in CORE for t in TAVOLE), \
-    "id di manifest senza corrispondente nel CORE di fetch_comune"
+
 
 def fetch_tavola(cod: str, tavola_id: str):
     """Adattatore manifest -> fetch_one. Ritorna il percorso del decoded,
@@ -135,8 +140,11 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-celle", type=int, default=None,
                     help="fermati dopo N celle (per il pilota)")
+    ap.add_argument("--comune", metavar="COD", default=None,
+                    help="limita la campagna a un solo comune (pilota)")
     a = ap.parse_args()
     try:
-        campagna(max_celle=a.max_celle)
+
+        campagna(max_celle=a.max_celle, solo_comune=a.comune)        
     except KeyboardInterrupt:
         sys.exit("\ninterrotto: lo stato è salvo, rilanciare quando vuoi")

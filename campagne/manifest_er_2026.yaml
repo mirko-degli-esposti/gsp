@@ -6,7 +6,7 @@ comuni:
   '033021':
     nome: Fiorenzuola d'Arda
     pop_posas: 15048
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: scaricata
@@ -18,19 +18,32 @@ comuni:
         stato: scaricata
         quando: '2026-08-28T10:36:10'
       istat_cens_istruzione_cittadinanza:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:42:00'
       istat_cens_condprof_eta:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:43:12'
       istat_cens_condprof_cittadinanza:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:45:01'
       istat_cens_migr_backg:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:47:32'
       istat_cens_stranieri_paesi:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:47:55'
       istat_cens_settore_prof:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:48:13'
       istat_cens_posizione_prof:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:48:33'
+    articolazione_misura:
+      sezioni: 205
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '034014':
     nome: Fidenza
     pop_posas: 27573

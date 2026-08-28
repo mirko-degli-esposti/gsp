@@ -62,6 +62,10 @@ from pathlib import Path
 
 import pandas as pd
 import yaml
+import geopandas as gpd
+import gsp.common as G
+
+
 
 GSP_ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = GSP_ROOT / "campagne" / "manifest_er_2026.yaml"
@@ -210,6 +214,45 @@ def emetti(cod):
     print(f'"{cod}": {{...}}   # {c["nome"]}, pop {c["pop_posas"]}')
 
 
+def verifica_articolazione(cod):
+    """Misura l'articolazione sub-comunale dalle basi territoriali
+    (COM_ASC1 delle sezioni 2021) e la registra nel manifest.
+
+    Tutto offline: lo shapefile regionale è già su disco. Registra il
+    VALORE misurato, non solo il verdetto — un comune con 3 sub-aree è
+    informazione per decidere un domani se merita più del K6C.
+    Criterio: nunique(COM_ASC1) == 1 -> assente (caso San Vito dei
+    Normanni: un solo valore, nessuna articolazione)."""
+  
+
+    m = carica()
+    c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
+
+    # Regione geodata: proprietà della CAMPAGNA, non del comune (il
+    # manifest resta senza assunzioni regionali; qui è il consumatore
+    # ER-specifico che la dichiara).
+    shp = G.path_shp("emilia_romagna")
+    s = gpd.read_file(shp)
+    s = s[s.PRO_COM == G.procom(cod)]     # conversione codice: SUA, non nostra
+    if s.empty:
+        sys.exit(f"{cod}: nessuna sezione nello shapefile — codice o regione errati")
+
+    n1 = s["COM_ASC1"].nunique(dropna=True)
+    nan1 = int(s["COM_ASC1"].isna().sum())
+    n2 = s["COM_ASC2"].nunique(dropna=True) if "COM_ASC2" in s.columns else 0
+
+    esito = "assente" if n1 <= 1 else "presente"
+    c["articolazione"] = esito
+    c["articolazione_misura"] = {
+        "sezioni": int(len(s)),
+        "asc1": int(n1), "asc1_nan": nan1, "asc2": int(n2),
+        "quando": str(date.today()),
+    }
+    salva(m)
+    print(f"{cod} {c['nome']}: articolazione {esito} "
+          f"({len(s)} sezioni, ASC1={n1}, ASC2={n2}, nan={nan1})")
+
+
 # --------------------------------------------------------------- CLI
 
 if __name__ == "__main__":
@@ -217,6 +260,7 @@ if __name__ == "__main__":
     ap.add_argument("--inizializza", action="store_true")
     ap.add_argument("--stato", action="store_true")
     ap.add_argument("--emetti", metavar="COD")
+    ap.add_argument("--verifica-articolazione", metavar="COD")
     a = ap.parse_args()
     if a.inizializza:
         inizializza()
@@ -224,5 +268,7 @@ if __name__ == "__main__":
         stato()
     elif a.emetti:
         emetti(a.emetti)
+    elif a.verifica_articolazione:          # <-- il ramo relativo
+        verifica_articolazione(a.verifica_articolazione)
     else:
         ap.print_help()

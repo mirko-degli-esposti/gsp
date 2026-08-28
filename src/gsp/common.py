@@ -477,6 +477,39 @@ COMUNI = {
             "sesso": True,
         },
     },
+
+    "040007": {
+        "nome": "Cesena",
+        "slug": "cesena",
+        "regione": "emilia_romagna",
+        "livello": "quartieri",
+        "livelli": {
+            "quartieri": {
+                "col": "COM_ASC1",
+                "n": 12,
+                # Accoppiamento a tre assi (P1 vs anagrafica comunale 2024,
+                # geografia, ordine ufficiale dei quartieri = progressivo ASC).
+                # [v] confine ASC vs amministrativo sulla coppia 05/06
+                # (scarti -6,4%/+19% compensativi): verificare coi toponimi
+                # ANNCSU; i nomi sono certi, il confine e' della partizione.
+                "nomi": {
+                    "40007001": "Centro Urbano",
+                    "40007002": "Cesuola",
+                    "40007003": "Fiorenzuola",
+                    "40007004": "Cervese Sud",
+                    "40007005": "Oltresavio",
+                    "40007006": "Valle Savio",
+                    "40007007": "Borello",
+                    "40007008": "Rubicone",
+                    "40007009": "Al Mare",
+                    "40007010": "Cervese Nord",
+                    "40007011": "Ravennate",
+                    "40007012": "Dismano",
+                },
+                "parent": None,
+            }
+        },
+    },  
     "074017": {
         "nome": "San Vito dei Normanni", "slug": "san_vito_dei_normanni",
         "regione": "puglia",

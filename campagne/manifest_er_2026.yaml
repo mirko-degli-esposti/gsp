@@ -1,0 +1,1180 @@
+versione: '1.1'
+campagna: estensione_er_2026
+creato: '2026-08-28'
+fonte_candidati: istat_posas_comuni_2026
+comuni:
+  '033021':
+    nome: Fiorenzuola d'Arda
+    pop_posas: 15048
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '034014':
+    nome: Fidenza
+    pop_posas: 27573
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '034032':
+    nome: Salsomaggiore Terme
+    pop_posas: 20640
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '035012':
+    nome: Casalgrande
+    pop_posas: 19039
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '035014':
+    nome: Castellarano
+    pop_posas: 15160
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '035020':
+    nome: Correggio
+    pop_posas: 25234
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '035040':
+    nome: Scandiano
+    pop_posas: 25979
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036005':
+    nome: Carpi
+    pop_posas: 74041
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036006':
+    nome: Castelfranco Emilia
+    pop_posas: 33625
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036007':
+    nome: Castelnuovo Rangone
+    pop_posas: 15116
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036012':
+    nome: Finale Emilia
+    pop_posas: 15570
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036013':
+    nome: Fiorano Modenese
+    pop_posas: 16610
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036015':
+    nome: Formigine
+    pop_posas: 34496
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  036019:
+    nome: Maranello
+    pop_posas: 17360
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036022':
+    nome: Mirandola
+    pop_posas: 24921
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036027':
+    nome: Nonantola
+    pop_posas: 16186
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036030':
+    nome: Pavullo nel Frignano
+    pop_posas: 18405
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036040':
+    nome: Sassuolo
+    pop_posas: 41123
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036044':
+    nome: Soliera
+    pop_posas: 15460
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '036046':
+    nome: Vignola
+    pop_posas: 26310
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  037008:
+    nome: Budrio
+    pop_posas: 18494
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037011':
+    nome: Casalecchio di Reno
+    pop_posas: 35359
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  037019:
+    nome: Castel Maggiore
+    pop_posas: 18479
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037020':
+    nome: Castel San Pietro Terme
+    pop_posas: 20702
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037032':
+    nome: Imola
+    pop_posas: 69702
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037037':
+    nome: Medicina
+    pop_posas: 16817
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  037039:
+    nome: Molinella
+    pop_posas: 15910
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037047':
+    nome: Pianoro
+    pop_posas: 17852
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037053':
+    nome: San Giovanni in Persiceto
+    pop_posas: 28195
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037054':
+    nome: San Lazzaro di Savena
+    pop_posas: 32950
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037060':
+    nome: Zola Predosa
+    pop_posas: 19516
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '037061':
+    nome: Valsamoggia
+    pop_posas: 32258
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  038001:
+    nome: Argenta
+    pop_posas: 21295
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  038004:
+    nome: Cento
+    pop_posas: 35836
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  038006:
+    nome: Comacchio
+    pop_posas: 22003
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  038007:
+    nome: Copparo
+    pop_posas: 15657
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  039002:
+    nome: Bagnacavallo
+    pop_posas: 16519
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  039007:
+    nome: Cervia
+    pop_posas: 29075
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  039010:
+    nome: Faenza
+    pop_posas: 58750
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  039012:
+    nome: Lugo
+    pop_posas: 32128
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '040007':
+    nome: Cesena
+    pop_posas: 95620
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  040008:
+    nome: Cesenatico
+    pop_posas: 26042
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  '040045':
+    nome: Savignano sul Rubicone
+    pop_posas: 18147
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  099001:
+    nome: Bellaria-Igea Marina
+    pop_posas: 19562
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  099002:
+    nome: Cattolica
+    pop_posas: 16614
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  099013:
+    nome: Riccione
+    pop_posas: 34367
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante
+  099018:
+    nome: Santarcangelo di Romagna
+    pop_posas: 22366
+    articolazione: da_verificare
+    tavole:
+      istat_anag_sesso_eta_statociv:
+        stato: mancante
+      istat_cens_sesso_eta_cittadinanza:
+        stato: mancante
+      istat_cens_istruzione_eta:
+        stato: mancante
+      istat_cens_istruzione_cittadinanza:
+        stato: mancante
+      istat_cens_condprof_eta:
+        stato: mancante
+      istat_cens_condprof_cittadinanza:
+        stato: mancante
+      istat_cens_migr_backg:
+        stato: mancante
+      istat_cens_stranieri_paesi:
+        stato: mancante
+      istat_cens_settore_prof:
+        stato: mancante
+      istat_cens_posizione_prof:
+        stato: mancante

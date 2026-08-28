@@ -67,11 +67,11 @@ def controlla(percorso):
     return p.exists() and p.stat().st_size > 0
 
 
-def campagna(max_celle=None):
+def campagna(max_celle=None, solo_comune=None):
     fatti, falliti_consecutivi = 0, 0
     while True:
         m = carica()                      # riletto: stato sempre fresco
-        cella = prossima_cella(m)
+        cella = prossima_cella(m, solo_comune)
         if cella is None:
             print("campagna: niente da fare, tutte le celle avanzate")
             return

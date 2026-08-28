@@ -87,7 +87,7 @@ comuni:
   '034014':
     nome: Fidenza
     pop_posas: 27573
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -109,10 +109,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 213
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '034032':
     nome: Salsomaggiore Terme
     pop_posas: 20640
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -134,10 +140,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 187
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '035012':
     nome: Casalgrande
     pop_posas: 19039
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -159,10 +171,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 143
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '035014':
     nome: Castellarano
     pop_posas: 15160
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -184,10 +202,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 207
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '035020':
     nome: Correggio
     pop_posas: 25234
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -209,10 +233,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 250
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '035040':
     nome: Scandiano
     pop_posas: 25979
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -234,10 +264,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 209
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036005':
     nome: Carpi
     pop_posas: 74041
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -259,10 +295,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 1128
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036006':
     nome: Castelfranco Emilia
     pop_posas: 33625
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -284,10 +326,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 267
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036007':
     nome: Castelnuovo Rangone
     pop_posas: 15116
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -309,10 +357,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 105
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036012':
     nome: Finale Emilia
     pop_posas: 15570
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -334,10 +388,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 218
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036013':
     nome: Fiorano Modenese
     pop_posas: 16610
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -359,10 +419,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 119
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036015':
     nome: Formigine
     pop_posas: 34496
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -384,10 +450,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 256
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   036019:
     nome: Maranello
     pop_posas: 17360
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -409,10 +481,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 141
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036022':
     nome: Mirandola
     pop_posas: 24921
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -434,10 +512,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 492
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036027':
     nome: Nonantola
     pop_posas: 16186
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -459,10 +543,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 185
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036030':
     nome: Pavullo nel Frignano
     pop_posas: 18405
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -484,10 +574,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 217
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036040':
     nome: Sassuolo
     pop_posas: 41123
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -509,10 +605,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 617
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036044':
     nome: Soliera
     pop_posas: 15460
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -534,10 +636,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 144
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '036046':
     nome: Vignola
     pop_posas: 26310
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -559,10 +667,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 143
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   037008:
     nome: Budrio
     pop_posas: 18494
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -584,10 +698,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 240
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037011':
     nome: Casalecchio di Reno
     pop_posas: 35359
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -609,10 +729,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 272
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   037019:
     nome: Castel Maggiore
     pop_posas: 18479
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -634,10 +760,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 118
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037020':
     nome: Castel San Pietro Terme
     pop_posas: 20702
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -659,10 +791,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 260
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037032':
     nome: Imola
     pop_posas: 69702
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -684,10 +822,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 1059
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037037':
     nome: Medicina
     pop_posas: 16817
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -709,10 +853,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 150
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   037039:
     nome: Molinella
     pop_posas: 15910
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -734,10 +884,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 165
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037047':
     nome: Pianoro
     pop_posas: 17852
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -759,10 +915,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 187
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037053':
     nome: San Giovanni in Persiceto
     pop_posas: 28195
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -784,10 +946,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 225
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037054':
     nome: San Lazzaro di Savena
     pop_posas: 32950
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -809,10 +977,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 239
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037060':
     nome: Zola Predosa
     pop_posas: 19516
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -834,10 +1008,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 155
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '037061':
     nome: Valsamoggia
     pop_posas: 32258
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -859,10 +1039,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 327
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   038001:
     nome: Argenta
     pop_posas: 21295
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -884,10 +1070,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 260
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   038004:
     nome: Cento
     pop_posas: 35836
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -909,10 +1101,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 208
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   038006:
     nome: Comacchio
     pop_posas: 22003
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -934,10 +1132,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 307
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   038007:
     nome: Copparo
     pop_posas: 15657
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -959,10 +1163,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 210
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   039002:
     nome: Bagnacavallo
     pop_posas: 16519
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -984,10 +1194,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 191
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   039007:
     nome: Cervia
     pop_posas: 29075
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1009,10 +1225,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 343
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   039010:
     nome: Faenza
     pop_posas: 58750
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1034,10 +1256,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 920
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   039012:
     nome: Lugo
     pop_posas: 32128
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1059,41 +1287,57 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 343
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '040007':
     nome: Cesena
     pop_posas: 95620
     articolazione: presente
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:41:58'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_sesso_eta_cittadinanza:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:43:05'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_istruzione_eta:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:43:32'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_istruzione_cittadinanza:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:43:49'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_condprof_eta:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:44:11'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_condprof_cittadinanza:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:44:28'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_migr_backg:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:44:50'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_stranieri_paesi:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:45:07'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_settore_prof:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:45:27'
+        quando_validata: '2026-08-28T12:11:46'
       istat_cens_posizione_prof:
-        stato: scaricata
+        stato: validata
         quando: '2026-08-28T11:45:44'
+        quando_validata: '2026-08-28T12:11:46'
     articolazione_misura:
       sezioni: 1635
       asc1: 12
@@ -1103,7 +1347,7 @@ comuni:
   040008:
     nome: Cesenatico
     pop_posas: 26042
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1125,10 +1369,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 394
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   '040045':
     nome: Savignano sul Rubicone
     pop_posas: 18147
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1150,10 +1400,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 151
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   099001:
     nome: Bellaria-Igea Marina
     pop_posas: 19562
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1175,10 +1431,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 121
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   099002:
     nome: Cattolica
     pop_posas: 16614
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1200,10 +1462,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 99
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   099013:
     nome: Riccione
     pop_posas: 34367
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1225,10 +1493,16 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 252
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'
   099018:
     nome: Santarcangelo di Romagna
     pop_posas: 22366
-    articolazione: da_verificare
+    articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
         stato: mancante
@@ -1250,3 +1524,9 @@ comuni:
         stato: mancante
       istat_cens_posizione_prof:
         stato: mancante
+    articolazione_misura:
+      sezioni: 140
+      asc1: 1
+      asc1_nan: 0
+      asc2: 1
+      quando: '2026-08-28'

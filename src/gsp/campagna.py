@@ -366,6 +366,32 @@ def riapri(cod, motivo):
     salva(m)
     print(f"{cod} ({c['nome']}): riaperte {n} celle DIVERGE — {motivo}")
 
+
+def verifica_articolazione_tutti():
+    """Come verifica_articolazione, ma su tutti i comuni del manifest
+    in UNA lettura dello shapefile. Registra le misure e stampa la
+    tabella dei 'presente' — la risposta alla domanda 'chi ha zone?'."""
+    import geopandas as gpd
+    import gsp.common as G
+    m = carica()
+    s = gpd.read_file(G.path_shp("emilia_romagna"))
+    for cod, c in m["comuni"].items():
+        ss = s[s.PRO_COM == G.procom(cod)]
+        n1 = ss["COM_ASC1"].nunique(dropna=True)
+        c["articolazione"] = "assente" if n1 <= 1 else "presente"
+        c["articolazione_misura"] = {
+            "sezioni": int(len(ss)), "asc1": int(n1),
+            "asc1_nan": int(ss["COM_ASC1"].isna().sum()),
+            "asc2": int(ss["COM_ASC2"].nunique(dropna=True)) if "COM_ASC2" in ss.columns else 0,
+            "quando": str(date.today()),
+        }
+    salva(m)
+    for cod, c in m["comuni"].items():
+        if c["articolazione"] == "presente":
+            mi = c["articolazione_misura"]
+            print(f"{cod} {c['nome']}: ASC1={mi['asc1']} "
+                  f"({mi['sezioni']} sezioni, nan={mi['asc1_nan']})")
+
 # --------------------------------------------------------------- CLI
 
 if __name__ == "__main__":
@@ -373,6 +399,9 @@ if __name__ == "__main__":
     ap.add_argument("--inizializza", action="store_true")
     ap.add_argument("--stato", action="store_true")
     ap.add_argument("--emetti", metavar="COD")
+    ap.add_argument("--verifica-articolazione-tutti", action="store_true",
+                    help="misura COM_ASC1/ASC2 per TUTTI i comuni del manifest "
+                         "in una sola lettura dello shapefile")
     ap.add_argument("--verifica-articolazione", metavar="COD")
     ap.add_argument("--valida", metavar="COD",
                     help="controlla C1-C5 e promuove a 'validata' le tavole scaricate") 
@@ -385,7 +414,9 @@ if __name__ == "__main__":
         stato()
     elif a.emetti:
         emetti(a.emetti)
-    elif a.verifica_articolazione:          # <-- il ramo relativo
+    elif a.verifica_articolazione_tutti:
+        verifica_articolazione_tutti()
+    elif a.verifica_articolazione:
         verifica_articolazione(a.verifica_articolazione)
     elif a.valida:
         valida(a.valida)

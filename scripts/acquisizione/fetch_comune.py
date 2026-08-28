@@ -138,6 +138,25 @@ def explore(comune: str, tables: dict):
         else:
             print(f"  territorio: {terr_dim} = {comune} ({terr_label})")
 
+def fetch_one(comune: str, name: str, cfg: dict, out_dir: str):
+    """Scarica UNA tavola. Ritorna (status, path_decoded, n_righe),
+    con status "OK" oppure "VUOTA" (query senza osservazioni).
+    Le eccezioni NON vengono catturate qui: il chiamante decide —
+    fetch_all le stampa e prosegue, l'orchestratore di campagna le
+    conta come fallimenti di rete e ritenta."""
+    flow = cfg["flow"]
+    xml_path = sdmx.get_structure(flow)
+    spec, _, _ = make_spec(xml_path, comune, cfg["spec"])
+    df = sdmx.fetch(flow, spec)
+    if df.empty:
+        return "VUOTA", None, 0
+
+    raw_path = os.path.join(out_dir, f"{name}_raw.csv")
+    decoded_path = os.path.join(out_dir, f"{name}_decoded.csv")
+    df.to_csv(raw_path, index=False)
+    decoded = sdmx.decode(df, xml_path)
+    decoded.to_csv(decoded_path, index=False)
+    return "OK", decoded_path, len(decoded)
 
 def fetch_all(comune: str, tables: dict):
     """Scarica e salva tutte le tavole selezionate."""
@@ -145,35 +164,15 @@ def fetch_all(comune: str, tables: dict):
     summary = []
 
     for name, cfg in tables.items():
-        flow = cfg["flow"]
-
         try:
-            xml_path = sdmx.get_structure(flow)
-            spec, _, _ = make_spec(xml_path, comune, cfg["spec"])
-            df = sdmx.fetch(flow, spec)
+            status, decoded_path, n = fetch_one(comune, name, cfg, out_dir)
         except Exception as exc:
             print(f"[errore] {name}: {exc}")
             summary.append((name, "ERR", 0))
             continue
-
-        if df.empty:
-            summary.append((name, "VUOTA", 0))
-            continue
-
-        raw_path = os.path.join(out_dir, f"{name}_raw.csv")
-        decoded_path = os.path.join(out_dir, f"{name}_decoded.csv")
-
-        df.to_csv(raw_path, index=False)
-        decoded = sdmx.decode(df, xml_path)
-        decoded.to_csv(decoded_path, index=False)
-
-        periods = (
-            sorted(decoded["TIME_PERIOD"].dropna().astype(str).unique())
-            if "TIME_PERIOD" in decoded.columns
-            else []
-        )
-        summary.append((name, "OK", len(decoded)))
-        print(f"[ok] {name}: {len(decoded)} righe, periodi {periods}")
+        summary.append((name, status if status == "VUOTA" else "OK", n))
+        if status == "OK":
+            print(f"[ok] {name}: {n} righe")
 
     print(f"\n--- riepilogo ({out_dir}) ---")
     for name, status, n_rows in summary:

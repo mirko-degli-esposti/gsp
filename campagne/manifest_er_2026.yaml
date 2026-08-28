@@ -9,11 +9,14 @@ comuni:
     articolazione: da_verificare
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:33:31'
       istat_cens_sesso_eta_cittadinanza:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:35:44'
       istat_cens_istruzione_eta:
-        stato: mancante
+        stato: scaricata
+        quando: '2026-08-28T10:36:10'
       istat_cens_istruzione_cittadinanza:
         stato: mancante
       istat_cens_condprof_eta:

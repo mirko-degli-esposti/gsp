@@ -2551,3 +2551,50 @@ fonti:
 # scoperte confrontando i file con il PDF, e senza quel confronto
 # «RB220 e' assente» sarebbe stata una constatazione invece di una
 # discrepanza fra cio' che il dato dichiara e cio' che contiene.
+
+istat_posas_comuni_2026:
+  tipo: file
+  descrizione: >
+    Popolazione residente per età e sesso al 1° gennaio 2026, per comune,
+    Italia intera. Il titolo del file dichiara "(stima)": non è il dato
+    consolidato. Dato anagrafico, non censuario: scarti ~1-2% attesi
+    rispetto ai margini P1 delle sezioni 2023. 
+    330 comuni ER, 57 sopra 15k — coincide col conteggio indipendente del 27/8.
+  ente: ISTAT (demo.istat.it)
+  url: https://demo.istat.it/data/posas/POSAS_2026_it_Comuni.zip
+  data_accesso: 2026-08-28
+  riferimento_temporale: 2026-01-01
+  licenza: CC-BY-4.0
+  attribuzione: "ISTAT, Popolazione residente al 1° gennaio (stima)"
+  universo: popolazione residente anagrafica, tutti i comuni italiani (~7.896)
+  unita: comune x età singola (0-100), maschi/femmine/totale
+  archiviazione: locale
+  percorso: data/istat/posas_2026_comuni/POSAS_2026_it_Comuni.zip
+  sha256: 910639e5f7b1bb8256637eee824655ba76fb8459670c9559fea1ac0922667eac
+  estratto:
+    percorso: data/istat/posas_2026_comuni/POSAS_2026_it_Comuni.csv
+    sha256: a4c0f87fdf23618578c2a8bff25425103d0e3794cfbdbeee3aff2be4b3414f87
+    righe: 805395
+  formato:
+    bom: true
+    prima_riga: descrittiva (skiprows=1)
+    separatore: ";"
+    colonne: [Codice comune, Comune, Età, Totale maschi, Totale femmine, Totale]
+    codice_comune: stringa a 6 cifre, già zero-padded (leggere con dtype=str)
+  usabile_per:
+    - lista candidati comuni per estensione flotta (soglia popolazione)
+    - ordinamenti e conteggi regionali di servizio
+  non_usabile_per:
+    - margini di vincolo per gli anelli (base anagrafica, non censuaria)
+    - confronto diretto con P1 di sezione senza dichiarare lo scarto
+  anomalie:
+    - "titolo dichiara '(stima)': dato provvisorio, non consolidato"
+    - "riga di totale per età con codice Età=999, una per comune
+       (misurato: 7.896 comuni x 102 righe)"
+    - "riga di piè di pagina in coda al CSV, letta come dato:
+       'Nota: lo stato civile è in corso di validazione.' nel campo
+       Codice comune, resto NaN — contamina il dtype di Età (float64)"
+    - "filtro di lettura verificato: Età.between(0,100) elimina entrambi
+       gli intrusi; post-filtro 7.896 comuni x 101 righe esatte"
+    - "filtro regionale solo via prefisso provincia: per ER {033..040, 099},
+       Rimini è 099 fuori sequenza"

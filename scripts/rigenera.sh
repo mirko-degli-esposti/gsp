@@ -42,6 +42,7 @@ COMUNI=(
   "038008:K6C:170000"   # Ferrara    129.391  (non articolato)
   "040012:K9C:150000"   # Forli'     117.050
   "033032:K9C:140000"   # Piacenza 102.887
+  "040007:K9C:125000"   # Cesena      95.620
   "037021:K6C:30000"    # Castenaso   16.357  (non articolato)
 )
 ESCL="--esclusioni"

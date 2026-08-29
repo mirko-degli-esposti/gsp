@@ -55,13 +55,11 @@ that remain are mine.
 
 ## Reading conventions
 
-Three markers appear throughout. **[m]** marks a figure measured at the
+Two markers appear throughout. **[m]** marks a figure measured at the
 release tag, with the log or diagnostic that produced it available in
 the repository; **[n]** marks a claim taken from a working note, which
-is cited by name and travels with the code; **[v]** marks a value that
-could only be known at publication — an identifier, a hash, a
-screenshot taken from the deployed site. Nothing else in this report is
-a number: where a quantity appears without a marker, it is a
+is cited by name and travels with the code. Nothing else in this report
+is a number: where a quantity appears without a marker, it is a
 definition or a design parameter.
 
 Claims marked **[n]** come from the project's working notes, which live
@@ -78,7 +76,7 @@ below; the hashes are the verification path.
 
 | artefact | identifier | verify with |
 |---|---|---|
-| this report | v1.0, arXiv:XXXX **[v]** | — |
+| this report |  v1.0 (arXiv:2608.27111v2)— |
 | GSP pipeline | tag `report-v1.0`, github.com/mirko-degli-esposti/gsp | `git rev-parse` |
 | Animarium viewer | tag `report-v1.0`, github.com/mirko-degli-esposti/Animarium | idem |
 | MaxEnt solver (`maxent-popsynth-pcd`) | commit `14f5bab` (2026-08-03), github.com/mirko-degli-esposti/maxent-popsynth-pcd | `git rev-parse --short HEAD` in the clone |
@@ -122,26 +120,17 @@ no one to re-identify (§I.7).
 
 ## How to cite
 
-The report (until the arXiv id exists, cite the repository tag):
+The report:
 
 > Degli Esposti, M. (2026). *Animarium: an open, reproducible pipeline
 > for synthetic populations of Italian cities — from ISTAT sources to
-> open data.* Technical report v1.0, arXiv preprint. The arXiv
-> identifier is printed in the margin of this document by arXiv itself;
-> the persistent identifiers of code and data are in the binding table
-> above.
+> open data.* Technical report v1.0, arXiv:2608.27111.
 
-The dataset: the Zenodo DOI **[v]**, with the CC-BY-4.0 attributions in
-`fonti/ATTRIBUZIONI.md`. The software: the Zenodo snapshot DOIs, or
+The dataset: [10.5281/zenodo.22127581](https://doi.org/10.5281/zenodo.22127581),
+CC-BY-4.0, with the attributions in `fonti/ATTRIBUZIONI.md`. The
+software: the Zenodo snapshot DOIs in the binding table, or
 `CITATION.cff` in either repository.
 
-A *view* of the viewer — a figure in a paper should carry all three:
-
-> URL (the state is the address) · report version · SHA-256 prefix of
-> the municipality's `pop.parquet` (binding table above).
-> Example: `animarium.it/?c=034027&f=eta:65-74,75%2B&v=fiducia`
-> · report v1.0 · `f2a8784d` **[v]** freeze this example against the
-> deployed `report-v1.0` site.
 
 ## Licences
 

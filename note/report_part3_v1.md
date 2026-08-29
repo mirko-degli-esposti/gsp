@@ -718,7 +718,7 @@ finding. Dates are those of the annotations.
 
 1. **The −418 gap** between two population totals, initially read as a
    data defect, was a configuration coincidence; withdrawn and documented
-   in the design note §0.1 **[v]** exact date from the note.
+   in the design note §0.1.
 2. **`quartiere` = `zona`.** The viewer briefly treated the two as
    distinct levels; they are one-to-one, and the column was dropped from
    the bundle as redundant **[n]** design note.
@@ -763,8 +763,7 @@ finding. Dates are those of the annotations.
 12. **The Q-series and unit corrections** of the viewer's cost and error
     measures (a factor-2.1 estimate corrected; two results withdrawn by
     comparing against known-answer configurations) **[n]** design note
-    §12–13, *working rule* of §IV.1. **[v]** compress or itemise from the
-    note when assembling.
+    §12–13.
 13. **Falsified: the per-section MAE is mostly propagated sampling noise.**
    Conjectured while examining the zone margins of Milano: since ring 1
    samples N individuals rather than fixing the zone counts, each zone

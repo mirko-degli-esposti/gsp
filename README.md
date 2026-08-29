@@ -139,11 +139,10 @@ technical report, Part I.7.
 
 ## Related work and citation
 
+- *Animarium, Technical Report version 1*, arXiv:2608.27111.
+- *Calibrating the Instrument: Controllability of an LLM-Driven Synthetic Population*, arXiv:2607.00910.
 - Method for ring 1: *Scalable Maximum Entropy Population Synthesis via Persistent Contrastive Divergence*, arXiv:2603.27312 —
   code at `github.com/mirko-degli-esposti/maxent-popsynth-pcd`.
-- *Calibrating the Instrument: Controllability of an LLM-Driven Synthetic Population*, arXiv:2607.00910.
-- *Animarium, Technical Report version 1*, arXiv:2608.27111.
-
 
 Cite the technical report for the pipeline and the populations; `CITATION.cff`
 has the machine-readable form. Software snapshots and the open dataset are

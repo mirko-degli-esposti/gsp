@@ -169,15 +169,15 @@ someone else's burden of proof, carried elsewhere.
 
 ### Open items for Part V
 
-1. **[v]** Check the SIVE paper's exact terminology for the strata and
+1.  Check the SIVE paper's exact terminology for the strata and
    criteria (C1–C7) against `sive_paper_v6` before freezing §V.2's second
    paragraph.
-2. **[v]** Decide whether the three-model table of registro §5 (gain /
+2. Decide whether the three-model table of registro §5 (gain /
    level / D−C per model) is reproduced in full or summarised as in the
    current text; if in full, table V.2a.
-3. **[v]** The `emo_*` campaigns cite Claude Haiku 4.5 and GPT-4o-mini on
+3.  The `emo_*` campaigns cite Claude Haiku 4.5 and GPT-4o-mini on
    `emozione` only — confirm which models ran the full BCD before naming
    all three in the stereotype paragraph (currently attributed to
    DeepSeek n=600 only, which is correct per registro §9).
-4. **[v]** Cross-reference: `dati/README.md` section numbering after the
+4.  Cross-reference: `dati/README.md` section numbering after the
    repository restructuring.

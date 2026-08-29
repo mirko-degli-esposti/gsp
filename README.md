@@ -4,9 +4,7 @@ Reproducible synthetic populations of Italian municipalities, built from
 public ISTAT sources and municipal open data. This repository is the
 production pipeline behind [Animarium](https://animarium.pages.dev), a
 viewer for the resulting populations, and the code base documented in the
-technical report *Animarium: an open, reproducible pipeline for synthetic
-populations of Italian cities — from ISTAT sources to open data* (arXiv,
-report v1.0, identifier to be added on release).
+technical report *Animarium — technical report, version 1* (http://arxiv.org/abs/2608.27111).
 
 **Nothing in these populations describes a real person.** Every individual is sampled from a joint distribution estimated 
 from aggregate statistics; names, where they appear, are drawn from public name repertoires and bear no relation 
@@ -144,6 +142,8 @@ technical report, Part I.7.
 - Method for ring 1: *Scalable Maximum Entropy Population Synthesis via Persistent Contrastive Divergence*, arXiv:2603.27312 —
   code at `github.com/mirko-degli-esposti/maxent-popsynth-pcd`.
 - *Calibrating the Instrument: Controllability of an LLM-Driven Synthetic Population*, arXiv:2607.00910.
+- *Animarium, Technical Report version 1*, arXiv:2608.27111.
+
 
 Cite the technical report for the pipeline and the populations; `CITATION.cff`
 has the machine-readable form. Software snapshots and the open dataset are

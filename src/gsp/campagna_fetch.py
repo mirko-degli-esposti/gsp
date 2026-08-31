@@ -45,14 +45,19 @@ BACKOFF = [60, 300, 900]   # dopo 1, 2, 3 fallimenti consecutivi
 MAX_FALLIMENTI = 4  # poi ci si ferma: è il rate limit che parla
 
 
-def prossima_cella(m, solo_comune=None):
-    """... [docstring esistente] ...
-    Con solo_comune si restringe a un comune: serve al pilota per
-    scegliere i casi informativi invece dell'ordine di codice."""
+
+def prossima_cella(m, solo_comune=None, salta=()):
+    """Prima cella 'mancante' in ordine (comune, tavola). L'ordine per
+    comune — completare un comune prima del prossimo — avvicina i gate
+    uno alla volta. solo_comune restringe (pilota); salta esclude celle
+    (cod, tavola) per la sessione: tattica del processo, non stato
+    della campagna — il manifest non le vede, restano 'mancante'."""
     for cod, c in m["comuni"].items():
         if solo_comune and cod != solo_comune:
             continue
         for t in TAVOLE:
+            if (cod, t) in salta:
+                continue
             if c["tavole"][t]["stato"] == "mancante":
                 return cod, t
     return None
@@ -69,9 +74,10 @@ def controlla(percorso):
 
 def campagna(max_celle=None, solo_comune=None):
     fatti, falliti_consecutivi = 0, 0
+    saltate, tentativi = set(), {}
     while True:
-        m = carica()                      # riletto: stato sempre fresco
-        cella = prossima_cella(m, solo_comune)
+        m = carica()
+        cella = prossima_cella(m, solo_comune, saltate)
         if cella is None:
             print("campagna: niente da fare, tutte le celle avanzate")
             return
@@ -92,15 +98,20 @@ def campagna(max_celle=None, solo_comune=None):
             continue
         except Exception as e:
             falliti_consecutivi += 1
+            tentativi[cella] = tentativi.get(cella, 0) + 1
             print(f"[{cod} {nome}] {t}: FALLITO ({e}) — "
+                  f"tentativi cella: {tentativi[cella]}, "
                   f"consecutivi: {falliti_consecutivi}")
+            if tentativi[cella] >= 3:
+                saltate.add(cella)
+                print(f"[{cod} {nome}] {t}: 3 tentativi, la salto per questa "
+                      f"sessione (resta 'mancante', si ritenta al rilancio)")
             if falliti_consecutivi >= MAX_FALLIMENTI:
                 print("mi fermo: il rate limit non si combatte. "
                       "Rilanciare più tardi, lo stato è salvo.")
                 return
-            time.sleep(BACKOFF[min(falliti_consecutivi - 1,
-                                   len(BACKOFF) - 1)])
-            continue                       # cella resta 'mancante'
+            time.sleep(BACKOFF[min(falliti_consecutivi - 1, len(BACKOFF) - 1)])
+            continue                      # cella resta 'mancante'
 
         if controlla(percorso):
             m["comuni"][cod]["tavole"][t] = {

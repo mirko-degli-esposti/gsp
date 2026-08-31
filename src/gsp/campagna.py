@@ -280,8 +280,9 @@ def _controlla_tavola(cod, tavola_id, pop_posas):
     fallimento (mai 'controllo fallito': sempre il numero visto contro
     l'atteso)."""
     name = tavola_id.removeprefix("istat_")
-    path = Path(os.path.expanduser(
-        f"~/progetti/gsp/data/comuni/{cod}/{name}_decoded.csv"))
+    sys.path.insert(0, str(GSP_ROOT / "scripts" / "acquisizione"))
+    from fetch_comune import output_dir
+    path = Path(output_dir(cod)) / f"{name}_decoded.csv"
 
     # C1 — esistenza e non-vuotezza
     if not path.exists() or path.stat().st_size == 0:

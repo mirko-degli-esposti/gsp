@@ -6,8 +6,8 @@ Un oggetto di ORCHESTRAZIONE, separato dal registro fonti: il registro
 dichiara cosa esiste, il manifest dichiara a che punto siamo. Traccia,
 per ogni comune candidato, lo stato di acquisizione delle tavole e il
 gate di ingresso alla fase di build. Nato per la campagna ER 2026
-(47 candidati >15k da istat_posas_comuni_2026), disegnato per essere
-portabile ad altre regioni.
+(47 candidati >15k da istat_posas_comuni_2026, poi estesa a tutta la
+regione), disegnato per essere portabile ad altre regioni.
 
 PRINCIPI DI DISEGNO (le ragioni, non solo le regole)
 1. Dentro il manifest solo CODICI ISTAT, mai assunzioni regionali.
@@ -18,10 +18,12 @@ PRINCIPI DI DISEGNO (le ragioni, non solo le regole)
    Il fetcher — che NON sta in questo modulo — consuma il manifest:
    prende la prossima cella 'mancante', scarica, e la validazione
    promuove. Ammazzabile e rilanciabile senza memoria umana.
-3. Gli stati per tavola: mancante -> scaricata -> validata, più DIVERGE.
-   DIVERGE non si sovrascrive con un re-fetch automatico: si guarda.
-   (Regola di casa: le rettifiche restano esplicite, niente viene
-   corretto in silenzio.)
+3. Gli stati per tavola: mancante -> (scaricata | shadow) -> validata,
+   più DIVERGE. 'scaricata' = canale singolo, file in data/comuni/;
+   'shadow' = canale provinciale, file in data/prov_shadow/ finché
+   --promuovi non li porta in ufficiale. DIVERGE non si sovrascrive
+   con un re-fetch automatico: si guarda. (Regola di casa: le
+   rettifiche restano esplicite, niente viene corretto in silenzio.)
 4. Il gate è DERIVATO dagli stati, mai scritto a mano: un campo che si
    può calcolare e anche impostare prima o poi mente. Gate chiuso =
    tutte le tavole 'validata' E articolazione verificata.
@@ -34,6 +36,12 @@ PRINCIPI DI DISEGNO (le ragioni, non solo le regole)
    si committano. Se a regime l'incolla diventa puro attrito, promuovere
    l'emettitore a scrittore sarà una riga di decisione, non un
    ripensamento: l'interfaccia resta questa.
+7. Le celle si AGGIORNANO, mai si sostituiscono (update, non `= {}`):
+   'righe', 'quando' e la storia sopravvivono a ogni verdetto. La
+   sostituzione è ammessa solo alla nascita (--inizializza/--estendi)
+   e alla prima promozione da 'mancante'. Un DIVERGE che cancella le
+   misure precedenti è lui stesso una correzione silenziosa (pagato:
+   40 celle azzerate al primo collaudo della --valida --shadow).
 
 COERENZA A VALLE (non in questo modulo, da aggiungere a --verifica)
 Finché rigenera.sh e gsp.common.COMUNI restano due posti scritti a mano,
@@ -41,20 +49,30 @@ il confronto fra loro è un test di regressione permanente — due code
 path che devono dire la stessa cosa.
 
 COMANDI
-  python -m gsp.campagna --inizializza        crea il manifest coi 47
-  python -m gsp.campagna --stato              fotografia della campagna
-  python -m gsp.campagna --emetti 040007      frammenti per la promozione
+  python -m gsp.campagna --inizializza                 crea il manifest coi 47
+  python -m gsp.campagna --estendi                     estende a tutta l'ER (esclusa flotta)
+  python -m gsp.campagna --stato                       fotografia della campagna
+  python -m gsp.campagna --valida COD [--shadow]       C1-C5 -> 'validata' (o DIVERGE)
+  python -m gsp.campagna --riapri COD --motivo "..." [--shadow]
+  python -m gsp.campagna --promuovi COD                shadow -> data/comuni (comune intero)
+  python -m gsp.campagna --promuovi-tutti              idem, tutti i validati in shadow
+  python -m gsp.campagna --verifica-articolazione COD  misura COM_ASC dallo shapefile
+  python -m gsp.campagna --verifica-articolazione-tutti
+  python -m gsp.campagna --emetti COD                  frammenti per la promozione in flotta
 
 RIFERIMENTI
   fonte candidati : fonti/registro.yaml -> istat_posas_comuni_2026
   lettura POSAS   : scripts/diagnostica/lista_comuni_er.py (stessi filtri)
   articolazione   : COM_ASC1 dalle basi territoriali, nunique() == 1
                     -> assente (caso San Vito dei Normanni)
+  canale prov.    : scripts/acquisizione/fetch_prov.py + confronta_prov.py
 """
 
 import argparse
+import hashlib
 import math
 import os
+import shutil
 import sys
 import tempfile
 from datetime import date, datetime
@@ -64,7 +82,6 @@ import pandas as pd
 import yaml
 import geopandas as gpd
 import gsp.common as G
-
 
 
 GSP_ROOT = Path(__file__).resolve().parents[2]
@@ -205,8 +222,8 @@ def emetti(cod):
         liv = "K6C"
     else:
         liv = "DA_DECIDERE"
-        print(f"# ATTENZIONE: articolazione presente "
-              f"({c['articolazione']}): livello da decidere a mano.")
+        print(f"# ATTENZIONE: articolazione {c['articolazione']}: "
+              f"livello da decidere a mano.")
 
     pool = math.ceil(c["pop_posas"] * POOL_FATTORE)
 
@@ -219,6 +236,8 @@ def emetti(cod):
     print(f'"{cod}": {{...}}   # {c["nome"]}, pop {c["pop_posas"]}')
 
 
+# ----------------------------------------------------- articolazione
+
 def verifica_articolazione(cod):
     """Misura l'articolazione sub-comunale dalle basi territoriali
     (COM_ASC1 delle sezioni 2021) e la registra nel manifest.
@@ -228,8 +247,6 @@ def verifica_articolazione(cod):
     informazione per decidere un domani se merita più del K6C.
     Criterio: nunique(COM_ASC1) == 1 -> assente (caso San Vito dei
     Normanni: un solo valore, nessuna articolazione)."""
-  
-
     m = carica()
     c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
 
@@ -257,128 +274,11 @@ def verifica_articolazione(cod):
     print(f"{cod} {c['nome']}: articolazione {esito} "
           f"({len(s)} sezioni, ASC1={n1}, ASC2={n2}, nan={nan1})")
 
-# ------------------------------------------------------- validazione
-# Attesi di conteggio righe (dati, senza header: len(df), non wc -l).
-# Provenienza di ogni numero: misurato su 033021 e 040007 (estremi
-# 15k/95k del pilota); anag confermata anche su 020030.
-# Esatti = griglie piene o sparse-per-costruzione; range = dipendono
-# dal comune, calibrati su DUE punti: provvisori, si allargano solo
-# per decisione davanti a un caso vero, mai in silenzio.
-ATTESI = {
-    "istat_anag_sesso_eta_statociv":       {"esatto": 8568},
-    "istat_cens_istruzione_eta":           {"esatto": 819},
-    "istat_cens_istruzione_cittadinanza":  {"esatto": 441},
-    "istat_cens_condprof_eta":             {"esatto": 819},
-    "istat_cens_condprof_cittadinanza":    {"esatto": 486},
-    "istat_cens_settore_prof":             {"esatto": 21},
-    "istat_cens_posizione_prof":           {"esatto": 9},
-    "istat_cens_sesso_eta_cittadinanza":   {"range": (2500, 6000)},
-    "istat_cens_migr_backg":               {"range": (400, 600)},
-    "istat_cens_stranieri_paesi":          {"range": (700, 3500)},
-}
-
-TOLLERANZA_C5 = 0.02   # anag JAN 2025 vs POSAS 1/1/2026: un anno di deriva
-
-
-def _controlla_tavola(cod, tavola_id, pop_posas):
-    """Ritorna None se tutto passa, altrimenti il motivo MISURATO del
-    fallimento (mai 'controllo fallito': sempre il numero visto contro
-    l'atteso)."""
-    name = tavola_id.removeprefix("istat_")
-    sys.path.insert(0, str(GSP_ROOT / "scripts" / "acquisizione"))
-    from fetch_comune import output_dir
-    path = Path(output_dir(cod)) / f"{name}_decoded.csv"
-
-    # C1 — esistenza e non-vuotezza
-    if not path.exists() or path.stat().st_size == 0:
-        return f"C1: {path.name} assente o vuoto"
-
-    df = pd.read_csv(path)
-
-    # C2 — conteggio righe contro l'atteso
-    att = ATTESI[tavola_id]
-    if "esatto" in att and len(df) != att["esatto"]:
-        return f"C2: righe {len(df)} != atteso {att['esatto']}"
-    if "range" in att and not (att["range"][0] <= len(df) <= att["range"][1]):
-        return f"C2: righe {len(df)} fuori range {att['range']}"
-
- # C3 — territorio. Lo zero iniziale è perso A MONTE (nel parsing di
-    # sdmx.fetch): i decoded portano 33021, non 033021. Si accetta il
-    # codice in entrambe le forme; pre-filtro sulle colonne monovalore
-    # (la territoriale lo è per definizione in un fetch comunale).
-    attesi_terr = {cod, str(int(cod))}
-    terr_ok = any({str(v).strip() for v in df[c].dropna().unique()} <= attesi_terr
-                  for c in df.columns if df[c].nunique(dropna=True) == 1)
-    if not terr_ok:
-        return f"C3: nessuna colonna territoriale con solo {cod}"
-    
-    # C4 — OBS_VALUE sano
-    obs = pd.to_numeric(df["OBS_VALUE"], errors="coerce")
-    if obs.isna().all() or (obs < 0).any() or obs.sum() <= 0:
-        return (f"C4: OBS_VALUE sospetto (nan={obs.isna().sum()}, "
-                f"neg={(obs < 0).sum()}, somma={obs.sum():.0f})")
-
-    # C5 — coerenza di livello, SOLO anagrafica per ora: le censuarie
-    # imbarcano totali multiformi in posizioni diverse per tavola e un
-    # C5 non filtrato validerebbe rumore (estensione futura, col profilo)
-    if tavola_id == "istat_anag_sesso_eta_statociv":
-        ultimo = df["TIME_PERIOD"].max()
-        tot = obs[(df["TIME_PERIOD"] == ultimo) & (df["AGE"] == "TOTAL")].sum()
-        scarto = abs(tot - pop_posas) / pop_posas
-        if scarto > TOLLERANZA_C5:
-            return (f"C5: anag {ultimo} = {tot:.0f} vs posas {pop_posas} "
-                    f"(scarto {scarto:.1%} > {TOLLERANZA_C5:.0%})")
-    return None
-
-
-def valida(cod):
-    """Promuove a 'validata' le tavole 'scaricata' che passano C1-C5;
-    quelle che falliscono vanno DIVERGE col motivo misurato. Non tocca
-    DIVERGE esistenti, non retrocede validate."""
-    m = carica()
-    c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
-    for t in TAVOLE:
-        if c["tavole"][t]["stato"] != "scaricata":
-            continue
-        motivo = _controlla_tavola(cod, t, c["pop_posas"])
-        if motivo is None:
-            c["tavole"][t]["stato"] = "validata"
-            c["tavole"][t]["quando_validata"] = \
-                datetime.now().isoformat(timespec="seconds")
-            print(f"[{cod}] {t}: validata")
-        else:
-            c["tavole"][t] = {"stato": "DIVERGE", "motivo": motivo}
-            print(f"[{cod}] {t}: DIVERGE — {motivo}")
-    salva(m)
-    print(f"gate {cod} ({c['nome']}): "
-          f"{'CHIUSO' if gate_chiuso(c) else 'aperto'}")
-
-def riapri(cod, motivo):
-    """Riporta a 'scaricata' le celle DIVERGE di un comune, registrando
-    PERCHÉ: la storia delle riaperture resta nel manifest (e nei suoi
-    commit). Mai automatico, mai senza motivo — un DIVERGE riaperto
-    senza spiegazione è un DIVERGE corretto in silenzio."""
-    m = carica()
-    c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
-    n = 0
-    for t in TAVOLE:
-        if c["tavole"][t]["stato"] == "DIVERGE":
-            c["tavole"][t] = {
-                "stato": "scaricata",
-                "riaperta": {"quando": datetime.now().isoformat(timespec="seconds"),
-                             "motivo": motivo},
-            }
-            n += 1
-    salva(m)
-    print(f"{cod} ({c['nome']}): riaperte {n} celle DIVERGE — {motivo}")
-
 
 def verifica_articolazione_tutti():
     """Come verifica_articolazione, ma su tutti i comuni del manifest
     in UNA lettura dello shapefile. Registra le misure e stampa la
     tabella dei 'presente' — la risposta alla domanda 'chi ha zone?'."""
-    import geopandas as gpd
-    import gsp.common as G
     m = carica()
     s = gpd.read_file(G.path_shp("emilia_romagna"))
     for cod, c in m["comuni"].items():
@@ -399,14 +299,252 @@ def verifica_articolazione_tutti():
                   f"({mi['sezioni']} sezioni, nan={mi['asc1_nan']})")
 
 
+# ------------------------------------------------------- validazione
+# ATTESI v2 — calibrati sui 'righe' di 318 comuni (campagna provinciale,
+# 29/8; tabella completa nel diario e nel commit). Tre regimi misurati:
+#   esatto     : posizione_prof, 9 su 318/318 — l'unico invariante universale
+#   anagrafica : griglia piena PER PERIODO (multiplo di 1224, <= 8568);
+#                sotto tetto solo per finestra corta: fusioni 1/1/2019 e
+#                distacco Marche->Romagna 2021 — amministrativo, non sparsita'
+#   tetto      : censuarie — la saturazione e' probabilistica al bordo, non
+#                una soglia (Castelnuovo Rangone, 15.116: 818/819). Tetto
+#                DURO (mai sopra: sopra = duplicati o territorio sbagliato),
+#                pavimento = meta' del minimo osservato su 318: morde solo
+#                il patologico, il legittimo passa. Pavimenti [m], non teoria.
+ATTESI = {
+    "istat_anag_sesso_eta_statociv":      {"anag": True},
+    "istat_cens_posizione_prof":          {"esatto": 9},
+    "istat_cens_istruzione_eta":          {"tetto": 819,  "pavimento": 217},
+    "istat_cens_istruzione_cittadinanza": {"tetto": 441,  "pavimento": 117},
+    "istat_cens_condprof_eta":            {"tetto": 819,  "pavimento": 270},
+    "istat_cens_condprof_cittadinanza":   {"tetto": 486,  "pavimento": 162},
+    "istat_cens_settore_prof":            {"tetto": 21,   "pavimento": 7},
+    "istat_cens_migr_backg":              {"tetto": 495,  "pavimento": 107},
+    "istat_cens_sesso_eta_cittadinanza":  {"tetto": 3647, "pavimento": 466},
+    "istat_cens_stranieri_paesi":         {"tetto": 2670, "pavimento": 52},
+}
+#TOLLERANZA_C5 = 0.02        # componente relativa: un anno di deriva
+#C5_ASSOLUTO = 25            # componente assoluta: il rumore anagrafico non
+                            # scala con la taglia — su un comune da 100
+                            # abitanti 6 persone sono il 5,5%, su Bologna
+                            # sarebbero lo 0,0015%. Tarato sui 20 casi ER
+                            # (max osservato: 141 su Farini, 4,5%).
+
+# C5 — coerenza anagrafe/POSAS, normalizzata su taglia E centrata sul bias.
+# Due fatti misurati su 320 comuni ER (29/8):
+#  (a) lo scarto relativo scala come 1/sqrt(pop) — mediana per fascia da
+#      0,12% (>30k) a 1,58% (<1k): una soglia costante boccia per TAGLIA
+#      invece che per anomalia (il 2% ne bocciava 20, quasi tutti piccoli);
+#  (b) c'e' un bias generale mite: 67% dei comuni sotto la proiezione,
+#      mediana -0,35% — POSAS 2026 stima in avanti rispetto all'anagrafe
+#      1/1/2025, e la differenza va tolta prima di misurare l'anomalia.
+# Soglia = C5_K/sqrt(pop) sullo scarto CENTRATO. A k=1.6 boccia 10 comuni
+# (3,1%): un blocco contiguo della Bassa modenese-ferrarese (Mirandola,
+# San Felice, Finale Emilia, Cento, Carpi, Terre del Reno) piu' quattro,
+# tutti dallo stesso lato e a 3-13x la mediana regionale — segnale
+# demografico locale, non rumore. k=2.0 lo cancellerebbe, k=1.3
+# ripescherebbe il rumore di taglia.
+C5_K = 1.6
+C5_BIAS = -0.0035     # mediana regionale [m]; ricalibrare per altre regioni
+
+SHADOW_ROOT = GSP_ROOT / "data" / "prov_shadow"
+
+
+def _controlla_tavola(cod, tavola_id, pop_posas, radice=None):
+    """Controlli C1-C5 su un decoded. Ritorna None se tutto passa,
+    altrimenti il motivo MISURATO del fallimento (mai 'controllo
+    fallito': sempre il numero visto contro l'atteso).
+
+    radice: dove cercare i decoded. None = data/comuni/ (canale
+    singolo; coincide con output_dir di fetch_comune — la convenzione
+    resta citata qui senza essere duplicata nel codice);
+    SHADOW_ROOT = prov_shadow (canale provinciale, pre-promozione).
+    Il controllo e' identico: cambia solo dove vive il file."""
+    name = tavola_id.removeprefix("istat_")
+    base = radice if radice is not None else (GSP_ROOT / "data" / "comuni")
+    path = base / cod / f"{name}_decoded.csv"
+
+    # C1 — esistenza e non-vuotezza
+    if not path.exists() or path.stat().st_size == 0:
+        return f"C1: {path.name} assente o vuoto"
+
+    df = pd.read_csv(path)
+
+    # C2 — conteggio righe, tre regimi (v. ATTESI)
+    att = ATTESI[tavola_id]
+    n = len(df)
+    if "esatto" in att and n != att["esatto"]:
+        return f"C2: righe {n} != esatto {att['esatto']}"
+    if att.get("anag"):
+        if n % 1224 != 0 or n > 8568:
+            return (f"C2: anagrafica {n} righe — non multiplo di 1224 "
+                    f"o sopra 8568 (periodi attesi interi, max 7)")
+    if "tetto" in att:
+        if n > att["tetto"]:
+            return f"C2: righe {n} SOPRA il tetto {att['tetto']} (duplicati?)"
+        if n < att["pavimento"]:
+            return f"C2: righe {n} sotto il pavimento {att['pavimento']}"
+
+    # C3 — territorio. Lo zero iniziale è perso A MONTE (nel parsing di
+    # sdmx.fetch): i decoded portano 33021, non 033021. Si accetta il
+    # codice in entrambe le forme; pre-filtro sulle colonne monovalore
+    # (la territoriale lo è per definizione in un fetch comunale).
+    attesi_terr = {cod, str(int(cod))}
+    terr_ok = any({str(v).strip() for v in df[c].dropna().unique()} <= attesi_terr
+                  for c in df.columns if df[c].nunique(dropna=True) == 1)
+    if not terr_ok:
+        return f"C3: nessuna colonna territoriale con solo {cod}"
+
+    # C4 — OBS_VALUE sano
+    obs = pd.to_numeric(df["OBS_VALUE"], errors="coerce")
+    if obs.isna().all() or (obs < 0).any() or obs.sum() <= 0:
+        return (f"C4: OBS_VALUE sospetto (nan={obs.isna().sum()}, "
+                f"neg={(obs < 0).sum()}, somma={obs.sum():.0f})")
+
+    # C5 — coerenza di livello, SOLO anagrafica per ora: le censuarie
+    # imbarcano totali multiformi in posizioni diverse per tavola e un
+    # C5 non filtrato validerebbe rumore (estensione futura, col profilo)
+    if tavola_id == "istat_anag_sesso_eta_statociv":
+        ultimo = df["TIME_PERIOD"].max()
+        tot = obs[(df["TIME_PERIOD"] == ultimo) & (df["AGE"] == "TOTAL")].sum()
+        soglia = C5_K / math.sqrt(pop_posas)
+        scarto = (tot - pop_posas) / pop_posas - C5_BIAS   # centrato
+        if abs(scarto) > soglia:
+            return (f"C5: anag {ultimo} = {tot:.0f} vs posas {pop_posas} "
+                    f"(scarto centrato {scarto:+.1%} > soglia {soglia:.1%} "
+                    f"= {C5_K}/sqrt(pop))")
+    return None
+
+
+def valida(cod, shadow=False):
+    """Promuove a 'validata' le tavole che passano C1-C5; quelle che
+    falliscono vanno DIVERGE col motivo misurato (update: 'righe' e
+    'quando' sopravvivono al verdetto). Non tocca DIVERGE esistenti,
+    non retrocede validate.
+
+    Con shadow=True: controlla le celle 'shadow' leggendo da
+    prov_shadow/, e le promuove a 'validata' con in_shadow=True — il
+    file NON e' ancora in data/comuni/: ce lo porta --promuovi."""
+    m = carica()
+    c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
+    stato_atteso = "shadow" if shadow else "scaricata"
+    radice = SHADOW_ROOT if shadow else None
+    n_processate = 0
+    for t in TAVOLE:
+        if c["tavole"][t]["stato"] != stato_atteso:
+            continue
+        n_processate += 1
+        motivo = _controlla_tavola(cod, t, c["pop_posas"], radice=radice)
+        if motivo is None:
+            c["tavole"][t]["stato"] = "validata"
+            c["tavole"][t]["quando_validata"] = \
+                datetime.now().isoformat(timespec="seconds")
+            if shadow:
+                c["tavole"][t]["in_shadow"] = True
+            print(f"[{cod}] {t}: validata" + (" (shadow)" if shadow else ""))
+        else:
+            # update, non sostituzione: righe/quando/storia sopravvivono
+            # al verdetto — un DIVERGE che cancella le misure precedenti
+            # e' lui stesso una correzione silenziosa (principio 7)
+            c["tavole"][t].update({"stato": "DIVERGE", "motivo": motivo})
+            print(f"[{cod}] {t}: DIVERGE — {motivo}")
+    salva(m)
+    if n_processate == 0:
+        # "niente da fare" e "non ho fatto" devono suonare diversi:
+        # un comando muto su zero celle e' un mezzogiorno perso domani
+        print(f"  (nessuna cella '{stato_atteso}' da controllare per {cod})")
+    print(f"gate {cod} ({c['nome']}): "
+          f"{'CHIUSO' if gate_chiuso(c) else 'aperto'}")
+
+
+# -------------------------------------------------------- promozione
+
+def _sha256(p, blocco=1 << 20):
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        while chunk := f.read(blocco):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def promuovi(cod=None, tutti=False):
+    """Copia prov_shadow/<cod>/ -> data/comuni/<cod>/ SOLO per comuni
+    con tutte le tavole validate in shadow. Registra lo sha256 di ogni
+    decoded nella cella (la memoria contro le sovrascritture) e spegne
+    in_shadow. Rifiuta i parziali: la directory ufficiale riceve solo
+    comuni interi e validati."""
+    m = carica()
+    codici = ([cod] if cod else
+              [k for k, c in m["comuni"].items()
+               if all(v["stato"] == "validata" and v.get("in_shadow")
+                      for v in c["tavole"].values())] if tutti else
+              sys.exit("--promuovi COD oppure --promuovi-tutti"))
+    fatti = 0
+    for k in codici:
+        c = m["comuni"].get(k) or sys.exit(f"{k}: non in manifest")
+        celle = c["tavole"]
+        if not all(v["stato"] == "validata" and v.get("in_shadow")
+                   for v in celle.values()):
+            print(f"[{k}] {c['nome']}: NON promosso — celle non tutte "
+                  f"validate in shadow")
+            continue
+        src, dst = SHADOW_ROOT / k, GSP_ROOT / "data" / "comuni" / k
+        dst.mkdir(parents=True, exist_ok=True)
+        for f in sorted(src.iterdir()):
+            shutil.copy2(f, dst / f.name)
+        for t, v in celle.items():
+            name = t.removeprefix("istat_")
+            v["sha256"] = _sha256(dst / f"{name}_decoded.csv")
+            v["in_shadow"] = False
+        fatti += 1
+        print(f"[{k}] {c['nome']}: promosso ({len(list(src.iterdir()))} file)")
+    salva(m)
+    print(f"promossi {fatti}/{len(codici)}")
+
+
+def riapri(cod, motivo, a_stato="scaricata"):
+    """Riporta le celle DIVERGE di un comune allo stato indicato,
+    registrando PERCHÉ: la storia delle riaperture resta nel manifest
+    (e nei suoi commit). Mai automatico, mai senza motivo — un DIVERGE
+    riaperto senza spiegazione è un DIVERGE corretto in silenzio.
+
+    a_stato: 'scaricata' (default, canale singolo: i file vivono in
+    data/comuni/) oppure 'shadow' (celle nate dal canale provinciale:
+    i file vivono in prov_shadow/ finche' --promuovi non li porta in
+    ufficiale — riaprirle a 'scaricata' le farebbe cercare nel posto
+    sbagliato al giro dopo, C1 garantito).
+
+    Update, non sostituzione (principio 7): 'righe' e 'quando'
+    originali sopravvivono; il motivo del DIVERGE viene preservato
+    dentro 'riaperta' come motivo_diverge."""
+    assert a_stato in {"scaricata", "shadow"}, a_stato
+    m = carica()
+    c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
+    n = 0
+    for t in TAVOLE:
+        if c["tavole"][t]["stato"] == "DIVERGE":
+            motivo_diverge = c["tavole"][t].pop("motivo", None)
+            c["tavole"][t].update({
+                "stato": a_stato,
+                "riaperta": {
+                    "quando": datetime.now().isoformat(timespec="seconds"),
+                    "motivo": motivo,
+                    "motivo_diverge": motivo_diverge,
+                },
+            })
+            n += 1
+    salva(m)
+    print(f"{cod} ({c['nome']}): riaperte {n} celle DIVERGE -> "
+          f"'{a_stato}' — {motivo}")
+
 
 # ------------------------------------------------------------ estendi
 
 def estendi():
     """Estende il manifest a TUTTI i comuni ER dal POSAS, esclusa la
-    flotta (gsp.common.COMUNI: le 12 popolazioni generate non si
-    toccano ne' si tracciano — il manifest e' della campagna, la
-    flotta della flotta).
+    flotta (gsp.common.COMUNI: le popolazioni generate non si toccano
+    ne' si tracciano — il manifest e' della campagna, la flotta della
+    flotta).
 
     Preserva integralmente i comuni gia' presenti con i loro stati:
     per questo NON e' --inizializza. I nuovi entrano tutti 'mancante',
@@ -456,6 +594,7 @@ def estendi():
     print(f"manifest esteso: {nuovi} nuovi, {len(presenti)} preservati, "
           f"{saltati_flotta} in flotta (esclusi), totale {len(m['comuni'])}")
 
+
 # --------------------------------------------------------------- CLI
 
 if __name__ == "__main__":
@@ -468,11 +607,21 @@ if __name__ == "__main__":
                          "in una sola lettura dello shapefile")
     ap.add_argument("--verifica-articolazione", metavar="COD")
     ap.add_argument("--valida", metavar="COD",
-                    help="controlla C1-C5 e promuove a 'validata' le tavole scaricate") 
+                    help="controlla C1-C5 e promuove a 'validata' le tavole "
+                         "scaricate (o shadow, con --shadow)")
     ap.add_argument("--riapri", metavar="COD")
-    ap.add_argument("--motivo", default=None)  
+    ap.add_argument("--motivo", default=None)
     ap.add_argument("--estendi", action="store_true",
-                    help="estende il manifest a tutti i comuni ER (POSAS), esclusa la flotta")
+                    help="estende il manifest a tutti i comuni ER (POSAS), "
+                         "esclusa la flotta")
+    ap.add_argument("--shadow", action="store_true",
+                    help="con --valida/--riapri: le celle del canale "
+                         "provinciale, file in prov_shadow/ (pre-promozione)")
+    ap.add_argument("--promuovi", metavar="COD",
+                    help="copia prov_shadow/<COD>/ in data/comuni/ (solo se "
+                         "tutte le tavole sono validate in shadow)")
+    ap.add_argument("--promuovi-tutti", action="store_true",
+                    help="promuove tutti i comuni interamente validati in shadow")
     a = ap.parse_args()
     if a.inizializza:
         inizializza()
@@ -484,13 +633,18 @@ if __name__ == "__main__":
         verifica_articolazione_tutti()
     elif a.verifica_articolazione:
         verifica_articolazione(a.verifica_articolazione)
-    elif a.valida:
-        valida(a.valida)
     elif a.estendi:
         estendi()
+    elif a.valida:
+        valida(a.valida, shadow=a.shadow)
+    elif a.promuovi:
+        promuovi(cod=a.promuovi)
+    elif a.promuovi_tutti:
+        promuovi(tutti=True)
     elif a.riapri:
         if not a.motivo:
             ap.error("--riapri richiede --motivo")
-        riapri(a.riapri, a.motivo)
+        riapri(a.riapri, a.motivo,
+               a_stato="shadow" if a.shadow else "scaricata")
     else:
         ap.print_help()

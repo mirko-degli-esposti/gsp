@@ -103,14 +103,13 @@ def campagna_prov(max_query=None):
         for cod, st, n in esiti:
             cella = m["comuni"][cod]["tavole"][t]
             if st == "OK":
-                m["comuni"][cod]["tavole"][t] = {
-                    "stato": "shadow", "quando": quando, "righe": n}
+                m["comuni"][cod]["tavole"][t].update({
+                    "stato": "shadow", "quando": quando, "righe": n})
                 n_ok += 1
             else:
-                m["comuni"][cod]["tavole"][t] = {
+                m["comuni"][cod]["tavole"][t].update({
                     "stato": "DIVERGE",
-                    "motivo": f"ASSENTE nella query provinciale {prov}"}
-                print(f"  [{cod}] ASSENTE — DIVERGE, da guardare")
+                    "motivo": f"ASSENTE nella query provinciale {prov}"})
         salva(m)
         falliti_consecutivi = 0
         fatte += 1
@@ -171,8 +170,8 @@ def campagna(max_celle=None, solo_comune=None):
         try:
             percorso = fetch_tavola(cod, t)
         except TavolaVuota as e:
-            m["comuni"][cod]["tavole"][t] = {"stato": "DIVERGE",
-                                             "motivo": str(e)}
+            m["comuni"][cod]["tavole"][t].update({"stato": "DIVERGE",
+                                                  "motivo": str(e)})
             salva(m)
             print(f"[{cod} {nome}] {t}: DIVERGE (vuota) — da guardare")
             fatti += 1
@@ -199,14 +198,15 @@ def campagna(max_celle=None, solo_comune=None):
             continue                      # cella resta 'mancante'
 
         if controlla(percorso):
-            m["comuni"][cod]["tavole"][t] = {
+            m["comuni"][cod]["tavole"][t].update({
                 "stato": "scaricata",
                 "quando": datetime.now().isoformat(timespec="seconds"),
-            }
+            })
             falliti_consecutivi = 0
         else:
-            m["comuni"][cod]["tavole"][t] = {"stato": "DIVERGE",
-                                             "motivo": "file vuoto o assente"}
+            m["comuni"][cod]["tavole"][t].update({
+                "stato": "DIVERGE",
+                "motivo": "file vuoto o assente"})
             print(f"[{cod} {nome}] {t}: DIVERGE — da guardare, non ritento")
         salva(m)                           # atomico, dopo OGNI cella
         fatti += 1

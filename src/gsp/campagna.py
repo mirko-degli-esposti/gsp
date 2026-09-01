@@ -90,7 +90,7 @@ TAVOLE = [
 # Sottoinsieme che chiude il gate K6C: le prime otto.
 TAVOLE_GATE = TAVOLE[:8]
 
-STATI_TAVOLA = {"mancante", "scaricata", "validata", "DIVERGE"}
+STATI_TAVOLA = {"mancante", "shadow", "scaricata", "validata", "DIVERGE"}
 POOL_FATTORE = 1.3   # sovracampionamento, convenzione di rigenera.sh
 
 
@@ -182,6 +182,11 @@ def stato():
     print(f"gate chiusi: {len(chiusi)}", chiusi or "")
     if diverge:
         print(f"DIVERGE da guardare: {diverge}")     # mai auto-risolti
+    gruppi = {(cod[:3], t)
+              for cod, c in m["comuni"].items()
+              for t in TAVOLE if c["tavole"][t]["stato"] == "mancante"}
+    if gruppi:
+        print(f"gruppi (provincia, tavola) da fetchare: {len(gruppi)}")
 
 
 # ------------------------------------------------------------ emetti
@@ -393,6 +398,64 @@ def verifica_articolazione_tutti():
             print(f"{cod} {c['nome']}: ASC1={mi['asc1']} "
                   f"({mi['sezioni']} sezioni, nan={mi['asc1_nan']})")
 
+
+
+# ------------------------------------------------------------ estendi
+
+def estendi():
+    """Estende il manifest a TUTTI i comuni ER dal POSAS, esclusa la
+    flotta (gsp.common.COMUNI: le 12 popolazioni generate non si
+    toccano ne' si tracciano — il manifest e' della campagna, la
+    flotta della flotta).
+
+    Preserva integralmente i comuni gia' presenti con i loro stati:
+    per questo NON e' --inizializza. I nuovi entrano tutti 'mancante',
+    e l'intero dizionario viene riordinato per popolazione decrescente:
+    ogni interruzione della campagna lascia una flotta coerente
+    (i piu' grandi prima). Idempotente: rilanciarlo a POSAS invariato
+    non cambia nulla."""
+    m = carica()
+
+    # tutti i comuni ER dal POSAS, stessi filtri collaudati
+    csv = GSP_ROOT / "data/istat/posas_2026_comuni/POSAS_2026_it_Comuni.csv"
+    df = pd.read_csv(csv, sep=";", skiprows=1,
+                     encoding="utf-8-sig", dtype={"Codice comune": str})
+    df = df[df["Età"].between(0, 100)]
+    prov_er = {"033", "034", "035", "036", "037", "038", "039", "040", "099"}
+    er = df[df["Codice comune"].str[:3].isin(prov_er)]
+    pop = (er.groupby(["Codice comune", "Comune"])["Totale"]
+             .sum().astype(int))
+    assert pop.shape[0] == 330, f"attesi 330 comuni ER, trovati {pop.shape[0]}"
+
+    from gsp.common import COMUNI
+    flotta = set(COMUNI)
+
+    presenti = set(m["comuni"])
+    nuovi, saltati_flotta = 0, 0
+    for (cod, nome), p in pop.items():
+        if cod in flotta:
+            saltati_flotta += 1
+            continue
+        if cod in presenti:
+            continue                      # preservato con i suoi stati
+        m["comuni"][cod] = {
+            "nome": nome,
+            "pop_posas": int(p),
+            "articolazione": "da_verificare",
+            "tavole": {t: {"stato": "mancante"} for t in TAVOLE},
+        }
+        nuovi += 1
+
+    # riordino per popolazione decrescente (i presenti conservano tutto,
+    # cambia solo la posizione — l'ordine E' la politica di campagna)
+    m["comuni"] = dict(sorted(m["comuni"].items(),
+                              key=lambda kv: -kv[1]["pop_posas"]))
+    m["estesa"] = {"quando": str(date.today()),
+                   "criterio": "tutti i comuni ER (POSAS 2026), esclusa flotta"}
+    salva(m)
+    print(f"manifest esteso: {nuovi} nuovi, {len(presenti)} preservati, "
+          f"{saltati_flotta} in flotta (esclusi), totale {len(m['comuni'])}")
+
 # --------------------------------------------------------------- CLI
 
 if __name__ == "__main__":
@@ -408,6 +471,8 @@ if __name__ == "__main__":
                     help="controlla C1-C5 e promuove a 'validata' le tavole scaricate") 
     ap.add_argument("--riapri", metavar="COD")
     ap.add_argument("--motivo", default=None)  
+    ap.add_argument("--estendi", action="store_true",
+                    help="estende il manifest a tutti i comuni ER (POSAS), esclusa la flotta")
     a = ap.parse_args()
     if a.inizializza:
         inizializza()
@@ -421,6 +486,8 @@ if __name__ == "__main__":
         verifica_articolazione(a.verifica_articolazione)
     elif a.valida:
         valida(a.valida)
+    elif a.estendi:
+        estendi()
     elif a.riapri:
         if not a.motivo:
             ap.error("--riapri richiede --motivo")

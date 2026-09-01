@@ -74,6 +74,37 @@ def spacchetta(df, xml_path, terr_dim, comuni, name):
         esiti.append((cod, "OK", n))
     return esiti
 
+MAX_CODICI_KEY = 30   # il guard di sdmx.build_key (250 char) vale sull'INTERA
+                      # key, non sul solo territorio: la key non contiene '/',
+                      # quindi split('/') = un segmento unico. 30 codici =
+                      # 209 char di territorio + ~28 di overhead dims (caso
+                      # peggiore: anag, con MARITAL_STATUS esplicito) = ~237,
+                      # sotto soglia con margine. Misurato: 35 codici -> 272.
+
+
+def fetch_molti(comuni: list[str], name: str):
+    """Una query logica per (lista comuni, tavola); se la lista supera
+    MAX_CODICI_KEY viene spezzata in chunk e i frame concatenati —
+    stessa risposta, piu' viaggi. Il chiamante non vede la differenza.
+    Le eccezioni salgono: un chunk fallito fa fallire il gruppo intero,
+    che resta 'mancante' e si ritenta (nessun gruppo mezzo-scaricato)."""
+    cfg = CORE[name]
+    xml_path = sdmx.get_structure(cfg["flow"])
+    terr_dim, _ = find_territory_dim(xml_path, comuni[0])
+    if terr_dim is None:
+        raise ValueError(f"{comuni[0]} non in nessuna codelist territoriale")
+
+    pezzi = []
+    for i in range(0, len(comuni), MAX_CODICI_KEY):
+        chunk = comuni[i:i + MAX_CODICI_KEY]
+        spec = dict(cfg["spec"])
+        spec[terr_dim] = chunk
+        pezzi.append(sdmx.fetch(cfg["flow"], spec))
+        if i + MAX_CODICI_KEY < len(comuni):
+            import time; time.sleep(15)      # il ritmo vale anche fra chunk
+    df = pd.concat(pezzi, ignore_index=True) if len(pezzi) > 1 else pezzi[0]
+    return df, xml_path, terr_dim
+
 
 def main():
     ap = argparse.ArgumentParser()

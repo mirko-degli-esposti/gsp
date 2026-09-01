@@ -60,11 +60,16 @@ comuni:
     articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: validata
+        stato: DIVERGE
         quando: '2026-09-01T14:45:01'
         righe: 8568
         quando_validata: '2026-09-01T18:24:47'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        motivo: 'C5: anag 2025 = 73297 vs posas 74041 (scarto centrato -0.7% > soglia
+          0.6% = 1.6/sqrt(pop))'
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -134,8 +139,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:43'
+        quando_validata: '2026-09-01T18:54:46'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -205,8 +213,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:44'
+        quando_validata: '2026-09-01T18:54:47'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -276,8 +287,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:45'
+        quando_validata: '2026-09-01T18:54:48'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -347,8 +361,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:46'
+        quando_validata: '2026-09-01T18:54:50'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -418,8 +435,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:47'
+        quando_validata: '2026-09-01T18:54:51'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -489,8 +509,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:48'
+        quando_validata: '2026-09-01T18:54:52'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -560,8 +583,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:49'
+        quando_validata: '2026-09-01T18:54:54'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -631,8 +657,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:50'
+        quando_validata: '2026-09-01T18:54:55'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -702,8 +731,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:54'
+        quando_validata: '2026-09-01T18:54:57'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -773,8 +805,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:55'
+        quando_validata: '2026-09-01T18:54:58'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -844,8 +879,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:56'
+        quando_validata: '2026-09-01T18:54:59'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -915,8 +953,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:57'
+        quando_validata: '2026-09-01T18:55:01'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -986,8 +1027,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:58'
+        quando_validata: '2026-09-01T18:55:02'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -1057,8 +1101,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:25:59'
+        quando_validata: '2026-09-01T18:55:03'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -1128,8 +1175,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:00'
+        quando_validata: '2026-09-01T18:55:05'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -1199,8 +1249,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:01'
+        quando_validata: '2026-09-01T18:55:06'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -1270,8 +1323,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:02'
+        quando_validata: '2026-09-01T18:55:07'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -1341,8 +1397,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:03'
+        quando_validata: '2026-09-01T18:55:09'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -1412,8 +1471,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:04'
+        quando_validata: '2026-09-01T18:55:13'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -1483,8 +1545,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:05'
+        quando_validata: '2026-09-01T18:55:14'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -1554,8 +1619,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:06'
+        quando_validata: '2026-09-01T18:55:15'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -1625,8 +1693,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:07'
+        quando_validata: '2026-09-01T18:55:17'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -1696,8 +1767,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:08'
+        quando_validata: '2026-09-01T18:55:18'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -1767,8 +1841,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:09'
+        quando_validata: '2026-09-01T18:55:19'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -1838,8 +1915,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:10'
+        quando_validata: '2026-09-01T18:55:21'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -1909,8 +1989,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:11'
+        quando_validata: '2026-09-01T18:55:22'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -1980,8 +2063,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:12'
+        quando_validata: '2026-09-01T18:55:23'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -2051,8 +2137,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:13'
+        quando_validata: '2026-09-01T18:55:25'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -2122,8 +2211,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:14'
+        quando_validata: '2026-09-01T18:55:26'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -2193,8 +2285,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:15'
+        quando_validata: '2026-09-01T18:55:27'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -2264,8 +2359,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:16'
+        quando_validata: '2026-09-01T18:55:29'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -2335,8 +2433,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:17'
+        quando_validata: '2026-09-01T18:55:30'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -2406,8 +2507,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:19'
+        quando_validata: '2026-09-01T18:55:31'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -2477,8 +2581,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:20'
+        quando_validata: '2026-09-01T18:55:33'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -2548,8 +2655,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:21'
+        quando_validata: '2026-09-01T18:55:34'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -2619,8 +2729,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:22'
+        quando_validata: '2026-09-01T18:55:35'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -2690,8 +2803,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:23'
+        quando_validata: '2026-09-01T18:55:37'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -2761,8 +2877,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:24'
+        quando_validata: '2026-09-01T18:55:38'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -2832,8 +2951,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:25'
+        quando_validata: '2026-09-01T18:55:39'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -2903,8 +3025,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:29'
+        quando_validata: '2026-09-01T18:55:41'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -2974,8 +3099,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:30'
+        quando_validata: '2026-09-01T18:55:42'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -3045,8 +3173,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:31'
+        quando_validata: '2026-09-01T18:55:43'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -3116,8 +3247,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:32'
+        quando_validata: '2026-09-01T18:55:48'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -3187,8 +3321,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:24:48'
+        quando_validata: '2026-09-01T18:55:49'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -3339,8 +3476,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:33'
+        quando_validata: '2026-09-01T18:55:50'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -3404,8 +3544,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:34'
+        quando_validata: '2026-09-01T18:55:52'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -3469,8 +3612,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:35'
+        quando_validata: '2026-09-01T18:55:53'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -3534,8 +3680,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:36'
+        quando_validata: '2026-09-01T18:55:54'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -3599,8 +3748,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:37'
+        quando_validata: '2026-09-01T18:55:56'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -3664,8 +3816,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:38'
+        quando_validata: '2026-09-01T18:55:57'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -3729,8 +3884,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:39'
+        quando_validata: '2026-09-01T18:55:58'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -3794,8 +3952,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:40'
+        quando_validata: '2026-09-01T18:56:00'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -3859,8 +4020,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:41'
+        quando_validata: '2026-09-01T18:56:01'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -3924,8 +4088,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:42'
+        quando_validata: '2026-09-01T18:56:02'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -3989,8 +4156,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:43'
+        quando_validata: '2026-09-01T18:56:04'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -4054,8 +4224,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:44'
+        quando_validata: '2026-09-01T18:56:05'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -4119,8 +4292,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:45'
+        quando_validata: '2026-09-01T18:56:06'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -4184,8 +4360,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:46'
+        quando_validata: '2026-09-01T18:56:08'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -4249,8 +4428,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 7344
-        quando_validata: '2026-09-01T18:26:47'
+        quando_validata: '2026-09-01T18:56:09'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -4314,8 +4496,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:48'
+        quando_validata: '2026-09-01T18:56:10'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -4379,8 +4564,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:50'
+        quando_validata: '2026-09-01T18:56:12'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -4444,8 +4632,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:51'
+        quando_validata: '2026-09-01T18:56:13'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -4509,8 +4700,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:52'
+        quando_validata: '2026-09-01T18:56:14'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -4644,8 +4838,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:54'
+        quando_validata: '2026-09-01T18:56:16'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -4709,8 +4906,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:55'
+        quando_validata: '2026-09-01T18:56:17'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -4774,8 +4974,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:56'
+        quando_validata: '2026-09-01T18:56:18'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -4839,8 +5042,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:57'
+        quando_validata: '2026-09-01T18:56:19'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -4904,8 +5110,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:58'
+        quando_validata: '2026-09-01T18:56:24'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -4969,8 +5178,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:26:59'
+        quando_validata: '2026-09-01T18:56:25'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -5034,8 +5246,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:00'
+        quando_validata: '2026-09-01T18:56:26'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -5099,8 +5314,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:04'
+        quando_validata: '2026-09-01T18:56:28'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -5164,8 +5382,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:05'
+        quando_validata: '2026-09-01T18:56:29'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -5229,8 +5450,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:07'
+        quando_validata: '2026-09-01T18:56:30'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -5294,8 +5518,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:08'
+        quando_validata: '2026-09-01T18:56:32'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -5359,8 +5586,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:09'
+        quando_validata: '2026-09-01T18:56:33'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -5424,8 +5654,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:10'
+        quando_validata: '2026-09-01T18:56:34'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -5489,8 +5722,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:11'
+        quando_validata: '2026-09-01T18:56:36'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -5554,8 +5790,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:12'
+        quando_validata: '2026-09-01T18:56:37'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -5619,8 +5858,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:13'
+        quando_validata: '2026-09-01T18:56:38'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -5684,8 +5926,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:14'
+        quando_validata: '2026-09-01T18:56:40'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -5749,8 +5994,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:15'
+        quando_validata: '2026-09-01T18:56:41'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -5814,8 +6062,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:17'
+        quando_validata: '2026-09-01T18:56:42'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -5879,8 +6130,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:18'
+        quando_validata: '2026-09-01T18:56:44'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -5944,8 +6198,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:19'
+        quando_validata: '2026-09-01T18:56:45'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -6009,8 +6266,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:20'
+        quando_validata: '2026-09-01T18:56:46'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -6074,8 +6334,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:21'
+        quando_validata: '2026-09-01T18:56:48'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -6139,8 +6402,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:22'
+        quando_validata: '2026-09-01T18:56:49'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -6204,8 +6470,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:23'
+        quando_validata: '2026-09-01T18:56:50'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -6269,8 +6538,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:24'
+        quando_validata: '2026-09-01T18:56:52'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -6334,8 +6606,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:25'
+        quando_validata: '2026-09-01T18:56:53'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -6399,8 +6674,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:26'
+        quando_validata: '2026-09-01T18:56:54'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -6464,8 +6742,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:27'
+        quando_validata: '2026-09-01T18:56:59'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -6529,8 +6810,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:28'
+        quando_validata: '2026-09-01T18:57:00'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -6594,8 +6878,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:30'
+        quando_validata: '2026-09-01T18:57:01'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -6659,8 +6946,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:31'
+        quando_validata: '2026-09-01T18:57:03'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -6724,8 +7014,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:32'
+        quando_validata: '2026-09-01T18:57:04'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -6789,8 +7082,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:33'
+        quando_validata: '2026-09-01T18:57:05'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -6854,8 +7150,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:34'
+        quando_validata: '2026-09-01T18:57:07'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -6919,8 +7218,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:35'
+        quando_validata: '2026-09-01T18:57:08'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -6984,8 +7286,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:39'
+        quando_validata: '2026-09-01T18:57:09'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -7049,8 +7354,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:40'
+        quando_validata: '2026-09-01T18:57:11'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -7114,8 +7422,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:41'
+        quando_validata: '2026-09-01T18:57:12'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -7179,8 +7490,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:42'
+        quando_validata: '2026-09-01T18:57:13'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -7244,8 +7558,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:43'
+        quando_validata: '2026-09-01T18:57:15'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -7309,8 +7626,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:44'
+        quando_validata: '2026-09-01T18:57:16'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -7374,8 +7694,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:46'
+        quando_validata: '2026-09-01T18:57:17'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -7439,8 +7762,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:47'
+        quando_validata: '2026-09-01T18:57:19'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -7504,8 +7830,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:48'
+        quando_validata: '2026-09-01T18:57:20'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -7569,8 +7898,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:49'
+        quando_validata: '2026-09-01T18:57:21'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -7634,8 +7966,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:50'
+        quando_validata: '2026-09-01T18:57:23'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -7699,8 +8034,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:51'
+        quando_validata: '2026-09-01T18:57:24'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -7764,8 +8102,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:52'
+        quando_validata: '2026-09-01T18:57:25'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -7829,8 +8170,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:53'
+        quando_validata: '2026-09-01T18:57:27'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -7894,8 +8238,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:54'
+        quando_validata: '2026-09-01T18:57:28'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -7959,8 +8306,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:55'
+        quando_validata: '2026-09-01T18:57:29'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -8024,8 +8374,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:56'
+        quando_validata: '2026-09-01T18:57:34'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -8089,8 +8442,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:57'
+        quando_validata: '2026-09-01T18:57:35'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -8154,8 +8510,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:27:59'
+        quando_validata: '2026-09-01T18:57:36'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -8219,8 +8578,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:00'
+        quando_validata: '2026-09-01T18:57:38'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -8284,8 +8646,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:01'
+        quando_validata: '2026-09-01T18:57:39'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -8349,8 +8714,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:02'
+        quando_validata: '2026-09-01T18:57:40'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -8414,8 +8782,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:03'
+        quando_validata: '2026-09-01T18:57:42'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -8479,8 +8850,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 7344
-        quando_validata: '2026-09-01T18:28:04'
+        quando_validata: '2026-09-01T18:57:43'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -8544,8 +8918,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:05'
+        quando_validata: '2026-09-01T18:57:44'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -8609,8 +8986,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:06'
+        quando_validata: '2026-09-01T18:57:46'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -8674,8 +9054,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:07'
+        quando_validata: '2026-09-01T18:57:47'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -8739,8 +9122,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:08'
+        quando_validata: '2026-09-01T18:57:48'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -8804,8 +9190,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:10'
+        quando_validata: '2026-09-01T18:57:50'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -8869,8 +9258,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:11'
+        quando_validata: '2026-09-01T18:57:51'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -8934,8 +9326,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:15'
+        quando_validata: '2026-09-01T18:57:52'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -8999,8 +9394,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:16'
+        quando_validata: '2026-09-01T18:57:53'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -9064,8 +9462,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:17'
+        quando_validata: '2026-09-01T18:57:55'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -9129,8 +9530,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:18'
+        quando_validata: '2026-09-01T18:57:56'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -9194,8 +9598,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:19'
+        quando_validata: '2026-09-01T18:57:57'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -9259,8 +9666,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:21'
+        quando_validata: '2026-09-01T18:57:59'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -9324,8 +9734,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:22'
+        quando_validata: '2026-09-01T18:58:00'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -9389,8 +9802,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 7344
-        quando_validata: '2026-09-01T18:28:23'
+        quando_validata: '2026-09-01T18:58:01'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -9454,8 +9870,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:24'
+        quando_validata: '2026-09-01T18:58:03'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -9519,8 +9938,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:25'
+        quando_validata: '2026-09-01T18:58:04'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -9584,8 +10006,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:26'
+        quando_validata: '2026-09-01T18:58:08'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -9649,8 +10074,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:27'
+        quando_validata: '2026-09-01T18:58:10'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -9714,8 +10142,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:29'
+        quando_validata: '2026-09-01T18:58:11'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -9779,8 +10210,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:30'
+        quando_validata: '2026-09-01T18:58:12'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -9844,8 +10278,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:31'
+        quando_validata: '2026-09-01T18:58:14'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -9909,8 +10346,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:32'
+        quando_validata: '2026-09-01T18:58:15'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -9974,8 +10414,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:33'
+        quando_validata: '2026-09-01T18:58:16'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -10039,8 +10482,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:34'
+        quando_validata: '2026-09-01T18:58:18'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -10104,8 +10550,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:35'
+        quando_validata: '2026-09-01T18:58:19'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -10169,8 +10618,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:36'
+        quando_validata: '2026-09-01T18:58:20'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -10234,8 +10686,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:38'
+        quando_validata: '2026-09-01T18:58:22'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -10299,8 +10754,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:39'
+        quando_validata: '2026-09-01T18:58:23'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -10364,8 +10822,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:40'
+        quando_validata: '2026-09-01T18:58:24'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -10429,8 +10890,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:41'
+        quando_validata: '2026-09-01T18:58:26'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -10494,8 +10958,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:42'
+        quando_validata: '2026-09-01T18:58:27'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -10559,8 +11026,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:43'
+        quando_validata: '2026-09-01T18:58:28'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -10624,8 +11094,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:44'
+        quando_validata: '2026-09-01T18:58:30'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -10689,8 +11162,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:46'
+        quando_validata: '2026-09-01T18:58:31'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -10754,8 +11230,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:50'
+        quando_validata: '2026-09-01T18:58:32'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -10819,8 +11298,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:51'
+        quando_validata: '2026-09-01T18:58:34'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -10884,8 +11366,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:52'
+        quando_validata: '2026-09-01T18:58:35'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -10949,8 +11434,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:53'
+        quando_validata: '2026-09-01T18:58:36'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -11014,8 +11502,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:54'
+        quando_validata: '2026-09-01T18:58:38'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -11079,8 +11570,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:55'
+        quando_validata: '2026-09-01T18:58:39'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -11144,8 +11638,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:57'
+        quando_validata: '2026-09-01T18:58:40'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -11209,8 +11706,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:58'
+        quando_validata: '2026-09-01T18:58:45'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -11274,8 +11774,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:28:59'
+        quando_validata: '2026-09-01T18:58:46'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -11339,8 +11842,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:00'
+        quando_validata: '2026-09-01T18:58:47'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -11404,8 +11910,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:01'
+        quando_validata: '2026-09-01T18:58:49'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -11469,8 +11978,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:02'
+        quando_validata: '2026-09-01T18:58:50'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -11534,8 +12046,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:03'
+        quando_validata: '2026-09-01T18:58:51'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -11599,8 +12114,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:05'
+        quando_validata: '2026-09-01T18:58:53'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -11664,8 +12182,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:06'
+        quando_validata: '2026-09-01T18:58:54'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -11729,8 +12250,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:07'
+        quando_validata: '2026-09-01T18:58:55'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -11794,8 +12318,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:08'
+        quando_validata: '2026-09-01T18:58:57'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -11859,8 +12386,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:09'
+        quando_validata: '2026-09-01T18:58:58'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -11924,8 +12454,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:11'
+        quando_validata: '2026-09-01T18:58:59'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -11989,8 +12522,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:12'
+        quando_validata: '2026-09-01T18:59:01'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -12054,8 +12590,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:13'
+        quando_validata: '2026-09-01T18:59:02'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -12119,8 +12658,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:14'
+        quando_validata: '2026-09-01T18:59:03'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -12184,8 +12726,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:15'
+        quando_validata: '2026-09-01T18:59:05'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -12249,8 +12794,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:17'
+        quando_validata: '2026-09-01T18:59:06'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -12314,8 +12862,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:18'
+        quando_validata: '2026-09-01T18:59:07'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -12379,8 +12930,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:19'
+        quando_validata: '2026-09-01T18:59:09'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -12444,8 +12998,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:20'
+        quando_validata: '2026-09-01T18:59:10'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -12509,8 +13066,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:24'
+        quando_validata: '2026-09-01T18:59:11'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -12574,8 +13134,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:26'
+        quando_validata: '2026-09-01T18:59:13'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -12639,8 +13202,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:27'
+        quando_validata: '2026-09-01T18:59:14'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -12704,8 +13270,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:28'
+        quando_validata: '2026-09-01T18:59:15'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -12769,8 +13338,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:29'
+        quando_validata: '2026-09-01T18:59:20'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -12834,8 +13406,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:30'
+        quando_validata: '2026-09-01T18:59:21'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -12899,8 +13474,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:31'
+        quando_validata: '2026-09-01T18:59:22'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -12964,8 +13542,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:33'
+        quando_validata: '2026-09-01T18:59:24'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -13029,8 +13610,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:34'
+        quando_validata: '2026-09-01T18:59:25'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -13094,8 +13678,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:35'
+        quando_validata: '2026-09-01T18:59:26'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -13159,8 +13746,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:36'
+        quando_validata: '2026-09-01T18:59:28'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -13224,8 +13814,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:37'
+        quando_validata: '2026-09-01T18:59:29'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -13289,8 +13882,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:39'
+        quando_validata: '2026-09-01T18:59:30'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -13425,11 +14021,9 @@ comuni:
         quando: '2026-09-01T16:32:13'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:50:58'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 4237 vs posas 4324 (scarto 2.0% > 2%)'
-        quando_validata: '2026-09-01T18:52:07'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T18:59:31'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -13494,8 +14088,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:42'
+        quando_validata: '2026-09-01T18:59:33'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -13559,8 +14156,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:43'
+        quando_validata: '2026-09-01T18:59:34'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -13624,8 +14224,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:44'
+        quando_validata: '2026-09-01T18:59:35'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -13689,8 +14292,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:46'
+        quando_validata: '2026-09-01T18:59:37'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -13754,8 +14360,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:47'
+        quando_validata: '2026-09-01T18:59:38'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -13819,8 +14428,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:48'
+        quando_validata: '2026-09-01T18:59:39'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -13884,8 +14496,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:49'
+        quando_validata: '2026-09-01T18:59:41'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -13949,8 +14564,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:50'
+        quando_validata: '2026-09-01T18:59:42'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -14014,8 +14632,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:52'
+        quando_validata: '2026-09-01T18:59:43'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -14079,8 +14700,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:53'
+        quando_validata: '2026-09-01T18:59:45'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -14144,8 +14768,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:54'
+        quando_validata: '2026-09-01T18:59:46'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -14209,8 +14836,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:55'
+        quando_validata: '2026-09-01T18:59:47'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -14274,8 +14904,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:29:59'
+        quando_validata: '2026-09-01T18:59:49'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -14339,8 +14972,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:01'
+        quando_validata: '2026-09-01T18:59:50'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -14404,8 +15040,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:02'
+        quando_validata: '2026-09-01T18:59:54'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -14469,8 +15108,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:03'
+        quando_validata: '2026-09-01T18:59:56'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -14535,11 +15177,9 @@ comuni:
         quando: '2026-09-01T15:32:43'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:00'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 3485 vs posas 3558 (scarto 2.1% > 2%)'
-        quando_validata: '2026-09-01T18:52:08'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T18:59:57'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -14604,8 +15244,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:06'
+        quando_validata: '2026-09-01T18:59:58'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -14669,8 +15312,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:07'
+        quando_validata: '2026-09-01T19:00:00'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -14734,8 +15380,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:08'
+        quando_validata: '2026-09-01T19:00:01'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -14799,8 +15448,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:10'
+        quando_validata: '2026-09-01T19:00:02'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -14864,8 +15516,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:11'
+        quando_validata: '2026-09-01T19:00:03'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -14929,8 +15584,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:12'
+        quando_validata: '2026-09-01T19:00:05'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -14994,8 +15652,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:13'
+        quando_validata: '2026-09-01T19:00:06'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -15059,8 +15720,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:14'
+        quando_validata: '2026-09-01T19:00:07'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -15124,8 +15788,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:16'
+        quando_validata: '2026-09-01T19:00:09'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -15189,8 +15856,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:17'
+        quando_validata: '2026-09-01T19:00:10'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -15255,11 +15925,9 @@ comuni:
         quando: '2026-09-01T15:09:58'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:01'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 3202 vs posas 3274 (scarto 2.2% > 2%)'
-        quando_validata: '2026-09-01T18:52:09'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:00:11'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -15324,8 +15992,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:19'
+        quando_validata: '2026-09-01T19:00:13'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -15389,8 +16060,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:21'
+        quando_validata: '2026-09-01T19:00:14'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -15454,8 +16128,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:22'
+        quando_validata: '2026-09-01T19:00:15'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -15519,8 +16196,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:23'
+        quando_validata: '2026-09-01T19:00:17'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -15654,8 +16334,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:25'
+        quando_validata: '2026-09-01T19:00:18'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -15719,8 +16402,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:27'
+        quando_validata: '2026-09-01T19:00:19'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -15784,8 +16470,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:28'
+        quando_validata: '2026-09-01T19:00:21'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -15849,8 +16538,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:29'
+        quando_validata: '2026-09-01T19:00:22'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -15914,8 +16606,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:30'
+        quando_validata: '2026-09-01T19:00:23'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -15979,8 +16674,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:32'
+        quando_validata: '2026-09-01T19:00:25'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -16044,8 +16742,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:36'
+        quando_validata: '2026-09-01T19:00:29'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -16109,8 +16810,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:37'
+        quando_validata: '2026-09-01T19:00:30'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -16174,8 +16878,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:38'
+        quando_validata: '2026-09-01T19:00:32'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -16239,8 +16946,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:40'
+        quando_validata: '2026-09-01T19:00:33'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -16304,8 +17014,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:41'
+        quando_validata: '2026-09-01T19:00:34'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -16369,8 +17082,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:42'
+        quando_validata: '2026-09-01T19:00:36'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -16434,8 +17150,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:43'
+        quando_validata: '2026-09-01T19:00:37'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -16499,8 +17218,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:44'
+        quando_validata: '2026-09-01T19:00:38'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -16564,8 +17286,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:46'
+        quando_validata: '2026-09-01T19:00:40'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -16629,8 +17354,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:47'
+        quando_validata: '2026-09-01T19:00:41'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -16694,8 +17422,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:48'
+        quando_validata: '2026-09-01T19:00:42'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -16759,8 +17490,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:01:39'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:49'
+        quando_validata: '2026-09-01T19:00:44'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:02:06'
@@ -16824,8 +17558,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:51'
+        quando_validata: '2026-09-01T19:00:45'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -16889,8 +17626,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:52'
+        quando_validata: '2026-09-01T19:00:46'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -16954,8 +17694,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:53'
+        quando_validata: '2026-09-01T19:00:48'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -17019,8 +17762,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:54'
+        quando_validata: '2026-09-01T19:00:49'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -17084,8 +17830,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:56'
+        quando_validata: '2026-09-01T19:00:50'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -17150,11 +17899,9 @@ comuni:
         quando: '2026-09-01T15:20:08'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:06'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 2132 vs posas 2183 (scarto 2.3% > 2%)'
-        quando_validata: '2026-09-01T18:52:12'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:00:52'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -17219,8 +17966,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:58'
+        quando_validata: '2026-09-01T19:00:53'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -17284,8 +18034,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:30:59'
+        quando_validata: '2026-09-01T19:00:54'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -17350,11 +18103,9 @@ comuni:
         quando: '2026-09-01T16:32:13'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:07'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 2229 vs posas 2165 (scarto 3.0% > 2%)'
-        quando_validata: '2026-09-01T18:52:13'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:00:55'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -17419,8 +18170,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:02'
+        quando_validata: '2026-09-01T19:00:57'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -17485,11 +18239,9 @@ comuni:
         quando: '2026-09-01T14:45:01'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:09'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 2149 vs posas 2096 (scarto 2.5% > 2%)'
-        quando_validata: '2026-09-01T18:52:17'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:00:58'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -17554,8 +18306,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:04'
+        quando_validata: '2026-09-01T19:00:59'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -17619,8 +18374,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:24:50'
+        quando_validata: '2026-09-01T19:01:01'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -17684,8 +18442,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:06'
+        quando_validata: '2026-09-01T19:01:05'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -17749,8 +18510,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:07'
+        quando_validata: '2026-09-01T19:01:06'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -17815,11 +18579,9 @@ comuni:
         quando: '2026-09-01T14:54:01'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:10'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 1922 vs posas 1969 (scarto 2.4% > 2%)'
-        quando_validata: '2026-09-01T18:52:18'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:01:08'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -17884,8 +18646,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:12'
+        quando_validata: '2026-09-01T19:01:09'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -17949,8 +18714,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:14'
+        quando_validata: '2026-09-01T19:01:10'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -18014,8 +18782,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:15'
+        quando_validata: '2026-09-01T19:01:12'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -18079,8 +18850,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:16'
+        quando_validata: '2026-09-01T19:01:13'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -18144,8 +18918,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:17'
+        quando_validata: '2026-09-01T19:01:14'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -18209,8 +18986,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:19'
+        quando_validata: '2026-09-01T19:01:16'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -18274,8 +19054,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:23:20'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:20'
+        quando_validata: '2026-09-01T19:01:17'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:24:20'
@@ -18339,8 +19122,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:21'
+        quando_validata: '2026-09-01T19:01:18'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -18404,8 +19190,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:22'
+        quando_validata: '2026-09-01T19:01:20'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -18469,8 +19258,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:24'
+        quando_validata: '2026-09-01T19:01:21'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -18534,8 +19326,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:25'
+        quando_validata: '2026-09-01T19:01:22'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -18599,8 +19394,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:26'
+        quando_validata: '2026-09-01T19:01:24'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -18664,8 +19462,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:27'
+        quando_validata: '2026-09-01T19:01:25'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -18729,8 +19530,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:29'
+        quando_validata: '2026-09-01T19:01:26'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -18795,11 +19599,9 @@ comuni:
         quando: '2026-09-01T15:32:43'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:11'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 1559 vs posas 1591 (scarto 2.0% > 2%)'
-        quando_validata: '2026-09-01T18:52:20'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:01:28'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -18864,8 +19666,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 4896
-        quando_validata: '2026-09-01T18:31:31'
+        quando_validata: '2026-09-01T19:01:29'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -18929,8 +19734,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:32'
+        quando_validata: '2026-09-01T19:01:30'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -18994,8 +19802,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:54:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:34'
+        quando_validata: '2026-09-01T19:01:32'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
@@ -19059,8 +19870,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:35'
+        quando_validata: '2026-09-01T19:01:33'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -19124,8 +19938,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:36'
+        quando_validata: '2026-09-01T19:01:34'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -19189,8 +20006,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:37'
+        quando_validata: '2026-09-01T19:01:36'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -19254,8 +20074,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:39'
+        quando_validata: '2026-09-01T19:01:40'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -19319,8 +20142,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:40'
+        quando_validata: '2026-09-01T19:01:41'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -19384,8 +20210,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:41'
+        quando_validata: '2026-09-01T19:01:43'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -19450,11 +20279,9 @@ comuni:
         quando: '2026-09-01T15:32:43'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:12'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 1099 vs posas 1075 (scarto 2.2% > 2%)'
-        quando_validata: '2026-09-01T18:52:21'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:01:44'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -19519,8 +20346,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:47'
+        quando_validata: '2026-09-01T19:01:45'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -19584,8 +20414,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:48'
+        quando_validata: '2026-09-01T19:01:47'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -19649,8 +20482,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 4896
-        quando_validata: '2026-09-01T18:24:49'
+        quando_validata: '2026-09-01T19:01:48'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -19715,11 +20551,9 @@ comuni:
         quando: '2026-09-01T15:09:58'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:14'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 996 vs posas 1025 (scarto 2.8% > 2%)'
-        quando_validata: '2026-09-01T18:52:22'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:01:49'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -19784,8 +20618,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:50'
+        quando_validata: '2026-09-01T19:01:51'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -19849,8 +20686,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:52'
+        quando_validata: '2026-09-01T19:01:52'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -19914,8 +20754,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:53'
+        quando_validata: '2026-09-01T19:01:53'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -19979,8 +20822,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:54'
+        quando_validata: '2026-09-01T19:01:55'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -20045,11 +20891,9 @@ comuni:
         quando: '2026-09-01T16:32:13'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:15'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 849 vs posas 877 (scarto 3.2% > 2%)'
-        quando_validata: '2026-09-01T18:52:23'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:01:56'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -20114,8 +20958,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:57'
+        quando_validata: '2026-09-01T19:01:57'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -20180,11 +21027,9 @@ comuni:
         quando: '2026-09-01T15:20:08'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:16'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 868 vs posas 846 (scarto 2.6% > 2%)'
-        quando_validata: '2026-09-01T18:52:25'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:01:59'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -20249,8 +21094,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:31:59'
+        quando_validata: '2026-09-01T19:02:00'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -20314,8 +21162,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:32:01'
+        quando_validata: '2026-09-01T19:02:01'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -20380,11 +21231,9 @@ comuni:
         quando: '2026-09-01T16:32:13'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:17'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 773 vs posas 739 (scarto 4.6% > 2%)'
-        quando_validata: '2026-09-01T18:52:26'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:02:03'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -20450,11 +21299,9 @@ comuni:
         quando: '2026-09-01T15:32:43'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:19'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 742 vs posas 716 (scarto 3.6% > 2%)'
-        quando_validata: '2026-09-01T18:52:27'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:02:04'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -20519,8 +21366,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:32:43'
         righe: 8568
-        quando_validata: '2026-09-01T18:32:04'
+        quando_validata: '2026-09-01T19:02:05'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:36:52'
@@ -20584,8 +21434,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:32:06'
+        quando_validata: '2026-09-01T19:02:06'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -20649,8 +21502,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:32:07'
+        quando_validata: '2026-09-01T19:02:08'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -20714,8 +21570,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:32:08'
+        quando_validata: '2026-09-01T19:02:09'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -20779,8 +21638,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:20:08'
         righe: 8568
-        quando_validata: '2026-09-01T18:32:10'
+        quando_validata: '2026-09-01T19:02:10'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:23:11'
@@ -20845,11 +21707,9 @@ comuni:
         quando: '2026-09-01T16:32:13'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:20'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 521 vs posas 501 (scarto 4.0% > 2%)'
-        quando_validata: '2026-09-01T18:52:28'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:02:15'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -20914,8 +21774,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
-        quando_validata: '2026-09-01T18:32:12'
+        quando_validata: '2026-09-01T19:02:16'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'
@@ -20979,8 +21842,11 @@ comuni:
         stato: validata
         quando: '2026-09-01T15:09:58'
         righe: 8568
-        quando_validata: '2026-09-01T18:32:13'
+        quando_validata: '2026-09-01T19:02:17'
         in_shadow: true
+        riaperta:
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:10:28'
@@ -21045,11 +21911,9 @@ comuni:
         quando: '2026-09-01T16:32:13'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:21'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 115 vs posas 109 (scarto 5.5% > 2%)'
-        quando_validata: '2026-09-01T18:52:30'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:02:19'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
@@ -21115,11 +21979,9 @@ comuni:
         quando: '2026-09-01T16:32:13'
         righe: 8568
         riaperta:
-          quando: '2026-09-01T18:51:22'
-          motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
-            non dei dati'
-          motivo_diverge: 'C5: anag 2025 = 69 vs posas 66 (scarto 4.5% > 2%)'
-        quando_validata: '2026-09-01T18:52:31'
+          quando: '2026-09-01T18:54:42'
+          motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        quando_validata: '2026-09-01T19:02:20'
         in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata

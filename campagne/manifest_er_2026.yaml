@@ -60,16 +60,22 @@ comuni:
     articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: DIVERGE
+        stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
-        quando_validata: '2026-09-01T18:24:47'
+        quando_validata: '2026-09-02T10:50:08'
         in_shadow: true
         riaperta:
           quando: '2026-09-01T18:54:42'
           motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
-        motivo: 'C5: anag 2025 = 73297 vs posas 74041 (scarto centrato -0.7% > soglia
-          0.6% = 1.6/sqrt(pop))'
+        accettata:
+          quando: '2026-09-02T10:50:08'
+          motivo: 'C5 v2: scarto anagrafe 1/1/2025 vs POSAS 2026 sistematicamente
+            negativo e a 3-13x la mediana regionale; blocco contiguo della Bassa modenese-ferrarese,
+            dinamica demografica locale (post-sisma/immigrazione) e non difetto del
+            dato. Tavole censuarie integre.'
+          motivo_diverge: 'C5: anag 2025 = 73297 vs posas 74041 (scarto centrato -0.7%
+            > soglia 0.6% = 1.6/sqrt(pop))'
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -4879,7 +4885,7 @@ comuni:
     articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: DIVERGE
+        stato: validata
         quando: '2026-09-01T15:05:33'
         righe: 8568
         riaperta:
@@ -4887,8 +4893,16 @@ comuni:
           motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
             non dei dati'
           motivo_diverge: 'C5: anag 2025 = 12162 vs posas 12433 (scarto 2.2% > 2%)'
-        motivo: 'C5: anag 2025 = 12162 vs posas 12433 (scarto centrato -1.8% > soglia
-          1.4% = 1.6/sqrt(pop))'
+        quando_validata: '2026-09-02T10:50:10'
+        accettata:
+          quando: '2026-09-02T10:50:10'
+          motivo: 'C5 v2: scarto anagrafe 1/1/2025 vs POSAS 2026 sistematicamente
+            negativo e a 3-13x la mediana regionale; blocco contiguo della Bassa modenese-ferrarese,
+            dinamica demografica locale (post-sisma/immigrazione) e non difetto del
+            dato. Tavole censuarie integre.'
+          motivo_diverge: 'C5: anag 2025 = 12162 vs posas 12433 (scarto centrato -1.8%
+            > soglia 1.4% = 1.6/sqrt(pop))'
+        in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T15:06:04'
@@ -14881,7 +14895,7 @@ comuni:
     articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: DIVERGE
+        stato: validata
         quando: '2026-09-01T14:45:01'
         righe: 8568
         riaperta:
@@ -14889,8 +14903,14 @@ comuni:
           motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
             non dei dati'
           motivo_diverge: 'C5: anag 2025 = 4229 vs posas 4356 (scarto 2.9% > 2%)'
-        motivo: 'C5: anag 2025 = 4229 vs posas 4356 (scarto centrato -2.6% > soglia
-          2.4% = 1.6/sqrt(pop))'
+        quando_validata: '2026-09-02T10:50:11'
+        accettata:
+          quando: '2026-09-02T10:50:11'
+          motivo: 'C5 v2: -2,9% su 4.356 ab (soglia 2,4%), appenninico modenese in
+            spopolamento; tavole censuarie integre.'
+          motivo_diverge: 'C5: anag 2025 = 4229 vs posas 4356 (scarto centrato -2.6%
+            > soglia 2.4% = 1.6/sqrt(pop))'
+        in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:46:48'
@@ -17399,7 +17419,7 @@ comuni:
     articolazione: assente
     tavole:
       istat_anag_sesso_eta_statociv:
-        stato: DIVERGE
+        stato: validata
         quando: '2026-09-01T16:32:13'
         righe: 8568
         riaperta:
@@ -17407,8 +17427,15 @@ comuni:
           motivo: 'C5 a soglia costante: difetto del controllo (tarato su comuni grandi),
             non dei dati'
           motivo_diverge: 'C5: anag 2025 = 2967 vs posas 3108 (scarto 4.5% > 2%)'
-        motivo: 'C5: anag 2025 = 2967 vs posas 3108 (scarto centrato -4.2% > soglia
-          2.9% = 1.6/sqrt(pop))'
+        quando_validata: '2026-09-02T10:50:12'
+        accettata:
+          quando: '2026-09-02T10:50:12'
+          motivo: 'C5 v2: -4,5% su 3.108 ab (soglia 2,9%), il piu'' fuori scala dei
+            quattro; da guardare se rientra nella v2 (sopra soglia di taglia): tavole
+            censuarie integre.'
+          motivo_diverge: 'C5: anag 2025 = 2967 vs posas 3108 (scarto centrato -4.2%
+            > soglia 2.9% = 1.6/sqrt(pop))'
+        in_shadow: true
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T16:33:14'

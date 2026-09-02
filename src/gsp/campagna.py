@@ -538,6 +538,45 @@ def riapri(cod, motivo, a_stato="scaricata"):
           f"'{a_stato}' — {motivo}")
 
 
+def accetta(cod, motivo):
+    """Il terzo esito di un DIVERGE, dopo 'riparato' e 'lasciato li'':
+    GUARDATO, COMPRESO, ACCETTATO con motivo. Promuove a 'validata'
+    registrando l'accettazione nella cella — l'asterisco resta per
+    sempre, e il gate puo' chiudere.
+
+    Non e' una scorciatoia: serve per le anomalie VERE che il controllo
+    ha fatto bene a segnalare (Carpi: scarto anagrafe/proiezione -1,0%
+    su 74k, un blocco demografico della Bassa, non un difetto del dato)
+    e che una persona ha esaminato. Il motivo e' obbligatorio e finisce
+    nel manifest e nei suoi commit: un'accettazione senza spiegazione
+    sarebbe un DIVERGE corretto in silenzio (principio 3)."""
+    m = carica()
+    c = m["comuni"].get(cod) or sys.exit(f"{cod}: non in manifest")
+    n = 0
+    for t in TAVOLE:
+        v = c["tavole"][t]
+        if v["stato"] != "DIVERGE":
+            continue
+        v.update({
+            "stato": "validata",
+            "quando_validata": datetime.now().isoformat(timespec="seconds"),
+            "accettata": {
+                "quando": datetime.now().isoformat(timespec="seconds"),
+                "motivo": motivo,
+                "motivo_diverge": v.pop("motivo", None),
+            },
+        })
+        # in_shadow: il file sta ancora in prov_shadow se la cella veniva
+        # dal canale provinciale — lo si deduce dalla presenza di 'righe',
+        # che solo campagna_prov scrive
+        if "righe" in v:
+            v["in_shadow"] = True
+        n += 1
+    salva(m)
+    print(f"{cod} ({c['nome']}): accettate {n} celle DIVERGE — {motivo}")
+    print(f"gate {cod}: {'CHIUSO' if gate_chiuso(c) else 'aperto'}")
+
+
 # ------------------------------------------------------------ estendi
 
 def estendi():
@@ -622,6 +661,9 @@ if __name__ == "__main__":
                          "tutte le tavole sono validate in shadow)")
     ap.add_argument("--promuovi-tutti", action="store_true",
                     help="promuove tutti i comuni interamente validati in shadow")
+    ap.add_argument("--accetta", metavar="COD",
+                    help="promuove a 'validata' le celle DIVERGE guardate e "
+                         "comprese, registrando --motivo (obbligatorio)")
     a = ap.parse_args()
     if a.inizializza:
         inizializza()
@@ -641,6 +683,10 @@ if __name__ == "__main__":
         promuovi(cod=a.promuovi)
     elif a.promuovi_tutti:
         promuovi(tutti=True)
+    elif a.accetta:
+        if not a.motivo:
+            ap.error("--accetta richiede --motivo")
+        accetta(a.accetta, a.motivo)
     elif a.riapri:
         if not a.motivo:
             ap.error("--riapri richiede --motivo")

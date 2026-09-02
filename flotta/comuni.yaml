@@ -1984,7 +1984,17 @@
   slug: sarmato
   regione: emilia_romagna
   pool: 4041
-  stato: v2
+  stato: sotto_soglia
+  note: |
+    ESCLUSO dalla v2 a posteriori (2/9/2026). Promosso su POSAS 2026
+    (3.108 ab, sopra la soglia di 3.000), fallisce il criterio sul dato
+    che la generazione usa davvero: P1 censuario 2023 = 2.931,
+    ind_per_stato = 0,949 < 1. La differenza del 5,7% fra le due fonti e'
+    lo scarto anagrafe/proiezione piu' grande della regione — lo stesso
+    che il controllo C5 aveva segnalato come DIVERGE (accettato con
+    motivo il 2/9: "da guardare se rientra nella v2"). Due criteri
+    indipendenti indicano lo stesso caso al bordo. I file generati
+    restano su disco: niente si cancella, si dichiara.
 '034003':
   nome: Bedonia
   slug: bedonia

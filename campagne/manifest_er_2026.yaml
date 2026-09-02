@@ -20058,7 +20058,9 @@ comuni:
       asc1_nan: 0
       asc2: 1
       quando: '2026-09-02'
-    stato_v2: in_flotta
+    stato_v2: sotto_soglia
+    nota_v2: 'escluso a posteriori: POSAS 3.108 sopra soglia, P1 censuario 2.931 ->
+      ind_per_stato 0,949 < 1 (v. flotta/comuni.yaml e tabella_flotta.csv)'
   '034003':
     nome: Bedonia
     pop_posas: 3103

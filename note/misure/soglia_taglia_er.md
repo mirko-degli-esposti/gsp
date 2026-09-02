@@ -166,6 +166,21 @@ ma le distribuzioni congiunte non sono stimabili — il riuso dei
 donatori tende a 1 e le correlazioni scendono al livello del rumore
 campionario.*
 
+### Il caso al bordo: Sarmato (033042)
+
+La soglia si applica su POSAS 2026, il dato di selezione disponibile
+prima della generazione; il criterio si verifica su P1 censuario 2023,
+il dato che la generazione usa davvero. Un comune su 234 cade fra i
+due: Sarmato, POSAS 3.108 (dentro) e P1 2.931 (ind_per_stato 0,949,
+fuori). E' escluso a posteriori.
+
+Non e' un caso qualunque: e' lo stesso comune che il controllo C5 aveva
+segnalato come DIVERGE per lo scarto anagrafe/proiezione piu' grande
+della regione (-4,5%), accettato con la nota "da guardare se rientra
+nella v2". Due criteri indipendenti — coerenza fra fonti e capienza del
+modello — indicano lo stesso comune. La v2 e' quindi 233 comuni piu' i
+12 della flotta storica: 245.
+
 **Limiti da dichiarare (§7):**
 1. I comuni esclusi non sono un campione casuale — sono l'Appennino
    (Cerignale, Zerba, Corte Brugnatella, Tornolo, Coli, Maiolo...). Il

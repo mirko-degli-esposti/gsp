@@ -146,64 +146,74 @@ comuni:
         quando: '2026-09-01T14:54:01'
         righe: 8568
         quando_validata: '2026-09-01T18:54:46'
-        in_shadow: true
+        in_shadow: false
         riaperta:
           quando: '2026-09-01T18:54:42'
           motivo: rivalidazione omogenea col C5 v2 (soglia 1.6/sqrt(pop) centrata)
+        sha256: d655690dc3456f811dcfa98fea7b1db824be1b7ad250eb6a8b2526037a865963
       istat_cens_sesso_eta_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:55:02'
         righe: 3602
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: f1ed4f317ebcaceccdd822dae235e5d67e7a1d309a25f39568e93a83ad5408a8
       istat_cens_istruzione_eta:
         stato: validata
         quando: '2026-09-01T14:55:50'
         righe: 819
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: d19246db8b5be60d79e946c260e1ceda733c211e76c263a07d4c7d7ab5f4c785
       istat_cens_istruzione_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:56:31'
         righe: 441
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: bd97ffc37a91bc87b446ff7abf74239131bfb4904849de3356013c9a26cc7674
       istat_cens_condprof_eta:
         stato: validata
         quando: '2026-09-01T14:57:21'
         righe: 819
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: f4da9308af03cafc0bde2d2830dd5425e2a759739b8708a88faad13f270357e4
       istat_cens_condprof_cittadinanza:
         stato: validata
         quando: '2026-09-01T14:58:07'
         righe: 486
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: 823e0bb30d340124a08d22092d657f433262172ea8516c1a1731b372710d89d6
       istat_cens_migr_backg:
         stato: validata
         quando: '2026-09-01T14:58:55'
         righe: 495
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: 0ef45a05dd2c8824c8ea2b0df5fc2ded49e0403ee9ff987d16e0c077c1754b8a
       istat_cens_stranieri_paesi:
         stato: validata
         quando: '2026-09-01T14:59:51'
         righe: 1928
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: 37bd1838bca03e47f0619ef8ce6902648a8005a94350e5847238f8a34f21df1d
       istat_cens_settore_prof:
         stato: validata
         quando: '2026-09-01T15:00:29'
         righe: 21
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: 144d5842885b92f8e55a6e55552f234639db184b03929f154702c9f770aa70bc
       istat_cens_posizione_prof:
         stato: validata
         quando: '2026-09-01T15:01:06'
         righe: 9
         quando_validata: '2026-09-01T18:25:43'
-        in_shadow: true
+        in_shadow: false
+        sha256: 71fdb919ba2c4479cc49fd51c4db51389e97fdc3b8162bfcbb47176b02922901
     articolazione_misura:
       sezioni: 1059
       asc1: 1

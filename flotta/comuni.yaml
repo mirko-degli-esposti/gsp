@@ -575,3 +575,16 @@
     dettaglio paese x quartiere non puo' esistere in quel canale.
     Da riprovare se l'Ufficio Statistica pubblicasse elaborazioni
     dall'anagrafe interna. Contatto: portale opendata.comune.piacenza.it
+
+'037032':
+  nome: Imola
+  slug: imola
+  regione: emilia_romagna
+  pool: 90613
+  stato: collaudo
+  note: |
+    Voce scritta a mano il 2/9/2026 per collaudare la staffetta in
+    rigenera.sh (build_sezioni + build_constraints condizionali) su un
+    comune mai generato. E' l'ultima voce manuale: dalle successive scrive
+    --promuovi-in-flotta. Articolazione ASSENTE (batch 2/9): K6C
+    nonostante i 70k — i quartieri di Imola non sono codificati ISTAT.

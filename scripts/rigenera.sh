@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # rigenera.sh — rigenerazione completa della pipeline GSP.
 #
-# Esegue per ogni comune: cs_build -> fit_cs -> assign_avq -> enrich -> nucleo.
+#Esegue per ogni comune: [staffetta se manca] → cs_build -> fit_cs -> assign_avq -> enrich -> nucleo.
 # Un log per comune in log/rigenera_<data>/<comune>.log, piu' un riepilogo
 # a video e commit.txt con HEAD e stato dell'albero. Non cancella nulla: i
 # file vengono sovrascritti dagli script, quindi fare il backup PRIMA
@@ -97,7 +97,34 @@ for riga in "${COMUNI[@]}"; do
   T0=$SECONDS
   FASE=""
 
+    # --- staffetta: i preparatori che cs_build da' per scontati ---------
+  # Per i comuni della flotta storica sono girati a mano una volta; per
+  # ogni comune nuovo mancano e la corsa moriva su c1_sex_age_marital.csv
+  # (Cesena, 28/8) o su <slug>_sezioni_2023.csv (pilota, 2/9). Condizionali:
+  # girano SOLO se il prodotto manca, mai ricostruiscono. Tre gradini:
+  #   build_sezioni      serve a TUTTI i livelli (enrich alloca per sezione)
+  #   build_constraints  c1-c10 dai decoded
+  #   build_zona_tables  solo articolati (z1-z6 in zona_2023/)
   if [[ "$FROM" == "cs" ]]; then
+    SLUG=$(python -c "import gsp.common as G; print(G.info('$COD')['slug'])")
+    if [[ ! -e "data/submun/${SLUG}_sezioni_2023.csv" ]]; then
+      FASE="build_sezioni"
+      esegui "$LOG" python scripts/vincoli/build_sezioni.py "$COD" \
+        || FASE="build_sezioni FALLITO"
+    fi
+    if [[ "$FASE" != *FALLITO* && ! -e "data/comuni/$COD/constraints_$ANNO/c1_sex_age_marital.csv" ]]; then
+      FASE="build_constraints"
+      esegui "$LOG" python scripts/vincoli/build_constraints.py "$COD" --anno $ANNO \
+        || FASE="build_constraints FALLITO"
+    fi
+    if [[ "$FASE" != *FALLITO* && "$LIV" != "K6C" && ! -e "data/comuni/$COD/zona_2023/z1_zona_sesso_eta5.csv" ]]; then
+      FASE="build_zona_tables"
+      esegui "$LOG" python scripts/vincoli/build_zona_tables.py "$COD" \
+        || FASE="build_zona_tables FALLITO"
+    fi
+  fi
+
+    if [[ "$FROM" == "cs" && "$FASE" != *FALLITO* ]]; then
     FASE="cs_build"
     esegui "$LOG" python scripts/vincoli/cs_build.py "$COD" --anno $ANNO \
            --livello "$LIV" $ESCL || { FASE="cs_build FALLITO"; }

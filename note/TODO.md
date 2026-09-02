@@ -16,3 +16,4 @@
 - [ ] 2026-09-02 [campagna-ER-posas] 13 comuni con lon/lat nulli (piacentini e parmensi): collocazione per sezione ok, coordinate no — guardare ANNCSU o join_civici_sezioni
 - [ ] 2026-09-02 [campagna-ER-posas] il viewer non dice nulla quando la mappa del comune non ha coordinate: tela vuota senza spiegazione
 - [ ] 2026-09-02 [campagna-ER-posas] riprendere: paper v2, report tecnico v2 su arXiv (upgrade con nota in testa), numbers.tex generato
+- [ ] 2026-09-02 [campagna-ER-posas] URL permanente della v1.0 (11 comuni, quella descritta dal report arXiv): https://20765f19.animarium.pages.dev — citarlo nel report v2 come riferimento storico

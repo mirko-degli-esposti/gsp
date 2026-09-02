@@ -23,6 +23,7 @@ Uso da riga di comando:
     python -m gsp.common --check              # verifica tutti i comuni
     python -m gsp.common --check 034027       # un comune solo
     python -m gsp.common --dump-nomi 037006   # nomi zona da zona_2023/, da incollare
+    python -m gsp.common --righe-rigenera     # codice:livello:pool per rigenera.sh
 
 Radice del progetto:
     GSP = ~/progetti/gsp per default; per un clone altrove impostare
@@ -899,6 +900,17 @@ def dump_nomi(comune: str) -> None:
             print(f'    "{str(r[cod_c]).strip()}": "{str(r[nom_c]).strip()}",')
         print("}")
 
+def righe_rigenera(stati=("flotta", "collaudo", "pilota", "v2")):
+    """Le righe codice:livello:pool per rigenera.sh, derivate dal registro.
+    Livello di fit: K6C se non articolato, K9C altrimenti; `fit` nella
+    voce e' l'override esplicito (es. sperimentali)."""
+    for cod, v in COMUNI.items():
+        if v.get("stato") not in stati or "pool" not in v:
+            continue
+        liv = v.get("fit") or ("K6C" if v["livello"] is None else "K9C")
+        print(f"{cod}:{liv}:{v['pool']}")
+
+
 
 if __name__ == "__main__":
     args = sys.argv[1:]
@@ -911,6 +923,11 @@ if __name__ == "__main__":
         k = args.index("--check")
         c = [a for a in args[k + 1:] if not a.startswith("--")]
         sys.exit(1 if check(c or None) else 0)
+    elif "--righe-rigenera" in args:
+        # le righe codice:livello:pool per rigenera.sh, dal registro.
+        # SOLO le righe su stdout: rigenera.sh le legge con mapfile,
+        # qualunque altra stampa finirebbe nell'array come "comune".
+        righe_rigenera()
     else:
         print(__doc__)
         print(f"comuni nel registro: {sorted(COMUNI)}")

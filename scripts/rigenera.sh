@@ -8,11 +8,9 @@
 # (vedi --help). Con --confronta <archivio> confronta a fine corsa i quattro
 # prodotti di ogni comune (anelli 1-4) con quelli archiviati, byte a byte.
 #
-# I parametri per comune stanno nella tabella COMUNI qui sotto:
-#   codice:livello:pool
-# Il pool e' ~1,3x la popolazione residente, in linea con quanto usato
-# per le generazioni singole.
-#
+# I parametri per comune (codice:livello:pool) vengono dal registro
+# flotta/comuni.yaml via `python -m gsp.common --righe-rigenera`; il pool
+# e' ~1,3x la popolazione residente.
 # Uso:
 #   ./rigenera.sh                  # tutti i comuni
 #   ./rigenera.sh 039014 040012    # solo quelli indicati
@@ -28,26 +26,16 @@ set -uo pipefail
 GSP="${GSP_ROOT:-$HOME/progetti/gsp}"
 ANNO=2024
 
-# codice : livello : pool
-COMUNI=(
-  "015146:K9C:1800000"  # Milano   1.371.499  (collaudo)
-  "020030:K6C:65000"    # Mantova     49.044  (non articolato, collaudo)
-  "017029:K9C:260000"   # Brescia    198.259
-  "037006:K9C:500000"   # Bologna    390.098
-  "034027:K9C:260000"   # Parma      198.121
-  "036023:K9C:240000"   # Modena     184.597
-  "035033:K9C:220000"   # Reggio E.  171.207
-  "039014:K9C:200000"   # Ravenna    156.304
-  "099014:K9C:200000"   # Rimini     150.046
-  "038008:K6C:170000"   # Ferrara    129.391  (non articolato)
-  "040012:K9C:150000"   # Forli'     117.050
-  "033032:K9C:140000"   # Piacenza 102.887
-  "040007:K9C:125000"   # Cesena      95.620
-  "037021:K6C:30000"    # Castenaso   16.357  (non articolato)
-  "099022:K6C:1018"     # Maiolo         783  (PILOTA soglia: sotto)
-  "033044:K6C:2638"     # Vernasca     2.029  (PILOTA soglia: al bordo)
-  "034049:K6C:10394"    # Sissa Trec.  7.995  (PILOTA soglia: sopra)
-)
+# codice : livello : pool — DERIVATI dal registro flotta/comuni.yaml.
+# Qui non si scrive piu' nulla a mano: un comune entra in flotta con
+# l'emettitore (python -m gsp.campagna --emetti / --promuovi-in-flotta),
+# e questo array e' una vista del registro. Chi cerca la lista la trova
+# in un posto solo.
+mapfile -t COMUNI < <(python -m gsp.common --righe-rigenera)
+[[ ${#COMUNI[@]} -gt 0 ]] || {
+  echo "registro vuoto o illeggibile: 'python -m gsp.common --righe-rigenera' fallisce?" >&2
+  exit 1
+}
 ESCL="--esclusioni"
 DRY=0
 FROM="cs"
@@ -59,7 +47,10 @@ while [[ $# -gt 0 ]]; do
     --dry-run) DRY=1; shift ;;
     --no-escl) ESCL=""; shift ;;
     --from)    FROM="$2"; shift 2 ;;
-    --confronta) CONFR="$2"; shift 2 ;;
+        --confronta)
+      CONFR="$2"; shift 2
+      [[ -d "$CONFR" ]] || { echo "archivio inesistente: $CONFR" >&2; exit 1; }
+      ;;
     -h|--help)
       sed -n '2,30p' "$0" | sed 's/^# \{0,1\}//'
       echo

@@ -633,7 +633,109 @@ def estendi():
     print(f"manifest esteso: {nuovi} nuovi, {len(presenti)} preservati, "
           f"{saltati_flotta} in flotta (esclusi), totale {len(m['comuni'])}")
 
+# ------------------------------------------------- promozione in flotta
 
+
+SOGLIA_V2 = 3000   # [m] note/misure/soglia_taglia_er.md: pop/supporto >= 1
+                   # attraversa 1 a ~2.500-2.800 a K6C; 3.000 sta dal lato
+                   # sicuro (Vernasca 2.014 marginale su 4 indicatori, Sissa
+                   # 7.901 dentro). Copre il 95,2% della popolazione ER.
+
+COMUNI_YAML = GSP_ROOT / "flotta" / "comuni.yaml"
+
+
+class _DumperQuotato(yaml.SafeDumper):
+    """Codici SEMPRE quotati: senza virgolette, un codice con sole cifre
+    0-7 e' letto da YAML 1.1 come OTTALE (015146 -> 6758)."""
+    pass
+
+
+def _rappresenta_str(dumper, s):
+    if "\n" in s:
+        return dumper.represent_scalar("tag:yaml.org,2002:str", s, style="|")
+    style = "'" if s.isdigit() else None
+    return dumper.represent_scalar("tag:yaml.org,2002:str", s, style=style)
+
+
+_DumperQuotato.add_representer(str, _rappresenta_str)
+
+
+def _salva_registro(reg):
+    """Riscrittura atomica di flotta/comuni.yaml. L'intestazione — il
+    blocco iniziale di righe '#' o vuote, che yaml.dump perderebbe —
+    viene preservata per STRUTTURA, non cercando un carattere: la prima
+    versione cercava la prima virgoletta e la trovava in un apostrofo
+    dell'intestazione stessa (file rotto, 2/9). Mai append."""
+    righe = COMUNI_YAML.read_text(encoding="utf-8").splitlines(keepends=True)
+    testa = []
+    for l in righe:
+        if l.startswith("#") or not l.strip():
+            testa.append(l)
+        else:
+            break
+    fd, tmp = tempfile.mkstemp(dir=COMUNI_YAML.parent, suffix=".tmp")
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        f.write("".join(testa))
+        yaml.dump(reg, f, Dumper=_DumperQuotato, allow_unicode=True,
+                  sort_keys=False)
+    os.replace(tmp, COMUNI_YAML)
+
+
+def _slug(nome):
+    """Convenzione degli slug esistenti: minuscolo, spazi e trattini ->
+    underscore, apostrofi rimossi. I casi strani (accenti, 'Sant'Ilario
+    d'Enza') si guardano nel dry-run e si correggono a mano nel yaml:
+    lo slug e' un nome di file, non una chiave."""
+    return (nome.lower().replace("'", "").replace(" ", "_")
+                .replace("-", "_"))
+
+
+def promuovi_in_flotta(soglia=SOGLIA_V2, dry_run=False):
+    """L'emettitore promosso a scrittore. Per ogni comune del manifest:
+      - gate aperto        -> salta (non e' pronto)
+      - pop_posas < soglia -> 'sotto_soglia' nel manifest: esclusione
+                              DICHIARATA, non implicita nel filtro
+      - gia' nel registro  -> salta (idempotente; le voci esistenti non si
+                              toccano MAI)
+      - altrimenti         -> promuove i file se ancora in shadow (gradino
+                              zero della staffetta) e scrive la voce minima
+    La deliberazione umana e' salita a monte, nel criterio di soglia: qui
+    non c'e' piu' niente da decidere per comune."""
+    m = carica()
+    reg = yaml.safe_load(open(COMUNI_YAML, encoding="utf-8"))
+    nuovi, sotto, saltati = [], [], []
+
+    for cod, c in m["comuni"].items():
+        if not gate_chiuso(c):
+            saltati.append(cod)
+            continue
+        if c["pop_posas"] < soglia:
+            c["stato_v2"] = "sotto_soglia"
+            sotto.append(cod)
+            continue
+        if cod in reg:
+            continue
+        if not dry_run and any(v.get("in_shadow") for v in c["tavole"].values()):
+            promuovi(cod=cod)                       # gradino zero: i file
+            m = carica()                            # promuovi ha salvato: rileggo
+            c = m["comuni"][cod]
+        reg[cod] = {
+            "nome": c["nome"], "slug": _slug(c["nome"]),
+            "regione": "emilia_romagna",            # proprieta' della CAMPAGNA
+            "pool": math.ceil(c["pop_posas"] * POOL_FATTORE),
+            "stato": "v2",
+        }
+        c["stato_v2"] = "in_flotta"
+        nuovi.append(cod)
+        if dry_run:
+            print(f"  {cod} {c['nome']:<28} -> {reg[cod]['slug']:<28} pool {reg[cod]['pool']}")
+
+    if not dry_run:
+        salva(m)
+        _salva_registro(reg)
+    print(f"soglia {soglia}: {len(nuovi)} promossi in flotta, "
+          f"{len(sotto)} sotto soglia, {len(saltati)} con gate aperto"
+          + ("  [dry-run: nulla scritto]" if dry_run else ""))
 # --------------------------------------------------------------- CLI
 
 if __name__ == "__main__":
@@ -664,6 +766,12 @@ if __name__ == "__main__":
     ap.add_argument("--accetta", metavar="COD",
                     help="promuove a 'validata' le celle DIVERGE guardate e "
                          "comprese, registrando --motivo (obbligatorio)")
+    ap.add_argument("--promuovi-in-flotta", action="store_true",
+                    help="scrive nel registro le voci dei comuni con gate chiuso "
+                         "e pop >= soglia; marca sotto_soglia gli altri")
+    ap.add_argument("--soglia", type=int, default=SOGLIA_V2)
+    ap.add_argument("--dry-run", action="store_true",
+                    help="con --promuovi-in-flotta: mostra senza scrivere")
     a = ap.parse_args()
     if a.inizializza:
         inizializza()
@@ -692,5 +800,7 @@ if __name__ == "__main__":
             ap.error("--riapri richiede --motivo")
         riapri(a.riapri, a.motivo,
                a_stato="shadow" if a.shadow else "scaricata")
+    elif a.promuovi_in_flotta:
+        promuovi_in_flotta(soglia=a.soglia, dry_run=a.dry_run)
     else:
         ap.print_help()

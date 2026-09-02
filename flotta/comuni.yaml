@@ -1,0 +1,577 @@
+# flotta/comuni.yaml — registro dei comuni: DATI, non codice.
+# Caricato da gsp.common (COMUNI, info, livello_col, regione invariati per i
+# consumatori); rigenera.sh deriva l'array da qui; l'emettitore scrive qui.
+# Migrato dal dict di common.py il 2/9/2026 (scripts/registro/esporta_comuni.py,
+# round-trip verificato; note estratte da estrai_note_comuni.py).
+#
+# CODICI SEMPRE QUOTATI: senza virgolette, un codice con sole cifre 0-7 e'
+# letto da YAML 1.1 come OTTALE (015146 -> 6758). Il loader rifiuta le
+# chiavi non-stringa con un errore che lo spiega.
+#
+# Voce minima (K6C): nome, slug, regione, pool, stato [, note]
+#   il loader aggiunge livello: null, livelli: {}
+# Voce articolata: + livello, livelli (mappe zone per esteso)
+# Voce con fonte locale: + opendata_paese
+# stato: flotta | collaudo | pilota | v2 | sotto_soglia
+#
+# Schema di opendata_paese (dai commenti inline del dict):
+#   geo_liv: livello ASC di riferimento
+#   geo_col: colonna della popolazione su cui agganciare
+#   sesso: la fonte distingue il sesso?
+
+'015146':
+  nome: Milano
+  slug: milano
+  regione: lombardia
+  livello: municipi
+  livelli:
+    municipi:
+      col: COM_ASC1
+      n: 9
+      nomi:
+        '15146001': Municipio 1
+        '15146002': Municipio 2
+        '15146003': Municipio 3
+        '15146004': Municipio 4
+        '15146005': Municipio 5
+        '15146006': Municipio 6
+        '15146007': Municipio 7
+        '15146008': Municipio 8
+        '15146009': Municipio 9
+      parent: null
+  pool: 1800000
+  stato: collaudo
+  note: |-
+    ASC1 = 9 municipi (108-189k, tutte le sezioni codificate);
+    ASC2 = 88 NIL, ma 18 NIL a cavallo di piu' municipi (gerarchia
+    non annidata) e code di NIL a popolazione ~0: per la produzione
+    si usa ASC1; il fit sui NIL e' registrato come esperimento.
+'017029':
+  nome: Brescia
+  slug: brescia
+  regione: lombardia
+  livello: quartieri
+  livelli:
+    quartieri:
+      col: COM_ASC1
+      n: 33
+      nomi:
+        '17029001': Brescia Antica
+        '17029002': Borgo Trento
+        '17029003': Porta Milano
+        '17029004': Centro Storico Nord
+        '17029005': Chiusure
+        '17029006': Don Bosco
+        '17029007': Fiumicello
+        '17029008': Folzano
+        '17029009': Fornaci
+        '17029010': Lamarmora
+        '17029011': Mompiano
+        '17029012': Porta Cremona
+        '17029013': Buffalora
+        '17029014': Porta Venezia
+        '17029015': Villaggio Prealpino
+        '17029016': Caionvico
+        '17029017': S. Bartolomeo
+        '17029018': S. Eufemia
+        '17029019': S. Polo Case
+        '17029020': Chiesanuova
+        '17029021': Urago
+        '17029022': Casazza
+        '17029023': Villaggio Badia
+        '17029024': Villaggio Sereno
+        '17029025': Villaggio Violino
+        '17029026': Primo Maggio
+        '17029027': Centro Storico Sud
+        '17029028': S. Eustacchio
+        '17029029': S. Rocchino
+        '17029030': Crocifissa Di Rosa
+        '17029031': S. Polo Cimabue
+        '17029032': San Polino
+        '17029033': S. Polo Parco
+      parent: null
+  opendata_paese:
+    loader: brescia
+    geo_liv: quartieri
+    geo_col: zona
+    sesso: false
+    dir: cittadinanza
+    override_nome:
+      chiesanuova-noce-girelli: '17029020'
+  pool: 260000
+  stato: flotta
+  note: |-
+    Fonte locale per il paese di cittadinanza: un CSV per quartiere.
+    Il nome del file non sempre coincide con la denominazione ISTAT.
+'020030':
+  nome: Mantova
+  slug: mantova
+  regione: lombardia
+  pool: 65000
+  stato: collaudo
+  note: |-
+    COM_ASC1/2/3 tutti a zero nel file regionale Lombardia 2023:
+    nessuna partizione sub-comunale ISTAT. K6C come Ferrara/Castenaso.
+    Verificato con build_sezioni al collaudo (2026-08): 574 sezioni,
+    P1=49.044, stranieri 16,6%.
+'034027':
+  nome: Parma
+  slug: parma
+  regione: emilia_romagna
+  livello: quartieri
+  livelli:
+    quartieri:
+      col: COM_ASC1
+      n: 13
+      nomi:
+        '34027001': Parma Centro
+        '34027002': Oltretorrente
+        '34027003': Molinetto
+        '34027004': Pablo
+        '34027005': Golese
+        '34027006': San Pancrazio
+        '34027007': San Leonardo
+        '34027008': Cortile San Martino
+        '34027009': Lubiana
+        '34027010': San Lazzaro
+        '34027011': Cittadella
+        '34027012': Montanara
+        '34027013': Vigatto
+      parent: null
+  opendata_paese:
+    loader: parma
+    geo_liv: sezione
+    geo_col: sezione
+    sesso: true
+  pool: 260000
+  stato: flotta
+  note: ISTAT pubblica per Parma il solo COM_ASC1.
+'037006':
+  nome: Bologna
+  slug: bologna
+  regione: emilia_romagna
+  livello: zone
+  livelli:
+    quartieri:
+      col: COM_ASC1
+      n: 6
+      nomi:
+        '37006011': Borgo Panigale-Reno
+        '37006012': Navile
+        '37006013': Porto-Saragozza
+        '37006014': San Donato-San Vitale
+        '37006015': Santo Stefano
+        '37006016': Savena
+      parent: null
+    zone:
+      col: COM_ASC2
+      n: 18
+      nomi:
+        '37006001': Barca
+        '37006010': Malpighi
+        '37006002': Bolognina
+        '37006011': Marconi
+        '37006003': Borgo Panigale
+        '37006012': Mazzini
+        '37006004': Colli
+        '37006013': Murri
+        '37006005': Corticella
+        '37006014': Saffi
+        '37006006': Costa Saragozza
+        '37006015': San Donato
+        '37006007': Galvani
+        '37006016': San Ruffillo
+        '37006008': Irnerio
+        '37006017': Santa Viola
+        '37006009': Lame
+        '37006018': San Vitale
+      parent: quartieri
+  opendata_paese:
+    loader: bologna
+    geo_liv: zone
+    geo_col: zona
+    sesso: true
+  pool: 500000
+  stato: flotta
+  note: |-
+    ASC1 = 6 quartieri: troppo pochi. ASC3 = 90 aree: coda di zone
+    da 13 abitanti, inutilizzabile. Si usa ASC2.
+'040007':
+  nome: Cesena
+  slug: cesena
+  regione: emilia_romagna
+  livello: quartieri
+  livelli:
+    quartieri:
+      col: COM_ASC1
+      n: 12
+      nomi:
+        '40007001': Centro Urbano
+        '40007002': Cesuola
+        '40007003': Fiorenzuola
+        '40007004': Cervese Sud
+        '40007005': Oltresavio
+        '40007006': Valle Savio
+        '40007007': Borello
+        '40007008': Rubicone
+        '40007009': Al Mare
+        '40007010': Cervese Nord
+        '40007011': Ravennate
+        '40007012': Dismano
+      parent: null
+  pool: 125000
+  stato: flotta
+  note: |-
+    Accoppiamento a tre assi (P1 vs anagrafica comunale 2024,
+    geografia, ordine ufficiale dei quartieri = progressivo ASC).
+    [v] confine ASC vs amministrativo sulla coppia 05/06
+    (scarti -6,4%/+19% compensativi): verificare coi toponimi
+    ANNCSU; i nomi sono certi, il confine e' della partizione.
+'074017':
+  nome: San Vito dei Normanni
+  slug: san_vito_dei_normanni
+  regione: puglia
+  stato: collaudo
+  note: 'ASC1 ha un solo valore: nessuna articolazione sub-comunale.'
+'036023':
+  nome: Modena
+  slug: modena
+  regione: emilia_romagna
+  livello: quartieri
+  livelli:
+    quartieri:
+      col: COM_ASC1
+      n: 4
+      nomi:
+        '36023001': Centro Storico
+        '36023002': Crocetta, San Lazzaro, Modena Est
+        '36023003': Buon Pastore, Sant'Agnese, San Damaso
+        '36023004': San Faustino, Madonnina, Quattro Ville
+      parent: null
+  pool: 240000
+  stato: flotta
+  note: |-
+    Solo ASC1, 4 zone da ~46.000 abitanti: la partizione piu'
+    grossolana fra i comuni in pipeline. Il lavoro geografico lo
+    fa l'anello 3 (546 sezioni per zona).
+'039014':
+  nome: Ravenna
+  slug: ravenna
+  regione: emilia_romagna
+  livello: aree
+  livelli:
+    aree:
+      col: COM_ASC1
+      n: 10
+      nomi:
+        '39014001': Centro Urbano
+        '39014002': Ravenna Sud
+        '39014003': Darsena
+        '39014007': Sant'Alberto
+        '39014008': Mezzano
+        '39014009': Piangipane
+        '39014010': Roncalceci
+        '39014011': San Pietro in Vincoli
+        '39014012': Castiglione
+        '39014013': Del Mare
+      parent: null
+  opendata_paese:
+    loader: ravenna
+    geo_liv: aree
+    override_nome:
+      CENTRO URBANO: '39014001'
+      RAVENNA SUD: '39014002'
+      DARSENA: '39014003'
+      S. ALBERTO: '39014007'
+      MEZZANO: '39014008'
+      PIANGIPANE: '39014009'
+      RONCALCECI: '39014010'
+      S.P.VINCOLI: '39014011'
+      CASTIGLIONE: '39014012'
+      MARE: '39014013'
+    alias_paese:
+      MACEDONIA: Macedonia, Ex Repubblica Jugoslava di
+      RUSSA, Federazione: Russia
+      REP. S.MARINO: San Marino
+      AFGANISTAN: Afghanistan
+      IRAN: Iran, Repubblica islamica dell'
+      REP. DOMINICANA: Dominicana, Repubblica
+      GRAN BRETAGNA: Regno unito
+      REP. CECA: Ceca, Repubblica
+      REP. SLOVACCA: Slovacchia
+      KAZAKISTAN: Kazakhstan
+      PERU': Perù
+      TAILANDIA: Thailandia
+      CONGO rep.: Congo (Repubblica del)
+      PALESTINA: Territori dell'Autonomia Palestinese
+      KENIA: Kenya
+      CAPOVERDE: Capo Verde
+      CONGO rep.Dem.(Zaire): Congo, Repubblica democratica del (ex Zaire)
+      SALVADOR: El Salvador
+      COREA rep.(Corea del sud): Corea del sud
+      ARABIA: Arabia Saudita
+      BENIN (Dahomey): Benin (ex Dahomey)
+      ZIMBABWE (Rhodesia): Zimbabwe (ex Rhodesia)
+  pool: 200000
+  stato: flotta
+  note: |-
+    Il Comune le chiama "aree territoriali", non quartieri: 3 urbane
+    (001-003) e 7 rurali su 652 km2. Codici non contigui.
+    il file usa abbreviazioni proprie per le aree
+    denominazioni comunali -> etichette censuarie ISTAT.
+    Ricavate dal confronto delle due liste (2023): 20 coppie su 21
+    ISTAT non appaiate. L'unica orfana e' 'Maldive' (2 persone),
+    assente dal file comunale.
+'040012':
+  nome: Forlì
+  slug: forli
+  regione: emilia_romagna
+  livello: quartieri
+  livelli:
+    quartieri:
+      col: COM_ASC1
+      n: 21
+      nomi:
+        '40012001': Centro Storico
+        '40012002': Villafranca, San Martino in Villafranca
+        '40012003': Roncadello, Branzolino, San Tomè, Barisano
+        '40012004': Pieve Acquedotto, Durazzanino, Malmissole, Poggio, San Giorgio
+        '40012005': Carpinello, Castellaccio, Bagnolo, Borgo Sisa
+        '40012006': Pievequinta, Casemurate, Caserma
+        '40012007': La Selva, Forniolo, San Leonardo
+        '40012008': Pianta, Ospedaletto, Coriano
+        '40012009': Foro Boario, San Benedetto
+        '40012010': Cava, Villanova
+        '40012011': Romiti
+        '40012012': Resistenza
+        '40012013': Spazzoli, Campo di Marte, Benefattori
+        '40012014': Musicisti, Grandi Italiani
+        '40012015': Ronco
+        '40012016': Bussecchio
+        '40012017': Ca' Ossi
+        '40012018': Villagrappa, Castiglione, Petrignone, San Varano, Rovere
+        '40012019': Vecchiazzano, Massa, Ladino
+        '40012020': San Martino in Strada, San Lorenzo in Noceto, Grisignano
+        '40012021': Magliano, Carpena, Ravaldino in Monte, Lardiano
+      parent: null
+  opendata_paese:
+    loader: forli
+    geo_liv: quartieri
+    etichette_residuo:
+    - altro
+    mappa_unita:
+      SCHIAVONIA SAN BIAGIO: '40012001'
+      SAN PIETRO: '40012001'
+      RAVALDINO: '40012001'
+      COTOGNI: '40012001'
+      VILLAFRANCA: '40012002'
+      SAN MARTINO IN VILLAFRANCA: '40012002'
+      RONCADELLO: '40012003'
+      BRANZOLINO: '40012003'
+      SAN TOME': '40012003'
+      BARISANO: '40012003'
+      PIEVE ACQUEDOTTO: '40012004'
+      DURAZZANINO: '40012004'
+      MALMISSOLE: '40012004'
+      POGGIO: '40012004'
+      SAN GIORGIO: '40012004'
+      CARPINELLO CASTELLACCIO ROTTA: '40012005'
+      BAGNOLO: '40012005'
+      DURAZZANO BORGO SISA: '40012005'
+      PIEVEQUINTA CASEMURATE CASERMA: '40012006'
+      LA SELVA FORNIOLO: '40012007'
+      SAN LEONARDO: '40012007'
+      PIANTA OSPEDALETTO CORIANO: '40012008'
+      FORO BOARIO: '40012009'
+      SAN BENEDETTO: '40012009'
+      CAVA: '40012010'
+      VILLANOVA: '40012010'
+      ROMITI: '40012011'
+      RESISTENZA: '40012012'
+      SPAZZOLI CAMPO DI MARTE BENEFATTORI: '40012013'
+      MUSICISTI GRANDI ITALIANI: '40012014'
+      RONCO: '40012015'
+      BUSSECCHIO: '40012016'
+      CA'OSSI: '40012017'
+      VILLAGRAPPA CASTIGLIONE PETRIGNONE CIOLA: '40012018'
+      SAN VARANO: '40012018'
+      ROVERE: '40012018'
+      VECCHIAZZANO MASSA LADINO: '40012019'
+      SAN MARTINO IN STRADA GRISIGNANO COLLINA: '40012020'
+      SAN LORENZO IN NOCETO: '40012020'
+      MAGLIANO RAVALDINO IN MONTE LARDIANO: '40012021'
+      CARPENA: '40012021'
+    alias_paese:
+      REPUBBLICA POPOLARE CINESE: Cina
+      MACEDONIA DEL NORD: Macedonia, Ex Repubblica Jugoslava di
+      FEDERAZIONE RUSSA: Russia
+      REPUBBLICA DOMINICANA: Dominicana, Repubblica
+      BURKINA FASO: Burkina Faso (ex Alto Volta)
+      PERU': Perù
+  pool: 150000
+  stato: flotta
+  note: |-
+    Partizione ibrida: 11 quartieri urbani entro 2,3 km dal centro
+    e 10 ambiti rurali fra 4 e 10 km. Zona piu' piccola: 1.588 ab.
+    La fonte disaggrega in 41 unita' che si aggregano nei 21
+    quartieri COM_ASC1. Mappa ricavata dall'elenco ufficiale;
+    'in corso di definizione' (9 persone) non e' territoriale.
+    DA VERIFICARE contro cens_stranieri_paesi_decoded.csv:
+    le etichette ISTAT sotto sono ricostruite per analogia con
+    Ravenna, non lette. La Cina e' il secondo gruppo (1.962
+    persone): se il suo alias non fa presa, il loader lo segnala.
+'037021':
+  nome: Castenaso
+  slug: castenaso
+  regione: emilia_romagna
+  pool: 30000
+  stato: flotta
+  note: |-
+    Nessun livello ASC popolato nel file regionale 2023: le quattro
+    frazioni dello Statuto (Fiesso, Marano, Veduro, Villanova) non
+    sono codificate da ISTAT. Comune K6C, senza coordinata zona.
+'099022':
+  nome: Maiolo
+  slug: maiolo
+  regione: emilia_romagna
+  pool: 1018
+  stato: pilota
+  note: |-
+    --- PILOTA soglia di taglia (note/misure/soglia_taglia_er.md) ---
+    Tre comuni attorno al criterio pop/|celle| >= 2: sotto, al bordo,
+    sopra. Articolazione misurata ASSENTE su tutti (batch 2/9/2026):
+    K6C senza coordinata zona, come Castenaso.
+    [livello] 783 ab — sotto soglia
+'033044':
+  nome: Vernasca
+  slug: vernasca
+  regione: emilia_romagna
+  pool: 2638
+  stato: pilota
+  note: '[livello] 2.029 ab — al bordo'
+'034049':
+  nome: Sissa Trecasali
+  slug: sissa_trecasali
+  regione: emilia_romagna
+  pool: 10394
+  stato: pilota
+  note: '[livello] 7.995 ab — sopra'
+'038008':
+  nome: Ferrara
+  slug: ferrara
+  regione: emilia_romagna
+  pool: 170000
+  stato: flotta
+  note: |-
+    COM_ASC1/2/3 tutti a zero nel file regionale 2023: ISTAT non
+    codifica alcuna partizione sub-comunale. Comune K6C, gestito con
+    zona degenere unica (vedi load_sezioni in enrich.py). Terzo caso
+    dopo Castenaso; qui pero' su scala reale, 129.391 abitanti e
+    1.761 sezioni.
+'035033':
+  nome: Reggio nell'Emilia
+  slug: reggio_emilia
+  regione: emilia_romagna
+  livello: circoscrizioni
+  livelli:
+    circoscrizioni:
+      col: COM_ASC1
+      n: 4
+      nomi:
+        '35033001': Città storica
+        '35033002': Ovest
+        '35033003': Sud
+        '35033004': Nordest
+      parent: null
+  opendata_paese:
+    loader: reggio
+    geo_liv: circoscrizioni
+    encoding: latin-1
+    etichette_residuo:
+    - Altre nazionalità
+    mappa_unita:
+      Città storica: '35033001'
+      Ovest: '35033002'
+      Sud: '35033003'
+      Nordest: '35033004'
+    alias_paese:
+      Moldavia: Moldova
+      Russia, Federazione: Russia
+      Repubblica Dominicana: Dominicana, Repubblica
+      Costa Avorio: Costa d'Avorio
+      Burkina Faso: Burkina Faso (ex Alto Volta)
+      Repubblica Ceca: Ceca, Repubblica
+  pool: 220000
+  stato: flotta
+  note: |-
+    Partizione per quadranti: centro storico piu' tre settori
+    cardinali. 42.800 abitanti per zona, la seconda piu'
+    grossolana in pipeline dopo Modena (46.149).
+    ATTENZIONE: la fonte comunale e' del 2013, contro il 2023
+    delle sezioni. L'assunzione di stabilita' strutturale e'
+    stata VERIFICATA il 1/8/2026 sulla quota UE per zona: ranghi
+    4-2-1-3 nel 2013 contro 4-1-2-3 nel 2023, con l'unico
+    scambio fra due zone che nel 2023 distano 0,003 (rumore).
+    Le quote sono cresciute di 2-4 punti in modo uniforme, quindi
+    la FORMA condizionale regge anche se i livelli no.
+    La fonte non distingue il sesso: lo ricostruisce l'IPF dal
+    margine comunale, come per Brescia.
+'099014':
+  nome: Rimini
+  slug: rimini
+  regione: emilia_romagna
+  livello: quartieri
+  livelli:
+    quartieri:
+      col: COM_ASC1
+      n: 6
+      nomi:
+        '99014001': Centro storico - Marina Centro - San Giuliano
+        '99014002': Borgo San Giovanni - Lagomaggio
+        '99014003': Bellariva - Miramare
+        '99014004': Borgo Mazzini - INA Casa - Vergiano - Corpolò
+        '99014005': Celle - Viserba - San Vito - Santa Giustina
+        '99014006': V PEEP Ausa - Grotta Rossa - Gaiofana
+      parent: null
+  pool: 200000
+  stato: flotta
+  note: |-
+    Sei ex-quartieri, disposti lungo l'asse litoraneo: 001 centro
+    (raggio 0,70 km, il minimo), 003 e 005 agli estremi opposti
+    della costa, 006 entroterra verso San Marino. Denominazioni
+    verificate con zona_probe.py (1/8/2026): LAGOMAGGIO 100% su
+    002, CORIANO/MONTESCUDO/MONTE TITANO su 006, D'AUGUSTO e
+    DESTRA PORTO su 001.
+    NOTA: nel 2025 il Comune ha istituito 12 NUOVI quartieri.
+    I dati comunali dal 2025 in poi NON sono agganciabili a
+    COM_ASC1, che resta sui 6 del censimento 2023.
+    tier 0: il portale statistico pubblica gli stranieri per
+    quartiere solo come totali, non per paese di cittadinanza.
+    Bollettini demografici in PDF, nessun CSV con paese x geografia.
+    Contatto per una eventuale richiesta: opendata@comune.rimini.it
+'033032':
+  nome: Piacenza
+  slug: piacenza
+  regione: emilia_romagna
+  livello: quartieri
+  livelli:
+    quartieri:
+      col: COM_ASC1
+      n: 4
+      nomi:
+        '33032001': Ex Quartiere 1 (Centro storico)
+        '33032002': Ex Quartiere 2 (Ovest)
+        '33032003': Ex Quartiere 3 (Sud)
+        '33032004': Ex Quartiere 4 (Est)
+      parent: null
+  pool: 140000
+  stato: flotta
+  note: |-
+    Quattro ex circoscrizioni disposte a quadranti attorno al
+    centro: 25.700 abitanti per zona, configurazione analoga a
+    Modena e Reggio.
+    tier 0: l'Annuario Statistico comunale rielabora AP11, POSAS e
+    STRASA, tutte fonti ISTAT a livello COMUNALE — quindi il
+    dettaglio paese x quartiere non puo' esistere in quel canale.
+    Da riprovare se l'Ufficio Statistica pubblicasse elaborazioni
+    dall'anagrafe interna. Contatto: portale opendata.comune.piacenza.it

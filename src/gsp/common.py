@@ -40,6 +40,7 @@ import unicodedata
 
 import numpy as np
 import pandas as pd
+import yaml
 
 # ----------------------------------------------------------------------
 # Radici
@@ -402,359 +403,32 @@ IMPOSSIBILI = [
 # Comuni — solo il non derivabile
 # ----------------------------------------------------------------------
 
-COMUNI = {
+# ---------------------------------------------------------------------
+# Registro dei comuni: DATI (flotta/comuni.yaml), non codice.
+# Migrato dal dict il 2/9/2026 (scripts/registro/esporta_comuni.py,
+# round-trip verificato su 18 voci). Voci minime per i K6C; livello e
+# livelli per esteso solo per gli articolati; i default li mette il
+# loader. info(), livello_col(), regione() invariati per i consumatori.
+# ---------------------------------------------------------------------
+COMUNI_YAML = os.path.join(GSP, "flotta", "comuni.yaml")   
 
-        "015146": {
-        "nome": "Milano", "slug": "milano", "regione": "lombardia",
-        # ASC1 = 9 municipi (108-189k, tutte le sezioni codificate);
-        # ASC2 = 88 NIL, ma 18 NIL a cavallo di piu' municipi (gerarchia
-        # non annidata) e code di NIL a popolazione ~0: per la produzione
-        # si usa ASC1; il fit sui NIL e' registrato come esperimento.
-        "livello": "municipi",
-        "livelli": {
-            "municipi": {"col": "COM_ASC1", "n": 9,
-                         "nomi": ASC_NOMI_MILANO, "parent": None},
-        },
-    },
 
-    "017029": {
-        "nome": "Brescia", "slug": "brescia", "regione": "lombardia",
-        "livello": "quartieri",
-        "livelli": {
-            "quartieri": {"col": "COM_ASC1", "n": 33,
-                          "nomi": ASC_NOMI_BRESCIA, "parent": None},
-        },
-        # Fonte locale per il paese di cittadinanza: un CSV per quartiere.
-        # Il nome del file non sempre coincide con la denominazione ISTAT.
-        "opendata_paese": {
-            "loader": "brescia",
-            "geo_liv": "quartieri",      # livello ASC di riferimento
-            "geo_col": "zona",           # colonna della popolazione su cui agganciare
-            "sesso": False,              # la fonte distingue il sesso?
-            "dir": "cittadinanza",
-            "override_nome": {"chiesanuova-noce-girelli": "17029020"},
-        },
-    },
-    "020030": {
-        "nome": "Mantova", "slug": "mantova", "regione": "lombardia",
-        # COM_ASC1/2/3 tutti a zero nel file regionale Lombardia 2023:
-        # nessuna partizione sub-comunale ISTAT. K6C come Ferrara/Castenaso.
-        # Verificato con build_sezioni al collaudo (2026-08): 574 sezioni,
-        # P1=49.044, stranieri 16,6%.
-        "livello": None,
-        "livelli": {},
-    },
-    "034027": {
-        "nome": "Parma", "slug": "parma", "regione": "emilia_romagna",
-        "livello": "quartieri",
-        "livelli": {
-            # ISTAT pubblica per Parma il solo COM_ASC1.
-            "quartieri": {"col": "COM_ASC1", "n": 13,
-                          "nomi": ASC_NOMI_PARMA, "parent": None},
-        },
-         "opendata_paese": {
-            "loader": "parma",
-            "geo_liv": "sezione",
-            "geo_col": "sezione",
-            "sesso": True,
-        },
-    },
-    "037006": {
-        "nome": "Bologna", "slug": "bologna", "regione": "emilia_romagna",
-        # ASC1 = 6 quartieri: troppo pochi. ASC3 = 90 aree: coda di zone
-        # da 13 abitanti, inutilizzabile. Si usa ASC2.
-        "livello": "zone",
-        "livelli": {
-            "quartieri": {"col": "COM_ASC1", "n": 6,
-                          "nomi": ASC1_NOMI_BOLOGNA, "parent": None},
-            "zone": {"col": "COM_ASC2", "n": 18,
-                     "nomi": ASC2_NOMI_BOLOGNA, "parent": "quartieri"},
-        },
-        "opendata_paese": {
-            "loader": "bologna",
-            "geo_liv": "zone",
-            "geo_col": "zona",
-            "sesso": True,
-        },
-    },
+def _carica_comuni(path=COMUNI_YAML):
+    with open(path, encoding="utf-8") as f:
+        d = yaml.safe_load(f)
+    for k in d:
+        if not (isinstance(k, str) and re.fullmatch(r"\d{6}", k)):
+            raise ValueError(
+                f"flotta/comuni.yaml: chiave {k!r} non e' un codice a 6 cifre "
+                f"quotato — senza virgolette, un codice con sole cifre 0-7 "
+                f"viene letto come OTTALE (015146 -> 6758). Quotare sempre.")
+    for e in d.values():
+        e.setdefault("livello", None)
+        e.setdefault("livelli", {})
+    return d
 
-    "040007": {
-        "nome": "Cesena",
-        "slug": "cesena",
-        "regione": "emilia_romagna",
-        "livello": "quartieri",
-        "livelli": {
-            "quartieri": {
-                "col": "COM_ASC1",
-                "n": 12,
-                # Accoppiamento a tre assi (P1 vs anagrafica comunale 2024,
-                # geografia, ordine ufficiale dei quartieri = progressivo ASC).
-                # [v] confine ASC vs amministrativo sulla coppia 05/06
-                # (scarti -6,4%/+19% compensativi): verificare coi toponimi
-                # ANNCSU; i nomi sono certi, il confine e' della partizione.
-                "nomi": {
-                    "40007001": "Centro Urbano",
-                    "40007002": "Cesuola",
-                    "40007003": "Fiorenzuola",
-                    "40007004": "Cervese Sud",
-                    "40007005": "Oltresavio",
-                    "40007006": "Valle Savio",
-                    "40007007": "Borello",
-                    "40007008": "Rubicone",
-                    "40007009": "Al Mare",
-                    "40007010": "Cervese Nord",
-                    "40007011": "Ravennate",
-                    "40007012": "Dismano",
-                },
-                "parent": None,
-            }
-        },
-    },  
-    "074017": {
-        "nome": "San Vito dei Normanni", "slug": "san_vito_dei_normanni",
-        "regione": "puglia",
-        # ASC1 ha un solo valore: nessuna articolazione sub-comunale.
-        "livello": None,
-        "livelli": {},
-    },
-    "036023": {
-        "nome": "Modena", "slug": "modena", "regione": "emilia_romagna",
-        "livello": "quartieri",
-        "livelli": {
-            # Solo ASC1, 4 zone da ~46.000 abitanti: la partizione piu'
-            # grossolana fra i comuni in pipeline. Il lavoro geografico lo
-            # fa l'anello 3 (546 sezioni per zona).
-            "quartieri": {"col": "COM_ASC1", "n": 4,
-                          "nomi": ASC_NOMI_MODENA, "parent": None},
-        },
-    },
 
-    "039014": {
-        "nome": "Ravenna", "slug": "ravenna", "regione": "emilia_romagna",
-        "livello": "aree",
-        "livelli": {
-            # Il Comune le chiama "aree territoriali", non quartieri: 3 urbane
-            # (001-003) e 7 rurali su 652 km2. Codici non contigui.
-            "aree": {"col": "COM_ASC1", "n": 10,
-                     "nomi": ASC_NOMI_RAVENNA, "parent": None},
-        },
-        "opendata_paese": {
-            "loader": "ravenna",
-            "geo_liv": "aree",
-            # il file usa abbreviazioni proprie per le aree
-            "override_nome": {
-                "CENTRO URBANO": "39014001",
-                "RAVENNA SUD":   "39014002",
-                "DARSENA":       "39014003",
-                "S. ALBERTO":    "39014007",
-                "MEZZANO":       "39014008",
-                "PIANGIPANE":    "39014009",
-                "RONCALCECI":    "39014010",
-                "S.P.VINCOLI":   "39014011",
-                "CASTIGLIONE":   "39014012",
-                "MARE":          "39014013",
-            },
-            # denominazioni comunali -> etichette censuarie ISTAT.
-            # Ricavate dal confronto delle due liste (2023): 20 coppie su 21
-            # ISTAT non appaiate. L'unica orfana e' 'Maldive' (2 persone),
-            # assente dal file comunale.
-            "alias_paese": {
-                "MACEDONIA":                  "Macedonia, Ex Repubblica Jugoslava di",
-                "RUSSA, Federazione":         "Russia",
-                "REP. S.MARINO":              "San Marino",
-                "AFGANISTAN":                 "Afghanistan",
-                "IRAN":                       "Iran, Repubblica islamica dell'",
-                "REP. DOMINICANA":            "Dominicana, Repubblica",
-                "GRAN BRETAGNA":              "Regno unito",
-                "REP. CECA":                  "Ceca, Repubblica",
-                "REP. SLOVACCA":              "Slovacchia",
-                "KAZAKISTAN":                 "Kazakhstan",
-                "PERU'":                      "Perù",
-                "TAILANDIA":                  "Thailandia",
-                "CONGO rep.":                 "Congo (Repubblica del)",
-                "PALESTINA":                  "Territori dell'Autonomia Palestinese",
-                "KENIA":                      "Kenya",
-                "CAPOVERDE":                  "Capo Verde",
-                "CONGO rep.Dem.(Zaire)":      "Congo, Repubblica democratica del (ex Zaire)",
-                "SALVADOR":                   "El Salvador",
-                "COREA rep.(Corea del sud)":  "Corea del sud",
-                "ARABIA":                     "Arabia Saudita",
-                "BENIN (Dahomey)":     "Benin (ex Dahomey)",
-                "ZIMBABWE (Rhodesia)": "Zimbabwe (ex Rhodesia)",
-            },
-        },
-    },
-    "040012": {
-        "nome": "Forlì", "slug": "forli", "regione": "emilia_romagna",
-        "livello": "quartieri",
-        "livelli": {
-            # Partizione ibrida: 11 quartieri urbani entro 2,3 km dal centro
-            # e 10 ambiti rurali fra 4 e 10 km. Zona piu' piccola: 1.588 ab.
-            "quartieri": {"col": "COM_ASC1", "n": 21,
-                          "nomi": ASC_NOMI_FORLI, "parent": None},
-        },
-        "opendata_paese": {
-            "loader": "forli",
-            "geo_liv": "quartieri",
-            "etichette_residuo": ["altro"],
-            # La fonte disaggrega in 41 unita' che si aggregano nei 21
-            # quartieri COM_ASC1. Mappa ricavata dall'elenco ufficiale;
-            # 'in corso di definizione' (9 persone) non e' territoriale.
-            "mappa_unita": {
-                "SCHIAVONIA SAN BIAGIO": "40012001",
-                "SAN PIETRO": "40012001",
-                "RAVALDINO": "40012001",
-                "COTOGNI": "40012001",
-                "VILLAFRANCA": "40012002",
-                "SAN MARTINO IN VILLAFRANCA": "40012002",
-                "RONCADELLO": "40012003",
-                "BRANZOLINO": "40012003",
-                "SAN TOME'": "40012003",
-                "BARISANO": "40012003",
-                "PIEVE ACQUEDOTTO": "40012004",
-                "DURAZZANINO": "40012004",
-                "MALMISSOLE": "40012004",
-                "POGGIO": "40012004",
-                "SAN GIORGIO": "40012004",
-                "CARPINELLO CASTELLACCIO ROTTA": "40012005",
-                "BAGNOLO": "40012005",
-                "DURAZZANO BORGO SISA": "40012005",
-                "PIEVEQUINTA CASEMURATE CASERMA": "40012006",
-                "LA SELVA FORNIOLO": "40012007",
-                "SAN LEONARDO": "40012007",
-                "PIANTA OSPEDALETTO CORIANO": "40012008",
-                "FORO BOARIO": "40012009",
-                "SAN BENEDETTO": "40012009",
-                "CAVA": "40012010",
-                "VILLANOVA": "40012010",
-                "ROMITI": "40012011",
-                "RESISTENZA": "40012012",
-                "SPAZZOLI CAMPO DI MARTE BENEFATTORI": "40012013",
-                "MUSICISTI GRANDI ITALIANI": "40012014",
-                "RONCO": "40012015",
-                "BUSSECCHIO": "40012016",
-                "CA'OSSI": "40012017",
-                "VILLAGRAPPA CASTIGLIONE PETRIGNONE CIOLA": "40012018",
-                "SAN VARANO": "40012018",
-                "ROVERE": "40012018",
-                "VECCHIAZZANO MASSA LADINO": "40012019",
-                "SAN MARTINO IN STRADA GRISIGNANO COLLINA": "40012020",
-                "SAN LORENZO IN NOCETO": "40012020",
-                "MAGLIANO RAVALDINO IN MONTE LARDIANO": "40012021",
-                "CARPENA": "40012021",
-            },
-            
-            # DA VERIFICARE contro cens_stranieri_paesi_decoded.csv:
-            # le etichette ISTAT sotto sono ricostruite per analogia con
-            # Ravenna, non lette. La Cina e' il secondo gruppo (1.962
-            # persone): se il suo alias non fa presa, il loader lo segnala.
-            "alias_paese": {
-                "REPUBBLICA POPOLARE CINESE": "Cina",
-                "MACEDONIA DEL NORD":         "Macedonia, Ex Repubblica Jugoslava di",
-                "FEDERAZIONE RUSSA":          "Russia",
-                "REPUBBLICA DOMINICANA":      "Dominicana, Repubblica",
-                "BURKINA FASO":               "Burkina Faso (ex Alto Volta)",
-                "PERU'":                      "Perù",
-            },
-        },
-    },
-    "037021": {
-        "nome": "Castenaso", "slug": "castenaso", "regione": "emilia_romagna",
-        # Nessun livello ASC popolato nel file regionale 2023: le quattro
-        # frazioni dello Statuto (Fiesso, Marano, Veduro, Villanova) non
-        # sono codificate da ISTAT. Comune K6C, senza coordinata zona.
-        "livello": None,
-        "livelli": {},
-    },
-    "038008": {
-        "nome": "Ferrara", "slug": "ferrara", "regione": "emilia_romagna",
-        # COM_ASC1/2/3 tutti a zero nel file regionale 2023: ISTAT non
-        # codifica alcuna partizione sub-comunale. Comune K6C, gestito con
-        # zona degenere unica (vedi load_sezioni in enrich.py). Terzo caso
-        # dopo Castenaso; qui pero' su scala reale, 129.391 abitanti e
-        # 1.761 sezioni.
-        "livello": None,
-        "livelli": {},
-    },
-    "035033": {
-        "nome": "Reggio nell'Emilia", "slug": "reggio_emilia",
-        "regione": "emilia_romagna",
-        "livello": "circoscrizioni",
-        "livelli": {
-            # Partizione per quadranti: centro storico piu' tre settori
-            # cardinali. 42.800 abitanti per zona, la seconda piu'
-            # grossolana in pipeline dopo Modena (46.149).
-            "circoscrizioni": {"col": "COM_ASC1", "n": 4,
-                               "nomi": ASC_NOMI_REGGIO, "parent": None},
-        },
-        "opendata_paese": {
-            "loader": "reggio",
-            "geo_liv": "circoscrizioni",
-            "encoding": "latin-1",
-            "etichette_residuo": ["Altre nazionalità"],
-            # ATTENZIONE: la fonte comunale e' del 2013, contro il 2023
-            # delle sezioni. L'assunzione di stabilita' strutturale e'
-            # stata VERIFICATA il 1/8/2026 sulla quota UE per zona: ranghi
-            # 4-2-1-3 nel 2013 contro 4-1-2-3 nel 2023, con l'unico
-            # scambio fra due zone che nel 2023 distano 0,003 (rumore).
-            # Le quote sono cresciute di 2-4 punti in modo uniforme, quindi
-            # la FORMA condizionale regge anche se i livelli no.
-            # La fonte non distingue il sesso: lo ricostruisce l'IPF dal
-            # margine comunale, come per Brescia.
-            "mappa_unita": {
-                "Città storica": "35033001",
-                "Ovest":         "35033002",
-                "Sud":           "35033003",
-                "Nordest":       "35033004",
-            },
-            "alias_paese": {
-                "Moldavia":              "Moldova",
-                "Russia, Federazione":   "Russia",
-                "Repubblica Dominicana": "Dominicana, Repubblica",
-                "Costa Avorio":          "Costa d'Avorio",
-                "Burkina Faso":          "Burkina Faso (ex Alto Volta)",
-                "Repubblica Ceca":       "Ceca, Repubblica",
-            },
-        },
-    },
-    "099014": {
-        "nome": "Rimini", "slug": "rimini", "regione": "emilia_romagna",
-        "livello": "quartieri",
-        "livelli": {
-            # Sei ex-quartieri, disposti lungo l'asse litoraneo: 001 centro
-            # (raggio 0,70 km, il minimo), 003 e 005 agli estremi opposti
-            # della costa, 006 entroterra verso San Marino. Denominazioni
-            # verificate con zona_probe.py (1/8/2026): LAGOMAGGIO 100% su
-            # 002, CORIANO/MONTESCUDO/MONTE TITANO su 006, D'AUGUSTO e
-            # DESTRA PORTO su 001.
-            # NOTA: nel 2025 il Comune ha istituito 12 NUOVI quartieri.
-            # I dati comunali dal 2025 in poi NON sono agganciabili a
-            # COM_ASC1, che resta sui 6 del censimento 2023.
-            "quartieri": {"col": "COM_ASC1", "n": 6,
-                          "nomi": ASC_NOMI_RIMINI, "parent": None},
-        },
-        # tier 0: il portale statistico pubblica gli stranieri per
-        # quartiere solo come totali, non per paese di cittadinanza.
-        # Bollettini demografici in PDF, nessun CSV con paese x geografia.
-        # Contatto per una eventuale richiesta: opendata@comune.rimini.it
-    },
-    "033032": {
-        "nome": "Piacenza", "slug": "piacenza", "regione": "emilia_romagna",
-        "livello": "quartieri",
-        "livelli": {
-            # Quattro ex circoscrizioni disposte a quadranti attorno al
-            # centro: 25.700 abitanti per zona, configurazione analoga a
-            # Modena e Reggio.
-            "quartieri": {"col": "COM_ASC1", "n": 4,
-                          "nomi": ASC_NOMI_PIACENZA, "parent": None},
-        },
-        # tier 0: l'Annuario Statistico comunale rielabora AP11, POSAS e
-        # STRASA, tutte fonti ISTAT a livello COMUNALE — quindi il
-        # dettaglio paese x quartiere non puo' esistere in quel canale.
-        # Da riprovare se l'Ufficio Statistica pubblicasse elaborazioni
-        # dall'anagrafe interna. Contatto: portale opendata.comune.piacenza.it
-    },
-}
+COMUNI = _carica_comuni()
 
 # ----------------------------------------------------------------------
 # Traduzione delle denominazioni di paese

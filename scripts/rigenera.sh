@@ -44,6 +44,9 @@ COMUNI=(
   "033032:K9C:140000"   # Piacenza 102.887
   "040007:K9C:125000"   # Cesena      95.620
   "037021:K6C:30000"    # Castenaso   16.357  (non articolato)
+  "099022:K6C:1018"     # Maiolo         783  (PILOTA soglia: sotto)
+  "033044:K6C:2638"     # Vernasca     2.029  (PILOTA soglia: al bordo)
+  "034049:K6C:10394"    # Sissa Trec.  7.995  (PILOTA soglia: sopra)
 )
 ESCL="--esclusioni"
 DRY=0

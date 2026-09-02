@@ -41,11 +41,18 @@
       parent: null
   pool: 1800000
   stato: collaudo
+  bundle: false
   note: |-
     ASC1 = 9 municipi (108-189k, tutte le sezioni codificate);
     ASC2 = 88 NIL, ma 18 NIL a cavallo di piu' municipi (gerarchia
     non annidata) e code di NIL a popolazione ~0: per la produzione
     si usa ASC1; il fit sui NIL e' registrato come esperimento.
+    ESCLUSA DAL BUNDLE dal 2/9/2026 (bundle: false): il parquet pesa 27 MB
+    e Cloudflare Pages rifiuta i file oltre i 25. Resta generata, resta nel
+    report e nel paper come caso di scala metropolitana; rientra quando i
+    dati passeranno su R2 (design §7, nessun limite per file) oppure dopo
+    la rigenerazione con l'opendata del lavoro. Il viewer v2 pubblica
+    l'Emilia-Romagna completa piu' Brescia e Mantova come presidio lombardo.
 '017029':
   nome: Brescia
   slug: brescia

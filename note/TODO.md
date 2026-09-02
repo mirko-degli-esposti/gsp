@@ -12,4 +12,7 @@
 - [ ] 2026-08-28 [campagna-ER-posas] Animarium: verificare claim "capoluoghi di provincia" vs assenza di Cesena (FC ha DUE capoluoghi)
 - ramo convivenze modificato post-report-v1.0: HEAD non riproduce nuclei_*.csv pubblicati (~530 righe/città con sez. speciale; misurato su Parma, 3 anelli su 4 identici). Dichiarare nella versione-paper; riallineamento pieno alla v2
 - Milano: 10 combinazioni impossibili (unica della flotta) — spiegare prima del deposito
-- rigenera.sh: --confronta deve fallire se l'archivio non esiste (controllo prima dell'azione)
+- rigenera.sh: --confronta deve fallire se l'archivio non esiste (controllo prima dell'azione)- [ ] 2026-09-02 [campagna-ER-posas] registrare bologna_residenti_serie_1986 (open data comunale, quartiere/zona/eta singola dal 1986): scheda nel registro + valutare come validazione esterna della coropleta e per il tier
+- [ ] 2026-09-02 [campagna-ER-posas] 13 comuni con lon/lat nulli (piacentini e parmensi): collocazione per sezione ok, coordinate no — guardare ANNCSU o join_civici_sezioni
+- [ ] 2026-09-02 [campagna-ER-posas] il viewer non dice nulla quando la mappa del comune non ha coordinate: tela vuota senza spiegazione
+- [ ] 2026-09-02 [campagna-ER-posas] riprendere: paper v2, report tecnico v2 su arXiv (upgrade con nota in testa), numbers.tex generato

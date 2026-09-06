@@ -236,6 +236,7 @@
     ANNCSU; i nomi sono certi, il confine e' della partizione.
 '074017':
   nome: San Vito dei Normanni
+  flotta: false
   slug: san_vito_dei_normanni
   regione: puglia
   stato: collaudo

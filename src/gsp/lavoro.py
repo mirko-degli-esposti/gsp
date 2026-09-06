@@ -137,6 +137,28 @@ PROFILO_LEGGIBILE = {
 
 _cache = {}
 
+# 6 settembre 2026 buttrio.....
+
+PROV_REG = {**{p: "ITD5" for p in ("033","034","035","036","037","038","039","040","099")},
+            **{p: "ITC4" for p in ("012","013","014","015","016","017","018","019","020","097","098","108")}}
+
+def _regione_di(c):
+    """Sigla regionale per un codice comunale ISTAT, o None.
+
+    Il codice porta gia' la provincia nelle prime tre cifre, quindi la
+    regione si deduce senza tabella per comune: `REGIONE_DI` resta per
+    gli undici che la dichiarano a mano, `PROV_REG` copre tutta la flotta.
+    """
+    c = str(c).strip()
+    if not c.isdigit():
+        return None
+    c = c.zfill(6)
+    r = REGIONE_DI.get(c) or PROV_REG.get(c[:3])
+    if r is None:
+        print(f"   [regione] {c}: provincia {c[:3]} non mappata, "
+              f"la congiunta ripiega su IT")
+    return r
+
 
 # ------------------------------------------------------------- lettura
 
@@ -187,7 +209,7 @@ def etichette(dim):
 # ------------------------------------------------------------ repertorio
 
 def repertorio(sesso=None, comune=None, territorio=None,
-               istruzione=None):
+               istruzione=None, calibrare=True):
     """(ateco, profilo, peso) per una cella, dalla congiunta.
 
     La cascata e' comune -> regione -> Italia, e viene dichiarata nella
@@ -198,8 +220,11 @@ def repertorio(sesso=None, comune=None, territorio=None,
     liv = "comune"
     if territorio is None:
         territorio = comune
+    if territorio and str(territorio).isdigit():
+        territorio = str(territorio).zfill(6)      # ottava occorrenza
+
     if territorio and territorio not in set(d.terr):
-        reg = REGIONE_DI.get(territorio)
+        reg = _regione_di(territorio)
         if reg and reg in set(d.terr):
             territorio, liv = reg, "regione"
         else:
@@ -220,12 +245,20 @@ def repertorio(sesso=None, comune=None, territorio=None,
     # riponderazione OPZIONALE per titolo di studio: spenta se
     # `istruzione` non e' passata. Vedi il blocco in fondo al modulo per
     # i tre limiti che la rendono una scelta e non un miglioramento.
+    # calibrazione sulle marginali comunali del permanente 2021.
+    # 6 settembre 2026 buttrio...
     if istruzione:
         f = fattore_titolo(istruzione)
         if f:
             g["peso"] = g.peso * g.ateco.map(lambda a: f.get(a, 1.0))
             g = g[g.peso > 0].reset_index(drop=True)
             liv += "+titolo"
+
+    if calibrare and liv.startswith(("regione", "nazionale")) and comune:
+        t_macro, t_pos = _margini_2021(str(comune).zfill(6), sesso)
+        if t_macro and sum(t_macro.values()) >= MIN_OCCUPATI_2021:
+            g = calibra(g, t_macro, t_pos)
+            liv += "+cal2021"
 
     g["livello"] = liv
     g["territorio"] = territorio
@@ -533,3 +566,340 @@ def sposta(comune="034027", sesso="M", stampa=True):
               "limite invece\ndi correggerlo con un fattore nazionale non "
               "validabile.")
     return r
+
+
+    # 6 settembere 2026 buttrio.....
+    # =====================================================================
+# CALIBRAZIONE SUL PERMANENTE 2021
+#
+# Da incollare in gsp/lavoro.py dopo il blocco della riponderazione per
+# titolo. Richiede una sola modifica a repertorio(), in fondo al file.
+#
+# PERCHE'. La congiunta viene dal 2011 e per cinque comuni su undici —
+# e per tutta la flotta dei 245 — non e' nemmeno comunale: e' ITD5
+# tale e quale. Il censimento permanente pubblica al 2021, per TUTTI i
+# comuni, due marginali che quella congiunta puo' colpire:
+#
+#     DF_DCSS_EMPLP_2_COM   occupati per sesso e sei macro-classi ATECO
+#     DF_DCSS_EMPLP_1_COM   occupati per sesso e dipendente/indipendente
+#
+# Non sostituiscono la congiunta: due marginali separate non
+# ricostruiscono una dipendenza che vale 0,138-0,166 in TVD. La
+# sostituiscono nei LIVELLI e la lasciano nella FORMA — la stessa
+# architettura dell'anello 1, applicata a un terzo asse.
+#
+# COSA CONSERVA. L'IPF a due vincoli e' la distribuzione di massima
+# entropia relativa alla congiunta 2011 sotto quelle due marginali:
+# conserva i RAPPORTI DI ODDS, non le composizioni condizionate. La
+# quota di dipendenti dentro le manifatturiere cambia — deve cambiare,
+# e' vincolata — ma il fatto che un coadiuvante familiare sia raro
+# nell'amministrazione pubblica e frequente in agricoltura resta.
+#
+# COSA NON RISOLVE. Ne' il titolo di studio ne' l'eta': il permanente
+# incrocia solo sesso. I due limiti dichiarati piu' grossi restano.
+# =====================================================================
+
+FLOW_MACRO = "DF_DCSS_EMPLP_2_COM"
+FLOW_POSIZ = "DF_DCSS_EMPLP_1_COM"
+ANNO_DCSS = "2021"
+
+# Le sei macro-classi partizionano le 21 sezioni, ma NON per intervalli
+# contigui di lettere: G e I stanno insieme, H sta con J. Leggere
+# «(g,i)» come un intervallo mette H in commercio e I in trasporti, i
+# totali tornano lo stesso e nessun controllo se ne accorge.
+MACRO = {
+    "A": "A",                                             # agricoltura
+    "B": "0011", "C": "0011", "D": "0011", "E": "0011",    # industria b-f
+    "F": "0011",
+    "G": "0026", "I": "0026",                              # commercio, alberghi
+    "H": "0091", "J": "0091",                              # trasporti, informazione
+    "K": "0092", "L": "0092", "M": "0092", "N": "0092",    # finanza, servizi imprese
+    "O": "0093", "P": "0093", "Q": "0093", "R": "0093",    # altre attivita' o-u
+    "S": "0093", "T": "0093", "U": "0093",
+}
+MACRO_TOT = "0010"
+
+# Il 2021 pubblica la sola dicotomia: `9` dipendenti, `22` indipendenti,
+# `99` totale. Sono i primi due livelli dell'albero ricostruito su Parma.
+POSIZ_DIP, POSIZ_IND, POSIZ_TOT = "9", "22", "99"
+PROFILI_DIP = {"9"}
+PROFILI_IND = {"41", "15", "18", "19"}
+
+# IL PARASUBORDINATO E' IL PUNTO APERTO. Nell'albero 2011 il codice 42 e'
+# fratello di 9 e 22, non figlio: 99 = 9 + 22 + 42. Nel 2021 la somma
+# fa 9 + 22 = 99 esatta (Bologna: 68.348,04 + 27.270,96 = 95.619), quindi
+# i parasubordinati sono stati ripiegati dentro una delle due e la fonte
+# non dice quale. Convenzione ISTAT sulle rilevazioni sul lavoro: il
+# collaboratore sta fra gli indipendenti. Vale il 3,6% degli occupati a
+# Parma, quindi la scelta si misura con `deriva(sensibilita=True)` invece
+# di essere data per buona.
+PARASUB = "42"
+PARASUB_IN = POSIZ_IND
+
+SESSO_DCSS = {"M": "M", "F": "F", None: "T"}
+
+# I valori del permanente sono STIME, non conteggi: arrivano con i
+# decimali. Sotto questa soglia l'errore di campionamento sulle sei
+# classi non giustifica la calibrazione, e si ripiega sulla congiunta
+# non calibrata dichiarandolo nel livello.
+MIN_OCCUPATI_2021 = 300.0
+
+
+def _margini_2021(comune, sesso=None):
+    """Le due marginali comunali del permanente, o None se non ci sono.
+
+    Torna (macro, posizione) come due dict {codice: valore}, gia'
+    ristretti al sesso richiesto.
+    """
+    from gsp.istat import sdmx as X
+
+    g = SESSO_DCSS.get(sesso, "T")
+    chiave = ("dcss", comune, g)
+    if chiave in _cache:
+        return _cache[chiave]
+
+    def _tira(flow, dim):
+        d = X.fetch(flow, {"REF_AREA": comune})
+        if d is None or not len(d):
+            return None
+        d = d[(d.GENDER.astype(str) == g) &
+              (d.TIME_PERIOD.astype(str) == ANNO_DCSS)]
+        if not len(d):
+            return None
+        v = pd.to_numeric(d.OBS_VALUE, errors="coerce")
+        return dict(zip(d[dim].astype(str).str.strip(), v))
+
+    try:
+        mac = _tira(FLOW_MACRO, "BRANCH_ECON_ACT")
+        pos = _tira(FLOW_POSIZ, "EMPLOYMENT_STATUS")
+    except Exception as e:                      # servizio giu', chiave rifiutata
+        print(f"   [permanente] {comune}: {type(e).__name__} {e}")
+        mac = pos = None
+
+    if mac:
+        mac = {k: v for k, v in mac.items() if k in set(MACRO.values())}
+    if pos:
+        # `10` e' il totale ATECO in _1_COM, `0010` in _2_COM: terza
+        # convenzione diversa nella stessa famiglia.
+        pos = {k: v for k, v in pos.items() if k in (POSIZ_DIP, POSIZ_IND)}
+
+    r = (mac or None, pos or None)
+    _cache[chiave] = r
+    return r
+
+
+def _classe_posizione(profilo):
+    if profilo in PROFILI_DIP:
+        return POSIZ_DIP
+    if profilo == PARASUB:
+        return PARASUB_IN
+    return POSIZ_IND
+
+
+def calibra(g, t_macro=None, t_pos=None, iterazioni=100, tol=1e-10):
+    """IPF della congiunta sulle marginali 2021. Modifica `g` in copia.
+
+    Vincoli assenti = vincoli non applicati: passare un solo target
+    calibra un asse solo, ed e' il caso di un comune dove una delle due
+    tavole non ha righe.
+    """
+    g = g.copy()
+    w = g.peso.to_numpy(dtype="float64")
+    if w.sum() <= 0:
+        return g
+    w = w / w.sum()
+
+    m = g.ateco.map(MACRO).to_numpy()
+    q = np.array([_classe_posizione(p) for p in g.profilo])
+
+    vincoli = []
+    for chiavi, target in ((m, t_macro), (q, t_pos)):
+        if not target:
+            continue
+        s = sum(target.values())
+        if s <= 0:
+            continue
+        vincoli.append((chiavi, {k: v / s for k, v in target.items()}))
+    if not vincoli:
+        return g
+
+    n = 0
+    for n in range(1, iterazioni + 1):
+        prima = w.copy()
+        for chiavi, target in vincoli:
+            for k, t in target.items():
+                sel = chiavi == k
+                s = w[sel].sum()
+                if s > 0:
+                    w[sel] *= t / s
+                # s == 0 con t > 0: la congiunta non ha righe in quella
+                # classe. Non si puo' creare massa dal nulla; il vincolo
+                # resta mancato e `scarto_calibrazione` lo segnala.
+        if np.abs(w - prima).sum() < tol:
+            break
+
+    g["peso"] = w * g.peso.sum() / w.sum() if w.sum() > 0 else g.peso
+    g.attrs["iterazioni_ipf"] = n
+    return g
+
+
+def scarto_calibrazione(g, t_macro=None, t_pos=None):
+    """Quanto la calibrazione ha mancato i target. Zero = colpiti."""
+    w = g.peso.to_numpy(dtype="float64")
+    w = w / w.sum()
+    fuori = {}
+    for nome, chiavi, target in (("macro", g.ateco.map(MACRO).to_numpy(), t_macro),
+                                 ("posiz", np.array([_classe_posizione(p)
+                                                     for p in g.profilo]), t_pos)):
+        if not target:
+            continue
+        s = sum(target.values())
+        d = 0.0
+        for k, t in target.items():
+            d += abs(w[chiavi == k].sum() - t / s)
+        fuori[nome] = round(0.5 * d, 6)
+    return fuori
+
+
+# ---------------------------------------------------------- la deriva
+#
+# Le SEI STESSE CLASSI esistono nel 2011 (DICA_CARATT_ATTL_COM) e nel
+# 2021 (DF_DCSS_EMPLP_2_COM), sugli stessi comuni. La TVD fra le due
+# composizioni misura quanto e' invecchiata la struttura settoriale, ed
+# e' confrontabile con la distanza comune-regione: se le due sono dello
+# stesso ordine, la correzione temporale vale quanto quella spaziale.
+
+FONTE_COM_2011 = "cens2011_caratt_attl_com"      # da registrare in fonti.yaml
+DENTRO_ZIP_COM = ("CSV - DATI SOLO CODICI - DATA ONLY CODES/"
+                  "DICA_CARATT_ATTL_COM-data.csv")
+COLONNE_COM = ["terr", "tipo", "sesso", "ateco", "anno", "val", "_x"]
+
+
+def _macro_2011(comune, sesso=None):
+    """P(macro | sesso) comunale al 2011, dal taglio comunale."""
+    if "com2011" not in _cache:
+        p = F.path_grezzo(FONTE_COM_2011)
+        with zipfile.ZipFile(p) as z:
+            t = z.read(DENTRO_ZIP_COM).decode("utf-8")
+        d = pd.read_csv(io.StringIO(t), sep="|", header=None,
+                        names=COLONNE_COM, dtype=str)
+        d = d[(d.tipo == "EMPLP") & (d.ateco != MACRO_TOT)]
+        # zero iniziale: sesta occorrenza della trappola, e qui i codici
+        # territoriali di provincia (3 cifre) vanno tenuti fuori.
+        d = d[d.terr.str.len() == 6]
+        d["val"] = pd.to_numeric(d.val, errors="coerce").fillna(0.0)
+        _cache["com2011"] = d
+    d = _cache["com2011"]
+    s = d[d.terr == str(comune).zfill(6)]
+    if sesso:
+        s = s[s.sesso == SESSO_CENS.get(sesso, "9")]
+    else:
+        s = s[s.sesso == "9"]
+    v = s.groupby("ateco").val.sum()
+    return dict(v[v > 0]) if v.sum() > 0 else None
+
+
+def deriva(comuni=None, sesso=None, sensibilita=False, stampa=True):
+    """2011 contro 2021 sulle stesse sei classi, piu' il costo del ripiego.
+
+    Le tre colonne da leggere insieme:
+      tvd_tempo    quanto la struttura settoriale e' cambiata in dieci anni
+      tvd_spazio   quanto il comune dista dalla sua regione (2011)
+      guadagno     quanto la calibrazione recupera sui comuni che hanno
+                   la congiunta, cioe' dove esiste la verita' a 21 sezioni
+    """
+    comuni = comuni or sorted(REGIONE_DI)
+    d = _leggi()
+    righe = []
+    for c in comuni:
+        m11 = _macro_2011(c, sesso)
+        m21, p21 = _margini_2021(c, sesso)
+        r = {"comune": c, "nome": G.info(c).get("nome", "?"),
+             "occupati_2021": round(sum(m21.values()), 0) if m21 else None}
+
+        if m11 and m21:
+            i = set(m11) | set(m21)
+            a = np.array([m11.get(k, 0.0) for k in i]); a = a / a.sum()
+            b = np.array([m21.get(k, 0.0) for k in i]); b = b / b.sum()
+            r["tvd_tempo"] = round(0.5 * float(np.abs(a - b).sum()), 3)
+
+        if c in set(d.terr):
+            base = repertorio(sesso=sesso, comune=c)
+            reg = repertorio(sesso=sesso, territorio=REGIONE_DI[c])
+
+            def macro_comp(x):
+                v = x.groupby(x.ateco.map(MACRO)).peso.sum()
+                return v / v.sum()
+
+            a, b = macro_comp(base), macro_comp(reg)
+            i = a.index.union(b.index)
+            r["tvd_spazio"] = round(0.5 * float(np.abs(
+                a.reindex(i, fill_value=0) - b.reindex(i, fill_value=0)).sum()), 3)
+
+            # il test che conta: la regione calibrata sul comune quanto
+            # si avvicina alla verita' comunale a 21 sezioni?
+            if m21:
+                cal = calibra(reg, m21, p21)
+                def sez(x):
+                    v = x.groupby("ateco").peso.sum()
+                    return v / v.sum()
+                v0, v1, vv = sez(reg), sez(cal), sez(base)
+                i = v0.index.union(v1.index).union(vv.index)
+                f = lambda u, w: 0.5 * float(np.abs(
+                    u.reindex(i, fill_value=0) - w.reindex(i, fill_value=0)).sum())
+                d0, d1 = f(v0, vv), f(v1, vv)
+                r["prima"] = round(d0, 3)
+                r["dopo"] = round(d1, 3)
+                r["guadagno_pc"] = round(100 * (d0 - d1) / d0, 1) if d0 > 0 else None
+
+        righe.append(r)
+
+    t = pd.DataFrame(righe)
+
+    if sensibilita:
+        global PARASUB_IN
+        vecchio = PARASUB_IN
+        alt = []
+        for scelta in (POSIZ_IND, POSIZ_DIP):
+            PARASUB_IN = scelta
+            _cache.pop("sens", None)
+            g = deriva(comuni=[c for c in comuni if c in set(d.terr)][:3],
+                       sesso=sesso, stampa=False)
+            alt.append({"parasubordinato_in": scelta,
+                        "dopo_medio": round(g["dopo"].mean(), 4)
+                        if "dopo" in g else None})
+        PARASUB_IN = vecchio
+        t.attrs["sensibilita"] = pd.DataFrame(alt)
+
+    if stampa:
+        print(t.to_string(index=False))
+        print("\ntvd_tempo  = struttura settoriale 2011 vs 2021, sei classi")
+        print("tvd_spazio = comune vs regione, 2011, stesse sei classi")
+        print("guadagno   = quanto la calibrazione recupera del ripiego "
+              "regionale,\n             misurato a 21 sezioni sui comuni "
+              "che hanno la congiunta")
+        if "sensibilita" in t.attrs:
+            print("\ndove mettere il parasubordinato:")
+            print(t.attrs["sensibilita"].to_string(index=False))
+    return t
+
+
+# =====================================================================
+# LA PATCH A repertorio(): sostituire il blocco della riponderazione
+# per titolo con questo, che aggiunge la calibrazione PRIMA.
+#
+#     # calibrazione sulle marginali comunali del permanente 2021.
+#     # Attiva quando la congiunta NON e' comunale: dove lo e' gia',
+#     # calibrarla sulle proprie marginali di dieci anni dopo e' una
+#     # scelta diversa, che va misurata prima (vedi `deriva`).
+#     if calibrare and liv != "comune" and comune:
+#         t_macro, t_pos = _margini_2021(comune, sesso)
+#         if t_macro and sum(t_macro.values()) >= MIN_OCCUPATI_2021:
+#             g = calibra(g, t_macro, t_pos)
+#             liv += "+cal2021"
+#
+#     if istruzione:
+#         ...
+#
+# e aggiungere `calibrare=True` alla firma.
+# =====================================================================

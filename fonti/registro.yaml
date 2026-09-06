@@ -2029,10 +2029,25 @@ fonti:
       ATECO × 6 profili × 2 sessi, con tutte le altre dimensioni al
       totale. A Parma 246 celle su 294 possibili, nessuna a zero,
       mediana 78 occupati.
-      I sei profili sono una partizione vera: dipendenti · imprenditore e libero professionista · 
-      lavoratore in proprio · coadiuvante familiare · socio di cooperativa · parasubordinato.
-      Molto meglio del `dipendente/indipendente` a due modalità di
-      `c9_sex_posizione_prof.csv`, che questa scheda rende superfluo.
+      I sei profili sono una partizione vera: dipendenti · imprenditore e
+      libero professionista · lavoratore in proprio · coadiuvante
+      familiare · socio di cooperativa · parasubordinato.
+      RETTIFICA 6 settembre 2026, Buttrio. Questa scheda affermava che i
+      sei profili rendessero superfluo il `dipendente/indipendente` a due
+      modalità di `c9_sex_posizione_prof.csv`. È falso, e l'errore era
+      confrontare due fonti sull'asse sbagliato: il dettaglio. Il file a
+      due modalità viene dal censimento permanente
+      (`istat_cens_posizione_prof`, DF_DCSS_EMPLP_1_COM), è riferito al
+      2021 invece che al 2011, ed esiste per TUTTI i comuni invece che
+      per venticinque. Non è una versione povera della congiunta: è la
+      marginale che la calibra. `gsp.lavoro` la usa insieme a
+      `istat_cens_settore_prof` come vincolo di un IPF a due marginali,
+      dove questa scheda fornisce la struttura di dipendenza e quelle i
+      livelli comunali aggiornati — la stessa architettura forma-non-
+      livelli dell'anello 1. Vale anche per i sei profili contro i due:
+      il 2021 pubblica solo `9` dipendenti e `22` indipendenti, e nel
+      2011 `99 = 9 + 22 + 42`, quindi dove sia finito il parasubordinato
+      `42` la fonte non lo dice — scelta aperta, non dedotta.
     unita: individuo occupato
     normalizzatore: archivio_zip
     prodotto_da: null
@@ -2143,6 +2158,88 @@ fonti:
     usato_da: [gsp.lavoro]
     non_usabile_per: [vincoli_maxent, condizionamento_per_titolo_comunale,
                       durata_contratto, articolazione_subcomunale]
+
+  - id: cens2011_caratt_attl_com
+    ente: ISTAT
+    titolo: >-
+      Occupati per sezioni di attività economica, dati comunali -
+      Censimento della popolazione 2011
+    url: https://esploradati.istat.it/databrowser/
+    url_storico: http://dati-censimentopopolazione.istat.it/
+    url_download: https://esploradati.istat.it/databrowser/DWL/censtatv5db/Popolazione/DICA_CARATT_ATTL_COM-data.zip
+    nota_url: >-
+      taglio comunale della stessa famiglia di `cens2011_caratt_attl`,
+      pubblicato come DataSetCode separato: il cubo con i quattordici
+      assi copre 25 comuni, questo copre tutti gli 8.092 del 2011 ma
+      con le sole sei macro-classi. Vale la stessa nota sul redirect.
+    dataflow: DF_BULK_CPO2011_DICA_CARATT_ATTL_COM
+    data_accesso: 2026-09-06
+    licenza: CC-BY-4.0
+    attribuzione: >-
+      ISTAT, "15° Censimento generale della popolazione e delle
+      abitazioni 2011", CC BY 4.0
+    archiviazione: locale
+    percorso: data/censimento_2011/DICA_CARATT_ATTL_COM-data.zip
+    sha256: DA_RIEMPIRE
+    copertura: {geo: "IT, ripartizioni, regioni, province, 8.092 comuni", tempo: 2011}
+    universo: >-
+      OCCUPATI (`TIPO_DATO_CENS_POP = EMPLP`, unica misura presente).
+      Cinque dimensioni: ITTER107, TIPO_DATO_CENS_POP, SEXISTAT1,
+      ATECO_2007, TIME. 171.764 righe, 8.230 territori, 21 righe per
+      territorio = 3 sessi × 7 codici ATECO. Serve a `gsp.lavoro` come
+      termine di paragone 2011 delle stesse sei macro-classi che il
+      censimento permanente pubblica al 2021 (`istat_cens_settore_prof`):
+      la TVD fra le due misura la deriva decennale della struttura
+      settoriale, confrontabile con la distanza comune-regione.
+    unita: individuo occupato
+    normalizzatore: archivio_zip
+    prodotto_da: null
+    anomalie:
+      - >-
+        LE SEI MACRO-CLASSI NON SONO INTERVALLI CONTIGUI DI LETTERE.
+        `A` agricoltura; `0011` industria B-F; `0026` commercio, alberghi
+        e ristoranti G,I; `0091` trasporti e informazione H,J; `0092`
+        finanza, immobiliare, servizi alle imprese K-N; `0093` altre
+        attività O-U. G e I stanno insieme e H sta altrove: chi legge
+        «(g,i)» come un intervallo mette H in commercio e I in trasporti,
+        i totali tornano lo stesso e nessun controllo strutturale se ne
+        accorge. Le sei classi partizionano esattamente le 21 sezioni
+        (verificato 6/9/2026); `0010` è il totale e va escluso.
+      - >-
+        Il file dati è UTF-8 SENZA intestazione, separatore `|`, sei
+        campi più uno vuoto in coda. I codebook del pacchetto METADATA
+        sono invece UTF-16 con BOM: `grep` sul codebook non trova nulla
+        e sembra un file vuoto. Stessa doppia codifica di DICA_TITSTUDIO.
+      - >-
+        L'etichetta inglese di `EMPLP` dice «average values», l'italiana
+        «valori assoluti». È corretta l'italiana.
+      - >-
+        LA DIMENSIONE TERRITORIALE MESCOLA I LIVELLI: 8.230 valori
+        includono province (3 cifre), regioni, ripartizioni e IT accanto
+        agli 8.092 comuni. Filtro corretto `len(codice) == 6` DOPO lo
+        zero-padding; leggere ITTER107 come intero fa cadere lo zero
+        iniziale e un `zfill(6)` cieco trasforma la provincia `019` nel
+        comune inesistente `000019`.
+      - >-
+        I conteggi per codice non sono uniformi (24.690 righe per `0010`,
+        24.170 per `0091`): alcuni comuni non hanno tutte e sette le
+        righe. Mancante non è zero finché non è verificato.
+    bias: >-
+      SEI CLASSI NON SOSTITUISCONO VENTUNO SEZIONI, le ingrossano: la
+      composizione interna di ciascun blocco resta quella della congiunta
+      di `cens2011_caratt_attl`. Non incrocia né titolo di studio né età,
+      quindi non allevia i due limiti dichiarati di `gsp.lavoro`. Stessa
+      annata della fonte sorella, con gli stessi quindici anni di deriva.
+    usabile_per:
+      - marginale_comunale_ateco
+      - derivazione_a_valle
+      - misura_deriva_temporale
+    usato_da:
+      - gsp.lavoro
+    non_usabile_per:
+      - vincoli_maxent
+      - settore_per_sezione
+      - congiunta_settore_posizione
 # Rilevazione sulle unioni civili — scheda per fonti/registro.yaml
 #
 #   grep -q "id: istat_unioni_civili_2023" fonti/registro.yaml \

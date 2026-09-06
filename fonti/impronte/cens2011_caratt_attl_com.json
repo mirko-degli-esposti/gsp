@@ -1,0 +1,71 @@
+{
+  "byte": 4976748,
+  "decili": [
+    18363.600000000002,
+    38348.8,
+    96392.79999999999,
+    229718.00000000006,
+    476502.0,
+    921226.7999999999,
+    3514497.5999999987,
+    12392343.600000005,
+    23317254.6
+  ],
+  "diagnostica": {
+    "byte_non_compressi": 53823082.0,
+    "date_contenuto": [
+      "2025-10-20",
+      "2025-10-23"
+    ],
+    "file_maggiore": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_CARATT_ATTL_COM-data-en.csv",
+    "file_nell_archivio": 9,
+    "modalita": 9,
+    "n_misurato": 9.0,
+    "rapporto_compressione": 0.0925
+  },
+  "hapax": 0,
+  "id": "cens2011_caratt_attl_com",
+  "modalita": 9,
+  "n_misurato": 9.0,
+  "peso_max": 23678181.0,
+  "peso_min": 170.0,
+  "sha256": "06de76783d531d45fa047440464353181a73a8c00558223dac17a15dfe3c069c",
+  "testa": [
+    {
+      "chiave": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_CARATT_ATTL_COM-data-en.csv",
+      "peso": 23678181.0
+    },
+    {
+      "chiave": "CSV - DATI CODICI E DESCRIZIONI - DATA AND DESCRIPTION/DICA_CARATT_ATTL_COM-data-it.csv",
+      "peso": 23227023.0
+    },
+    {
+      "chiave": "CSV - DATI SOLO CODICI - DATA ONLY CODES/DICA_CARATT_ATTL_COM-data.csv",
+      "peso": 5169224.0
+    },
+    {
+      "chiave": "METADATA/DimITTER107-data.csv",
+      "peso": 1032408.0
+    },
+    {
+      "chiave": "METADATA/DimATECO_2007-data.csv",
+      "peso": 476502.0
+    },
+    {
+      "chiave": "METADATA/DimTIME-data.csv",
+      "peso": 168022.0
+    },
+    {
+      "chiave": "METADATA/DICA_CARATT_ATTL_COM-topmeta-20251020181502.xls",
+      "peso": 48640.0
+    },
+    {
+      "chiave": "METADATA/DimTIPO_DATO_CENS_POP-data.csv",
+      "peso": 22912.0
+    },
+    {
+      "chiave": "METADATA/DimSEXISTAT1-data.csv",
+      "peso": 170.0
+    }
+  ]
+}

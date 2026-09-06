@@ -2180,7 +2180,7 @@ fonti:
       abitazioni 2011", CC BY 4.0
     archiviazione: locale
     percorso: data/censimento_2011/DICA_CARATT_ATTL_COM-data.zip
-    sha256: DA_RIEMPIRE
+    sha256: 06de76783d531d45fa047440464353181a73a8c00558223dac17a15dfe3c069c
     copertura: {geo: "IT, ripartizioni, regioni, province, 8.092 comuni", tempo: 2011}
     universo: >-
       OCCUPATI (`TIPO_DATO_CENS_POP = EMPLP`, unica misura presente).

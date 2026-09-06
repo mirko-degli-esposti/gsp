@@ -242,11 +242,9 @@ def repertorio(sesso=None, comune=None, territorio=None,
          .rename(columns={"val": "peso"}))
     g = g[g.peso > 0].reset_index(drop=True)
 
-    # riponderazione OPZIONALE per titolo di studio: spenta se
+    # Riponderazione OPZIONALE per titolo di studio: spenta se
     # `istruzione` non e' passata. Vedi il blocco in fondo al modulo per
     # i tre limiti che la rendono una scelta e non un miglioramento.
-    # calibrazione sulle marginali comunali del permanente 2021.
-    # 6 settembre 2026 buttrio...
     if istruzione:
         f = fattore_titolo(istruzione)
         if f:
@@ -254,11 +252,23 @@ def repertorio(sesso=None, comune=None, territorio=None,
             g = g[g.peso > 0].reset_index(drop=True)
             liv += "+titolo"
 
+    # Calibrazione sulle marginali comunali del censimento permanente
+    # 2021 (6/9/2026, Buttrio). Va DOPO il titolo, non prima: il fattore
+    # per titolo moltiplica i pesi per sezione e sposterebbe la marginale
+    # appena colpita. Con l'IPF in coda, il titolo diventa la misura di
+    # riferimento e le marginali 2021 il vincolo — che e' anche l'ordine
+    # sensato concettualmente.
+    #
+    # NESSUNA SOGLIA SULLA DISTANZA, per scelta misurata: sui comuni gia'
+    # vicini alla propria regione l'IPF non sposta nulla per costruzione,
+    # quindi una soglia aggiungerebbe un percorso di codice e un numero
+    # da giustificare senza cambiare i risultati. Le guardie in
+    # `_marginale_usabile` riguardano la QUALITA' della marginale.
     if calibrare and liv.startswith(("regione", "nazionale")) and comune:
         t_macro, t_pos = _margini_2021(str(comune).zfill(6), sesso)
-        if t_macro and sum(t_macro.values()) >= MIN_OCCUPATI_2021:
+        if _marginale_usabile(t_macro):
             g = calibra(g, t_macro, t_pos)
-            liv += "+cal2021"
+            liv += "+cal2021" if t_pos else "+cal2021m"
 
     g["livello"] = liv
     g["territorio"] = territorio
@@ -328,7 +338,7 @@ def verifica(stampa=True):
     righe = []
     for c, reg in sorted(REGIONE_DI.items()):
         pres = c in set(d.terr)
-        r = repertorio(comune=c)
+        r = repertorio(comune=c, calibrare=False)
         righe.append({"comune": c, "nome": G.info(c).get("nome", "?"),
                       "nella_tavola": pres, "livello": r.livello.iloc[0],
                       "celle": len(r), "occupati": float(r.peso.sum())})
@@ -546,8 +556,8 @@ def sposta(comune="034027", sesso="M", stampa=True):
     """
     fuori = []
     for istr in TITOLO_CENS:
-        base = repertorio(sesso=sesso, comune=comune)
-        rip = repertorio(sesso=sesso, comune=comune, istruzione=istr)
+        base = repertorio(sesso=sesso, comune=comune,calibrare=False)
+        rip = repertorio(sesso=sesso, comune=comune, istruzione=istr,calibrare=False)
         a = base.groupby("ateco").peso.sum(); a = a / a.sum()
         b = rip.groupby("ateco").peso.sum(); b = b / b.sum()
         i = a.index.union(b.index)
@@ -743,6 +753,25 @@ def calibra(g, t_macro=None, t_pos=None, iterazioni=100, tol=1e-10):
     return g
 
 
+def _marginale_usabile(t, minimo=MIN_OCCUPATI_2021, classi=6):
+    """Vero se la marginale copre l'universo e non e' troppo rumorosa.
+
+    Tre modi in cui la marginale del permanente non e' utilizzabile, e
+    nessuno dei tre e' la distanza dalla regione:
+      - manca del tutto (comune non nella tavola);
+      - non ha tutte e sei le macro-classi. ATTESI da' pavimento 7 a
+        `settore_prof`, cioe' 7 righe = un solo sesso: esistono comuni
+        con pubblicazione ridotta. Una classe mancante non e' zero, ed
+        e' massa che l'IPF ricollocherebbe sulle altre cinque;
+      - e' troppo piccola perche' la stima campionaria regga sei classi.
+    """
+    if not t:
+        return False
+    if len(t) < classi:
+        return False
+    return sum(t.values()) >= minimo
+
+
 def scarto_calibrazione(g, t_macro=None, t_pos=None):
     """Quanto la calibrazione ha mancato i target. Zero = colpiti."""
     w = g.peso.to_numpy(dtype="float64")
@@ -786,11 +815,12 @@ def _macro_2011(comune, sesso=None):
         d = d[(d.tipo == "EMPLP") & (d.ateco != MACRO_TOT)]
         # zero iniziale: sesta occorrenza della trappola, e qui i codici
         # territoriali di provincia (3 cifre) vanno tenuti fuori.
-        d = d[d.terr.str.len() == 6]
+        d = d[(d.tipo == "EMPLP") & (d.ateco != MACRO_TOT)]
         d["val"] = pd.to_numeric(d.val, errors="coerce").fillna(0.0)
         _cache["com2011"] = d
     d = _cache["com2011"]
-    s = d[d.terr == str(comune).zfill(6)]
+    chiave = str(comune).zfill(6) if str(comune).strip().isdigit() else str(comune).strip()
+    s = d[d.terr == chiave]
     if sesso:
         s = s[s.sesso == SESSO_CENS.get(sesso, "9")]
     else:
@@ -824,8 +854,8 @@ def deriva(comuni=None, sesso=None, sensibilita=False, stampa=True):
             r["tvd_tempo"] = round(0.5 * float(np.abs(a - b).sum()), 3)
 
         if c in set(d.terr):
-            base = repertorio(sesso=sesso, comune=c)
-            reg = repertorio(sesso=sesso, territorio=REGIONE_DI[c])
+            base = repertorio(sesso=sesso, comune=c,calibrare=False)
+            reg = repertorio(sesso=sesso, territorio=REGIONE_DI[c],calibrare=False)
 
             def macro_comp(x):
                 v = x.groupby(x.ateco.map(MACRO)).peso.sum()

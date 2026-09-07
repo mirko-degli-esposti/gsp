@@ -41,6 +41,37 @@ narrative layer that renders records into personas for LLM-driven
 simulation — with the platform's controllability demonstrated in
 companion experiments, and validation explicitly out of scope.
 
+
+> ## Status of this report
+>
+> This report documents release `report-v1.0` of the pipeline: eleven
+> municipalities, generated in August 2026, and every measurement in
+> Part III was taken at that tag. It remains the technical record of the
+> architecture, which has not changed since.
+>
+> The released collection has. Release `release-v2.0` (September 2026)
+> covers 245 municipalities — every municipality of Emilia-Romagna above
+> the population threshold declared in its registry, plus Brescia —
+> 4,433,976 individuals in 2,051,901 households, produced by the same
+> four rings from the same sources, and deposited at
+> [10.5281/zenodo.22647404](https://doi.org/10.5281/zenodo.22647404).
+> The fleet-wide checks on that release, and the constraint-set
+> construction in the form it took when the collection grew, are
+> reported in the companion paper; this report describes the system, and
+> the twelve municipalities it documents in full remain the subset
+> measured in the greatest detail.
+>
+> Two corrections belong here rather than in an unrevised text.
+> **Sampling.** §III.4 explains a standard deviation of the per-cell
+> standardised errors above unity as autocorrelation of a Gibbs chain.
+> That explanation is withdrawn: the fit is exact on the dual and the
+> population is drawn i.i.d. from the fitted distribution over the
+> enumerated state space, so `sd(z) ≈ 1` is what independent draws
+> predict, and the one municipality above it is an open item rather than
+> an explained one. **Ring 4.** The two post-tag patches declared in
+> §III.5 are in the code that produced `release-v2.0`; the household
+> counts of this report are those of the tagged commit.
+
 ## A note on tools
 
 Large language models — principally Anthropic's Claude, with occasional
@@ -82,6 +113,8 @@ below; the hashes are the verification path.
 | MaxEnt solver (`maxent-popsynth-pcd`) | commit `14f5bab` (2026-08-03), github.com/mirko-degli-esposti/maxent-popsynth-pcd | `git rev-parse --short HEAD` in the clone |
 | code snapshots | GSP: [10.5281/zenodo.22127410](https://doi.org/10.5281/zenodo.22127410) · Animarium: [10.5281/zenodo.22127473](https://doi.org/10.5281/zenodo.22127473) | checksum on Zenodo |
 | open dataset | [10.5281/zenodo.22127581](https://doi.org/10.5281/zenodo.22127581), CC-BY-4.0 | SHA-256 below |
+| open dataset (v2.0) | Zenodo [10.5281/zenodo.22647404](https://doi.org/10.5281/zenodo.22647404) · all versions: 10.5281/zenodo.22647403 | `SHA256SUMS.txt` in the deposit |
+| code snapshots (v2.0) | viewer 10.5281/zenodo.22646253  | checksum on Zenodo |
 | public bundle | eleven `pop.parquet`, SHA-256 in `note/misure/rilancio_report_v1.0/hash_parquet_report_v1.0.txt` | `sha256sum` |
 | source fingerprints | `fonti/registro.yaml` at the tag | `python -m gsp.fonti --verifica` |
 | companion papers | arXiv:2603.27312 (solver) · arXiv:2607.00910 (SIVE) | — |

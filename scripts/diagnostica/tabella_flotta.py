@@ -70,6 +70,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("logdir", nargs="+")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--tutti", action="store_true",
+                    help="non filtrare per stato: include i comuni esclusi "
+                         "dal registro (per diagnosi, non per il paper)")       
     a = ap.parse_args()
 
     righe = []
@@ -103,19 +106,30 @@ def main():
             "mae_pop", "sez_media", "mae_pop_rel", "corr_pop", "mae_str",
             "corr_str", "mae_ue", "corr_ue", "tier"]
 
-     # --- verifiche di flotta
+ # Il registro decide chi è in flotta, non chi ha un log: un comune
+    # generato e poi escluso (Sarmato, ind_per_stato < 1) lascia i suoi
+    # file su disco ma non entra nelle misure pubblicate. Il filtro sta
+    # PRIMA delle verifiche di flotta: sono le frasi che finiscono nel
+    # paper, e devono parlare dei comuni rilasciati.
+    if not a.tutti:
+        for _, r in t[t["stato"] != "v2"].iterrows():
+            print(f"[escluso] {r['cod']} {r['nome']}: stato={r['stato']}",
+                  file=sys.stderr)
+        t = t[t["stato"] == "v2"].copy()
+
+    # --- verifiche di flotta
     print(f"\nmassa su celle escluse: max {t['massa_escl'].max():.1e}  "
           f"(atteso 0: le 34-36 esclusioni a massa zero ovunque)")
     print(f"totale pop vs cens: {int((t['tot_pop'] != t['tot_cens']).sum())} "
           f"comuni con scarto (atteso 0)")
 
-    t = t[[c for c in cols if c in t]].sort_values("pop", ascending=False)
+    t = t[[c for c in cols if c in t]].sort_values("pop", ascending=False).copy()
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     t.to_csv(out, index=False)
     print(f"scritto {out}: {len(t)} comuni")
 
-   
+
 
     # --- distribuzioni per fascia: la verifica ex post della soglia
     t["fascia"] = pd.cut(t["pop"], [0, 3000, 5000, 10000, 20000, 50000, 10**7],
@@ -129,6 +143,7 @@ def main():
         mae_pop_rel=("mae_pop_rel", "median"),
         corr_str=("corr_str", "median"),
     )
+
     pd.set_option("display.width", 140)
     print("\nmediane per fascia (il criterio di soglia su tutta la flotta):")
     print(agg.round(3).to_string())

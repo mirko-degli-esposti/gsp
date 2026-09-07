@@ -1,0 +1,78 @@
+[info] popolazione: /home/mirko/progetti/gsp/data/comuni/040007/constraints_2024/popolazione_K9C_avq_full.csv
+[avviso] AVQ assenti dal file: ['BMIMIN']
+[info] individui 96.066 · variabili AVQ usate per la firma: 20
+
+1. Le firme sono i donatori?
+----------------------------
+firme distinte                       4.142
+
+2. Distribuzione del riuso
+--------------------------
+riuso medio                           23.2
+mediana                                 20
+minimo                                   1
+massimo                               1432
+donatori usati una volta sola           14
+
+quantili del riuso: p5=9  p25=14  p50=20  p75=26  p95=38
+
+3. Quanto collasso gerarchico (proxy di cella_avq)
+--------------------------------------------------
+firme che servono un solo sesso             4.108  99.18%
+firme su una sola macroeta'                 2.896  69.92%
+firme su una sola classe istr4              2.737  66.08%
+
+firme confinate alla cella piena            1.493  36.05%
+individui serviti da firme confinate       27.49%
+
+  La cella di condizionamento e' sesso x macroeta' x istr4. Una firma che
+  attraversa piu' celle e' passata per il collasso gerarchico: il resto
+  della popolazione ha ricevuto le AVQ da una cella meno specifica.
+
+4. n_eff su sottopopolazioni tipiche
+------------------------------------
+sottopopolazione                          n distinti    n_eff  n/n_eff  banda x
+-------------------------------------------------------------------------------
+
+5. n_eff per variabile — l'universo giusto
+------------------------------------------
+variabile     copertura         n  distinti    n_eff  banda x
+-------------------------------------------------------------
+SALUTE           100.0%    96.066     4.142      980      9.9
+AMBIENTE          87.2%    83.771     4.034     3351      5.0
+FIDUCIA           87.3%    83.849     4.035     3352      5.0
+CRONI             93.5%    89.790     3.876      876     10.1
+MH                88.6%    85.098     4.085     3386      5.0
+BMI               85.5%    82.158     3.923     3250      5.0
+PUNTIFI10         86.4%    82.970     3.988     3312      5.0
+PUNTIFI8          86.2%    82.797     3.979     3305      5.0
+PUNTIFI13         43.2%    41.529     2.085     1723      4.9
+VOTOUSL           21.2%    20.384       982      816      5.0
+
+  Le 21 variabili hanno universi diversi: un solo n_eff per tutto il blocco
+  AVQ non esiste. La banda va calcolata sull'universo della variabile.
+
+6. La firma piu' riusata — chi e'?
+----------------------------------
+individui                            1.432   (1.49% della citta')
+peso in Sigma m^2                    21.8%
+variabili con valore                     3 su 20
+  ['SALUTE', 'CRONI', 'CPESO']
+
+composizione per bin d'eta':
+eta
+0-8     784
+9-14    648
+comune intero                        96.066  4.142      980     98.1      9.9
+quartiere: Oltresavio                17.231  3.935      995     17.3      4.2
+quartiere: Cervese Sud               12.988  3.758      831     15.6      4.0
+quartiere: Centro Urbano             12.176  3.623      894     13.6      3.7
+quartiere: Dismano                    4.599  2.505      872      5.3      2.3
+quartiere: Borello                    2.764  1.810      662      4.2      2.0
+Oltresavio · donne                    9.027  2.065      906     10.0      3.2
+Oltresavio · laurea                     929    499      372      2.5      1.6
+Oltresavio · stranieri                1.546  1.088      406      3.8      2.0
+
+  'banda x' e' sqrt(n/n_eff): quante volte troppo stretta sarebbe la banda
+  di confidenza calcolata ignorando i donatori. E' il numero che il
+  pannello AVQ deve usare, non n.

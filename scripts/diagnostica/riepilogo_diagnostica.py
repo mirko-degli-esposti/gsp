@@ -12,7 +12,8 @@ import argparse, csv, glob, os, re, sys
 NOMI = {"037006": "Bologna", "017029": "Brescia", "034027": "Parma",
         "036023": "Modena", "035033": "Reggio nell'Emilia",
         "039014": "Ravenna", "099014": "Rimini", "038008": "Ferrara",
-        "040012": "Forlì", "033032": "Piacenza", "037021": "Castenaso"}
+        "040012": "Forlì", "040007": "Cesena", "033032": "Piacenza",
+        "037021": "Castenaso"}
 ORD = list(NOMI)
 
 def intero(s):          # migliaia col punto: 184.597 -> 184597

@@ -1,0 +1,73 @@
+[info] vincoli:     data/comuni/040007/constraints_2024/cs_K9C.json
+[info] popolazione: /home/mirko/progetti/animarium/bundle/comuni/040007/pop.parquet
+[info] 96.066 individui · 9 attributi
+
+Per blocco
+----------
+blocco                                   celle   fuori  MRE oss  MRE att  |z| med  |z| max  z>3
+-----------------------------------------------------------------------------------------------
+sesso × background                          12  0.0000    2.14%    2.81%     1.03     3.14    1
+eta × istruzione                             9  0.9394    0.31%    1.27%     0.24     0.24    0
+eta × condizione                            20  0.8858    0.26%    1.31%     0.20     0.24    0
+cittadinanza × istruzione                   12  0.0000    1.82%    1.98%     0.82     2.29    0
+cittadinanza × condizione                   14  0.0000    2.56%    2.34%     1.13     2.17    0
+cittadinanza × background                   12  0.0000    1.39%    1.95%     1.23     2.79    0
+zona × sesso × eta                         192  0.0000    4.13%    5.38%     0.78     2.68    0
+zona × sesso × istruzione                  144  0.0000    4.41%    5.14%     0.82     2.92    0
+zona × sesso × background                  144  0.0000    9.65%   12.15%     0.84     3.17    2
+sesso × eta × stato_civile                  52  0.0000    9.40%    8.79%     0.80     2.02    0
+sesso × eta × cittadinanza                  32  0.0000    3.33%    3.47%     0.78     2.61    0
+sesso × eta × istruzione                    78  0.0606    3.88%    5.31%     0.69     1.99    0
+sesso × eta × condizione                    72  0.1142   13.10%   19.04%     0.70     2.08    0
+sesso × background × origine_genitori       29  0.0002   22.09%   21.91%     0.99     3.14    1
+zona × sesso × eta × cittadinanza          384  0.0000   11.87%   14.56%     0.80     2.90    0
+zona × sesso × eta × condizione             96  0.5725    4.72%    6.67%     0.75     2.66    0
+
+Il pool e' un campione pulito?
+------------------------------
+celle con target positivo         1.267
+
+                         osservato      atteso
+----------------------------------------------
+MRE                          8.19%      10.12%
+|z| medio                    0.797       0.798
+sd(z)                        0.996       1.000
+media(z)                    -0.056       0.000
+|z| > 2                      4.50%       4.55%
+|z| > 3                      0.32%       0.27%
+
+  Se MRE osservato e atteso coincidono, l'errore per cella E' il
+  pavimento di rumore e non c'e' niente da spiegare.
+  sd(z) sopra 1 = pool sovradisperso, cioe' catena autocorrelata:
+  meno informativo di un campione indipendente della stessa taglia.
+
+Le 20 celle piu' lontane dal rumore (|z|)
+-----------------------------------------
+cella                                                        atteso    oss       z
+----------------------------------------------------------------------------------
+zona=40007002, sesso=M, background=straniero_g2                 6.8     15   +3.17
+sesso=M, background=straniero_immigrato                      3731.0   3543   -3.14
+sesso=M, background=straniero_immigrato, origine_genitori    3731.0   3543   -3.14
+zona=40007006, sesso=M, background=italiano_nativo           3040.1   3206   +3.06
+zona=40007006, sesso=M, istruzione=diploma                   1201.4   1302   +2.92
+zona=40007007, sesso=F, eta=65-74, cittadinanza=FRG            13.8      3   -2.90
+cittadinanza=FRG, background=straniero_immigrato             8031.0   7792   -2.79
+cittadinanza=ITL, background=italiano_nativo                81558.0  81857   +2.69
+zona=40007004, sesso=F, eta=25-34                             628.0    561   -2.68
+zona=40007002, sesso=M, eta=75+, cittadinanza=FRG               1.1      4   +2.67
+zona=40007004, sesso=F, eta=25-34, condizione=occupato        468.4    411   -2.66
+sesso=M, eta=0-8, cittadinanza=FRG                            446.0    391   -2.61
+zona=40007004, sesso=F, eta=25-34, cittadinanza=ITL           509.1    451   -2.58
+zona=40007003, sesso=M, background=italiano_rientrato          86.2     63   -2.50
+zona=40007007, sesso=F, eta=25-34, cittadinanza=FRG            30.7     17   -2.48
+sesso=M, background=italiano_nativo                         39924.0  40302   +2.47
+zona=40007001, sesso=M, eta=15-24, cittadinanza=ITL           441.0    492   +2.44
+zona=40007001, sesso=F, background=straniero_g2               127.4    154   +2.36
+zona=40007005, sesso=M, eta=50-64, cittadinanza=FRG           118.5     93   -2.34
+zona=40007011, sesso=M, eta=0-8, cittadinanza=ITL             160.6    131   -2.34
+
+Zeri hard violati
+-----------------
+nessuno: ogni cella dichiarata impossibile e' vuota.
+
+[info] 1.302 celle scritte in note/misure/diagnostica_report_v1.0/celle_040007.csv

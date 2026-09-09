@@ -22,6 +22,7 @@ Assunzioni dichiarate:
 Uso:
     python scripts/vincoli/cs_build.py 017029 --anno 2025                    # K6C
     python scripts/vincoli/cs_build.py 017029 --anno 2024 --livello K7C      # K7C (zona 2023)
+
 Output in constraints_<anno>/: cs_<LIV>.json, targets_<LIV>.json
 Richiede per K7C: ~/progetti/gsp/data/comuni/<comune>/zona_2023/ (build_zona_tables.py)
 """
@@ -296,11 +297,12 @@ def ipf_2d(M: pd.DataFrame, row_t: pd.Series, col_t: pd.Series,
 # Builder
 # ----------------------------------------------------------------------
 class CSBuilder:
-    def __init__(self, var_order, ConstraintSet):
+    def __init__(self, var_order, ConstraintSet, escludi=()):
         self.var_order = list(var_order)
         self.CS = ConstraintSet
         self.categories = {v: [] for v in var_order}
         self.blocks = []
+        self.escludi = tuple(escludi)
 
     def register_categories(self, var, values):
         pref = CAT_ORDER.get(var, [])
@@ -309,6 +311,9 @@ class CSBuilder:
         self.categories[var] = seen + extra
 
     def add_block(self, name, df, fonte):
+        if any(name.startswith(e) for e in self.escludi):
+            print(f"[hold-out] blocco {name} ESCLUSO dal constraint set")
+            return        
         attrs = [c for c in df.columns if c != "count"]
         for v in attrs:
             vals = set(self.categories[v]) | set(df[v].unique())
@@ -403,7 +408,8 @@ class CSBuilder:
 
 
 # ----------------------------------------------------------------------
-def main(comune, anno, min_age, max_age, bins_labels, livello, esclusioni=False):
+def main(comune, anno, min_age, max_age, bins_labels, livello,
+         esclusioni=False, senza=()):
     ConstraintSet = import_constraint_set()
     cdir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
     T = load_inputs(cdir)
@@ -423,7 +429,7 @@ def main(comune, anno, min_age, max_age, bins_labels, livello, esclusioni=False)
     anag_w = c1.groupby(["sex", "age"])["count"].sum().reset_index(name="anag")
     print(f"[cs] popolazione universo: {pop:,.0f}")
 
-    B = CSBuilder(var_order, ConstraintSet)
+    B = CSBuilder(var_order, ConstraintSet, escludi=senza)
 
     # ---------------- blocchi comunali A-F, S (v1) ----------------
     B.add_block("A_sesso_eta_statociv",
@@ -787,14 +793,18 @@ def main(comune, anno, min_age, max_age, bins_labels, livello, esclusioni=False)
             diff = (zm - cm).abs().max()
             print(f"[audit] margine {zname} vs {cname}: max|diff| = {diff:.6f}")
 
+    suff = livello + ("_senza_" + "_".join(senza) if senza else "")
+
     spec = B.spec(cs, pop, livello)
     if has_zona:
         spec["zona_nomi"] = nomi
-    with open(os.path.join(cdir, f"cs_{livello}.json"), "w") as f:
+    if senza:
+        spec["hold_out"] = list(senza)
+    with open(os.path.join(cdir, f"cs_{suff}.json"), "w") as f:
         json.dump(spec, f)
-    with open(os.path.join(cdir, f"targets_{livello}.json"), "w") as f:
+    with open(os.path.join(cdir, f"targets_{suff}.json"), "w") as f:
         json.dump(B.targets(pop), f, ensure_ascii=False, indent=1)
-    print(f"\n[done] cs_{livello}.json: m={len(spec['constraints'])} vincoli, "
+    print(f"\n[done] cs_{suff}.json: m={len(spec['constraints'])} vincoli, "
           f"|X|={int(np.prod(spec['domain_sizes']))}  -> {cdir}")
 
 
@@ -803,10 +813,14 @@ if __name__ == "__main__":
     if not args:
         sys.exit("Uso: python scripts/vincoli/cs_build.py <comune> [--anno 2025] "
                  "[--min-age 0] [--max-age 199] [--livello K6C|K7C|K8C|K9C] "
-                 "[--esclusioni]")
+                 "[--esclusioni] [--senza Z3[,Z4]]")
+        
     comune = args[0]
     getv = lambda k, d: int(args[args.index(k) + 1]) if k in args else d
     livello = args[args.index("--livello") + 1] if "--livello" in args else "K6C"
+    # NB: Z1 e Z2 non sono escludibili: Z2 e' costruito su Z1, Z5 su Z2.
+#     Foglie del grafo delle dipendenze: Z3, Z4, Z5.
+    senza = args[args.index("--senza") + 1].split(",") if "--senza" in args else []    
     main(comune, getv("--anno", 2025), getv("--min-age", 0),
          getv("--max-age", 199), DEFAULT_BINS, livello,
-         "--esclusioni" in args)
+         "--esclusioni" in args, senza)

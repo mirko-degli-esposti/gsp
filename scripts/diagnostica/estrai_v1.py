@@ -43,6 +43,20 @@ NOMI = {
 }
 ORD = list(NOMI)
 
+def _zone(cod):
+    """Numero di zone dal registro della flotta. None se il comune non e'
+    articolato: e' la stessa distinzione che il constraint set fa fra
+    K6C e K9C, e va tenuta separata da 'zero zone'."""
+    import yaml
+    reg = os.path.join(os.environ.get("GSP_ROOT",
+                       os.path.expanduser("~/progetti/gsp")),
+                       "flotta", "comuni.yaml")
+    try:
+        v = yaml.safe_load(open(reg))[cod]
+    except (FileNotFoundError, KeyError):
+        return None
+    liv = v.get("livello")
+    return (v.get("livelli") or {}).get(liv, {}).get("n") if liv else None
 
 def _i(s):
     """184.597 -> 184597 ; 4,625 -> 4625. I due separatori convivono nei
@@ -152,6 +166,7 @@ def leggi(d, cod):
         if m:
             r[f"mae_{key}"], r[f"media_{key}"] = _f(m.group(1)), _f(m.group(2))
             r[f"corr_{key}"] = _f(m.group(3))
+    r["zone"] = _zone(cod)
     return r
 
 
@@ -183,22 +198,60 @@ def _blocchi(t):
 # ---------------------------------------------------------------- output
 
 def tabella_sei(righe):
-    """La tabella di §6, ricostruita dai file. Rispetto a quella attuale
-    aggiunge sd(z) e la coppia (|z| max, attesa della sua cella): sono le
-    due colonne che spiegano da sole il caso Forli' e la dispersione,
-    senza bisogno del capoverso che oggi le racconta a parole."""
-    print(r"\begin{tabular}{lrrrrrrrr}")
+    """La tabella di §6. Popolazione, zone e sezioni non sono contorno:
+    la caption chiede di leggere alloc. MAE e seam 'per sezione' e
+    quindi rispetto alla taglia della sezione, e il testo lega sd(z) al
+    numero di celle, che a sua volta dipende dalle zone. Senza queste
+    tre colonne il lettore deve fidarsi invece di verificare.
+
+    Esce max |z|: la sua informazione e' gia' nel testo ('every |z|
+    above ten sits on a cell expecting one individual'), ed e' la
+    colonna piu' larga. Resta nella versione lunga, stampata da
+    --tabella-lunga."""
+    print(r"\begin{tabular}{@{}lrrrrrrrrr@{}}")
     print(r"\toprule")
-    print(r"municipality & cells & MRE & floor & mean $|z|$ & sd$(z)$ & "
-          r"max $|z|$ & alloc.\ MAE & seam \\")
-    print(r" & ($\alpha>0$) & (\%) & (\%) & & & (at $e_c$) & "
-          r"(per section) & (per section) \\")
+    print(r" & \multicolumn{3}{c}{municipality} & \multicolumn{4}{c}{fit}"
+          r" & \multicolumn{2}{c}{placement} \\")
+    print(r"\cmidrule(lr){2-4}\cmidrule(lr){5-8}\cmidrule(lr){9-10}")
+    print(r" & pop. & zones & sect. & cells & MRE & floor & "
+          r"$\overline{|z|}$ & alloc.\ MAE & seam \\")
+    print(r" & & & & ($\alpha>0$) & (\%) & (\%) & & "
+          r"(per sect.) & (per sect.) \\")
     print(r"\midrule")
     for r in righe:
         floor = (f"{r['mre_att']:,.0f}" if r["mre_att"] >= 1000
                  else f"{r['mre_att']:.2f}")
-        print(f"{r['nome']:<20} & {r['celle']:,} & {r['mre_oss']:.2f} & {floor} & "
-              f"{r['z_med']:.2f} & {r['sdz']:.3f} & "
+        zone = "---" if r.get("zone") is None else f"{r['zone']}"
+        print(f"{r['nome']:<20} & {r['individui']:,} & {zone} & "
+              f"{r['sezioni']:,} & {r['celle']:,} & {r['mre_oss']:.2f} & "
+              f"{floor} & {r['z_med']:.2f} & "
+              f"{r['alloc_mae']:.2f} & {r['seam']:.2f} \\\\"
+              .replace(",", "\\,"))
+    print(r"\bottomrule")
+    print(r"\end{tabular}")
+
+
+def tabella_sei_lunga(righe):
+    """La stessa con sd(z) e (|z| max, attesa della sua cella): due
+    colonne che spiegano da sole il caso Forli' e la dispersione dei
+    residui. Per la versione arXiv, dove lo spazio non costa."""
+    print(r"\begin{tabular}{@{}lrrrrrrrrrrr@{}}")
+    print(r"\toprule")
+    print(r" & \multicolumn{3}{c}{municipality} & \multicolumn{6}{c}{fit}"
+          r" & \multicolumn{2}{c}{placement} \\")
+    print(r"\cmidrule(lr){2-4}\cmidrule(lr){5-10}\cmidrule(lr){11-12}")
+    print(r" & pop. & zones & sect. & cells & MRE & floor & "
+          r"$\overline{|z|}$ & sd$(z)$ & max $|z|$ & alloc.\ MAE & seam \\")
+    print(r" & & & & ($\alpha>0$) & (\%) & (\%) & & & (at $e_c$) & "
+          r"(per sect.) & (per sect.) \\")
+    print(r"\midrule")
+    for r in righe:
+        floor = (f"{r['mre_att']:,.0f}" if r["mre_att"] >= 1000
+                 else f"{r['mre_att']:.2f}")
+        zone = "---" if r.get("zone") is None else f"{r['zone']}"
+        print(f"{r['nome']:<20} & {r['individui']:,} & {zone} & "
+              f"{r['sezioni']:,} & {r['celle']:,} & {r['mre_oss']:.2f} & "
+              f"{floor} & {r['z_med']:.2f} & {r['sdz']:.3f} & "
               f"{r['z_max']:.1f} ({r['z_max_atteso']:.0f}) & "
               f"{r['alloc_mae']:.2f} & {r['seam']:.2f} \\\\"
               .replace(",", "\\,"))
@@ -290,6 +343,8 @@ if __name__ == "__main__":
     ap.add_argument("--blocchi", metavar="COD", help="tabella per blocco di un comune")
     ap.add_argument("--csv", metavar="FILE", help="tutte le cifre in CSV")
     ap.add_argument("--verifica", metavar="BODY.TEX", help="confronta col paper")
+    ap.add_argument("--tabella-lunga", action="store_true",
+                    help="tabella di §6 con sd(z) e max |z| (versione arXiv)")
     a = ap.parse_args()
 
     righe = []
@@ -312,5 +367,9 @@ if __name__ == "__main__":
             w.writeheader()
             w.writerows(righe)
         print(f"scritto {a.csv}: {len(righe)} comuni, {len(campi)} colonne")
+    if a.tabella:
+        tabella_sei(righe)
+    if a.tabella_lunga:
+        tabella_sei_lunga(righe)
     if not (a.tabella or a.blocchi or a.csv or a.verifica):
         sintesi(righe)

@@ -262,3 +262,5 @@ passive alle donne, rabbia a chi ha la licenza media. Le immagini e le
 voci fanno lo stesso, in modo meno misurabile. Per questo l'aspetto
 fisico viene estratto dal dado e non lasciato al modello, e per questo
 niente fenotipo o accento condizionato all'origine.
+
+

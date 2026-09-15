@@ -3,10 +3,11 @@
 estrai_v1.py — tutte le cifre dei dodici comuni di riferimento, da file.
 
 PERCHE'
-La tabella di §6 e le macro di numbers.tex sono state composte a mano da
-log letti a occhio. Questo script le ricostruisce dai file diagnostici,
-cosi' che ogni numero del paper abbia una provenienza meccanica e una
-verifica: se il testo dice 7.05 e il file dice altro, si vede qui.
+La tabella di §6 e le macro di numbers.tex nascevano da log letti a
+occhio. Questo script le genera dai file diagnostici, cosi' che ogni
+numero del paper abbia una provenienza meccanica e una verifica: se il
+testo dice 7.05 e il file dice altro, si vede qui. Le tabelle stampate
+vanno incollate in body.tex, non riscritte a mano.
 
 FONTI (una per colonna, mai due per lo stesso numero)
   vincoli_<cod>.txt   celle a target positivo, MRE oss/att, |z| medio,
@@ -14,17 +15,31 @@ FONTI (una per colonna, mai due per lo stesso numero)
                       + la tabella per blocco
   celle_<cod>.csv     |z| massimo e l'attesa della cella che lo produce
   quinq_<cod>.txt     MAE del totale per sezione (alloc. MAE), |residuo|
-                      medio per sezione (seam), n. sezioni
+                      medio per sezione (seam), n. sezioni --- tutte
+                      quelle assegnate al comune, comprese le vuote
   istr_eta_<cod>.txt  quota di incoerenza eta x titolo
   donor_<cod>.txt     firme distinte, n_eff e banda per variabile
   <cod>.log           residuo di FIT, esclusioni, H, supporto, donatori
                       usati su pool, riuso, MAE popolazione/stranieri/UE
+  flotta/comuni.yaml  numero di zone (--- se il comune non e' articolato)
 
 USO
-  python estrai_v1.py /tmp/v1_paper --tabella   # la tabella LaTeX di §6
-  python estrai_v1.py /tmp/v1_paper --blocchi 017029
-  python estrai_v1.py /tmp/v1_paper --csv fuori.csv
-  python estrai_v1.py /tmp/v1_paper --verifica body.tex
+  D=note/misure/diagnostica_report_v1.0        # dalla radice di gsp
+
+  python scripts/diagnostica/estrai_v1.py $D --tabella
+        la tabella di §6, dieci colonne: quella della versione short
+
+  python scripts/diagnostica/estrai_v1.py $D --tabella-lunga
+        la stessa con sd(z) e max |z|: per la versione arXiv, dentro
+        \\ifdefined\\LONG
+
+  python scripts/diagnostica/estrai_v1.py $D --blocchi 017029
+  python scripts/diagnostica/estrai_v1.py $D --csv fuori.csv
+  python scripts/diagnostica/estrai_v1.py $D --verifica body.tex
+
+Senza opzioni stampa le bande per numbers.tex. Attenzione: 'individui
+totali' e' il totale dei DODICI documentati, non della flotta --- \\popTotal
+nel paper e' un altro numero.
 """
 
 from __future__ import annotations
@@ -304,10 +319,12 @@ def sintesi(righe):
     print(f"  {'individui totali':<26} {tot:,}")
     zeri = all(r["zeri_ok"] for r in righe)
     print(f"  {'zeri hard':<26} {'nessuno violato in 12/12' if zeri else 'VIOLATI'}")
-    m = max(righe, key=lambda r: r["sdz"])
-    print(f"\n  sd(z) massimo: {m['nome']} {m['sdz']:.3f} su {m['celle']:,} celle")
-    print("  (la frase attuale di §6, 'unity to three decimals', regge su "
-          f"{sum(1 for r in righe if abs(r['sdz'] - 1) < 0.02)}/12)")
+    sdmax = max(righe, key=lambda r: r["sdz"])
+    print(f"  sd(z) massimo: {sdmax['nome']} {sdmax['sdz']:.3f} su "
+          f"{sdmax['celle']:,} celle")
+    sd = [r["sdz"] for r in righe]
+    print(f"  per numbers.tex: \\sdZmin {{{min(sd):.3f}}}  "
+          f"\\sdZmax {{{max(sd):.3f}}}") 
 
 
 def verifica(righe, tex):
@@ -353,9 +370,6 @@ if __name__ == "__main__":
             righe.append(leggi(a.dir, c))
         except FileNotFoundError as e:
             print(f"[manca] {c} {NOMI[c]}: {e.filename}", file=sys.stderr)
-
-    if a.tabella:
-        tabella_sei(righe)
     if a.blocchi:
         tabella_blocchi(next(r for r in righe if r["cod"] == a.blocchi))
     if a.verifica:

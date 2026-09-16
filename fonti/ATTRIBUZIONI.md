@@ -3,6 +3,8 @@
 Generato da `python -m gsp.fonti --attribuzioni`. Non modificare a mano:
 le informazioni vivono in `fonti/registro.yaml`.
 
+> **Nota sulle licenze.** Il dataset rilasciato è CC-BY-4.0. Alcune fonti elencate qui sotto sono CC-BY-SA: alimentano soltanto lo strato derivato — nomi, cognomi, titoli di studio di dettaglio, biografie — che non entra nel bundle pubblico. Nessun file depositato ne deriva. Sono registrate perché la pipeline le usa, non perché il rilascio le incorpori.
+
 ## ANNCSU - Archivio Nazionale dei Numeri Civici delle Strade Urbane, indirizzario regionale
 
 - **Fonte:** ISTAT e Agenzia delle Entrate
@@ -40,14 +42,14 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 - **Fonte:** ISTAT
 - **Licenza:** CC-BY-4.0
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** DA_VERIFICARE
+- **URL:** https://www.istat.it/microdati/aspetti-della-vita-quotidiana/
+- **Scaricato il:** 2026-08-03
 - **Copertura:** IT, 2024
 - **Universo:** elenco delle variabili dei microdati AVQ 2024 con le rispettive definizioni. Non e' un dato ma il suo dizionario: senza, sigle come FIDUCIA, AMBIENTE, CRONI o BMIMIN non vogliono dire niente. Estratto da data/avq/esplorazione/avq_vars_2024.csv.
 
 > ISTAT, "Aspetti della vita quotidiana - microdati ad uso pubblico", istat.it, CC BY 4.0
 
-## bologna_cittadinanza_zone
+## Popolazione residente straniera per cittadinanza, sesso, quartiere e zona — serie storica
 
 - **Fonte:** Comune di Bologna — U.I. Ufficio Comunale di Statistica
 - **Licenza:** CC-BY-4.0
@@ -65,7 +67,7 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **URL:** https://dati.comune.brescia.it/dataset/
 - **Scaricato il:** 2026-08-11
 - **Copertura:** None, None
-- **Universo:** residenti per CITTADINANZA e quartiere, italiani inclusi: la riga ITALIA e' presente nel file e viene filtrata a valle da opendata_paese.py (riga 97). I totali per quartiere sono quindi popolazione totale, non stranieri. Fonte ANAGRAFICA comunale, di data diversa dal censimento. Non distingue il sesso: lo ricostruisce l'IPF dal margine comunale. E' il margine B dell'IPF, COMPLEMENTARE e non alternativo al censimento (margine A): il censimento porta i ~150 paesi, i livelli corretti e il sesso, la fonte locale porta la geografia. Il gruppo residuale e' il complemento dei paesi nominati IN QUEL QUARTIERE, quindi cambia da file a file: le modalita' vanno da 8 (Caionvico) a 33 (Centro storico nord).
+- **Universo:** residenti per CITTADINANZA e quartiere, italiani inclusi: la riga ITALIA e' presente nel file e viene filtrata a valle da enrich.py (riga 97). I totali per quartiere sono quindi popolazione totale, non stranieri. Fonte ANAGRAFICA comunale, di data diversa dal censimento. Non distingue il sesso: lo ricostruisce l'IPF dal margine comunale. E' il margine B dell'IPF, COMPLEMENTARE e non alternativo al censimento (margine A): il censimento porta i ~150 paesi, i livelli corretti e il sesso, la fonte locale porta la geografia. Il gruppo residuale e' il complemento dei paesi nominati IN QUEL QUARTIERE, quindi cambia da file a file: le modalita' vanno da 8 (Caionvico) a 33 (Centro storico nord).
 
 > Comune di Brescia, dati aperti per quartiere, dati.comune.brescia.it, CC BY 4.0
 
@@ -73,10 +75,21 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 - **Fonte:** ISTAT
 - **Licenza:** CC-BY-4.0
-- **URL:** DA_VERIFICARE
+- **URL:** https://esploradati.istat.it/databrowser/
 - **Scaricato il:** 2026-08-05
 - **Copertura:** IT, ripartizioni, regioni, 25 comuni, 2011
-- **Universo:** OCCUPATI (`TIPO_DATO = EMPLP`) per caratteristiche dell'attività lavorativa. Quattordici dimensioni: ATECO_2007 (1988 voci, dalle sezioni alle sottocategorie), PROFILO_PROF, OCCUPAZIONE, ETA1, TITOLO_STUDIO, SEXISTAT1, STATCIV2, ISO1, ITTER107, REGIME_ORARIO, CARATT_OCC, DURATA. Il registro la usa per la COPPIA CONGIUNTA settore × posizione professionale, condizionata su sesso e territorio: 21 sezioni ATECO × 6 profili × 2 sessi, con tutte le altre dimensioni al totale. A Parma 246 celle su 294 possibili, nessuna a zero, mediana 78 occupati. I sei profili sono una partizione vera: dipendenti · imprenditore e libero professionista · lavoratore in proprio · coadiuvante familiare · socio di cooperativa · parasubordinato. Molto meglio del `dipendente/indipendente` a due modalità di `c9_sex_posizione_prof.csv`, che questa scheda rende superfluo.
+- **Universo:** OCCUPATI (`TIPO_DATO = EMPLP`) per caratteristiche dell'attività lavorativa. Quattordici dimensioni: ATECO_2007 (1988 voci, dalle sezioni alle sottocategorie), PROFILO_PROF, OCCUPAZIONE, ETA1, TITOLO_STUDIO, SEXISTAT1, STATCIV2, ISO1, ITTER107, REGIME_ORARIO, CARATT_OCC, DURATA. Il registro la usa per la COPPIA CONGIUNTA settore × posizione professionale, condizionata su sesso e territorio: 21 sezioni ATECO × 6 profili × 2 sessi, con tutte le altre dimensioni al totale. A Parma 246 celle su 294 possibili, nessuna a zero, mediana 78 occupati. I sei profili sono una partizione vera: dipendenti · imprenditore e libero professionista · lavoratore in proprio · coadiuvante familiare · socio di cooperativa · parasubordinato. RETTIFICA 6 settembre 2026, Buttrio. Questa scheda affermava che i sei profili rendessero superfluo il `dipendente/indipendente` a due modalità di `c9_sex_posizione_prof.csv`. È falso, e l'errore era confrontare due fonti sull'asse sbagliato: il dettaglio. Il file a due modalità viene dal censimento permanente (`istat_cens_posizione_prof`, DF_DCSS_EMPLP_1_COM), è riferito al 2021 invece che al 2011, ed esiste per TUTTI i comuni invece che per venticinque. Non è una versione povera della congiunta: è la marginale che la calibra. `gsp.lavoro` la usa insieme a `istat_cens_settore_prof` come vincolo di un IPF a due marginali, dove questa scheda fornisce la struttura di dipendenza e quelle i livelli comunali aggiornati — la stessa architettura forma-non- livelli dell'anello 1. Vale anche per i sei profili contro i due: il 2021 pubblica solo `9` dipendenti e `22` indipendenti, e nel 2011 `99 = 9 + 22 + 42`, quindi dove sia finito il parasubordinato `42` la fonte non lo dice — scelta aperta, non dedotta.
+
+> ISTAT, "15° Censimento generale della popolazione e delle abitazioni 2011", CC BY 4.0
+
+## Occupati per sezioni di attività economica, dati comunali - Censimento della popolazione 2011
+
+- **Fonte:** ISTAT
+- **Licenza:** CC-BY-4.0
+- **URL:** https://esploradati.istat.it/databrowser/
+- **Scaricato il:** 2026-09-06
+- **Copertura:** IT, ripartizioni, regioni, province, 8.092 comuni, 2011
+- **Universo:** OCCUPATI (`TIPO_DATO_CENS_POP = EMPLP`, unica misura presente). Cinque dimensioni: ITTER107, TIPO_DATO_CENS_POP, SEXISTAT1, ATECO_2007, TIME. 171.764 righe, 8.230 territori, 21 righe per territorio = 3 sessi × 7 codici ATECO. Serve a `gsp.lavoro` come termine di paragone 2011 delle stesse sei macro-classi che il censimento permanente pubblica al 2021 (`istat_cens_settore_prof`): la TVD fra le due misura la deriva decennale della struttura settoriale, confrontabile con la distanza comune-regione.
 
 > ISTAT, "15° Censimento generale della popolazione e delle abitazioni 2011", CC BY 4.0
 
@@ -84,7 +97,7 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 - **Fonte:** ISTAT
 - **Licenza:** CC-BY-4.0
-- **URL:** DA_VERIFICARE
+- **URL:** https://esploradati.istat.it/databrowser/
 - **Scaricato il:** 2026-08-04
 - **Copertura:** IT, 2011
 - **Universo:** popolazione residente di SEI ANNI E PIU' per titolo di studio, sesso, eta' e territorio, al censimento 2011. L'universo a 6 anni copre anche i bin 9-14 della nostra popolazione, che le rilevazioni sulle forze di lavoro (15+) escluderebbero. Circa 457 modalita' di titolo, in una gerarchia codificata a cinque cifre: la prima e' il ramo (1 elementare, 2 media, 3 qualifica 2-3 anni, 4 maturita' 4-5 anni, 5 terziario non universitario, 6 diploma universitario v.o., 7 laurea, 0 laurea magistrale), le successive scendono al tipo di scuola e all'indirizzo. I codici che finiscono in 00 sono totali di ramo. Il ramo 4 ha 27 voci ed e' il livello giusto per una biografia: "istituto tecnico per geometri", "liceo classico", "istituto professionale per i servizi alberghieri".
@@ -95,7 +108,7 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 - **Fonte:** ISTAT
 - **Licenza:** CC-BY-4.0
-- **URL:** DA_VERIFICARE
+- **URL:** https://www.istat.it/classificazione/classificazione-dei-titoli-di-studio-italiani/
 - **Scaricato il:** 2026-08-04
 - **Copertura:** IT, storicizzata
 - **Universo:** tutti i percorsi di istruzione e formazione italiani, ATTUALI E PASSATI, dai servizi per l'infanzia al dottorato. Sostituisce la Classificazione dei titoli di studio del 2003. Struttura gerarchica su SEI livelli: 61 tipologie di programma al primo, circa 20.000 percorsi al sesto, codificati in un COD_CLAIST a 18 digit (3-2-2-4-4-3). Sedici fogli, 29.282 righe in tutto. Il registro normalizza il foglio "Schema sintetico 2026" — 104 righe, 42 titoli — che e' il livello utile per attribuire un titolo a un individuo sintetico: non seimila corsi, non sei categorie. Il livello 2 e' l'ORDINAMENTO, cioe' il decreto di riferimento: e' questo che rende la mappa storicizzata e permette di sapere quali titoli erano ottenibili in quale periodo.
@@ -292,7 +305,7 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **URL:** https://esploradati.istat.it/SDMXWS/rest
 - **Scaricato il:** None
 - **Copertura:** None, None
-- **Universo:** censimento permanente, stranieri residenti al 31 dicembre per paese di cittadinanza (~150 paesi). Pubblicato SOLO a livello comunale: e' la ragione per cui la pipeline assume paese indipendente dalla geografia dato (area, sesso), e per cui le fonti sub-comunali in data/submun/ sono complementari e non alternative (margine A dell'IPF in opendata_paese.py). Il grezzo contiene gli aggregati.
+- **Universo:** censimento permanente, stranieri residenti al 31 dicembre per paese di cittadinanza (~150 paesi). Pubblicato SOLO a livello comunale: e' la ragione per cui la pipeline assume paese indipendente dalla geografia dato (area, sesso), e per cui le fonti sub-comunali in data/submun/ sono complementari e non alternative (margine A dell'IPF in enrich.py). Il grezzo contiene gli aggregati.
 
 > ISTAT, "Censimento permanente della popolazione", esploradati.istat.it, CC BY 4.0
 
@@ -322,8 +335,8 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 - **Fonte:** ISTAT
 - **Licenza:** CC-BY-4.0
-- **URL:** DA_VERIFICARE
-- **Scaricato il:** 2026-07-28
+- **URL:** https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/
+- **Scaricato il:** None
 - **Copertura:** None, None
 - **Universo:** geometrie delle sezioni di censimento, edizione 2021, in WGS84. Una regione per istanza: R03 Lombardia, R08 Emilia-Romagna, R16 Puglia. E' la GEOMETRIA, non i dati: i conteggi per sezione stanno in `istat_sezioni_2023`, che ha edizione dei dati 2023 su geometria 2021 — lo stesso disallineamento che produce `sezioni_2023_non_nello_shapefile.csv` in ogni cartella regionale.
 
@@ -351,7 +364,7 @@ le informazioni vivono in `fonti/registro.yaml`.
 
 > Comune di Modena, "Nomi maggiormente frequenti", via dati.emilia-romagna.it, CC BY 4.0
 
-## parma_codifica_campi
+## Descrizione e codifica dei campi — popolazione residente
 
 - **Fonte:** Comune di Parma — Ufficio Statistica
 - **Licenza:** CC-BY-4.0
@@ -369,7 +382,7 @@ le informazioni vivono in `fonti/registro.yaml`.
 - **URL:** https://opendata.comune.parma.it/dataset/popolazione-residente-al-1-gennaio-2025
 - **Scaricato il:** 2026-08-11
 - **Copertura:** 034027, 2025
-- **Universo:** anagrafe comunale COMPLETA, una riga per residente: 202.111 individui, italiani inclusi. E' l'unica fonte locale a microdato individuale e non a conteggio aggregato, e la sola con risoluzione di SEZIONE (1.320 sezioni contro i 13 quartieri). opendata_paese.py filtra Cittad != 100 per tenere i soli stranieri (36.327, il 18%): il filtro e' a valle, la fonte ha tutti. Porta due variabili che nessun'altra fonte locale ha, Ncomp (numero componenti) e Relpar (relazione di parentela): non servono all'IPF sul paese, ma sono struttura FAMILIARE, e insieme alla tavola ISTAT cens_posizione_famiglia sono il materiale gia' disponibile per quando le famiglie verranno modellate.
+- **Universo:** anagrafe comunale COMPLETA, una riga per residente: 202.111 individui, italiani inclusi. E' l'unica fonte locale a microdato individuale e non a conteggio aggregato, e la sola con risoluzione di SEZIONE (1.320 sezioni contro i 13 quartieri). enrich.py filtra Cittad != 100 per tenere i soli stranieri (36.327, il 18%): il filtro e' a valle, la fonte ha tutti. Porta due variabili che nessun'altra fonte locale ha, Ncomp (numero componenti) e Relpar (relazione di parentela): non servono all'IPF sul paese, ma sono struttura FAMILIARE, e insieme alla tavola ISTAT cens_posizione_famiglia sono il materiale gia' disponibile per quando le famiglie verranno modellate.
 
 > Comune di Parma — Ufficio Statistica, "Popolazione residente al 1 gennaio 2025", opendata.comune.parma.it, CC BY 4.0
 

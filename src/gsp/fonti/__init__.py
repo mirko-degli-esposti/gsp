@@ -693,6 +693,15 @@ def attribuzioni(scrivi=True):
              "modificare a mano:",
              "le informazioni vivono in `fonti/registro.yaml`.",
              ""]
+    if any(str(f.get("licenza", "")).upper().find("SA") >= 0 for f in reg.values()):
+        righe += [
+            "> **Nota sulle licenze.** Il dataset rilasciato è CC-BY-4.0. "
+            "Alcune fonti elencate qui sotto sono CC-BY-SA: alimentano "
+            "soltanto lo strato derivato — nomi, cognomi, titoli di studio "
+            "di dettaglio, biografie — che non entra nel bundle pubblico. "
+            "Nessun file depositato ne deriva. Sono registrate perché la "
+            "pipeline le usa, non perché il rilascio le incorpori.",
+            ""]
     for i in sorted(reg):
         f = reg[i]
         cop = f.get("copertura") or {}

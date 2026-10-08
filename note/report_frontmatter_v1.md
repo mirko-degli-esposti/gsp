@@ -3,7 +3,7 @@
 
 ---
 
-# Animarium: an open, reproducible pipeline for synthetic populations of Italian cities — from ISTAT sources to open data
+# Animarium: Technical Report Version 1
 
 **Technical report v1.0 — Mirko Degli Esposti**
 Department of Physics and Astronomy (DIFA), University of Bologna
@@ -40,6 +40,48 @@ and quality measurements at the release tag, the viewer, and the
 narrative layer that renders records into personas for LLM-driven
 simulation — with the platform's controllability demonstrated in
 companion experiments, and validation explicitly out of scope.
+
+## Context: what this report is
+
+This is the technical report of Animarium (<https://animarium.it>). The
+companion paper, which positions the work in the literature and reports
+the measurements on the full regional release, is Degli Esposti (2026c),
+arXiv:XXXX.XXXXX. This report is the detailed technical record that the
+paper refers to.
+
+A synthetic population is a set of simulated individuals whose
+collective statistics match what is known about a real one. It is the
+usual starting point for agent-based and microsimulation models, and
+more recently for simulations whose agents are driven by large language
+models (Larooij and Törnberg, 2025). Most methods reweight a survey
+sample against small-area totals. Iterative proportional fitting
+(Deming and Stephan, 1940), calibration (Deville and Särndal, 1992) and
+combinatorial optimisation (Williamson et al., 1998) are the standard
+techniques, reviewed by Hermes and Poulsen (2012), Tanton (2014) and
+Chapuis et al. (2022) and implemented in packages such as simPop (Templ
+et al., 2017). Deep generative models learn the joint distribution from
+the same individual records instead (Borysov et al., 2019; Kim and
+Bansal, 2023; Tang et al., 2025). For Italy, Scarpa et al. (2026)
+compare reweighting approaches for every municipality of
+Emilia-Romagna. All of these methods need a sample of individual
+records. A sample-free route instead builds the population from
+published tables alone (Lenormand and Deffuant, 2013). Animarium takes
+that route for its demographic core: it draws individuals from the
+maximum-entropy distribution consistent with published constraints,
+using the solver of Degli Esposti (2026a).
+
+Openly released national synthetic populations exist for Canada
+(Prédhumeau and Manley, 2023), the United States (Jiang et al., 2024;
+Rineer et al., 2025) and Ireland (Caulfield Curley et al., 2025). Italy
+has none, although ISTAT publishes unusually rich sub-municipal
+aggregates (ISTAT, 2026). The FOSSR cluster offers a population
+generator as a service (FOSSR, 2026), and individual studies build
+located populations for their own needs (Garrone, 2026). Animarium is
+meant to fill that gap with released populations, resolved to the
+census section. That resolution is also what urban digital twins need
+in order to have inhabitants (Batty, 2018; Marçal Russo et al., 2026).
+What simulations built on such populations can validly show is the
+subject of Degli Esposti (2026b).
 
 
 > ## Status of this report
@@ -155,9 +197,8 @@ no one to re-identify (§I.7).
 
 The report:
 
-> Degli Esposti, M. (2026). *Animarium: an open, reproducible pipeline
-> for synthetic populations of Italian cities — from ISTAT sources to
-> open data.* Technical report v1.0, arXiv:2608.27111.
+> Degli Esposti, M. (2026). *Animarium: Technical Report Version 1.*
+> arXiv:2608.27111.
 
 The dataset: [10.5281/zenodo.22127581](https://doi.org/10.5281/zenodo.22127581),
 CC-BY-4.0, with the attributions in `fonti/ATTRIBUZIONI.md`. The

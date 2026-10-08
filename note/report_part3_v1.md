@@ -490,7 +490,7 @@ where one exists.
 
 | n. | assumption | ring |
 |---|---|---|
-| (4′) | country ⊥ everything given (area, sex, geography) — geography per tier; at tier 0 it does not bind | 2 |
+| (4') | country ⊥ everything given (area, sex, geography) — geography per tier; at tier 0 it does not bind | 2 |
 | (6) | AVQ targets ⊥ everything given (sex, macro-age, education-4, region) | 2 |
 | (8) | section ⊥ (education, condition, background) given (zone, sex, age-3, citizenship) | 3 |
 | (9) | within a five-year class, single-year age follows the municipal distribution | 3 |
@@ -644,7 +644,7 @@ with the reason and, where it exists, the prepared change.
    see §III.4.)
 8. **The floor is a standard deviation, the MRE a mean absolute
    error.** Both `fit_cs.py` and `verifica_vincoli.py` compute the MRE
-   as mean(|α̂ − α|/α) — instrument and diagnostic agree **[m]** — but
+   as mean($|\hat\alpha-\alpha|/\alpha$) — instrument and diagnostic agree **[m]** — but
    the floor they are compared against, mean √((1−α)/(αN)), is a
    standard deviation, and for a normal deviation the two differ by
    √(2/π) ≈ 0.798. Comparing them directly overstates the floor by a

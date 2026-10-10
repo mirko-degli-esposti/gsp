@@ -1,0 +1,64 @@
+# Età singola (enrich 3d) contro anagrafe — misura e verifica della correzione
+# 10/10/2026. Riferimento: note/gemello_stato_v2.md §2. Commit di partenza: 257b778 (prima della correzione).
+
+## 1. Flotta in produzione (prima della correzione), sola lettura
+# comando: python scripts/diagnostica/eta_singola_vs_anagrafe.py 036023 037006 034027 033032 035033 099014 037021 037032 033044
+# file: data/comuni/<COD>/constraints_2024/popolazione_K?C_avq_full.csv contro c1_sex_age_marital.csv
+comune                         file      N     TV  TV_blocco  TV_entro  rapp_min  rapp_max
+036023 popolazione_K9C_avq_full.csv 184597 0.1712     0.0051    0.1706    0.0000    1.8837
+037006 popolazione_K9C_avq_full.csv 390098 0.0854     0.0031    0.0853    0.0000    1.5184
+034027 popolazione_K9C_avq_full.csv 198121 0.1053     0.0043    0.1049    0.0000    1.5669
+033032 popolazione_K9C_avq_full.csv 102887 0.1471     0.0061    0.1467    0.0725    1.7375
+035033 popolazione_K9C_avq_full.csv 171207 0.1437     0.0049    0.1431    0.0000    1.9312
+099014 popolazione_K9C_avq_full.csv 150046 0.1990     0.0059    0.1982    0.0377    2.2349
+037021 popolazione_K6C_avq_full.csv  16357 0.1141     0.0098    0.1135    0.5342    1.6296
+037032 popolazione_K6C_avq_full.csv  69332 0.1720     0.0057    0.1713    0.1290    1.9053
+033044 popolazione_K6C_avq_full.csv   2014 0.2830     0.0323    0.2810       NaN       NaN
+
+## 2. Modena 036023: enrich di HEAD (257b778) contro enrich corretto, stessi input
+# input: copia di data/comuni/036023 (popolazione_K9C_avq.csv invariata) in scratchpad, GSP_COMUNI_DIR=<scratch>/{vecchio,nuovo}
+# comando: GSP_COMUNI_DIR=<dir> python scripts/attributi/enrich.py 036023 --anno 2024 --pop-file popolazione_K9C_avq.csv
+# riga 1 = vecchio (HEAD), riga 2 = nuovo (corretto)
+036023 popolazione_K9C_avq_full.csv 184597 0.1712     0.0051    0.1706    0.0000    1.8837
+036023 popolazione_K9C_avq_full.csv 184597 0.0051     0.0051    0.0001    0.8412    1.0450
+
+## 3. Verifiche (a)-(d)
+(a) l'enrich di HEAD riproduce byte per byte data/comuni/036023/constraints_2024/popolazione_K9C_avq_full.csv (cmp)
+(b) stesse colonne e righe: True True
+(b) colonne diverse: ['eta_anni']
+(b) individui fuori blocco: vecchio 0 nuovo 0 | blocco cambiato: 0
+(c) marginali sezione x sesso x blocco identici: True
+(c) marginali sezione x sesso x quinquennio identici: True
+(c) vecchio: TV(sesso x eta singola vs anagrafe)=0.1712  max|T-anag|=917  rapporto min=0.00 max=1.88
+(c) nuovo: TV(sesso x eta singola vs anagrafe)=0.0051  max|T-anag|=124  rapporto min=0.84 max=1.04
+(c) residuo per blocco (comune): somma |diff| = 1896 su 184597
+                an      t  diff
+s blocco                       
+F (4, 8]      2963   3095   132
+  (8, 9]       781    657  -124
+  (9, 14]     4186   4246    60
+  (14, 19]    4175   4238    63
+  (44, 49]    6638   6517  -121
+  (49, 54]    7464   7505    41
+  (64, 69]    5802   5860    58
+  (74, 200]  14782  14632  -150
+M (8, 9]       799    695  -104
+  (24, 29]    5427   5478    51
+  (34, 39]    5641   5698    57
+  (44, 49]    6584   6503   -81
+  (49, 54]    7100   7219   119
+  (54, 59]    6919   6999    80
+  (59, 64]    5955   5996    41
+  (64, 69]    4981   4889   -92
+  (69, 74]    4265   4175   -90
+  (74, 200]  10176  10071  -105
+(c) residuo entro blocco (dopo aver tolto lo scarto di blocco): TV = 0.00013
+(d) determinismo: due corse byte-identiche
+
+## Lettura
+- Prima della correzione la distanza è quasi tutta entro il blocco (TV_entro ≈ TV): è il difetto di
+  arrotondamento per gruppo di sezione. TV_blocco (0,003-0,03) viene dai totali dei quinquenni comunali,
+  che dipendono da sezioni 2023 contro anagrafe 2024 e dalla ripartizione 4/5-1/5 del quinquennio 5-9.
+  La correzione non li tocca, di proposito.
+- Dopo la correzione su Modena: TV 0,1712 -> 0,0051, TV_entro 0,1706 -> 0,0001; cambia solo eta_anni;
+  nessun individuo cambia blocco; i marginali sezione × sesso × quinquennio sono identici; due corse sono byte-identiche.

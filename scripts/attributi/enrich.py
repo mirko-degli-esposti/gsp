@@ -31,6 +31,11 @@ Assunzioni dichiarate:
         Sotto il quartiere il censimento non pubblica quegli incroci.
     (9) entro il quinquennio, la distribuzione per anno singolo e' quella
         comunale (anagrafe 1/1/anno), non quella di sezione.
+        [Correzione 10/10/2026: fino a questa data (9) NON era rispettata.
+        L'arrotondamento per gruppo di sezione distorceva la distribuzione
+        comunale per anno singolo, con TV da 0.085 a 0.28; i marginali per
+        classe e per quinquennio erano corretti. Ora l'anno singolo si
+        ripartisce sul comune: vedi riequilibra_anno_singolo.]
     (10) l'indirizzo e' estratto uniformemente fra i civici della sezione:
         ANNCSU non fornisce il numero di residenti per civico.
     (11) nessuna struttura familiare: ogni individuo riceve un indirizzo
@@ -428,6 +433,53 @@ def assegna_eta(pop, sez, eta_w, rng):
     return pop
 
 
+def riequilibra_anno_singolo(pop, eta_w, rng):
+    """Correzione 10/10/2026 di (3d): l'anno singolo si ripartisce a livello
+    COMUNALE, entro ciascun blocco (sesso, quinquennio o sua frazione).
+
+    assegna_eta arrotonda con largest_remainder dentro gruppi (sezione,
+    sesso, bin) di 1-5 individui: il resto va sempre agli anni piu' pesanti
+    del quinquennio, uguale in ogni sezione, e la distribuzione comunale per
+    anno singolo esce distorta (TV sesso x eta singola 0.085-0.28 contro
+    l'anagrafe; misura in gemello_stato_v2). Qui il blocco di ciascun
+    individuo resta quello assegnato, quindi marginali per classe, per
+    quinquennio e per sezione non cambiano: si ridistribuiscono solo gli anni
+    entro il blocco, con largest_remainder sull'intero comune e
+    permutazione casuale. Il flusso `rng` principale non e' toccato.
+    """
+    eta = pop["eta_anni"].astype(int).to_numpy()
+    blocco_lo = np.full(len(pop), -1)
+    blocco_hi = np.full(len(pop), -1)
+    for e, blocchi in BIN_QUINQ.items():
+        m_bin = (pop["eta"] == e).to_numpy()
+        for _, _, lo, hi in blocchi:
+            m = m_bin & (eta >= lo) & (eta <= hi)
+            blocco_lo[m], blocco_hi[m] = lo, hi
+    if (blocco_lo < 0).any():
+        sys.exit(f"[3d] {int((blocco_lo < 0).sum())} individui fuori blocco")
+
+    nuovo = eta.copy()
+    gruppi = pd.DataFrame({"s": pop["sesso"].to_numpy(), "lo": blocco_lo,
+                           "hi": blocco_hi}).groupby(["s", "lo", "hi"]).indices
+    for (s, lo, hi) in sorted(gruppi):
+        pos = np.sort(gruppi[(s, lo, hi)])
+        anni = np.arange(lo, hi + 1)
+        if s in eta_w:
+            pw = np.array([float(eta_w[s].get(a, 0.0)) for a in anni])
+        else:
+            pw = np.ones(len(anni))
+        if pw.sum() <= 0:
+            pw = np.ones(len(anni))
+        val = np.repeat(anni, G.largest_remainder(len(pos), pw))
+        nuovo[pos] = rng.permutation(val)
+
+    cambiati = int((nuovo != eta).sum())
+    pop["eta_anni"] = pd.array(nuovo, dtype="Int64")
+    print(f"[3d] anno singolo riequilibrato sul comune: {len(gruppi)} blocchi, "
+          f"{cambiati:,} eta' cambiate entro il blocco")
+    return pop
+
+
 # ----------------------------------------------------------------------
 # (3e) indirizzo
 # ----------------------------------------------------------------------
@@ -577,6 +629,9 @@ def main(comune, anno, pop_file, out_name, keep_naz, no_tier, seed):
     else:
         pop = assegna_area_paese(pop, sez, comune, anno, rng, not no_tier)
     pop = assegna_eta(pop, sez, eta_w, rng)
+    # generatore separato: indirizzi e il resto restano identici a prima
+    pop = riequilibra_anno_singolo(pop, eta_w,
+                                   np.random.default_rng([seed, 3]))
     pop = assegna_indirizzo(pop, sez, civ, rng)
 
     valida(pop, sez)

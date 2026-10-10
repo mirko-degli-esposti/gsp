@@ -12,7 +12,7 @@ GSP builds synthetic populations of Italian municipalities (comuni) from public 
 conda activate gsp && pip install -e .     # Python >=3.11, package in src/gsp
 ```
 
-- Project root comes from `GSP_ROOT` (default `~/progetti/gsp`). All paths are derived in `gsp.common` (`DATA`, `COMUNI_DIR`, `SUBMUN`, …). `GSP_COMUNI_DIR` relocates only the per-comune products (`COMUNI_DIR`: constraints, populations), for external experiments that must never write into `data/comuni/`. Exception: `src/gsp/istat/sdmx.py` hardcodes `~/progetti/gsp/data/...` for its cache.
+- Project root comes from `GSP_ROOT` (default `~/progetti/gsp`). All paths are derived in `gsp.common` (`DATA`, `COMUNI_DIR`, `SUBMUN`, …). `GSP_COMUNI_DIR` relocates only the per-comune products (`COMUNI_DIR`: constraints, populations) and `GSP_SUBMUN_DIR` the section tables (`SUBMUN`), for external experiments that must never write into `data/`. Exception: `src/gsp/istat/sdmx.py` hardcodes `~/progetti/gsp/data/...` for its cache.
 - `scripts/fit/fit_cs.py` imports the solver from a sibling clone `~/progetti/maxent-popsynth-pcd` via `sys.path`. It does not check the version, so the pinned commit has to be checked out by hand.
 - `data/`, `bundle/`, `log/`, `regress/` and `*.csv` are git-ignored. Heavy inputs and every generated population live under `data/` and are not versioned. The one exception is `fonti/grezzi/*.csv`, which is re-included on purpose.
 

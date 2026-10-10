@@ -52,7 +52,11 @@ import yaml
 # impostata e vale il default.
 GSP = os.path.expanduser(os.environ.get("GSP_ROOT", "~/progetti/gsp"))
 DATA = os.path.join(GSP, "data")
-SUBMUN = os.path.join(DATA, "submun")
+# GSP_SUBMUN_DIR sposta i dati di sezione (path_sezioni, file regionali):
+# serve agli esperimenti esterni che danno agli anelli 3-4 tavole di sezione
+# proprie (es. gemello: calcolate da una popolazione verita').
+SUBMUN = os.path.expanduser(os.environ.get("GSP_SUBMUN_DIR",
+                                           os.path.join(DATA, "submun")))
 GEODATA = os.path.join(DATA, "geodata")
 # GSP_COMUNI_DIR sposta SOLO i prodotti per comune (vincoli, popolazioni):
 # serve a esperimenti esterni (es. ~/progetti/gemello) che devono girare la

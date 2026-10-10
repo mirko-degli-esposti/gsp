@@ -32,3 +32,4 @@
 - [ ] 2026-10-10 [gemello] IMPOSSIBILI: g2 ⇒ origine ≠ non_applicabile; immigrato ⇒ origine = non_applicabile (57 individui a Modena su celle assenti da c8); richiede refit anello 1 — gemello_stato_v2 §4
 - [ ] 2026-10-10 [gemello] enrich (3d): età singola condizionata anche allo stato civile (pesi c1 sesso×età×stato civile); oggi indipendente entro il blocco 75-100 — gemello_stato_v2 §3
 - [ ] 2026-10-10 [gemello] Nuclei di produzione Modena (19/08) ≠ codice attuale (31.479 ruoli diversi): accertare la causa (candidato 9b3ac05) — gemello_stato_v2 §4
+- [ ] 2026-10-10 [gemello] fit_cs: uscire con errore se il fit esatto non converge (MRE vincoli positivi > soglia, es. 1%); oggi un cs infeasibile dà λ~1e19 e una popolazione scritta senza errore — gemello_stato_v3 §3, §5.1

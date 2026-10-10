@@ -78,9 +78,10 @@ CONIUGATO = "coniugato_unito"
 
 
 def trova_popolazione(comune, anno=None):
-    pat = (f"data/comuni/{comune}/constraints_{anno}/popolazione_K*_avq_full.csv"
+    base = os.path.join(G.COMUNI_DIR, comune)     # rispetta GSP_COMUNI_DIR
+    pat = (f"{base}/constraints_{anno}/popolazione_K*_avq_full.csv"
            if anno else
-           f"data/comuni/{comune}/constraints_*/popolazione_K*_avq_full.csv")
+           f"{base}/constraints_*/popolazione_K*_avq_full.csv")
     c = [p for p in sorted(glob.glob(pat)) if "backup" not in p]
     return c[-1] if c else None
 

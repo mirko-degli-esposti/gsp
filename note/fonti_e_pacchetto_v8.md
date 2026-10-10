@@ -67,7 +67,7 @@ consuma. Il legame-file non giustifica il pacchetto.
   note/  note/storico/
 ```
 
-`pip install -e .` nell'ambiente `ml`. Dipendenze: `pandas`, `numpy`,
+`pip install -e .` nell'ambiente `gsp`. Dipendenze: `pandas`, `numpy`,
 `pyarrow`, `pyyaml`, `xlrd`, `openpyxl`, `python-calamine`.
 
 ### Metà di `animarium/build/` non era Animarium
@@ -1239,9 +1239,9 @@ Il bundle di Modena è passato da 5,12 a 3,68 MB, e ho cercato la causa in
 `--drop-avq-raw` e la mia invocazione no. Il segnale che avrei dovuto
 cogliere: Reggio *saliva* invece di scendere.
 
-**Il prompt dice `(base)` invece di `(ml)`** ed è la causa più frequente
+**Il prompt dice `(base)` invece di `(gsp)`** ed è la causa più frequente
 di `ModuleNotFoundError`. `conda config --set auto_activate_base false`
-più `conda activate ml` in `.bashrc`.
+più `conda activate gsp` in `.bashrc`.
 
 **I file da Windows arrivano `100755`.** Il browser rinomina gli omonimi.
 L'estrazione appiattita di uno zip fa collidere i file omonimi *dentro*
@@ -1260,7 +1260,7 @@ profilo e titolo, `0010` per ateco, `9` per sesso e regime, `TOTAL` per
 durata. Chi ne assume uno solo filtra via tutto e ottiene zero righe, che
 sembra un problema di dati e non di filtro.
 
-**Il container ha Python 3.13, l'ambiente `ml` ha la 3.11.** Fino alla
+**Il container ha Python 3.13, l'ambiente `gsp` ha la 3.11.** Fino alla
 3.11 un backslash non può stare dentro l'espressione di una f-string; dalla
 3.12 sì (PEP 701). Il difetto esplode come `SyntaxError` all'import, quindi
 almeno è rumoroso.

@@ -28,3 +28,7 @@
   (34 celle a Forlì, tutte con osservato 0, verificate). Costo: nullo alla
   prossima rigenerazione. Effetto sul paper: il capoverso su Forlì in §6 si
   accorcia da sé.
+- [ ] 2026-10-10 [gemello] Rigenerare anelli 3+4 della flotta con enrich corretto (età singola, 6224a94): decisione di release; misura in note/misure/eta_singola_enrich_20261010.txt
+- [ ] 2026-10-10 [gemello] IMPOSSIBILI: g2 ⇒ origine ≠ non_applicabile; immigrato ⇒ origine = non_applicabile (57 individui a Modena su celle assenti da c8); richiede refit anello 1 — gemello_stato_v2 §4
+- [ ] 2026-10-10 [gemello] enrich (3d): età singola condizionata anche allo stato civile (pesi c1 sesso×età×stato civile); oggi indipendente entro il blocco 75-100 — gemello_stato_v2 §3
+- [ ] 2026-10-10 [gemello] Nuclei di produzione Modena (19/08) ≠ codice attuale (31.479 ruoli diversi): accertare la causa (candidato 9b3ac05) — gemello_stato_v2 §4

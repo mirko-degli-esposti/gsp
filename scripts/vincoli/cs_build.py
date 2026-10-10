@@ -411,7 +411,7 @@ class CSBuilder:
 def main(comune, anno, min_age, max_age, bins_labels, livello,
          esclusioni=False, senza=()):
     ConstraintSet = import_constraint_set()
-    cdir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
+    cdir = G.path_constraints(comune, anno)
     T = load_inputs(cdir)
     bins = AgeBins(bins_labels, min_age, max_age)
     if livello not in VAR_ORDERS:
@@ -600,7 +600,7 @@ def main(comune, anno, min_age, max_age, bins_labels, livello,
     # ---------------- blocchi di zona Z1-Z4 (v2) ----------------
     nomi = None
     if has_zona:
-        zdir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}/zona_2023")
+        zdir = G.path_zona(comune)
         Z = load_zona(zdir)
         fonte_z = f"sezioni censimento {anno-1} (quote, armonizzate IPF) x conteggi comunali"
 

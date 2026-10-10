@@ -54,7 +54,12 @@ GSP = os.path.expanduser(os.environ.get("GSP_ROOT", "~/progetti/gsp"))
 DATA = os.path.join(GSP, "data")
 SUBMUN = os.path.join(DATA, "submun")
 GEODATA = os.path.join(DATA, "geodata")
-COMUNI_DIR = os.path.join(DATA, "comuni")
+# GSP_COMUNI_DIR sposta SOLO i prodotti per comune (vincoli, popolazioni):
+# serve a esperimenti esterni (es. ~/progetti/gemello) che devono girare la
+# catena su tavole proprie senza mai scrivere in data/comuni/. Registro,
+# sezioni e fonti restano quelli di GSP.
+COMUNI_DIR = os.path.expanduser(os.environ.get("GSP_COMUNI_DIR",
+                                               os.path.join(DATA, "comuni")))
 AVQ_DIR = os.path.join(DATA, "avq", "anni")
 
 ANNO_SEZIONI = 2023          # edizione dei dati sezione (geometrie: 2021)

@@ -28,6 +28,12 @@ import gsp.common as G
 
 REPO_CANDIDATES = ["~/progetti/maxent-popsynth-pcd", "/content/maxent-popsynth-pcd"]
 
+# Soglia di convergenza del fit esatto (MRE sui vincoli alpha>0). Un cs
+# infeasibile fa divergere il solver (lambda ~ 1e19, p su una cella) senza
+# errori: senza questo controllo la popolazione verrebbe scritta lo stesso.
+# Flotta al 10/10/2026: MRE massimo 1.0e-3 su 259 fit (gemello_stato_v3 §3).
+MAX_MRE_EXACT = 0.01
+
 # firme dei blocchi per NOME variabile (ordine irrilevante: si confrontano sorted)
 SIG_BY_NAMES = {
     ("eta", "sesso", "stato_civile"): "A",
@@ -335,6 +341,10 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
             print(f"[exact] fit in {t_exact:.1f}s | "
                   f"celle escluse post-hoc: {len(excl_cells)}")
             d_exact = diagnostics("exact", p_exact, F, alphas, zero_mask)
+        if d_exact is not None and not (d_exact["mre_pos"] <= MAX_MRE_EXACT):
+            sys.exit(f"[exact] fit NON convergente: MRE(alpha>0)="
+                     f"{d_exact['mre_pos']:.3e} > {MAX_MRE_EXACT}. Popolazione "
+                     f"e fit NON scritti: cs infeasibile? (audit di cs_build)")
 
     # ---------- GibbsPCD + confronto ----------
     d_gibbs, kl_eg, kl_ge, t_gibbs, gibbs = None, None, None, None, None

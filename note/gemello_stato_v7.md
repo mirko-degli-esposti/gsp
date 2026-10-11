@@ -174,11 +174,11 @@ rumore per tutti, come al livello 0.
 - `~/progetti/gsp` (dev-mirko): pipeline. Gli interventi fatti per il
   gemello sono `GSP_COMUNI_DIR`, `GSP_SUBMUN_DIR`, la correzione dell'età
   singola in enrich e il controllo di convergenza in `fit_cs`.
-- `~/progetti/gemello` (dev-mirko, **solo locale, nessun remote**): codice
+- `~/progetti/gemello` (dev-mirko, remote `origin` = GitHub privato `mirko-degli-esposti/gemello`): codice
   in `gemello/`, script numerati in `script/`, config in `config/`
   (`livello0.yaml`, `livello1a.yaml`). Non versionati: `verita/`,
   `lavoro*/`, `livello1a/`, `risultati/`.
-- `~/progetti/paper-gemello` (main, **solo locale, nessun remote**):
+- `~/progetti/paper-gemello` (main, remote `origin` = GitHub privato `mirko-degli-esposti/paper-gemello`):
   preprint. `./compila.sh` rigenera numeri, tabelle e figure da
   `gemello/script/numeri_preprint.py` e compila.
 
@@ -220,5 +220,5 @@ rumore per tutti, come al livello 0.
 - download INSEE per il livello 2 (dalla sua macchina, script
   `estrai_insee_comune.py` della nota v1);
 - titolo del preprint;
-- dove ospitare `gemello` e `paper-gemello` (oggi senza remote);
+- ~~dove ospitare `gemello` e `paper-gemello` (oggi senza remote)~~ deciso l'11/10/2026: due repo GitHub privati separati, non dentro gsp;
 - rigenerazione degli anelli 3+4 della flotta (release).

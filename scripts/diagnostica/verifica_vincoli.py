@@ -46,6 +46,15 @@ spiegare.
 Uso
 ---
     python build/verifica_vincoli.py 036023 --out celle_modena.csv
+    python scripts/diagnostica/verifica_vincoli.py 040007 \
+        --cs <corsa>/cs_K9C_senza_Z3.json --pop-file <corsa>/popolazione_K9C_senza_Z3.csv \
+        --json <corsa>/misure/vincoli.json
+
+v2.1 (11/10/2026, banco M1): --pop-file legge la popolazione da CSV
+(popolazione_<LIV>.csv dell'anello 1) in alternativa al Parquet del bundle;
+--json scrive sommario per blocco, statistiche globali e celle peggiori in
+forma strutturata, cosi' le tabelle del report si rileggono senza regex.
+La radice dei comuni viene da gsp.common (rispetta GSP_COMUNI_DIR).
 """
 
 from __future__ import annotations
@@ -60,7 +69,11 @@ import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
 
-GSP = os.path.expanduser("~/progetti/gsp/data/comuni")
+try:
+    import gsp.common as _G
+    GSP = _G.COMUNI_DIR
+except Exception:                       # fuori dall'ambiente gsp
+    GSP = os.path.expanduser("~/progetti/gsp/data/comuni")
 
 ATTESO_ABS_Z = np.sqrt(2 / np.pi)   # 0,7979
 
@@ -83,15 +96,20 @@ def main():
     ap.add_argument("--anno", default="2024")
     ap.add_argument("--cs", default=None)
     ap.add_argument("--parquet", default=None)
+    ap.add_argument("--pop-file", default=None,
+                    help="popolazione CSV (es. popolazione_K9C.csv) in "
+                         "alternativa al Parquet del bundle")
     ap.add_argument("--top", type=int, default=20)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--json", default=None,
+                    help="sommario strutturato (blocchi, globale, top)")
     args = ap.parse_args()
 
     f_cs = args.cs or os.path.join(GSP, args.comune, f"constraints_{args.anno}",
                                    "cs_K9C.json")
-    f_par = args.parquet or os.path.join("bundle", "comuni", args.comune,
-                                         "pop.parquet")
-    for f, che in ((f_cs, "constraint set"), (f_par, "Parquet")):
+    f_par = args.parquet or args.pop_file or os.path.join(
+        "bundle", "comuni", args.comune, "pop.parquet")
+    for f, che in ((f_cs, "constraint set"), (f_par, "popolazione")):
         if not os.path.exists(f):
             sys.exit(f"errore: {che} non trovato: {f}")
     print(f"[info] vincoli:     {f_cs}")
@@ -101,11 +119,17 @@ def main():
         cs = json.load(h)
     V, C = cs["vars"], cs["categories"]
 
-    disponibili = set(pq.ParquetFile(f_par).schema_arrow.names)
+    if f_par.endswith(".csv"):
+        disponibili = set(pd.read_csv(f_par, nrows=0).columns)
+    else:
+        disponibili = set(pq.ParquetFile(f_par).schema_arrow.names)
     mancanti = [v for v in V if v not in disponibili]
     if mancanti:
-        sys.exit(f"errore: attributi assenti dal Parquet: {mancanti}")
-    pop = pq.read_table(f_par, columns=V).to_pandas()
+        sys.exit(f"errore: attributi assenti dalla popolazione: {mancanti}")
+    if f_par.endswith(".csv"):
+        pop = pd.read_csv(f_par, usecols=V, dtype=str)
+    else:
+        pop = pq.read_table(f_par, columns=V).to_pandas()
     for v in V:
         pop[v] = pop[v].astype("string")
     N = len(pop)
@@ -208,6 +232,31 @@ def main():
         T.reindex(T.z.abs().sort_values(ascending=False).index).to_csv(
             args.out, index=False)
         print(f"\n[info] {fmt(len(T))} celle scritte in {args.out}")
+
+    if args.json:
+        imax = int(val.z.abs().idxmax()) if len(val) else None
+        globale = {
+            "individui": int(N), "attributi": len(V),
+            "celle": int(len(z)),
+            "mre_oss": float(val.err_rel.mean()),
+            "mre_att": float(val.rumore_atteso.mean()),
+            "z_abs_medio": float(np.abs(z).mean()),
+            "z_abs_medio_atteso": float(ATTESO_ABS_Z),
+            "sd_z": float(z.std(ddof=1)), "media_z": float(z.mean()),
+            "quota_z2": float((np.abs(z) > 2).mean()),
+            "quota_z3": float((np.abs(z) > 3).mean()),
+            "z_max": (float(abs(val.z[imax])) if imax is not None else None),
+            "z_max_atteso": (float(val.atteso[imax]) if imax is not None else None),
+            "z_max_cella": (str(val.cella[imax]) if imax is not None else None),
+            "zeri_violati": int(len(viol)),
+        }
+        with open(args.json, "w", encoding="utf-8") as fh:
+            json.dump({"comune": args.comune, "cs": f_cs, "popolazione": f_par,
+                       "globale": globale,
+                       "blocchi": S.to_dict("records"),
+                       "top": peg.to_dict("records")},
+                      fh, indent=1, ensure_ascii=False, default=float)
+        print(f"[info] sommario in {args.json}")
 
 
 if __name__ == "__main__":

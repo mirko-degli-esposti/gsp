@@ -9,6 +9,7 @@ import yaml
 from gsp.banco import CORSE
 from gsp.banco import corsa as C
 from gsp.banco import manifesto as M
+from gsp.banco import misure as MI
 
 
 def _set(manopole: dict, assegnazioni: list[str]) -> dict:
@@ -51,6 +52,8 @@ def cmd_lancia(a):
         sys.exit(f"[{a.id}] {e}")
     if not a.dry_run:
         _stampa_esito(m)
+        from gsp.banco import indice as I
+        I.scrivi()
 
 
 def _stampa_esito(m):
@@ -60,6 +63,38 @@ def _stampa_esito(m):
           f"{'' if e.get('git_pulito') else ' (albero NON pulito)'}")
     for rel, h in (e.get("prodotti") or {}).items():
         print(f"   {h[-12:]}  {rel}")
+
+
+def cmd_misura(a):
+    from gsp.banco import indice as I
+    m = M.carica(a.id)
+    try:
+        m = MI.misura(m)
+    except RuntimeError as e:
+        sys.exit(f"[{a.id}] {e}")
+    for k, p in (m["esito"].get("misure") or {}).items():
+        print(f"   {k:14s} {p}")
+    if m["esito"].get("misure_errori"):
+        print(f"   errori: {m['esito']['misure_errori']}")
+    r = MI.riassunto(m)
+    if r:
+        print("   riassunto: " + ", ".join(
+            f"{k}={v:.4g}" if isinstance(v, float) else f"{k}={v}"
+            for k, v in r.items() if v is not None))
+    print(f"   indice -> {I.scrivi()}")
+
+
+def cmd_indice(a):
+    from gsp.banco import indice as I
+    import pandas as pd
+    p = I.scrivi()
+    df = pd.read_parquet(p)
+    print(f"{len(df)} corse -> {p}")
+    cols = [c for c in ("id", "stato", "livello_eff", "anelli", "tempo_s",
+                        "mre_oss", "mre_att", "posizione_Z3", "n_eff_salute",
+                        "nuclei") if c in df.columns]
+    if len(df):
+        print(df[cols].to_string(index=False))
 
 
 def cmd_elenca(a):
@@ -121,6 +156,13 @@ def main(argv=None):
 
     e = sp.add_parser("elenca", help="le corse e il loro stato")
     e.set_defaults(f=cmd_elenca)
+
+    mi = sp.add_parser("misura", help="diagnostici sulla corsa -> misure/*.json")
+    mi.add_argument("id")
+    mi.set_defaults(f=cmd_misura)
+
+    ix = sp.add_parser("indice", help="ricostruisce indice.parquet")
+    ix.set_defaults(f=cmd_indice)
 
     r = sp.add_parser("replica", help="rifa' una corsa e confronta byte per byte")
     r.add_argument("id")

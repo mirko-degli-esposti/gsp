@@ -6,6 +6,11 @@ anello 1 (vincoli contro il pavimento) e anello 2 (donatori e n_eff).
 
     python scripts/diagnostica/riepilogo_diagnostica.py
     python scripts/diagnostica/riepilogo_diagnostica.py --dir altra/cartella
+    python scripts/diagnostica/riepilogo_diagnostica.py --json   # da vincoli_<c>.json e donor_<c>.json
+
+v1.1 (11/10/2026, banco M1): con --json legge i sommari strutturati scritti
+da verifica_vincoli.py --json e verifica_donor.py --json, senza regex sul
+testo. Le due vie devono dare le stesse righe: e' il test di M1.
 """
 import argparse, csv, glob, os, re, sys
 
@@ -64,33 +69,64 @@ def leggi_donor(d, c):
                           banda=dec(m.group(5)))
     return r
 
+def leggi_vincoli_json(d, c):
+    import json
+    j = json.load(open(os.path.join(d, f"vincoli_{c}.json")))
+    g = j["globale"]
+    return {"attr": str(g["attributi"]), "celle": g["celle"],
+            "mre_oss": g["mre_oss"] * 100, "mre_att": g["mre_att"] * 100,
+            "zmed": g["z_abs_medio"], "sdz": g["sd_z"],
+            "z3": g["quota_z3"] * 100, "zeri_ok": g["zeri_violati"] == 0,
+            "zmax": g["z_max"], "zmax_atteso": g["z_max_atteso"]}
+
+def leggi_donor_json(d, c):
+    import json
+    j = json.load(open(os.path.join(d, f"donor_{c}.json")))
+    r = {"firme": j["firme"]}
+    if j.get("attesi"):
+        r["donatori"], r["pool"], r["regione"] = (j["attesi"]["usati"],
+                                                 j["attesi"]["pool"],
+                                                 j["attesi"]["regione"])
+    for v in j["variabili"]:
+        if v["variabile"] in ("SALUTE", "PUNTIFI10"):
+            r[v["variabile"]] = dict(cop=v["copertura"] * 100, n=v["n"],
+                                     dist=v["distinti"], neff=round(v["n_eff"]),
+                                     banda=v["banda"])
+    return r
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dir", default="note/misure/diagnostica_report_v1.0")
+    ap.add_argument("--json", action="store_true",
+                    help="leggi vincoli_<c>.json e donor_<c>.json invece dei .txt")
+    ap.add_argument("--comuni", default=None, help="codici separati da virgola")
     a = ap.parse_args()
     d = a.dir
+    ord_ = a.comuni.split(",") if a.comuni else ORD
+    lv = leggi_vincoli_json if a.json else leggi_vincoli
+    ld = leggi_donor_json if a.json else leggi_donor
 
     print("### Tabella III.3a — anello 1, vincoli contro il pavimento\n")
     print("| municipality | cells (α>0) | MRE obs. | MRE exp. | mean·z | sd(z) | %·z·>3 | ·z·max (exp. cell) | hard zeros |")
     print("|---|---|---|---|---|---|---|---|---|")
-    for c in ORD:
-        try: v = leggi_vincoli(d, c)
+    for c in ord_:
+        try: v = lv(d, c)
         except FileNotFoundError: continue
-        print(f"| {NOMI[c]} | {v['celle']:,} | {v['mre_oss']:.2f} % | {v['mre_att']:.2f} % "
+        print(f"| {NOMI.get(c, c)} | {v['celle']:,} | {v['mre_oss']:.2f} % | {v['mre_att']:.2f} % "
               f"| {v['zmed']:.2f} | {v['sdz']:.3f} | {v['z3']:.2f} % "
               f"| {v['zmax']:.1f} ({v['zmax_atteso']:.1f}) | {'none violated' if v['zeri_ok'] else 'VIOLATED'} |")
 
     print("\n### Tabella III.3b — anello 2, firme e n_eff\n")
     print("| municipality | n | signatures | donors used (pool) | n_eff SALUTE | band × | n_eff PUNTIFI10 | band × |")
     print("|---|---|---|---|---|---|---|---|")
-    for c in ORD:
-        try: r = leggi_donor(d, c)
+    for c in ord_:
+        try: r = ld(d, c)
         except FileNotFoundError: continue
         sal, p10 = r.get("SALUTE", {}), r.get("PUNTIFI10", {})
         def f(x, dec=None):
             if x is None: return "n/d"
             return f"{x:,.1f}" if dec else f"{x:,}"
-        print(f"| {NOMI[c]} | {f(sal.get('n'))} | {f(r.get('firme'))} | {f(r.get('donatori'))} ({f(r.get('pool'))}) "
+        print(f"| {NOMI.get(c, c)} | {f(sal.get('n'))} | {f(r.get('firme'))} | {f(r.get('donatori'))} ({f(r.get('pool'))}) "
               f"| {f(sal.get('neff'))} | {f(sal.get('banda'),1)} "
               f"| {f(p10.get('neff'))} | {f(p10.get('banda'),1)} |"
               .replace(",", "\u2009"))

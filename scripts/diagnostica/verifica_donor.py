@@ -28,6 +28,12 @@ Uso
 ---
     python verifica_donor.py 036023
     python verifica_donor.py 017029 --out donor_017029.csv
+    python verifica_donor.py 040007 --pop-file <corsa>/popolazione_K9C_senza_Z3_avq_full.csv \
+        --json <corsa>/misure/donor.json
+
+v1.1 (11/10/2026, banco M1): --json scrive le stesse quantita' stampate
+(firme, riuso, collasso, n_eff per sottopopolazione e per variabile) in
+forma strutturata, cosi' la tabella III.3b si rilegge senza regex.
 """
 
 from __future__ import annotations
@@ -101,7 +107,13 @@ def main():
     ap.add_argument("--pop-file", default=None)
     ap.add_argument("--out", default=None,
                     help="CSV con id riga e donor_id ricostruito")
+    ap.add_argument("--json", default=None,
+                    help="sommario strutturato delle sezioni 1-6")
     args = ap.parse_args()
+    J = {"comune": args.comune, "popolazione": None, "individui": None,
+         "variabili_firma": None, "firme": None, "attesi": None,
+         "riuso": {}, "collasso": None, "sottopopolazioni": [],
+         "variabili": [], "firma_top": {}}
 
     f = risolvi(args.comune, args.anno, args.pop_file)
     print(f"[info] popolazione: {f}")
@@ -119,6 +131,8 @@ def main():
         print(f"[avviso] AVQ assenti dal file: {assenti}")
     print(f"[info] individui {fmt(len(p))} · variabili AVQ usate "
           f"per la firma: {len(presenti)}")
+    J.update(popolazione=f, individui=int(len(p)),
+             variabili_firma=len(presenti))
 
     att = ATTESI.get(args.comune)
 
@@ -127,6 +141,10 @@ def main():
     codici, _ = pd.factorize(firma)
     p["donor_id"] = codici
     n_firme = int(p["donor_id"].nunique())
+    J["firme"] = n_firme
+    if att:
+        J["attesi"] = {"usati": att["usati"], "pool": att["pool"],
+                       "regione": att["regione"], "riuso": att["riuso"]}
 
     riga("1. Le firme sono i donatori?")
     print(f"firme distinte                {fmt(n_firme):>12}")
@@ -160,6 +178,10 @@ def main():
     print(f"massimo                       {riuso.max():>12}")
     print(f"donatori usati una volta sola {fmt(int((riuso == 1).sum())):>12}")
     q = riuso.quantile([.05, .25, .5, .75, .95])
+    J["riuso"] = {"medio": float(riuso.mean()), "mediana": float(riuso.median()),
+                  "min": int(riuso.min()), "max": int(riuso.max()),
+                  "una_volta": int((riuso == 1).sum()),
+                  "quantili": {f"p{int(k*100)}": int(v) for k, v in q.items()}}
     print("\nquantili del riuso: " +
           "  ".join(f"p{int(k*100)}={int(v)}" for k, v in q.items()))
 
@@ -187,6 +209,12 @@ def main():
         print(f"\nfirme confinate alla cella piena       "
               f"{fmt(int(pieno.sum())):>10}  {pieno.mean():6.2%}")
         quota_ind = p["donor_id"].map(pieno).mean()
+        J["collasso"] = {"firme": int(tot),
+                         "un_sesso": float((g.sessi == 1).mean()),
+                         "una_macroeta": float((g.macro == 1).mean()),
+                         "una_istr4": float((g.istr == 1).mean()),
+                         "confinate": float(pieno.mean()),
+                         "individui_confinati": float(quota_ind)}
         print(f"individui serviti da firme confinate   "
               f"{quota_ind:>10.2%}")
         print("\n  La cella di condizionamento e' sesso x macroeta' x istr4. "
@@ -217,6 +245,9 @@ def main():
         ne = n_eff(s)
         print(f"{nome[:33]:<34}{fmt(n):>9}{fmt(nd):>7}{ne:>9.0f}"
               f"{n / ne:>9.1f}{np.sqrt(n / ne):>9.1f}")
+        J["sottopopolazioni"].append({"nome": nome, "n": int(n), "distinti": int(nd),
+                                      "n_eff": float(ne),
+                                      "banda": float(np.sqrt(n / ne))})
 
     # --- 5. n_eff per variabile -------------------------------------------
     riga("5. n_eff per variabile — l'universo giusto")
@@ -234,6 +265,9 @@ def main():
         n, nd, ne = len(s), s["donor_id"].nunique(), n_eff(s)
         print(f"{v:<12}{sel.mean():>11.1%}{fmt(n):>10}{fmt(nd):>10}"
               f"{ne:>9.0f}{np.sqrt(n / ne):>9.1f}")
+        J["variabili"].append({"variabile": v, "copertura": float(sel.mean()),
+                               "n": int(n), "distinti": int(nd),
+                               "n_eff": float(ne), "banda": float(np.sqrt(n / ne))})
     print("\n  Le 21 variabili hanno universi diversi: un solo n_eff per "
           "tutto il blocco\n  AVQ non esiste. La banda va calcolata "
           "sull'universo della variabile.")
@@ -249,6 +283,9 @@ def main():
     noti = [v for v in presenti
             if pd.to_numeric(s[v], errors="coerce").notna().any()]
     print(f"variabili con valore          {len(noti):>12} su {len(presenti)}")
+    J["firma_top"] = {"individui": int(len(s)), "quota": float(len(s) / len(p)),
+                      "peso_sigma_m2": float(len(s) ** 2 / (riuso.to_numpy(dtype="float64") ** 2).sum()),
+                      "variabili_con_valore": len(noti)}
     print(f"  {noti}")
     if "eta" in p.columns:
         print("\ncomposizione per bin d'eta':")
@@ -275,6 +312,11 @@ def main():
           "E' il numero che il\n  pannello AVQ deve usare, non n.")
 
     # --- output -----------------------------------------------------------
+    if args.json:
+        import json
+        with open(args.json, "w", encoding="utf-8") as fh:
+            json.dump(J, fh, indent=1, ensure_ascii=False)
+        print(f"\n[info] sommario in {args.json}")
     if args.out:
         p[["donor_id"]].to_csv(args.out, index_label="riga")
         print(f"\n[info] donor_id scritto in {args.out} "

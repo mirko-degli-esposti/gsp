@@ -42,6 +42,11 @@ Prerequisiti (per comune):
     fit_cs.py   <c> --livello K9C          --pool P --no-gibbs
     fit_cs.py   <c> --livello K9C_senza_Z3 --pool P --no-gibbs
 Il pool DEVE essere lo stesso: fra le due corse deve cambiare una cosa sola.
+
+v1.1 (11/10/2026, banco M1): --dir e --piena-dir indicano la cartella con
+l'hold-out (es. una corsa del banco) e quella con la corsa piena e il
+targets (es. la produzione); --out dove scrivere il JSON. Senza questi
+flag il comportamento e' quello di prima (data/comuni, data/esempio).
 """
 
 from __future__ import annotations
@@ -110,11 +115,13 @@ def confronta(vero: pd.Series, stima: pd.Series) -> dict:
             "celle": int(len(idx))}
 
 
-def analizza(comune: str, blocco: str, anno: int, livello: str) -> dict | None:
+def analizza(comune: str, blocco: str, anno: int, livello: str,
+             d: Path | None = None, d_piena: Path | None = None) -> dict | None:
     nome, attrs = BLOCCHI[blocco]
-    d = GSP / "data" / "comuni" / comune / f"constraints_{anno}"
-    f_tar = d / f"targets_{livello}.json"
-    f_pie = d / f"popolazione_{livello}.csv"
+    d = d or GSP / "data" / "comuni" / comune / f"constraints_{anno}"
+    d_piena = d_piena or d
+    f_tar = d_piena / f"targets_{livello}.json"
+    f_pie = d_piena / f"popolazione_{livello}.csv"
     f_out = d / f"popolazione_{livello}_senza_{blocco}.csv"
     for f in (f_tar, f_pie, f_out):
         if not f.exists():
@@ -160,7 +167,17 @@ def main() -> None:
     ap.add_argument("--blocco", default="Z3", choices=sorted(BLOCCHI))
     ap.add_argument("--anno", type=int, default=2024)
     ap.add_argument("--livello", default="K9C")
+    ap.add_argument("--dir", default=None,
+                    help="cartella con popolazione_<LIV>_senza_<B>.csv "
+                         "(default data/comuni/<c>/constraints_<anno>)")
+    ap.add_argument("--piena-dir", default=None,
+                    help="cartella con popolazione_<LIV>.csv e targets_<LIV>.json "
+                         "(default: --dir)")
+    ap.add_argument("--out", default=None,
+                    help="JSON di uscita (default data/esempio/holdout_<B>.json)")
     args = ap.parse_args()
+    if (args.dir or args.piena_dir) and (args.tutti or not args.comune):
+        ap.error("--dir/--piena-dir valgono per un solo comune")
 
     if args.tutti:
         base = GSP / "data" / "comuni"
@@ -177,8 +194,10 @@ def main() -> None:
 
     print(f"hold-out del blocco {args.blocco} ({BLOCCHI[args.blocco][0]})")
     print("  TVD contro il blocco escluso, che viene dal censimento\n")
-    ris = [r for c in bersagli if (r := analizza(c, args.blocco, args.anno,
-                                                 args.livello))]
+    ris = [r for c in bersagli
+           if (r := analizza(c, args.blocco, args.anno, args.livello,
+                             Path(args.dir) if args.dir else None,
+                             Path(args.piena_dir) if args.piena_dir else None))]
     if not ris:
         return
 
@@ -188,7 +207,8 @@ def main() -> None:
         print("  fra pavimento e indipendenza: e' la parte di geografia che")
         print("  NON sopravvive agli altri blocchi, e che il censimento deve dare.")
 
-    out = GSP / "data" / "esempio" / f"holdout_{args.blocco}.json"
+    out = Path(args.out) if args.out else \
+        GSP / "data" / "esempio" / f"holdout_{args.blocco}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     json.dump({"blocco": args.blocco, "anno": args.anno, "livello": args.livello,
                "nota": ("TVD fra la distribuzione del blocco nel censimento e "

@@ -35,7 +35,7 @@ bash scripts/diagnostica_report.sh [COD ...]   # report measurements -> note/mis
 scripts/todo.sh "testo" [tag]         # append an item to note/TODO.md
 
 python -m gsp.banco nuovo COD --etichetta E --senza Z3   # experiment manifest (lab run, isolated)
-python -m gsp.banco lancia <id> | elenca | replica <id>   # run it, list runs, determinism check
+python -m gsp.banco lancia <id> | misura <id> | elenca | indice | replica <id>   # run, measure (misure/*.json), list, indice.parquet, determinism check
 ```
 
 Experimental runs never go into `data/`: `gsp.banco` (the lab, see `note/laboratorio_design_vNN.md`) runs the same chain into `~/progetti/laboratorio/corse/<id>/` through `GSP_COMUNI_DIR`, with a manifest that records knobs, commit and product hashes.

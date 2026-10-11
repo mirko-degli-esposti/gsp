@@ -33,7 +33,12 @@ scripts/rigenera.sh --from avq|enrich|nucleo   # restart from a later stage
 scripts/rigenera.sh --confronta <archive>      # byte-compare outputs with an archive (determinism test)
 bash scripts/diagnostica_report.sh [COD ...]   # report measurements -> note/misure/diagnostica_report_v1.0/
 scripts/todo.sh "testo" [tag]         # append an item to note/TODO.md
+
+python -m gsp.banco nuovo COD --etichetta E --senza Z3   # experiment manifest (lab run, isolated)
+python -m gsp.banco lancia <id> | elenca | replica <id>   # run it, list runs, determinism check
 ```
+
+Experimental runs never go into `data/`: `gsp.banco` (the lab, see `note/laboratorio_design_vNN.md`) runs the same chain into `~/progetti/laboratorio/corse/<id>/` through `GSP_COMUNI_DIR`, with a manifest that records knobs, commit and product hashes.
 
 `rigenera.sh` overwrites products in `data/comuni/<COD>/` and never deletes anything. Back up `data/comuni/` before a full run (see `--help`). A run counts as citable only if `git status` is clean, and it records HEAD in `log/rigenera_<stamp>/commit.txt`. Always run `fit_cs.py` with the production flags from `rigenera.sh` (`--eps 1e-8 --min-alpha 2e-4 --outer 500 --numba --sparse --tol 0 --sweeps 40 --no-gibbs --pool N`). Its bare defaults take a much slower path.
 

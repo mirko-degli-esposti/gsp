@@ -1,0 +1,15 @@
+# python -m gsp.banco confronta 040007_senza_Z3_20261011a 040007_senza_Z3_replica_20261011a — 11/10/2026, gsp 9ebf594 (albero non pulito: gsp.banco non ancora committato)
+   uguale   comuni/040007/constraints_2024/cs_K9C_senza_Z3.json
+   uguale   comuni/040007/constraints_2024/fit_K9C_senza_Z3.json
+   uguale   comuni/040007/constraints_2024/popolazione_K9C_senza_Z3.csv
+   uguale   comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq.csv
+   uguale   comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv
+   uguale   comuni/040007/constraints_2024/targets_K9C_senza_Z3.json
+   uguale   nuclei/nuclei_040007.csv
+   uguale   nuclei/nuclei_040007_diagnostica.json
+
+# python -m gsp.banco elenca
+id                                     liv.             anelli stato       tempo  commit   note
+037006_senza_Z3_20261011a              K9C_senza_Z3     1234   finita       133s  9ebf594  M0: hold-out Z3 Bologna, anelli 1-4, tempi misurati
+040007_senza_Z3_20261011a              K9C_senza_Z3     1234   finita        85s  9ebf594  M0: hold-out Z3, anelli 1-4
+040007_senza_Z3_replica_20261011a      K9C_senza_Z3     1234   finita        90s  9ebf594  replica di 040007_senza_Z3_20261011a

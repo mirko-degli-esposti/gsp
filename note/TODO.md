@@ -33,3 +33,4 @@
 - [ ] 2026-10-10 [gemello] enrich (3d): età singola condizionata anche allo stato civile (pesi c1 sesso×età×stato civile); oggi indipendente entro il blocco 75-100 — gemello_stato_v2 §3
 - [ ] 2026-10-10 [gemello] Nuclei di produzione Modena (19/08) ≠ codice attuale (31.479 ruoli diversi): accertare la causa (candidato 9b3ac05) — gemello_stato_v2 §4
 - [ ] 2026-10-10 [gemello] fit_cs: uscire con errore se il fit esatto non converge (MRE vincoli positivi > soglia, es. 1%); oggi un cs infeasibile dà λ~1e19 e una popolazione scritta senza errore — gemello_stato_v3 §3, §5.1
+- [ ] 2026-10-11 [banco] fit_<LIV>.json (t_exact_s, t_gibbs_s) e nuclei_<COD>_diagnostica.json (generato) portano l'orologio dentro: contro la regola III.1 del report; gsp.banco li confronta senza quelle chiavi, ma andrebbero spostati nel log

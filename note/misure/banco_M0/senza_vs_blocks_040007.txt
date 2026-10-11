@@ -1,0 +1,66 @@
+# senza_vs_blocks su Cesena 040007, K9C, pool 125000 — 11/10/2026, gsp 9ebf594
+# comando: bash run.sh (in calce); tre cartelle isolate via GSP_COMUNI_DIR
+== A: --senza Z3
+cs_build A: 1s rc=0
+fit A: 67s rc=0
+== B: full cs + --blocks senza Z3
+cs_build B: 0s rc=0
+fit B: 71s rc=0
+== C: replica di A
+cs_build C: 0s rc=0
+fit C: 69s rc=0
+== confronti
+cs A==C
+pop A==C (determinismo)
+pop A==B (senza == blocks)
+vars uguali: True domain uguali: True categories uguali: True
+m A: 1158  m B senza Z3: 1158  solo in A: 0  solo in B: 0
+<scratch>/A_fit.log:MRE(alpha>0)=6.903e-04
+<scratch>/B_fit.log:MRE(alpha>0)=6.903e-04
+<scratch>/C_fit.log:MRE(alpha>0)=6.903e-04
+<scratch>/A_fit.log:[cs] blocchi tenuti: {'A': 48, 'B': 32, 'C': 78, 'D': 59, 'E': 12, 'F': 14, 'Si': 9, 'Sc': 20, 'G': 12, 'H': 18, 'GC': 12, 'Z1': 192, 'Z2': 313, 'Z4': 96, 'Z5': 131} | zeri->eps: 35 | 
+<scratch>/A_fit.log:[cs] blocchi tenuti: {'A': 45, 'B': 32, 'C': 78, 'D': 59, 'E': 12, 'F': 14, 'Si': 1, 'Sc': 2, 'G': 12, 'H': 18, 'GC': 6, 'Z1': 192, 'Z2': 313, 'Z4': 96, 'Z5': 131} | zeri->eps: 35 | dr
+<scratch>/B_fit.log:[cs] blocchi tenuti: {'A': 48, 'B': 32, 'C': 78, 'D': 59, 'E': 12, 'F': 14, 'Si': 9, 'Sc': 20, 'G': 12, 'H': 18, 'GC': 12, 'Z1': 192, 'Z2': 313, 'Z4': 96, 'Z5': 131} | zeri->eps: 35 | 
+<scratch>/B_fit.log:[cs] blocchi tenuti: {'A': 45, 'B': 32, 'C': 78, 'D': 59, 'E': 12, 'F': 14, 'Si': 1, 'Sc': 2, 'G': 12, 'H': 18, 'GC': 6, 'Z1': 192, 'Z2': 313, 'Z4': 96, 'Z5': 131} | zeri->eps: 35 | dr
+FINE
+
+# ---- run.sh ----
+#!/usr/bin/env bash
+set -u
+S=$(dirname "$0"); cd ~/progetti/gsp
+PY=~/miniconda3/envs/gsp/bin/python
+C=040007; LIV=K9C; POOL=125000
+FLAGS="--eps 1e-8 --min-alpha 2e-4 --outer 500 --numba --sparse --tol 0 --sweeps 40 --no-gibbs"
+for T in A B C; do
+  mkdir -p $S/$T/$C
+  rsync -a --exclude 'cs_*' --exclude 'fit_*' --exclude 'targets_*' --exclude 'popolazione_*' --exclude 'pool_*' data/comuni/$C/ $S/$T/$C/
+done
+echo "== A: --senza Z3"
+export GSP_COMUNI_DIR=$S/A
+t0=$SECONDS; $PY scripts/vincoli/cs_build.py $C --anno 2024 --livello $LIV --esclusioni --senza Z3 > $S/A_cs.log 2>&1; echo "cs_build A: $((SECONDS-t0))s rc=$?"
+t0=$SECONDS; $PY scripts/fit/fit_cs.py $C --anno 2024 --livello ${LIV}_senza_Z3 --pool $POOL $FLAGS > $S/A_fit.log 2>&1; echo "fit A: $((SECONDS-t0))s rc=$?"
+echo "== B: full cs + --blocks senza Z3"
+export GSP_COMUNI_DIR=$S/B
+t0=$SECONDS; $PY scripts/vincoli/cs_build.py $C --anno 2024 --livello $LIV --esclusioni > $S/B_cs.log 2>&1; echo "cs_build B: $((SECONDS-t0))s rc=$?"
+t0=$SECONDS; $PY scripts/fit/fit_cs.py $C --anno 2024 --livello $LIV --pool $POOL $FLAGS --blocks "A,B,C,D,E,F,Si,Sc,Z1,Z2,Z4,G,H,Z5,GC,M,MC,?" > $S/B_fit.log 2>&1; echo "fit B: $((SECONDS-t0))s rc=$?"
+echo "== C: replica di A"
+export GSP_COMUNI_DIR=$S/C
+t0=$SECONDS; $PY scripts/vincoli/cs_build.py $C --anno 2024 --livello $LIV --esclusioni --senza Z3 > $S/C_cs.log 2>&1; echo "cs_build C: $((SECONDS-t0))s rc=$?"
+t0=$SECONDS; $PY scripts/fit/fit_cs.py $C --anno 2024 --livello ${LIV}_senza_Z3 --pool $POOL $FLAGS > $S/C_fit.log 2>&1; echo "fit C: $((SECONDS-t0))s rc=$?"
+echo "== confronti"
+D=$C/constraints_2024
+cmp $S/A/$D/cs_K9C_senza_Z3.json $S/C/$D/cs_K9C_senza_Z3.json && echo "cs A==C"
+cmp $S/A/$D/popolazione_K9C_senza_Z3.csv $S/C/$D/popolazione_K9C_senza_Z3.csv && echo "pop A==C (determinismo)"
+cmp $S/A/$D/popolazione_K9C_senza_Z3.csv $S/B/$D/popolazione_K9C.csv && echo "pop A==B (senza == blocks)" || echo "pop A!=B"
+$PY - <<PYEOF
+import json
+a=json.load(open("$S/A/$D/cs_K9C_senza_Z3.json")); b=json.load(open("$S/B/$D/cs_K9C.json"))
+print("vars uguali:", a["vars"]==b["vars"], "domain uguali:", a["domain_sizes"]==b["domain_sizes"], "categories uguali:", a["categories"]==b["categories"])
+sig=lambda j:{(tuple(c["attrs"]),tuple(c["vals"]),round(c["alpha"],12)) for c in j["constraints"]}
+vb=b["vars"]; z3={"istruzione","sesso","zona"}
+bb={s for s in sig(b) if {vb[i] for i in s[0]}!=z3}
+sa=sig(a); print("m A:",len(sa)," m B senza Z3:",len(bb)," solo in A:",len(sa-bb)," solo in B:",len(bb-sa))
+PYEOF
+grep -o "MRE(alpha>0)=[0-9.e-]*" $S/A_fit.log $S/B_fit.log $S/C_fit.log
+grep "blocchi tenuti" $S/A_fit.log $S/B_fit.log | cut -c1-300
+echo FINE

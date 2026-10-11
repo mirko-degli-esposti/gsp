@@ -1,0 +1,48 @@
+versione: '0.1'
+id: 040007_senza_Z3_20261011a
+tipo: corsa
+comune: '040007'
+anno: 2024
+livello: K9C
+base: produzione
+anelli:
+- 1
+- 2
+- 3
+- 4
+manopole:
+  vincoli:
+    senza:
+    - Z3
+note: 'M0: hold-out Z3, anelli 1-4'
+esito:
+  stato: finita
+  ereditati: []
+  inizio: '2026-10-11T14:58:42'
+  tempi_s:
+    cs_build: 0.5
+    fit_cs: 69.4
+    assign_avq: 3.2
+    enrich: 8.0
+    assign_nucleo: 4.2
+  comandi:
+    cs_build: /home/mirko/miniconda3/envs/gsp/bin/python scripts/vincoli/cs_build.py 040007 --anno 2024 --livello K9C --esclusioni --senza Z3
+    fit_cs: /home/mirko/miniconda3/envs/gsp/bin/python scripts/fit/fit_cs.py 040007 --anno 2024 --livello K9C_senza_Z3 --eps 1e-8 --min-alpha 2e-4 --pool 125000 --outer 500 --numba --sparse --tol 0 --sweeps
+      40 --no-gibbs
+    assign_avq: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/assign_avq.py 040007 --anno 2024 --pop-file popolazione_K9C_senza_Z3.csv
+    enrich: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/enrich.py 040007 --anno 2024 --pop-file popolazione_K9C_senza_Z3_avq.csv
+    assign_nucleo: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/assign_nucleo.py 040007 --anno 2024 --out-dir /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/nuclei
+  fase: null
+  commit_gsp: 9ebf594
+  git_pulito: false
+  python: 3.11.15
+  prodotti:
+    comuni/040007/constraints_2024/cs_K9C_senza_Z3.json: 635ec10ad4ace57800fca4511d6079ef8980659bcdc0b48a5c4af257251b7636
+    comuni/040007/constraints_2024/targets_K9C_senza_Z3.json: 739d781c14055670ec0095ac831b5a14434ef57a000d4f4d75f83f969818d6a2
+    comuni/040007/constraints_2024/fit_K9C_senza_Z3.json: senza-orologio:d8d91ae7a77f3f07d4c925e317bbeba3ccaa8bc470114e744d59b32dfc3baa51
+    comuni/040007/constraints_2024/popolazione_K9C_senza_Z3.csv: c8cd1a7450d6c7b20e1c75f4775ca7d055470b5a0daa84b0a202fc9157daa841
+    comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq.csv: 547ef4c92c2293a6cece751b74274e82ce97916c84d49733e0ebae02b71e9bfa
+    comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv: 6aa418d18a9ea440e9861bebd983beb0cdcbe48e24f5b81830812ce418176685
+    nuclei/nuclei_040007.csv: 0f8af8e7e9cea70bc23498f23cb2f1e3be19c6c4165c51da309d4b9d8593b41d
+    nuclei/nuclei_040007_diagnostica.json: senza-orologio:a9848062dc3f3aff7a737469e8eb982dbbd1b89dd5af0418fc1b1608e8747b9e
+  fine: '2026-10-11T15:00:08'

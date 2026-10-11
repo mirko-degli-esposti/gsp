@@ -228,6 +228,15 @@ dominati dal rumore.
 
 ## 6. Preprint (`~/progetti/paper-gemello`)
 
+*Aggiornamento 11/10/2026 (patch). Decisione di Mirko: il documento non è
+più un preprint ma una **nota di lavoro in inglese** («working report»):
+cosa volevamo, cosa abbiamo fatto, cosa abbiamo ottenuto, limiti e
+prospettive. La bozza precedente è il tag `preprint-bozza-v0`, e il
+manoscritto si riprende dopo il livello 2. La nota di lavoro
+(paper-gemello `8d51bd9`, 11 pagine) usa già le macro di g2 e g4, la
+lettura del §4 e lo stato delle ipotesi H1–H6. Il testo qui sotto descrive
+la situazione prima di questa decisione.*
+
 - `numeri_preprint.py` produce ora una sezione per ogni
   `config/livello1a*.yaml` con risultati: 167 macro, con le figure
   `_g2`/`_g4` per bilancio, previsione e domande bersaglio.

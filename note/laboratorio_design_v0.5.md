@@ -17,6 +17,66 @@ stanno in §0 e non si cambiano senza una nuova versione.*
 
 ---
 
+## Ripresa (patch dell'11/10/2026, sera): dove sta cosa, da dove si riparte
+
+*Sezione aggiunta per la prossima chat; nessun contenuto della nota cambia.
+Mirko ha aperto `banco.html` e il pannello sulle corse, vede i numeri e
+deve ragionarci: i commenti di §11–§14 sono letture provvisorie, non
+conclusioni.*
+
+**Stato.** M0–M3 fatte in un giorno (§9). Codice in `src/gsp/banco/`
+(gsp, `dev-mirko`) e in `animarium/build/{banco.html,pannello_marginali.html,to_parquet.py}`
+(animarium, `main`). Tutto committato; gsp si spinge su `privato`, mai su
+`origin`.
+
+**Dove sono le cose.**
+- Corse: `~/progetti/laboratorio/corse/<id>/` (manifesto, `comuni/`,
+  `nuclei/`, `misure/`, `bundle/`, `log/`); indice in
+  `~/progetti/laboratorio/indice.{parquet,json}`; confronti in
+  `~/progetti/laboratorio/confronti/`.
+- Sei corse, tutte Cesena tranne una: Bologna senza Z3; Cesena senza Z3,
+  due repliche (una col nuovo `fit_cs`), seme 7, piena. Tutte con albero
+  non pulito al momento del lancio: non citabili per commit, servono a
+  collaudare il banco. **Per corse citabili vanno rilanciate ora**, ad
+  albero pulito (`nuovo … --lancia`, poi `misura`, `bundle`).
+- Misure grezze delle tappe: `note/misure/banco_M0..M3/`.
+
+**Comandi.**
+```
+conda activate gsp
+python -m gsp.banco nuovo 037006 --etichetta senza_Z3 --senza Z3 --lancia
+python -m gsp.banco misura <id>;  python -m gsp.banco bundle <id>
+python -m gsp.banco tvd A B --nullo C D;  python -m gsp.banco replica <id>
+python -m gsp.banco elenca;  python -m gsp.banco indice
+cd ~/progetti && python animarium/build/serve_range.py     # poi, nel browser:
+http://localhost:8000/animarium/build/banco.html           # NON file://
+```
+
+**I numeri su cui ragionare** (§11–§13, Cesena salvo dove detto).
+1. Hold-out Z3: posizione nel divario 101 % (seme 42), 110 % (seme 7);
+   Bologna 86 %. Lettura provvisoria: la geografia dell'istruzione non
+   passa per gli altri blocchi. Da capire se «sopra il 100 %» ha un senso
+   (il hold-out fa peggio dell'indipendenza dato il sesso) o se è rumore
+   della metrica, che col seme si muove di ~10 punti.
+2. TVD piena contro senza Z3 con nullo: solo zona×istruzione sopra il
+   nullo (3,2×); tutto il resto 0,5–1,2×. Quindi togliere Z3 non tocca le
+   altre relazioni oltre il campionamento.
+3. Bologna senza Z3: MRE osservato 6,9 % contro atteso 5,6 %, sd(z) 1,28,
+   |z|>3 allo 0,65 %; Cesena sta sul pavimento (sd(z) ≈ 1). Da confrontare
+   con la corsa piena di Bologna (non ancora fatta) prima di leggerlo.
+4. Il nullo di `tvd` cambia solo il seme dell'anello 1; gli anelli 2–4
+   ripartono con i loro semi su una popolazione diversa (§10).
+
+**Decisioni in sospeso.**
+- Nome del modulo (§1): `banco` è provvisorio.
+- Prossima tappa: M5 (accorpamento, rumore sui target, semi per anello)
+  oppure M4 (API, coda, pagina *esperimenti*). Suggerimento in nota: M5.
+- Rigenerare gli anelli 3–4 della flotta (TODO `[gemello]`): la corsa
+  piena del banco riproduce la produzione solo fino all'anello 2.
+- Percorsi assoluti nei JSON di `misure/` (§10).
+
+---
+
 ## 0. Scopo e decisioni prese
 
 **In una frase.** Una dashboard per *lavorare* con le popolazioni della flotta:

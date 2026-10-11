@@ -1,0 +1,87 @@
+--- /home/mirko/miniconda3/envs/gsp/bin/python scripts/diagnostica/verifica_donor.py 037006 --anno 2024 --pop-file /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv --json /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/misure/donor.json ---
+[info] popolazione: /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv
+[avviso] AVQ assenti dal file: ['BMIMIN']
+[info] individui 390.098 · variabili AVQ usate per la firma: 20
+
+1. Le firme sono i donatori?
+----------------------------
+firme distinte                       4.169
+donatori dichiarati usati            4.625   (pool 4.629, Emilia-Romagna)
+differenza                            -456   (-9.859%)
+
+  -> MENO firme che donatori: alcune coppie di donatori hanno 21-uple
+     identiche. Sono informativamente equivalenti, quindi n_eff sulle firme
+     resta la quantita' giusta, ma va dichiarato.
+
+2. Distribuzione del riuso
+--------------------------
+riuso medio                           93.6   (dichiarato 84.3)
+mediana                                 73
+minimo                                   1
+massimo                               5845
+donatori usati una volta sola            8
+
+quantili del riuso: p5=33  p25=53  p50=73  p75=100  p95=186
+
+3. Quanto collasso gerarchico (proxy di cella_avq)
+--------------------------------------------------
+firme che servono un solo sesso             4.135  99.18%
+firme su una sola macroeta'                 2.923  70.11%
+firme su una sola classe istr4              1.581  37.92%
+
+firme confinate alla cella piena              337   8.08%
+individui serviti da firme confinate        4.41%
+
+  La cella di condizionamento e' sesso x macroeta' x istr4. Una firma che
+  attraversa piu' celle e' passata per il collasso gerarchico: il resto
+  della popolazione ha ricevuto le AVQ da una cella meno specifica.
+
+4. n_eff su sottopopolazioni tipiche
+------------------------------------
+sottopopolazione                          n distinti    n_eff  n/n_eff  banda x
+-------------------------------------------------------------------------------
+
+5. n_eff per variabile — l'universo giusto
+------------------------------------------
+variabile     copertura         n  distinti    n_eff  banda x
+-------------------------------------------------------------
+SALUTE           100.0%   390.098     4.169      966     20.1
+AMBIENTE          87.6%   341.627     4.059     2877     10.9
+FIDUCIA           87.7%   341.957     4.060     2879     10.9
+CRONI             94.1%   367.232     3.897      873     20.5
+MH                88.8%   346.257     4.112     2915     10.9
+BMI               85.9%   335.287     3.949     2790     11.0
+PUNTIFI10         86.9%   338.895     4.012     2843     10.9
+PUNTIFI8          86.7%   338.318     4.003     2836     10.9
+PUNTIFI13         42.9%   167.415     2.101     1493     10.6
+VOTOUSL           20.4%    79.772       994      696     10.7
+
+  Le 21 variabili hanno universi diversi: un solo n_eff per tutto il blocco
+  AVQ non esiste. La banda va calcolata sull'universo della variabile.
+
+6. La firma piu' riusata — chi e'?
+----------------------------------
+individui                            5.845   (1.50% della citta')
+peso in Sigma m^2                    21.7%
+variabili con valore                     3 su 20
+  ['SALUTE', 'CRONI', 'CPESO']
+
+composizione per bin d'eta':
+eta
+0-8     3356
+9-14    2489
+comune intero                       390.098  4.169      966    403.8     20.1
+quartiere: Mazzini                   38.317  4.102      872     43.9      6.6
+quartiere: Bolognina                 36.444  4.117      851     42.8      6.5
+quartiere: San Vitale                35.350  4.097      968     36.5      6.0
+quartiere: Malpighi                  11.854  3.607     1220      9.7      3.1
+quartiere: Colli                      8.168  3.139      831      9.8      3.1
+Mazzini · donne                      20.392  2.153      801     25.5      5.0
+Mazzini · laurea                      2.235    672      475      4.7      2.2
+Mazzini · stranieri                   4.963  2.363      458     10.8      3.3
+
+  'banda x' e' sqrt(n/n_eff): quante volte troppo stretta sarebbe la banda
+  di confidenza calcolata ignorando i donatori. E' il numero che il
+  pannello AVQ deve usare, non n.
+
+[info] sommario in /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/misure/donor.json

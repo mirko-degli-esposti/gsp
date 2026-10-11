@@ -1,0 +1,11 @@
+--- /home/mirko/miniconda3/envs/gsp/bin/python scripts/esempio/holdout_z.py 040007 --blocco Z3 --anno 2024 --livello K9C --dir /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/comuni/040007/constraints_2024 --piena-dir /home/mirko/progetti/gsp/data/comuni/040007/constraints_2024 --out /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/misure/holdout_Z3.json ---
+hold-out del blocco Z3 (Z3_zona_sesso_istruz)
+  TVD contro il blocco escluso, che viene dal censimento
+
+  040007  pavimento 0.0137 · hold-out 0.0533 · indipendenza 0.0528  →  101% del divario
+
+  l'hold-out copre in media il 101% del divario
+  fra pavimento e indipendenza: e' la parte di geografia che
+  NON sopravvive agli altri blocchi, e che il censimento deve dare.
+
+-> /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/misure/holdout_Z3.json

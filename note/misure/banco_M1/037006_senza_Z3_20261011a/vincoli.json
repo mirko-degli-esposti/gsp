@@ -1,0 +1,391 @@
+{
+ "comune": "037006",
+ "cs": "/home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/cs_K9C_senza_Z3.json",
+ "popolazione": "/home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3.csv",
+ "globale": {
+  "individui": 390098,
+  "attributi": 9,
+  "celle": 1535,
+  "mre_oss": 0.06908831078911383,
+  "mre_att": 0.05611898622884344,
+  "z_abs_medio": 0.8333629712704591,
+  "z_abs_medio_atteso": 0.7978845608028654,
+  "sd_z": 1.2829185741214788,
+  "media_z": 0.033226350284122026,
+  "quota_z2": 0.054071661237785014,
+  "quota_z3": 0.006514657980456026,
+  "z_max": 26.000033325023438,
+  "z_max_atteso": 1.0,
+  "z_max_cella": "sesso=M, eta=25-34, stato_civile=vedovo",
+  "zeri_violati": 0
+ },
+ "blocchi": [
+  {
+   "blocco": "sesso × background",
+   "celle": 12,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.012737075985557235,
+   "MRE_att": 0.012172773825499722,
+   "z_med": 0.9372388999985409,
+   "z_max": 2.3933627014192846,
+   "n_z3": 0
+  },
+  {
+   "blocco": "eta × istruzione",
+   "celle": 9,
+   "zeri_violati": 0,
+   "fuori": 0.9347010238452902,
+   "MRE_oss": 0.0005499037668408029,
+   "MRE_att": 0.006059321915496371,
+   "z_med": 0.0907533507065296,
+   "z_max": 0.0907533507065296,
+   "n_z3": 0
+  },
+  {
+   "blocco": "eta × condizione",
+   "celle": 20,
+   "zeri_violati": 0,
+   "fuori": 0.887615419715046,
+   "MRE_oss": 0.0010631238679831019,
+   "MRE_att": 0.0066280366391326655,
+   "z_med": 0.15489442090720457,
+   "z_max": 0.21903549110787954,
+   "n_z3": 0
+  },
+  {
+   "blocco": "cittadinanza × istruzione",
+   "celle": 12,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.006471582763258921,
+   "MRE_att": 0.008134589886098187,
+   "z_med": 0.7805386245664291,
+   "z_max": 2.226390678102022,
+   "n_z3": 0
+  },
+  {
+   "blocco": "cittadinanza × condizione",
+   "celle": 14,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.004766498875856083,
+   "MRE_att": 0.010200875698835774,
+   "z_med": 0.6209591082252001,
+   "z_max": 2.2271184181720245,
+   "n_z3": 0
+  },
+  {
+   "blocco": "cittadinanza × background",
+   "celle": 12,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.007988808621285724,
+   "MRE_att": 0.008432598876959789,
+   "z_med": 0.7528725710334726,
+   "z_max": 2.8513596809294484,
+   "n_z3": 0
+  },
+  {
+   "blocco": "zona × sesso × eta",
+   "celle": 288,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.025764072575571843,
+   "MRE_att": 0.03223189001250109,
+   "z_med": 0.8004239504253299,
+   "z_max": 2.873945370392949,
+   "n_z3": 0
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "celle": 216,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.04777512924855101,
+   "MRE_att": 0.06156481869951169,
+   "z_med": 0.7893537128971588,
+   "z_max": 3.1406747714253282,
+   "n_z3": 1
+  },
+  {
+   "blocco": "sesso × eta × stato_civile",
+   "celle": 52,
+   "zeri_violati": 0,
+   "fuori": 7.690375239042496e-06,
+   "MRE_oss": 0.7852011019675182,
+   "MRE_att": 0.0973153816970591,
+   "z_med": 1.8259760666906617,
+   "z_max": 26.000033325023438,
+   "n_z3": 5
+  },
+  {
+   "blocco": "sesso × eta × cittadinanza",
+   "celle": 32,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.010446952257715556,
+   "MRE_att": 0.014821285885094553,
+   "z_med": 0.7024407330506183,
+   "z_max": 2.0193054867732374,
+   "n_z3": 0
+  },
+  {
+   "blocco": "sesso × eta × istruzione",
+   "celle": 78,
+   "zeri_violati": 0,
+   "fuori": 0.06529897615470984,
+   "MRE_oss": 0.02226215852463166,
+   "MRE_att": 0.025687410619143185,
+   "z_med": 0.8764147682277906,
+   "z_max": 2.6415316099108628,
+   "n_z3": 0
+  },
+  {
+   "blocco": "sesso × eta × condizione",
+   "celle": 72,
+   "zeri_violati": 0,
+   "fuori": 0.11238458028495403,
+   "MRE_oss": 0.07134249388907699,
+   "MRE_att": 0.08479037094160674,
+   "z_med": 0.7558248740643823,
+   "z_max": 2.515467697847203,
+   "n_z3": 0
+  },
+  {
+   "blocco": "sesso × background × origine_genitori",
+   "celle": 30,
+   "zeri_violati": 0,
+   "fuori": 0.0002947977174966291,
+   "MRE_oss": 0.1490476262481521,
+   "MRE_att": 0.08461700754867772,
+   "z_med": 1.4046439302347804,
+   "z_max": 4.056922422437781,
+   "n_z3": 1
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "celle": 576,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.054467119172754624,
+   "MRE_att": 0.07159775614918233,
+   "z_med": 0.7831973459235828,
+   "z_max": 3.856226816590233,
+   "n_z3": 3
+  },
+  {
+   "blocco": "zona × sesso × eta × condizione",
+   "celle": 144,
+   "zeri_violati": 0,
+   "fuori": 0.5395080210613743,
+   "MRE_oss": 0.028339411242471118,
+   "MRE_att": 0.03946821933856338,
+   "z_med": 0.7673301029462133,
+   "z_max": 2.7298126283998942,
+   "n_z3": 0
+  }
+ ],
+ "top": [
+  {
+   "blocco": "sesso × eta × stato_civile",
+   "cella": "sesso=M, eta=25-34, stato_civile=vedovo",
+   "atteso": 1.0,
+   "osservato": 27.0,
+   "scarto": 26.0,
+   "z": 26.000033325023438,
+   "err_rel": 26.0,
+   "rumore_atteso": 0.9999987182699721
+  },
+  {
+   "blocco": "sesso × eta × stato_civile",
+   "cella": "sesso=M, eta=15-24, stato_civile=vedovo",
+   "atteso": 2.0,
+   "osservato": 19.0,
+   "scarto": 17.0,
+   "z": 12.020846095149858,
+   "err_rel": 8.5,
+   "rumore_atteso": 0.7071049685453971
+  },
+  {
+   "blocco": "sesso × eta × stato_civile",
+   "cella": "sesso=M, eta=15-24, stato_civile=divorziato_sciolto",
+   "atteso": 5.999999999999999,
+   "osservato": 31.0,
+   "scarto": 25.0,
+   "z": 10.206285752065618,
+   "err_rel": 4.166666666666667,
+   "rumore_atteso": 0.4082451508692463
+  },
+  {
+   "blocco": "sesso × eta × stato_civile",
+   "cella": "sesso=M, eta=15-24, stato_civile=coniugato_unito",
+   "atteso": 64.0,
+   "osservato": 26.0,
+   "scarto": -38.0,
+   "z": -4.7503896936296774,
+   "err_rel": 0.59375,
+   "rumore_atteso": 0.12498974574574902
+  },
+  {
+   "blocco": "sesso × eta × stato_civile",
+   "cella": "sesso=M, eta=25-34, stato_civile=divorziato_sciolto",
+   "atteso": 70.0,
+   "osservato": 34.0,
+   "scarto": -36.0,
+   "z": -4.303209099340402,
+   "err_rel": 0.5142857142857142,
+   "rumore_atteso": 0.11951213673640544
+  },
+  {
+   "blocco": "sesso × background × origine_genitori",
+   "cella": "sesso=M, background=naturalizzato_g2, origine_genitori=madre_straniera_padre_italiano",
+   "atteso": 35.0,
+   "osservato": 11.0,
+   "scarto": -24.0,
+   "z": -4.056922422437781,
+   "err_rel": 0.6857142857142857,
+   "rumore_atteso": 0.1690232679633652
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=37006005, sesso=F, eta=0-8, cittadinanza=FRG",
+   "atteso": 151.5386669955858,
+   "osservato": 199.0,
+   "scarto": 47.4613330044142,
+   "z": 3.856226816590233,
+   "err_rel": 0.31319618910067826,
+   "rumore_atteso": 0.08121830068533514
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=37006013, sesso=M, eta=65-74, cittadinanza=FRG",
+   "atteso": 46.37667574160187,
+   "osservato": 68.0,
+   "scarto": 21.623324258398128,
+   "z": 3.1754002180044116,
+   "err_rel": 0.46625429513053857,
+   "rumore_atteso": 0.14683323774020438
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "cella": "zona=37006016, sesso=F, background=naturalizzato_g2",
+   "atteso": 146.05149627469453,
+   "osservato": 184.0,
+   "scarto": 37.94850372530547,
+   "z": 3.1406747714253282,
+   "err_rel": 0.2598296127958299,
+   "rumore_atteso": 0.08273050592816135
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=37006017, sesso=M, eta=0-8, cittadinanza=ITL",
+   "atteso": 349.4949828905561,
+   "osservato": 406.0,
+   "scarto": 56.505017109443884,
+   "z": 3.023856453433948,
+   "err_rel": 0.16167618957534036,
+   "rumore_atteso": 0.05346688642965768
+  },
+  {
+   "blocco": "sesso × background × origine_genitori",
+   "cella": "sesso=F, background=straniero_g2, origine_genitori=madre_straniera_padre_italiano",
+   "atteso": 41.0,
+   "osservato": 22.0,
+   "scarto": -19.0,
+   "z": -2.9674574225319397,
+   "err_rel": 0.4634146341463415,
+   "rumore_atteso": 0.15616555460160222
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "cella": "zona=37006013, sesso=M, background=straniero_immigrato",
+   "atteso": 1059.8000506845199,
+   "osservato": 1156.0,
+   "scarto": 96.19994931548013,
+   "z": 2.9590589251057375,
+   "err_rel": 0.09077179157836898,
+   "rumore_atteso": 0.030675898613653114
+  },
+  {
+   "blocco": "zona × sesso × eta",
+   "cella": "zona=37006003, sesso=F, eta=50-64",
+   "atteso": 2969.0,
+   "osservato": 3125.0,
+   "scarto": 156.0,
+   "z": 2.873945370392949,
+   "err_rel": 0.05254294375210509,
+   "rumore_atteso": 0.0182825130544917
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "cella": "zona=37006004, sesso=M, background=italiano_nativo",
+   "atteso": 3293.946286017715,
+   "osservato": 3458.0,
+   "scarto": 164.053713982285,
+   "z": 2.8705767548614594,
+   "err_rel": 0.04980461116766453,
+   "rumore_atteso": 0.017350036393668288
+  },
+  {
+   "blocco": "cittadinanza × background",
+   "cella": "cittadinanza=ITL, background=naturalizzato_g2",
+   "atteso": 5396.0,
+   "osservato": 5604.0,
+   "scarto": 208.0,
+   "z": 2.8513596809294484,
+   "err_rel": 0.0385470719051149,
+   "rumore_atteso": 0.01351883880624623
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=37006003, sesso=F, eta=50-64, cittadinanza=ITL",
+   "atteso": 2442.2704512402934,
+   "osservato": 2581.0,
+   "scarto": 138.72954875970663,
+   "z": 2.816020774681696,
+   "err_rel": 0.05680351604354612,
+   "rumore_atteso": 0.02017155432738837
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=37006004, sesso=F, eta=65-74, cittadinanza=ITL",
+   "atteso": 478.13304529392707,
+   "osservato": 417.0,
+   "scarto": -61.13304529392707,
+   "z": -2.7974862801054723,
+   "err_rel": 0.12785781258090245,
+   "rumore_atteso": 0.045704536065171296
+  },
+  {
+   "blocco": "sesso × background × origine_genitori",
+   "cella": "sesso=M, background=naturalizzato_g2, origine_genitori=madre_italiana_padre_straniero",
+   "atteso": 34.0,
+   "osservato": 18.0,
+   "scarto": -16.0,
+   "z": -2.7440969493189122,
+   "err_rel": 0.47058823529411764,
+   "rumore_atteso": 0.17149111127830893
+  },
+  {
+   "blocco": "zona × sesso × eta",
+   "cella": "zona=37006017, sesso=M, eta=0-8",
+   "atteso": 452.7672334255965,
+   "osservato": 511.0,
+   "scarto": 58.23276657440351,
+   "z": 2.7383068130115364,
+   "err_rel": 0.1286152404046989,
+   "rumore_atteso": 0.046968893256797026
+  },
+  {
+   "blocco": "zona × sesso × eta × condizione",
+   "cella": "zona=37006015, sesso=F, eta=15-24, condizione=occupato",
+   "atteso": 202.19355065336526,
+   "osservato": 241.0,
+   "scarto": 38.806449346634736,
+   "z": 2.7298126283998942,
+   "err_rel": 0.19192723616176752,
+   "rumore_atteso": 0.07030784243762088
+  }
+ ]
+}

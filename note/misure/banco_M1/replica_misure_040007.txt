@@ -1,0 +1,2 @@
+# misure della replica contro l'originale (Cesena), 11/10/2026
+cmp per file in misure/: holdout_Z3.json sezioni.json celle.csv quinq.csv istr_eta.csv uguali; vincoli.json e donor.json diversi solo nelle chiavi cs/popolazione (percorsi assoluti con l'id della corsa)

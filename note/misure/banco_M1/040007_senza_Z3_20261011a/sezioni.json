@@ -1,0 +1,27 @@
+{
+ "comune": "040007",
+ "fonte": "log/enrich.log [val]",
+ "per_sezione": {
+  "popolazione": {
+   "mae": 1.06,
+   "media_censimento": 75.3,
+   "corr": 0.9998,
+   "totale_sintetico": 96066,
+   "totale_censimento": 96066
+  },
+  "stranieri": {
+   "mae": 0.66,
+   "media_censimento": 7.5,
+   "corr": 0.9958,
+   "totale_sintetico": 9275,
+   "totale_censimento": 9499
+  },
+  "UE": {
+   "mae": 0.21,
+   "media_censimento": 2.2,
+   "corr": 0.9902,
+   "totale_sintetico": 2665,
+   "totale_censimento": 2759
+  }
+ }
+}

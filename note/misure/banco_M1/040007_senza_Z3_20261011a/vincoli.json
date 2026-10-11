@@ -1,0 +1,391 @@
+{
+ "comune": "040007",
+ "cs": "/home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/comuni/040007/constraints_2024/cs_K9C_senza_Z3.json",
+ "popolazione": "/home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/comuni/040007/constraints_2024/popolazione_K9C_senza_Z3.csv",
+ "globale": {
+  "individui": 96066,
+  "attributi": 9,
+  "celle": 1123,
+  "mre_oss": 0.09164348359066614,
+  "mre_att": 0.10757165025240144,
+  "z_abs_medio": 0.7950610317059764,
+  "z_abs_medio_atteso": 0.7978845608028654,
+  "sd_z": 0.996291959350132,
+  "media_z": -0.04469701418162463,
+  "quota_z2": 0.037399821905609976,
+  "quota_z3": 0.003561887800534283,
+  "z_max": 4.536567251467084,
+  "z_max_atteso": 1.145221173473182,
+  "z_max_cella": "zona=40007002, sesso=M, eta=75+, cittadinanza=FRG",
+  "zeri_violati": 0
+ },
+ "blocchi": [
+  {
+   "blocco": "sesso × background",
+   "celle": 12,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.02257223702893042,
+   "MRE_att": 0.028078597437723105,
+   "z_med": 0.9237927276323199,
+   "z_max": 1.9036798104726382,
+   "n_z3": 0
+  },
+  {
+   "blocco": "eta × istruzione",
+   "celle": 9,
+   "zeri_violati": 0,
+   "fuori": 0.9394374700726584,
+   "MRE_oss": 0.002913453299057412,
+   "MRE_att": 0.012687399091163376,
+   "z_med": 0.22963361348714867,
+   "z_max": 0.22963361348714867,
+   "n_z3": 0
+  },
+  {
+   "blocco": "eta × condizione",
+   "celle": 20,
+   "zeri_violati": 0,
+   "fuori": 0.8858076738908667,
+   "MRE_oss": 0.002624041824625982,
+   "MRE_att": 0.013128664892848134,
+   "z_med": 0.20083899811464512,
+   "z_max": 0.22963361348714867,
+   "n_z3": 0
+  },
+  {
+   "blocco": "cittadinanza × istruzione",
+   "celle": 12,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.019540158825549818,
+   "MRE_att": 0.01984637090930813,
+   "z_med": 0.8128092287633376,
+   "z_max": 2.122487244956452,
+   "n_z3": 0
+  },
+  {
+   "blocco": "cittadinanza × condizione",
+   "celle": 14,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.028341425165725166,
+   "MRE_att": 0.023436314417959573,
+   "z_med": 1.048861600034955,
+   "z_max": 1.9411620782738486,
+   "n_z3": 0
+  },
+  {
+   "blocco": "cittadinanza × background",
+   "celle": 12,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.013426867881933353,
+   "MRE_att": 0.019495101720800042,
+   "z_med": 1.2152853345619639,
+   "z_max": 2.6761117578971163,
+   "n_z3": 0
+  },
+  {
+   "blocco": "zona × sesso × eta",
+   "celle": 192,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.041531241227902575,
+   "MRE_att": 0.05379912770964923,
+   "z_med": 0.7832690644327643,
+   "z_max": 2.6423375881049935,
+   "n_z3": 0
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "celle": 144,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.09805339260877506,
+   "MRE_att": 0.12147725089952198,
+   "z_med": 0.7847076933560122,
+   "z_max": 3.123249095834328,
+   "n_z3": 2
+  },
+  {
+   "blocco": "sesso × eta × stato_civile",
+   "celle": 52,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.08051931144225187,
+   "MRE_att": 0.08792995563361442,
+   "z_med": 0.7361727839369535,
+   "z_max": 2.197801464407948,
+   "n_z3": 0
+  },
+  {
+   "blocco": "sesso × eta × cittadinanza",
+   "celle": 32,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.032723425066611654,
+   "MRE_att": 0.034690516775654344,
+   "z_med": 0.7628689226754626,
+   "z_max": 2.2306986931769877,
+   "n_z3": 0
+  },
+  {
+   "blocco": "sesso × eta × istruzione",
+   "celle": 78,
+   "zeri_violati": 0,
+   "fuori": 0.06056252992734162,
+   "MRE_oss": 0.042584229095466025,
+   "MRE_att": 0.053069520042788566,
+   "z_med": 0.7458037176173986,
+   "z_max": 3.511621934597542,
+   "n_z3": 1
+  },
+  {
+   "blocco": "sesso × eta × condizione",
+   "celle": 72,
+   "zeri_violati": 0,
+   "fuori": 0.11419232610913331,
+   "MRE_oss": 0.13184843764751952,
+   "MRE_att": 0.19042599985140488,
+   "z_med": 0.6645214776670672,
+   "z_max": 2.1222801651300105,
+   "n_z3": 0
+  },
+  {
+   "blocco": "sesso × background × origine_genitori",
+   "celle": 29,
+   "zeri_violati": 0,
+   "fuori": 0.0001145046114129869,
+   "MRE_oss": 0.17451250979950947,
+   "MRE_att": 0.21913438799064405,
+   "z_med": 0.8995585117560979,
+   "z_max": 1.9036798104726382,
+   "n_z3": 0
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "celle": 384,
+   "zeri_violati": 0,
+   "fuori": 0.0,
+   "MRE_oss": 0.1362148816198534,
+   "MRE_att": 0.14555584971757554,
+   "z_med": 0.8310237812094577,
+   "z_max": 4.536567251467084,
+   "n_z3": 1
+  },
+  {
+   "blocco": "zona × sesso × eta × condizione",
+   "celle": 96,
+   "zeri_violati": 0,
+   "fuori": 0.5711490017279787,
+   "MRE_oss": 0.04850482505212709,
+   "MRE_att": 0.06671438295480354,
+   "z_med": 0.7741544142402023,
+   "z_max": 2.8428694492357276,
+   "n_z3": 0
+  }
+ ],
+ "top": [
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=40007002, sesso=M, eta=75+, cittadinanza=FRG",
+   "atteso": 1.145221173473182,
+   "osservato": 6.0,
+   "scarto": 4.854778826526818,
+   "z": 4.536567251467084,
+   "err_rel": 4.239162651702845,
+   "rumore_atteso": 0.9344428103279938
+  },
+  {
+   "blocco": "sesso × eta × istruzione",
+   "cella": "sesso=M, eta=35-49, istruzione=nessun_titolo",
+   "atteso": 90.36616749054959,
+   "osservato": 57.0,
+   "scarto": -33.366167490549586,
+   "z": -3.511621934597542,
+   "err_rel": 0.3692329598246931,
+   "rumore_atteso": 0.1051459885777852
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "cella": "zona=40007005, sesso=F, background=straniero_g2",
+   "atteso": 121.58334446714805,
+   "osservato": 156.0,
+   "scarto": 34.41665553285195,
+   "z": 3.123249095834328,
+   "err_rel": 0.283070478803545,
+   "rumore_atteso": 0.0906333341074504
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "cella": "zona=40007008, sesso=M, background=naturalizzato_g2",
+   "atteso": 10.931748611262602,
+   "osservato": 21.0,
+   "scarto": 10.068251388737398,
+   "z": 3.045327078373908,
+   "err_rel": 0.9210101463881476,
+   "rumore_atteso": 0.3024339004268575
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=40007007, sesso=F, eta=65-74, cittadinanza=FRG",
+   "atteso": 13.778996477181307,
+   "osservato": 3.0,
+   "scarto": -10.778996477181307,
+   "z": -2.9040272259608373,
+   "err_rel": 0.782277322955402,
+   "rumore_atteso": 0.26937671794608425
+  },
+  {
+   "blocco": "zona × sesso × eta × condizione",
+   "cella": "zona=40007004, sesso=F, eta=25-34, condizione=occupato",
+   "atteso": 468.3751454068421,
+   "osservato": 407.0,
+   "scarto": -61.37514540684208,
+   "z": -2.8428694492357276,
+   "err_rel": 0.13103843363321538,
+   "rumore_atteso": 0.046093721844470754
+  },
+  {
+   "blocco": "zona × sesso × eta × condizione",
+   "cella": "zona=40007010, sesso=F, eta=15-24, condizione=occupato",
+   "atteso": 53.3747200666632,
+   "osservato": 74.0,
+   "scarto": 20.6252799333368,
+   "z": 2.82392220306046,
+   "err_rel": 0.3864241331397435,
+   "rumore_atteso": 0.13683951091887434
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=40007011, sesso=F, eta=15-24, cittadinanza=FRG",
+   "atteso": 18.94600819591167,
+   "osservato": 31.0,
+   "scarto": 12.05399180408833,
+   "z": 2.769586037711113,
+   "err_rel": 0.6362285754045774,
+   "rumore_atteso": 0.22971973671934745
+  },
+  {
+   "blocco": "cittadinanza × background",
+   "cella": "cittadinanza=ITL, background=italiano_nativo",
+   "atteso": 81558.0,
+   "osservato": 81855.0,
+   "scarto": 297.0,
+   "z": 2.6761117578971163,
+   "err_rel": 0.0036415802251158684,
+   "rumore_atteso": 0.0013607728505245294
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "cella": "zona=40007008, sesso=M, background=italiano_rientrato",
+   "atteso": 30.72866201688343,
+   "osservato": 16.0,
+   "scarto": -14.72866201688343,
+   "z": -2.65742453965715,
+   "err_rel": 0.4793134829232387,
+   "rumore_atteso": 0.18036767395287087
+  },
+  {
+   "blocco": "zona × sesso × background",
+   "cella": "zona=40007006, sesso=M, background=italiano_nativo",
+   "atteso": 3040.0759846797973,
+   "osservato": 3184.0,
+   "scarto": 143.92401532020267,
+   "z": 2.652613070352029,
+   "err_rel": 0.047342242774685704,
+   "rumore_atteso": 0.0178473985911571
+  },
+  {
+   "blocco": "zona × sesso × eta",
+   "cella": "zona=40007004, sesso=F, eta=25-34",
+   "atteso": 628.0,
+   "osservato": 562.0,
+   "scarto": -66.0,
+   "z": -2.6423375881049935,
+   "err_rel": 0.10509554140127389,
+   "rumore_atteso": 0.03977369957358299
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=40007004, sesso=F, eta=35-49, cittadinanza=FRG",
+   "atteso": 207.21103994206658,
+   "osservato": 171.0,
+   "scarto": -36.21103994206658,
+   "z": -2.5182766419974607,
+   "err_rel": 0.17475439509492688,
+   "rumore_atteso": 0.0693944391098804
+  },
+  {
+   "blocco": "cittadinanza × background",
+   "cella": "cittadinanza=FRG, background=straniero_immigrato",
+   "atteso": 8031.0,
+   "osservato": 7816.0,
+   "scarto": -215.0,
+   "z": -2.50617167150175,
+   "err_rel": 0.026771261362221393,
+   "rumore_atteso": 0.010682133896350164
+  },
+  {
+   "blocco": "zona × sesso × eta × condizione",
+   "cella": "zona=40007001, sesso=F, eta=15-24, condizione=occupato",
+   "atteso": 103.44961199937504,
+   "osservato": 78.0,
+   "scarto": -25.449611999375037,
+   "z": -2.5035178693161466,
+   "err_rel": 0.246009738533662,
+   "rumore_atteso": 0.09826562116804914
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=40007001, sesso=M, eta=15-24, cittadinanza=ITL",
+   "atteso": 440.9566810661896,
+   "osservato": 492.0,
+   "scarto": 51.04331893381038,
+   "z": 2.436351655598018,
+   "err_rel": 0.11575585794593857,
+   "rumore_atteso": 0.04751196637807426
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=40007005, sesso=F, eta=15-24, cittadinanza=FRG",
+   "atteso": 72.43683154726948,
+   "osservato": 93.0,
+   "scarto": 20.563168452730523,
+   "z": 2.4169858515552636,
+   "err_rel": 0.28387724881798276,
+   "rumore_atteso": 0.1174509352776375
+  },
+  {
+   "blocco": "zona × sesso × eta × condizione",
+   "cella": "zona=40007011, sesso=F, eta=50-64, condizione=occupato",
+   "atteso": 463.67553773240985,
+   "osservato": 412.0,
+   "scarto": -51.67553773240985,
+   "z": -2.405628390179063,
+   "err_rel": 0.1114476256071808,
+   "rumore_atteso": 0.046327864296149754
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=40007004, sesso=F, eta=25-34, cittadinanza=ITL",
+   "atteso": 509.0640676110998,
+   "osservato": 455.0,
+   "scarto": -54.0640676110998,
+   "z": -2.4025710631635917,
+   "err_rel": 0.10620287514066327,
+   "rumore_atteso": 0.04420384344462235
+  },
+  {
+   "blocco": "zona × sesso × eta × cittadinanza",
+   "cella": "zona=40007011, sesso=M, eta=0-8, cittadinanza=ITL",
+   "atteso": 160.56701045080587,
+   "osservato": 131.0,
+   "scarto": -29.567010450805867,
+   "z": -2.335299050969274,
+   "err_rel": 0.18414125272553752,
+   "rumore_atteso": 0.07885125146996015
+  }
+ ]
+}

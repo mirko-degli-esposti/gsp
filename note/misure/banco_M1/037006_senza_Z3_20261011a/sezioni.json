@@ -1,0 +1,27 @@
+{
+ "comune": "037006",
+ "fonte": "log/enrich.log [val]",
+ "per_sezione": {
+  "popolazione": {
+   "mae": 1.36,
+   "media_censimento": 175.4,
+   "corr": 0.9999,
+   "totale_sintetico": 390098,
+   "totale_censimento": 390098
+  },
+  "stranieri": {
+   "mae": 1.08,
+   "media_censimento": 26.5,
+   "corr": 0.9983,
+   "totale_sintetico": 58980,
+   "totale_censimento": 58963
+  },
+  "UE": {
+   "mae": 0.17,
+   "media_censimento": 5.6,
+   "corr": 0.9982,
+   "totale_sintetico": 12503,
+   "totale_censimento": 12548
+  }
+ }
+}

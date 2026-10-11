@@ -1,0 +1,74 @@
+--- /home/mirko/miniconda3/envs/gsp/bin/python scripts/diagnostica/verifica_vincoli.py 037006 --anno 2024 --cs /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/cs_K9C_senza_Z3.json --pop-file /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3.csv --out /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/misure/celle.csv --json /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/misure/vincoli.json ---
+[info] vincoli:     /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/cs_K9C_senza_Z3.json
+[info] popolazione: /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3.csv
+[info] 390.098 individui · 9 attributi
+
+Per blocco
+----------
+blocco                                   celle   fuori  MRE oss  MRE att  |z| med  |z| max  z>3
+-----------------------------------------------------------------------------------------------
+sesso × background                          12  0.0000    1.27%    1.22%     0.94     2.39    0
+eta × istruzione                             9  0.9347    0.05%    0.61%     0.09     0.09    0
+eta × condizione                            20  0.8876    0.11%    0.66%     0.15     0.22    0
+cittadinanza × istruzione                   12  0.0000    0.65%    0.81%     0.78     2.23    0
+cittadinanza × condizione                   14  0.0000    0.48%    1.02%     0.62     2.23    0
+cittadinanza × background                   12  0.0000    0.80%    0.84%     0.75     2.85    0
+zona × sesso × eta                         288  0.0000    2.58%    3.22%     0.80     2.87    0
+zona × sesso × background                  216  0.0000    4.78%    6.16%     0.79     3.14    1
+sesso × eta × stato_civile                  52  0.0000   78.52%    9.73%     1.83    26.00    5
+sesso × eta × cittadinanza                  32  0.0000    1.04%    1.48%     0.70     2.02    0
+sesso × eta × istruzione                    78  0.0653    2.23%    2.57%     0.88     2.64    0
+sesso × eta × condizione                    72  0.1124    7.13%    8.48%     0.76     2.52    0
+sesso × background × origine_genitori       30  0.0003   14.90%    8.46%     1.40     4.06    1
+zona × sesso × eta × cittadinanza          576  0.0000    5.45%    7.16%     0.78     3.86    3
+zona × sesso × eta × condizione            144  0.5395    2.83%    3.95%     0.77     2.73    0
+
+Il pool e' un campione pulito?
+------------------------------
+celle con target positivo         1.535
+
+                         osservato      atteso
+----------------------------------------------
+MRE                          6.91%       5.61%
+|z| medio                    0.833       0.798
+sd(z)                        1.283       1.000
+media(z)                     0.033       0.000
+|z| > 2                      5.41%       4.55%
+|z| > 3                      0.65%       0.27%
+
+  Se MRE osservato e atteso coincidono, l'errore per cella E' il
+  pavimento di rumore e non c'e' niente da spiegare.
+  sd(z) sopra 1 = pool sovradisperso, cioe' catena autocorrelata:
+  meno informativo di un campione indipendente della stessa taglia.
+
+Le 20 celle piu' lontane dal rumore (|z|)
+-----------------------------------------
+cella                                                        atteso    oss       z
+----------------------------------------------------------------------------------
+sesso=M, eta=25-34, stato_civile=vedovo                         1.0     27  +26.00
+sesso=M, eta=15-24, stato_civile=vedovo                         2.0     19  +12.02
+sesso=M, eta=15-24, stato_civile=divorziato_sciolto             6.0     31  +10.21
+sesso=M, eta=15-24, stato_civile=coniugato_unito               64.0     26   -4.75
+sesso=M, eta=25-34, stato_civile=divorziato_sciolto            70.0     34   -4.30
+sesso=M, background=naturalizzato_g2, origine_genitori=ma      35.0     11   -4.06
+zona=37006005, sesso=F, eta=0-8, cittadinanza=FRG             151.5    199   +3.86
+zona=37006013, sesso=M, eta=65-74, cittadinanza=FRG            46.4     68   +3.18
+zona=37006016, sesso=F, background=naturalizzato_g2           146.1    184   +3.14
+zona=37006017, sesso=M, eta=0-8, cittadinanza=ITL             349.5    406   +3.02
+sesso=F, background=straniero_g2, origine_genitori=madre_      41.0     22   -2.97
+zona=37006013, sesso=M, background=straniero_immigrato       1059.8   1156   +2.96
+zona=37006003, sesso=F, eta=50-64                            2969.0   3125   +2.87
+zona=37006004, sesso=M, background=italiano_nativo           3293.9   3458   +2.87
+cittadinanza=ITL, background=naturalizzato_g2                5396.0   5604   +2.85
+zona=37006003, sesso=F, eta=50-64, cittadinanza=ITL          2442.3   2581   +2.82
+zona=37006004, sesso=F, eta=65-74, cittadinanza=ITL           478.1    417   -2.80
+sesso=M, background=naturalizzato_g2, origine_genitori=ma      34.0     18   -2.74
+zona=37006017, sesso=M, eta=0-8                               452.8    511   +2.74
+zona=37006015, sesso=F, eta=15-24, condizione=occupato        202.2    241   +2.73
+
+Zeri hard violati
+-----------------
+nessuno: ogni cella dichiarata impossibile e' vuota.
+
+[info] 1.567 celle scritte in /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/misure/celle.csv
+[info] sommario in /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/misure/vincoli.json

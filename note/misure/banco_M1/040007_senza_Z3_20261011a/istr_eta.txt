@@ -1,0 +1,73 @@
+--- /home/mirko/miniconda3/envs/gsp/bin/python scripts/diagnostica/diag_istruzione_eta.py 040007 --anno 2024 --pop-file /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv --out /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/misure/istr_eta.csv ---
+[info] popolazione: /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv
+[info] individui: 96.066
+
+Sintesi
+-------
+individui                          96.066
+in violazione                       2.933
+quota                             3.0531%
+anni mancanti: media 2.19  mediana 2  max 7
+
+Per titolo di studio
+--------------------
+   istruzione  soglia         n      viol    quota
+nessun_titolo       0     9.016         0  0.0000%
+   elementare      10    12.169       272  2.2352%
+        media      13    23.828       972  4.0792%
+      diploma      18    33.941     1.296  3.8184%
+ laurea_o_its      20     4.938       337  6.8246%
+  post_laurea      22    12.174        56  0.4600%
+
+Per bin d'eta' del constraint set
+---------------------------------
+  eta         n      viol    quota
+  0-8     5.818         0  0.0000%
+ 9-14     5.152     1.244 24.1460%
+15-24     9.271     1.689 18.2181%
+25-34     9.299         0  0.0000%
+35-49    18.173         0  0.0000%
+50-64    23.248         0  0.0000%
+65-74    11.482         0  0.0000%
+  75+    13.623         0  0.0000%
+
+Atteso: la concentrazione sta nel bin 9-14, sulla stessa giuntura del seam quinquennale.
+
+Incrocio istruzione x eta_anni (0-25), celle impossibili marcate con *
+----------------------------------------------------------------------
+      eta_anni       0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17     18     19     20     21     22     23     24     25
+ nessun_titolo    542    565    609    601    620    661    706    757    757    164    243    276    282    271    263     24     22     20     16     13     23      9     16     20     27      4 
+    elementare      0      0      0      0      0      0      0      0      0    272*   369    345    377    409    369     52     58     52     55     58     49     68     62     73     46     15 
+         media      0      0      0      0      0      0      0      0      0    200*   271*   251*   250*   259    281    385    387    362    364    398    371    384    359    389    365    168 
+       diploma      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0    409*   456*   431*   402    381    367    407    384    388    391    415 
+  laurea_o_its      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     71*    60*    69*    64*    73*    86     51     50     57     65    107 
+   post_laurea      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      7*     9*     8*     7*    10*     6*     9*     5     14      7    199 
+
+Impossibili gia' al livello del bin (non e' il seam)
+----------------------------------------------------
+record                                  0
+
+Tasso condizionato
+------------------
+individui a rischio                 8.397
+tasso condizionato               34.9291%
+
+Per quartiere — quota grezza contro tasso condizionato
+------------------------------------------------------
+    quartiere     n  viol  rischio    quota    tasso
+    Ravennate  5345   186      485  3.4799% 38.3505%
+  Valle Savio  7005   223      594  3.1834% 37.5421%
+ Cervese Nord  6535   216      594  3.3053% 36.3636%
+   Oltresavio 17232   555     1530  3.2208% 36.2745%
+  Cervese Sud 12988   422     1200  3.2492% 35.1667%
+Centro Urbano 12176   321      951  2.6363% 33.7539%
+     Rubicone  4945   143      424  2.8918% 33.7264%
+      Al Mare  6683   224      665  3.3518% 33.6842%
+      Cesuola  5000   139      415  2.7800% 33.4940%
+  Fiorenzuola 10796   293      884  2.7140% 33.1448%
+      Dismano  4599   130      403  2.8267% 32.2581%
+      Borello  2762    81      252  2.9327% 32.1429%
+
+Se `tasso` e' piatto e `quota` no, la variazione fra zone e' composizione per eta' e l'incoerenza e' puramente aritmetica.
+
+[info] 2.933 righe scritte in /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_20261011a/misure/istr_eta.csv

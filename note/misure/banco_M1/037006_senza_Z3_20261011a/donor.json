@@ -1,0 +1,188 @@
+{
+ "comune": "037006",
+ "popolazione": "/home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv",
+ "individui": 390098,
+ "variabili_firma": 20,
+ "firme": 4169,
+ "attesi": {
+  "usati": 4625,
+  "pool": 4629,
+  "regione": "Emilia-Romagna",
+  "riuso": 84.3
+ },
+ "riuso": {
+  "medio": 93.57112017270329,
+  "mediana": 73.0,
+  "min": 1,
+  "max": 5845,
+  "una_volta": 8,
+  "quantili": {
+   "p5": 33,
+   "p25": 53,
+   "p50": 73,
+   "p75": 100,
+   "p95": 186
+  }
+ },
+ "collasso": {
+  "firme": 4169,
+  "un_sesso": 0.9918445670424563,
+  "una_macroeta": 0.7011273686735429,
+  "una_istr4": 0.37922763252578556,
+  "confinate": 0.08083473254977212,
+  "individui_confinati": 0.04413250003845188
+ },
+ "sottopopolazioni": [
+  {
+   "nome": "comune intero",
+   "n": 390098,
+   "distinti": 4169,
+   "n_eff": 965.951697225869,
+   "banda": 20.09597847648138
+  },
+  {
+   "nome": "quartiere: Mazzini",
+   "n": 38317,
+   "distinti": 4102,
+   "n_eff": 872.2403651760322,
+   "banda": 6.627926123824359
+  },
+  {
+   "nome": "quartiere: Bolognina",
+   "n": 36444,
+   "distinti": 4117,
+   "n_eff": 851.0932984736053,
+   "banda": 6.543715864837303
+  },
+  {
+   "nome": "quartiere: San Vitale",
+   "n": 35350,
+   "distinti": 4097,
+   "n_eff": 968.0692417340647,
+   "banda": 6.042845606738114
+  },
+  {
+   "nome": "quartiere: Malpighi",
+   "n": 11854,
+   "distinti": 3607,
+   "n_eff": 1220.467594281446,
+   "banda": 3.1165158155241808
+  },
+  {
+   "nome": "quartiere: Colli",
+   "n": 8168,
+   "distinti": 3139,
+   "n_eff": 830.9820392098248,
+   "banda": 3.1351768668271256
+  },
+  {
+   "nome": "Mazzini · donne",
+   "n": 20392,
+   "distinti": 2153,
+   "n_eff": 801.0357219910618,
+   "banda": 5.045497198220011
+  },
+  {
+   "nome": "Mazzini · laurea",
+   "n": 2235,
+   "distinti": 672,
+   "n_eff": 474.5155314904531,
+   "banda": 2.1702689036370493
+  },
+  {
+   "nome": "Mazzini · stranieri",
+   "n": 4963,
+   "distinti": 2363,
+   "n_eff": 458.0279487513249,
+   "banda": 3.291744722262407
+  }
+ ],
+ "variabili": [
+  {
+   "variabile": "SALUTE",
+   "copertura": 1.0,
+   "n": 390098,
+   "distinti": 4169,
+   "n_eff": 965.951697225869,
+   "banda": 20.09597847648138
+  },
+  {
+   "variabile": "AMBIENTE",
+   "copertura": 0.8757466072627904,
+   "n": 341627,
+   "distinti": 4059,
+   "n_eff": 2876.6465929613473,
+   "banda": 10.897649569502528
+  },
+  {
+   "variabile": "FIDUCIA",
+   "copertura": 0.8765925485390851,
+   "n": 341957,
+   "distinti": 4060,
+   "n_eff": 2878.5141140736487,
+   "banda": 10.899374310532602
+  },
+  {
+   "variabile": "CRONI",
+   "copertura": 0.941383959928018,
+   "n": 367232,
+   "distinti": 3897,
+   "n_eff": 872.7335258188466,
+   "banda": 20.51301176696102
+  },
+  {
+   "variabile": "MH",
+   "copertura": 0.887615419715046,
+   "n": 346257,
+   "distinti": 4112,
+   "n_eff": 2915.4890548221733,
+   "banda": 10.897918941211246
+  },
+  {
+   "variabile": "BMI",
+   "copertura": 0.8594942809242806,
+   "n": 335287,
+   "distinti": 3949,
+   "n_eff": 2789.721118124124,
+   "banda": 10.962963355743453
+  },
+  {
+   "variabile": "PUNTIFI10",
+   "copertura": 0.8687432388784356,
+   "n": 338895,
+   "distinti": 4012,
+   "n_eff": 2843.14142800188,
+   "banda": 10.917755115801768
+  },
+  {
+   "variabile": "PUNTIFI8",
+   "copertura": 0.8672641233741265,
+   "n": 338318,
+   "distinti": 4003,
+   "n_eff": 2836.422747789909,
+   "banda": 10.921368790845017
+  },
+  {
+   "variabile": "PUNTIFI13",
+   "copertura": 0.42916139021476657,
+   "n": 167415,
+   "distinti": 2101,
+   "n_eff": 1492.6648980676316,
+   "banda": 10.590489247591913
+  },
+  {
+   "variabile": "VOTOUSL",
+   "copertura": 0.20449220452296601,
+   "n": 79772,
+   "distinti": 994,
+   "n_eff": 696.0972378920268,
+   "banda": 10.705089068105636
+  }
+ ],
+ "firma_top": {
+  "individui": 5845,
+  "quota": 0.014983414424067799,
+  "peso_sigma_m2": 0.2168587716344618,
+  "variabili_con_valore": 3
+ }
+}

@@ -1,0 +1,79 @@
+--- /home/mirko/miniconda3/envs/gsp/bin/python scripts/diagnostica/diag_istruzione_eta.py 037006 --anno 2024 --pop-file /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv --out /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/misure/istr_eta.csv ---
+[info] popolazione: /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv
+[info] individui: 390.098
+
+Sintesi
+-------
+individui                         390.098
+in violazione                      10.134
+quota                             2.5978%
+anni mancanti: media 2.19  mediana 2  max 7
+
+Per titolo di studio
+--------------------
+   istruzione  soglia         n      viol    quota
+nessun_titolo       0    36.824         0  0.0000%
+   elementare      10    34.350     1.201  3.4964%
+        media      13    75.779     3.519  4.6438%
+      diploma      18   124.913     3.996  3.1990%
+ laurea_o_its      20    24.402     1.171  4.7988%
+  post_laurea      22    93.830       247  0.2632%
+
+Per bin d'eta' del constraint set
+---------------------------------
+  eta         n      viol    quota
+  0-8    25.473         0  0.0000%
+ 9-14    18.368     4.720 25.6969%
+15-24    33.426     5.414 16.1970%
+25-34    51.024         0  0.0000%
+35-49    81.853         0  0.0000%
+50-64    85.299         0  0.0000%
+65-74    40.265         0  0.0000%
+  75+    54.390         0  0.0000%
+
+Atteso: la concentrazione sta nel bin 9-14, sulla stessa giuntura del seam quinquennale.
+
+Incrocio istruzione x eta_anni (0-25), celle impossibili marcate con *
+----------------------------------------------------------------------
+      eta_anni       0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17     18     19     20     21     22     23     24     25
+ nessun_titolo   2578   2644   2803   2758   2837   2862   2915   2979   3097    832    928    939    931    917    977     63     52     69     73     75     62     75     72     69     79     37 
+    elementare      0      0      0      0      0      0      0      0      0   1201*  1228   1207   1282   1283   1339    197    201    191    188    208    198    205    219    209    256     51 
+         media      0      0      0      0      0      0      0      0      0    871*   844*   875*   929*   899    886   1233   1205   1235   1270   1291   1333   1381   1387   1470   1535    563 
+       diploma      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0   1253*  1383*  1360*  1391   1533   1386   1451   1437   1578   1712   1435 
+  laurea_o_its      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0    241*   206*   239*   228*   257*   231    213    253    300    282    523 
+   post_laurea      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     35*    34*    44*    37*    28*    30*    39*    51     41     52   1456 
+
+Impossibili gia' al livello del bin (non e' il seam)
+----------------------------------------------------
+record                                  0
+
+Tasso condizionato
+------------------
+individui a rischio                30.169
+tasso condizionato               33.5908%
+
+Per quartiere — quota grezza contro tasso condizionato
+------------------------------------------------------
+      quartiere     n  viol  rischio    quota    tasso
+        Mazzini 38317  1020     2903  2.6620% 35.1361%
+          Murri 29086   827     2360  2.8433% 35.0424%
+          Saffi 18256   408     1179  2.2349% 34.6056%
+          Barca 20672   610     1785  2.9509% 34.1737%
+     San Donato 31591   854     2507  2.7033% 34.0646%
+    Santa Viola 13349   345     1016  2.5845% 33.9567%
+      Bolognina 36444   949     2802  2.6040% 33.8687%
+     Corticella 18154   478     1420  2.6330% 33.6620%
+ Borgo Panigale 27148   705     2102  2.5969% 33.5395%
+          Colli  8168   279      834  3.4158% 33.4532%
+Costa Saragozza 24497   663     1986  2.7065% 33.3837%
+        Galvani 13353   338     1024  2.5313% 33.0078%
+     San Vitale 35350   883     2700  2.4979% 32.7037%
+   San Ruffillo 20882   527     1614  2.5237% 32.6518%
+           Lame 14426   378     1160  2.6203% 32.5862%
+        Marconi 14804   344     1061  2.3237% 32.4222%
+        Irnerio 13747   286      933  2.0805% 30.6538%
+       Malpighi 11854   240      783  2.0246% 30.6513%
+
+Se `tasso` e' piatto e `quota` no, la variazione fra zone e' composizione per eta' e l'incoerenza e' puramente aritmetica.
+
+[info] 10.134 righe scritte in /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/misure/istr_eta.csv

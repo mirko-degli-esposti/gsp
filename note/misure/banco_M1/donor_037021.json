@@ -1,0 +1,162 @@
+{
+ "comune": "037021",
+ "popolazione": "data/comuni/037021/constraints_2024/popolazione_K6C_avq_full.csv",
+ "individui": 16357,
+ "variabili_firma": 20,
+ "firme": 3890,
+ "attesi": null,
+ "riuso": {
+  "medio": 4.204884318766067,
+  "mediana": 3.0,
+  "min": 1,
+  "max": 268,
+  "una_volta": 539,
+  "quantili": {
+   "p5": 1,
+   "p25": 2,
+   "p50": 3,
+   "p75": 5,
+   "p95": 8
+  }
+ },
+ "collasso": {
+  "firme": 3890,
+  "un_sesso": 0.9912596401028277,
+  "una_macroeta": 0.7994858611825193,
+  "una_istr4": 0.9249357326478149,
+  "confinate": 0.7244215938303342,
+  "individui_confinati": 0.6034725194106498
+ },
+ "sottopopolazioni": [
+  {
+   "nome": "comune intero",
+   "n": 16357,
+   "distinti": 3890,
+   "n_eff": 741.1869703609925,
+   "banda": 4.697728772656684
+  },
+  {
+   "nome": "zona: 0",
+   "n": 16357,
+   "distinti": 3890,
+   "n_eff": 741.1869703609925,
+   "banda": 4.697728772656684
+  },
+  {
+   "nome": "zona: 0",
+   "n": 16357,
+   "distinti": 3890,
+   "n_eff": 741.1869703609925,
+   "banda": 4.697728772656684
+  },
+  {
+   "nome": "0 · donne",
+   "n": 8479,
+   "distinti": 2047,
+   "n_eff": 652.1006176926775,
+   "banda": 3.6059110701173704
+  },
+  {
+   "nome": "0 · laurea",
+   "n": 916,
+   "distinti": 506,
+   "n_eff": 390.6219739292365,
+   "banda": 1.5313321540210878
+  },
+  {
+   "nome": "0 · stranieri",
+   "n": 1185,
+   "distinti": 853,
+   "n_eff": 320.2337514253136,
+   "banda": 1.9236480813621473
+  }
+ ],
+ "variabili": [
+  {
+   "variabile": "SALUTE",
+   "copertura": 1.0,
+   "n": 16357,
+   "distinti": 3890,
+   "n_eff": 741.1869703609925,
+   "banda": 4.697728772656684
+  },
+  {
+   "variabile": "AMBIENTE",
+   "copertura": 0.8566363025004585,
+   "n": 14012,
+   "distinti": 3788,
+   "n_eff": 2803.6005140654006,
+   "banda": 2.2355891791692946
+  },
+  {
+   "variabile": "FIDUCIA",
+   "copertura": 0.8578590206028001,
+   "n": 14032,
+   "distinti": 3789,
+   "n_eff": 2804.561205594963,
+   "banda": 2.236800889933806
+  },
+  {
+   "variabile": "CRONI",
+   "copertura": 0.9369688818242954,
+   "n": 15326,
+   "distinti": 3635,
+   "n_eff": 663.2732314504196,
+   "banda": 4.806934179677472
+  },
+  {
+   "variabile": "MH",
+   "copertura": 0.8702084734364492,
+   "n": 14234,
+   "distinti": 3834,
+   "n_eff": 2836.4378552428952,
+   "banda": 2.2401486833169324
+  },
+  {
+   "variabile": "BMI",
+   "copertura": 0.8428195879439995,
+   "n": 13786,
+   "distinti": 3685,
+   "n_eff": 2730.8149318926376,
+   "banda": 2.2468444270994796
+  },
+  {
+   "variabile": "PUNTIFI10",
+   "copertura": 0.8504004401785168,
+   "n": 13910,
+   "distinti": 3746,
+   "n_eff": 2770.36883250766,
+   "banda": 2.240757035472639
+  },
+  {
+   "variabile": "PUNTIFI8",
+   "copertura": 0.8486886348352387,
+   "n": 13882,
+   "distinti": 3739,
+   "n_eff": 2763.9758469349704,
+   "banda": 2.2410879384069795
+  },
+  {
+   "variabile": "PUNTIFI13",
+   "copertura": 0.4205538913003607,
+   "n": 6879,
+   "distinti": 1934,
+   "n_eff": 1439.3235696687655,
+   "banda": 2.1861675120526494
+  },
+  {
+   "variabile": "VOTOUSL",
+   "copertura": 0.20443846671149965,
+   "n": 3344,
+   "distinti": 921,
+   "n_eff": 692.3189697870233,
+   "banda": 2.1977587539741155
+  }
+ ],
+ "firma_top": {
+  "individui": 268,
+  "quota": 0.016384422571376168,
+  "peso_sigma_m2": 0.19897112558417848,
+  "variabili_con_valore": 3
+ }
+}

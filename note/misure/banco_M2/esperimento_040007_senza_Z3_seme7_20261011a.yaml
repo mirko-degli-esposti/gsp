@@ -1,0 +1,61 @@
+versione: '0.1'
+id: 040007_senza_Z3_seme7_20261011a
+tipo: corsa
+comune: '040007'
+anno: 2024
+livello: K9C
+base: produzione
+anelli:
+- 1
+- 2
+- 3
+- 4
+manopole:
+  vincoli:
+    senza:
+    - Z3
+  fit:
+    seed: 7
+note: 'M2: replica a seme diverso (fit.seed=7) di 040007_senza_Z3_20261011a'
+esito:
+  stato: finita
+  ereditati: []
+  inizio: '2026-10-11T15:33:51'
+  tempi_s:
+    cs_build: 0.5
+    fit_cs: 69.5
+    assign_avq: 3.3
+    enrich: 8.0
+    assign_nucleo: 4.3
+  comandi:
+    cs_build: /home/mirko/miniconda3/envs/gsp/bin/python scripts/vincoli/cs_build.py 040007 --anno 2024 --livello K9C --esclusioni --senza Z3
+    fit_cs: /home/mirko/miniconda3/envs/gsp/bin/python scripts/fit/fit_cs.py 040007 --anno 2024 --livello K9C_senza_Z3 --eps 1e-8 --min-alpha 2e-4 --pool 125000 --outer 500 --numba --sparse --tol 0 --sweeps
+      40 --no-gibbs --seed 7
+    assign_avq: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/assign_avq.py 040007 --anno 2024 --pop-file popolazione_K9C_senza_Z3.csv
+    enrich: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/enrich.py 040007 --anno 2024 --pop-file popolazione_K9C_senza_Z3_avq.csv
+    assign_nucleo: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/assign_nucleo.py 040007 --anno 2024 --out-dir /home/mirko/progetti/laboratorio/corse/040007_senza_Z3_seme7_20261011a/nuclei
+  fase: null
+  commit_gsp: 6bbab93
+  git_pulito: false
+  python: 3.11.15
+  prodotti:
+    comuni/040007/constraints_2024/cs_K9C_senza_Z3.json: 635ec10ad4ace57800fca4511d6079ef8980659bcdc0b48a5c4af257251b7636
+    comuni/040007/constraints_2024/targets_K9C_senza_Z3.json: 739d781c14055670ec0095ac831b5a14434ef57a000d4f4d75f83f969818d6a2
+    comuni/040007/constraints_2024/fit_K9C_senza_Z3.json: senza-orologio:b758ca947f51e3615298c161fb5ef4a5251cdc3ee457e3960681857550d1e23a
+    comuni/040007/constraints_2024/popolazione_K9C_senza_Z3.csv: 988ff23ef3f6656d3093e874fc0487e12ad5e6236ce8c98257d1b519767901c8
+    comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq.csv: 97a1d33d20949a70edef0e223b1047fc62bdc92f26c946775b1e6edb4db164d6
+    comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv: d0c8357f59818a4e3a0407cfdc2682d8afebcd7a3eb304f8e617f99c993a0d7b
+    nuclei/nuclei_040007.csv: a652186ddbe1a79ce123f29a3555a33e513ec4a44a78b7f7fa28d094313b64d7
+    nuclei/nuclei_040007_diagnostica.json: senza-orologio:78fb6bdc268cea12b747267d70c235d75e64e77b1e0f294bde7feb3a8a0864e5
+  fine: '2026-10-11T15:35:17'
+  misure:
+    vincoli: misure/vincoli.json
+    celle: misure/celle.csv
+    holdout_Z3: misure/holdout_Z3.json
+    donor: misure/donor.json
+    sezioni: misure/sezioni.json
+    quinq: misure/quinq.csv
+    istr_eta: misure/istr_eta.csv
+    nuclei: misure/nuclei.json
+  misure_errori: null
+  misurato: '2026-10-11T15:37:40'

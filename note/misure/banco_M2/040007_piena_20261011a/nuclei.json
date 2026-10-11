@@ -1,0 +1,92 @@
+{
+ "comune": "040007",
+ "generato": "2026-10-11 15:36",
+ "popolazione": "popolazione_K9C_avq_full.csv",
+ "repertorio": "repertorio_nuclei_v1.json",
+ "repertorio_meta": {
+  "generato": "2026-08-11",
+  "anni": [
+   2022,
+   2023,
+   2024
+  ],
+  "regioni": [
+   80,
+   30
+  ],
+  "n_nuclei": 8443,
+  "n_componenti": 19003,
+  "nota": "repertorio AVQ; la coda oltre l'ampiezza 6 viene dai microdati di Parma (fonte mista, dichiarata)"
+ },
+ "seme": 20300817,
+ "individui": 96066,
+ "nuclei": 43239,
+ "senza_ripiego": 0.9398690996554037,
+ "non_collocati": 1697,
+ "quota_non_collocati": 0.017664938687985344,
+ "convivenza_dichiarata": 973,
+ "sezioni_non_agganciate": 0,
+ "coppie": 21488,
+ "coppie_omogenee": 0.9042256142963514,
+ "casi_vincoli": {
+  "esatto": 507,
+  "troncamento": 182,
+  "convivenza": 238,
+  "sovrastima": 319
+ },
+ "ripieghi": {
+  "P stato civile diverso": 1307,
+  "G fuori dai limiti": 286,
+  "R senza partner del suo stato": 413,
+  "P fuori dai limiti": 751,
+  "F fuori dai limiti": 78,
+  "P senza ripiego": 215,
+  "G senza ripiego": 51,
+  "R senza figli plausibili": 56,
+  "F senza ripiego": 45
+ },
+ "divari": {
+  "generazionale_mediana": 30.0,
+  "generazionale_fuori_limiti": 0.0019605625306337894,
+  "partner_p05": -15.0,
+  "partner_p95": 14.0
+ },
+ "stato_civile": {
+  "coniugati": 41547,
+  "unipersonali": 0.1610465256215852,
+  "incoerenti": 0.25821358942883965,
+  "per_ruolo": {
+   "A": {
+    "n": 809,
+    "incoerenti": 1.0
+   },
+   "F": {
+    "n": 6311,
+    "incoerenti": 1.0
+   },
+   "G": {
+    "n": 385,
+    "incoerenti": 1.0
+   },
+   "N": {
+    "n": 242,
+    "incoerenti": 1.0
+   },
+   "P": {
+    "n": 12964,
+    "incoerenti": 0.0694230175871644
+   },
+   "R": {
+    "n": 20836,
+    "incoerenti": 0.09987521597235549
+   }
+  }
+ },
+ "convenzionali": {
+  "PARTNER_MAX_DIFF": 15,
+  "GENITORE_MIN": 20,
+  "GENITORE_MAX": 40,
+  "P_STESSO_SESSO_UNITI": 0.004,
+  "P_MASCHILE_UNITI": 0.56
+ }
+}

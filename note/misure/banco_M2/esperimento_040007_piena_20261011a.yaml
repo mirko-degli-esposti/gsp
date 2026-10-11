@@ -1,0 +1,54 @@
+versione: '0.1'
+id: 040007_piena_20261011a
+tipo: corsa
+comune: '040007'
+anno: 2024
+livello: K9C
+base: produzione
+anelli:
+- 1
+- 2
+- 3
+- 4
+manopole: {}
+note: 'M2: corsa piena (nessuna manopola), da confrontare con senza_Z3'
+esito:
+  stato: finita
+  ereditati: []
+  inizio: '2026-10-11T15:35:17'
+  tempi_s:
+    cs_build: 0.6
+    fit_cs: 82.6
+    assign_avq: 3.3
+    enrich: 8.1
+    assign_nucleo: 4.4
+  comandi:
+    cs_build: /home/mirko/miniconda3/envs/gsp/bin/python scripts/vincoli/cs_build.py 040007 --anno 2024 --livello K9C --esclusioni
+    fit_cs: /home/mirko/miniconda3/envs/gsp/bin/python scripts/fit/fit_cs.py 040007 --anno 2024 --livello K9C --eps 1e-8 --min-alpha 2e-4 --pool 125000 --outer 500 --numba --sparse --tol 0 --sweeps 40 --no-gibbs
+    assign_avq: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/assign_avq.py 040007 --anno 2024 --pop-file popolazione_K9C.csv
+    enrich: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/enrich.py 040007 --anno 2024 --pop-file popolazione_K9C_avq.csv
+    assign_nucleo: /home/mirko/miniconda3/envs/gsp/bin/python scripts/attributi/assign_nucleo.py 040007 --anno 2024 --out-dir /home/mirko/progetti/laboratorio/corse/040007_piena_20261011a/nuclei
+  fase: null
+  commit_gsp: 6bbab93
+  git_pulito: false
+  python: 3.11.15
+  prodotti:
+    comuni/040007/constraints_2024/cs_K9C.json: cfe670be10809518991eb6e1944f05641bea651f2b9f5c34692b7c59ccbfc4f7
+    comuni/040007/constraints_2024/targets_K9C.json: 9ce7b942e8a9f75fc835caaeea15e268263792b4b5d200ec076708f02371d4c7
+    comuni/040007/constraints_2024/fit_K9C.json: senza-orologio:3427315690ad11863458ca3d3dad935803bc1ade3b0e28542b0f47e23ef92087
+    comuni/040007/constraints_2024/popolazione_K9C.csv: ebb40f21a3fb0d2c28e9997b64feef412a7b6ebf103684f80e6d3898872dad9d
+    comuni/040007/constraints_2024/popolazione_K9C_avq.csv: d68054e686daa3bb4d13c17825f81b05cffb579b054e35340b0164ebe0193b8a
+    comuni/040007/constraints_2024/popolazione_K9C_avq_full.csv: 13ca0c0b58a13d5844f89ebef5773ce16aa145d91f5046eddfe110565f3e9c67
+    nuclei/nuclei_040007.csv: fcec779c721c0a0b74d95d4f642b5a6079b59789f857e90525420eb3b2fe14b9
+    nuclei/nuclei_040007_diagnostica.json: senza-orologio:4c60baa1bd89dbf8c3cb4539bb5a198d982399e3433855f237be1bd94dbcc1fc
+  fine: '2026-10-11T15:36:56'
+  misure:
+    vincoli: misure/vincoli.json
+    celle: misure/celle.csv
+    donor: misure/donor.json
+    sezioni: misure/sezioni.json
+    quinq: misure/quinq.csv
+    istr_eta: misure/istr_eta.csv
+    nuclei: misure/nuclei.json
+  misure_errori: null
+  misurato: '2026-10-11T15:37:52'

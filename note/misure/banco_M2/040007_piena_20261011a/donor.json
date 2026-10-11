@@ -1,0 +1,183 @@
+{
+ "comune": "040007",
+ "popolazione": "/home/mirko/progetti/laboratorio/corse/040007_piena_20261011a/comuni/040007/constraints_2024/popolazione_K9C_avq_full.csv",
+ "individui": 96066,
+ "variabili_firma": 20,
+ "firme": 4142,
+ "attesi": null,
+ "riuso": {
+  "medio": 23.193143408981168,
+  "mediana": 20.0,
+  "min": 1,
+  "max": 1432,
+  "una_volta": 14,
+  "quantili": {
+   "p5": 9,
+   "p25": 14,
+   "p50": 20,
+   "p75": 26,
+   "p95": 38
+  }
+ },
+ "collasso": {
+  "firme": 4142,
+  "un_sesso": 0.9917914051183003,
+  "una_macroeta": 0.69917914051183,
+  "una_istr4": 0.6607918879768228,
+  "confinate": 0.36045388701110576,
+  "individui_confinati": 0.2749151624924531
+ },
+ "sottopopolazioni": [
+  {
+   "nome": "comune intero",
+   "n": 96066,
+   "distinti": 4142,
+   "n_eff": 979.5922991091331,
+   "banda": 9.902894966196039
+  },
+  {
+   "nome": "quartiere: Oltresavio",
+   "n": 17231,
+   "distinti": 3935,
+   "n_eff": 994.5878910502709,
+   "banda": 4.162302668911956
+  },
+  {
+   "nome": "quartiere: Cervese Sud",
+   "n": 12988,
+   "distinti": 3758,
+   "n_eff": 830.8123719464145,
+   "banda": 3.9538452043821324
+  },
+  {
+   "nome": "quartiere: Centro Urbano",
+   "n": 12176,
+   "distinti": 3623,
+   "n_eff": 894.4709133252085,
+   "banda": 3.68951438888041
+  },
+  {
+   "nome": "quartiere: Dismano",
+   "n": 4599,
+   "distinti": 2505,
+   "n_eff": 872.3778511033203,
+   "banda": 2.2960396810603463
+  },
+  {
+   "nome": "quartiere: Borello",
+   "n": 2764,
+   "distinti": 1810,
+   "n_eff": 662.3631003988208,
+   "banda": 2.0427769754297396
+  },
+  {
+   "nome": "Oltresavio · donne",
+   "n": 9027,
+   "distinti": 2065,
+   "n_eff": 905.9617432875647,
+   "banda": 3.156579936924504
+  },
+  {
+   "nome": "Oltresavio · laurea",
+   "n": 929,
+   "distinti": 499,
+   "n_eff": 372.4820889080708,
+   "banda": 1.5792655430748799
+  },
+  {
+   "nome": "Oltresavio · stranieri",
+   "n": 1546,
+   "distinti": 1088,
+   "n_eff": 406.067957866123,
+   "banda": 1.951216159716932
+  }
+ ],
+ "variabili": [
+  {
+   "variabile": "SALUTE",
+   "copertura": 1.0,
+   "n": 96066,
+   "distinti": 4142,
+   "n_eff": 979.5922991091331,
+   "banda": 9.902894966196039
+  },
+  {
+   "variabile": "AMBIENTE",
+   "copertura": 0.872015072970666,
+   "n": 83771,
+   "distinti": 4034,
+   "n_eff": 3350.64801100079,
+   "banda": 5.000143245611342
+  },
+  {
+   "variabile": "FIDUCIA",
+   "copertura": 0.8728270147606854,
+   "n": 83849,
+   "distinti": 4035,
+   "n_eff": 3352.002742855726,
+   "banda": 5.001459553932271
+  },
+  {
+   "variabile": "CRONI",
+   "copertura": 0.9346699144338267,
+   "n": 89790,
+   "distinti": 3876,
+   "n_eff": 875.6836360081679,
+   "banda": 10.126057023825243
+  },
+  {
+   "variabile": "MH",
+   "copertura": 0.8858284929111236,
+   "n": 85098,
+   "distinti": 4085,
+   "n_eff": 3386.1508453605934,
+   "banda": 5.01310182643514
+  },
+  {
+   "variabile": "BMI",
+   "copertura": 0.8552245331334707,
+   "n": 82158,
+   "distinti": 3923,
+   "n_eff": 3249.7835691334117,
+   "banda": 5.0280282602319355
+  },
+  {
+   "variabile": "PUNTIFI10",
+   "copertura": 0.8636770553577748,
+   "n": 82970,
+   "distinti": 3988,
+   "n_eff": 3312.0425868494412,
+   "banda": 5.005098039784139
+  },
+  {
+   "variabile": "PUNTIFI8",
+   "copertura": 0.8618762101055525,
+   "n": 82797,
+   "distinti": 3979,
+   "n_eff": 3304.5235766314636,
+   "banda": 5.00556232509088
+  },
+  {
+   "variabile": "PUNTIFI13",
+   "copertura": 0.4322965461245394,
+   "n": 41529,
+   "distinti": 2085,
+   "n_eff": 1723.477259077532,
+   "banda": 4.908773101326077
+  },
+  {
+   "variabile": "VOTOUSL",
+   "copertura": 0.21218745445839318,
+   "n": 20384,
+   "distinti": 982,
+   "n_eff": 815.9107717925758,
+   "banda": 4.998312116988925
+  }
+ ],
+ "firma_top": {
+  "individui": 1432,
+  "quota": 0.014906418503945204,
+  "peso_sigma_m2": 0.21766669468935995,
+  "variabili_con_valore": 3
+ }
+}

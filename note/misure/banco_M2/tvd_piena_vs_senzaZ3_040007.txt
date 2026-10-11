@@ -1,0 +1,54 @@
+# M2, 11/10/2026 — corse lanciate con fit_cs --seed (gsp 6bbab93 + patch non committata)
+
+## replica dell'originale con il nuovo fit_cs (seme default 42): python -m gsp.banco replica 040007_senza_Z3_20261011a
+confronto 040007_senza_Z3_20261011a / 040007_senza_Z3_replica_20261011b:
+   uguale   comuni/040007/constraints_2024/cs_K9C_senza_Z3.json
+   DIVERSO  comuni/040007/constraints_2024/fit_K9C_senza_Z3.json
+   uguale   comuni/040007/constraints_2024/popolazione_K9C_senza_Z3.csv
+   uguale   comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq.csv
+   uguale   comuni/040007/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv
+   uguale   comuni/040007/constraints_2024/targets_K9C_senza_Z3.json
+   uguale   nuclei/nuclei_040007.csv
+   uguale   nuclei/nuclei_040007_diagnostica.json
+[040007_senza_Z3_seme7_20261011a] cs_build ...
+fit_K9C_senza_Z3.json: chiavi diverse ['seed' (nuova), 't_exact_s' (orologio)]
+
+## corsa piena del banco contro la produzione in data/comuni/040007 (sola lettura, cmp):
+uguale  cs_K9C.json / targets_K9C.json / popolazione_K9C.csv / popolazione_K9C_avq.csv
+DIVERSO popolazione_K9C_avq_full.csv / nuclei_040007.csv  (anelli 3-4: enrich corretto dopo la produzione, gsp 6224a94; vedi TODO [gemello] 'rigenerare gli anelli 3+4 della flotta')
+
+## python -m gsp.banco tvd 040007_piena_20261011a 040007_senza_Z3_20261011a --nullo 040007_senza_Z3_20261011a 040007_senza_Z3_seme7_20261011a --top 30
+TVD 040007_piena_20261011a / 040007_senza_Z3_20261011a  (n 96,066 / 96,066)   nullo: 040007_senza_Z3_20261011a / 040007_senza_Z3_seme7_20261011a
+variabili                                       TVD    nullo      x
+zona×istruzione                              0.0519   0.0161    3.2
+zona×MH                                      0.0240   0.0285    0.8
+condizione×MH                                0.0117   0.0126    0.9
+zona×FIDUCIA                                 0.0113   0.0098    1.2
+zona×SALUTE                                  0.0110   0.0120    0.9
+zona×AMBIENTE                                0.0091   0.0125    0.7
+background×MH                                0.0091   0.0112    0.8
+stato_civile×MH                              0.0086   0.0125    0.7
+origine_genitori×MH                          0.0083   0.0103    0.8
+zona×FUMO                                    0.0078   0.0123    0.6
+eta×MH                                       0.0072   0.0106    0.7
+zona×condizione                              0.0070   0.0144    0.5
+zona×origine_genitori                        0.0066   0.0107    0.6
+condizione×SALUTE                            0.0060   0.0068    0.9
+istruzione×condizione                        0.0059   0.0091    0.6
+zona×background                              0.0058   0.0117    0.5
+istruzione×MH                                0.0057   0.0085    0.7
+condizione×AMBIENTE                          0.0057   0.0073    0.8
+zona×CRONI                                   0.0056   0.0089    0.6
+eta×AMBIENTE                                 0.0048   0.0070    0.7
+cittadinanza×MH                              0.0044   0.0065    0.7
+background×FUMO                              0.0044   0.0052    0.8
+eta×istruzione                               0.0043   0.0088    0.5
+condizione×FIDUCIA                           0.0042   0.0053    0.8
+stato_civile×SALUTE                          0.0040   0.0075    0.5
+stato_civile×AMBIENTE                        0.0040   0.0068    0.6
+eta×SALUTE                                   0.0040   0.0081    0.5
+condizione×FUMO                              0.0040   0.0058    0.7
+origine_genitori×FUMO                        0.0036   0.0046    0.8
+eta×origine_genitori                         0.0036   0.0075    0.5
+... 90 altre (nel JSON)
+-> /home/mirko/progetti/laboratorio/confronti/040007_piena_20261011a__040007_senza_Z3_20261011a.json

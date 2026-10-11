@@ -1,0 +1,17 @@
+{
+  "blocco": "Z3",
+  "anno": 2024,
+  "livello": "K9C",
+  "nota": "TVD fra la distribuzione del blocco nel censimento e quella della popolazione sintetica. Pavimento: blocco vincolato (rumore di campionamento). Hold-out: blocco escluso dal fit. Indipendenza: attributo indipendente dalla zona dato il sesso.",
+  "comuni": [
+    {
+      "comune": "040007",
+      "blocco": "Z3",
+      "celle": 144,
+      "tvd_pavimento": 0.01371,
+      "tvd_holdout": 0.0568,
+      "tvd_indipendenza": 0.05277,
+      "posizione": 1.103
+    }
+  ]
+}

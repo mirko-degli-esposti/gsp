@@ -69,7 +69,7 @@ con l'eccezione di quello su cui si sta lavorando in quel momento.
 | `paper_criterio_scheletro_v1.md` | scrivere l'articolo sul criterio; contiene la nota bibliografica su cosa cercare. Terzo caso applicativo in `nota_nucleo_familiare_v1_1.md`, di forma diversa: decide **quale scala geografica** serve, non se una variabile stia nel joint |
 | `eusilc_exploration_v1.md`, `v2.md` | valutare EU-SILC come fonte per reddito e condizioni di vita |
 | `animarium_report_skeleton_v0.1.md` | lo scheletro del report tecnico per arXiv (in inglese): sezioni, per ciascuna la nota da cui attinge e lo stato rerun/reported. |
-| `laboratorio_design_v0.3.md` | progettare o estendere il laboratorio (`gsp.banco`, nome aperto): decisioni D1–D9 dell'11/10/2026, manifesto dell'esperimento, censimento delle manopole per anello, misure canoniche, piano a tappe M0–M5 (M0 e M1 fatti e misurati), posto previsto per il gemello |
+| `laboratorio_design_v0.4.md` | progettare o estendere il laboratorio (`gsp.banco`, nome aperto): decisioni D1–D9 dell'11/10/2026, manifesto dell'esperimento, censimento delle manopole per anello, misure canoniche, piano a tappe M0–M5 (M0–M2 fatti e misurati), posto previsto per il gemello |
 
 ---
 

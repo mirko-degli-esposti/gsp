@@ -164,3 +164,61 @@ rumore per tutti, come al livello 0.
 - R2b non implementato.
 - MSE di R3 senza g3; degenerazione sulle domande rare a φ basso.
 - Riferimenti del preprint da verificare.
+
+## 6. Ripresa nella prossima chat (aggiunta 11/10/2026, patch: nessun contenuto cambiato)
+
+**Da leggere per primo:** questa nota. Poi, se serve il disegno completo,
+`note/nota_gemello_v1.md`. Le note precedenti sono in `note/storico/`.
+
+**Dove sta cosa:**
+- `~/progetti/gsp` (dev-mirko): pipeline. Gli interventi fatti per il
+  gemello sono `GSP_COMUNI_DIR`, `GSP_SUBMUN_DIR`, la correzione dell'età
+  singola in enrich e il controllo di convergenza in `fit_cs`.
+- `~/progetti/gemello` (dev-mirko, **solo locale, nessun remote**): codice
+  in `gemello/`, script numerati in `script/`, config in `config/`
+  (`livello0.yaml`, `livello1a.yaml`). Non versionati: `verita/`,
+  `lavoro*/`, `livello1a/`, `risultati/`.
+- `~/progetti/paper-gemello` (main, **solo locale, nessun remote**):
+  preprint. `./compila.sh` rigenera numeri, tabelle e figure da
+  `gemello/script/numeri_preprint.py` e compila.
+
+**Ambiente:**
+- `conda activate gsp`, oppure l'interprete
+  `~/miniconda3/envs/gsp/bin/python`.
+- I terminali aperti prima del rename possono avere `GDAL_DATA`/`PROJ_DATA`
+  che puntano a `envs/ml`. `aree.py` li corregge da solo; altrimenti basta
+  riaprire il terminale.
+
+**Regole che valgono sempre:**
+- Mai scrivere in `gsp/data/`: tutto passa per `GSP_COMUNI_DIR` /
+  `GSP_SUBMUN_DIR`, e le funzioni `scrivi_*` lo rifiutano.
+- Un commit dettagliato per ogni cambio di codice.
+- I numeri si prendono da una misura, mai dalla memoria.
+- I numeri del preprint si generano, non si scrivono a mano.
+
+**Comandi per riprendere** (dalla radice di gemello):
+- livello 0: `script/passo2_pi_su_gsp.py`, `passo3_teoria.py`,
+  `costruisci_aree.py`, `passo4_livello0.py`, `passo5_campione.py`,
+  `analisi_passo5.py`, tutti con `config/livello0.yaml`;
+- livello 1a: `script/livello1a.py config/livello1a.yaml [--theta …]`, poi
+  `script/analisi_livello1a.py`. Ogni θ richiede circa 9 minuti con 7
+  processi paralleli. Le corse lunghe vanno lanciate con `nohup … &`.
+  Una sospensione della macchina le rallenta, ma non le rompe; i passi già
+  fatti si riusano.
+- **Per g2 e g4** si copia `config/livello1a.yaml` in
+  `config/livello1a_g2.yaml` (e `_g4`), cambiando `g.id`, `g.descrizione`
+  e `g.cond`:
+  - g2 = `{stato_civile: [coniugato_unito], istruzione: [laurea_o_its, post_laurea]}`
+  - g4 = `{sesso: [F], stato_civile: [coniugato_unito], condizione: [occupato]}`
+
+  Le uscite vanno in `risultati/livello1a/<g>/`. `analisi_livello1a.py`
+  legge `cfg["g"]["id"]`. **Attenzione:** `numeri_preprint.py` per ora
+  legge solo `livello1a/g1`, e va esteso.
+
+**Decisioni in sospeso per Mirko:**
+- procedere con g2/g4, poi 1b/1c;
+- download INSEE per il livello 2 (dalla sua macchina, script
+  `estrai_insee_comune.py` della nota v1);
+- titolo del preprint;
+- dove ospitare `gemello` e `paper-gemello` (oggi senza remote);
+- rigenerazione degli anelli 3+4 della flotta (release).

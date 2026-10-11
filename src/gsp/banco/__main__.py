@@ -126,6 +126,18 @@ def cmd_replica(a):
             print(f"   {v:8s} {rel}")
 
 
+def cmd_tvd(a):
+    from gsp.banco import confronto as T
+    try:
+        r = T.con_nullo(a.a, a.b, *(a.nullo or (None, None)),
+                        variabili=a.vars.split(",") if a.vars else None,
+                        ordine=a.ordine)
+    except RuntimeError as e:
+        sys.exit(str(e))
+    print(T.tabella(r, a.top))
+    print(f"-> {T.salva(r)}")
+
+
 def cmd_confronta(a):
     for rel, v in C.confronta_byte(a.a, a.b).items():
         print(f"   {v:8s} {rel}")
@@ -167,6 +179,16 @@ def main(argv=None):
     r = sp.add_parser("replica", help="rifa' una corsa e confronta byte per byte")
     r.add_argument("id")
     r.set_defaults(f=cmd_replica)
+
+    tv = sp.add_parser("tvd", help="TVD fra due corse su marginali e incroci, con nullo")
+    tv.add_argument("a")
+    tv.add_argument("b")
+    tv.add_argument("--nullo", nargs=2, metavar=("C", "D"),
+                    help="due repliche a seme diverso: il pavimento")
+    tv.add_argument("--vars", help="variabili separate da virgola")
+    tv.add_argument("--ordine", type=int, default=2)
+    tv.add_argument("--top", type=int, default=25)
+    tv.set_defaults(f=cmd_tvd)
 
     c = sp.add_parser("confronta", help="prodotti di due corse, byte per byte")
     c.add_argument("a")

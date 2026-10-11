@@ -24,7 +24,7 @@ ANNO = 2024
 # Valori di produzione (rigenera.sh e default degli script), per anello.
 PRODUZIONE = {
     "vincoli": {"senza": [], "esclusioni": True, "min_age": None, "max_age": None},
-    "fit": {"pool": None, "eps": 1e-8, "min_alpha": 2e-4, "outer": 500,
+    "fit": {"pool": None, "seed": 42, "eps": 1e-8, "min_alpha": 2e-4, "outer": 500,
             "tol": 0, "sweeps": 40, "gibbs": False, "no_exact": False,
             "blocks": None, "warm_from": None, "anneal": None,
             "lr": None, "lr_tau": None},

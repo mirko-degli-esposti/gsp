@@ -151,6 +151,8 @@ def comandi(m: dict) -> list[tuple[str, list[str]]]:
              "--numba", "--sparse", "--tol", _s(f["tol"]),
              "--sweeps", str(f["sweeps"])]
         a.append("--gibbs" if f["gibbs"] else "--no-gibbs")
+        if f["seed"] != M.PRODUZIONE["fit"]["seed"]:
+            a += ["--seed", str(f["seed"])]
         if f["no_exact"]:
             a.append("--no-exact")
         if f["blocks"]:

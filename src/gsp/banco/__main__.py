@@ -126,6 +126,18 @@ def cmd_replica(a):
             print(f"   {v:8s} {rel}")
 
 
+def cmd_bundle(a):
+    from gsp.banco import bundle as B
+    m = M.carica(a.id)
+    try:
+        b = B.costruisci(m)
+    except RuntimeError as e:
+        sys.exit(f"[{a.id}] {e}")
+    print(f"[{a.id}] bundle in {b} ({m['esito']['bundle']['parquet_mb']} MB)")
+    print("   nel browser: pannello_marginali.html?bundle=<url di quella cartella>"
+          f"&comune={m['comune']}")
+
+
 def cmd_tvd(a):
     from gsp.banco import confronto as T
     try:
@@ -179,6 +191,10 @@ def main(argv=None):
     r = sp.add_parser("replica", help="rifa' una corsa e confronta byte per byte")
     r.add_argument("id")
     r.set_defaults(f=cmd_replica)
+
+    bu = sp.add_parser("bundle", help="bundle Parquet della corsa per il viewer (regime pubblico)")
+    bu.add_argument("id")
+    bu.set_defaults(f=cmd_bundle)
 
     tv = sp.add_parser("tvd", help="TVD fra due corse su marginali e incroci, con nullo")
     tv.add_argument("a")

@@ -77,14 +77,22 @@ _cache = {}
 
 # ------------------------------------------------------------- caricamento
 
-def carica(comune, anno=2024):
-    """La popolazione completa. Resta in memoria: non la si riscrive mai."""
-    chiave = (comune, anno)
+def carica(comune, anno=2024, pop_file=None):
+    """La popolazione completa. Resta in memoria: non la si riscrive mai.
+
+    `pop_file` (11/10/2026, banco M3): percorso esplicito di una
+    popolazione `_avq_full` fuori dai nomi di produzione, es. una corsa del
+    banco (`popolazione_K9C_senza_Z3_avq_full.csv`). Senza, si risolve
+    come prima."""
+    chiave = (comune, anno, pop_file)
     if chiave in _cache:
         return _cache[chiave]
-    cdir = G.path_constraints(comune, anno)
-    nome = G.resolve_pop_file(cdir, suffisso="_avq_full", escludi=["K10C"])
-    d = pd.read_csv(os.path.join(cdir, nome), low_memory=False)
+    if pop_file is None:
+        cdir = G.path_constraints(comune, anno)
+        nome = G.resolve_pop_file(cdir, suffisso="_avq_full", escludi=["K10C"])
+        pop_file = os.path.join(cdir, nome)
+    nome = os.path.basename(pop_file)
+    d = pd.read_csv(pop_file, low_memory=False)
     if "uid" not in d.columns:
         raise KeyError(
             f"{nome} non ha la colonna `uid`: e' una popolazione generata "
@@ -222,7 +230,8 @@ def campione(comune, filtro=None, n=20, dettaglio="persona", anno=2024,
 
 
 # agosto 17 2026
-def esporta_pubblico(comune, anno=2024, seme=None, con_nuclei=False):
+def esporta_pubblico(comune, anno=2024, seme=None, con_nuclei=False,
+                     pop_file=None, nuclei_dir=None):
     """La popolazione INTERA in regime pubblico, per il bundle scaricabile.
 
     Non passa da `campione` di proposito. `NMAX` esiste per i regimi
@@ -249,12 +258,17 @@ def esporta_pubblico(comune, anno=2024, seme=None, con_nuclei=False):
     toglierlo. Non e' un accoppiamento fra anelli: questo modulo compone
     gia' cio' che gli anelli producono — nel regime `narrativo` chiama
     `gsp.nomi`, `gsp.istruzione` e `gsp.lavoro`. Compone, non calcola.
+
+    `pop_file` e `nuclei_dir` (11/10/2026, banco M3): popolazione e cartella
+    dei nuclei di una corsa del banco; il regime resta identico e il seme
+    resta derivato dal comune. Senza, produzione come prima.
     """
     r = dict(REGIMI["pubblico"])
-    d = carica(comune, anno).copy()
+    d = carica(comune, anno, pop_file).copy()
 
     if con_nuclei:
-        f = os.path.join(G.DATA, "nuclei", f"nuclei_{comune}.csv")
+        f = os.path.join(nuclei_dir or os.path.join(G.DATA, "nuclei"),
+                         f"nuclei_{comune}.csv")
         if not os.path.exists(f):
             # Avviso e non errore: un comune senza nuclei non deve bloccare
             # la build degli altri dieci. La pagina dei nuclei si accorgera'

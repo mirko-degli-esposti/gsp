@@ -1,9 +1,12 @@
-"""indice.parquet: una riga per corsa, dai manifesti e dai riassunti delle
-misure. E' il file che la dashboard legge (DuckDB-WASM, M3). Si ricostruisce
-da zero a ogni chiamata: i manifesti sono la verita', l'indice una vista.
+"""indice.parquet e indice.json: una riga per corsa, dai manifesti e dai
+riassunti delle misure. Il JSON e' quello che legge banco.html (M3, con
+fetch, senza DuckDB); il Parquet e' per chi interroga da Python o DuckDB.
+Si ricostruiscono da zero a ogni chiamata: i manifesti sono la verita',
+l'indice una vista.
 """
 from __future__ import annotations
 
+import json
 import os
 
 import pandas as pd
@@ -39,14 +42,23 @@ def righe() -> list[dict]:
              "stato": e.get("stato"), "inizio": e.get("inizio"), "fine": e.get("fine"),
              "tempo_s": float(sum((e.get("tempi_s") or {}).values())),
              "commit": e.get("commit_gsp"), "git_pulito": e.get("git_pulito"),
-             "misurato": e.get("misurato"), "note": m.get("note", "")}
+             "misurato": e.get("misurato"), "note": m.get("note", ""),
+             "misure": sorted((e.get("misure") or {}).keys()),
+             "bundle": bool(e.get("bundle")),
+             "ereditati": len(e.get("ereditati") or [])}
         r.update(MI.riassunto(m))
         out.append(r)
     return out
 
 
 def scrivi() -> str:
-    df = pd.DataFrame(righe())
+    r = righe()
+    df = pd.DataFrame(r)
+    if "misure" in df.columns:
+        df["misure"] = df["misure"].map(lambda x: ",".join(x) if isinstance(x, list) else x)
     os.makedirs(RADICE, exist_ok=True)
     df.to_parquet(PERCORSO, index=False)
+    with open(PERCORSO.replace(".parquet", ".json"), "w", encoding="utf-8") as f:
+        json.dump({"generato": M.adesso(), "corse": r}, f, ensure_ascii=False,
+                  indent=1, default=lambda x: None if x != x else x)
     return PERCORSO

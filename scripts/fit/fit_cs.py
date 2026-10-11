@@ -14,6 +14,11 @@ Uso:
     python scripts/fit/fit_cs.py 034027 --anno 2024 --livello K9C --pool 260000 --gibbs --sweeps 80 --tol 0.02
         # laboratorio: attiva GibbsPCD accanto all'esatto, parametri liberi
 Output in constraints_<anno>/: fit_<LIV>.json, popolazione_<LIV>.csv
+
+--seed N (11/10/2026, banco M2): seme dell'estrazione della popolazione dal
+modello esatto (o dal pool Gibbs). Default 42, com'era cablato: la riga di
+produzione non cambia. Serve alle repliche a seme diverso, che danno il
+pavimento di ogni confronto fra corse. Il seme finisce in fit_<LIV>.json.
 """
 
 import os
@@ -224,7 +229,8 @@ def build_warm_start(spec_new, cdir, from_livello, rng):
     return pool, old_map          # la mappatura sugli indici nuovi
                                   # avviene in main, dove si conosce kept_sig
 
-def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
+def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse,
+         seed=42):
     ConstraintSet, ExactMaxEntSolver, GibbsPCDSolver, ev = import_repo()
     #cdir = os.path.expanduser(f"~/progetti/gsp/data/comuni/{comune}/constraints_{anno}")
     cdir = os.path.join(G.COMUNI_DIR, comune, f"constraints_{anno}")
@@ -392,7 +398,7 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
         print(f"[cmp] KL(exact||gibbs)={kl_eg:.3e} | KL(gibbs||exact)={kl_ge:.3e}")
 
     # ---------- popolazione sintetica dal modello esatto ----------
-    rng = np.random.default_rng(42)
+    rng = np.random.default_rng(seed)
     n = spec["pop_size"]
     if p_exact is not None:
         idx = rng.choice(len(p_exact), size=n, p=p_exact)
@@ -440,6 +446,7 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse):
     # ---------- salvataggio ----------
     out = {"comune": comune, "anno": anno, "livello": livello, "eps": eps,
            "min_alpha": MIN_ALPHA, "pool": pool, "outer": outer, "sparse": use_sparse,
+           "seed": seed,
            "t_exact_s": t_exact, "t_gibbs_s": t_gibbs,
            "exact": d_exact, "gibbs": d_gibbs,
            "kl_exact_gibbs": kl_eg, "kl_gibbs_exact": kl_ge,
@@ -470,7 +477,7 @@ if __name__ == "__main__":
                  "  Laboratorio: [--gibbs] [--no-numba] [--no-sparse] "
                  "[--no-exact] [--eps E] [--min-alpha A] [--blocks A,B,Z1,...] "
                  "[--tol T] [--sweeps S] [--lr L] [--lr-tau T] "
-                 "[--warm-from K9C] [--anneal N]")
+                 "[--warm-from K9C] [--anneal N] [--seed 42]")
     comune = args[0]
     getf = lambda k, d: float(args[args.index(k) + 1]) if k in args else d
     geti = lambda k, d: int(args[args.index(k) + 1]) if k in args else d
@@ -495,4 +502,5 @@ if __name__ == "__main__":
                  "Derivarlo dal constraint set e' in coda (v1.1).")
     main(comune, geti("--anno", 2024), livello, getf("--eps", 1e-8),
          geti("--pool", 0), geti("--outer", 500),
-         "--no-numba" not in args, "--no-sparse" not in args)
+         "--no-numba" not in args, "--no-sparse" not in args,
+         geti("--seed", 42))

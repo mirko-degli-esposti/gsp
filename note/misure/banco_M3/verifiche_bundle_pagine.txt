@@ -1,0 +1,43 @@
+# M3, 11/10/2026 — verifiche del bundle di corsa e delle pagine (nessun browser headless sulla macchina: verifica visiva lasciata a Mirko)
+
+## bundle 037006_senza_Z3_20261011a (python -m gsp.banco bundle): 390.098 righe, 43 colonne, regime pubblico (nessuna fra uid/via/civico/indirizzo_fonte), nucleo e ruolo presenti, 7,42 MB; riferimenti dal cs PIENO della produzione (copertura 67/333)
+## regressione to_parquet.py v2.1 su produzione: Castenaso 037021 --drop-avq-raw -> cmp con ~/progetti/animarium/bundle/comuni/037021/pop.parquet: UGUALE
+
+## serve_range.py --dir ~/progetti, porta 8765: codice HTTP e content-type
+animarium/build/banco.html                                                                   200 text/html
+animarium/build/pannello_marginali.html?bundle=../../laboratorio/corse/037006_senza_Z3_20261011a/bundle&comune=037006  200 text/html
+laboratorio/indice.json                                                                      200 application/json
+laboratorio/corse/037006_senza_Z3_20261011a/misure/vincoli.json                              200 application/json
+laboratorio/corse/037006_senza_Z3_20261011a/bundle/comuni.json                               200 application/json
+laboratorio/corse/037006_senza_Z3_20261011a/bundle/comuni/037006/manifest.json               200 application/json
+laboratorio/confronti/040007_piena_20261011a__040007_senza_Z3_20261011a.json                 200 application/json
+pop.parquet con Range: bytes=0-1023                                                          206, 1024 byte
+
+## node --check sugli script di banco.html e di pannello_marginali.html (patch ?bundle=): sintassi ok
+
+## to_parquet log (Bologna senza Z3)
+--- /home/mirko/miniconda3/envs/gsp/bin/python /home/mirko/progetti/animarium/build/to_parquet.py 037006 --anno 2024 --pop-file /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv --nuclei-dir /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/nuclei --out /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/bundle/comuni/037006/pop.parquet --drop-avq-raw ---
+[info] sorgente: /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/comuni/037006/constraints_2024/popolazione_K9C_senza_Z3_avq_full.csv
+[info] livello risolto: K9C_senza_Z3 · 23 variabili AVQ dal registro
+[info] destinazione: /home/mirko/progetti/laboratorio/corse/037006_senza_Z3_20261011a/bundle/comuni/037006/pop.parquet
+[nuclei] 210.140 nuclei · 6.204 individui in convivenza (1.59%)
+[info] lette 390.098 righe x 42 colonne in 4.8s
+[info] regime `pubblico`: senza uid, via, civico; coordinate randomizzate dentro la sezione
+[info] aggiunte 23 colonne AVQ numeriche
+[info] donor_id: 4.625 distinti · da colonna scritta a monte · riuso medio 84.3 · n_eff di Kish 3.351
+[info] rimosse 23 colonne AVQ grezze
+[pubblico] coordinate randomizzate dentro la sezione
+[pubblico] rimosse 1 colonne: quartiere
+[info] righe ordinate per zona , sezione
+[info] colonne riordinate: blocco A (filtri) 16 · AVQ 24 · altro 0 · pesanti 3
+
+Scrittura
+---------
+tempo                       0.2 s
+regime                   pubblico
+CSV sorgente          123.647 MB
+Parquet                 7.421 MB   (6.0% del CSV)
+righe                     390.098
+colonne                        43
+row group                      20   (20.000 righe)
+

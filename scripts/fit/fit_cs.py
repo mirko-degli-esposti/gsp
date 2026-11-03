@@ -39,6 +39,43 @@ REPO_CANDIDATES = ["~/progetti/maxent-popsynth-pcd", "/content/maxent-popsynth-p
 # Flotta al 10/10/2026: MRE massimo 1.0e-3 su 259 fit (gemello_stato_v3 §3).
 MAX_MRE_EXACT = 0.01
 
+# Ripiego IPF (3/11/2026, release v2.1). Tre comuni minuscoli (Montecopiolo,
+# Casteldelci, Zerba) hanno un cs COMPATIBILE -- un LP trova p >= 0 con
+# residuo <= 1e-4 e una soluzione strettamente positiva -- ma L-BFGS sul
+# duale diverge: un lambda esplode e la massa collassa su uno stato. Solo
+# in quel caso si rifitta per proiezioni iterative (IPF sui vincoli binari,
+# Csiszar 1975) dall'uniforme sugli stati non esclusi: converge allo stesso
+# punto MaxEnt senza passare dal duale. Sui comuni che convergono il ramo
+# non si attiva, quindi i loro prodotti restano identici al byte.
+IPF_MAX_SWEEPS = 5000
+IPF_TOL = 1e-6
+
+
+def ipf_fallback(F_g, alphas_g, excl_cells, n_states):
+    """p MaxEnt per proiezioni cicliche: per ogni vincolo j, la I-proiezione
+    su {E[f_j] = alpha_j} riscala per alpha/q dentro la cella e per
+    (1-alpha)/(1-q) fuori. Restituisce (p, mre_finale, sweep)."""
+    Fc = F_g.tocsc() if hasattr(F_g, "tocsc") else None
+    celle = [Fc.indices[Fc.indptr[j]:Fc.indptr[j + 1]] if Fc is not None
+             else np.where(F_g[:, j])[0] for j in range(len(alphas_g))]
+    p = np.ones(n_states)
+    p[excl_cells] = 0.0
+    p /= p.sum()
+    mre = float("inf")
+    for sweep in range(1, IPF_MAX_SWEEPS + 1):
+        for idx, a in zip(celle, alphas_g):
+            q = p[idx].sum()
+            if q <= 0 or q >= 1:
+                continue
+            p *= (1 - a) / (1 - q)
+            p[idx] *= (a / q) / ((1 - a) / (1 - q))
+        if sweep % 10 == 0:
+            ahat = np.array([p[idx].sum() for idx in celle])
+            mre = float(np.mean(np.abs(ahat - alphas_g) / alphas_g))
+            if mre < IPF_TOL:
+                break
+    return p / p.sum(), mre, sweep
+
 # firme dei blocchi per NOME variabile (ordine irrilevante: si confrontano sorted)
 SIG_BY_NAMES = {
     ("eta", "sesso", "stato_civile"): "A",
@@ -347,6 +384,19 @@ def main(comune, anno, livello, eps, pool, outer, use_numba, use_sparse,
             print(f"[exact] fit in {t_exact:.1f}s | "
                   f"celle escluse post-hoc: {len(excl_cells)}")
             d_exact = diagnostics("exact", p_exact, F, alphas, zero_mask)
+        if (d_exact is not None and not reused
+                and not (d_exact["mre_pos"] <= MAX_MRE_EXACT)):
+            print(f"[exact] L-BFGS non convergente (MRE {d_exact['mre_pos']:.3e}): "
+                  f"ripiego IPF")
+            t0 = time.time()
+            p_ipf, mre_ipf, sw = ipf_fallback(F_g, cs_g.alphas_array,
+                                              excl_cells, len(p_exact))
+            print(f"[ipf] {sw} sweep in {time.time()-t0:.1f}s | MRE vincoli "
+                  f"tenuti {mre_ipf:.3e}")
+            p_exact = p_ipf
+            exact = None            # i lambdas divergenti non si salvano
+            d_exact = diagnostics("exact", p_exact, F, alphas, zero_mask)
+            d_exact["ripiego"] = "ipf"
         if d_exact is not None and not (d_exact["mre_pos"] <= MAX_MRE_EXACT):
             sys.exit(f"[exact] fit NON convergente: MRE(alpha>0)="
                      f"{d_exact['mre_pos']:.3e} > {MAX_MRE_EXACT}. Popolazione "

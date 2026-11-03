@@ -443,7 +443,7 @@
   slug: maiolo
   regione: emilia_romagna
   pool: 1018
-  stato: pilota
+  stato: v2
   note: |-
     --- PILOTA soglia di taglia (note/misure/soglia_taglia_er.md) ---
     Tre comuni attorno al criterio pop/|celle| >= 2: sotto, al bordo,
@@ -455,14 +455,14 @@
   slug: vernasca
   regione: emilia_romagna
   pool: 2638
-  stato: pilota
+  stato: v2
   note: '[livello] 2.029 ab — al bordo'
 '034049':
   nome: Sissa Trecasali
   slug: sissa_trecasali
   regione: emilia_romagna
   pool: 10394
-  stato: pilota
+  stato: v2
   note: '[livello] 7.995 ab — sopra'
 '038008':
   nome: Ferrara
@@ -588,7 +588,7 @@
   slug: imola
   regione: emilia_romagna
   pool: 90613
-  stato: collaudo
+  stato: v2
   note: |-
     Voce scritta a mano il 2/9/2026 per collaudare la staffetta in
     rigenera.sh (build_sezioni + build_constraints condizionali) su un
@@ -1992,7 +1992,7 @@
   slug: sarmato
   regione: emilia_romagna
   pool: 4041
-  stato: sotto_soglia
+  stato: v2
   note: |
     ESCLUSO dalla v2 a posteriori (2/9/2026). Promosso su POSAS 2026
     (3.108 ab, sopra la soglia di 3.000), fallisce il criterio sul dato
@@ -2008,4 +2008,490 @@
   slug: bedonia
   regione: emilia_romagna
   pool: 4034
+  stato: v2
+'036011':
+  nome: Fanano
+  slug: fanano
+  regione: emilia_romagna
+  pool: 3880
+  stato: v2
+'034030':
+  nome: Roccabianca
+  slug: roccabianca
+  regione: emilia_romagna
+  pool: 3820
+  stato: v2
+'033049':
+  nome: Alta Val Tidone
+  slug: alta_val_tidone
+  regione: emilia_romagna
+  pool: 3806
+  stato: v2
+'040004':
+  nome: Borghi
+  slug: borghi
+  regione: emilia_romagna
+  pool: 3790
+  stato: v2
+'099025':
+  nome: San Leo
+  slug: san_leo
+  regione: emilia_romagna
+  pool: 3741
+  stato: v2
+'039017':
+  nome: Sant'Agata sul Santerno
+  slug: santagata_sul_santerno
+  regione: emilia_romagna
+  pool: 3685
+  stato: v2
+'099024':
+  nome: Pennabilli
+  slug: pennabilli
+  regione: emilia_romagna
+  pool: 3500
+  stato: v2
+'036018':
+  nome: Lama Mocogno
+  slug: lama_mocogno
+  regione: emilia_romagna
+  pool: 3483
+  stato: v2
+'033004':
+  nome: Bettola
+  slug: bettola
+  regione: emilia_romagna
+  pool: 3416
+  stato: v2
+'038010':
+  nome: Jolanda di Savoia
+  slug: jolanda_di_savoia
+  regione: emilia_romagna
+  pool: 3374
+  stato: v2
+'034045':
+  nome: Varano de' Melegari
+  slug: varano_de_melegari
+  regione: emilia_romagna
+  pool: 3366
+  stato: v2
+'040014':
+  nome: Galeata
+  slug: galeata
+  regione: emilia_romagna
+  pool: 3323
+  stato: v2
+'033048':
+  nome: Ziano Piacentino
+  slug: ziano_piacentino
+  regione: emilia_romagna
+  pool: 3315
+  stato: v2
+'039005':
+  nome: Casola Valsenio
+  slug: casola_valsenio
+  regione: emilia_romagna
+  pool: 3236
+  stato: v2
+'033008':
+  nome: Calendasco
+  slug: calendasco
+  regione: emilia_romagna
+  pool: 3205
+  stato: v2
+'036043':
+  nome: Sestola
+  slug: sestola
+  regione: emilia_romagna
+  pool: 3122
+  stato: v2
+'039003':
+  nome: Bagnara di Romagna
+  slug: bagnara_di_romagna
+  regione: emilia_romagna
+  pool: 3013
+  stato: v2
+'099008':
+  nome: Montefiore Conca
+  slug: montefiore_conca
+  regione: emilia_romagna
+  pool: 3006
+  stato: v2
+'037033':
+  nome: Lizzano in Belvedere
+  slug: lizzano_in_belvedere
+  regione: emilia_romagna
+  pool: 2984
+  stato: v2
+'038012':
+  nome: Masi Torello
+  slug: masi_torello
+  regione: emilia_romagna
+  pool: 2914
+  stato: v2
+'034039':
+  nome: Tizzano Val Parma
+  slug: tizzano_val_parma
+  regione: emilia_romagna
+  pool: 2894
+  stato: v2
+'033022':
+  nome: Gazzola
+  slug: gazzola
+  regione: emilia_romagna
+  pool: 2862
+  stato: v2
+'034008':
+  nome: Calestano
+  slug: calestano
+  regione: emilia_romagna
+  pool: 2838
+  stato: v2
+'033033':
+  nome: Pianello Val Tidone
+  slug: pianello_val_tidone
+  regione: emilia_romagna
+  pool: 2833
+  stato: v2
+'033025':
+  nome: Gropparello
+  slug: gropparello
+  regione: emilia_romagna
+  pool: 2825
+  stato: v2
+'033043':
+  nome: Travo
+  slug: travo
+  regione: emilia_romagna
+  pool: 2815
+  stato: v2
+'036025':
+  nome: Montefiorino
+  slug: montefiorino
+  regione: emilia_romagna
+  pool: 2755
+  stato: v2
+'036031':
+  nome: Pievepelago
+  slug: pievepelago
+  regione: emilia_romagna
+  pool: 2725
+  stato: v2
+'033001':
+  nome: Agazzano
+  slug: agazzano
+  regione: emilia_romagna
+  pool: 2671
+  stato: v2
+'034001':
+  nome: Albareto
+  slug: albareto
+  regione: emilia_romagna
+  pool: 2650
+  stato: v2
+'036029':
+  nome: Palagano
+  slug: palagano
+  regione: emilia_romagna
+  pool: 2645
+  stato: v2
+'037013':
+  nome: Castel d'Aiano
+  slug: castel_daiano
+  regione: emilia_romagna
+  pool: 2560
+  stato: v2
+'099026':
+  nome: Sant'Agata Feltria
+  slug: santagata_feltria
+  regione: emilia_romagna
+  pool: 2545
+  stato: v2
+'034002':
+  nome: Bardi
+  slug: bardi
+  regione: emilia_romagna
+  pool: 2532
+  stato: v2
+'034004':
+  nome: Berceto
+  slug: berceto
+  regione: emilia_romagna
+  pool: 2493
+  stato: v2
+'037010':
+  nome: Camugnano
+  slug: camugnano
+  regione: emilia_romagna
+  pool: 2485
+  stato: v2
+'037026':
+  nome: Fontanelice
+  slug: fontanelice
+  regione: emilia_romagna
+  pool: 2483
+  stato: v2
+'040036':
+  nome: Rocca San Casciano
+  slug: rocca_san_casciano
+  regione: emilia_romagna
+  pool: 2370
+  stato: v2
+'035042':
+  nome: Vetto
+  slug: vetto
+  regione: emilia_romagna
+  pool: 2343
+  stato: v2
+'034012':
+  nome: Corniglio
+  slug: corniglio
+  regione: emilia_romagna
+  pool: 2313
+  stato: v2
+'040050':
+  nome: Verghereto
+  slug: verghereto
+  regione: emilia_romagna
+  pool: 2238
+  stato: v2
+'036016':
+  nome: Frassinoro
+  slug: frassinoro
+  regione: emilia_romagna
+  pool: 2207
+  stato: v2
+'040028':
+  nome: Montiano
+  slug: montiano
+  regione: emilia_romagna
+  pool: 2204
+  stato: v2
+'033046':
+  nome: Villanova sull'Arda
+  slug: villanova_sullarda
+  regione: emilia_romagna
+  pool: 2166
+  stato: v2
+'034035':
+  nome: Solignano
+  slug: solignano
+  regione: emilia_romagna
+  pool: 2164
+  stato: v2
+'036032':
+  nome: Polinago
+  slug: polinago
+  regione: emilia_romagna
+  pool: 2086
+  stato: v2
+'040011':
+  nome: Dovadola
+  slug: dovadola
+  regione: emilia_romagna
+  pool: 2069
+  stato: v2
+'099031':
+  nome: Sassofeltrio
+  slug: sassofeltrio
+  regione: emilia_romagna
+  pool: 1793
+  stato: v2
+'099006':
+  nome: Mondaino
+  slug: mondaino
+  regione: emilia_romagna
+  pool: 1765
+  stato: v2
+'037014':
+  nome: Castel del Rio
+  slug: castel_del_rio
+  regione: emilia_romagna
+  pool: 1592
+  stato: v2
+'036014':
+  nome: Fiumalbo
+  slug: fiumalbo
+  regione: emilia_romagna
+  pool: 1531
+  stato: v2
+'099004':
+  nome: Gemmano
+  slug: gemmano
+  regione: emilia_romagna
+  pool: 1503
+  stato: v2
+'034046':
+  nome: Varsi
+  slug: varsi
+  regione: emilia_romagna
+  pool: 1494
+  stato: v2
+'034038':
+  nome: Terenzo
+  slug: terenzo
+  regione: emilia_romagna
+  pool: 1480
+  stato: v2
+'033020':
+  nome: Ferriere
+  slug: ferriere
+  regione: emilia_romagna
+  pool: 1406
+  stato: v2
+'099027':
+  nome: Talamello
+  slug: talamello
+  regione: emilia_romagna
+  pool: 1406
+  stato: v2
+'040049':
+  nome: Tredozio
+  slug: tredozio
+  regione: emilia_romagna
+  pool: 1398
+  stato: v2
+'034011':
+  nome: Compiano
+  slug: compiano
+  regione: emilia_romagna
+  pool: 1362
+  stato: v2
+'033019':
+  nome: Farini
+  slug: farini
+  regione: emilia_romagna
+  pool: 1358
+  stato: v2
+'099030':
+  nome: Montecopiolo
+  slug: montecopiolo
+  regione: emilia_romagna
+  pool: 1338
+  stato: v2
+'099009':
+  nome: Montegridolfo
+  slug: montegridolfo
+  regione: emilia_romagna
+  pool: 1333
+  stato: v2
+'034026':
+  nome: Palanzano
+  slug: palanzano
+  regione: emilia_romagna
+  pool: 1299
+  stato: v2
+'034028':
+  nome: Pellegrino Parmense
+  slug: pellegrino_parmense
+  regione: emilia_romagna
+  pool: 1258
+  stato: v2
+'036024':
+  nome: Montecreto
+  slug: montecreto
+  regione: emilia_romagna
+  pool: 1237
+  stato: v2
+'033003':
+  nome: Besenzone
+  slug: besenzone
+  regione: emilia_romagna
+  pool: 1217
+  stato: v2
+'033016':
+  nome: Coli
+  slug: coli
+  regione: emilia_romagna
+  pool: 1141
+  stato: v2
+'033028':
+  nome: Morfasso
+  slug: morfasso
+  regione: emilia_romagna
+  pool: 1104
+  stato: v2
+'034040':
+  nome: Tornolo
+  slug: tornolo
+  regione: emilia_romagna
+  pool: 1100
+  stato: v2
+'034022':
+  nome: Monchio delle Corti
+  slug: monchio_delle_corti
+  regione: emilia_romagna
+  pool: 1087
+  stato: v2
+'033041':
+  nome: San Pietro in Cerro
+  slug: san_pietro_in_cerro
+  regione: emilia_romagna
+  pool: 961
+  stato: v2
+'040031':
+  nome: Portico e San Benedetto
+  slug: portico_e_san_benedetto
+  regione: emilia_romagna
+  pool: 931
+  stato: v2
+'040033':
+  nome: Premilcuore
+  slug: premilcuore
+  regione: emilia_romagna
+  pool: 878
+  stato: v2
+'036035':
+  nome: Riolunato
+  slug: riolunato
+  regione: emilia_romagna
+  pool: 855
+  stato: v2
+'034005':
+  nome: Bore
+  slug: bore
+  regione: emilia_romagna
+  pool: 805
+  stato: v2
+'033034':
+  nome: Piozzano
+  slug: piozzano
+  regione: emilia_romagna
+  pool: 756
+  stato: v2
+'034044':
+  nome: Valmozzola
+  slug: valmozzola
+  regione: emilia_romagna
+  pool: 686
+  stato: v2
+'033017':
+  nome: Corte Brugnatella
+  slug: corte_brugnatella
+  regione: emilia_romagna
+  pool: 652
+  stato: v2
+'033030':
+  nome: Ottone
+  slug: ottone
+  regione: emilia_romagna
+  pool: 507
+  stato: v2
+'099021':
+  nome: Casteldelci
+  slug: casteldelci
+  regione: emilia_romagna
+  pool: 454
+  stato: v2
+'033015':
+  nome: Cerignale
+  slug: cerignale
+  regione: emilia_romagna
+  pool: 142
+  stato: v2
+'033047':
+  nome: Zerba
+  slug: zerba
+  regione: emilia_romagna
+  pool: 86
   stato: v2
